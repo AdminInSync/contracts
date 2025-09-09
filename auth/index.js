@@ -8,6 +8,7 @@ export const AuthContracts = c.router({
         path: '/me',
         responses: {
             200: MeResponseSchema,
+            400: ErrorResSchema,
             401: ErrorResSchema,
             500: ErrorResSchema
         },
