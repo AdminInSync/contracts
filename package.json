@@ -1,0 +1,25 @@
+{
+  "name": "@insync/contracts",
+  "version": "0.0.1-20250909200522+9895bc3",
+  "type": "module",
+  "private": false,
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@anatine/zod-openapi": "^2.2.8",
+    "@ts-rest/core": "^3.50.0",
+    "zod": "^3.23.8"
+  }
+}
