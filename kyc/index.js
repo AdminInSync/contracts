@@ -9,6 +9,7 @@ export const KycContracts = c.router({
         body: KycTokenRequestSchema,
         responses: {
             200: KycTokenResponseSchema,
+            400: ErrorResSchema,
             401: ErrorResSchema,
             500: ErrorResSchema,
             502: ErrorResSchema,
@@ -21,6 +22,7 @@ export const KycContracts = c.router({
         path: '/status',
         responses: {
             200: KycStatusResponseSchema,
+            400: ErrorResSchema,
             401: ErrorResSchema,
             500: ErrorResSchema,
         },
