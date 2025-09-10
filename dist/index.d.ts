@@ -4,7 +4,7 @@ export declare const apiContract: {
             summary: "Get current user endpoint";
             description: "Get current authenticated user information from Firebase.";
             method: "GET";
-            path: "/auth/me";
+            path: "/api/auth/me";
             responses: {
                 200: import("zod").ZodObject<{
                     success: import("zod").ZodBoolean;
@@ -332,7 +332,7 @@ export declare const apiContract: {
             }, {
                 ttlInSecs?: number | undefined;
             }>;
-            path: "/kyc/token";
+            path: "/api/kyc/token";
             responses: {
                 200: import("zod").ZodObject<{
                     success: import("zod").ZodBoolean;
@@ -431,7 +431,7 @@ export declare const apiContract: {
             summary: "Get KYC status";
             description: "Get the current KYC status for the authenticated user.";
             method: "GET";
-            path: "/kyc/status";
+            path: "/api/kyc/status";
             responses: {
                 200: import("zod").ZodObject<{
                     success: import("zod").ZodBoolean;
@@ -532,7 +532,7 @@ export declare const apiContract: {
                 document_number?: string | undefined;
                 document_url?: string | undefined;
             }>;
-            path: "/user-info/";
+            path: "/api/user-info/";
             responses: {
                 201: import("zod").ZodObject<{
                     id: import("zod").ZodNumber;
@@ -625,7 +625,7 @@ export declare const apiContract: {
             summary: "Get user info documents";
             description: "Get all user info documents for the authenticated user with optional filtering by document type and status";
             method: "GET";
-            path: "/user-info/";
+            path: "/api/user-info/";
             responses: {
                 200: import("zod").ZodArray<import("zod").ZodObject<{
                     id: import("zod").ZodNumber;
@@ -704,7 +704,7 @@ export declare const apiContract: {
             description: "Webhook endpoint for receiving KYC status updates from Sumsub.";
             method: "POST";
             body: import("zod").ZodAny;
-            path: "/webhooks/sumsub";
+            path: "/api/webhooks/sumsub";
             responses: {
                 200: import("zod").ZodObject<{
                     success: import("zod").ZodBoolean;
@@ -726,6 +726,80 @@ export declare const apiContract: {
                     error: string;
                 }, {
                     error: string;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+    };
+    Docs: {
+        health: {
+            summary: "Health check endpoint";
+            description: "Returns the current status of the API server";
+            method: "GET";
+            path: "/api/health";
+            responses: {
+                200: import("zod").ZodObject<{
+                    contentType: import("zod").ZodLiteral<"application/json">;
+                    body: import("zod").ZodObject<{
+                        status: import("zod").ZodString;
+                        timestamp: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        status: string;
+                        timestamp: string;
+                    }, {
+                        status: string;
+                        timestamp: string;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    contentType: "application/json";
+                    body: {
+                        status: string;
+                        timestamp: string;
+                    };
+                }, {
+                    contentType: "application/json";
+                    body: {
+                        status: string;
+                        timestamp: string;
+                    };
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        openApiJson: {
+            summary: "Get OpenAPI schema as JSON";
+            description: "Returns the complete OpenAPI 3.0 schema in JSON format";
+            method: "GET";
+            path: "/api/api-docs.json";
+            responses: {
+                200: import("zod").ZodObject<{
+                    contentType: import("zod").ZodLiteral<"application/json">;
+                    body: import("zod").ZodAny;
+                }, "strip", import("zod").ZodTypeAny, {
+                    contentType: "application/json";
+                    body?: any;
+                }, {
+                    contentType: "application/json";
+                    body?: any;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        openApiYaml: {
+            summary: "Get OpenAPI schema as YAML";
+            description: "Returns the complete OpenAPI 3.0 schema in YAML format";
+            method: "GET";
+            path: "/api/api-docs.yaml";
+            responses: {
+                200: import("zod").ZodObject<{
+                    contentType: import("zod").ZodLiteral<"text/yaml">;
+                    body: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    contentType: "text/yaml";
+                    body: string;
+                }, {
+                    contentType: "text/yaml";
+                    body: string;
                 }>;
             };
             strictStatusCodes: true;
