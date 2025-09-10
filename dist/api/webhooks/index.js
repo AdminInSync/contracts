@@ -15,5 +15,7 @@ export const WebhookContracts = c.router({
         description: 'Webhook endpoint for receiving KYC status updates from Sumsub.',
     },
 }, {
-    pathPrefix: '/webhooks'
+    tags: ['Webhooks'],
+    pathPrefix: '/webhooks',
+    strictStatusCodes: true
 });

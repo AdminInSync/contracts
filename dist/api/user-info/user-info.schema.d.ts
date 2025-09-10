@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { DocumentType, DocumentStatus } from '../enums';
+import { DocumentType, DocumentStatus } from '../../enums';
 export declare const CreateUserInfoRequestSchema: z.ZodObject<{
     info_type: z.ZodNativeEnum<typeof DocumentType>;
     document_number: z.ZodOptional<z.ZodString>;

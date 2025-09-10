@@ -1,5 +1,5 @@
 import { initContract } from '@ts-rest/core';
-import { ErrorResSchema } from '../common/schemas/common.schema';
+import { ErrorResSchema } from '../../common/schemas/common.schema';
 import { MeResponseSchema } from './auth.schema';
 const c = initContract();
 export const AuthContracts = c.router({
@@ -16,5 +16,7 @@ export const AuthContracts = c.router({
         description: 'Get current authenticated user information from Firebase.',
     }
 }, {
-    pathPrefix: '/auth'
+    strictStatusCodes: true,
+    pathPrefix: '/auth',
+    tags: ['Authentication']
 });

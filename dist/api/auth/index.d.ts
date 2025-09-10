@@ -316,5 +316,6 @@ export declare const AuthContracts: {
                 statusCode?: number | undefined;
             }>;
         };
+        strictStatusCodes: true;
     };
 };

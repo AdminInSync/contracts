@@ -1,5 +1,5 @@
 import { initContract } from '@ts-rest/core';
-import { ErrorResSchema } from '../common/schemas/common.schema';
+import { ErrorResSchema } from '../../common/schemas/common.schema';
 import { CreateUserInfoRequestSchema, UserInfoResponseSchema, UserInfoErrorResponseSchema, GetUserInfoResponseSchema, GetUserInfoQuerySchema } from './user-info.schema';
 const c = initContract();
 export const UserInfoContracts = c.router({
@@ -31,5 +31,7 @@ export const UserInfoContracts = c.router({
         description: 'Get all user info documents for the authenticated user with optional filtering by document type and status',
     }
 }, {
-    pathPrefix: '/user-info'
+    strictStatusCodes: true,
+    pathPrefix: '/user-info',
+    tags: ['User Information']
 });

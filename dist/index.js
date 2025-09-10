@@ -1,17 +1,10 @@
 import { initContract } from '@ts-rest/core';
-import { AuthContracts } from './auth';
-import { KycContracts } from './kyc';
-import { UserInfoContracts } from './user-info';
-import { WebhookContracts } from './webhooks';
+import { ApiContracts } from './api';
 import { DocsContracts } from './docs';
 const c = initContract();
 export const apiContract = c.router({
-    Auth: AuthContracts,
-    Kyc: KycContracts,
-    UserInfo: UserInfoContracts,
-    Webhooks: WebhookContracts,
+    Api: ApiContracts,
     Docs: DocsContracts,
 }, {
-    strictStatusCodes: true,
-    pathPrefix: '/api'
+    strictStatusCodes: true
 });

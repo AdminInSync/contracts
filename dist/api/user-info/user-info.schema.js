@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { extendZodWithOpenApi } from '@anatine/zod-openapi';
-import { DocumentType, DocumentStatus } from '../enums';
+import { DocumentType, DocumentStatus } from '../../enums';
 extendZodWithOpenApi(z);
 // User Info Request Schema
 export const CreateUserInfoRequestSchema = z.object({

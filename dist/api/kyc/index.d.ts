@@ -103,6 +103,7 @@ export declare const KycContracts: {
                 statusCode?: number | undefined;
             }>;
         };
+        strictStatusCodes: true;
     };
     status: {
         summary: "Get KYC status";
@@ -188,5 +189,6 @@ export declare const KycContracts: {
                 statusCode?: number | undefined;
             }>;
         };
+        strictStatusCodes: true;
     };
 };
