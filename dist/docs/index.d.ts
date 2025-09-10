@@ -31,6 +31,7 @@ export declare const DocsContracts: {
                 };
             }>;
         };
+        strictStatusCodes: true;
     };
     openApiJson: {
         summary: "Get OpenAPI schema as JSON";
@@ -49,6 +50,7 @@ export declare const DocsContracts: {
                 body?: any;
             }>;
         };
+        strictStatusCodes: true;
     };
     openApiYaml: {
         summary: "Get OpenAPI schema as YAML";
@@ -67,5 +69,25 @@ export declare const DocsContracts: {
                 body: string;
             }>;
         };
+        strictStatusCodes: true;
+    };
+    qDocs: {
+        summary: "Get OpenAPI schema as JSON (alternative endpoint)";
+        description: "Returns the complete OpenAPI 3.0 schema in JSON format via /q/docs endpoint";
+        method: "GET";
+        path: "/q/docs";
+        responses: {
+            200: import("zod").ZodObject<{
+                contentType: import("zod").ZodLiteral<"application/json">;
+                body: import("zod").ZodAny;
+            }, "strip", import("zod").ZodTypeAny, {
+                contentType: "application/json";
+                body?: any;
+            }, {
+                contentType: "application/json";
+                body?: any;
+            }>;
+        };
+        strictStatusCodes: true;
     };
 };

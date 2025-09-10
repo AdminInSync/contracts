@@ -1,5 +1,5 @@
 import { initContract } from '@ts-rest/core';
-import { ErrorResSchema } from '../common/schemas/common.schema';
+import { ErrorResSchema } from '../../common/schemas/common.schema';
 import { KycTokenRequestSchema, KycTokenResponseSchema, KycStatusResponseSchema } from './kyc.schema';
 const c = initContract();
 export const KycContracts = c.router({
@@ -30,5 +30,7 @@ export const KycContracts = c.router({
         description: 'Get the current KYC status for the authenticated user.',
     },
 }, {
-    pathPrefix: '/kyc'
+    strictStatusCodes: true,
+    pathPrefix: '/kyc',
+    tags: ['KYC']
 });

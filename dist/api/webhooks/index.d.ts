@@ -29,5 +29,6 @@ export declare const WebhookContracts: {
                 error: string;
             }>;
         };
+        strictStatusCodes: true;
     };
 };

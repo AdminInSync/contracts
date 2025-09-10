@@ -28,5 +28,17 @@ export const DocsContracts = c.router({
         },
         summary: 'Get OpenAPI schema as YAML',
         description: 'Returns the complete OpenAPI 3.0 schema in YAML format'
+    },
+    qDocs: {
+        method: 'GET',
+        path: '/q/docs',
+        responses: {
+            200: OpenApiJsonResponseSchema
+        },
+        summary: 'Get OpenAPI schema as JSON (alternative endpoint)',
+        description: 'Returns the complete OpenAPI 3.0 schema in JSON format via /q/docs endpoint'
     }
+}, {
+    strictStatusCodes: true,
+    tags: ['Docs']
 });
