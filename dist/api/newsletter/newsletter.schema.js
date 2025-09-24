@@ -11,6 +11,9 @@ export const CreateNewsletterRequestSchema = z.object({
     }),
     email: z.string().email().max(255).openapi({
         description: 'Email address of the subscriber'
+    }),
+    source: z.string().max(100).optional().openapi({
+        description: 'How the customer found InSync (e.g., google, facebook, referral, etc.)'
     })
 }).openapi({
     title: 'CreateNewsletterRequest',
@@ -32,6 +35,9 @@ export const NewsletterResponseSchema = z.object({
     }),
     email: z.string().email().openapi({
         description: 'Email address of the subscriber'
+    }),
+    source: z.string().nullable().openapi({
+        description: 'How the customer found InSync'
     }),
     createdAt: z.string().datetime().openapi({
         description: 'Creation timestamp'

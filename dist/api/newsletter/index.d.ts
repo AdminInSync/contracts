@@ -7,14 +7,17 @@ export declare const NewsletterContracts: {
             first_name: import("zod").ZodString;
             last_name: import("zod").ZodString;
             email: import("zod").ZodString;
+            source: import("zod").ZodOptional<import("zod").ZodString>;
         }, "strip", import("zod").ZodTypeAny, {
             email: string;
             first_name: string;
             last_name: string;
+            source?: string | undefined;
         }, {
             email: string;
             first_name: string;
             last_name: string;
+            source?: string | undefined;
         }>;
         path: "/newsletter/subscribe";
         responses: {
@@ -24,6 +27,7 @@ export declare const NewsletterContracts: {
                 first_name: import("zod").ZodString;
                 last_name: import("zod").ZodString;
                 email: import("zod").ZodString;
+                source: import("zod").ZodNullable<import("zod").ZodString>;
                 createdAt: import("zod").ZodString;
             }, "strip", import("zod").ZodTypeAny, {
                 id: number;
@@ -32,6 +36,7 @@ export declare const NewsletterContracts: {
                 createdAt: string;
                 first_name: string;
                 last_name: string;
+                source: string | null;
             }, {
                 id: number;
                 email: string;
@@ -39,6 +44,7 @@ export declare const NewsletterContracts: {
                 createdAt: string;
                 first_name: string;
                 last_name: string;
+                source: string | null;
             }>;
             400: import("zod").ZodObject<{
                 error: import("zod").ZodString;
