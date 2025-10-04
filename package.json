@@ -1,6 +1,6 @@
 {
   "name": "@insync/contracts",
-  "version": "0.0.1-20251004002444+dbc6e2b",
+  "version": "0.0.1-20251004172759+179480d",
   "type": "module",
   "private": false,
   "files": [
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@anatine/zod-openapi": "^2.2.8",
-    "@ts-rest/core": "^3.50.0",
-    "zod": "^3.23.8"
+    "@ts-rest/core": "^3.52.1",
+    "zod": "^3.25.76"
   }
 }
