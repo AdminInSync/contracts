@@ -534,7 +534,7 @@ export declare const ApiContracts: {
                     status: import("zod").ZodNativeEnum<typeof import("../enums").DocumentStatus>;
                     document_number: import("zod").ZodNullable<import("zod").ZodString>;
                     document_url: import("zod").ZodNullable<import("zod").ZodString>;
-                    createdAt: import("zod").ZodString;
+                    created_at: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
                     status: import("../enums").DocumentStatus;
                     id: number;
@@ -543,7 +543,7 @@ export declare const ApiContracts: {
                     document_url: string | null;
                     uuid: string;
                     user_uid: string;
-                    createdAt: string;
+                    created_at: string;
                 }, {
                     status: import("../enums").DocumentStatus;
                     id: number;
@@ -552,7 +552,7 @@ export declare const ApiContracts: {
                     document_url: string | null;
                     uuid: string;
                     user_uid: string;
-                    createdAt: string;
+                    created_at: string;
                 }>;
                 400: import("zod").ZodObject<{
                     error: import("zod").ZodString;
@@ -627,7 +627,7 @@ export declare const ApiContracts: {
                     status: import("zod").ZodNativeEnum<typeof import("../enums").DocumentStatus>;
                     document_number: import("zod").ZodNullable<import("zod").ZodString>;
                     document_url: import("zod").ZodNullable<import("zod").ZodString>;
-                    createdAt: import("zod").ZodString;
+                    created_at: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
                     status: import("../enums").DocumentStatus;
                     id: number;
@@ -636,7 +636,7 @@ export declare const ApiContracts: {
                     document_url: string | null;
                     uuid: string;
                     user_uid: string;
-                    createdAt: string;
+                    created_at: string;
                 }, {
                     status: import("../enums").DocumentStatus;
                     id: number;
@@ -645,7 +645,7 @@ export declare const ApiContracts: {
                     document_url: string | null;
                     uuid: string;
                     user_uid: string;
-                    createdAt: string;
+                    created_at: string;
                 }>, "many">;
                 400: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -716,24 +716,24 @@ export declare const ApiContracts: {
                     user_uid: import("zod").ZodString;
                     device_id: import("zod").ZodString;
                     notes: import("zod").ZodString;
-                    createdAt: import("zod").ZodString;
-                    updatedAt: import("zod").ZodString;
+                    created_at: import("zod").ZodString;
+                    updated_at: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
                     id: number;
                     uuid: string;
                     user_uid: string;
-                    createdAt: string;
+                    created_at: string;
                     device_id: string;
                     notes: string;
-                    updatedAt: string;
+                    updated_at: string;
                 }, {
                     id: number;
                     uuid: string;
                     user_uid: string;
-                    createdAt: string;
+                    created_at: string;
                     device_id: string;
                     notes: string;
-                    updatedAt: string;
+                    updated_at: string;
                 }>;
                 400: import("zod").ZodObject<{
                     error: import("zod").ZodString;
@@ -803,24 +803,24 @@ export declare const ApiContracts: {
                     user_uid: import("zod").ZodString;
                     device_id: import("zod").ZodString;
                     notes: import("zod").ZodString;
-                    createdAt: import("zod").ZodString;
-                    updatedAt: import("zod").ZodString;
+                    created_at: import("zod").ZodString;
+                    updated_at: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
                     id: number;
                     uuid: string;
                     user_uid: string;
-                    createdAt: string;
+                    created_at: string;
                     device_id: string;
                     notes: string;
-                    updatedAt: string;
+                    updated_at: string;
                 }, {
                     id: number;
                     uuid: string;
                     user_uid: string;
-                    createdAt: string;
+                    created_at: string;
                     device_id: string;
                     notes: string;
-                    updatedAt: string;
+                    updated_at: string;
                 }>, "many">;
                 400: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -926,15 +926,15 @@ export declare const ApiContracts: {
                     isCloudBackupEnabled: import("zod").ZodBoolean;
                     canExportData: import("zod").ZodBoolean;
                     preferredTheme: import("zod").ZodEnum<["SYSTEM", "LIGHT", "DARK"]>;
-                    createdAt: import("zod").ZodString;
-                    updatedAt: import("zod").ZodString;
+                    created_at: import("zod").ZodString;
+                    updated_at: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
                     id: number;
                     uuid: string;
                     user_uid: string;
-                    createdAt: string;
+                    created_at: string;
                     device_id: string;
-                    updatedAt: string;
+                    updated_at: string;
                     arePushNotificationsEnabled: boolean;
                     areTransactionAlertsEnabled: boolean;
                     areNotificationSoundsEnabled: boolean;
@@ -950,9 +950,9 @@ export declare const ApiContracts: {
                     id: number;
                     uuid: string;
                     user_uid: string;
-                    createdAt: string;
+                    created_at: string;
                     device_id: string;
-                    updatedAt: string;
+                    updated_at: string;
                     arePushNotificationsEnabled: boolean;
                     areTransactionAlertsEnabled: boolean;
                     areNotificationSoundsEnabled: boolean;
@@ -1053,15 +1053,15 @@ export declare const ApiContracts: {
                     isCloudBackupEnabled: import("zod").ZodBoolean;
                     canExportData: import("zod").ZodBoolean;
                     preferredTheme: import("zod").ZodEnum<["SYSTEM", "LIGHT", "DARK"]>;
-                    createdAt: import("zod").ZodString;
-                    updatedAt: import("zod").ZodString;
+                    created_at: import("zod").ZodString;
+                    updated_at: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
                     id: number;
                     uuid: string;
                     user_uid: string;
-                    createdAt: string;
+                    created_at: string;
                     device_id: string;
-                    updatedAt: string;
+                    updated_at: string;
                     arePushNotificationsEnabled: boolean;
                     areTransactionAlertsEnabled: boolean;
                     areNotificationSoundsEnabled: boolean;
@@ -1077,9 +1077,9 @@ export declare const ApiContracts: {
                     id: number;
                     uuid: string;
                     user_uid: string;
-                    createdAt: string;
+                    created_at: string;
                     device_id: string;
-                    updatedAt: string;
+                    updated_at: string;
                     arePushNotificationsEnabled: boolean;
                     areTransactionAlertsEnabled: boolean;
                     areNotificationSoundsEnabled: boolean;
@@ -1200,15 +1200,15 @@ export declare const ApiContracts: {
                     isCloudBackupEnabled: import("zod").ZodBoolean;
                     canExportData: import("zod").ZodBoolean;
                     preferredTheme: import("zod").ZodEnum<["SYSTEM", "LIGHT", "DARK"]>;
-                    createdAt: import("zod").ZodString;
-                    updatedAt: import("zod").ZodString;
+                    created_at: import("zod").ZodString;
+                    updated_at: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
                     id: number;
                     uuid: string;
                     user_uid: string;
-                    createdAt: string;
+                    created_at: string;
                     device_id: string;
-                    updatedAt: string;
+                    updated_at: string;
                     arePushNotificationsEnabled: boolean;
                     areTransactionAlertsEnabled: boolean;
                     areNotificationSoundsEnabled: boolean;
@@ -1224,9 +1224,9 @@ export declare const ApiContracts: {
                     id: number;
                     uuid: string;
                     user_uid: string;
-                    createdAt: string;
+                    created_at: string;
                     device_id: string;
-                    updatedAt: string;
+                    updated_at: string;
                     arePushNotificationsEnabled: boolean;
                     areTransactionAlertsEnabled: boolean;
                     areNotificationSoundsEnabled: boolean;
@@ -1352,12 +1352,12 @@ export declare const ApiContracts: {
                     last_name: import("zod").ZodString;
                     email: import("zod").ZodString;
                     source: import("zod").ZodNullable<import("zod").ZodString>;
-                    createdAt: import("zod").ZodString;
+                    created_at: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
                     id: number;
                     email: string;
                     uuid: string;
-                    createdAt: string;
+                    created_at: string;
                     first_name: string;
                     last_name: string;
                     source: string | null;
@@ -1365,7 +1365,7 @@ export declare const ApiContracts: {
                     id: number;
                     email: string;
                     uuid: string;
-                    createdAt: string;
+                    created_at: string;
                     first_name: string;
                     last_name: string;
                     source: string | null;
@@ -1477,7 +1477,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -1487,8 +1489,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     }, {
                         status: "active" | "completed" | "paused" | "cancelled";
@@ -1496,7 +1496,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -1506,8 +1508,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     }>;
                 }, "strip", import("zod").ZodTypeAny, {
@@ -1518,7 +1518,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -1528,8 +1530,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     };
                 }, {
@@ -1540,7 +1540,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -1550,8 +1552,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     };
                 }>;
@@ -1649,7 +1649,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -1659,8 +1661,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     }, {
                         status: "active" | "completed" | "paused" | "cancelled";
@@ -1668,7 +1668,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -1678,8 +1680,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     }>, "many">;
                     pagination: import("zod").ZodOptional<import("zod").ZodObject<{
@@ -1703,7 +1703,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -1713,8 +1715,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     }[];
                     pagination?: {
@@ -1730,7 +1730,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -1740,8 +1742,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     }[];
                     pagination?: {
@@ -1819,7 +1819,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -1829,8 +1831,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     }, {
                         status: "active" | "completed" | "paused" | "cancelled";
@@ -1838,7 +1838,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -1848,8 +1850,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     }>;
                 }, "strip", import("zod").ZodTypeAny, {
@@ -1860,7 +1860,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -1870,8 +1872,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     };
                 }, {
@@ -1882,7 +1882,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -1892,8 +1894,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     };
                 }>;
@@ -2019,7 +2019,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -2029,8 +2031,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     }, {
                         status: "active" | "completed" | "paused" | "cancelled";
@@ -2038,7 +2038,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -2048,8 +2050,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     }>;
                 }, "strip", import("zod").ZodTypeAny, {
@@ -2060,7 +2060,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -2070,8 +2072,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     };
                 }, {
@@ -2082,7 +2082,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -2092,8 +2094,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     };
                 }>;
@@ -2199,7 +2199,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -2209,8 +2211,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     }, {
                         status: "active" | "completed" | "paused" | "cancelled";
@@ -2218,7 +2218,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -2228,8 +2230,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     }>;
                 }, "strip", import("zod").ZodTypeAny, {
@@ -2240,7 +2240,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -2250,8 +2252,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     };
                 }, {
@@ -2262,7 +2262,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -2272,8 +2274,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     };
                 }>;
@@ -2437,7 +2437,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -2447,8 +2449,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     }, {
                         status: "active" | "completed" | "paused" | "cancelled";
@@ -2456,7 +2456,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -2466,8 +2468,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     }>, "many">;
                     pagination: import("zod").ZodOptional<import("zod").ZodObject<{
@@ -2491,7 +2491,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -2501,8 +2503,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     }[];
                     pagination?: {
@@ -2518,7 +2518,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -2528,8 +2530,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     }[];
                     pagination?: {
@@ -2594,7 +2594,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -2604,8 +2606,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     }, {
                         status: "active" | "completed" | "paused" | "cancelled";
@@ -2613,7 +2613,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -2623,8 +2625,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     }>, "many">;
                     pagination: import("zod").ZodOptional<import("zod").ZodObject<{
@@ -2648,7 +2648,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -2658,8 +2660,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     }[];
                     pagination?: {
@@ -2675,7 +2675,9 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         name: string;
                         target_amount: number;
                         current_amount: number;
@@ -2685,8 +2687,6 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         color: string | null;
                         is_public: boolean;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                     }[];
                     pagination?: {
@@ -2797,9 +2797,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -2817,9 +2817,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -2840,9 +2840,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -2863,9 +2863,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -3000,9 +3000,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -3020,9 +3020,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -3056,9 +3056,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -3084,9 +3084,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -3172,9 +3172,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -3192,9 +3192,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -3215,9 +3215,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -3238,9 +3238,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -3362,9 +3362,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -3382,9 +3382,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -3405,9 +3405,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -3428,9 +3428,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -3631,9 +3631,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -3651,9 +3651,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -3687,9 +3687,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -3715,9 +3715,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -3813,9 +3813,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -3833,9 +3833,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -3869,9 +3869,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -3897,9 +3897,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -4001,9 +4001,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -4021,9 +4021,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -4057,9 +4057,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -4085,9 +4085,9 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         description: string | null;
                         uuid: string;
-                        name: string;
                         created_at: string;
                         updated_at: string;
+                        name: string;
                         deleted_at: string | null;
                         institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                         logo_url: string | null;
@@ -4223,10 +4223,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -4250,10 +4250,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -4280,10 +4280,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -4310,10 +4310,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -4464,10 +4464,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -4491,10 +4491,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -4534,10 +4534,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -4569,10 +4569,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -4671,10 +4671,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -4698,10 +4698,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -4728,10 +4728,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -4758,10 +4758,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -4917,10 +4917,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -4944,10 +4944,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -4974,10 +4974,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -5004,10 +5004,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -5221,10 +5221,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -5248,10 +5248,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -5291,10 +5291,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -5326,10 +5326,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -5438,10 +5438,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -5465,10 +5465,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -5508,10 +5508,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -5543,10 +5543,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -5668,10 +5668,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -5695,10 +5695,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -5738,10 +5738,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -5773,10 +5773,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -5878,10 +5878,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -5905,10 +5905,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -5948,10 +5948,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -5983,10 +5983,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -6088,10 +6088,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -6115,10 +6115,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -6158,10 +6158,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -6193,10 +6193,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -6305,10 +6305,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -6332,10 +6332,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -6375,10 +6375,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -6410,10 +6410,10 @@ export declare const ApiContracts: {
                         id: number;
                         is_active: boolean;
                         uuid: string;
-                        name: string;
-                        currency: string | null;
                         created_at: string;
                         updated_at: string;
+                        name: string;
+                        currency: string | null;
                         deleted_at: string | null;
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
@@ -6552,11 +6552,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -6573,11 +6573,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -6597,11 +6597,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -6621,11 +6621,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -6740,11 +6740,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -6761,11 +6761,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -6798,11 +6798,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -6827,11 +6827,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -6920,11 +6920,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -6941,11 +6941,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -6965,11 +6965,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -6989,11 +6989,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -7136,11 +7136,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -7157,11 +7157,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -7181,11 +7181,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -7205,11 +7205,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -7382,11 +7382,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -7403,11 +7403,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -7427,11 +7427,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -7451,11 +7451,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -7553,11 +7553,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -7574,11 +7574,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -7598,11 +7598,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -7622,11 +7622,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -7716,11 +7716,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -7737,11 +7737,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -7774,11 +7774,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -7803,11 +7803,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -7896,11 +7896,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -7917,11 +7917,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -7954,11 +7954,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -7983,11 +7983,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8069,11 +8069,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8090,11 +8090,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8127,11 +8127,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8156,11 +8156,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8259,11 +8259,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8280,11 +8280,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8317,11 +8317,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8346,11 +8346,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8462,11 +8462,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8483,11 +8483,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8520,11 +8520,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8549,11 +8549,11 @@ export declare const ApiContracts: {
                         title: string;
                         uuid: string;
                         user_uid: string;
+                        created_at: string;
                         notes: string | null;
+                        updated_at: string;
                         currency: string;
                         priority: "low" | "medium" | "high" | "urgent" | null;
-                        created_at: string;
-                        updated_at: string;
                         deleted_at: string | null;
                         user_connection_id: number | null;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";

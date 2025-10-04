@@ -21,7 +21,7 @@ export declare const UserInfoResponseSchema: z.ZodObject<{
     status: z.ZodNativeEnum<typeof DocumentStatus>;
     document_number: z.ZodNullable<z.ZodString>;
     document_url: z.ZodNullable<z.ZodString>;
-    createdAt: z.ZodString;
+    created_at: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     status: DocumentStatus;
     id: number;
@@ -30,7 +30,7 @@ export declare const UserInfoResponseSchema: z.ZodObject<{
     document_url: string | null;
     uuid: string;
     user_uid: string;
-    createdAt: string;
+    created_at: string;
 }, {
     status: DocumentStatus;
     id: number;
@@ -39,7 +39,7 @@ export declare const UserInfoResponseSchema: z.ZodObject<{
     document_url: string | null;
     uuid: string;
     user_uid: string;
-    createdAt: string;
+    created_at: string;
 }>;
 export declare const UserInfoErrorResponseSchema: z.ZodObject<{
     error: z.ZodString;
@@ -69,7 +69,7 @@ export declare const GetUserInfoResponseSchema: z.ZodArray<z.ZodObject<{
     status: z.ZodNativeEnum<typeof DocumentStatus>;
     document_number: z.ZodNullable<z.ZodString>;
     document_url: z.ZodNullable<z.ZodString>;
-    createdAt: z.ZodString;
+    created_at: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     status: DocumentStatus;
     id: number;
@@ -78,7 +78,7 @@ export declare const GetUserInfoResponseSchema: z.ZodArray<z.ZodObject<{
     document_url: string | null;
     uuid: string;
     user_uid: string;
-    createdAt: string;
+    created_at: string;
 }, {
     status: DocumentStatus;
     id: number;
@@ -87,5 +87,5 @@ export declare const GetUserInfoResponseSchema: z.ZodArray<z.ZodObject<{
     document_url: string | null;
     uuid: string;
     user_uid: string;
-    createdAt: string;
+    created_at: string;
 }>, "many">;

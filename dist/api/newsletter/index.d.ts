@@ -28,12 +28,12 @@ export declare const NewsletterContracts: {
                 last_name: import("zod").ZodString;
                 email: import("zod").ZodString;
                 source: import("zod").ZodNullable<import("zod").ZodString>;
-                createdAt: import("zod").ZodString;
+                created_at: import("zod").ZodString;
             }, "strip", import("zod").ZodTypeAny, {
                 id: number;
                 email: string;
                 uuid: string;
-                createdAt: string;
+                created_at: string;
                 first_name: string;
                 last_name: string;
                 source: string | null;
@@ -41,7 +41,7 @@ export declare const NewsletterContracts: {
                 id: number;
                 email: string;
                 uuid: string;
-                createdAt: string;
+                created_at: string;
                 first_name: string;
                 last_name: string;
                 source: string | null;

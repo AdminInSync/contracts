@@ -73,7 +73,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -83,8 +85,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 }, {
                     status: "active" | "completed" | "paused" | "cancelled";
@@ -92,7 +92,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -102,8 +104,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 }>;
             }, "strip", z.ZodTypeAny, {
@@ -114,7 +114,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -124,8 +126,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 };
             }, {
@@ -136,7 +136,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -146,8 +148,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 };
             }>;
@@ -244,7 +244,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -254,8 +256,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 }, {
                     status: "active" | "completed" | "paused" | "cancelled";
@@ -263,7 +263,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -273,8 +275,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 }>, "many">;
                 pagination: z.ZodOptional<z.ZodObject<{
@@ -298,7 +298,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -308,8 +310,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 }[];
                 pagination?: {
@@ -325,7 +325,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -335,8 +337,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 }[];
                 pagination?: {
@@ -413,7 +413,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -423,8 +425,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 }, {
                     status: "active" | "completed" | "paused" | "cancelled";
@@ -432,7 +432,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -442,8 +444,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 }>;
             }, "strip", z.ZodTypeAny, {
@@ -454,7 +454,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -464,8 +466,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 };
             }, {
@@ -476,7 +476,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -486,8 +488,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 };
             }>;
@@ -612,7 +612,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -622,8 +624,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 }, {
                     status: "active" | "completed" | "paused" | "cancelled";
@@ -631,7 +631,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -641,8 +643,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 }>;
             }, "strip", z.ZodTypeAny, {
@@ -653,7 +653,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -663,8 +665,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 };
             }, {
@@ -675,7 +675,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -685,8 +687,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 };
             }>;
@@ -791,7 +791,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -801,8 +803,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 }, {
                     status: "active" | "completed" | "paused" | "cancelled";
@@ -810,7 +810,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -820,8 +822,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 }>;
             }, "strip", z.ZodTypeAny, {
@@ -832,7 +832,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -842,8 +844,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 };
             }, {
@@ -854,7 +854,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -864,8 +866,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 };
             }>;
@@ -1027,7 +1027,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -1037,8 +1039,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 }, {
                     status: "active" | "completed" | "paused" | "cancelled";
@@ -1046,7 +1046,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -1056,8 +1058,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 }>, "many">;
                 pagination: z.ZodOptional<z.ZodObject<{
@@ -1081,7 +1081,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -1091,8 +1093,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 }[];
                 pagination?: {
@@ -1108,7 +1108,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -1118,8 +1120,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 }[];
                 pagination?: {
@@ -1183,7 +1183,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -1193,8 +1195,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 }, {
                     status: "active" | "completed" | "paused" | "cancelled";
@@ -1202,7 +1202,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -1212,8 +1214,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 }>, "many">;
                 pagination: z.ZodOptional<z.ZodObject<{
@@ -1237,7 +1237,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -1247,8 +1249,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 }[];
                 pagination?: {
@@ -1264,7 +1264,9 @@ export declare const SavingGoalsContracts: {
                     description: string | null;
                     uuid: string;
                     user_uid: string;
+                    created_at: string;
                     notes: string | null;
+                    updated_at: string;
                     name: string;
                     target_amount: number;
                     current_amount: number;
@@ -1274,8 +1276,6 @@ export declare const SavingGoalsContracts: {
                     priority: "low" | "medium" | "high" | "urgent" | null;
                     color: string | null;
                     is_public: boolean;
-                    created_at: string;
-                    updated_at: string;
                     deleted_at: string | null;
                 }[];
                 pagination?: {

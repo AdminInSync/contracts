@@ -18,24 +18,24 @@ export declare const DeviceResponseSchema: z.ZodObject<{
     user_uid: z.ZodString;
     device_id: z.ZodString;
     notes: z.ZodString;
-    createdAt: z.ZodString;
-    updatedAt: z.ZodString;
+    created_at: z.ZodString;
+    updated_at: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     id: number;
     uuid: string;
     user_uid: string;
-    createdAt: string;
+    created_at: string;
     device_id: string;
     notes: string;
-    updatedAt: string;
+    updated_at: string;
 }, {
     id: number;
     uuid: string;
     user_uid: string;
-    createdAt: string;
+    created_at: string;
     device_id: string;
     notes: string;
-    updatedAt: string;
+    updated_at: string;
 }>;
 export declare const CreateDevicePreferencesRequestSchema: z.ZodObject<{
     device_id: z.ZodString;
@@ -93,15 +93,15 @@ export declare const DevicePreferencesResponseSchema: z.ZodObject<{
     isCloudBackupEnabled: z.ZodBoolean;
     canExportData: z.ZodBoolean;
     preferredTheme: z.ZodEnum<["SYSTEM", "LIGHT", "DARK"]>;
-    createdAt: z.ZodString;
-    updatedAt: z.ZodString;
+    created_at: z.ZodString;
+    updated_at: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     id: number;
     uuid: string;
     user_uid: string;
-    createdAt: string;
+    created_at: string;
     device_id: string;
-    updatedAt: string;
+    updated_at: string;
     arePushNotificationsEnabled: boolean;
     areTransactionAlertsEnabled: boolean;
     areNotificationSoundsEnabled: boolean;
@@ -117,9 +117,9 @@ export declare const DevicePreferencesResponseSchema: z.ZodObject<{
     id: number;
     uuid: string;
     user_uid: string;
-    createdAt: string;
+    created_at: string;
     device_id: string;
-    updatedAt: string;
+    updated_at: string;
     arePushNotificationsEnabled: boolean;
     areTransactionAlertsEnabled: boolean;
     areNotificationSoundsEnabled: boolean;
@@ -192,24 +192,24 @@ export declare const GetDevicesResponseSchema: z.ZodArray<z.ZodObject<{
     user_uid: z.ZodString;
     device_id: z.ZodString;
     notes: z.ZodString;
-    createdAt: z.ZodString;
-    updatedAt: z.ZodString;
+    created_at: z.ZodString;
+    updated_at: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     id: number;
     uuid: string;
     user_uid: string;
-    createdAt: string;
+    created_at: string;
     device_id: string;
     notes: string;
-    updatedAt: string;
+    updated_at: string;
 }, {
     id: number;
     uuid: string;
     user_uid: string;
-    createdAt: string;
+    created_at: string;
     device_id: string;
     notes: string;
-    updatedAt: string;
+    updated_at: string;
 }>, "many">;
 export declare const GetDevicePreferencesQuerySchema: z.ZodObject<{
     device_id: z.ZodOptional<z.ZodString>;
@@ -234,15 +234,15 @@ export declare const GetDevicePreferencesResponseSchema: z.ZodArray<z.ZodObject<
     isCloudBackupEnabled: z.ZodBoolean;
     canExportData: z.ZodBoolean;
     preferredTheme: z.ZodEnum<["SYSTEM", "LIGHT", "DARK"]>;
-    createdAt: z.ZodString;
-    updatedAt: z.ZodString;
+    created_at: z.ZodString;
+    updated_at: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     id: number;
     uuid: string;
     user_uid: string;
-    createdAt: string;
+    created_at: string;
     device_id: string;
-    updatedAt: string;
+    updated_at: string;
     arePushNotificationsEnabled: boolean;
     areTransactionAlertsEnabled: boolean;
     areNotificationSoundsEnabled: boolean;
@@ -258,9 +258,9 @@ export declare const GetDevicePreferencesResponseSchema: z.ZodArray<z.ZodObject<
     id: number;
     uuid: string;
     user_uid: string;
-    createdAt: string;
+    created_at: string;
     device_id: string;
-    updatedAt: string;
+    updated_at: string;
     arePushNotificationsEnabled: boolean;
     areTransactionAlertsEnabled: boolean;
     areNotificationSoundsEnabled: boolean;
