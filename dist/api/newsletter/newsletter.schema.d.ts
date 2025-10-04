@@ -22,12 +22,12 @@ export declare const NewsletterResponseSchema: z.ZodObject<{
     last_name: z.ZodString;
     email: z.ZodString;
     source: z.ZodNullable<z.ZodString>;
-    createdAt: z.ZodString;
+    created_at: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     id: number;
     email: string;
     uuid: string;
-    createdAt: string;
+    created_at: string;
     first_name: string;
     last_name: string;
     source: string | null;
@@ -35,7 +35,7 @@ export declare const NewsletterResponseSchema: z.ZodObject<{
     id: number;
     email: string;
     uuid: string;
-    createdAt: string;
+    created_at: string;
     first_name: string;
     last_name: string;
     source: string | null;

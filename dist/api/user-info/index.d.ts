@@ -26,7 +26,7 @@ export declare const UserInfoContracts: {
                 status: import("zod").ZodNativeEnum<typeof import("../../enums").DocumentStatus>;
                 document_number: import("zod").ZodNullable<import("zod").ZodString>;
                 document_url: import("zod").ZodNullable<import("zod").ZodString>;
-                createdAt: import("zod").ZodString;
+                created_at: import("zod").ZodString;
             }, "strip", import("zod").ZodTypeAny, {
                 status: import("../../enums").DocumentStatus;
                 id: number;
@@ -35,7 +35,7 @@ export declare const UserInfoContracts: {
                 document_url: string | null;
                 uuid: string;
                 user_uid: string;
-                createdAt: string;
+                created_at: string;
             }, {
                 status: import("../../enums").DocumentStatus;
                 id: number;
@@ -44,7 +44,7 @@ export declare const UserInfoContracts: {
                 document_url: string | null;
                 uuid: string;
                 user_uid: string;
-                createdAt: string;
+                created_at: string;
             }>;
             400: import("zod").ZodObject<{
                 error: import("zod").ZodString;
@@ -119,7 +119,7 @@ export declare const UserInfoContracts: {
                 status: import("zod").ZodNativeEnum<typeof import("../../enums").DocumentStatus>;
                 document_number: import("zod").ZodNullable<import("zod").ZodString>;
                 document_url: import("zod").ZodNullable<import("zod").ZodString>;
-                createdAt: import("zod").ZodString;
+                created_at: import("zod").ZodString;
             }, "strip", import("zod").ZodTypeAny, {
                 status: import("../../enums").DocumentStatus;
                 id: number;
@@ -128,7 +128,7 @@ export declare const UserInfoContracts: {
                 document_url: string | null;
                 uuid: string;
                 user_uid: string;
-                createdAt: string;
+                created_at: string;
             }, {
                 status: import("../../enums").DocumentStatus;
                 id: number;
@@ -137,7 +137,7 @@ export declare const UserInfoContracts: {
                 document_url: string | null;
                 uuid: string;
                 user_uid: string;
-                createdAt: string;
+                created_at: string;
             }>, "many">;
             400: import("zod").ZodObject<{
                 message: import("zod").ZodString;

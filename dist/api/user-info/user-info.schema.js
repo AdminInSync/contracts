@@ -40,7 +40,7 @@ export const UserInfoResponseSchema = z.object({
     document_url: z.string().nullable().openapi({
         description: 'URL to the uploaded document'
     }),
-    createdAt: z.string().datetime().openapi({
+    created_at: z.string().datetime().openapi({
         description: 'Creation timestamp'
     })
 }).openapi({

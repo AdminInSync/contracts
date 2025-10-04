@@ -33,10 +33,10 @@ export const DeviceResponseSchema = z.object({
     notes: z.string().openapi({
         description: 'Device description or notes'
     }),
-    createdAt: z.string().datetime().openapi({
+    created_at: z.string().datetime().openapi({
         description: 'Creation timestamp'
     }),
-    updatedAt: z.string().datetime().openapi({
+    updated_at: z.string().datetime().openapi({
         description: 'Last update timestamp'
     })
 }).openapi({
@@ -140,10 +140,10 @@ export const DevicePreferencesResponseSchema = z.object({
     preferredTheme: z.enum(['SYSTEM', 'LIGHT', 'DARK']).openapi({
         description: 'Preferred theme'
     }),
-    createdAt: z.string().datetime().openapi({
+    created_at: z.string().datetime().openapi({
         description: 'Creation timestamp'
     }),
-    updatedAt: z.string().datetime().openapi({
+    updated_at: z.string().datetime().openapi({
         description: 'Last update timestamp'
     })
 }).openapi({

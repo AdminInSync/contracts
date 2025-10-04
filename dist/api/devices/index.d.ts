@@ -25,24 +25,24 @@ export declare const DevicesContracts: {
                 user_uid: z.ZodString;
                 device_id: z.ZodString;
                 notes: z.ZodString;
-                createdAt: z.ZodString;
-                updatedAt: z.ZodString;
+                created_at: z.ZodString;
+                updated_at: z.ZodString;
             }, "strip", z.ZodTypeAny, {
                 id: number;
                 uuid: string;
                 user_uid: string;
-                createdAt: string;
+                created_at: string;
                 device_id: string;
                 notes: string;
-                updatedAt: string;
+                updated_at: string;
             }, {
                 id: number;
                 uuid: string;
                 user_uid: string;
-                createdAt: string;
+                created_at: string;
                 device_id: string;
                 notes: string;
-                updatedAt: string;
+                updated_at: string;
             }>;
             400: z.ZodObject<{
                 error: z.ZodString;
@@ -112,24 +112,24 @@ export declare const DevicesContracts: {
                 user_uid: z.ZodString;
                 device_id: z.ZodString;
                 notes: z.ZodString;
-                createdAt: z.ZodString;
-                updatedAt: z.ZodString;
+                created_at: z.ZodString;
+                updated_at: z.ZodString;
             }, "strip", z.ZodTypeAny, {
                 id: number;
                 uuid: string;
                 user_uid: string;
-                createdAt: string;
+                created_at: string;
                 device_id: string;
                 notes: string;
-                updatedAt: string;
+                updated_at: string;
             }, {
                 id: number;
                 uuid: string;
                 user_uid: string;
-                createdAt: string;
+                created_at: string;
                 device_id: string;
                 notes: string;
-                updatedAt: string;
+                updated_at: string;
             }>, "many">;
             400: z.ZodObject<{
                 message: z.ZodString;
@@ -235,15 +235,15 @@ export declare const DevicesContracts: {
                 isCloudBackupEnabled: z.ZodBoolean;
                 canExportData: z.ZodBoolean;
                 preferredTheme: z.ZodEnum<["SYSTEM", "LIGHT", "DARK"]>;
-                createdAt: z.ZodString;
-                updatedAt: z.ZodString;
+                created_at: z.ZodString;
+                updated_at: z.ZodString;
             }, "strip", z.ZodTypeAny, {
                 id: number;
                 uuid: string;
                 user_uid: string;
-                createdAt: string;
+                created_at: string;
                 device_id: string;
-                updatedAt: string;
+                updated_at: string;
                 arePushNotificationsEnabled: boolean;
                 areTransactionAlertsEnabled: boolean;
                 areNotificationSoundsEnabled: boolean;
@@ -259,9 +259,9 @@ export declare const DevicesContracts: {
                 id: number;
                 uuid: string;
                 user_uid: string;
-                createdAt: string;
+                created_at: string;
                 device_id: string;
-                updatedAt: string;
+                updated_at: string;
                 arePushNotificationsEnabled: boolean;
                 areTransactionAlertsEnabled: boolean;
                 areNotificationSoundsEnabled: boolean;
@@ -362,15 +362,15 @@ export declare const DevicesContracts: {
                 isCloudBackupEnabled: z.ZodBoolean;
                 canExportData: z.ZodBoolean;
                 preferredTheme: z.ZodEnum<["SYSTEM", "LIGHT", "DARK"]>;
-                createdAt: z.ZodString;
-                updatedAt: z.ZodString;
+                created_at: z.ZodString;
+                updated_at: z.ZodString;
             }, "strip", z.ZodTypeAny, {
                 id: number;
                 uuid: string;
                 user_uid: string;
-                createdAt: string;
+                created_at: string;
                 device_id: string;
-                updatedAt: string;
+                updated_at: string;
                 arePushNotificationsEnabled: boolean;
                 areTransactionAlertsEnabled: boolean;
                 areNotificationSoundsEnabled: boolean;
@@ -386,9 +386,9 @@ export declare const DevicesContracts: {
                 id: number;
                 uuid: string;
                 user_uid: string;
-                createdAt: string;
+                created_at: string;
                 device_id: string;
-                updatedAt: string;
+                updated_at: string;
                 arePushNotificationsEnabled: boolean;
                 areTransactionAlertsEnabled: boolean;
                 areNotificationSoundsEnabled: boolean;
@@ -509,15 +509,15 @@ export declare const DevicesContracts: {
                 isCloudBackupEnabled: z.ZodBoolean;
                 canExportData: z.ZodBoolean;
                 preferredTheme: z.ZodEnum<["SYSTEM", "LIGHT", "DARK"]>;
-                createdAt: z.ZodString;
-                updatedAt: z.ZodString;
+                created_at: z.ZodString;
+                updated_at: z.ZodString;
             }, "strip", z.ZodTypeAny, {
                 id: number;
                 uuid: string;
                 user_uid: string;
-                createdAt: string;
+                created_at: string;
                 device_id: string;
-                updatedAt: string;
+                updated_at: string;
                 arePushNotificationsEnabled: boolean;
                 areTransactionAlertsEnabled: boolean;
                 areNotificationSoundsEnabled: boolean;
@@ -533,9 +533,9 @@ export declare const DevicesContracts: {
                 id: number;
                 uuid: string;
                 user_uid: string;
-                createdAt: string;
+                created_at: string;
                 device_id: string;
-                updatedAt: string;
+                updated_at: string;
                 arePushNotificationsEnabled: boolean;
                 areTransactionAlertsEnabled: boolean;
                 areNotificationSoundsEnabled: boolean;

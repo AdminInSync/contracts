@@ -26,7 +26,9 @@ export declare const SavingGoalSchema: z.ZodObject<{
     description: string | null;
     uuid: string;
     user_uid: string;
+    created_at: string;
     notes: string | null;
+    updated_at: string;
     name: string;
     target_amount: number;
     current_amount: number;
@@ -36,8 +38,6 @@ export declare const SavingGoalSchema: z.ZodObject<{
     priority: "low" | "medium" | "high" | "urgent" | null;
     color: string | null;
     is_public: boolean;
-    created_at: string;
-    updated_at: string;
     deleted_at: string | null;
 }, {
     status: "active" | "completed" | "paused" | "cancelled";
@@ -45,7 +45,9 @@ export declare const SavingGoalSchema: z.ZodObject<{
     description: string | null;
     uuid: string;
     user_uid: string;
+    created_at: string;
     notes: string | null;
+    updated_at: string;
     name: string;
     target_amount: number;
     current_amount: number;
@@ -55,8 +57,6 @@ export declare const SavingGoalSchema: z.ZodObject<{
     priority: "low" | "medium" | "high" | "urgent" | null;
     color: string | null;
     is_public: boolean;
-    created_at: string;
-    updated_at: string;
     deleted_at: string | null;
 }>;
 export declare const CreateSavingGoalSchema: z.ZodObject<{
@@ -192,7 +192,9 @@ export declare const SavingGoalResponseSchema: z.ZodObject<{
         description: string | null;
         uuid: string;
         user_uid: string;
+        created_at: string;
         notes: string | null;
+        updated_at: string;
         name: string;
         target_amount: number;
         current_amount: number;
@@ -202,8 +204,6 @@ export declare const SavingGoalResponseSchema: z.ZodObject<{
         priority: "low" | "medium" | "high" | "urgent" | null;
         color: string | null;
         is_public: boolean;
-        created_at: string;
-        updated_at: string;
         deleted_at: string | null;
     }, {
         status: "active" | "completed" | "paused" | "cancelled";
@@ -211,7 +211,9 @@ export declare const SavingGoalResponseSchema: z.ZodObject<{
         description: string | null;
         uuid: string;
         user_uid: string;
+        created_at: string;
         notes: string | null;
+        updated_at: string;
         name: string;
         target_amount: number;
         current_amount: number;
@@ -221,8 +223,6 @@ export declare const SavingGoalResponseSchema: z.ZodObject<{
         priority: "low" | "medium" | "high" | "urgent" | null;
         color: string | null;
         is_public: boolean;
-        created_at: string;
-        updated_at: string;
         deleted_at: string | null;
     }>;
 }, "strip", z.ZodTypeAny, {
@@ -233,7 +233,9 @@ export declare const SavingGoalResponseSchema: z.ZodObject<{
         description: string | null;
         uuid: string;
         user_uid: string;
+        created_at: string;
         notes: string | null;
+        updated_at: string;
         name: string;
         target_amount: number;
         current_amount: number;
@@ -243,8 +245,6 @@ export declare const SavingGoalResponseSchema: z.ZodObject<{
         priority: "low" | "medium" | "high" | "urgent" | null;
         color: string | null;
         is_public: boolean;
-        created_at: string;
-        updated_at: string;
         deleted_at: string | null;
     };
 }, {
@@ -255,7 +255,9 @@ export declare const SavingGoalResponseSchema: z.ZodObject<{
         description: string | null;
         uuid: string;
         user_uid: string;
+        created_at: string;
         notes: string | null;
+        updated_at: string;
         name: string;
         target_amount: number;
         current_amount: number;
@@ -265,8 +267,6 @@ export declare const SavingGoalResponseSchema: z.ZodObject<{
         priority: "low" | "medium" | "high" | "urgent" | null;
         color: string | null;
         is_public: boolean;
-        created_at: string;
-        updated_at: string;
         deleted_at: string | null;
     };
 }>;
@@ -297,7 +297,9 @@ export declare const SavingGoalsListResponseSchema: z.ZodObject<{
         description: string | null;
         uuid: string;
         user_uid: string;
+        created_at: string;
         notes: string | null;
+        updated_at: string;
         name: string;
         target_amount: number;
         current_amount: number;
@@ -307,8 +309,6 @@ export declare const SavingGoalsListResponseSchema: z.ZodObject<{
         priority: "low" | "medium" | "high" | "urgent" | null;
         color: string | null;
         is_public: boolean;
-        created_at: string;
-        updated_at: string;
         deleted_at: string | null;
     }, {
         status: "active" | "completed" | "paused" | "cancelled";
@@ -316,7 +316,9 @@ export declare const SavingGoalsListResponseSchema: z.ZodObject<{
         description: string | null;
         uuid: string;
         user_uid: string;
+        created_at: string;
         notes: string | null;
+        updated_at: string;
         name: string;
         target_amount: number;
         current_amount: number;
@@ -326,8 +328,6 @@ export declare const SavingGoalsListResponseSchema: z.ZodObject<{
         priority: "low" | "medium" | "high" | "urgent" | null;
         color: string | null;
         is_public: boolean;
-        created_at: string;
-        updated_at: string;
         deleted_at: string | null;
     }>, "many">;
     pagination: z.ZodOptional<z.ZodObject<{
@@ -351,7 +351,9 @@ export declare const SavingGoalsListResponseSchema: z.ZodObject<{
         description: string | null;
         uuid: string;
         user_uid: string;
+        created_at: string;
         notes: string | null;
+        updated_at: string;
         name: string;
         target_amount: number;
         current_amount: number;
@@ -361,8 +363,6 @@ export declare const SavingGoalsListResponseSchema: z.ZodObject<{
         priority: "low" | "medium" | "high" | "urgent" | null;
         color: string | null;
         is_public: boolean;
-        created_at: string;
-        updated_at: string;
         deleted_at: string | null;
     }[];
     pagination?: {
@@ -378,7 +378,9 @@ export declare const SavingGoalsListResponseSchema: z.ZodObject<{
         description: string | null;
         uuid: string;
         user_uid: string;
+        created_at: string;
         notes: string | null;
+        updated_at: string;
         name: string;
         target_amount: number;
         current_amount: number;
@@ -388,8 +390,6 @@ export declare const SavingGoalsListResponseSchema: z.ZodObject<{
         priority: "low" | "medium" | "high" | "urgent" | null;
         color: string | null;
         is_public: boolean;
-        created_at: string;
-        updated_at: string;
         deleted_at: string | null;
     }[];
     pagination?: {
@@ -425,7 +425,9 @@ export declare const UpdateProgressResponseSchema: z.ZodObject<{
         description: string | null;
         uuid: string;
         user_uid: string;
+        created_at: string;
         notes: string | null;
+        updated_at: string;
         name: string;
         target_amount: number;
         current_amount: number;
@@ -435,8 +437,6 @@ export declare const UpdateProgressResponseSchema: z.ZodObject<{
         priority: "low" | "medium" | "high" | "urgent" | null;
         color: string | null;
         is_public: boolean;
-        created_at: string;
-        updated_at: string;
         deleted_at: string | null;
     }, {
         status: "active" | "completed" | "paused" | "cancelled";
@@ -444,7 +444,9 @@ export declare const UpdateProgressResponseSchema: z.ZodObject<{
         description: string | null;
         uuid: string;
         user_uid: string;
+        created_at: string;
         notes: string | null;
+        updated_at: string;
         name: string;
         target_amount: number;
         current_amount: number;
@@ -454,8 +456,6 @@ export declare const UpdateProgressResponseSchema: z.ZodObject<{
         priority: "low" | "medium" | "high" | "urgent" | null;
         color: string | null;
         is_public: boolean;
-        created_at: string;
-        updated_at: string;
         deleted_at: string | null;
     }>;
 }, "strip", z.ZodTypeAny, {
@@ -466,7 +466,9 @@ export declare const UpdateProgressResponseSchema: z.ZodObject<{
         description: string | null;
         uuid: string;
         user_uid: string;
+        created_at: string;
         notes: string | null;
+        updated_at: string;
         name: string;
         target_amount: number;
         current_amount: number;
@@ -476,8 +478,6 @@ export declare const UpdateProgressResponseSchema: z.ZodObject<{
         priority: "low" | "medium" | "high" | "urgent" | null;
         color: string | null;
         is_public: boolean;
-        created_at: string;
-        updated_at: string;
         deleted_at: string | null;
     };
 }, {
@@ -488,7 +488,9 @@ export declare const UpdateProgressResponseSchema: z.ZodObject<{
         description: string | null;
         uuid: string;
         user_uid: string;
+        created_at: string;
         notes: string | null;
+        updated_at: string;
         name: string;
         target_amount: number;
         current_amount: number;
@@ -498,8 +500,6 @@ export declare const UpdateProgressResponseSchema: z.ZodObject<{
         priority: "low" | "medium" | "high" | "urgent" | null;
         color: string | null;
         is_public: boolean;
-        created_at: string;
-        updated_at: string;
         deleted_at: string | null;
     };
 }>;

@@ -39,7 +39,7 @@ export const NewsletterResponseSchema = z.object({
     source: z.string().nullable().openapi({
         description: 'How the customer found InSync'
     }),
-    createdAt: z.string().datetime().openapi({
+    created_at: z.string().datetime().openapi({
         description: 'Creation timestamp'
     })
 }).openapi({
