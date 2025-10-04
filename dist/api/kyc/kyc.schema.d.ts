@@ -8,7 +8,6 @@ export declare const KycTokenRequestSchema: z.ZodObject<{
     ttlInSecs?: number | undefined;
 }>;
 export declare const KycTokenResponseSchema: z.ZodObject<{
-    success: z.ZodBoolean;
     message: z.ZodString;
     data: z.ZodObject<{
         token: z.ZodString;
@@ -34,7 +33,6 @@ export declare const KycTokenResponseSchema: z.ZodObject<{
         levelName: string;
         expiresIn: number;
     };
-    success: boolean;
 }, {
     message: string;
     data: {
@@ -43,10 +41,8 @@ export declare const KycTokenResponseSchema: z.ZodObject<{
         levelName: string;
         expiresIn: number;
     };
-    success: boolean;
 }>;
 export declare const KycStatusResponseSchema: z.ZodObject<{
-    success: z.ZodBoolean;
     message: z.ZodString;
     data: z.ZodObject<{
         uid: z.ZodString;
@@ -72,7 +68,6 @@ export declare const KycStatusResponseSchema: z.ZodObject<{
         reviewedAt: string | null;
         applicantId: string | null;
     };
-    success: boolean;
 }, {
     message: string;
     data: {
@@ -81,7 +76,6 @@ export declare const KycStatusResponseSchema: z.ZodObject<{
         reviewedAt: string | null;
         applicantId: string | null;
     };
-    success: boolean;
 }>;
 export declare const WebhookEventSchema: z.ZodObject<{
     type: z.ZodString;

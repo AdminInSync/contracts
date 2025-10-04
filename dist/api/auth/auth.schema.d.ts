@@ -183,7 +183,6 @@ export declare const UserResponseSchema: z.ZodObject<{
     };
 }>;
 export declare const MeResponseSchema: z.ZodObject<{
-    success: z.ZodBoolean;
     message: z.ZodString;
     data: z.ZodObject<{
         user: z.ZodObject<{
@@ -415,7 +414,6 @@ export declare const MeResponseSchema: z.ZodObject<{
             };
         };
     };
-    success: boolean;
 }, {
     message: string;
     data: {
@@ -451,7 +449,6 @@ export declare const MeResponseSchema: z.ZodObject<{
             };
         };
     };
-    success: boolean;
 }>;
 export type UserResponse = z.infer<typeof UserResponseSchema>;
 export type MeResponse = z.infer<typeof MeResponseSchema>;

@@ -184,7 +184,6 @@ export declare const GetPaymentRemindersQuerySchema: z.ZodObject<{
     is_recurring?: boolean | undefined;
 }>;
 export declare const PaymentReminderResponseSchema: z.ZodObject<{
-    success: z.ZodBoolean;
     message: z.ZodString;
     data: z.ZodObject<{
         id: z.ZodNumber;
@@ -274,7 +273,6 @@ export declare const PaymentReminderResponseSchema: z.ZodObject<{
         recurrence_pattern: string | null;
         notification_settings?: any;
     };
-    success: boolean;
 }, {
     message: string;
     data: {
@@ -299,10 +297,8 @@ export declare const PaymentReminderResponseSchema: z.ZodObject<{
         recurrence_pattern: string | null;
         notification_settings?: any;
     };
-    success: boolean;
 }>;
 export declare const PaymentRemindersListResponseSchema: z.ZodObject<{
-    success: z.ZodBoolean;
     message: z.ZodString;
     data: z.ZodArray<z.ZodObject<{
         id: z.ZodNumber;
@@ -405,7 +401,6 @@ export declare const PaymentRemindersListResponseSchema: z.ZodObject<{
         recurrence_pattern: string | null;
         notification_settings?: any;
     }[];
-    success: boolean;
     pagination?: {
         limit: number;
         total: number;
@@ -435,7 +430,6 @@ export declare const PaymentRemindersListResponseSchema: z.ZodObject<{
         recurrence_pattern: string | null;
         notification_settings?: any;
     }[];
-    success: boolean;
     pagination?: {
         limit: number;
         total: number;

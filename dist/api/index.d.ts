@@ -8,7 +8,6 @@ export declare const ApiContracts: {
             path: "/api/auth/me";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         user: import("zod").ZodObject<{
@@ -240,7 +239,6 @@ export declare const ApiContracts: {
                             };
                         };
                     };
-                    success: boolean;
                 }, {
                     message: string;
                     data: {
@@ -276,7 +274,6 @@ export declare const ApiContracts: {
                             };
                         };
                     };
-                    success: boolean;
                 }>;
                 400: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -336,7 +333,6 @@ export declare const ApiContracts: {
             path: "/api/kyc/token";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         token: import("zod").ZodString;
@@ -362,7 +358,6 @@ export declare const ApiContracts: {
                         levelName: string;
                         expiresIn: number;
                     };
-                    success: boolean;
                 }, {
                     message: string;
                     data: {
@@ -371,7 +366,6 @@ export declare const ApiContracts: {
                         levelName: string;
                         expiresIn: number;
                     };
-                    success: boolean;
                 }>;
                 400: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -435,7 +429,6 @@ export declare const ApiContracts: {
             path: "/api/kyc/status";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         uid: import("zod").ZodString;
@@ -461,7 +454,6 @@ export declare const ApiContracts: {
                         reviewedAt: string | null;
                         applicantId: string | null;
                     };
-                    success: boolean;
                 }, {
                     message: string;
                     data: {
@@ -470,7 +462,6 @@ export declare const ApiContracts: {
                         reviewedAt: string | null;
                         applicantId: string | null;
                     };
-                    success: boolean;
                 }>;
                 400: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -1460,7 +1451,6 @@ export declare const ApiContracts: {
             path: "/api/saving-goals";
             responses: {
                 201: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -1542,7 +1532,6 @@ export declare const ApiContracts: {
                         updated_at: string;
                         deleted_at: string | null;
                     };
-                    success: boolean;
                 }, {
                     message: string;
                     data: {
@@ -1565,7 +1554,6 @@ export declare const ApiContracts: {
                         updated_at: string;
                         deleted_at: string | null;
                     };
-                    success: boolean;
                 }>;
                 400: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -1635,7 +1623,6 @@ export declare const ApiContracts: {
             path: "/api/saving-goals";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -1730,7 +1717,6 @@ export declare const ApiContracts: {
                         updated_at: string;
                         deleted_at: string | null;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -1758,7 +1744,6 @@ export declare const ApiContracts: {
                         updated_at: string;
                         deleted_at: string | null;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -1808,7 +1793,6 @@ export declare const ApiContracts: {
             path: "/api/saving-goals/:id";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -1890,7 +1874,6 @@ export declare const ApiContracts: {
                         updated_at: string;
                         deleted_at: string | null;
                     };
-                    success: boolean;
                 }, {
                     message: string;
                     data: {
@@ -1913,7 +1896,6 @@ export declare const ApiContracts: {
                         updated_at: string;
                         deleted_at: string | null;
                     };
-                    success: boolean;
                 }>;
                 404: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -2011,7 +1993,6 @@ export declare const ApiContracts: {
             path: "/api/saving-goals/:id";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -2093,7 +2074,6 @@ export declare const ApiContracts: {
                         updated_at: string;
                         deleted_at: string | null;
                     };
-                    success: boolean;
                 }, {
                     message: string;
                     data: {
@@ -2116,7 +2096,6 @@ export declare const ApiContracts: {
                         updated_at: string;
                         deleted_at: string | null;
                     };
-                    success: boolean;
                 }>;
                 400: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -2194,7 +2173,6 @@ export declare const ApiContracts: {
             path: "/api/saving-goals/:id/progress";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -2276,7 +2254,6 @@ export declare const ApiContracts: {
                         updated_at: string;
                         deleted_at: string | null;
                     };
-                    success: boolean;
                 }, {
                     message: string;
                     data: {
@@ -2299,7 +2276,6 @@ export declare const ApiContracts: {
                         updated_at: string;
                         deleted_at: string | null;
                     };
-                    success: boolean;
                 }>;
                 400: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -2370,14 +2346,11 @@ export declare const ApiContracts: {
             path: "/api/saving-goals/:id";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
                     message: string;
-                    success: boolean;
                 }, {
                     message: string;
-                    success: boolean;
                 }>;
                 401: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -2438,7 +2411,6 @@ export declare const ApiContracts: {
             path: "/api/saving-goals/public";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -2533,7 +2505,6 @@ export declare const ApiContracts: {
                         updated_at: string;
                         deleted_at: string | null;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -2561,7 +2532,6 @@ export declare const ApiContracts: {
                         updated_at: string;
                         deleted_at: string | null;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -2598,7 +2568,6 @@ export declare const ApiContracts: {
             path: "/api/saving-goals/due-soon";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -2693,7 +2662,6 @@ export declare const ApiContracts: {
                         updated_at: string;
                         deleted_at: string | null;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -2721,7 +2689,6 @@ export declare const ApiContracts: {
                         updated_at: string;
                         deleted_at: string | null;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -2794,7 +2761,6 @@ export declare const ApiContracts: {
             path: "/api/institutions";
             responses: {
                 201: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -2890,7 +2856,6 @@ export declare const ApiContracts: {
                             product_type: string;
                         }[] | undefined;
                     };
-                    success: boolean;
                 }, {
                     message: string;
                     data: {
@@ -2914,7 +2879,6 @@ export declare const ApiContracts: {
                             product_type: string;
                         }[] | undefined;
                     };
-                    success: boolean;
                 }>;
                 400: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -3000,7 +2964,6 @@ export declare const ApiContracts: {
             path: "/api/institutions";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -3109,7 +3072,6 @@ export declare const ApiContracts: {
                             product_type: string;
                         }[] | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -3138,7 +3100,6 @@ export declare const ApiContracts: {
                             product_type: string;
                         }[] | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -3175,7 +3136,6 @@ export declare const ApiContracts: {
             path: "/api/institutions/:id";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -3271,7 +3231,6 @@ export declare const ApiContracts: {
                             product_type: string;
                         }[] | undefined;
                     };
-                    success: boolean;
                 }, {
                     message: string;
                     data: {
@@ -3295,7 +3254,6 @@ export declare const ApiContracts: {
                             product_type: string;
                         }[] | undefined;
                     };
-                    success: boolean;
                 }>;
                 404: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -3368,7 +3326,6 @@ export declare const ApiContracts: {
             path: "/api/institutions/:id";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -3464,7 +3421,6 @@ export declare const ApiContracts: {
                             product_type: string;
                         }[] | undefined;
                     };
-                    success: boolean;
                 }, {
                     message: string;
                     data: {
@@ -3488,7 +3444,6 @@ export declare const ApiContracts: {
                             product_type: string;
                         }[] | undefined;
                     };
-                    success: boolean;
                 }>;
                 400: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -3572,14 +3527,11 @@ export declare const ApiContracts: {
             path: "/api/institutions/:id";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
                     message: string;
-                    success: boolean;
                 }, {
                     message: string;
-                    success: boolean;
                 }>;
                 401: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -3643,7 +3595,6 @@ export declare const ApiContracts: {
             path: "/api/institutions/search";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -3752,7 +3703,6 @@ export declare const ApiContracts: {
                             product_type: string;
                         }[] | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -3781,7 +3731,6 @@ export declare const ApiContracts: {
                             product_type: string;
                         }[] | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -3828,7 +3777,6 @@ export declare const ApiContracts: {
             path: "/api/institutions/type/:type";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -3937,7 +3885,6 @@ export declare const ApiContracts: {
                             product_type: string;
                         }[] | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -3966,7 +3913,6 @@ export declare const ApiContracts: {
                             product_type: string;
                         }[] | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -4019,7 +3965,6 @@ export declare const ApiContracts: {
             path: "/api/institutions/with-products";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -4128,7 +4073,6 @@ export declare const ApiContracts: {
                             product_type: string;
                         }[] | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -4157,7 +4101,6 @@ export declare const ApiContracts: {
                             product_type: string;
                         }[] | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -4238,7 +4181,6 @@ export declare const ApiContracts: {
             path: "/api/products";
             responses: {
                 201: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -4362,7 +4304,6 @@ export declare const ApiContracts: {
                             logo_url: string | null;
                         } | undefined;
                     };
-                    success: boolean;
                 }, {
                     message: string;
                     data: {
@@ -4393,7 +4334,6 @@ export declare const ApiContracts: {
                             logo_url: string | null;
                         } | undefined;
                     };
-                    success: boolean;
                 }>;
                 400: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -4482,7 +4422,6 @@ export declare const ApiContracts: {
             path: "/api/products";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -4619,7 +4558,6 @@ export declare const ApiContracts: {
                             logo_url: string | null;
                         } | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -4655,7 +4593,6 @@ export declare const ApiContracts: {
                             logo_url: string | null;
                         } | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -4692,7 +4629,6 @@ export declare const ApiContracts: {
             path: "/api/products/:id";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -4816,7 +4752,6 @@ export declare const ApiContracts: {
                             logo_url: string | null;
                         } | undefined;
                     };
-                    success: boolean;
                 }, {
                     message: string;
                     data: {
@@ -4847,7 +4782,6 @@ export declare const ApiContracts: {
                             logo_url: string | null;
                         } | undefined;
                     };
-                    success: boolean;
                 }>;
                 404: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -4941,7 +4875,6 @@ export declare const ApiContracts: {
             path: "/api/products/:id";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -5065,7 +4998,6 @@ export declare const ApiContracts: {
                             logo_url: string | null;
                         } | undefined;
                     };
-                    success: boolean;
                 }, {
                     message: string;
                     data: {
@@ -5096,7 +5028,6 @@ export declare const ApiContracts: {
                             logo_url: string | null;
                         } | undefined;
                     };
-                    success: boolean;
                 }>;
                 400: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -5180,14 +5111,11 @@ export declare const ApiContracts: {
             path: "/api/products/:id";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
                     message: string;
-                    success: boolean;
                 }, {
                     message: string;
-                    success: boolean;
                 }>;
                 401: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -5251,7 +5179,6 @@ export declare const ApiContracts: {
             path: "/api/products/search";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -5388,7 +5315,6 @@ export declare const ApiContracts: {
                             logo_url: string | null;
                         } | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -5424,7 +5350,6 @@ export declare const ApiContracts: {
                             logo_url: string | null;
                         } | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -5471,7 +5396,6 @@ export declare const ApiContracts: {
             path: "/api/products/type/:type";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -5608,7 +5532,6 @@ export declare const ApiContracts: {
                             logo_url: string | null;
                         } | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -5644,7 +5567,6 @@ export declare const ApiContracts: {
                             logo_url: string | null;
                         } | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -5704,7 +5626,6 @@ export declare const ApiContracts: {
             path: "/api/products/institution/:institutionId";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -5841,7 +5762,6 @@ export declare const ApiContracts: {
                             logo_url: string | null;
                         } | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -5877,7 +5797,6 @@ export declare const ApiContracts: {
                             logo_url: string | null;
                         } | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -5917,7 +5836,6 @@ export declare const ApiContracts: {
             path: "/api/products/spotlight";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -6054,7 +5972,6 @@ export declare const ApiContracts: {
                             logo_url: string | null;
                         } | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -6090,7 +6007,6 @@ export declare const ApiContracts: {
                             logo_url: string | null;
                         } | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -6130,7 +6046,6 @@ export declare const ApiContracts: {
             path: "/api/products/no-annual-fee";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -6267,7 +6182,6 @@ export declare const ApiContracts: {
                             logo_url: string | null;
                         } | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -6303,7 +6217,6 @@ export declare const ApiContracts: {
                             logo_url: string | null;
                         } | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -6350,7 +6263,6 @@ export declare const ApiContracts: {
             path: "/api/products/credit-score/:requirement";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -6487,7 +6399,6 @@ export declare const ApiContracts: {
                             logo_url: string | null;
                         } | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -6523,7 +6434,6 @@ export declare const ApiContracts: {
                             logo_url: string | null;
                         } | undefined;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -6614,7 +6524,6 @@ export declare const ApiContracts: {
             path: "/api/payment-reminders";
             responses: {
                 201: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -6704,7 +6613,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     };
-                    success: boolean;
                 }, {
                     message: string;
                     data: {
@@ -6729,7 +6637,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     };
-                    success: boolean;
                 }>;
                 400: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -6805,7 +6712,6 @@ export declare const ApiContracts: {
             path: "/api/payment-reminders";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -6908,7 +6814,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -6938,7 +6843,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -6988,7 +6892,6 @@ export declare const ApiContracts: {
             path: "/api/payment-reminders/:id";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -7078,7 +6981,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     };
-                    success: boolean;
                 }, {
                     message: string;
                     data: {
@@ -7103,7 +7005,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     };
-                    success: boolean;
                 }>;
                 404: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -7207,7 +7108,6 @@ export declare const ApiContracts: {
             path: "/api/payment-reminders/:id";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -7297,7 +7197,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     };
-                    success: boolean;
                 }, {
                     message: string;
                     data: {
@@ -7322,7 +7221,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     };
-                    success: boolean;
                 }>;
                 400: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -7393,14 +7291,11 @@ export declare const ApiContracts: {
             path: "/api/payment-reminders/:id";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
                     message: string;
-                    success: boolean;
                 }, {
                     message: string;
-                    success: boolean;
                 }>;
                 401: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -7459,7 +7354,6 @@ export declare const ApiContracts: {
             path: "/api/payment-reminders/:id/complete";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -7549,7 +7443,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     };
-                    success: boolean;
                 }, {
                     message: string;
                     data: {
@@ -7574,7 +7467,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     };
-                    success: boolean;
                 }>;
                 401: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -7633,7 +7525,6 @@ export declare const ApiContracts: {
             path: "/api/payment-reminders/:id/acknowledge";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -7723,7 +7614,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     };
-                    success: boolean;
                 }, {
                     message: string;
                     data: {
@@ -7748,7 +7638,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     };
-                    success: boolean;
                 }>;
                 401: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -7799,7 +7688,6 @@ export declare const ApiContracts: {
             path: "/api/payment-reminders/overdue";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -7902,7 +7790,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -7932,7 +7819,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -7982,7 +7868,6 @@ export declare const ApiContracts: {
             path: "/api/payment-reminders/upcoming";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -8085,7 +7970,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -8115,7 +7999,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -8158,7 +8041,6 @@ export declare const ApiContracts: {
             path: "/api/payment-reminders/due-today";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -8261,7 +8143,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -8291,7 +8172,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -8351,7 +8231,6 @@ export declare const ApiContracts: {
             path: "/api/payment-reminders/type/:type";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -8454,7 +8333,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -8484,7 +8362,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -8557,7 +8434,6 @@ export declare const ApiContracts: {
             path: "/api/payment-reminders/priority/:priority";
             responses: {
                 200: import("zod").ZodObject<{
-                    success: import("zod").ZodBoolean;
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
@@ -8660,7 +8536,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;
@@ -8690,7 +8565,6 @@ export declare const ApiContracts: {
                         recurrence_pattern: string | null;
                         notification_settings?: any;
                     }[];
-                    success: boolean;
                     pagination?: {
                         limit: number;
                         total: number;

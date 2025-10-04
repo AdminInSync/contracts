@@ -71,7 +71,6 @@ export const ProductsContracts = c.router({
         path: '/products/:id',
         responses: {
             200: z.object({
-                success: z.boolean(),
                 message: z.string(),
             }),
             401: ErrorResSchema,

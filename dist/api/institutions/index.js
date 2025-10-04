@@ -71,7 +71,6 @@ export const InstitutionsContracts = c.router({
         path: '/institutions/:id',
         responses: {
             200: z.object({
-                success: z.boolean(),
                 message: z.string(),
             }),
             401: ErrorResSchema,

@@ -166,7 +166,6 @@ export declare const GetSavingGoalsQuerySchema: z.ZodObject<{
     offset?: number | undefined;
 }>;
 export declare const SavingGoalResponseSchema: z.ZodObject<{
-    success: z.ZodBoolean;
     message: z.ZodString;
     data: z.ZodObject<{
         id: z.ZodNumber;
@@ -248,7 +247,6 @@ export declare const SavingGoalResponseSchema: z.ZodObject<{
         updated_at: string;
         deleted_at: string | null;
     };
-    success: boolean;
 }, {
     message: string;
     data: {
@@ -271,10 +269,8 @@ export declare const SavingGoalResponseSchema: z.ZodObject<{
         updated_at: string;
         deleted_at: string | null;
     };
-    success: boolean;
 }>;
 export declare const SavingGoalsListResponseSchema: z.ZodObject<{
-    success: z.ZodBoolean;
     message: z.ZodString;
     data: z.ZodArray<z.ZodObject<{
         id: z.ZodNumber;
@@ -369,7 +365,6 @@ export declare const SavingGoalsListResponseSchema: z.ZodObject<{
         updated_at: string;
         deleted_at: string | null;
     }[];
-    success: boolean;
     pagination?: {
         limit: number;
         total: number;
@@ -397,7 +392,6 @@ export declare const SavingGoalsListResponseSchema: z.ZodObject<{
         updated_at: string;
         deleted_at: string | null;
     }[];
-    success: boolean;
     pagination?: {
         limit: number;
         total: number;
@@ -405,7 +399,6 @@ export declare const SavingGoalsListResponseSchema: z.ZodObject<{
     } | undefined;
 }>;
 export declare const UpdateProgressResponseSchema: z.ZodObject<{
-    success: z.ZodBoolean;
     message: z.ZodString;
     data: z.ZodObject<{
         id: z.ZodNumber;
@@ -487,7 +480,6 @@ export declare const UpdateProgressResponseSchema: z.ZodObject<{
         updated_at: string;
         deleted_at: string | null;
     };
-    success: boolean;
 }, {
     message: string;
     data: {
@@ -510,5 +502,4 @@ export declare const UpdateProgressResponseSchema: z.ZodObject<{
         updated_at: string;
         deleted_at: string | null;
     };
-    success: boolean;
 }>;

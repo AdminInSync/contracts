@@ -46,12 +46,10 @@ export const GetInstitutionsQuerySchema = z.object({
 });
 // Response schemas
 export const InstitutionResponseSchema = z.object({
-    success: z.boolean(),
     message: z.string(),
     data: FinancialInstitutionSchema,
 });
 export const InstitutionsListResponseSchema = z.object({
-    success: z.boolean(),
     message: z.string(),
     data: z.array(FinancialInstitutionSchema),
     pagination: z.object({

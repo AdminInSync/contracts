@@ -89,7 +89,6 @@ export const SavingGoalsContracts = c.router({
         path: '/saving-goals/:id',
         responses: {
             200: z.object({
-                success: z.boolean(),
                 message: z.string(),
             }),
             401: ErrorResSchema,

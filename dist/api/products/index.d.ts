@@ -56,7 +56,6 @@ export declare const ProductsContracts: {
         path: "/products";
         responses: {
             201: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodObject<{
                     id: z.ZodNumber;
@@ -180,7 +179,6 @@ export declare const ProductsContracts: {
                         logo_url: string | null;
                     } | undefined;
                 };
-                success: boolean;
             }, {
                 message: string;
                 data: {
@@ -211,7 +209,6 @@ export declare const ProductsContracts: {
                         logo_url: string | null;
                     } | undefined;
                 };
-                success: boolean;
             }>;
             400: z.ZodObject<{
                 message: z.ZodString;
@@ -299,7 +296,6 @@ export declare const ProductsContracts: {
         path: "/products";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     id: z.ZodNumber;
@@ -436,7 +432,6 @@ export declare const ProductsContracts: {
                         logo_url: string | null;
                     } | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -472,7 +467,6 @@ export declare const ProductsContracts: {
                         logo_url: string | null;
                     } | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -508,7 +502,6 @@ export declare const ProductsContracts: {
         path: "/products/:id";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodObject<{
                     id: z.ZodNumber;
@@ -632,7 +625,6 @@ export declare const ProductsContracts: {
                         logo_url: string | null;
                     } | undefined;
                 };
-                success: boolean;
             }, {
                 message: string;
                 data: {
@@ -663,7 +655,6 @@ export declare const ProductsContracts: {
                         logo_url: string | null;
                     } | undefined;
                 };
-                success: boolean;
             }>;
             404: z.ZodObject<{
                 message: z.ZodString;
@@ -756,7 +747,6 @@ export declare const ProductsContracts: {
         path: "/products/:id";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodObject<{
                     id: z.ZodNumber;
@@ -880,7 +870,6 @@ export declare const ProductsContracts: {
                         logo_url: string | null;
                     } | undefined;
                 };
-                success: boolean;
             }, {
                 message: string;
                 data: {
@@ -911,7 +900,6 @@ export declare const ProductsContracts: {
                         logo_url: string | null;
                     } | undefined;
                 };
-                success: boolean;
             }>;
             400: z.ZodObject<{
                 message: z.ZodString;
@@ -994,14 +982,11 @@ export declare const ProductsContracts: {
         path: "/products/:id";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
             }, "strip", z.ZodTypeAny, {
                 message: string;
-                success: boolean;
             }, {
                 message: string;
-                success: boolean;
             }>;
             401: z.ZodObject<{
                 message: z.ZodString;
@@ -1064,7 +1049,6 @@ export declare const ProductsContracts: {
         path: "/products/search";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     id: z.ZodNumber;
@@ -1201,7 +1185,6 @@ export declare const ProductsContracts: {
                         logo_url: string | null;
                     } | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1237,7 +1220,6 @@ export declare const ProductsContracts: {
                         logo_url: string | null;
                     } | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1283,7 +1265,6 @@ export declare const ProductsContracts: {
         path: "/products/type/:type";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     id: z.ZodNumber;
@@ -1420,7 +1401,6 @@ export declare const ProductsContracts: {
                         logo_url: string | null;
                     } | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1456,7 +1436,6 @@ export declare const ProductsContracts: {
                         logo_url: string | null;
                     } | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1515,7 +1494,6 @@ export declare const ProductsContracts: {
         path: "/products/institution/:institutionId";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     id: z.ZodNumber;
@@ -1652,7 +1630,6 @@ export declare const ProductsContracts: {
                         logo_url: string | null;
                     } | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1688,7 +1665,6 @@ export declare const ProductsContracts: {
                         logo_url: string | null;
                     } | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1727,7 +1703,6 @@ export declare const ProductsContracts: {
         path: "/products/spotlight";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     id: z.ZodNumber;
@@ -1864,7 +1839,6 @@ export declare const ProductsContracts: {
                         logo_url: string | null;
                     } | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1900,7 +1874,6 @@ export declare const ProductsContracts: {
                         logo_url: string | null;
                     } | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1939,7 +1912,6 @@ export declare const ProductsContracts: {
         path: "/products/no-annual-fee";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     id: z.ZodNumber;
@@ -2076,7 +2048,6 @@ export declare const ProductsContracts: {
                         logo_url: string | null;
                     } | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -2112,7 +2083,6 @@ export declare const ProductsContracts: {
                         logo_url: string | null;
                     } | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -2158,7 +2128,6 @@ export declare const ProductsContracts: {
         path: "/products/credit-score/:requirement";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     id: z.ZodNumber;
@@ -2295,7 +2264,6 @@ export declare const ProductsContracts: {
                         logo_url: string | null;
                     } | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -2331,7 +2299,6 @@ export declare const ProductsContracts: {
                         logo_url: string | null;
                     } | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;

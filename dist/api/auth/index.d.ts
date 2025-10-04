@@ -6,7 +6,6 @@ export declare const AuthContracts: {
         path: "/auth/me";
         responses: {
             200: import("zod").ZodObject<{
-                success: import("zod").ZodBoolean;
                 message: import("zod").ZodString;
                 data: import("zod").ZodObject<{
                     user: import("zod").ZodObject<{
@@ -238,7 +237,6 @@ export declare const AuthContracts: {
                         };
                     };
                 };
-                success: boolean;
             }, {
                 message: string;
                 data: {
@@ -274,7 +272,6 @@ export declare const AuthContracts: {
                         };
                     };
                 };
-                success: boolean;
             }>;
             400: import("zod").ZodObject<{
                 message: import("zod").ZodString;

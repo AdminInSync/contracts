@@ -35,7 +35,6 @@ export declare const InstitutionsContracts: {
         path: "/institutions";
         responses: {
             201: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodObject<{
                     id: z.ZodNumber;
@@ -131,7 +130,6 @@ export declare const InstitutionsContracts: {
                         product_type: string;
                     }[] | undefined;
                 };
-                success: boolean;
             }, {
                 message: string;
                 data: {
@@ -155,7 +153,6 @@ export declare const InstitutionsContracts: {
                         product_type: string;
                     }[] | undefined;
                 };
-                success: boolean;
             }>;
             400: z.ZodObject<{
                 message: z.ZodString;
@@ -240,7 +237,6 @@ export declare const InstitutionsContracts: {
         path: "/institutions";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     id: z.ZodNumber;
@@ -349,7 +345,6 @@ export declare const InstitutionsContracts: {
                         product_type: string;
                     }[] | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -378,7 +373,6 @@ export declare const InstitutionsContracts: {
                         product_type: string;
                     }[] | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -414,7 +408,6 @@ export declare const InstitutionsContracts: {
         path: "/institutions/:id";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodObject<{
                     id: z.ZodNumber;
@@ -510,7 +503,6 @@ export declare const InstitutionsContracts: {
                         product_type: string;
                     }[] | undefined;
                 };
-                success: boolean;
             }, {
                 message: string;
                 data: {
@@ -534,7 +526,6 @@ export declare const InstitutionsContracts: {
                         product_type: string;
                     }[] | undefined;
                 };
-                success: boolean;
             }>;
             404: z.ZodObject<{
                 message: z.ZodString;
@@ -606,7 +597,6 @@ export declare const InstitutionsContracts: {
         path: "/institutions/:id";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodObject<{
                     id: z.ZodNumber;
@@ -702,7 +692,6 @@ export declare const InstitutionsContracts: {
                         product_type: string;
                     }[] | undefined;
                 };
-                success: boolean;
             }, {
                 message: string;
                 data: {
@@ -726,7 +715,6 @@ export declare const InstitutionsContracts: {
                         product_type: string;
                     }[] | undefined;
                 };
-                success: boolean;
             }>;
             400: z.ZodObject<{
                 message: z.ZodString;
@@ -809,14 +797,11 @@ export declare const InstitutionsContracts: {
         path: "/institutions/:id";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
             }, "strip", z.ZodTypeAny, {
                 message: string;
-                success: boolean;
             }, {
                 message: string;
-                success: boolean;
             }>;
             401: z.ZodObject<{
                 message: z.ZodString;
@@ -879,7 +864,6 @@ export declare const InstitutionsContracts: {
         path: "/institutions/search";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     id: z.ZodNumber;
@@ -988,7 +972,6 @@ export declare const InstitutionsContracts: {
                         product_type: string;
                     }[] | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1017,7 +1000,6 @@ export declare const InstitutionsContracts: {
                         product_type: string;
                     }[] | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1063,7 +1045,6 @@ export declare const InstitutionsContracts: {
         path: "/institutions/type/:type";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     id: z.ZodNumber;
@@ -1172,7 +1153,6 @@ export declare const InstitutionsContracts: {
                         product_type: string;
                     }[] | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1201,7 +1181,6 @@ export declare const InstitutionsContracts: {
                         product_type: string;
                     }[] | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1253,7 +1232,6 @@ export declare const InstitutionsContracts: {
         path: "/institutions/with-products";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     id: z.ZodNumber;
@@ -1362,7 +1340,6 @@ export declare const InstitutionsContracts: {
                         product_type: string;
                     }[] | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1391,7 +1368,6 @@ export declare const InstitutionsContracts: {
                         product_type: string;
                     }[] | undefined;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;

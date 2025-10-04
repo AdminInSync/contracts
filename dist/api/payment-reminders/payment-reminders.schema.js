@@ -56,12 +56,10 @@ export const GetPaymentRemindersQuerySchema = z.object({
 });
 // Response schemas
 export const PaymentReminderResponseSchema = z.object({
-    success: z.boolean(),
     message: z.string(),
     data: PaymentReminderSchema,
 });
 export const PaymentRemindersListResponseSchema = z.object({
-    success: z.boolean(),
     message: z.string(),
     data: z.array(PaymentReminderSchema),
     pagination: z.object({
