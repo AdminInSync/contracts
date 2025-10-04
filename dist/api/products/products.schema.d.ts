@@ -217,7 +217,6 @@ export declare const GetProductsQuerySchema: z.ZodObject<{
     is_spotlight?: boolean | undefined;
 }>;
 export declare const ProductResponseSchema: z.ZodObject<{
-    success: z.ZodBoolean;
     message: z.ZodString;
     data: z.ZodObject<{
         id: z.ZodNumber;
@@ -341,7 +340,6 @@ export declare const ProductResponseSchema: z.ZodObject<{
             logo_url: string | null;
         } | undefined;
     };
-    success: boolean;
 }, {
     message: string;
     data: {
@@ -372,10 +370,8 @@ export declare const ProductResponseSchema: z.ZodObject<{
             logo_url: string | null;
         } | undefined;
     };
-    success: boolean;
 }>;
 export declare const ProductsListResponseSchema: z.ZodObject<{
-    success: z.ZodBoolean;
     message: z.ZodString;
     data: z.ZodArray<z.ZodObject<{
         id: z.ZodNumber;
@@ -512,7 +508,6 @@ export declare const ProductsListResponseSchema: z.ZodObject<{
             logo_url: string | null;
         } | undefined;
     }[];
-    success: boolean;
     pagination?: {
         limit: number;
         total: number;
@@ -548,7 +543,6 @@ export declare const ProductsListResponseSchema: z.ZodObject<{
             logo_url: string | null;
         } | undefined;
     }[];
-    success: boolean;
     pagination?: {
         limit: number;
         total: number;

@@ -13,7 +13,6 @@ export declare const KycContracts: {
         path: "/kyc/token";
         responses: {
             200: import("zod").ZodObject<{
-                success: import("zod").ZodBoolean;
                 message: import("zod").ZodString;
                 data: import("zod").ZodObject<{
                     token: import("zod").ZodString;
@@ -39,7 +38,6 @@ export declare const KycContracts: {
                     levelName: string;
                     expiresIn: number;
                 };
-                success: boolean;
             }, {
                 message: string;
                 data: {
@@ -48,7 +46,6 @@ export declare const KycContracts: {
                     levelName: string;
                     expiresIn: number;
                 };
-                success: boolean;
             }>;
             400: import("zod").ZodObject<{
                 message: import("zod").ZodString;
@@ -112,7 +109,6 @@ export declare const KycContracts: {
         path: "/kyc/status";
         responses: {
             200: import("zod").ZodObject<{
-                success: import("zod").ZodBoolean;
                 message: import("zod").ZodString;
                 data: import("zod").ZodObject<{
                     uid: import("zod").ZodString;
@@ -138,7 +134,6 @@ export declare const KycContracts: {
                     reviewedAt: string | null;
                     applicantId: string | null;
                 };
-                success: boolean;
             }, {
                 message: string;
                 data: {
@@ -147,7 +142,6 @@ export declare const KycContracts: {
                     reviewedAt: string | null;
                     applicantId: string | null;
                 };
-                success: boolean;
             }>;
             400: import("zod").ZodObject<{
                 message: import("zod").ZodString;

@@ -62,12 +62,10 @@ export const GetProductsQuerySchema = z.object({
 });
 // Response schemas
 export const ProductResponseSchema = z.object({
-    success: z.boolean(),
     message: z.string(),
     data: FinancialProductSchema,
 });
 export const ProductsListResponseSchema = z.object({
-    success: z.boolean(),
     message: z.string(),
     data: z.array(FinancialProductSchema),
     pagination: z.object({

@@ -42,7 +42,6 @@ export const UserResponseSchema = z.object({
 });
 // Removed AuthResponseSchema - no longer needed without login/register
 export const MeResponseSchema = z.object({
-    success: z.boolean(),
     message: z.string(),
     data: z.object({
         user: UserResponseSchema,

@@ -53,7 +53,6 @@ export declare const PaymentRemindersContracts: {
         path: "/payment-reminders";
         responses: {
             201: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodObject<{
                     id: z.ZodNumber;
@@ -143,7 +142,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 };
-                success: boolean;
             }, {
                 message: string;
                 data: {
@@ -168,7 +166,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 };
-                success: boolean;
             }>;
             400: z.ZodObject<{
                 message: z.ZodString;
@@ -243,7 +240,6 @@ export declare const PaymentRemindersContracts: {
         path: "/payment-reminders";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     id: z.ZodNumber;
@@ -346,7 +342,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -376,7 +371,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -425,7 +419,6 @@ export declare const PaymentRemindersContracts: {
         path: "/payment-reminders/:id";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodObject<{
                     id: z.ZodNumber;
@@ -515,7 +508,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 };
-                success: boolean;
             }, {
                 message: string;
                 data: {
@@ -540,7 +532,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 };
-                success: boolean;
             }>;
             404: z.ZodObject<{
                 message: z.ZodString;
@@ -643,7 +634,6 @@ export declare const PaymentRemindersContracts: {
         path: "/payment-reminders/:id";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodObject<{
                     id: z.ZodNumber;
@@ -733,7 +723,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 };
-                success: boolean;
             }, {
                 message: string;
                 data: {
@@ -758,7 +747,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 };
-                success: boolean;
             }>;
             400: z.ZodObject<{
                 message: z.ZodString;
@@ -828,14 +816,11 @@ export declare const PaymentRemindersContracts: {
         path: "/payment-reminders/:id";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
             }, "strip", z.ZodTypeAny, {
                 message: string;
-                success: boolean;
             }, {
                 message: string;
-                success: boolean;
             }>;
             401: z.ZodObject<{
                 message: z.ZodString;
@@ -893,7 +878,6 @@ export declare const PaymentRemindersContracts: {
         path: "/payment-reminders/:id/complete";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodObject<{
                     id: z.ZodNumber;
@@ -983,7 +967,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 };
-                success: boolean;
             }, {
                 message: string;
                 data: {
@@ -1008,7 +991,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 };
-                success: boolean;
             }>;
             401: z.ZodObject<{
                 message: z.ZodString;
@@ -1066,7 +1048,6 @@ export declare const PaymentRemindersContracts: {
         path: "/payment-reminders/:id/acknowledge";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodObject<{
                     id: z.ZodNumber;
@@ -1156,7 +1137,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 };
-                success: boolean;
             }, {
                 message: string;
                 data: {
@@ -1181,7 +1161,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 };
-                success: boolean;
             }>;
             401: z.ZodObject<{
                 message: z.ZodString;
@@ -1231,7 +1210,6 @@ export declare const PaymentRemindersContracts: {
         path: "/payment-reminders/overdue";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     id: z.ZodNumber;
@@ -1334,7 +1312,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1364,7 +1341,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1413,7 +1389,6 @@ export declare const PaymentRemindersContracts: {
         path: "/payment-reminders/upcoming";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     id: z.ZodNumber;
@@ -1516,7 +1491,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1546,7 +1520,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1588,7 +1561,6 @@ export declare const PaymentRemindersContracts: {
         path: "/payment-reminders/due-today";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     id: z.ZodNumber;
@@ -1691,7 +1663,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1721,7 +1692,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1780,7 +1750,6 @@ export declare const PaymentRemindersContracts: {
         path: "/payment-reminders/type/:type";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     id: z.ZodNumber;
@@ -1883,7 +1852,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1913,7 +1881,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1985,7 +1952,6 @@ export declare const PaymentRemindersContracts: {
         path: "/payment-reminders/priority/:priority";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     id: z.ZodNumber;
@@ -2088,7 +2054,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -2118,7 +2083,6 @@ export declare const PaymentRemindersContracts: {
                     recurrence_pattern: string | null;
                     notification_settings?: any;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;

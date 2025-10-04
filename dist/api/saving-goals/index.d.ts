@@ -47,7 +47,6 @@ export declare const SavingGoalsContracts: {
         path: "/saving-goals";
         responses: {
             201: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodObject<{
                     id: z.ZodNumber;
@@ -129,7 +128,6 @@ export declare const SavingGoalsContracts: {
                     updated_at: string;
                     deleted_at: string | null;
                 };
-                success: boolean;
             }, {
                 message: string;
                 data: {
@@ -152,7 +150,6 @@ export declare const SavingGoalsContracts: {
                     updated_at: string;
                     deleted_at: string | null;
                 };
-                success: boolean;
             }>;
             400: z.ZodObject<{
                 message: z.ZodString;
@@ -221,7 +218,6 @@ export declare const SavingGoalsContracts: {
         path: "/saving-goals";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     id: z.ZodNumber;
@@ -316,7 +312,6 @@ export declare const SavingGoalsContracts: {
                     updated_at: string;
                     deleted_at: string | null;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -344,7 +339,6 @@ export declare const SavingGoalsContracts: {
                     updated_at: string;
                     deleted_at: string | null;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -393,7 +387,6 @@ export declare const SavingGoalsContracts: {
         path: "/saving-goals/:id";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodObject<{
                     id: z.ZodNumber;
@@ -475,7 +468,6 @@ export declare const SavingGoalsContracts: {
                     updated_at: string;
                     deleted_at: string | null;
                 };
-                success: boolean;
             }, {
                 message: string;
                 data: {
@@ -498,7 +490,6 @@ export declare const SavingGoalsContracts: {
                     updated_at: string;
                     deleted_at: string | null;
                 };
-                success: boolean;
             }>;
             404: z.ZodObject<{
                 message: z.ZodString;
@@ -595,7 +586,6 @@ export declare const SavingGoalsContracts: {
         path: "/saving-goals/:id";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodObject<{
                     id: z.ZodNumber;
@@ -677,7 +667,6 @@ export declare const SavingGoalsContracts: {
                     updated_at: string;
                     deleted_at: string | null;
                 };
-                success: boolean;
             }, {
                 message: string;
                 data: {
@@ -700,7 +689,6 @@ export declare const SavingGoalsContracts: {
                     updated_at: string;
                     deleted_at: string | null;
                 };
-                success: boolean;
             }>;
             400: z.ZodObject<{
                 message: z.ZodString;
@@ -777,7 +765,6 @@ export declare const SavingGoalsContracts: {
         path: "/saving-goals/:id/progress";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodObject<{
                     id: z.ZodNumber;
@@ -859,7 +846,6 @@ export declare const SavingGoalsContracts: {
                     updated_at: string;
                     deleted_at: string | null;
                 };
-                success: boolean;
             }, {
                 message: string;
                 data: {
@@ -882,7 +868,6 @@ export declare const SavingGoalsContracts: {
                     updated_at: string;
                     deleted_at: string | null;
                 };
-                success: boolean;
             }>;
             400: z.ZodObject<{
                 message: z.ZodString;
@@ -952,14 +937,11 @@ export declare const SavingGoalsContracts: {
         path: "/saving-goals/:id";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
             }, "strip", z.ZodTypeAny, {
                 message: string;
-                success: boolean;
             }, {
                 message: string;
-                success: boolean;
             }>;
             401: z.ZodObject<{
                 message: z.ZodString;
@@ -1019,7 +1001,6 @@ export declare const SavingGoalsContracts: {
         path: "/saving-goals/public";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     id: z.ZodNumber;
@@ -1114,7 +1095,6 @@ export declare const SavingGoalsContracts: {
                     updated_at: string;
                     deleted_at: string | null;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1142,7 +1122,6 @@ export declare const SavingGoalsContracts: {
                     updated_at: string;
                     deleted_at: string | null;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1178,7 +1157,6 @@ export declare const SavingGoalsContracts: {
         path: "/saving-goals/due-soon";
         responses: {
             200: z.ZodObject<{
-                success: z.ZodBoolean;
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     id: z.ZodNumber;
@@ -1273,7 +1251,6 @@ export declare const SavingGoalsContracts: {
                     updated_at: string;
                     deleted_at: string | null;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;
@@ -1301,7 +1278,6 @@ export declare const SavingGoalsContracts: {
                     updated_at: string;
                     deleted_at: string | null;
                 }[];
-                success: boolean;
                 pagination?: {
                     limit: number;
                     total: number;

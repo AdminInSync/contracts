@@ -150,7 +150,6 @@ export declare const GetInstitutionsQuerySchema: z.ZodObject<{
     region?: string | undefined;
 }>;
 export declare const InstitutionResponseSchema: z.ZodObject<{
-    success: z.ZodBoolean;
     message: z.ZodString;
     data: z.ZodObject<{
         id: z.ZodNumber;
@@ -246,7 +245,6 @@ export declare const InstitutionResponseSchema: z.ZodObject<{
             product_type: string;
         }[] | undefined;
     };
-    success: boolean;
 }, {
     message: string;
     data: {
@@ -270,10 +268,8 @@ export declare const InstitutionResponseSchema: z.ZodObject<{
             product_type: string;
         }[] | undefined;
     };
-    success: boolean;
 }>;
 export declare const InstitutionsListResponseSchema: z.ZodObject<{
-    success: z.ZodBoolean;
     message: z.ZodString;
     data: z.ZodArray<z.ZodObject<{
         id: z.ZodNumber;
@@ -382,7 +378,6 @@ export declare const InstitutionsListResponseSchema: z.ZodObject<{
             product_type: string;
         }[] | undefined;
     }[];
-    success: boolean;
     pagination?: {
         limit: number;
         total: number;
@@ -411,7 +406,6 @@ export declare const InstitutionsListResponseSchema: z.ZodObject<{
             product_type: string;
         }[] | undefined;
     }[];
-    success: boolean;
     pagination?: {
         limit: number;
         total: number;

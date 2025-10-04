@@ -52,12 +52,10 @@ export const GetSavingGoalsQuerySchema = z.object({
 });
 // Response schemas
 export const SavingGoalResponseSchema = z.object({
-    success: z.boolean(),
     message: z.string(),
     data: SavingGoalSchema,
 });
 export const SavingGoalsListResponseSchema = z.object({
-    success: z.boolean(),
     message: z.string(),
     data: z.array(SavingGoalSchema),
     pagination: z.object({
@@ -67,7 +65,6 @@ export const SavingGoalsListResponseSchema = z.object({
     }).optional(),
 });
 export const UpdateProgressResponseSchema = z.object({
-    success: z.boolean(),
     message: z.string(),
     data: SavingGoalSchema,
 });

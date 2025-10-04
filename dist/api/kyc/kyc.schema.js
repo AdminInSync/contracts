@@ -6,7 +6,6 @@ export const KycTokenRequestSchema = z.object({
     ttlInSecs: z.number().optional().default(600),
 });
 export const KycTokenResponseSchema = z.object({
-    success: z.boolean(),
     message: z.string(),
     data: z.object({
         token: z.string(),
@@ -16,7 +15,6 @@ export const KycTokenResponseSchema = z.object({
     }),
 });
 export const KycStatusResponseSchema = z.object({
-    success: z.boolean(),
     message: z.string(),
     data: z.object({
         uid: z.string(),
