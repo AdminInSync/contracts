@@ -698,6 +698,605 @@ export declare const ApiContracts: {
             };
         };
     };
+    Devices: {
+        createDevice: {
+            strictStatusCodes: true;
+            summary: "Create new device";
+            description: "Create a new device for the authenticated user";
+            method: "POST";
+            body: import("zod").ZodObject<{
+                user_uid: import("zod").ZodString;
+                device_id: import("zod").ZodString;
+                notes: import("zod").ZodString;
+            }, "strip", import("zod").ZodTypeAny, {
+                user_uid: string;
+                device_id: string;
+                notes: string;
+            }, {
+                user_uid: string;
+                device_id: string;
+                notes: string;
+            }>;
+            path: "/api/devices/";
+            responses: {
+                201: import("zod").ZodObject<{
+                    id: import("zod").ZodNumber;
+                    uuid: import("zod").ZodString;
+                    user_uid: import("zod").ZodString;
+                    device_id: import("zod").ZodString;
+                    notes: import("zod").ZodString;
+                    createdAt: import("zod").ZodString;
+                    updatedAt: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    id: number;
+                    uuid: string;
+                    user_uid: string;
+                    createdAt: string;
+                    device_id: string;
+                    notes: string;
+                    updatedAt: string;
+                }, {
+                    id: number;
+                    uuid: string;
+                    user_uid: string;
+                    createdAt: string;
+                    device_id: string;
+                    notes: string;
+                    updatedAt: string;
+                }>;
+                400: import("zod").ZodObject<{
+                    error: import("zod").ZodString;
+                    message: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error: string;
+                }, {
+                    message: string;
+                    error: string;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                409: import("zod").ZodObject<{
+                    error: import("zod").ZodString;
+                    message: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error: string;
+                }, {
+                    message: string;
+                    error: string;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+        getDevices: {
+            strictStatusCodes: true;
+            query: import("zod").ZodObject<{
+                device_id: import("zod").ZodOptional<import("zod").ZodString>;
+            }, "strip", import("zod").ZodTypeAny, {
+                device_id?: string | undefined;
+            }, {
+                device_id?: string | undefined;
+            }>;
+            summary: "Get user devices";
+            description: "Get all devices for the authenticated user with optional filtering by device ID";
+            method: "GET";
+            path: "/api/devices/";
+            responses: {
+                200: import("zod").ZodArray<import("zod").ZodObject<{
+                    id: import("zod").ZodNumber;
+                    uuid: import("zod").ZodString;
+                    user_uid: import("zod").ZodString;
+                    device_id: import("zod").ZodString;
+                    notes: import("zod").ZodString;
+                    createdAt: import("zod").ZodString;
+                    updatedAt: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    id: number;
+                    uuid: string;
+                    user_uid: string;
+                    createdAt: string;
+                    device_id: string;
+                    notes: string;
+                    updatedAt: string;
+                }, {
+                    id: number;
+                    uuid: string;
+                    user_uid: string;
+                    createdAt: string;
+                    device_id: string;
+                    notes: string;
+                    updatedAt: string;
+                }>, "many">;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+        createDevicePreferences: {
+            strictStatusCodes: true;
+            summary: "Create device preferences";
+            description: "Create preferences for a specific device";
+            method: "POST";
+            body: import("zod").ZodObject<{
+                device_id: import("zod").ZodString;
+                arePushNotificationsEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                areTransactionAlertsEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                areNotificationSoundsEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                isVibrationEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                isBiometricAuthEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                autoLockAfterMinutes: import("zod").ZodOptional<import("zod").ZodNumber>;
+                isPrivacySettingsEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                isAutoSyncEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                isCloudBackupEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                canExportData: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                preferredTheme: import("zod").ZodOptional<import("zod").ZodEnum<["SYSTEM", "LIGHT", "DARK"]>>;
+            }, "strip", import("zod").ZodTypeAny, {
+                device_id: string;
+                arePushNotificationsEnabled?: boolean | undefined;
+                areTransactionAlertsEnabled?: boolean | undefined;
+                areNotificationSoundsEnabled?: boolean | undefined;
+                isVibrationEnabled?: boolean | undefined;
+                isBiometricAuthEnabled?: boolean | undefined;
+                autoLockAfterMinutes?: number | undefined;
+                isPrivacySettingsEnabled?: boolean | undefined;
+                isAutoSyncEnabled?: boolean | undefined;
+                isCloudBackupEnabled?: boolean | undefined;
+                canExportData?: boolean | undefined;
+                preferredTheme?: "SYSTEM" | "LIGHT" | "DARK" | undefined;
+            }, {
+                device_id: string;
+                arePushNotificationsEnabled?: boolean | undefined;
+                areTransactionAlertsEnabled?: boolean | undefined;
+                areNotificationSoundsEnabled?: boolean | undefined;
+                isVibrationEnabled?: boolean | undefined;
+                isBiometricAuthEnabled?: boolean | undefined;
+                autoLockAfterMinutes?: number | undefined;
+                isPrivacySettingsEnabled?: boolean | undefined;
+                isAutoSyncEnabled?: boolean | undefined;
+                isCloudBackupEnabled?: boolean | undefined;
+                canExportData?: boolean | undefined;
+                preferredTheme?: "SYSTEM" | "LIGHT" | "DARK" | undefined;
+            }>;
+            path: "/api/devices/preferences";
+            responses: {
+                201: import("zod").ZodObject<{
+                    id: import("zod").ZodNumber;
+                    uuid: import("zod").ZodString;
+                    user_uid: import("zod").ZodString;
+                    device_id: import("zod").ZodString;
+                    arePushNotificationsEnabled: import("zod").ZodBoolean;
+                    areTransactionAlertsEnabled: import("zod").ZodBoolean;
+                    areNotificationSoundsEnabled: import("zod").ZodBoolean;
+                    isVibrationEnabled: import("zod").ZodBoolean;
+                    isBiometricAuthEnabled: import("zod").ZodBoolean;
+                    autoLockAfterMinutes: import("zod").ZodNumber;
+                    isPrivacySettingsEnabled: import("zod").ZodBoolean;
+                    isAutoSyncEnabled: import("zod").ZodBoolean;
+                    isCloudBackupEnabled: import("zod").ZodBoolean;
+                    canExportData: import("zod").ZodBoolean;
+                    preferredTheme: import("zod").ZodEnum<["SYSTEM", "LIGHT", "DARK"]>;
+                    createdAt: import("zod").ZodString;
+                    updatedAt: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    id: number;
+                    uuid: string;
+                    user_uid: string;
+                    createdAt: string;
+                    device_id: string;
+                    updatedAt: string;
+                    arePushNotificationsEnabled: boolean;
+                    areTransactionAlertsEnabled: boolean;
+                    areNotificationSoundsEnabled: boolean;
+                    isVibrationEnabled: boolean;
+                    isBiometricAuthEnabled: boolean;
+                    autoLockAfterMinutes: number;
+                    isPrivacySettingsEnabled: boolean;
+                    isAutoSyncEnabled: boolean;
+                    isCloudBackupEnabled: boolean;
+                    canExportData: boolean;
+                    preferredTheme: "SYSTEM" | "LIGHT" | "DARK";
+                }, {
+                    id: number;
+                    uuid: string;
+                    user_uid: string;
+                    createdAt: string;
+                    device_id: string;
+                    updatedAt: string;
+                    arePushNotificationsEnabled: boolean;
+                    areTransactionAlertsEnabled: boolean;
+                    areNotificationSoundsEnabled: boolean;
+                    isVibrationEnabled: boolean;
+                    isBiometricAuthEnabled: boolean;
+                    autoLockAfterMinutes: number;
+                    isPrivacySettingsEnabled: boolean;
+                    isAutoSyncEnabled: boolean;
+                    isCloudBackupEnabled: boolean;
+                    canExportData: boolean;
+                    preferredTheme: "SYSTEM" | "LIGHT" | "DARK";
+                }>;
+                400: import("zod").ZodObject<{
+                    error: import("zod").ZodString;
+                    message: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error: string;
+                }, {
+                    message: string;
+                    error: string;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    error: import("zod").ZodString;
+                    message: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error: string;
+                }, {
+                    message: string;
+                    error: string;
+                }>;
+                409: import("zod").ZodObject<{
+                    error: import("zod").ZodString;
+                    message: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error: string;
+                }, {
+                    message: string;
+                    error: string;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+        getDevicePreferences: {
+            strictStatusCodes: true;
+            query: import("zod").ZodObject<{
+                device_id: import("zod").ZodOptional<import("zod").ZodString>;
+            }, "strip", import("zod").ZodTypeAny, {
+                device_id?: string | undefined;
+            }, {
+                device_id?: string | undefined;
+            }>;
+            summary: "Get device preferences";
+            description: "Get all device preferences for the authenticated user with optional filtering by device ID";
+            method: "GET";
+            path: "/api/devices/preferences";
+            responses: {
+                200: import("zod").ZodArray<import("zod").ZodObject<{
+                    id: import("zod").ZodNumber;
+                    uuid: import("zod").ZodString;
+                    user_uid: import("zod").ZodString;
+                    device_id: import("zod").ZodString;
+                    arePushNotificationsEnabled: import("zod").ZodBoolean;
+                    areTransactionAlertsEnabled: import("zod").ZodBoolean;
+                    areNotificationSoundsEnabled: import("zod").ZodBoolean;
+                    isVibrationEnabled: import("zod").ZodBoolean;
+                    isBiometricAuthEnabled: import("zod").ZodBoolean;
+                    autoLockAfterMinutes: import("zod").ZodNumber;
+                    isPrivacySettingsEnabled: import("zod").ZodBoolean;
+                    isAutoSyncEnabled: import("zod").ZodBoolean;
+                    isCloudBackupEnabled: import("zod").ZodBoolean;
+                    canExportData: import("zod").ZodBoolean;
+                    preferredTheme: import("zod").ZodEnum<["SYSTEM", "LIGHT", "DARK"]>;
+                    createdAt: import("zod").ZodString;
+                    updatedAt: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    id: number;
+                    uuid: string;
+                    user_uid: string;
+                    createdAt: string;
+                    device_id: string;
+                    updatedAt: string;
+                    arePushNotificationsEnabled: boolean;
+                    areTransactionAlertsEnabled: boolean;
+                    areNotificationSoundsEnabled: boolean;
+                    isVibrationEnabled: boolean;
+                    isBiometricAuthEnabled: boolean;
+                    autoLockAfterMinutes: number;
+                    isPrivacySettingsEnabled: boolean;
+                    isAutoSyncEnabled: boolean;
+                    isCloudBackupEnabled: boolean;
+                    canExportData: boolean;
+                    preferredTheme: "SYSTEM" | "LIGHT" | "DARK";
+                }, {
+                    id: number;
+                    uuid: string;
+                    user_uid: string;
+                    createdAt: string;
+                    device_id: string;
+                    updatedAt: string;
+                    arePushNotificationsEnabled: boolean;
+                    areTransactionAlertsEnabled: boolean;
+                    areNotificationSoundsEnabled: boolean;
+                    isVibrationEnabled: boolean;
+                    isBiometricAuthEnabled: boolean;
+                    autoLockAfterMinutes: number;
+                    isPrivacySettingsEnabled: boolean;
+                    isAutoSyncEnabled: boolean;
+                    isCloudBackupEnabled: boolean;
+                    canExportData: boolean;
+                    preferredTheme: "SYSTEM" | "LIGHT" | "DARK";
+                }>, "many">;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+        updateDevicePreferences: {
+            strictStatusCodes: true;
+            pathParams: import("zod").ZodObject<{
+                id: import("zod").ZodString;
+            }, "strip", import("zod").ZodTypeAny, {
+                id: string;
+            }, {
+                id: string;
+            }>;
+            summary: "Update device preferences";
+            description: "Update preferences for a specific device";
+            method: "PUT";
+            body: import("zod").ZodObject<{
+                arePushNotificationsEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                areTransactionAlertsEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                areNotificationSoundsEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                isVibrationEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                isBiometricAuthEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                autoLockAfterMinutes: import("zod").ZodOptional<import("zod").ZodNumber>;
+                isPrivacySettingsEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                isAutoSyncEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                isCloudBackupEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                canExportData: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                preferredTheme: import("zod").ZodOptional<import("zod").ZodEnum<["SYSTEM", "LIGHT", "DARK"]>>;
+            }, "strip", import("zod").ZodTypeAny, {
+                arePushNotificationsEnabled?: boolean | undefined;
+                areTransactionAlertsEnabled?: boolean | undefined;
+                areNotificationSoundsEnabled?: boolean | undefined;
+                isVibrationEnabled?: boolean | undefined;
+                isBiometricAuthEnabled?: boolean | undefined;
+                autoLockAfterMinutes?: number | undefined;
+                isPrivacySettingsEnabled?: boolean | undefined;
+                isAutoSyncEnabled?: boolean | undefined;
+                isCloudBackupEnabled?: boolean | undefined;
+                canExportData?: boolean | undefined;
+                preferredTheme?: "SYSTEM" | "LIGHT" | "DARK" | undefined;
+            }, {
+                arePushNotificationsEnabled?: boolean | undefined;
+                areTransactionAlertsEnabled?: boolean | undefined;
+                areNotificationSoundsEnabled?: boolean | undefined;
+                isVibrationEnabled?: boolean | undefined;
+                isBiometricAuthEnabled?: boolean | undefined;
+                autoLockAfterMinutes?: number | undefined;
+                isPrivacySettingsEnabled?: boolean | undefined;
+                isAutoSyncEnabled?: boolean | undefined;
+                isCloudBackupEnabled?: boolean | undefined;
+                canExportData?: boolean | undefined;
+                preferredTheme?: "SYSTEM" | "LIGHT" | "DARK" | undefined;
+            }>;
+            path: "/api/devices/preferences/:id";
+            responses: {
+                200: import("zod").ZodObject<{
+                    id: import("zod").ZodNumber;
+                    uuid: import("zod").ZodString;
+                    user_uid: import("zod").ZodString;
+                    device_id: import("zod").ZodString;
+                    arePushNotificationsEnabled: import("zod").ZodBoolean;
+                    areTransactionAlertsEnabled: import("zod").ZodBoolean;
+                    areNotificationSoundsEnabled: import("zod").ZodBoolean;
+                    isVibrationEnabled: import("zod").ZodBoolean;
+                    isBiometricAuthEnabled: import("zod").ZodBoolean;
+                    autoLockAfterMinutes: import("zod").ZodNumber;
+                    isPrivacySettingsEnabled: import("zod").ZodBoolean;
+                    isAutoSyncEnabled: import("zod").ZodBoolean;
+                    isCloudBackupEnabled: import("zod").ZodBoolean;
+                    canExportData: import("zod").ZodBoolean;
+                    preferredTheme: import("zod").ZodEnum<["SYSTEM", "LIGHT", "DARK"]>;
+                    createdAt: import("zod").ZodString;
+                    updatedAt: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    id: number;
+                    uuid: string;
+                    user_uid: string;
+                    createdAt: string;
+                    device_id: string;
+                    updatedAt: string;
+                    arePushNotificationsEnabled: boolean;
+                    areTransactionAlertsEnabled: boolean;
+                    areNotificationSoundsEnabled: boolean;
+                    isVibrationEnabled: boolean;
+                    isBiometricAuthEnabled: boolean;
+                    autoLockAfterMinutes: number;
+                    isPrivacySettingsEnabled: boolean;
+                    isAutoSyncEnabled: boolean;
+                    isCloudBackupEnabled: boolean;
+                    canExportData: boolean;
+                    preferredTheme: "SYSTEM" | "LIGHT" | "DARK";
+                }, {
+                    id: number;
+                    uuid: string;
+                    user_uid: string;
+                    createdAt: string;
+                    device_id: string;
+                    updatedAt: string;
+                    arePushNotificationsEnabled: boolean;
+                    areTransactionAlertsEnabled: boolean;
+                    areNotificationSoundsEnabled: boolean;
+                    isVibrationEnabled: boolean;
+                    isBiometricAuthEnabled: boolean;
+                    autoLockAfterMinutes: number;
+                    isPrivacySettingsEnabled: boolean;
+                    isAutoSyncEnabled: boolean;
+                    isCloudBackupEnabled: boolean;
+                    canExportData: boolean;
+                    preferredTheme: "SYSTEM" | "LIGHT" | "DARK";
+                }>;
+                400: import("zod").ZodObject<{
+                    error: import("zod").ZodString;
+                    message: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error: string;
+                }, {
+                    message: string;
+                    error: string;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    error: import("zod").ZodString;
+                    message: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error: string;
+                }, {
+                    message: string;
+                    error: string;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+    };
     Webhooks: {
         sumsub: {
             strictStatusCodes: true;
@@ -811,6 +1410,7334 @@ export declare const ApiContracts: {
                     error: string;
                 }>;
             };
+        };
+    };
+    SavingGoals: {
+        createSavingGoal: {
+            summary: "Create a new saving goal";
+            description: "Creates a new saving goal for the authenticated user";
+            method: "POST";
+            body: import("zod").ZodObject<{
+                name: import("zod").ZodString;
+                description: import("zod").ZodOptional<import("zod").ZodString>;
+                target_amount: import("zod").ZodNumber;
+                current_amount: import("zod").ZodOptional<import("zod").ZodNumber>;
+                monthly_contribution: import("zod").ZodOptional<import("zod").ZodNumber>;
+                currency: import("zod").ZodString;
+                target_date: import("zod").ZodString;
+                status: import("zod").ZodOptional<import("zod").ZodEnum<["active", "completed", "paused", "cancelled"]>>;
+                priority: import("zod").ZodOptional<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                color: import("zod").ZodOptional<import("zod").ZodString>;
+                notes: import("zod").ZodOptional<import("zod").ZodString>;
+                is_public: import("zod").ZodOptional<import("zod").ZodBoolean>;
+            }, "strip", import("zod").ZodTypeAny, {
+                name: string;
+                target_amount: number;
+                currency: string;
+                target_date: string;
+                status?: "active" | "completed" | "paused" | "cancelled" | undefined;
+                description?: string | undefined;
+                notes?: string | undefined;
+                current_amount?: number | undefined;
+                monthly_contribution?: number | undefined;
+                priority?: "low" | "medium" | "high" | "urgent" | undefined;
+                color?: string | undefined;
+                is_public?: boolean | undefined;
+            }, {
+                name: string;
+                target_amount: number;
+                currency: string;
+                target_date: string;
+                status?: "active" | "completed" | "paused" | "cancelled" | undefined;
+                description?: string | undefined;
+                notes?: string | undefined;
+                current_amount?: number | undefined;
+                monthly_contribution?: number | undefined;
+                priority?: "low" | "medium" | "high" | "urgent" | undefined;
+                color?: string | undefined;
+                is_public?: boolean | undefined;
+            }>;
+            path: "/api/saving-goals";
+            responses: {
+                201: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        user_uid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        target_amount: import("zod").ZodNumber;
+                        current_amount: import("zod").ZodNumber;
+                        monthly_contribution: import("zod").ZodNumber;
+                        currency: import("zod").ZodString;
+                        target_date: import("zod").ZodString;
+                        status: import("zod").ZodEnum<["active", "completed", "paused", "cancelled"]>;
+                        priority: import("zod").ZodNullable<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                        color: import("zod").ZodNullable<import("zod").ZodString>;
+                        notes: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_public: import("zod").ZodBoolean;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    }, {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    };
+                    success: boolean;
+                }, {
+                    message: string;
+                    data: {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    };
+                    success: boolean;
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getSavingGoals: {
+            query: import("zod").ZodObject<{
+                status: import("zod").ZodOptional<import("zod").ZodEnum<["active", "completed", "paused", "cancelled"]>>;
+                priority: import("zod").ZodOptional<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                is_public: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                limit: import("zod").ZodDefault<import("zod").ZodNumber>;
+                offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+            }, "strip", import("zod").ZodTypeAny, {
+                limit: number;
+                offset: number;
+                status?: "active" | "completed" | "paused" | "cancelled" | undefined;
+                priority?: "low" | "medium" | "high" | "urgent" | undefined;
+                is_public?: boolean | undefined;
+            }, {
+                status?: "active" | "completed" | "paused" | "cancelled" | undefined;
+                limit?: number | undefined;
+                priority?: "low" | "medium" | "high" | "urgent" | undefined;
+                is_public?: boolean | undefined;
+                offset?: number | undefined;
+            }>;
+            summary: "Get all saving goals";
+            description: "Retrieves all saving goals for the authenticated user with optional filtering";
+            method: "GET";
+            path: "/api/saving-goals";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        user_uid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        target_amount: import("zod").ZodNumber;
+                        current_amount: import("zod").ZodNumber;
+                        monthly_contribution: import("zod").ZodNumber;
+                        currency: import("zod").ZodString;
+                        target_date: import("zod").ZodString;
+                        status: import("zod").ZodEnum<["active", "completed", "paused", "cancelled"]>;
+                        priority: import("zod").ZodNullable<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                        color: import("zod").ZodNullable<import("zod").ZodString>;
+                        notes: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_public: import("zod").ZodBoolean;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    }, {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    }>, "many">;
+                    pagination: import("zod").ZodOptional<import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }, {
+                    message: string;
+                    data: {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getSavingGoal: {
+            pathParams: import("zod").ZodObject<{
+                id: import("zod").ZodEffects<import("zod").ZodString, number, string>;
+            }, "strip", import("zod").ZodTypeAny, {
+                id: number;
+            }, {
+                id: string;
+            }>;
+            summary: "Get a specific saving goal";
+            description: "Retrieves a specific saving goal by ID";
+            method: "GET";
+            path: "/api/saving-goals/:id";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        user_uid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        target_amount: import("zod").ZodNumber;
+                        current_amount: import("zod").ZodNumber;
+                        monthly_contribution: import("zod").ZodNumber;
+                        currency: import("zod").ZodString;
+                        target_date: import("zod").ZodString;
+                        status: import("zod").ZodEnum<["active", "completed", "paused", "cancelled"]>;
+                        priority: import("zod").ZodNullable<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                        color: import("zod").ZodNullable<import("zod").ZodString>;
+                        notes: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_public: import("zod").ZodBoolean;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    }, {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    };
+                    success: boolean;
+                }, {
+                    message: string;
+                    data: {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    };
+                    success: boolean;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        updateSavingGoal: {
+            pathParams: import("zod").ZodObject<{
+                id: import("zod").ZodEffects<import("zod").ZodString, number, string>;
+            }, "strip", import("zod").ZodTypeAny, {
+                id: number;
+            }, {
+                id: string;
+            }>;
+            summary: "Update a saving goal";
+            description: "Updates an existing saving goal";
+            method: "PUT";
+            body: import("zod").ZodObject<{
+                name: import("zod").ZodOptional<import("zod").ZodString>;
+                description: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodString>>;
+                target_amount: import("zod").ZodOptional<import("zod").ZodNumber>;
+                current_amount: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodNumber>>;
+                monthly_contribution: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodNumber>>;
+                currency: import("zod").ZodOptional<import("zod").ZodString>;
+                target_date: import("zod").ZodOptional<import("zod").ZodString>;
+                status: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodEnum<["active", "completed", "paused", "cancelled"]>>>;
+                priority: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>>;
+                color: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodString>>;
+                notes: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodString>>;
+                is_public: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodBoolean>>;
+            }, "strip", import("zod").ZodTypeAny, {
+                status?: "active" | "completed" | "paused" | "cancelled" | undefined;
+                description?: string | undefined;
+                notes?: string | undefined;
+                name?: string | undefined;
+                target_amount?: number | undefined;
+                current_amount?: number | undefined;
+                monthly_contribution?: number | undefined;
+                currency?: string | undefined;
+                target_date?: string | undefined;
+                priority?: "low" | "medium" | "high" | "urgent" | undefined;
+                color?: string | undefined;
+                is_public?: boolean | undefined;
+            }, {
+                status?: "active" | "completed" | "paused" | "cancelled" | undefined;
+                description?: string | undefined;
+                notes?: string | undefined;
+                name?: string | undefined;
+                target_amount?: number | undefined;
+                current_amount?: number | undefined;
+                monthly_contribution?: number | undefined;
+                currency?: string | undefined;
+                target_date?: string | undefined;
+                priority?: "low" | "medium" | "high" | "urgent" | undefined;
+                color?: string | undefined;
+                is_public?: boolean | undefined;
+            }>;
+            path: "/api/saving-goals/:id";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        user_uid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        target_amount: import("zod").ZodNumber;
+                        current_amount: import("zod").ZodNumber;
+                        monthly_contribution: import("zod").ZodNumber;
+                        currency: import("zod").ZodString;
+                        target_date: import("zod").ZodString;
+                        status: import("zod").ZodEnum<["active", "completed", "paused", "cancelled"]>;
+                        priority: import("zod").ZodNullable<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                        color: import("zod").ZodNullable<import("zod").ZodString>;
+                        notes: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_public: import("zod").ZodBoolean;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    }, {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    };
+                    success: boolean;
+                }, {
+                    message: string;
+                    data: {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    };
+                    success: boolean;
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        updateProgress: {
+            pathParams: import("zod").ZodObject<{
+                id: import("zod").ZodEffects<import("zod").ZodString, number, string>;
+            }, "strip", import("zod").ZodTypeAny, {
+                id: number;
+            }, {
+                id: string;
+            }>;
+            summary: "Update saving goal progress";
+            description: "Updates the current amount of a saving goal";
+            method: "PATCH";
+            body: import("zod").ZodObject<{
+                current_amount: import("zod").ZodNumber;
+            }, "strip", import("zod").ZodTypeAny, {
+                current_amount: number;
+            }, {
+                current_amount: number;
+            }>;
+            path: "/api/saving-goals/:id/progress";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        user_uid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        target_amount: import("zod").ZodNumber;
+                        current_amount: import("zod").ZodNumber;
+                        monthly_contribution: import("zod").ZodNumber;
+                        currency: import("zod").ZodString;
+                        target_date: import("zod").ZodString;
+                        status: import("zod").ZodEnum<["active", "completed", "paused", "cancelled"]>;
+                        priority: import("zod").ZodNullable<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                        color: import("zod").ZodNullable<import("zod").ZodString>;
+                        notes: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_public: import("zod").ZodBoolean;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    }, {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    };
+                    success: boolean;
+                }, {
+                    message: string;
+                    data: {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    };
+                    success: boolean;
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        deleteSavingGoal: {
+            pathParams: import("zod").ZodObject<{
+                id: import("zod").ZodEffects<import("zod").ZodString, number, string>;
+            }, "strip", import("zod").ZodTypeAny, {
+                id: number;
+            }, {
+                id: string;
+            }>;
+            summary: "Delete a saving goal";
+            description: "Soft deletes a saving goal";
+            method: "DELETE";
+            path: "/api/saving-goals/:id";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    success: boolean;
+                }, {
+                    message: string;
+                    success: boolean;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getPublicSavingGoals: {
+            query: import("zod").ZodObject<{
+                limit: import("zod").ZodDefault<import("zod").ZodNumber>;
+                offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+            }, "strip", import("zod").ZodTypeAny, {
+                limit: number;
+                offset: number;
+            }, {
+                limit?: number | undefined;
+                offset?: number | undefined;
+            }>;
+            summary: "Get public saving goals";
+            description: "Retrieves public saving goals from all users";
+            method: "GET";
+            path: "/api/saving-goals/public";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        user_uid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        target_amount: import("zod").ZodNumber;
+                        current_amount: import("zod").ZodNumber;
+                        monthly_contribution: import("zod").ZodNumber;
+                        currency: import("zod").ZodString;
+                        target_date: import("zod").ZodString;
+                        status: import("zod").ZodEnum<["active", "completed", "paused", "cancelled"]>;
+                        priority: import("zod").ZodNullable<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                        color: import("zod").ZodNullable<import("zod").ZodString>;
+                        notes: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_public: import("zod").ZodBoolean;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    }, {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    }>, "many">;
+                    pagination: import("zod").ZodOptional<import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }, {
+                    message: string;
+                    data: {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getGoalsDueSoon: {
+            query: import("zod").ZodObject<{
+                days: import("zod").ZodDefault<import("zod").ZodNumber>;
+            }, "strip", import("zod").ZodTypeAny, {
+                days: number;
+            }, {
+                days?: number | undefined;
+            }>;
+            summary: "Get goals due soon";
+            description: "Retrieves saving goals that are due within the specified number of days";
+            method: "GET";
+            path: "/api/saving-goals/due-soon";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        user_uid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        target_amount: import("zod").ZodNumber;
+                        current_amount: import("zod").ZodNumber;
+                        monthly_contribution: import("zod").ZodNumber;
+                        currency: import("zod").ZodString;
+                        target_date: import("zod").ZodString;
+                        status: import("zod").ZodEnum<["active", "completed", "paused", "cancelled"]>;
+                        priority: import("zod").ZodNullable<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                        color: import("zod").ZodNullable<import("zod").ZodString>;
+                        notes: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_public: import("zod").ZodBoolean;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    }, {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    }>, "many">;
+                    pagination: import("zod").ZodOptional<import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }, {
+                    message: string;
+                    data: {
+                        status: "active" | "completed" | "paused" | "cancelled";
+                        id: number;
+                        description: string | null;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        name: string;
+                        target_amount: number;
+                        current_amount: number;
+                        monthly_contribution: number;
+                        currency: string;
+                        target_date: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        color: string | null;
+                        is_public: boolean;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+    };
+    Institutions: {
+        createInstitution: {
+            summary: "Create a new financial institution";
+            description: "Creates a new financial institution (admin only)";
+            method: "POST";
+            body: import("zod").ZodObject<{
+                name: import("zod").ZodString;
+                institution_type: import("zod").ZodOptional<import("zod").ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>>;
+                logo_url: import("zod").ZodOptional<import("zod").ZodString>;
+                website: import("zod").ZodOptional<import("zod").ZodString>;
+                country: import("zod").ZodOptional<import("zod").ZodString>;
+                region: import("zod").ZodOptional<import("zod").ZodString>;
+                is_active: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                description: import("zod").ZodOptional<import("zod").ZodString>;
+            }, "strip", import("zod").ZodTypeAny, {
+                name: string;
+                is_active?: boolean | undefined;
+                description?: string | undefined;
+                institution_type?: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech" | undefined;
+                logo_url?: string | undefined;
+                website?: string | undefined;
+                country?: string | undefined;
+                region?: string | undefined;
+            }, {
+                name: string;
+                is_active?: boolean | undefined;
+                description?: string | undefined;
+                institution_type?: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech" | undefined;
+                logo_url?: string | undefined;
+                website?: string | undefined;
+                country?: string | undefined;
+                region?: string | undefined;
+            }>;
+            path: "/api/institutions";
+            responses: {
+                201: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        institution_type: import("zod").ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>;
+                        logo_url: import("zod").ZodNullable<import("zod").ZodString>;
+                        website: import("zod").ZodNullable<import("zod").ZodString>;
+                        country: import("zod").ZodNullable<import("zod").ZodString>;
+                        region: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_active: import("zod").ZodBoolean;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        products: import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodObject<{
+                            id: import("zod").ZodNumber;
+                            name: import("zod").ZodString;
+                            product_type: import("zod").ZodString;
+                            is_active: import("zod").ZodBoolean;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }, {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }>, "many">>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }, {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    };
+                    success: boolean;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    };
+                    success: boolean;
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                409: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getInstitutions: {
+            query: import("zod").ZodObject<{
+                institution_type: import("zod").ZodOptional<import("zod").ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>>;
+                country: import("zod").ZodOptional<import("zod").ZodString>;
+                region: import("zod").ZodOptional<import("zod").ZodString>;
+                search: import("zod").ZodOptional<import("zod").ZodString>;
+                limit: import("zod").ZodDefault<import("zod").ZodNumber>;
+                offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+            }, "strip", import("zod").ZodTypeAny, {
+                limit: number;
+                offset: number;
+                search?: string | undefined;
+                institution_type?: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech" | undefined;
+                country?: string | undefined;
+                region?: string | undefined;
+            }, {
+                limit?: number | undefined;
+                search?: string | undefined;
+                offset?: number | undefined;
+                institution_type?: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech" | undefined;
+                country?: string | undefined;
+                region?: string | undefined;
+            }>;
+            summary: "Get all financial institutions";
+            description: "Retrieves all active financial institutions with optional filtering";
+            method: "GET";
+            path: "/api/institutions";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        institution_type: import("zod").ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>;
+                        logo_url: import("zod").ZodNullable<import("zod").ZodString>;
+                        website: import("zod").ZodNullable<import("zod").ZodString>;
+                        country: import("zod").ZodNullable<import("zod").ZodString>;
+                        region: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_active: import("zod").ZodBoolean;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        products: import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodObject<{
+                            id: import("zod").ZodNumber;
+                            name: import("zod").ZodString;
+                            product_type: import("zod").ZodString;
+                            is_active: import("zod").ZodBoolean;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }, {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }>, "many">>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }, {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }>, "many">;
+                    pagination: import("zod").ZodOptional<import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getInstitution: {
+            pathParams: import("zod").ZodObject<{
+                id: import("zod").ZodEffects<import("zod").ZodString, number, string>;
+            }, "strip", import("zod").ZodTypeAny, {
+                id: number;
+            }, {
+                id: string;
+            }>;
+            summary: "Get a specific financial institution";
+            description: "Retrieves a specific financial institution by ID";
+            method: "GET";
+            path: "/api/institutions/:id";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        institution_type: import("zod").ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>;
+                        logo_url: import("zod").ZodNullable<import("zod").ZodString>;
+                        website: import("zod").ZodNullable<import("zod").ZodString>;
+                        country: import("zod").ZodNullable<import("zod").ZodString>;
+                        region: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_active: import("zod").ZodBoolean;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        products: import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodObject<{
+                            id: import("zod").ZodNumber;
+                            name: import("zod").ZodString;
+                            product_type: import("zod").ZodString;
+                            is_active: import("zod").ZodBoolean;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }, {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }>, "many">>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }, {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    };
+                    success: boolean;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    };
+                    success: boolean;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        updateInstitution: {
+            pathParams: import("zod").ZodObject<{
+                id: import("zod").ZodEffects<import("zod").ZodString, number, string>;
+            }, "strip", import("zod").ZodTypeAny, {
+                id: number;
+            }, {
+                id: string;
+            }>;
+            summary: "Update a financial institution";
+            description: "Updates an existing financial institution (admin only)";
+            method: "PUT";
+            body: import("zod").ZodObject<{
+                name: import("zod").ZodOptional<import("zod").ZodString>;
+                institution_type: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>>>;
+                logo_url: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodString>>;
+                website: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodString>>;
+                country: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodString>>;
+                region: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodString>>;
+                is_active: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodBoolean>>;
+                description: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodString>>;
+            }, "strip", import("zod").ZodTypeAny, {
+                is_active?: boolean | undefined;
+                description?: string | undefined;
+                name?: string | undefined;
+                institution_type?: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech" | undefined;
+                logo_url?: string | undefined;
+                website?: string | undefined;
+                country?: string | undefined;
+                region?: string | undefined;
+            }, {
+                is_active?: boolean | undefined;
+                description?: string | undefined;
+                name?: string | undefined;
+                institution_type?: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech" | undefined;
+                logo_url?: string | undefined;
+                website?: string | undefined;
+                country?: string | undefined;
+                region?: string | undefined;
+            }>;
+            path: "/api/institutions/:id";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        institution_type: import("zod").ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>;
+                        logo_url: import("zod").ZodNullable<import("zod").ZodString>;
+                        website: import("zod").ZodNullable<import("zod").ZodString>;
+                        country: import("zod").ZodNullable<import("zod").ZodString>;
+                        region: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_active: import("zod").ZodBoolean;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        products: import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodObject<{
+                            id: import("zod").ZodNumber;
+                            name: import("zod").ZodString;
+                            product_type: import("zod").ZodString;
+                            is_active: import("zod").ZodBoolean;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }, {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }>, "many">>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }, {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    };
+                    success: boolean;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    };
+                    success: boolean;
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                409: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        deleteInstitution: {
+            pathParams: import("zod").ZodObject<{
+                id: import("zod").ZodEffects<import("zod").ZodString, number, string>;
+            }, "strip", import("zod").ZodTypeAny, {
+                id: number;
+            }, {
+                id: string;
+            }>;
+            summary: "Delete a financial institution";
+            description: "Soft deletes a financial institution (admin only)";
+            method: "DELETE";
+            path: "/api/institutions/:id";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    success: boolean;
+                }, {
+                    message: string;
+                    success: boolean;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        searchInstitutions: {
+            query: import("zod").ZodObject<{
+                q: import("zod").ZodString;
+                limit: import("zod").ZodDefault<import("zod").ZodNumber>;
+                offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+            }, "strip", import("zod").ZodTypeAny, {
+                limit: number;
+                offset: number;
+                q: string;
+            }, {
+                q: string;
+                limit?: number | undefined;
+                offset?: number | undefined;
+            }>;
+            summary: "Search financial institutions";
+            description: "Search financial institutions by name";
+            method: "GET";
+            path: "/api/institutions/search";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        institution_type: import("zod").ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>;
+                        logo_url: import("zod").ZodNullable<import("zod").ZodString>;
+                        website: import("zod").ZodNullable<import("zod").ZodString>;
+                        country: import("zod").ZodNullable<import("zod").ZodString>;
+                        region: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_active: import("zod").ZodBoolean;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        products: import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodObject<{
+                            id: import("zod").ZodNumber;
+                            name: import("zod").ZodString;
+                            product_type: import("zod").ZodString;
+                            is_active: import("zod").ZodBoolean;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }, {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }>, "many">>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }, {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }>, "many">;
+                    pagination: import("zod").ZodOptional<import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getInstitutionsByType: {
+            pathParams: import("zod").ZodObject<{
+                type: import("zod").ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>;
+            }, "strip", import("zod").ZodTypeAny, {
+                type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+            }, {
+                type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+            }>;
+            query: import("zod").ZodObject<{
+                limit: import("zod").ZodDefault<import("zod").ZodNumber>;
+                offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+            }, "strip", import("zod").ZodTypeAny, {
+                limit: number;
+                offset: number;
+            }, {
+                limit?: number | undefined;
+                offset?: number | undefined;
+            }>;
+            summary: "Get institutions by type";
+            description: "Retrieves financial institutions filtered by type";
+            method: "GET";
+            path: "/api/institutions/type/:type";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        institution_type: import("zod").ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>;
+                        logo_url: import("zod").ZodNullable<import("zod").ZodString>;
+                        website: import("zod").ZodNullable<import("zod").ZodString>;
+                        country: import("zod").ZodNullable<import("zod").ZodString>;
+                        region: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_active: import("zod").ZodBoolean;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        products: import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodObject<{
+                            id: import("zod").ZodNumber;
+                            name: import("zod").ZodString;
+                            product_type: import("zod").ZodString;
+                            is_active: import("zod").ZodBoolean;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }, {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }>, "many">>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }, {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }>, "many">;
+                    pagination: import("zod").ZodOptional<import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getInstitutionsWithProducts: {
+            query: import("zod").ZodObject<{
+                limit: import("zod").ZodDefault<import("zod").ZodNumber>;
+                offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+            }, "strip", import("zod").ZodTypeAny, {
+                limit: number;
+                offset: number;
+            }, {
+                limit?: number | undefined;
+                offset?: number | undefined;
+            }>;
+            summary: "Get institutions with products";
+            description: "Retrieves financial institutions that have active products";
+            method: "GET";
+            path: "/api/institutions/with-products";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        institution_type: import("zod").ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>;
+                        logo_url: import("zod").ZodNullable<import("zod").ZodString>;
+                        website: import("zod").ZodNullable<import("zod").ZodString>;
+                        country: import("zod").ZodNullable<import("zod").ZodString>;
+                        region: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_active: import("zod").ZodBoolean;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        products: import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodObject<{
+                            id: import("zod").ZodNumber;
+                            name: import("zod").ZodString;
+                            product_type: import("zod").ZodString;
+                            is_active: import("zod").ZodBoolean;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }, {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }>, "many">>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }, {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }>, "many">;
+                    pagination: import("zod").ZodOptional<import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        description: string | null;
+                        uuid: string;
+                        name: string;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
+                        logo_url: string | null;
+                        website: string | null;
+                        country: string | null;
+                        region: string | null;
+                        products?: {
+                            id: number;
+                            is_active: boolean;
+                            name: string;
+                            product_type: string;
+                        }[] | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+    };
+    Products: {
+        createProduct: {
+            summary: "Create a new financial product";
+            description: "Creates a new financial product (admin only)";
+            method: "POST";
+            body: import("zod").ZodObject<{
+                name: import("zod").ZodString;
+                product_type: import("zod").ZodOptional<import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
+                institution_id: import("zod").ZodNumber;
+                interest_rate: import("zod").ZodOptional<import("zod").ZodNumber>;
+                annual_fee: import("zod").ZodOptional<import("zod").ZodNumber>;
+                minimum_balance: import("zod").ZodOptional<import("zod").ZodNumber>;
+                credit_score_requirement: import("zod").ZodOptional<import("zod").ZodEnum<["excellent", "good", "fair", "poor"]>>;
+                benefits: import("zod").ZodOptional<import("zod").ZodString>;
+                features: import("zod").ZodOptional<import("zod").ZodString>;
+                terms_conditions: import("zod").ZodOptional<import("zod").ZodString>;
+                is_spotlight: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                is_active: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                currency: import("zod").ZodOptional<import("zod").ZodString>;
+                valid_from: import("zod").ZodOptional<import("zod").ZodString>;
+                valid_until: import("zod").ZodOptional<import("zod").ZodString>;
+            }, "strip", import("zod").ZodTypeAny, {
+                name: string;
+                institution_id: number;
+                is_active?: boolean | undefined;
+                currency?: string | undefined;
+                product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
+                interest_rate?: number | undefined;
+                annual_fee?: number | undefined;
+                minimum_balance?: number | undefined;
+                credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
+                benefits?: string | undefined;
+                features?: string | undefined;
+                terms_conditions?: string | undefined;
+                is_spotlight?: boolean | undefined;
+                valid_from?: string | undefined;
+                valid_until?: string | undefined;
+            }, {
+                name: string;
+                institution_id: number;
+                is_active?: boolean | undefined;
+                currency?: string | undefined;
+                product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
+                interest_rate?: number | undefined;
+                annual_fee?: number | undefined;
+                minimum_balance?: number | undefined;
+                credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
+                benefits?: string | undefined;
+                features?: string | undefined;
+                terms_conditions?: string | undefined;
+                is_spotlight?: boolean | undefined;
+                valid_from?: string | undefined;
+                valid_until?: string | undefined;
+            }>;
+            path: "/api/products";
+            responses: {
+                201: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        institution_id: import("zod").ZodNumber;
+                        interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        annual_fee: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        minimum_balance: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        credit_score_requirement: import("zod").ZodNullable<import("zod").ZodEnum<["excellent", "good", "fair", "poor"]>>;
+                        benefits: import("zod").ZodNullable<import("zod").ZodString>;
+                        features: import("zod").ZodNullable<import("zod").ZodString>;
+                        terms_conditions: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_spotlight: import("zod").ZodBoolean;
+                        is_active: import("zod").ZodBoolean;
+                        currency: import("zod").ZodNullable<import("zod").ZodString>;
+                        valid_from: import("zod").ZodNullable<import("zod").ZodString>;
+                        valid_until: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        institution: import("zod").ZodOptional<import("zod").ZodObject<{
+                            id: import("zod").ZodNumber;
+                            name: import("zod").ZodString;
+                            institution_type: import("zod").ZodString;
+                            logo_url: import("zod").ZodNullable<import("zod").ZodString>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        }, {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        }>>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    };
+                    success: boolean;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    };
+                    success: boolean;
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                409: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getProducts: {
+            query: import("zod").ZodObject<{
+                product_type: import("zod").ZodOptional<import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
+                institution_id: import("zod").ZodOptional<import("zod").ZodNumber>;
+                credit_score_requirement: import("zod").ZodOptional<import("zod").ZodEnum<["excellent", "good", "fair", "poor"]>>;
+                is_spotlight: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                search: import("zod").ZodOptional<import("zod").ZodString>;
+                limit: import("zod").ZodDefault<import("zod").ZodNumber>;
+                offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+            }, "strip", import("zod").ZodTypeAny, {
+                limit: number;
+                offset: number;
+                search?: string | undefined;
+                product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
+                institution_id?: number | undefined;
+                credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
+                is_spotlight?: boolean | undefined;
+            }, {
+                limit?: number | undefined;
+                search?: string | undefined;
+                offset?: number | undefined;
+                product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
+                institution_id?: number | undefined;
+                credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
+                is_spotlight?: boolean | undefined;
+            }>;
+            summary: "Get all financial products";
+            description: "Retrieves all active financial products with optional filtering";
+            method: "GET";
+            path: "/api/products";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        institution_id: import("zod").ZodNumber;
+                        interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        annual_fee: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        minimum_balance: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        credit_score_requirement: import("zod").ZodNullable<import("zod").ZodEnum<["excellent", "good", "fair", "poor"]>>;
+                        benefits: import("zod").ZodNullable<import("zod").ZodString>;
+                        features: import("zod").ZodNullable<import("zod").ZodString>;
+                        terms_conditions: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_spotlight: import("zod").ZodBoolean;
+                        is_active: import("zod").ZodBoolean;
+                        currency: import("zod").ZodNullable<import("zod").ZodString>;
+                        valid_from: import("zod").ZodNullable<import("zod").ZodString>;
+                        valid_until: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        institution: import("zod").ZodOptional<import("zod").ZodObject<{
+                            id: import("zod").ZodNumber;
+                            name: import("zod").ZodString;
+                            institution_type: import("zod").ZodString;
+                            logo_url: import("zod").ZodNullable<import("zod").ZodString>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        }, {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        }>>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }>, "many">;
+                    pagination: import("zod").ZodOptional<import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getProduct: {
+            pathParams: import("zod").ZodObject<{
+                id: import("zod").ZodEffects<import("zod").ZodString, number, string>;
+            }, "strip", import("zod").ZodTypeAny, {
+                id: number;
+            }, {
+                id: string;
+            }>;
+            summary: "Get a specific financial product";
+            description: "Retrieves a specific financial product by ID";
+            method: "GET";
+            path: "/api/products/:id";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        institution_id: import("zod").ZodNumber;
+                        interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        annual_fee: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        minimum_balance: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        credit_score_requirement: import("zod").ZodNullable<import("zod").ZodEnum<["excellent", "good", "fair", "poor"]>>;
+                        benefits: import("zod").ZodNullable<import("zod").ZodString>;
+                        features: import("zod").ZodNullable<import("zod").ZodString>;
+                        terms_conditions: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_spotlight: import("zod").ZodBoolean;
+                        is_active: import("zod").ZodBoolean;
+                        currency: import("zod").ZodNullable<import("zod").ZodString>;
+                        valid_from: import("zod").ZodNullable<import("zod").ZodString>;
+                        valid_until: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        institution: import("zod").ZodOptional<import("zod").ZodObject<{
+                            id: import("zod").ZodNumber;
+                            name: import("zod").ZodString;
+                            institution_type: import("zod").ZodString;
+                            logo_url: import("zod").ZodNullable<import("zod").ZodString>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        }, {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        }>>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    };
+                    success: boolean;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    };
+                    success: boolean;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        updateProduct: {
+            pathParams: import("zod").ZodObject<{
+                id: import("zod").ZodEffects<import("zod").ZodString, number, string>;
+            }, "strip", import("zod").ZodTypeAny, {
+                id: number;
+            }, {
+                id: string;
+            }>;
+            summary: "Update a financial product";
+            description: "Updates an existing financial product (admin only)";
+            method: "PUT";
+            body: import("zod").ZodObject<{
+                name: import("zod").ZodOptional<import("zod").ZodString>;
+                product_type: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>>;
+                institution_id: import("zod").ZodOptional<import("zod").ZodNumber>;
+                interest_rate: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodNumber>>;
+                annual_fee: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodNumber>>;
+                minimum_balance: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodNumber>>;
+                credit_score_requirement: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodEnum<["excellent", "good", "fair", "poor"]>>>;
+                benefits: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodString>>;
+                features: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodString>>;
+                terms_conditions: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodString>>;
+                is_spotlight: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodBoolean>>;
+                is_active: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodBoolean>>;
+                currency: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodString>>;
+                valid_from: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodString>>;
+                valid_until: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodString>>;
+            }, "strip", import("zod").ZodTypeAny, {
+                is_active?: boolean | undefined;
+                name?: string | undefined;
+                currency?: string | undefined;
+                product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
+                institution_id?: number | undefined;
+                interest_rate?: number | undefined;
+                annual_fee?: number | undefined;
+                minimum_balance?: number | undefined;
+                credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
+                benefits?: string | undefined;
+                features?: string | undefined;
+                terms_conditions?: string | undefined;
+                is_spotlight?: boolean | undefined;
+                valid_from?: string | undefined;
+                valid_until?: string | undefined;
+            }, {
+                is_active?: boolean | undefined;
+                name?: string | undefined;
+                currency?: string | undefined;
+                product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
+                institution_id?: number | undefined;
+                interest_rate?: number | undefined;
+                annual_fee?: number | undefined;
+                minimum_balance?: number | undefined;
+                credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
+                benefits?: string | undefined;
+                features?: string | undefined;
+                terms_conditions?: string | undefined;
+                is_spotlight?: boolean | undefined;
+                valid_from?: string | undefined;
+                valid_until?: string | undefined;
+            }>;
+            path: "/api/products/:id";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        institution_id: import("zod").ZodNumber;
+                        interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        annual_fee: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        minimum_balance: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        credit_score_requirement: import("zod").ZodNullable<import("zod").ZodEnum<["excellent", "good", "fair", "poor"]>>;
+                        benefits: import("zod").ZodNullable<import("zod").ZodString>;
+                        features: import("zod").ZodNullable<import("zod").ZodString>;
+                        terms_conditions: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_spotlight: import("zod").ZodBoolean;
+                        is_active: import("zod").ZodBoolean;
+                        currency: import("zod").ZodNullable<import("zod").ZodString>;
+                        valid_from: import("zod").ZodNullable<import("zod").ZodString>;
+                        valid_until: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        institution: import("zod").ZodOptional<import("zod").ZodObject<{
+                            id: import("zod").ZodNumber;
+                            name: import("zod").ZodString;
+                            institution_type: import("zod").ZodString;
+                            logo_url: import("zod").ZodNullable<import("zod").ZodString>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        }, {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        }>>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    };
+                    success: boolean;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    };
+                    success: boolean;
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                409: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        deleteProduct: {
+            pathParams: import("zod").ZodObject<{
+                id: import("zod").ZodEffects<import("zod").ZodString, number, string>;
+            }, "strip", import("zod").ZodTypeAny, {
+                id: number;
+            }, {
+                id: string;
+            }>;
+            summary: "Delete a financial product";
+            description: "Soft deletes a financial product (admin only)";
+            method: "DELETE";
+            path: "/api/products/:id";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    success: boolean;
+                }, {
+                    message: string;
+                    success: boolean;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        searchProducts: {
+            query: import("zod").ZodObject<{
+                q: import("zod").ZodString;
+                limit: import("zod").ZodDefault<import("zod").ZodNumber>;
+                offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+            }, "strip", import("zod").ZodTypeAny, {
+                limit: number;
+                offset: number;
+                q: string;
+            }, {
+                q: string;
+                limit?: number | undefined;
+                offset?: number | undefined;
+            }>;
+            summary: "Search financial products";
+            description: "Search financial products by name";
+            method: "GET";
+            path: "/api/products/search";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        institution_id: import("zod").ZodNumber;
+                        interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        annual_fee: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        minimum_balance: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        credit_score_requirement: import("zod").ZodNullable<import("zod").ZodEnum<["excellent", "good", "fair", "poor"]>>;
+                        benefits: import("zod").ZodNullable<import("zod").ZodString>;
+                        features: import("zod").ZodNullable<import("zod").ZodString>;
+                        terms_conditions: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_spotlight: import("zod").ZodBoolean;
+                        is_active: import("zod").ZodBoolean;
+                        currency: import("zod").ZodNullable<import("zod").ZodString>;
+                        valid_from: import("zod").ZodNullable<import("zod").ZodString>;
+                        valid_until: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        institution: import("zod").ZodOptional<import("zod").ZodObject<{
+                            id: import("zod").ZodNumber;
+                            name: import("zod").ZodString;
+                            institution_type: import("zod").ZodString;
+                            logo_url: import("zod").ZodNullable<import("zod").ZodString>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        }, {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        }>>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }>, "many">;
+                    pagination: import("zod").ZodOptional<import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getProductsByType: {
+            pathParams: import("zod").ZodObject<{
+                type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+            }, "strip", import("zod").ZodTypeAny, {
+                type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+            }, {
+                type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+            }>;
+            query: import("zod").ZodObject<{
+                limit: import("zod").ZodDefault<import("zod").ZodNumber>;
+                offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+            }, "strip", import("zod").ZodTypeAny, {
+                limit: number;
+                offset: number;
+            }, {
+                limit?: number | undefined;
+                offset?: number | undefined;
+            }>;
+            summary: "Get products by type";
+            description: "Retrieves financial products filtered by type";
+            method: "GET";
+            path: "/api/products/type/:type";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        institution_id: import("zod").ZodNumber;
+                        interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        annual_fee: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        minimum_balance: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        credit_score_requirement: import("zod").ZodNullable<import("zod").ZodEnum<["excellent", "good", "fair", "poor"]>>;
+                        benefits: import("zod").ZodNullable<import("zod").ZodString>;
+                        features: import("zod").ZodNullable<import("zod").ZodString>;
+                        terms_conditions: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_spotlight: import("zod").ZodBoolean;
+                        is_active: import("zod").ZodBoolean;
+                        currency: import("zod").ZodNullable<import("zod").ZodString>;
+                        valid_from: import("zod").ZodNullable<import("zod").ZodString>;
+                        valid_until: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        institution: import("zod").ZodOptional<import("zod").ZodObject<{
+                            id: import("zod").ZodNumber;
+                            name: import("zod").ZodString;
+                            institution_type: import("zod").ZodString;
+                            logo_url: import("zod").ZodNullable<import("zod").ZodString>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        }, {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        }>>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }>, "many">;
+                    pagination: import("zod").ZodOptional<import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getProductsByInstitution: {
+            pathParams: import("zod").ZodObject<{
+                institutionId: import("zod").ZodEffects<import("zod").ZodString, number, string>;
+            }, "strip", import("zod").ZodTypeAny, {
+                institutionId: number;
+            }, {
+                institutionId: string;
+            }>;
+            query: import("zod").ZodObject<{
+                limit: import("zod").ZodDefault<import("zod").ZodNumber>;
+                offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+            }, "strip", import("zod").ZodTypeAny, {
+                limit: number;
+                offset: number;
+            }, {
+                limit?: number | undefined;
+                offset?: number | undefined;
+            }>;
+            summary: "Get products by institution";
+            description: "Retrieves financial products for a specific institution";
+            method: "GET";
+            path: "/api/products/institution/:institutionId";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        institution_id: import("zod").ZodNumber;
+                        interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        annual_fee: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        minimum_balance: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        credit_score_requirement: import("zod").ZodNullable<import("zod").ZodEnum<["excellent", "good", "fair", "poor"]>>;
+                        benefits: import("zod").ZodNullable<import("zod").ZodString>;
+                        features: import("zod").ZodNullable<import("zod").ZodString>;
+                        terms_conditions: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_spotlight: import("zod").ZodBoolean;
+                        is_active: import("zod").ZodBoolean;
+                        currency: import("zod").ZodNullable<import("zod").ZodString>;
+                        valid_from: import("zod").ZodNullable<import("zod").ZodString>;
+                        valid_until: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        institution: import("zod").ZodOptional<import("zod").ZodObject<{
+                            id: import("zod").ZodNumber;
+                            name: import("zod").ZodString;
+                            institution_type: import("zod").ZodString;
+                            logo_url: import("zod").ZodNullable<import("zod").ZodString>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        }, {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        }>>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }>, "many">;
+                    pagination: import("zod").ZodOptional<import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getSpotlightProducts: {
+            query: import("zod").ZodObject<{
+                limit: import("zod").ZodDefault<import("zod").ZodNumber>;
+                offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+            }, "strip", import("zod").ZodTypeAny, {
+                limit: number;
+                offset: number;
+            }, {
+                limit?: number | undefined;
+                offset?: number | undefined;
+            }>;
+            summary: "Get spotlight products";
+            description: "Retrieves featured/spotlight financial products";
+            method: "GET";
+            path: "/api/products/spotlight";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        institution_id: import("zod").ZodNumber;
+                        interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        annual_fee: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        minimum_balance: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        credit_score_requirement: import("zod").ZodNullable<import("zod").ZodEnum<["excellent", "good", "fair", "poor"]>>;
+                        benefits: import("zod").ZodNullable<import("zod").ZodString>;
+                        features: import("zod").ZodNullable<import("zod").ZodString>;
+                        terms_conditions: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_spotlight: import("zod").ZodBoolean;
+                        is_active: import("zod").ZodBoolean;
+                        currency: import("zod").ZodNullable<import("zod").ZodString>;
+                        valid_from: import("zod").ZodNullable<import("zod").ZodString>;
+                        valid_until: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        institution: import("zod").ZodOptional<import("zod").ZodObject<{
+                            id: import("zod").ZodNumber;
+                            name: import("zod").ZodString;
+                            institution_type: import("zod").ZodString;
+                            logo_url: import("zod").ZodNullable<import("zod").ZodString>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        }, {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        }>>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }>, "many">;
+                    pagination: import("zod").ZodOptional<import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getNoAnnualFeeProducts: {
+            query: import("zod").ZodObject<{
+                limit: import("zod").ZodDefault<import("zod").ZodNumber>;
+                offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+            }, "strip", import("zod").ZodTypeAny, {
+                limit: number;
+                offset: number;
+            }, {
+                limit?: number | undefined;
+                offset?: number | undefined;
+            }>;
+            summary: "Get products with no annual fee";
+            description: "Retrieves financial products with no annual fee";
+            method: "GET";
+            path: "/api/products/no-annual-fee";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        institution_id: import("zod").ZodNumber;
+                        interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        annual_fee: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        minimum_balance: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        credit_score_requirement: import("zod").ZodNullable<import("zod").ZodEnum<["excellent", "good", "fair", "poor"]>>;
+                        benefits: import("zod").ZodNullable<import("zod").ZodString>;
+                        features: import("zod").ZodNullable<import("zod").ZodString>;
+                        terms_conditions: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_spotlight: import("zod").ZodBoolean;
+                        is_active: import("zod").ZodBoolean;
+                        currency: import("zod").ZodNullable<import("zod").ZodString>;
+                        valid_from: import("zod").ZodNullable<import("zod").ZodString>;
+                        valid_until: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        institution: import("zod").ZodOptional<import("zod").ZodObject<{
+                            id: import("zod").ZodNumber;
+                            name: import("zod").ZodString;
+                            institution_type: import("zod").ZodString;
+                            logo_url: import("zod").ZodNullable<import("zod").ZodString>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        }, {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        }>>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }>, "many">;
+                    pagination: import("zod").ZodOptional<import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getProductsByCreditScore: {
+            pathParams: import("zod").ZodObject<{
+                requirement: import("zod").ZodEnum<["excellent", "good", "fair", "poor"]>;
+            }, "strip", import("zod").ZodTypeAny, {
+                requirement: "excellent" | "good" | "fair" | "poor";
+            }, {
+                requirement: "excellent" | "good" | "fair" | "poor";
+            }>;
+            query: import("zod").ZodObject<{
+                limit: import("zod").ZodDefault<import("zod").ZodNumber>;
+                offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+            }, "strip", import("zod").ZodTypeAny, {
+                limit: number;
+                offset: number;
+            }, {
+                limit?: number | undefined;
+                offset?: number | undefined;
+            }>;
+            summary: "Get products by credit score requirement";
+            description: "Retrieves financial products filtered by credit score requirement";
+            method: "GET";
+            path: "/api/products/credit-score/:requirement";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        institution_id: import("zod").ZodNumber;
+                        interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        annual_fee: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        minimum_balance: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        credit_score_requirement: import("zod").ZodNullable<import("zod").ZodEnum<["excellent", "good", "fair", "poor"]>>;
+                        benefits: import("zod").ZodNullable<import("zod").ZodString>;
+                        features: import("zod").ZodNullable<import("zod").ZodString>;
+                        terms_conditions: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_spotlight: import("zod").ZodBoolean;
+                        is_active: import("zod").ZodBoolean;
+                        currency: import("zod").ZodNullable<import("zod").ZodString>;
+                        valid_from: import("zod").ZodNullable<import("zod").ZodString>;
+                        valid_until: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        institution: import("zod").ZodOptional<import("zod").ZodObject<{
+                            id: import("zod").ZodNumber;
+                            name: import("zod").ZodString;
+                            institution_type: import("zod").ZodString;
+                            logo_url: import("zod").ZodNullable<import("zod").ZodString>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        }, {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        }>>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }>, "many">;
+                    pagination: import("zod").ZodOptional<import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        name: string;
+                        currency: string | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        interest_rate: number | null;
+                        annual_fee: number | null;
+                        minimum_balance: number | null;
+                        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
+                        benefits: string | null;
+                        features: string | null;
+                        terms_conditions: string | null;
+                        is_spotlight: boolean;
+                        valid_from: string | null;
+                        valid_until: string | null;
+                        institution?: {
+                            id: number;
+                            name: string;
+                            institution_type: string;
+                            logo_url: string | null;
+                        } | undefined;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+    };
+    PaymentReminders: {
+        createPaymentReminder: {
+            summary: "Create a new payment reminder";
+            description: "Creates a new payment reminder for the authenticated user";
+            method: "POST";
+            body: import("zod").ZodObject<{
+                user_connection_id: import("zod").ZodOptional<import("zod").ZodNumber>;
+                title: import("zod").ZodString;
+                description: import("zod").ZodOptional<import("zod").ZodString>;
+                reminder_type: import("zod").ZodOptional<import("zod").ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>>;
+                amount: import("zod").ZodOptional<import("zod").ZodNumber>;
+                currency: import("zod").ZodString;
+                due_date: import("zod").ZodString;
+                reminder_date: import("zod").ZodOptional<import("zod").ZodString>;
+                reminder_status: import("zod").ZodOptional<import("zod").ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>>;
+                priority: import("zod").ZodOptional<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                is_recurring: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                recurrence_pattern: import("zod").ZodOptional<import("zod").ZodString>;
+                notification_settings: import("zod").ZodOptional<import("zod").ZodAny>;
+                notes: import("zod").ZodOptional<import("zod").ZodString>;
+            }, "strip", import("zod").ZodTypeAny, {
+                title: string;
+                currency: string;
+                due_date: string;
+                description?: string | undefined;
+                notes?: string | undefined;
+                priority?: "low" | "medium" | "high" | "urgent" | undefined;
+                user_connection_id?: number | undefined;
+                reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
+                amount?: number | undefined;
+                reminder_date?: string | undefined;
+                reminder_status?: "pending" | "completed" | "sent" | "acknowledged" | "overdue" | undefined;
+                is_recurring?: boolean | undefined;
+                recurrence_pattern?: string | undefined;
+                notification_settings?: any;
+            }, {
+                title: string;
+                currency: string;
+                due_date: string;
+                description?: string | undefined;
+                notes?: string | undefined;
+                priority?: "low" | "medium" | "high" | "urgent" | undefined;
+                user_connection_id?: number | undefined;
+                reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
+                amount?: number | undefined;
+                reminder_date?: string | undefined;
+                reminder_status?: "pending" | "completed" | "sent" | "acknowledged" | "overdue" | undefined;
+                is_recurring?: boolean | undefined;
+                recurrence_pattern?: string | undefined;
+                notification_settings?: any;
+            }>;
+            path: "/api/payment-reminders";
+            responses: {
+                201: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        user_uid: import("zod").ZodString;
+                        user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        title: import("zod").ZodString;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_type: import("zod").ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>;
+                        amount: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        currency: import("zod").ZodString;
+                        due_date: import("zod").ZodString;
+                        reminder_date: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_status: import("zod").ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>;
+                        priority: import("zod").ZodNullable<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                        is_recurring: import("zod").ZodBoolean;
+                        recurrence_pattern: import("zod").ZodNullable<import("zod").ZodString>;
+                        notification_settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                        notes: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    };
+                    success: boolean;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    };
+                    success: boolean;
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getPaymentReminders: {
+            query: import("zod").ZodObject<{
+                reminder_status: import("zod").ZodOptional<import("zod").ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>>;
+                reminder_type: import("zod").ZodOptional<import("zod").ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>>;
+                priority: import("zod").ZodOptional<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                is_recurring: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                search: import("zod").ZodOptional<import("zod").ZodString>;
+                limit: import("zod").ZodDefault<import("zod").ZodNumber>;
+                offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+            }, "strip", import("zod").ZodTypeAny, {
+                limit: number;
+                offset: number;
+                search?: string | undefined;
+                priority?: "low" | "medium" | "high" | "urgent" | undefined;
+                reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
+                reminder_status?: "pending" | "completed" | "sent" | "acknowledged" | "overdue" | undefined;
+                is_recurring?: boolean | undefined;
+            }, {
+                limit?: number | undefined;
+                search?: string | undefined;
+                priority?: "low" | "medium" | "high" | "urgent" | undefined;
+                offset?: number | undefined;
+                reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
+                reminder_status?: "pending" | "completed" | "sent" | "acknowledged" | "overdue" | undefined;
+                is_recurring?: boolean | undefined;
+            }>;
+            summary: "Get all payment reminders";
+            description: "Retrieves all payment reminders for the authenticated user with optional filtering";
+            method: "GET";
+            path: "/api/payment-reminders";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        user_uid: import("zod").ZodString;
+                        user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        title: import("zod").ZodString;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_type: import("zod").ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>;
+                        amount: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        currency: import("zod").ZodString;
+                        due_date: import("zod").ZodString;
+                        reminder_date: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_status: import("zod").ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>;
+                        priority: import("zod").ZodNullable<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                        is_recurring: import("zod").ZodBoolean;
+                        recurrence_pattern: import("zod").ZodNullable<import("zod").ZodString>;
+                        notification_settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                        notes: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }>, "many">;
+                    pagination: import("zod").ZodOptional<import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getPaymentReminder: {
+            pathParams: import("zod").ZodObject<{
+                id: import("zod").ZodEffects<import("zod").ZodString, number, string>;
+            }, "strip", import("zod").ZodTypeAny, {
+                id: number;
+            }, {
+                id: string;
+            }>;
+            summary: "Get a specific payment reminder";
+            description: "Retrieves a specific payment reminder by ID";
+            method: "GET";
+            path: "/api/payment-reminders/:id";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        user_uid: import("zod").ZodString;
+                        user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        title: import("zod").ZodString;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_type: import("zod").ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>;
+                        amount: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        currency: import("zod").ZodString;
+                        due_date: import("zod").ZodString;
+                        reminder_date: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_status: import("zod").ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>;
+                        priority: import("zod").ZodNullable<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                        is_recurring: import("zod").ZodBoolean;
+                        recurrence_pattern: import("zod").ZodNullable<import("zod").ZodString>;
+                        notification_settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                        notes: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    };
+                    success: boolean;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    };
+                    success: boolean;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        updatePaymentReminder: {
+            pathParams: import("zod").ZodObject<{
+                id: import("zod").ZodEffects<import("zod").ZodString, number, string>;
+            }, "strip", import("zod").ZodTypeAny, {
+                id: number;
+            }, {
+                id: string;
+            }>;
+            summary: "Update a payment reminder";
+            description: "Updates an existing payment reminder";
+            method: "PUT";
+            body: import("zod").ZodObject<{
+                user_connection_id: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodNumber>>;
+                title: import("zod").ZodOptional<import("zod").ZodString>;
+                description: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodString>>;
+                reminder_type: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>>>;
+                amount: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodNumber>>;
+                currency: import("zod").ZodOptional<import("zod").ZodString>;
+                due_date: import("zod").ZodOptional<import("zod").ZodString>;
+                reminder_date: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodString>>;
+                reminder_status: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>>>;
+                priority: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>>;
+                is_recurring: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodBoolean>>;
+                recurrence_pattern: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodString>>;
+                notification_settings: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodAny>>;
+                notes: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodString>>;
+            }, "strip", import("zod").ZodTypeAny, {
+                description?: string | undefined;
+                title?: string | undefined;
+                notes?: string | undefined;
+                currency?: string | undefined;
+                priority?: "low" | "medium" | "high" | "urgent" | undefined;
+                user_connection_id?: number | undefined;
+                reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
+                amount?: number | undefined;
+                due_date?: string | undefined;
+                reminder_date?: string | undefined;
+                reminder_status?: "pending" | "completed" | "sent" | "acknowledged" | "overdue" | undefined;
+                is_recurring?: boolean | undefined;
+                recurrence_pattern?: string | undefined;
+                notification_settings?: any;
+            }, {
+                description?: string | undefined;
+                title?: string | undefined;
+                notes?: string | undefined;
+                currency?: string | undefined;
+                priority?: "low" | "medium" | "high" | "urgent" | undefined;
+                user_connection_id?: number | undefined;
+                reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
+                amount?: number | undefined;
+                due_date?: string | undefined;
+                reminder_date?: string | undefined;
+                reminder_status?: "pending" | "completed" | "sent" | "acknowledged" | "overdue" | undefined;
+                is_recurring?: boolean | undefined;
+                recurrence_pattern?: string | undefined;
+                notification_settings?: any;
+            }>;
+            path: "/api/payment-reminders/:id";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        user_uid: import("zod").ZodString;
+                        user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        title: import("zod").ZodString;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_type: import("zod").ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>;
+                        amount: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        currency: import("zod").ZodString;
+                        due_date: import("zod").ZodString;
+                        reminder_date: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_status: import("zod").ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>;
+                        priority: import("zod").ZodNullable<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                        is_recurring: import("zod").ZodBoolean;
+                        recurrence_pattern: import("zod").ZodNullable<import("zod").ZodString>;
+                        notification_settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                        notes: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    };
+                    success: boolean;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    };
+                    success: boolean;
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        deletePaymentReminder: {
+            pathParams: import("zod").ZodObject<{
+                id: import("zod").ZodEffects<import("zod").ZodString, number, string>;
+            }, "strip", import("zod").ZodTypeAny, {
+                id: number;
+            }, {
+                id: string;
+            }>;
+            summary: "Delete a payment reminder";
+            description: "Soft deletes a payment reminder";
+            method: "DELETE";
+            path: "/api/payment-reminders/:id";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    success: boolean;
+                }, {
+                    message: string;
+                    success: boolean;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        markAsCompleted: {
+            pathParams: import("zod").ZodObject<{
+                id: import("zod").ZodEffects<import("zod").ZodString, number, string>;
+            }, "strip", import("zod").ZodTypeAny, {
+                id: number;
+            }, {
+                id: string;
+            }>;
+            summary: "Mark payment reminder as completed";
+            description: "Marks a payment reminder as completed";
+            method: "PATCH";
+            body: import("zod").ZodObject<{}, "strip", import("zod").ZodTypeAny, {}, {}>;
+            path: "/api/payment-reminders/:id/complete";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        user_uid: import("zod").ZodString;
+                        user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        title: import("zod").ZodString;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_type: import("zod").ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>;
+                        amount: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        currency: import("zod").ZodString;
+                        due_date: import("zod").ZodString;
+                        reminder_date: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_status: import("zod").ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>;
+                        priority: import("zod").ZodNullable<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                        is_recurring: import("zod").ZodBoolean;
+                        recurrence_pattern: import("zod").ZodNullable<import("zod").ZodString>;
+                        notification_settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                        notes: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    };
+                    success: boolean;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    };
+                    success: boolean;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        markAsAcknowledged: {
+            pathParams: import("zod").ZodObject<{
+                id: import("zod").ZodEffects<import("zod").ZodString, number, string>;
+            }, "strip", import("zod").ZodTypeAny, {
+                id: number;
+            }, {
+                id: string;
+            }>;
+            summary: "Mark payment reminder as acknowledged";
+            description: "Marks a payment reminder as acknowledged";
+            method: "PATCH";
+            body: import("zod").ZodObject<{}, "strip", import("zod").ZodTypeAny, {}, {}>;
+            path: "/api/payment-reminders/:id/acknowledge";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        user_uid: import("zod").ZodString;
+                        user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        title: import("zod").ZodString;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_type: import("zod").ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>;
+                        amount: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        currency: import("zod").ZodString;
+                        due_date: import("zod").ZodString;
+                        reminder_date: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_status: import("zod").ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>;
+                        priority: import("zod").ZodNullable<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                        is_recurring: import("zod").ZodBoolean;
+                        recurrence_pattern: import("zod").ZodNullable<import("zod").ZodString>;
+                        notification_settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                        notes: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    };
+                    success: boolean;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    };
+                    success: boolean;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getOverdueReminders: {
+            summary: "Get overdue payment reminders";
+            description: "Retrieves all overdue payment reminders for the authenticated user";
+            method: "GET";
+            path: "/api/payment-reminders/overdue";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        user_uid: import("zod").ZodString;
+                        user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        title: import("zod").ZodString;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_type: import("zod").ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>;
+                        amount: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        currency: import("zod").ZodString;
+                        due_date: import("zod").ZodString;
+                        reminder_date: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_status: import("zod").ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>;
+                        priority: import("zod").ZodNullable<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                        is_recurring: import("zod").ZodBoolean;
+                        recurrence_pattern: import("zod").ZodNullable<import("zod").ZodString>;
+                        notification_settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                        notes: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }>, "many">;
+                    pagination: import("zod").ZodOptional<import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getUpcomingReminders: {
+            query: import("zod").ZodObject<{
+                days: import("zod").ZodDefault<import("zod").ZodNumber>;
+            }, "strip", import("zod").ZodTypeAny, {
+                days: number;
+            }, {
+                days?: number | undefined;
+            }>;
+            summary: "Get upcoming payment reminders";
+            description: "Retrieves payment reminders due within the specified number of days";
+            method: "GET";
+            path: "/api/payment-reminders/upcoming";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        user_uid: import("zod").ZodString;
+                        user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        title: import("zod").ZodString;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_type: import("zod").ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>;
+                        amount: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        currency: import("zod").ZodString;
+                        due_date: import("zod").ZodString;
+                        reminder_date: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_status: import("zod").ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>;
+                        priority: import("zod").ZodNullable<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                        is_recurring: import("zod").ZodBoolean;
+                        recurrence_pattern: import("zod").ZodNullable<import("zod").ZodString>;
+                        notification_settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                        notes: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }>, "many">;
+                    pagination: import("zod").ZodOptional<import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getRemindersDueToday: {
+            summary: "Get payment reminders due today";
+            description: "Retrieves all payment reminders due today for the authenticated user";
+            method: "GET";
+            path: "/api/payment-reminders/due-today";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        user_uid: import("zod").ZodString;
+                        user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        title: import("zod").ZodString;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_type: import("zod").ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>;
+                        amount: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        currency: import("zod").ZodString;
+                        due_date: import("zod").ZodString;
+                        reminder_date: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_status: import("zod").ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>;
+                        priority: import("zod").ZodNullable<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                        is_recurring: import("zod").ZodBoolean;
+                        recurrence_pattern: import("zod").ZodNullable<import("zod").ZodString>;
+                        notification_settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                        notes: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }>, "many">;
+                    pagination: import("zod").ZodOptional<import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getRemindersByType: {
+            pathParams: import("zod").ZodObject<{
+                type: import("zod").ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>;
+            }, "strip", import("zod").ZodTypeAny, {
+                type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+            }, {
+                type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+            }>;
+            query: import("zod").ZodObject<{
+                limit: import("zod").ZodDefault<import("zod").ZodNumber>;
+                offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+            }, "strip", import("zod").ZodTypeAny, {
+                limit: number;
+                offset: number;
+            }, {
+                limit?: number | undefined;
+                offset?: number | undefined;
+            }>;
+            summary: "Get payment reminders by type";
+            description: "Retrieves payment reminders filtered by type";
+            method: "GET";
+            path: "/api/payment-reminders/type/:type";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        user_uid: import("zod").ZodString;
+                        user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        title: import("zod").ZodString;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_type: import("zod").ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>;
+                        amount: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        currency: import("zod").ZodString;
+                        due_date: import("zod").ZodString;
+                        reminder_date: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_status: import("zod").ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>;
+                        priority: import("zod").ZodNullable<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                        is_recurring: import("zod").ZodBoolean;
+                        recurrence_pattern: import("zod").ZodNullable<import("zod").ZodString>;
+                        notification_settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                        notes: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }>, "many">;
+                    pagination: import("zod").ZodOptional<import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getRemindersByPriority: {
+            pathParams: import("zod").ZodObject<{
+                priority: import("zod").ZodEnum<["low", "medium", "high", "urgent"]>;
+            }, "strip", import("zod").ZodTypeAny, {
+                priority: "low" | "medium" | "high" | "urgent";
+            }, {
+                priority: "low" | "medium" | "high" | "urgent";
+            }>;
+            query: import("zod").ZodObject<{
+                limit: import("zod").ZodDefault<import("zod").ZodNumber>;
+                offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+            }, "strip", import("zod").ZodTypeAny, {
+                limit: number;
+                offset: number;
+            }, {
+                limit?: number | undefined;
+                offset?: number | undefined;
+            }>;
+            summary: "Get payment reminders by priority";
+            description: "Retrieves payment reminders filtered by priority";
+            method: "GET";
+            path: "/api/payment-reminders/priority/:priority";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodBoolean;
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        user_uid: import("zod").ZodString;
+                        user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        title: import("zod").ZodString;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_type: import("zod").ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>;
+                        amount: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        currency: import("zod").ZodString;
+                        due_date: import("zod").ZodString;
+                        reminder_date: import("zod").ZodNullable<import("zod").ZodString>;
+                        reminder_status: import("zod").ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>;
+                        priority: import("zod").ZodNullable<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
+                        is_recurring: import("zod").ZodBoolean;
+                        recurrence_pattern: import("zod").ZodNullable<import("zod").ZodString>;
+                        notification_settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                        notes: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }, {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }>, "many">;
+                    pagination: import("zod").ZodOptional<import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        description: string | null;
+                        title: string;
+                        uuid: string;
+                        user_uid: string;
+                        notes: string | null;
+                        currency: string;
+                        priority: "low" | "medium" | "high" | "urgent" | null;
+                        created_at: string;
+                        updated_at: string;
+                        deleted_at: string | null;
+                        user_connection_id: number | null;
+                        reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                        amount: number | null;
+                        due_date: string;
+                        reminder_date: string | null;
+                        reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                        is_recurring: boolean;
+                        recurrence_pattern: string | null;
+                        notification_settings?: any;
+                    }[];
+                    success: boolean;
+                    pagination?: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    } | undefined;
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
         };
     };
 };
