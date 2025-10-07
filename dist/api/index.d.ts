@@ -1118,6 +1118,16 @@ export declare const ApiContracts: {
                     error?: string | undefined;
                     statusCode?: number | undefined;
                 }>;
+                404: import("zod").ZodObject<{
+                    error: import("zod").ZodString;
+                    message: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error: string;
+                }, {
+                    message: string;
+                    error: string;
+                }>;
                 500: import("zod").ZodObject<{
                     message: import("zod").ZodString;
                     error: import("zod").ZodOptional<import("zod").ZodString>;
