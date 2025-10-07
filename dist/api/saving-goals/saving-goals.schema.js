@@ -46,9 +46,9 @@ export const UpdateProgressSchema = z.object({
 export const GetSavingGoalsQuerySchema = z.object({
     status: GoalStatusSchema.optional(),
     priority: PriorityLevelSchema.optional(),
-    is_public: z.boolean().optional(),
-    limit: z.number().min(1).max(100).default(20),
-    offset: z.number().min(0).default(0),
+    is_public: z.coerce.boolean().optional(),
+    limit: z.coerce.number().min(1).max(100).default(20),
+    offset: z.coerce.number().min(0).default(0),
 });
 // Response schemas
 export const SavingGoalResponseSchema = z.object({

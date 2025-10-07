@@ -34,7 +34,7 @@ export const SavingGoalsContracts = c.router({
     // Get one saving goal
     getSavingGoal: {
         method: 'GET',
-        path: '/saving-goals/:id',
+        path: '/get-saving-goals-by-id/:id/',
         responses: {
             200: SavingGoalResponseSchema,
             404: ErrorResSchema,
@@ -42,7 +42,7 @@ export const SavingGoalsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({
-            id: z.string().transform((val) => parseInt(val, 10)),
+            id: z.coerce.number().int().positive(),
         }),
         summary: 'Get a specific saving goal',
         description: 'Retrieves a specific saving goal by ID',
@@ -50,7 +50,7 @@ export const SavingGoalsContracts = c.router({
     // Update saving goal
     updateSavingGoal: {
         method: 'PUT',
-        path: '/saving-goals/:id',
+        path: '/update-saving-goals-by-id/:id/',
         responses: {
             200: SavingGoalResponseSchema,
             400: ErrorResSchema,
@@ -59,7 +59,7 @@ export const SavingGoalsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({
-            id: z.string().transform((val) => parseInt(val, 10)),
+            id: z.coerce.number().int().positive(),
         }),
         body: UpdateSavingGoalSchema,
         summary: 'Update a saving goal',
@@ -68,7 +68,7 @@ export const SavingGoalsContracts = c.router({
     // Update goal progress
     updateProgress: {
         method: 'PATCH',
-        path: '/saving-goals/:id/progress',
+        path: '/update-saving-goals-by-id/:id/progress/',
         responses: {
             200: UpdateProgressResponseSchema,
             400: ErrorResSchema,
@@ -77,7 +77,7 @@ export const SavingGoalsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({
-            id: z.string().transform((val) => parseInt(val, 10)),
+            id: z.coerce.number().int().positive(),
         }),
         body: UpdateProgressSchema,
         summary: 'Update saving goal progress',
@@ -86,7 +86,7 @@ export const SavingGoalsContracts = c.router({
     // Delete saving goal
     deleteSavingGoal: {
         method: 'DELETE',
-        path: '/saving-goals/:id',
+        path: '/delete-saving-goals-by-id/:id/soft/',
         responses: {
             200: z.object({
                 message: z.string(),
@@ -96,7 +96,7 @@ export const SavingGoalsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({
-            id: z.string().transform((val) => parseInt(val, 10)),
+            id: z.coerce.number().int().positive(),
         }),
         summary: 'Delete a saving goal',
         description: 'Soft deletes a saving goal',
@@ -104,14 +104,14 @@ export const SavingGoalsContracts = c.router({
     // Get public saving goals
     getPublicSavingGoals: {
         method: 'GET',
-        path: '/saving-goals/public',
+        path: '/get-saving-goals-public/',
         responses: {
             200: SavingGoalsListResponseSchema,
             500: ErrorResSchema,
         },
         query: z.object({
-            limit: z.number().min(1).max(100).default(20),
-            offset: z.number().min(0).default(0),
+            limit: z.coerce.number().min(1).max(100).default(20),
+            offset: z.coerce.number().min(0).default(0),
         }),
         summary: 'Get public saving goals',
         description: 'Retrieves public saving goals from all users',
@@ -119,14 +119,14 @@ export const SavingGoalsContracts = c.router({
     // Get goals due soon
     getGoalsDueSoon: {
         method: 'GET',
-        path: '/saving-goals/due-soon',
+        path: '/get-saving-goals-due-soon/',
         responses: {
             200: SavingGoalsListResponseSchema,
             401: ErrorResSchema,
             500: ErrorResSchema,
         },
         query: z.object({
-            days: z.number().min(1).max(365).default(30),
+            days: z.coerce.number().min(1).max(365).default(30),
         }),
         summary: 'Get goals due soon',
         description: 'Retrieves saving goals that are due within the specified number of days',

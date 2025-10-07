@@ -375,16 +375,16 @@ export declare const SavingGoalsContracts: {
     };
     getSavingGoal: {
         pathParams: z.ZodObject<{
-            id: z.ZodEffects<z.ZodString, number, string>;
+            id: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
             id: number;
         }, {
-            id: string;
+            id: number;
         }>;
         summary: "Get a specific saving goal";
         description: "Retrieves a specific saving goal by ID";
         method: "GET";
-        path: "/saving-goals/:id";
+        path: "/get-saving-goals-by-id/:id/";
         responses: {
             200: z.ZodObject<{
                 message: z.ZodString;
@@ -534,11 +534,11 @@ export declare const SavingGoalsContracts: {
     };
     updateSavingGoal: {
         pathParams: z.ZodObject<{
-            id: z.ZodEffects<z.ZodString, number, string>;
+            id: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
             id: number;
         }, {
-            id: string;
+            id: number;
         }>;
         summary: "Update a saving goal";
         description: "Updates an existing saving goal";
@@ -583,7 +583,7 @@ export declare const SavingGoalsContracts: {
             color?: string | undefined;
             is_public?: boolean | undefined;
         }>;
-        path: "/saving-goals/:id";
+        path: "/update-saving-goals-by-id/:id/";
         responses: {
             200: z.ZodObject<{
                 message: z.ZodString;
@@ -746,11 +746,11 @@ export declare const SavingGoalsContracts: {
     };
     updateProgress: {
         pathParams: z.ZodObject<{
-            id: z.ZodEffects<z.ZodString, number, string>;
+            id: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
             id: number;
         }, {
-            id: string;
+            id: number;
         }>;
         summary: "Update saving goal progress";
         description: "Updates the current amount of a saving goal";
@@ -762,7 +762,7 @@ export declare const SavingGoalsContracts: {
         }, {
             current_amount: number;
         }>;
-        path: "/saving-goals/:id/progress";
+        path: "/update-saving-goals-by-id/:id/progress/";
         responses: {
             200: z.ZodObject<{
                 message: z.ZodString;
@@ -925,16 +925,16 @@ export declare const SavingGoalsContracts: {
     };
     deleteSavingGoal: {
         pathParams: z.ZodObject<{
-            id: z.ZodEffects<z.ZodString, number, string>;
+            id: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
             id: number;
         }, {
-            id: string;
+            id: number;
         }>;
         summary: "Delete a saving goal";
         description: "Soft deletes a saving goal";
         method: "DELETE";
-        path: "/saving-goals/:id";
+        path: "/delete-saving-goals-by-id/:id/soft/";
         responses: {
             200: z.ZodObject<{
                 message: z.ZodString;
@@ -998,7 +998,7 @@ export declare const SavingGoalsContracts: {
         summary: "Get public saving goals";
         description: "Retrieves public saving goals from all users";
         method: "GET";
-        path: "/saving-goals/public";
+        path: "/get-saving-goals-public/";
         responses: {
             200: z.ZodObject<{
                 message: z.ZodString;
@@ -1154,7 +1154,7 @@ export declare const SavingGoalsContracts: {
         summary: "Get goals due soon";
         description: "Retrieves saving goals that are due within the specified number of days";
         method: "GET";
-        path: "/saving-goals/due-soon";
+        path: "/get-saving-goals-due-soon/";
         responses: {
             200: z.ZodObject<{
                 message: z.ZodString;
