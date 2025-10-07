@@ -1800,7 +1800,7 @@ export declare const ApiContracts: {
             summary: "Get a specific saving goal";
             description: "Retrieves a specific saving goal by ID";
             method: "GET";
-            path: "/api/saving-goals/:id";
+            path: "/api/get-saving-goals-by-id/:id/";
             responses: {
                 200: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -2000,7 +2000,7 @@ export declare const ApiContracts: {
                 color?: string | undefined;
                 is_public?: boolean | undefined;
             }>;
-            path: "/api/saving-goals/:id";
+            path: "/api/update-saving-goals-by-id/:id/";
             responses: {
                 200: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -2180,7 +2180,7 @@ export declare const ApiContracts: {
             }, {
                 current_amount: number;
             }>;
-            path: "/api/saving-goals/:id/progress";
+            path: "/api/update-saving-goals-by-id/:id/progress/";
             responses: {
                 200: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -2353,7 +2353,7 @@ export declare const ApiContracts: {
             summary: "Delete a saving goal";
             description: "Soft deletes a saving goal";
             method: "DELETE";
-            path: "/api/saving-goals/:id";
+            path: "/api/delete-saving-goals-by-id/:id/soft/";
             responses: {
                 200: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -2418,7 +2418,7 @@ export declare const ApiContracts: {
             summary: "Get public saving goals";
             description: "Retrieves public saving goals from all users";
             method: "GET";
-            path: "/api/saving-goals/public";
+            path: "/api/get-saving-goals-public/";
             responses: {
                 200: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -2575,7 +2575,7 @@ export declare const ApiContracts: {
             summary: "Get goals due soon";
             description: "Retrieves saving goals that are due within the specified number of days";
             method: "GET";
-            path: "/api/saving-goals/due-soon";
+            path: "/api/get-saving-goals-due-soon/";
             responses: {
                 200: import("zod").ZodObject<{
                     message: import("zod").ZodString;

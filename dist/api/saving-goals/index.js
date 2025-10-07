@@ -34,7 +34,7 @@ export const SavingGoalsContracts = c.router({
     // Get one saving goal
     getSavingGoal: {
         method: 'GET',
-        path: '/saving-goals/:id',
+        path: '/get-saving-goals-by-id/:id/',
         responses: {
             200: SavingGoalResponseSchema,
             404: ErrorResSchema,
@@ -50,7 +50,7 @@ export const SavingGoalsContracts = c.router({
     // Update saving goal
     updateSavingGoal: {
         method: 'PUT',
-        path: '/saving-goals/:id',
+        path: '/update-saving-goals-by-id/:id/',
         responses: {
             200: SavingGoalResponseSchema,
             400: ErrorResSchema,
@@ -68,7 +68,7 @@ export const SavingGoalsContracts = c.router({
     // Update goal progress
     updateProgress: {
         method: 'PATCH',
-        path: '/saving-goals/:id/progress',
+        path: '/update-saving-goals-by-id/:id/progress/',
         responses: {
             200: UpdateProgressResponseSchema,
             400: ErrorResSchema,
@@ -86,7 +86,7 @@ export const SavingGoalsContracts = c.router({
     // Delete saving goal
     deleteSavingGoal: {
         method: 'DELETE',
-        path: '/saving-goals/:id',
+        path: '/delete-saving-goals-by-id/:id/soft/',
         responses: {
             200: z.object({
                 message: z.string(),
@@ -104,7 +104,7 @@ export const SavingGoalsContracts = c.router({
     // Get public saving goals
     getPublicSavingGoals: {
         method: 'GET',
-        path: '/saving-goals/public',
+        path: '/get-saving-goals-public/',
         responses: {
             200: SavingGoalsListResponseSchema,
             500: ErrorResSchema,
@@ -119,7 +119,7 @@ export const SavingGoalsContracts = c.router({
     // Get goals due soon
     getGoalsDueSoon: {
         method: 'GET',
-        path: '/saving-goals/due-soon',
+        path: '/get-saving-goals-due-soon/',
         responses: {
             200: SavingGoalsListResponseSchema,
             401: ErrorResSchema,
