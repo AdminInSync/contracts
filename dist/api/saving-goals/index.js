@@ -42,7 +42,7 @@ export const SavingGoalsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({
-            id: z.string().transform((val) => parseInt(val, 10)),
+            id: z.coerce.number().int().positive(),
         }),
         summary: 'Get a specific saving goal',
         description: 'Retrieves a specific saving goal by ID',
@@ -59,7 +59,7 @@ export const SavingGoalsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({
-            id: z.string().transform((val) => parseInt(val, 10)),
+            id: z.coerce.number().int().positive(),
         }),
         body: UpdateSavingGoalSchema,
         summary: 'Update a saving goal',
@@ -77,7 +77,7 @@ export const SavingGoalsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({
-            id: z.string().transform((val) => parseInt(val, 10)),
+            id: z.coerce.number().int().positive(),
         }),
         body: UpdateProgressSchema,
         summary: 'Update saving goal progress',
@@ -96,7 +96,7 @@ export const SavingGoalsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({
-            id: z.string().transform((val) => parseInt(val, 10)),
+            id: z.coerce.number().int().positive(),
         }),
         summary: 'Delete a saving goal',
         description: 'Soft deletes a saving goal',
@@ -110,8 +110,8 @@ export const SavingGoalsContracts = c.router({
             500: ErrorResSchema,
         },
         query: z.object({
-            limit: z.number().min(1).max(100).default(20),
-            offset: z.number().min(0).default(0),
+            limit: z.coerce.number().min(1).max(100).default(20),
+            offset: z.coerce.number().min(0).default(0),
         }),
         summary: 'Get public saving goals',
         description: 'Retrieves public saving goals from all users',
@@ -126,7 +126,7 @@ export const SavingGoalsContracts = c.router({
             500: ErrorResSchema,
         },
         query: z.object({
-            days: z.number().min(1).max(365).default(30),
+            days: z.coerce.number().min(1).max(365).default(30),
         }),
         summary: 'Get goals due soon',
         description: 'Retrieves saving goals that are due within the specified number of days',

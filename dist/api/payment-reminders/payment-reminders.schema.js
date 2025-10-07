@@ -28,20 +28,58 @@ export const PaymentReminderSchema = z.object({
 });
 // Request schemas
 export const CreatePaymentReminderSchema = z.object({
-    user_connection_id: z.number().positive().optional(),
-    title: z.string().min(1).max(255),
-    description: z.string().optional(),
-    reminder_type: ReminderTypeSchema.optional(),
-    amount: z.number().min(0).optional(),
-    currency: z.string().min(1).max(100),
-    due_date: z.string().date(),
-    reminder_date: z.string().datetime().optional(),
-    reminder_status: ReminderStatusSchema.optional(),
-    priority: PriorityLevelSchema.optional(),
-    is_recurring: z.boolean().optional(),
-    recurrence_pattern: z.string().optional(),
-    notification_settings: z.any().optional(),
-    notes: z.string().optional(),
+    user_connection_id: z.number().positive().optional().openapi({
+        description: 'Optional - Links reminder to a specific financial connection (bank account, credit card, etc.). Omit for general reminders.'
+    }),
+    title: z.string().min(1).max(255).openapi({
+        description: 'Title of the payment reminder',
+        example: 'Credit Card Payment'
+    }),
+    description: z.string().optional().openapi({
+        description: 'Additional details about the payment',
+        example: 'Monthly Chase Visa payment'
+    }),
+    reminder_type: ReminderTypeSchema.optional().openapi({
+        description: 'Type of reminder. Options: credit_card, loan, bill, subscription, custom'
+    }),
+    amount: z.number().min(0).optional().openapi({
+        description: 'Payment amount',
+        example: 1200.50
+    }),
+    currency: z.string().min(1).max(100).openapi({
+        description: 'Currency code',
+        example: 'USD'
+    }),
+    due_date: z.string().date().openapi({
+        description: 'Payment due date (YYYY-MM-DD)',
+        example: '2025-10-08'
+    }),
+    reminder_date: z.string().datetime().optional().openapi({
+        description: 'When to send the reminder notification',
+        example: '2025-10-07T19:21:45.752Z'
+    }),
+    reminder_status: ReminderStatusSchema.optional().openapi({
+        description: 'Status of the reminder. Options: pending, sent, acknowledged, completed, overdue'
+    }),
+    priority: PriorityLevelSchema.optional().openapi({
+        description: 'Priority level. Options: low, medium, high, urgent'
+    }),
+    is_recurring: z.boolean().optional().openapi({
+        description: 'Whether this is a recurring payment',
+        example: true
+    }),
+    recurrence_pattern: z.string().optional().openapi({
+        description: 'How often the payment recurs. Examples: "monthly", "quarterly", "yearly", "weekly"',
+        example: 'monthly'
+    }),
+    notification_settings: z.any().optional().openapi({
+        description: 'JSON object with notification preferences (email, push, SMS). Example: {"email": true, "push": true, "sms": false}',
+        example: { email: true, push: true, sms: false }
+    }),
+    notes: z.string().optional().openapi({
+        description: 'Additional notes or comments',
+        example: 'Auto-pay enabled'
+    }),
 });
 export const UpdatePaymentReminderSchema = CreatePaymentReminderSchema.partial();
 // Query schemas
@@ -49,10 +87,10 @@ export const GetPaymentRemindersQuerySchema = z.object({
     reminder_status: ReminderStatusSchema.optional(),
     reminder_type: ReminderTypeSchema.optional(),
     priority: PriorityLevelSchema.optional(),
-    is_recurring: z.boolean().optional(),
+    is_recurring: z.coerce.boolean().optional(),
     search: z.string().optional(),
-    limit: z.number().min(1).max(100).default(20),
-    offset: z.number().min(0).default(0),
+    limit: z.coerce.number().min(1).max(100).default(20),
+    offset: z.coerce.number().min(0).default(0),
 });
 // Response schemas
 export const PaymentReminderResponseSchema = z.object({

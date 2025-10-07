@@ -405,804 +405,6 @@ export declare const PaymentRemindersContracts: {
             }>;
         };
     };
-    getPaymentReminder: {
-        pathParams: z.ZodObject<{
-            id: z.ZodEffects<z.ZodString, number, string>;
-        }, "strip", z.ZodTypeAny, {
-            id: number;
-        }, {
-            id: string;
-        }>;
-        summary: "Get a specific payment reminder";
-        description: "Retrieves a specific payment reminder by ID";
-        method: "GET";
-        path: "/payment-reminders/:id";
-        responses: {
-            200: z.ZodObject<{
-                message: z.ZodString;
-                data: z.ZodObject<{
-                    id: z.ZodNumber;
-                    uuid: z.ZodString;
-                    user_uid: z.ZodString;
-                    user_connection_id: z.ZodNullable<z.ZodNumber>;
-                    title: z.ZodString;
-                    description: z.ZodNullable<z.ZodString>;
-                    reminder_type: z.ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>;
-                    amount: z.ZodNullable<z.ZodNumber>;
-                    currency: z.ZodString;
-                    due_date: z.ZodString;
-                    reminder_date: z.ZodNullable<z.ZodString>;
-                    reminder_status: z.ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>;
-                    priority: z.ZodNullable<z.ZodEnum<["low", "medium", "high", "urgent"]>>;
-                    is_recurring: z.ZodBoolean;
-                    recurrence_pattern: z.ZodNullable<z.ZodString>;
-                    notification_settings: z.ZodNullable<z.ZodAny>;
-                    notes: z.ZodNullable<z.ZodString>;
-                    created_at: z.ZodString;
-                    updated_at: z.ZodString;
-                    deleted_at: z.ZodNullable<z.ZodString>;
-                }, "strip", z.ZodTypeAny, {
-                    id: number;
-                    description: string | null;
-                    title: string;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    currency: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    deleted_at: string | null;
-                    user_connection_id: number | null;
-                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                    amount: number | null;
-                    due_date: string;
-                    reminder_date: string | null;
-                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
-                    is_recurring: boolean;
-                    recurrence_pattern: string | null;
-                    notification_settings?: any;
-                }, {
-                    id: number;
-                    description: string | null;
-                    title: string;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    currency: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    deleted_at: string | null;
-                    user_connection_id: number | null;
-                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                    amount: number | null;
-                    due_date: string;
-                    reminder_date: string | null;
-                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
-                    is_recurring: boolean;
-                    recurrence_pattern: string | null;
-                    notification_settings?: any;
-                }>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    id: number;
-                    description: string | null;
-                    title: string;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    currency: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    deleted_at: string | null;
-                    user_connection_id: number | null;
-                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                    amount: number | null;
-                    due_date: string;
-                    reminder_date: string | null;
-                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
-                    is_recurring: boolean;
-                    recurrence_pattern: string | null;
-                    notification_settings?: any;
-                };
-            }, {
-                message: string;
-                data: {
-                    id: number;
-                    description: string | null;
-                    title: string;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    currency: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    deleted_at: string | null;
-                    user_connection_id: number | null;
-                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                    amount: number | null;
-                    due_date: string;
-                    reminder_date: string | null;
-                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
-                    is_recurring: boolean;
-                    recurrence_pattern: string | null;
-                    notification_settings?: any;
-                };
-            }>;
-            404: z.ZodObject<{
-                message: z.ZodString;
-                error: z.ZodOptional<z.ZodString>;
-                statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
-            401: z.ZodObject<{
-                message: z.ZodString;
-                error: z.ZodOptional<z.ZodString>;
-                statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
-            500: z.ZodObject<{
-                message: z.ZodString;
-                error: z.ZodOptional<z.ZodString>;
-                statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
-        };
-    };
-    updatePaymentReminder: {
-        pathParams: z.ZodObject<{
-            id: z.ZodEffects<z.ZodString, number, string>;
-        }, "strip", z.ZodTypeAny, {
-            id: number;
-        }, {
-            id: string;
-        }>;
-        summary: "Update a payment reminder";
-        description: "Updates an existing payment reminder";
-        method: "PUT";
-        body: z.ZodObject<{
-            user_connection_id: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
-            title: z.ZodOptional<z.ZodString>;
-            description: z.ZodOptional<z.ZodOptional<z.ZodString>>;
-            reminder_type: z.ZodOptional<z.ZodOptional<z.ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>>>;
-            amount: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
-            currency: z.ZodOptional<z.ZodString>;
-            due_date: z.ZodOptional<z.ZodString>;
-            reminder_date: z.ZodOptional<z.ZodOptional<z.ZodString>>;
-            reminder_status: z.ZodOptional<z.ZodOptional<z.ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>>>;
-            priority: z.ZodOptional<z.ZodOptional<z.ZodEnum<["low", "medium", "high", "urgent"]>>>;
-            is_recurring: z.ZodOptional<z.ZodOptional<z.ZodBoolean>>;
-            recurrence_pattern: z.ZodOptional<z.ZodOptional<z.ZodString>>;
-            notification_settings: z.ZodOptional<z.ZodOptional<z.ZodAny>>;
-            notes: z.ZodOptional<z.ZodOptional<z.ZodString>>;
-        }, "strip", z.ZodTypeAny, {
-            description?: string | undefined;
-            title?: string | undefined;
-            notes?: string | undefined;
-            currency?: string | undefined;
-            priority?: "low" | "medium" | "high" | "urgent" | undefined;
-            user_connection_id?: number | undefined;
-            reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
-            amount?: number | undefined;
-            due_date?: string | undefined;
-            reminder_date?: string | undefined;
-            reminder_status?: "pending" | "completed" | "sent" | "acknowledged" | "overdue" | undefined;
-            is_recurring?: boolean | undefined;
-            recurrence_pattern?: string | undefined;
-            notification_settings?: any;
-        }, {
-            description?: string | undefined;
-            title?: string | undefined;
-            notes?: string | undefined;
-            currency?: string | undefined;
-            priority?: "low" | "medium" | "high" | "urgent" | undefined;
-            user_connection_id?: number | undefined;
-            reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
-            amount?: number | undefined;
-            due_date?: string | undefined;
-            reminder_date?: string | undefined;
-            reminder_status?: "pending" | "completed" | "sent" | "acknowledged" | "overdue" | undefined;
-            is_recurring?: boolean | undefined;
-            recurrence_pattern?: string | undefined;
-            notification_settings?: any;
-        }>;
-        path: "/payment-reminders/:id";
-        responses: {
-            200: z.ZodObject<{
-                message: z.ZodString;
-                data: z.ZodObject<{
-                    id: z.ZodNumber;
-                    uuid: z.ZodString;
-                    user_uid: z.ZodString;
-                    user_connection_id: z.ZodNullable<z.ZodNumber>;
-                    title: z.ZodString;
-                    description: z.ZodNullable<z.ZodString>;
-                    reminder_type: z.ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>;
-                    amount: z.ZodNullable<z.ZodNumber>;
-                    currency: z.ZodString;
-                    due_date: z.ZodString;
-                    reminder_date: z.ZodNullable<z.ZodString>;
-                    reminder_status: z.ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>;
-                    priority: z.ZodNullable<z.ZodEnum<["low", "medium", "high", "urgent"]>>;
-                    is_recurring: z.ZodBoolean;
-                    recurrence_pattern: z.ZodNullable<z.ZodString>;
-                    notification_settings: z.ZodNullable<z.ZodAny>;
-                    notes: z.ZodNullable<z.ZodString>;
-                    created_at: z.ZodString;
-                    updated_at: z.ZodString;
-                    deleted_at: z.ZodNullable<z.ZodString>;
-                }, "strip", z.ZodTypeAny, {
-                    id: number;
-                    description: string | null;
-                    title: string;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    currency: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    deleted_at: string | null;
-                    user_connection_id: number | null;
-                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                    amount: number | null;
-                    due_date: string;
-                    reminder_date: string | null;
-                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
-                    is_recurring: boolean;
-                    recurrence_pattern: string | null;
-                    notification_settings?: any;
-                }, {
-                    id: number;
-                    description: string | null;
-                    title: string;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    currency: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    deleted_at: string | null;
-                    user_connection_id: number | null;
-                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                    amount: number | null;
-                    due_date: string;
-                    reminder_date: string | null;
-                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
-                    is_recurring: boolean;
-                    recurrence_pattern: string | null;
-                    notification_settings?: any;
-                }>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    id: number;
-                    description: string | null;
-                    title: string;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    currency: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    deleted_at: string | null;
-                    user_connection_id: number | null;
-                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                    amount: number | null;
-                    due_date: string;
-                    reminder_date: string | null;
-                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
-                    is_recurring: boolean;
-                    recurrence_pattern: string | null;
-                    notification_settings?: any;
-                };
-            }, {
-                message: string;
-                data: {
-                    id: number;
-                    description: string | null;
-                    title: string;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    currency: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    deleted_at: string | null;
-                    user_connection_id: number | null;
-                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                    amount: number | null;
-                    due_date: string;
-                    reminder_date: string | null;
-                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
-                    is_recurring: boolean;
-                    recurrence_pattern: string | null;
-                    notification_settings?: any;
-                };
-            }>;
-            400: z.ZodObject<{
-                message: z.ZodString;
-                error: z.ZodOptional<z.ZodString>;
-                statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
-            401: z.ZodObject<{
-                message: z.ZodString;
-                error: z.ZodOptional<z.ZodString>;
-                statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
-            404: z.ZodObject<{
-                message: z.ZodString;
-                error: z.ZodOptional<z.ZodString>;
-                statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
-            500: z.ZodObject<{
-                message: z.ZodString;
-                error: z.ZodOptional<z.ZodString>;
-                statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
-        };
-    };
-    deletePaymentReminder: {
-        pathParams: z.ZodObject<{
-            id: z.ZodEffects<z.ZodString, number, string>;
-        }, "strip", z.ZodTypeAny, {
-            id: number;
-        }, {
-            id: string;
-        }>;
-        summary: "Delete a payment reminder";
-        description: "Soft deletes a payment reminder";
-        method: "DELETE";
-        path: "/payment-reminders/:id";
-        responses: {
-            200: z.ZodObject<{
-                message: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-            }, {
-                message: string;
-            }>;
-            401: z.ZodObject<{
-                message: z.ZodString;
-                error: z.ZodOptional<z.ZodString>;
-                statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
-            404: z.ZodObject<{
-                message: z.ZodString;
-                error: z.ZodOptional<z.ZodString>;
-                statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
-            500: z.ZodObject<{
-                message: z.ZodString;
-                error: z.ZodOptional<z.ZodString>;
-                statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
-        };
-    };
-    markAsCompleted: {
-        pathParams: z.ZodObject<{
-            id: z.ZodEffects<z.ZodString, number, string>;
-        }, "strip", z.ZodTypeAny, {
-            id: number;
-        }, {
-            id: string;
-        }>;
-        summary: "Mark payment reminder as completed";
-        description: "Marks a payment reminder as completed";
-        method: "PATCH";
-        body: z.ZodObject<{}, "strip", z.ZodTypeAny, {}, {}>;
-        path: "/payment-reminders/:id/complete";
-        responses: {
-            200: z.ZodObject<{
-                message: z.ZodString;
-                data: z.ZodObject<{
-                    id: z.ZodNumber;
-                    uuid: z.ZodString;
-                    user_uid: z.ZodString;
-                    user_connection_id: z.ZodNullable<z.ZodNumber>;
-                    title: z.ZodString;
-                    description: z.ZodNullable<z.ZodString>;
-                    reminder_type: z.ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>;
-                    amount: z.ZodNullable<z.ZodNumber>;
-                    currency: z.ZodString;
-                    due_date: z.ZodString;
-                    reminder_date: z.ZodNullable<z.ZodString>;
-                    reminder_status: z.ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>;
-                    priority: z.ZodNullable<z.ZodEnum<["low", "medium", "high", "urgent"]>>;
-                    is_recurring: z.ZodBoolean;
-                    recurrence_pattern: z.ZodNullable<z.ZodString>;
-                    notification_settings: z.ZodNullable<z.ZodAny>;
-                    notes: z.ZodNullable<z.ZodString>;
-                    created_at: z.ZodString;
-                    updated_at: z.ZodString;
-                    deleted_at: z.ZodNullable<z.ZodString>;
-                }, "strip", z.ZodTypeAny, {
-                    id: number;
-                    description: string | null;
-                    title: string;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    currency: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    deleted_at: string | null;
-                    user_connection_id: number | null;
-                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                    amount: number | null;
-                    due_date: string;
-                    reminder_date: string | null;
-                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
-                    is_recurring: boolean;
-                    recurrence_pattern: string | null;
-                    notification_settings?: any;
-                }, {
-                    id: number;
-                    description: string | null;
-                    title: string;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    currency: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    deleted_at: string | null;
-                    user_connection_id: number | null;
-                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                    amount: number | null;
-                    due_date: string;
-                    reminder_date: string | null;
-                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
-                    is_recurring: boolean;
-                    recurrence_pattern: string | null;
-                    notification_settings?: any;
-                }>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    id: number;
-                    description: string | null;
-                    title: string;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    currency: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    deleted_at: string | null;
-                    user_connection_id: number | null;
-                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                    amount: number | null;
-                    due_date: string;
-                    reminder_date: string | null;
-                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
-                    is_recurring: boolean;
-                    recurrence_pattern: string | null;
-                    notification_settings?: any;
-                };
-            }, {
-                message: string;
-                data: {
-                    id: number;
-                    description: string | null;
-                    title: string;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    currency: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    deleted_at: string | null;
-                    user_connection_id: number | null;
-                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                    amount: number | null;
-                    due_date: string;
-                    reminder_date: string | null;
-                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
-                    is_recurring: boolean;
-                    recurrence_pattern: string | null;
-                    notification_settings?: any;
-                };
-            }>;
-            401: z.ZodObject<{
-                message: z.ZodString;
-                error: z.ZodOptional<z.ZodString>;
-                statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
-            404: z.ZodObject<{
-                message: z.ZodString;
-                error: z.ZodOptional<z.ZodString>;
-                statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
-            500: z.ZodObject<{
-                message: z.ZodString;
-                error: z.ZodOptional<z.ZodString>;
-                statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
-        };
-    };
-    markAsAcknowledged: {
-        pathParams: z.ZodObject<{
-            id: z.ZodEffects<z.ZodString, number, string>;
-        }, "strip", z.ZodTypeAny, {
-            id: number;
-        }, {
-            id: string;
-        }>;
-        summary: "Mark payment reminder as acknowledged";
-        description: "Marks a payment reminder as acknowledged";
-        method: "PATCH";
-        body: z.ZodObject<{}, "strip", z.ZodTypeAny, {}, {}>;
-        path: "/payment-reminders/:id/acknowledge";
-        responses: {
-            200: z.ZodObject<{
-                message: z.ZodString;
-                data: z.ZodObject<{
-                    id: z.ZodNumber;
-                    uuid: z.ZodString;
-                    user_uid: z.ZodString;
-                    user_connection_id: z.ZodNullable<z.ZodNumber>;
-                    title: z.ZodString;
-                    description: z.ZodNullable<z.ZodString>;
-                    reminder_type: z.ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>;
-                    amount: z.ZodNullable<z.ZodNumber>;
-                    currency: z.ZodString;
-                    due_date: z.ZodString;
-                    reminder_date: z.ZodNullable<z.ZodString>;
-                    reminder_status: z.ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>;
-                    priority: z.ZodNullable<z.ZodEnum<["low", "medium", "high", "urgent"]>>;
-                    is_recurring: z.ZodBoolean;
-                    recurrence_pattern: z.ZodNullable<z.ZodString>;
-                    notification_settings: z.ZodNullable<z.ZodAny>;
-                    notes: z.ZodNullable<z.ZodString>;
-                    created_at: z.ZodString;
-                    updated_at: z.ZodString;
-                    deleted_at: z.ZodNullable<z.ZodString>;
-                }, "strip", z.ZodTypeAny, {
-                    id: number;
-                    description: string | null;
-                    title: string;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    currency: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    deleted_at: string | null;
-                    user_connection_id: number | null;
-                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                    amount: number | null;
-                    due_date: string;
-                    reminder_date: string | null;
-                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
-                    is_recurring: boolean;
-                    recurrence_pattern: string | null;
-                    notification_settings?: any;
-                }, {
-                    id: number;
-                    description: string | null;
-                    title: string;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    currency: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    deleted_at: string | null;
-                    user_connection_id: number | null;
-                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                    amount: number | null;
-                    due_date: string;
-                    reminder_date: string | null;
-                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
-                    is_recurring: boolean;
-                    recurrence_pattern: string | null;
-                    notification_settings?: any;
-                }>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    id: number;
-                    description: string | null;
-                    title: string;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    currency: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    deleted_at: string | null;
-                    user_connection_id: number | null;
-                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                    amount: number | null;
-                    due_date: string;
-                    reminder_date: string | null;
-                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
-                    is_recurring: boolean;
-                    recurrence_pattern: string | null;
-                    notification_settings?: any;
-                };
-            }, {
-                message: string;
-                data: {
-                    id: number;
-                    description: string | null;
-                    title: string;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    currency: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    deleted_at: string | null;
-                    user_connection_id: number | null;
-                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                    amount: number | null;
-                    due_date: string;
-                    reminder_date: string | null;
-                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
-                    is_recurring: boolean;
-                    recurrence_pattern: string | null;
-                    notification_settings?: any;
-                };
-            }>;
-            401: z.ZodObject<{
-                message: z.ZodString;
-                error: z.ZodOptional<z.ZodString>;
-                statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
-            404: z.ZodObject<{
-                message: z.ZodString;
-                error: z.ZodOptional<z.ZodString>;
-                statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
-            500: z.ZodObject<{
-                message: z.ZodString;
-                error: z.ZodOptional<z.ZodString>;
-                statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
-        };
-    };
     getOverdueReminders: {
         summary: "Get overdue payment reminders";
         description: "Retrieves all overdue payment reminders for the authenticated user";
@@ -2103,6 +1305,804 @@ export declare const PaymentRemindersContracts: {
                 statusCode?: number | undefined;
             }>;
             401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+    };
+    getPaymentReminder: {
+        pathParams: z.ZodObject<{
+            id: z.ZodNumber;
+        }, "strip", z.ZodTypeAny, {
+            id: number;
+        }, {
+            id: number;
+        }>;
+        summary: "Get a specific payment reminder";
+        description: "Retrieves a specific payment reminder by ID";
+        method: "GET";
+        path: "/payment-reminders-by-id/:id/";
+        responses: {
+            200: z.ZodObject<{
+                message: z.ZodString;
+                data: z.ZodObject<{
+                    id: z.ZodNumber;
+                    uuid: z.ZodString;
+                    user_uid: z.ZodString;
+                    user_connection_id: z.ZodNullable<z.ZodNumber>;
+                    title: z.ZodString;
+                    description: z.ZodNullable<z.ZodString>;
+                    reminder_type: z.ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>;
+                    amount: z.ZodNullable<z.ZodNumber>;
+                    currency: z.ZodString;
+                    due_date: z.ZodString;
+                    reminder_date: z.ZodNullable<z.ZodString>;
+                    reminder_status: z.ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>;
+                    priority: z.ZodNullable<z.ZodEnum<["low", "medium", "high", "urgent"]>>;
+                    is_recurring: z.ZodBoolean;
+                    recurrence_pattern: z.ZodNullable<z.ZodString>;
+                    notification_settings: z.ZodNullable<z.ZodAny>;
+                    notes: z.ZodNullable<z.ZodString>;
+                    created_at: z.ZodString;
+                    updated_at: z.ZodString;
+                    deleted_at: z.ZodNullable<z.ZodString>;
+                }, "strip", z.ZodTypeAny, {
+                    id: number;
+                    description: string | null;
+                    title: string;
+                    uuid: string;
+                    user_uid: string;
+                    created_at: string;
+                    notes: string | null;
+                    updated_at: string;
+                    currency: string;
+                    priority: "low" | "medium" | "high" | "urgent" | null;
+                    deleted_at: string | null;
+                    user_connection_id: number | null;
+                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                    amount: number | null;
+                    due_date: string;
+                    reminder_date: string | null;
+                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                    is_recurring: boolean;
+                    recurrence_pattern: string | null;
+                    notification_settings?: any;
+                }, {
+                    id: number;
+                    description: string | null;
+                    title: string;
+                    uuid: string;
+                    user_uid: string;
+                    created_at: string;
+                    notes: string | null;
+                    updated_at: string;
+                    currency: string;
+                    priority: "low" | "medium" | "high" | "urgent" | null;
+                    deleted_at: string | null;
+                    user_connection_id: number | null;
+                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                    amount: number | null;
+                    due_date: string;
+                    reminder_date: string | null;
+                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                    is_recurring: boolean;
+                    recurrence_pattern: string | null;
+                    notification_settings?: any;
+                }>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                data: {
+                    id: number;
+                    description: string | null;
+                    title: string;
+                    uuid: string;
+                    user_uid: string;
+                    created_at: string;
+                    notes: string | null;
+                    updated_at: string;
+                    currency: string;
+                    priority: "low" | "medium" | "high" | "urgent" | null;
+                    deleted_at: string | null;
+                    user_connection_id: number | null;
+                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                    amount: number | null;
+                    due_date: string;
+                    reminder_date: string | null;
+                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                    is_recurring: boolean;
+                    recurrence_pattern: string | null;
+                    notification_settings?: any;
+                };
+            }, {
+                message: string;
+                data: {
+                    id: number;
+                    description: string | null;
+                    title: string;
+                    uuid: string;
+                    user_uid: string;
+                    created_at: string;
+                    notes: string | null;
+                    updated_at: string;
+                    currency: string;
+                    priority: "low" | "medium" | "high" | "urgent" | null;
+                    deleted_at: string | null;
+                    user_connection_id: number | null;
+                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                    amount: number | null;
+                    due_date: string;
+                    reminder_date: string | null;
+                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                    is_recurring: boolean;
+                    recurrence_pattern: string | null;
+                    notification_settings?: any;
+                };
+            }>;
+            404: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+    };
+    updatePaymentReminder: {
+        pathParams: z.ZodObject<{
+            id: z.ZodNumber;
+        }, "strip", z.ZodTypeAny, {
+            id: number;
+        }, {
+            id: number;
+        }>;
+        summary: "Update a payment reminder";
+        description: "Updates an existing payment reminder";
+        method: "PUT";
+        body: z.ZodObject<{
+            user_connection_id: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
+            title: z.ZodOptional<z.ZodString>;
+            description: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+            reminder_type: z.ZodOptional<z.ZodOptional<z.ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>>>;
+            amount: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
+            currency: z.ZodOptional<z.ZodString>;
+            due_date: z.ZodOptional<z.ZodString>;
+            reminder_date: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+            reminder_status: z.ZodOptional<z.ZodOptional<z.ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>>>;
+            priority: z.ZodOptional<z.ZodOptional<z.ZodEnum<["low", "medium", "high", "urgent"]>>>;
+            is_recurring: z.ZodOptional<z.ZodOptional<z.ZodBoolean>>;
+            recurrence_pattern: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+            notification_settings: z.ZodOptional<z.ZodOptional<z.ZodAny>>;
+            notes: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+        }, "strip", z.ZodTypeAny, {
+            description?: string | undefined;
+            title?: string | undefined;
+            notes?: string | undefined;
+            currency?: string | undefined;
+            priority?: "low" | "medium" | "high" | "urgent" | undefined;
+            user_connection_id?: number | undefined;
+            reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
+            amount?: number | undefined;
+            due_date?: string | undefined;
+            reminder_date?: string | undefined;
+            reminder_status?: "pending" | "completed" | "sent" | "acknowledged" | "overdue" | undefined;
+            is_recurring?: boolean | undefined;
+            recurrence_pattern?: string | undefined;
+            notification_settings?: any;
+        }, {
+            description?: string | undefined;
+            title?: string | undefined;
+            notes?: string | undefined;
+            currency?: string | undefined;
+            priority?: "low" | "medium" | "high" | "urgent" | undefined;
+            user_connection_id?: number | undefined;
+            reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
+            amount?: number | undefined;
+            due_date?: string | undefined;
+            reminder_date?: string | undefined;
+            reminder_status?: "pending" | "completed" | "sent" | "acknowledged" | "overdue" | undefined;
+            is_recurring?: boolean | undefined;
+            recurrence_pattern?: string | undefined;
+            notification_settings?: any;
+        }>;
+        path: "/payment-reminders-by-id/:id/update/";
+        responses: {
+            200: z.ZodObject<{
+                message: z.ZodString;
+                data: z.ZodObject<{
+                    id: z.ZodNumber;
+                    uuid: z.ZodString;
+                    user_uid: z.ZodString;
+                    user_connection_id: z.ZodNullable<z.ZodNumber>;
+                    title: z.ZodString;
+                    description: z.ZodNullable<z.ZodString>;
+                    reminder_type: z.ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>;
+                    amount: z.ZodNullable<z.ZodNumber>;
+                    currency: z.ZodString;
+                    due_date: z.ZodString;
+                    reminder_date: z.ZodNullable<z.ZodString>;
+                    reminder_status: z.ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>;
+                    priority: z.ZodNullable<z.ZodEnum<["low", "medium", "high", "urgent"]>>;
+                    is_recurring: z.ZodBoolean;
+                    recurrence_pattern: z.ZodNullable<z.ZodString>;
+                    notification_settings: z.ZodNullable<z.ZodAny>;
+                    notes: z.ZodNullable<z.ZodString>;
+                    created_at: z.ZodString;
+                    updated_at: z.ZodString;
+                    deleted_at: z.ZodNullable<z.ZodString>;
+                }, "strip", z.ZodTypeAny, {
+                    id: number;
+                    description: string | null;
+                    title: string;
+                    uuid: string;
+                    user_uid: string;
+                    created_at: string;
+                    notes: string | null;
+                    updated_at: string;
+                    currency: string;
+                    priority: "low" | "medium" | "high" | "urgent" | null;
+                    deleted_at: string | null;
+                    user_connection_id: number | null;
+                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                    amount: number | null;
+                    due_date: string;
+                    reminder_date: string | null;
+                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                    is_recurring: boolean;
+                    recurrence_pattern: string | null;
+                    notification_settings?: any;
+                }, {
+                    id: number;
+                    description: string | null;
+                    title: string;
+                    uuid: string;
+                    user_uid: string;
+                    created_at: string;
+                    notes: string | null;
+                    updated_at: string;
+                    currency: string;
+                    priority: "low" | "medium" | "high" | "urgent" | null;
+                    deleted_at: string | null;
+                    user_connection_id: number | null;
+                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                    amount: number | null;
+                    due_date: string;
+                    reminder_date: string | null;
+                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                    is_recurring: boolean;
+                    recurrence_pattern: string | null;
+                    notification_settings?: any;
+                }>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                data: {
+                    id: number;
+                    description: string | null;
+                    title: string;
+                    uuid: string;
+                    user_uid: string;
+                    created_at: string;
+                    notes: string | null;
+                    updated_at: string;
+                    currency: string;
+                    priority: "low" | "medium" | "high" | "urgent" | null;
+                    deleted_at: string | null;
+                    user_connection_id: number | null;
+                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                    amount: number | null;
+                    due_date: string;
+                    reminder_date: string | null;
+                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                    is_recurring: boolean;
+                    recurrence_pattern: string | null;
+                    notification_settings?: any;
+                };
+            }, {
+                message: string;
+                data: {
+                    id: number;
+                    description: string | null;
+                    title: string;
+                    uuid: string;
+                    user_uid: string;
+                    created_at: string;
+                    notes: string | null;
+                    updated_at: string;
+                    currency: string;
+                    priority: "low" | "medium" | "high" | "urgent" | null;
+                    deleted_at: string | null;
+                    user_connection_id: number | null;
+                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                    amount: number | null;
+                    due_date: string;
+                    reminder_date: string | null;
+                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                    is_recurring: boolean;
+                    recurrence_pattern: string | null;
+                    notification_settings?: any;
+                };
+            }>;
+            400: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            404: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+    };
+    deletePaymentReminder: {
+        pathParams: z.ZodObject<{
+            id: z.ZodNumber;
+        }, "strip", z.ZodTypeAny, {
+            id: number;
+        }, {
+            id: number;
+        }>;
+        summary: "Delete a payment reminder";
+        description: "Soft deletes a payment reminder";
+        method: "DELETE";
+        path: "/delete-payment-reminders-by-id/:id/";
+        responses: {
+            200: z.ZodObject<{
+                message: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+            }, {
+                message: string;
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            404: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+    };
+    markAsCompleted: {
+        pathParams: z.ZodObject<{
+            id: z.ZodNumber;
+        }, "strip", z.ZodTypeAny, {
+            id: number;
+        }, {
+            id: number;
+        }>;
+        summary: "Mark payment reminder as completed";
+        description: "Marks a payment reminder as completed";
+        method: "PATCH";
+        body: z.ZodObject<{}, "strip", z.ZodTypeAny, {}, {}>;
+        path: "/complete-payment-reminders-by-id/:id/";
+        responses: {
+            200: z.ZodObject<{
+                message: z.ZodString;
+                data: z.ZodObject<{
+                    id: z.ZodNumber;
+                    uuid: z.ZodString;
+                    user_uid: z.ZodString;
+                    user_connection_id: z.ZodNullable<z.ZodNumber>;
+                    title: z.ZodString;
+                    description: z.ZodNullable<z.ZodString>;
+                    reminder_type: z.ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>;
+                    amount: z.ZodNullable<z.ZodNumber>;
+                    currency: z.ZodString;
+                    due_date: z.ZodString;
+                    reminder_date: z.ZodNullable<z.ZodString>;
+                    reminder_status: z.ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>;
+                    priority: z.ZodNullable<z.ZodEnum<["low", "medium", "high", "urgent"]>>;
+                    is_recurring: z.ZodBoolean;
+                    recurrence_pattern: z.ZodNullable<z.ZodString>;
+                    notification_settings: z.ZodNullable<z.ZodAny>;
+                    notes: z.ZodNullable<z.ZodString>;
+                    created_at: z.ZodString;
+                    updated_at: z.ZodString;
+                    deleted_at: z.ZodNullable<z.ZodString>;
+                }, "strip", z.ZodTypeAny, {
+                    id: number;
+                    description: string | null;
+                    title: string;
+                    uuid: string;
+                    user_uid: string;
+                    created_at: string;
+                    notes: string | null;
+                    updated_at: string;
+                    currency: string;
+                    priority: "low" | "medium" | "high" | "urgent" | null;
+                    deleted_at: string | null;
+                    user_connection_id: number | null;
+                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                    amount: number | null;
+                    due_date: string;
+                    reminder_date: string | null;
+                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                    is_recurring: boolean;
+                    recurrence_pattern: string | null;
+                    notification_settings?: any;
+                }, {
+                    id: number;
+                    description: string | null;
+                    title: string;
+                    uuid: string;
+                    user_uid: string;
+                    created_at: string;
+                    notes: string | null;
+                    updated_at: string;
+                    currency: string;
+                    priority: "low" | "medium" | "high" | "urgent" | null;
+                    deleted_at: string | null;
+                    user_connection_id: number | null;
+                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                    amount: number | null;
+                    due_date: string;
+                    reminder_date: string | null;
+                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                    is_recurring: boolean;
+                    recurrence_pattern: string | null;
+                    notification_settings?: any;
+                }>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                data: {
+                    id: number;
+                    description: string | null;
+                    title: string;
+                    uuid: string;
+                    user_uid: string;
+                    created_at: string;
+                    notes: string | null;
+                    updated_at: string;
+                    currency: string;
+                    priority: "low" | "medium" | "high" | "urgent" | null;
+                    deleted_at: string | null;
+                    user_connection_id: number | null;
+                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                    amount: number | null;
+                    due_date: string;
+                    reminder_date: string | null;
+                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                    is_recurring: boolean;
+                    recurrence_pattern: string | null;
+                    notification_settings?: any;
+                };
+            }, {
+                message: string;
+                data: {
+                    id: number;
+                    description: string | null;
+                    title: string;
+                    uuid: string;
+                    user_uid: string;
+                    created_at: string;
+                    notes: string | null;
+                    updated_at: string;
+                    currency: string;
+                    priority: "low" | "medium" | "high" | "urgent" | null;
+                    deleted_at: string | null;
+                    user_connection_id: number | null;
+                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                    amount: number | null;
+                    due_date: string;
+                    reminder_date: string | null;
+                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                    is_recurring: boolean;
+                    recurrence_pattern: string | null;
+                    notification_settings?: any;
+                };
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            404: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+    };
+    markAsAcknowledged: {
+        pathParams: z.ZodObject<{
+            id: z.ZodNumber;
+        }, "strip", z.ZodTypeAny, {
+            id: number;
+        }, {
+            id: number;
+        }>;
+        summary: "Mark payment reminder as acknowledged";
+        description: "Marks a payment reminder as acknowledged";
+        method: "PATCH";
+        body: z.ZodObject<{}, "strip", z.ZodTypeAny, {}, {}>;
+        path: "/acknowledge-payment-reminders-by-id/:id/";
+        responses: {
+            200: z.ZodObject<{
+                message: z.ZodString;
+                data: z.ZodObject<{
+                    id: z.ZodNumber;
+                    uuid: z.ZodString;
+                    user_uid: z.ZodString;
+                    user_connection_id: z.ZodNullable<z.ZodNumber>;
+                    title: z.ZodString;
+                    description: z.ZodNullable<z.ZodString>;
+                    reminder_type: z.ZodEnum<["credit_card", "loan", "bill", "subscription", "custom"]>;
+                    amount: z.ZodNullable<z.ZodNumber>;
+                    currency: z.ZodString;
+                    due_date: z.ZodString;
+                    reminder_date: z.ZodNullable<z.ZodString>;
+                    reminder_status: z.ZodEnum<["pending", "sent", "acknowledged", "completed", "overdue"]>;
+                    priority: z.ZodNullable<z.ZodEnum<["low", "medium", "high", "urgent"]>>;
+                    is_recurring: z.ZodBoolean;
+                    recurrence_pattern: z.ZodNullable<z.ZodString>;
+                    notification_settings: z.ZodNullable<z.ZodAny>;
+                    notes: z.ZodNullable<z.ZodString>;
+                    created_at: z.ZodString;
+                    updated_at: z.ZodString;
+                    deleted_at: z.ZodNullable<z.ZodString>;
+                }, "strip", z.ZodTypeAny, {
+                    id: number;
+                    description: string | null;
+                    title: string;
+                    uuid: string;
+                    user_uid: string;
+                    created_at: string;
+                    notes: string | null;
+                    updated_at: string;
+                    currency: string;
+                    priority: "low" | "medium" | "high" | "urgent" | null;
+                    deleted_at: string | null;
+                    user_connection_id: number | null;
+                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                    amount: number | null;
+                    due_date: string;
+                    reminder_date: string | null;
+                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                    is_recurring: boolean;
+                    recurrence_pattern: string | null;
+                    notification_settings?: any;
+                }, {
+                    id: number;
+                    description: string | null;
+                    title: string;
+                    uuid: string;
+                    user_uid: string;
+                    created_at: string;
+                    notes: string | null;
+                    updated_at: string;
+                    currency: string;
+                    priority: "low" | "medium" | "high" | "urgent" | null;
+                    deleted_at: string | null;
+                    user_connection_id: number | null;
+                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                    amount: number | null;
+                    due_date: string;
+                    reminder_date: string | null;
+                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                    is_recurring: boolean;
+                    recurrence_pattern: string | null;
+                    notification_settings?: any;
+                }>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                data: {
+                    id: number;
+                    description: string | null;
+                    title: string;
+                    uuid: string;
+                    user_uid: string;
+                    created_at: string;
+                    notes: string | null;
+                    updated_at: string;
+                    currency: string;
+                    priority: "low" | "medium" | "high" | "urgent" | null;
+                    deleted_at: string | null;
+                    user_connection_id: number | null;
+                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                    amount: number | null;
+                    due_date: string;
+                    reminder_date: string | null;
+                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                    is_recurring: boolean;
+                    recurrence_pattern: string | null;
+                    notification_settings?: any;
+                };
+            }, {
+                message: string;
+                data: {
+                    id: number;
+                    description: string | null;
+                    title: string;
+                    uuid: string;
+                    user_uid: string;
+                    created_at: string;
+                    notes: string | null;
+                    updated_at: string;
+                    currency: string;
+                    priority: "low" | "medium" | "high" | "urgent" | null;
+                    deleted_at: string | null;
+                    user_connection_id: number | null;
+                    reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
+                    amount: number | null;
+                    due_date: string;
+                    reminder_date: string | null;
+                    reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
+                    is_recurring: boolean;
+                    recurrence_pattern: string | null;
+                    notification_settings?: any;
+                };
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            404: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;

@@ -375,11 +375,11 @@ export declare const SavingGoalsContracts: {
     };
     getSavingGoal: {
         pathParams: z.ZodObject<{
-            id: z.ZodEffects<z.ZodString, number, string>;
+            id: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
             id: number;
         }, {
-            id: string;
+            id: number;
         }>;
         summary: "Get a specific saving goal";
         description: "Retrieves a specific saving goal by ID";
@@ -534,11 +534,11 @@ export declare const SavingGoalsContracts: {
     };
     updateSavingGoal: {
         pathParams: z.ZodObject<{
-            id: z.ZodEffects<z.ZodString, number, string>;
+            id: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
             id: number;
         }, {
-            id: string;
+            id: number;
         }>;
         summary: "Update a saving goal";
         description: "Updates an existing saving goal";
@@ -746,11 +746,11 @@ export declare const SavingGoalsContracts: {
     };
     updateProgress: {
         pathParams: z.ZodObject<{
-            id: z.ZodEffects<z.ZodString, number, string>;
+            id: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
             id: number;
         }, {
-            id: string;
+            id: number;
         }>;
         summary: "Update saving goal progress";
         description: "Updates the current amount of a saving goal";
@@ -925,11 +925,11 @@ export declare const SavingGoalsContracts: {
     };
     deleteSavingGoal: {
         pathParams: z.ZodObject<{
-            id: z.ZodEffects<z.ZodString, number, string>;
+            id: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
             id: number;
         }, {
-            id: string;
+            id: number;
         }>;
         summary: "Delete a saving goal";
         description: "Soft deletes a saving goal";
