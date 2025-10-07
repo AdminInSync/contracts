@@ -698,15 +698,15 @@ export declare const apiContract: {
                 method: "POST";
                 body: import("zod").ZodObject<{
                     user_uid: import("zod").ZodString;
-                    device_id: import("zod").ZodString;
+                    device_unique_id: import("zod").ZodString;
                     notes: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
                     user_uid: string;
-                    device_id: string;
+                    device_unique_id: string;
                     notes: string;
                 }, {
                     user_uid: string;
-                    device_id: string;
+                    device_unique_id: string;
                     notes: string;
                 }>;
                 path: "/api/devices/";
@@ -715,7 +715,7 @@ export declare const apiContract: {
                         id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         user_uid: import("zod").ZodString;
-                        device_id: import("zod").ZodString;
+                        device_unique_id: import("zod").ZodString;
                         notes: import("zod").ZodString;
                         created_at: import("zod").ZodString;
                         updated_at: import("zod").ZodString;
@@ -724,7 +724,7 @@ export declare const apiContract: {
                         uuid: string;
                         user_uid: string;
                         created_at: string;
-                        device_id: string;
+                        device_unique_id: string;
                         notes: string;
                         updated_at: string;
                     }, {
@@ -732,7 +732,7 @@ export declare const apiContract: {
                         uuid: string;
                         user_uid: string;
                         created_at: string;
-                        device_id: string;
+                        device_unique_id: string;
                         notes: string;
                         updated_at: string;
                     }>;
@@ -787,11 +787,11 @@ export declare const apiContract: {
             getDevices: {
                 strictStatusCodes: true;
                 query: import("zod").ZodObject<{
-                    device_id: import("zod").ZodOptional<import("zod").ZodString>;
+                    device_unique_id: import("zod").ZodOptional<import("zod").ZodString>;
                 }, "strip", import("zod").ZodTypeAny, {
-                    device_id?: string | undefined;
+                    device_unique_id?: string | undefined;
                 }, {
-                    device_id?: string | undefined;
+                    device_unique_id?: string | undefined;
                 }>;
                 summary: "Get user devices";
                 description: "Get all devices for the authenticated user with optional filtering by device ID";
@@ -802,7 +802,7 @@ export declare const apiContract: {
                         id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         user_uid: import("zod").ZodString;
-                        device_id: import("zod").ZodString;
+                        device_unique_id: import("zod").ZodString;
                         notes: import("zod").ZodString;
                         created_at: import("zod").ZodString;
                         updated_at: import("zod").ZodString;
@@ -811,7 +811,7 @@ export declare const apiContract: {
                         uuid: string;
                         user_uid: string;
                         created_at: string;
-                        device_id: string;
+                        device_unique_id: string;
                         notes: string;
                         updated_at: string;
                     }, {
@@ -819,7 +819,7 @@ export declare const apiContract: {
                         uuid: string;
                         user_uid: string;
                         created_at: string;
-                        device_id: string;
+                        device_unique_id: string;
                         notes: string;
                         updated_at: string;
                     }>, "many">;
@@ -870,7 +870,7 @@ export declare const apiContract: {
                 description: "Create preferences for a specific device";
                 method: "POST";
                 body: import("zod").ZodObject<{
-                    device_id: import("zod").ZodString;
+                    device_unique_id: import("zod").ZodString;
                     arePushNotificationsEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
                     areTransactionAlertsEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
                     areNotificationSoundsEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
@@ -883,7 +883,7 @@ export declare const apiContract: {
                     canExportData: import("zod").ZodOptional<import("zod").ZodBoolean>;
                     preferredTheme: import("zod").ZodOptional<import("zod").ZodEnum<["SYSTEM", "LIGHT", "DARK"]>>;
                 }, "strip", import("zod").ZodTypeAny, {
-                    device_id: string;
+                    device_unique_id: string;
                     arePushNotificationsEnabled?: boolean | undefined;
                     areTransactionAlertsEnabled?: boolean | undefined;
                     areNotificationSoundsEnabled?: boolean | undefined;
@@ -896,7 +896,7 @@ export declare const apiContract: {
                     canExportData?: boolean | undefined;
                     preferredTheme?: "SYSTEM" | "LIGHT" | "DARK" | undefined;
                 }, {
-                    device_id: string;
+                    device_unique_id: string;
                     arePushNotificationsEnabled?: boolean | undefined;
                     areTransactionAlertsEnabled?: boolean | undefined;
                     areNotificationSoundsEnabled?: boolean | undefined;
@@ -915,7 +915,7 @@ export declare const apiContract: {
                         id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         user_uid: import("zod").ZodString;
-                        device_id: import("zod").ZodString;
+                        device_unique_id: import("zod").ZodString;
                         arePushNotificationsEnabled: import("zod").ZodBoolean;
                         areTransactionAlertsEnabled: import("zod").ZodBoolean;
                         areNotificationSoundsEnabled: import("zod").ZodBoolean;
@@ -934,7 +934,7 @@ export declare const apiContract: {
                         uuid: string;
                         user_uid: string;
                         created_at: string;
-                        device_id: string;
+                        device_unique_id: string;
                         updated_at: string;
                         arePushNotificationsEnabled: boolean;
                         areTransactionAlertsEnabled: boolean;
@@ -952,7 +952,7 @@ export declare const apiContract: {
                         uuid: string;
                         user_uid: string;
                         created_at: string;
-                        device_id: string;
+                        device_unique_id: string;
                         updated_at: string;
                         arePushNotificationsEnabled: boolean;
                         areTransactionAlertsEnabled: boolean;
@@ -1027,11 +1027,11 @@ export declare const apiContract: {
             getDevicePreferences: {
                 strictStatusCodes: true;
                 query: import("zod").ZodObject<{
-                    device_id: import("zod").ZodOptional<import("zod").ZodString>;
+                    device_unique_id: import("zod").ZodOptional<import("zod").ZodString>;
                 }, "strip", import("zod").ZodTypeAny, {
-                    device_id?: string | undefined;
+                    device_unique_id?: string | undefined;
                 }, {
-                    device_id?: string | undefined;
+                    device_unique_id?: string | undefined;
                 }>;
                 summary: "Get device preferences";
                 description: "Get all device preferences for the authenticated user with optional filtering by device ID";
@@ -1042,7 +1042,7 @@ export declare const apiContract: {
                         id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         user_uid: import("zod").ZodString;
-                        device_id: import("zod").ZodString;
+                        device_unique_id: import("zod").ZodString;
                         arePushNotificationsEnabled: import("zod").ZodBoolean;
                         areTransactionAlertsEnabled: import("zod").ZodBoolean;
                         areNotificationSoundsEnabled: import("zod").ZodBoolean;
@@ -1061,7 +1061,7 @@ export declare const apiContract: {
                         uuid: string;
                         user_uid: string;
                         created_at: string;
-                        device_id: string;
+                        device_unique_id: string;
                         updated_at: string;
                         arePushNotificationsEnabled: boolean;
                         areTransactionAlertsEnabled: boolean;
@@ -1079,7 +1079,7 @@ export declare const apiContract: {
                         uuid: string;
                         user_uid: string;
                         created_at: string;
-                        device_id: string;
+                        device_unique_id: string;
                         updated_at: string;
                         arePushNotificationsEnabled: boolean;
                         areTransactionAlertsEnabled: boolean;
@@ -1199,7 +1199,7 @@ export declare const apiContract: {
                         id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         user_uid: import("zod").ZodString;
-                        device_id: import("zod").ZodString;
+                        device_unique_id: import("zod").ZodString;
                         arePushNotificationsEnabled: import("zod").ZodBoolean;
                         areTransactionAlertsEnabled: import("zod").ZodBoolean;
                         areNotificationSoundsEnabled: import("zod").ZodBoolean;
@@ -1218,7 +1218,7 @@ export declare const apiContract: {
                         uuid: string;
                         user_uid: string;
                         created_at: string;
-                        device_id: string;
+                        device_unique_id: string;
                         updated_at: string;
                         arePushNotificationsEnabled: boolean;
                         areTransactionAlertsEnabled: boolean;
@@ -1236,7 +1236,7 @@ export declare const apiContract: {
                         uuid: string;
                         user_uid: string;
                         created_at: string;
-                        device_id: string;
+                        device_unique_id: string;
                         updated_at: string;
                         arePushNotificationsEnabled: boolean;
                         areTransactionAlertsEnabled: boolean;

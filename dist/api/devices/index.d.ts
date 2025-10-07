@@ -6,15 +6,15 @@ export declare const DevicesContracts: {
         method: "POST";
         body: z.ZodObject<{
             user_uid: z.ZodString;
-            device_id: z.ZodString;
+            device_unique_id: z.ZodString;
             notes: z.ZodString;
         }, "strip", z.ZodTypeAny, {
             user_uid: string;
-            device_id: string;
+            device_unique_id: string;
             notes: string;
         }, {
             user_uid: string;
-            device_id: string;
+            device_unique_id: string;
             notes: string;
         }>;
         path: "/devices/";
@@ -23,7 +23,7 @@ export declare const DevicesContracts: {
                 id: z.ZodNumber;
                 uuid: z.ZodString;
                 user_uid: z.ZodString;
-                device_id: z.ZodString;
+                device_unique_id: z.ZodString;
                 notes: z.ZodString;
                 created_at: z.ZodString;
                 updated_at: z.ZodString;
@@ -32,7 +32,7 @@ export declare const DevicesContracts: {
                 uuid: string;
                 user_uid: string;
                 created_at: string;
-                device_id: string;
+                device_unique_id: string;
                 notes: string;
                 updated_at: string;
             }, {
@@ -40,7 +40,7 @@ export declare const DevicesContracts: {
                 uuid: string;
                 user_uid: string;
                 created_at: string;
-                device_id: string;
+                device_unique_id: string;
                 notes: string;
                 updated_at: string;
             }>;
@@ -95,11 +95,11 @@ export declare const DevicesContracts: {
     };
     getDevices: {
         query: z.ZodObject<{
-            device_id: z.ZodOptional<z.ZodString>;
+            device_unique_id: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            device_id?: string | undefined;
+            device_unique_id?: string | undefined;
         }, {
-            device_id?: string | undefined;
+            device_unique_id?: string | undefined;
         }>;
         summary: "Get user devices";
         description: "Get all devices for the authenticated user with optional filtering by device ID";
@@ -110,7 +110,7 @@ export declare const DevicesContracts: {
                 id: z.ZodNumber;
                 uuid: z.ZodString;
                 user_uid: z.ZodString;
-                device_id: z.ZodString;
+                device_unique_id: z.ZodString;
                 notes: z.ZodString;
                 created_at: z.ZodString;
                 updated_at: z.ZodString;
@@ -119,7 +119,7 @@ export declare const DevicesContracts: {
                 uuid: string;
                 user_uid: string;
                 created_at: string;
-                device_id: string;
+                device_unique_id: string;
                 notes: string;
                 updated_at: string;
             }, {
@@ -127,7 +127,7 @@ export declare const DevicesContracts: {
                 uuid: string;
                 user_uid: string;
                 created_at: string;
-                device_id: string;
+                device_unique_id: string;
                 notes: string;
                 updated_at: string;
             }>, "many">;
@@ -178,7 +178,7 @@ export declare const DevicesContracts: {
         description: "Create preferences for a specific device";
         method: "POST";
         body: z.ZodObject<{
-            device_id: z.ZodString;
+            device_unique_id: z.ZodString;
             arePushNotificationsEnabled: z.ZodOptional<z.ZodBoolean>;
             areTransactionAlertsEnabled: z.ZodOptional<z.ZodBoolean>;
             areNotificationSoundsEnabled: z.ZodOptional<z.ZodBoolean>;
@@ -191,7 +191,7 @@ export declare const DevicesContracts: {
             canExportData: z.ZodOptional<z.ZodBoolean>;
             preferredTheme: z.ZodOptional<z.ZodEnum<["SYSTEM", "LIGHT", "DARK"]>>;
         }, "strip", z.ZodTypeAny, {
-            device_id: string;
+            device_unique_id: string;
             arePushNotificationsEnabled?: boolean | undefined;
             areTransactionAlertsEnabled?: boolean | undefined;
             areNotificationSoundsEnabled?: boolean | undefined;
@@ -204,7 +204,7 @@ export declare const DevicesContracts: {
             canExportData?: boolean | undefined;
             preferredTheme?: "SYSTEM" | "LIGHT" | "DARK" | undefined;
         }, {
-            device_id: string;
+            device_unique_id: string;
             arePushNotificationsEnabled?: boolean | undefined;
             areTransactionAlertsEnabled?: boolean | undefined;
             areNotificationSoundsEnabled?: boolean | undefined;
@@ -223,7 +223,7 @@ export declare const DevicesContracts: {
                 id: z.ZodNumber;
                 uuid: z.ZodString;
                 user_uid: z.ZodString;
-                device_id: z.ZodString;
+                device_unique_id: z.ZodString;
                 arePushNotificationsEnabled: z.ZodBoolean;
                 areTransactionAlertsEnabled: z.ZodBoolean;
                 areNotificationSoundsEnabled: z.ZodBoolean;
@@ -242,7 +242,7 @@ export declare const DevicesContracts: {
                 uuid: string;
                 user_uid: string;
                 created_at: string;
-                device_id: string;
+                device_unique_id: string;
                 updated_at: string;
                 arePushNotificationsEnabled: boolean;
                 areTransactionAlertsEnabled: boolean;
@@ -260,7 +260,7 @@ export declare const DevicesContracts: {
                 uuid: string;
                 user_uid: string;
                 created_at: string;
-                device_id: string;
+                device_unique_id: string;
                 updated_at: string;
                 arePushNotificationsEnabled: boolean;
                 areTransactionAlertsEnabled: boolean;
@@ -335,11 +335,11 @@ export declare const DevicesContracts: {
     };
     getDevicePreferences: {
         query: z.ZodObject<{
-            device_id: z.ZodOptional<z.ZodString>;
+            device_unique_id: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            device_id?: string | undefined;
+            device_unique_id?: string | undefined;
         }, {
-            device_id?: string | undefined;
+            device_unique_id?: string | undefined;
         }>;
         summary: "Get device preferences";
         description: "Get all device preferences for the authenticated user with optional filtering by device ID";
@@ -350,7 +350,7 @@ export declare const DevicesContracts: {
                 id: z.ZodNumber;
                 uuid: z.ZodString;
                 user_uid: z.ZodString;
-                device_id: z.ZodString;
+                device_unique_id: z.ZodString;
                 arePushNotificationsEnabled: z.ZodBoolean;
                 areTransactionAlertsEnabled: z.ZodBoolean;
                 areNotificationSoundsEnabled: z.ZodBoolean;
@@ -369,7 +369,7 @@ export declare const DevicesContracts: {
                 uuid: string;
                 user_uid: string;
                 created_at: string;
-                device_id: string;
+                device_unique_id: string;
                 updated_at: string;
                 arePushNotificationsEnabled: boolean;
                 areTransactionAlertsEnabled: boolean;
@@ -387,7 +387,7 @@ export declare const DevicesContracts: {
                 uuid: string;
                 user_uid: string;
                 created_at: string;
-                device_id: string;
+                device_unique_id: string;
                 updated_at: string;
                 arePushNotificationsEnabled: boolean;
                 areTransactionAlertsEnabled: boolean;
@@ -507,7 +507,7 @@ export declare const DevicesContracts: {
                 id: z.ZodNumber;
                 uuid: z.ZodString;
                 user_uid: z.ZodString;
-                device_id: z.ZodString;
+                device_unique_id: z.ZodString;
                 arePushNotificationsEnabled: z.ZodBoolean;
                 areTransactionAlertsEnabled: z.ZodBoolean;
                 areNotificationSoundsEnabled: z.ZodBoolean;
@@ -526,7 +526,7 @@ export declare const DevicesContracts: {
                 uuid: string;
                 user_uid: string;
                 created_at: string;
-                device_id: string;
+                device_unique_id: string;
                 updated_at: string;
                 arePushNotificationsEnabled: boolean;
                 areTransactionAlertsEnabled: boolean;
@@ -544,7 +544,7 @@ export declare const DevicesContracts: {
                 uuid: string;
                 user_uid: string;
                 created_at: string;
-                device_id: string;
+                device_unique_id: string;
                 updated_at: string;
                 arePushNotificationsEnabled: boolean;
                 areTransactionAlertsEnabled: boolean;
