@@ -54,6 +54,7 @@ export const DevicesContracts = c.router({
             200: GetDevicePreferencesResponseSchema,
             400: ErrorResSchema,
             401: ErrorResSchema,
+            404: DeviceErrorResponseSchema,
             500: ErrorResSchema
         },
         summary: 'Get device preferences',

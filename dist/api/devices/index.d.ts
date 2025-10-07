@@ -427,6 +427,16 @@ export declare const DevicesContracts: {
                 error?: string | undefined;
                 statusCode?: number | undefined;
             }>;
+            404: z.ZodObject<{
+                error: z.ZodString;
+                message: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error: string;
+            }, {
+                message: string;
+                error: string;
+            }>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
