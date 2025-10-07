@@ -1,22 +1,22 @@
 import { z } from 'zod';
 export declare const CreateDeviceRequestSchema: z.ZodObject<{
     user_uid: z.ZodString;
-    device_id: z.ZodString;
+    device_unique_id: z.ZodString;
     notes: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     user_uid: string;
-    device_id: string;
+    device_unique_id: string;
     notes: string;
 }, {
     user_uid: string;
-    device_id: string;
+    device_unique_id: string;
     notes: string;
 }>;
 export declare const DeviceResponseSchema: z.ZodObject<{
     id: z.ZodNumber;
     uuid: z.ZodString;
     user_uid: z.ZodString;
-    device_id: z.ZodString;
+    device_unique_id: z.ZodString;
     notes: z.ZodString;
     created_at: z.ZodString;
     updated_at: z.ZodString;
@@ -25,7 +25,7 @@ export declare const DeviceResponseSchema: z.ZodObject<{
     uuid: string;
     user_uid: string;
     created_at: string;
-    device_id: string;
+    device_unique_id: string;
     notes: string;
     updated_at: string;
 }, {
@@ -33,12 +33,12 @@ export declare const DeviceResponseSchema: z.ZodObject<{
     uuid: string;
     user_uid: string;
     created_at: string;
-    device_id: string;
+    device_unique_id: string;
     notes: string;
     updated_at: string;
 }>;
 export declare const CreateDevicePreferencesRequestSchema: z.ZodObject<{
-    device_id: z.ZodString;
+    device_unique_id: z.ZodString;
     arePushNotificationsEnabled: z.ZodOptional<z.ZodBoolean>;
     areTransactionAlertsEnabled: z.ZodOptional<z.ZodBoolean>;
     areNotificationSoundsEnabled: z.ZodOptional<z.ZodBoolean>;
@@ -51,7 +51,7 @@ export declare const CreateDevicePreferencesRequestSchema: z.ZodObject<{
     canExportData: z.ZodOptional<z.ZodBoolean>;
     preferredTheme: z.ZodOptional<z.ZodEnum<["SYSTEM", "LIGHT", "DARK"]>>;
 }, "strip", z.ZodTypeAny, {
-    device_id: string;
+    device_unique_id: string;
     arePushNotificationsEnabled?: boolean | undefined;
     areTransactionAlertsEnabled?: boolean | undefined;
     areNotificationSoundsEnabled?: boolean | undefined;
@@ -64,7 +64,7 @@ export declare const CreateDevicePreferencesRequestSchema: z.ZodObject<{
     canExportData?: boolean | undefined;
     preferredTheme?: "SYSTEM" | "LIGHT" | "DARK" | undefined;
 }, {
-    device_id: string;
+    device_unique_id: string;
     arePushNotificationsEnabled?: boolean | undefined;
     areTransactionAlertsEnabled?: boolean | undefined;
     areNotificationSoundsEnabled?: boolean | undefined;
@@ -81,7 +81,7 @@ export declare const DevicePreferencesResponseSchema: z.ZodObject<{
     id: z.ZodNumber;
     uuid: z.ZodString;
     user_uid: z.ZodString;
-    device_id: z.ZodString;
+    device_unique_id: z.ZodString;
     arePushNotificationsEnabled: z.ZodBoolean;
     areTransactionAlertsEnabled: z.ZodBoolean;
     areNotificationSoundsEnabled: z.ZodBoolean;
@@ -100,7 +100,7 @@ export declare const DevicePreferencesResponseSchema: z.ZodObject<{
     uuid: string;
     user_uid: string;
     created_at: string;
-    device_id: string;
+    device_unique_id: string;
     updated_at: string;
     arePushNotificationsEnabled: boolean;
     areTransactionAlertsEnabled: boolean;
@@ -118,7 +118,7 @@ export declare const DevicePreferencesResponseSchema: z.ZodObject<{
     uuid: string;
     user_uid: string;
     created_at: string;
-    device_id: string;
+    device_unique_id: string;
     updated_at: string;
     arePushNotificationsEnabled: boolean;
     areTransactionAlertsEnabled: boolean;
@@ -180,17 +180,17 @@ export declare const DeviceErrorResponseSchema: z.ZodObject<{
     error: string;
 }>;
 export declare const GetDevicesQuerySchema: z.ZodObject<{
-    device_id: z.ZodOptional<z.ZodString>;
+    device_unique_id: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
-    device_id?: string | undefined;
+    device_unique_id?: string | undefined;
 }, {
-    device_id?: string | undefined;
+    device_unique_id?: string | undefined;
 }>;
 export declare const GetDevicesResponseSchema: z.ZodArray<z.ZodObject<{
     id: z.ZodNumber;
     uuid: z.ZodString;
     user_uid: z.ZodString;
-    device_id: z.ZodString;
+    device_unique_id: z.ZodString;
     notes: z.ZodString;
     created_at: z.ZodString;
     updated_at: z.ZodString;
@@ -199,7 +199,7 @@ export declare const GetDevicesResponseSchema: z.ZodArray<z.ZodObject<{
     uuid: string;
     user_uid: string;
     created_at: string;
-    device_id: string;
+    device_unique_id: string;
     notes: string;
     updated_at: string;
 }, {
@@ -207,22 +207,22 @@ export declare const GetDevicesResponseSchema: z.ZodArray<z.ZodObject<{
     uuid: string;
     user_uid: string;
     created_at: string;
-    device_id: string;
+    device_unique_id: string;
     notes: string;
     updated_at: string;
 }>, "many">;
 export declare const GetDevicePreferencesQuerySchema: z.ZodObject<{
-    device_id: z.ZodOptional<z.ZodString>;
+    device_unique_id: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
-    device_id?: string | undefined;
+    device_unique_id?: string | undefined;
 }, {
-    device_id?: string | undefined;
+    device_unique_id?: string | undefined;
 }>;
 export declare const GetDevicePreferencesResponseSchema: z.ZodArray<z.ZodObject<{
     id: z.ZodNumber;
     uuid: z.ZodString;
     user_uid: z.ZodString;
-    device_id: z.ZodString;
+    device_unique_id: z.ZodString;
     arePushNotificationsEnabled: z.ZodBoolean;
     areTransactionAlertsEnabled: z.ZodBoolean;
     areNotificationSoundsEnabled: z.ZodBoolean;
@@ -241,7 +241,7 @@ export declare const GetDevicePreferencesResponseSchema: z.ZodArray<z.ZodObject<
     uuid: string;
     user_uid: string;
     created_at: string;
-    device_id: string;
+    device_unique_id: string;
     updated_at: string;
     arePushNotificationsEnabled: boolean;
     areTransactionAlertsEnabled: boolean;
@@ -259,7 +259,7 @@ export declare const GetDevicePreferencesResponseSchema: z.ZodArray<z.ZodObject<
     uuid: string;
     user_uid: string;
     created_at: string;
-    device_id: string;
+    device_unique_id: string;
     updated_at: string;
     arePushNotificationsEnabled: boolean;
     areTransactionAlertsEnabled: boolean;

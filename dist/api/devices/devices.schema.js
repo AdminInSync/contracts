@@ -6,7 +6,7 @@ export const CreateDeviceRequestSchema = z.object({
     user_uid: z.string().openapi({
         description: 'User UID from Firebase'
     }),
-    device_id: z.string().min(1).max(100).openapi({
+    device_unique_id: z.string().min(1).max(100).openapi({
         description: 'Unique device identifier'
     }),
     notes: z.string().min(1).max(100).openapi({
@@ -27,7 +27,7 @@ export const DeviceResponseSchema = z.object({
     user_uid: z.string().openapi({
         description: 'User UID from Firebase'
     }),
-    device_id: z.string().openapi({
+    device_unique_id: z.string().openapi({
         description: 'Unique device identifier'
     }),
     notes: z.string().openapi({
@@ -45,7 +45,7 @@ export const DeviceResponseSchema = z.object({
 });
 // Device Preferences Request Schema
 export const CreateDevicePreferencesRequestSchema = z.object({
-    device_id: z.string().min(1).max(100).openapi({
+    device_unique_id: z.string().min(1).max(100).openapi({
         description: 'Device ID to associate preferences with'
     }),
     // Notificaciones
@@ -100,7 +100,7 @@ export const DevicePreferencesResponseSchema = z.object({
     user_uid: z.string().openapi({
         description: 'User UID from Firebase'
     }),
-    device_id: z.string().openapi({
+    device_unique_id: z.string().openapi({
         description: 'Associated device ID'
     }),
     // Notificaciones
@@ -207,7 +207,7 @@ export const DeviceErrorResponseSchema = z.object({
 });
 // Get Devices Query Schema
 export const GetDevicesQuerySchema = z.object({
-    device_id: z.string().optional().openapi({
+    device_unique_id: z.string().optional().openapi({
         description: 'Filter by device ID'
     })
 }).openapi({
@@ -221,7 +221,7 @@ export const GetDevicesResponseSchema = z.array(DeviceResponseSchema).openapi({
 });
 // Get Device Preferences Query Schema
 export const GetDevicePreferencesQuerySchema = z.object({
-    device_id: z.string().optional().openapi({
+    device_unique_id: z.string().optional().openapi({
         description: 'Filter by device ID'
     })
 }).openapi({
