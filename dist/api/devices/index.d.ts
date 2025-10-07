@@ -335,11 +335,11 @@ export declare const DevicesContracts: {
     };
     getDevicePreferences: {
         query: z.ZodObject<{
-            device_unique_id: z.ZodOptional<z.ZodString>;
+            device_id: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            device_unique_id?: string | undefined;
+            device_id?: string | undefined;
         }, {
-            device_unique_id?: string | undefined;
+            device_id?: string | undefined;
         }>;
         summary: "Get device preferences";
         description: "Get all device preferences for the authenticated user with optional filtering by device ID";

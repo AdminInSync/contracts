@@ -212,11 +212,11 @@ export declare const GetDevicesResponseSchema: z.ZodArray<z.ZodObject<{
     updated_at: string;
 }>, "many">;
 export declare const GetDevicePreferencesQuerySchema: z.ZodObject<{
-    device_unique_id: z.ZodOptional<z.ZodString>;
+    device_id: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
-    device_unique_id?: string | undefined;
+    device_id?: string | undefined;
 }, {
-    device_unique_id?: string | undefined;
+    device_id?: string | undefined;
 }>;
 export declare const GetDevicePreferencesResponseSchema: z.ZodArray<z.ZodObject<{
     id: z.ZodNumber;

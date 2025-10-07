@@ -221,7 +221,7 @@ export const GetDevicesResponseSchema = z.array(DeviceResponseSchema).openapi({
 });
 // Get Device Preferences Query Schema
 export const GetDevicePreferencesQuerySchema = z.object({
-    device_unique_id: z.string().optional().openapi({
+    device_id: z.string().optional().openapi({
         description: 'Filter by device ID'
     })
 }).openapi({

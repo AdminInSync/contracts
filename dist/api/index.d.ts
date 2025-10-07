@@ -1026,11 +1026,11 @@ export declare const ApiContracts: {
         getDevicePreferences: {
             strictStatusCodes: true;
             query: import("zod").ZodObject<{
-                device_unique_id: import("zod").ZodOptional<import("zod").ZodString>;
+                device_id: import("zod").ZodOptional<import("zod").ZodString>;
             }, "strip", import("zod").ZodTypeAny, {
-                device_unique_id?: string | undefined;
+                device_id?: string | undefined;
             }, {
-                device_unique_id?: string | undefined;
+                device_id?: string | undefined;
             }>;
             summary: "Get device preferences";
             description: "Get all device preferences for the authenticated user with optional filtering by device ID";
