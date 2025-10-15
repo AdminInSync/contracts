@@ -9137,16 +9137,19 @@ export declare const apiContract: {
             getAccount: {
                 strictStatusCodes: true;
                 pathParams: import("zod").ZodObject<{
+                    connectionId: import("zod").ZodString;
                     accountId: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
+                    connectionId: string;
                     accountId: string;
                 }, {
+                    connectionId: string;
                     accountId: string;
                 }>;
                 summary: "Get Account";
                 description: "Buscar una cuenta por su ID.";
                 method: "GET";
-                path: "/api/bank-connections/accounts/:accountId";
+                path: "/api/bank-connections/connections/:connectionId/accounts/:accountId";
                 responses: {
                     200: import("zod").ZodObject<{
                         account: import("zod").ZodObject<{
@@ -9299,10 +9302,13 @@ export declare const apiContract: {
                 strictStatusCodes: true;
                 pathParams: import("zod").ZodObject<{
                     connectionId: import("zod").ZodString;
+                    accountId: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
                     connectionId: string;
+                    accountId: string;
                 }, {
                     connectionId: string;
+                    accountId: string;
                 }>;
                 query: import("zod").ZodObject<{
                     refreshedSince: import("zod").ZodOptional<import("zod").ZodString>;
@@ -9318,9 +9324,9 @@ export declare const apiContract: {
                     refreshedSince?: string | undefined;
                 }>;
                 summary: "List Transactions";
-                description: "Listar todas las transacciones de una conexión.";
+                description: "Listar todas las transacciones de una cuenta.";
                 method: "GET";
-                path: "/api/bank-connections/connections/:connectionId/transactions";
+                path: "/api/bank-connections/connections/:connectionId/accounts/:accountId/transactions";
                 responses: {
                     200: import("zod").ZodObject<{
                         transactions: import("zod").ZodArray<import("zod").ZodObject<{
@@ -9444,19 +9450,22 @@ export declare const apiContract: {
             getTransaction: {
                 strictStatusCodes: true;
                 pathParams: import("zod").ZodObject<{
+                    connectionId: import("zod").ZodString;
                     accountId: import("zod").ZodString;
                     transactionId: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
+                    connectionId: string;
                     accountId: string;
                     transactionId: string;
                 }, {
+                    connectionId: string;
                     accountId: string;
                     transactionId: string;
                 }>;
                 summary: "Get Transaction";
                 description: "Buscar una transacción por su identificador.";
                 method: "GET";
-                path: "/api/bank-connections/accounts/:accountId/transactions/:transactionId";
+                path: "/api/bank-connections/connections/:connectionId/accounts/:accountId/transactions/:transactionId";
                 responses: {
                     200: import("zod").ZodObject<{
                         transaction: import("zod").ZodObject<{

@@ -510,16 +510,19 @@ export declare const BankConnectionContracts: {
     };
     getAccount: {
         pathParams: z.ZodObject<{
+            connectionId: z.ZodString;
             accountId: z.ZodString;
         }, "strip", z.ZodTypeAny, {
+            connectionId: string;
             accountId: string;
         }, {
+            connectionId: string;
             accountId: string;
         }>;
         summary: "Get Account";
         description: "Buscar una cuenta por su ID.";
         method: "GET";
-        path: "/bank-connections/accounts/:accountId";
+        path: "/bank-connections/connections/:connectionId/accounts/:accountId";
         responses: {
             200: z.ZodObject<{
                 account: z.ZodObject<{
@@ -672,10 +675,13 @@ export declare const BankConnectionContracts: {
     listTransactions: {
         pathParams: z.ZodObject<{
             connectionId: z.ZodString;
+            accountId: z.ZodString;
         }, "strip", z.ZodTypeAny, {
             connectionId: string;
+            accountId: string;
         }, {
             connectionId: string;
+            accountId: string;
         }>;
         query: z.ZodObject<{
             refreshedSince: z.ZodOptional<z.ZodString>;
@@ -691,9 +697,9 @@ export declare const BankConnectionContracts: {
             refreshedSince?: string | undefined;
         }>;
         summary: "List Transactions";
-        description: "Listar todas las transacciones de una conexión.";
+        description: "Listar todas las transacciones de una cuenta.";
         method: "GET";
-        path: "/bank-connections/connections/:connectionId/transactions";
+        path: "/bank-connections/connections/:connectionId/accounts/:accountId/transactions";
         responses: {
             200: z.ZodObject<{
                 transactions: z.ZodArray<z.ZodObject<{
@@ -817,19 +823,22 @@ export declare const BankConnectionContracts: {
     };
     getTransaction: {
         pathParams: z.ZodObject<{
+            connectionId: z.ZodString;
             accountId: z.ZodString;
             transactionId: z.ZodString;
         }, "strip", z.ZodTypeAny, {
+            connectionId: string;
             accountId: string;
             transactionId: string;
         }, {
+            connectionId: string;
             accountId: string;
             transactionId: string;
         }>;
         summary: "Get Transaction";
         description: "Buscar una transacción por su identificador.";
         method: "GET";
-        path: "/bank-connections/accounts/:accountId/transactions/:transactionId";
+        path: "/bank-connections/connections/:connectionId/accounts/:accountId/transactions/:transactionId";
         responses: {
             200: z.ZodObject<{
                 transaction: z.ZodObject<{
