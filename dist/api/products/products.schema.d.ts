@@ -193,12 +193,12 @@ export declare const UpdateProductSchema: z.ZodObject<{
 }>;
 export declare const GetProductsQuerySchema: z.ZodObject<{
     product_type: z.ZodOptional<z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
-    institution_id: z.ZodOptional<z.ZodNumber>;
+    institution_id: z.ZodOptional<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
     credit_score_requirement: z.ZodOptional<z.ZodEnum<["excellent", "good", "fair", "poor"]>>;
-    is_spotlight: z.ZodOptional<z.ZodBoolean>;
+    is_spotlight: z.ZodOptional<z.ZodPipeline<z.ZodEffects<z.ZodString, boolean, string>, z.ZodBoolean>>;
     search: z.ZodOptional<z.ZodString>;
-    limit: z.ZodDefault<z.ZodNumber>;
-    offset: z.ZodDefault<z.ZodNumber>;
+    limit: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
+    offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
 }, "strip", z.ZodTypeAny, {
     limit: number;
     offset: number;
@@ -208,13 +208,13 @@ export declare const GetProductsQuerySchema: z.ZodObject<{
     credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
     is_spotlight?: boolean | undefined;
 }, {
-    limit?: number | undefined;
+    limit?: string | undefined;
     search?: string | undefined;
-    offset?: number | undefined;
+    offset?: string | undefined;
     product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
-    institution_id?: number | undefined;
+    institution_id?: string | undefined;
     credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
-    is_spotlight?: boolean | undefined;
+    is_spotlight?: string | undefined;
 }>;
 export declare const ProductResponseSchema: z.ZodObject<{
     message: z.ZodString;

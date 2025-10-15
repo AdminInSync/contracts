@@ -214,8 +214,8 @@ export declare const InstitutionsContracts: {
             country: z.ZodOptional<z.ZodString>;
             region: z.ZodOptional<z.ZodString>;
             search: z.ZodOptional<z.ZodString>;
-            limit: z.ZodDefault<z.ZodNumber>;
-            offset: z.ZodDefault<z.ZodNumber>;
+            limit: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
+            offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
         }, "strip", z.ZodTypeAny, {
             limit: number;
             offset: number;
@@ -224,9 +224,9 @@ export declare const InstitutionsContracts: {
             country?: string | undefined;
             region?: string | undefined;
         }, {
-            limit?: number | undefined;
+            limit?: string | undefined;
             search?: string | undefined;
-            offset?: number | undefined;
+            offset?: string | undefined;
             institution_type?: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech" | undefined;
             country?: string | undefined;
             region?: string | undefined;
@@ -847,16 +847,16 @@ export declare const InstitutionsContracts: {
     searchInstitutions: {
         query: z.ZodObject<{
             q: z.ZodString;
-            limit: z.ZodDefault<z.ZodNumber>;
-            offset: z.ZodDefault<z.ZodNumber>;
+            limit: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
+            offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
         }, "strip", z.ZodTypeAny, {
             limit: number;
             offset: number;
             q: string;
         }, {
             q: string;
-            limit?: number | undefined;
-            offset?: number | undefined;
+            limit?: string | undefined;
+            offset?: string | undefined;
         }>;
         summary: "Search financial institutions";
         description: "Search financial institutions by name";
@@ -1030,14 +1030,14 @@ export declare const InstitutionsContracts: {
             type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
         }>;
         query: z.ZodObject<{
-            limit: z.ZodDefault<z.ZodNumber>;
-            offset: z.ZodDefault<z.ZodNumber>;
+            limit: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
+            offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
         }, "strip", z.ZodTypeAny, {
             limit: number;
             offset: number;
         }, {
-            limit?: number | undefined;
-            offset?: number | undefined;
+            limit?: string | undefined;
+            offset?: string | undefined;
         }>;
         summary: "Get institutions by type";
         description: "Retrieves financial institutions filtered by type";
@@ -1217,14 +1217,14 @@ export declare const InstitutionsContracts: {
     };
     getInstitutionsWithProducts: {
         query: z.ZodObject<{
-            limit: z.ZodDefault<z.ZodNumber>;
-            offset: z.ZodDefault<z.ZodNumber>;
+            limit: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
+            offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
         }, "strip", z.ZodTypeAny, {
             limit: number;
             offset: number;
         }, {
-            limit?: number | undefined;
-            offset?: number | undefined;
+            limit?: string | undefined;
+            offset?: string | undefined;
         }>;
         summary: "Get institutions with products";
         description: "Retrieves financial institutions that have active products";

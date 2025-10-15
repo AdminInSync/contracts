@@ -63,8 +63,8 @@ export const BankTransactionSchema = z.object({
 });
 export const ListTransactionsRequestSchema = z.object({
     refreshedSince: z.string().optional(),
-    limit: z.number().min(1).max(100).optional(),
-    offset: z.number().min(0).optional(),
+    limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).optional(),
+    offset: z.string().transform(Number).pipe(z.number().min(0)).optional(),
 });
 export const ListTransactionsResponseSchema = z.object({
     transactions: z.array(BankTransactionSchema),

@@ -132,8 +132,8 @@ export declare const GetInstitutionsQuerySchema: z.ZodObject<{
     country: z.ZodOptional<z.ZodString>;
     region: z.ZodOptional<z.ZodString>;
     search: z.ZodOptional<z.ZodString>;
-    limit: z.ZodDefault<z.ZodNumber>;
-    offset: z.ZodDefault<z.ZodNumber>;
+    limit: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
+    offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
 }, "strip", z.ZodTypeAny, {
     limit: number;
     offset: number;
@@ -142,9 +142,9 @@ export declare const GetInstitutionsQuerySchema: z.ZodObject<{
     country?: string | undefined;
     region?: string | undefined;
 }, {
-    limit?: number | undefined;
+    limit?: string | undefined;
     search?: string | undefined;
-    offset?: number | undefined;
+    offset?: string | undefined;
     institution_type?: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech" | undefined;
     country?: string | undefined;
     region?: string | undefined;

@@ -41,8 +41,8 @@ export const GetInstitutionsQuerySchema = z.object({
     country: z.string().optional(),
     region: z.string().optional(),
     search: z.string().optional(),
-    limit: z.number().min(1).max(100).default(20),
-    offset: z.number().min(0).default(0),
+    limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
+    offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
 });
 // Response schemas
 export const InstitutionResponseSchema = z.object({
