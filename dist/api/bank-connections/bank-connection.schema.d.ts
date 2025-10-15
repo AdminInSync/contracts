@@ -176,6 +176,68 @@ export declare const GetConnectionResponseSchema: z.ZodObject<{
         expires_at: string | null;
     };
 }>;
+export declare const ListConnectionsResponseSchema: z.ZodObject<{
+    connections: z.ZodArray<z.ZodObject<{
+        id: z.ZodString;
+        institution_id: z.ZodNumber;
+        external_connection_id: z.ZodString;
+        status: z.ZodEnum<["active", "pending", "disconnected", "error", "revoked"]>;
+        nickname: z.ZodNullable<z.ZodString>;
+        created_at: z.ZodString;
+        last_sync_at: z.ZodNullable<z.ZodString>;
+        revoked_at: z.ZodNullable<z.ZodString>;
+        expires_at: z.ZodNullable<z.ZodString>;
+        is_active: z.ZodBoolean;
+    }, "strip", z.ZodTypeAny, {
+        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+        id: string;
+        is_active: boolean;
+        created_at: string;
+        institution_id: number;
+        external_connection_id: string;
+        nickname: string | null;
+        last_sync_at: string | null;
+        revoked_at: string | null;
+        expires_at: string | null;
+    }, {
+        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+        id: string;
+        is_active: boolean;
+        created_at: string;
+        institution_id: number;
+        external_connection_id: string;
+        nickname: string | null;
+        last_sync_at: string | null;
+        revoked_at: string | null;
+        expires_at: string | null;
+    }>, "many">;
+}, "strip", z.ZodTypeAny, {
+    connections: {
+        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+        id: string;
+        is_active: boolean;
+        created_at: string;
+        institution_id: number;
+        external_connection_id: string;
+        nickname: string | null;
+        last_sync_at: string | null;
+        revoked_at: string | null;
+        expires_at: string | null;
+    }[];
+}, {
+    connections: {
+        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+        id: string;
+        is_active: boolean;
+        created_at: string;
+        institution_id: number;
+        external_connection_id: string;
+        nickname: string | null;
+        last_sync_at: string | null;
+        revoked_at: string | null;
+        expires_at: string | null;
+    }[];
+}>;
 export declare const RevokeConnectionResponseSchema: z.ZodObject<{
     message: z.ZodString;
 }, "strip", z.ZodTypeAny, {

@@ -8767,6 +8767,103 @@ export declare const ApiContracts: {
                 }>;
             };
         };
+        listConnections: {
+            strictStatusCodes: true;
+            summary: "List Connections";
+            description: "Listar todas las conexiones del usuario autenticado.";
+            method: "GET";
+            path: "/api/bank-connections/connections";
+            responses: {
+                200: import("zod").ZodObject<{
+                    connections: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodString;
+                        institution_id: import("zod").ZodNumber;
+                        external_connection_id: import("zod").ZodString;
+                        status: import("zod").ZodEnum<["active", "pending", "disconnected", "error", "revoked"]>;
+                        nickname: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        last_sync_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        revoked_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        expires_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_active: import("zod").ZodBoolean;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                        id: string;
+                        is_active: boolean;
+                        created_at: string;
+                        institution_id: number;
+                        external_connection_id: string;
+                        nickname: string | null;
+                        last_sync_at: string | null;
+                        revoked_at: string | null;
+                        expires_at: string | null;
+                    }, {
+                        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                        id: string;
+                        is_active: boolean;
+                        created_at: string;
+                        institution_id: number;
+                        external_connection_id: string;
+                        nickname: string | null;
+                        last_sync_at: string | null;
+                        revoked_at: string | null;
+                        expires_at: string | null;
+                    }>, "many">;
+                }, "strip", import("zod").ZodTypeAny, {
+                    connections: {
+                        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                        id: string;
+                        is_active: boolean;
+                        created_at: string;
+                        institution_id: number;
+                        external_connection_id: string;
+                        nickname: string | null;
+                        last_sync_at: string | null;
+                        revoked_at: string | null;
+                        expires_at: string | null;
+                    }[];
+                }, {
+                    connections: {
+                        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                        id: string;
+                        is_active: boolean;
+                        created_at: string;
+                        institution_id: number;
+                        external_connection_id: string;
+                        nickname: string | null;
+                        last_sync_at: string | null;
+                        revoked_at: string | null;
+                        expires_at: string | null;
+                    }[];
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
         getConnection: {
             strictStatusCodes: true;
             pathParams: import("zod").ZodObject<{
