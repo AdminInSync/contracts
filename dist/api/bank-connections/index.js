@@ -18,6 +18,7 @@ export const BankConnectionContracts = c.router({
             200: CreateConnectionResponseSchema,
             400: ErrorResSchema,
             401: ErrorResSchema,
+            404: ErrorResSchema,
             500: ErrorResSchema,
         },
         summary: 'Create Connection',

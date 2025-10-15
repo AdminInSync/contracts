@@ -267,12 +267,12 @@ export declare const ProductsContracts: {
     getProducts: {
         query: z.ZodObject<{
             product_type: z.ZodOptional<z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
-            institution_id: z.ZodOptional<z.ZodNumber>;
+            institution_id: z.ZodOptional<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
             credit_score_requirement: z.ZodOptional<z.ZodEnum<["excellent", "good", "fair", "poor"]>>;
-            is_spotlight: z.ZodOptional<z.ZodBoolean>;
+            is_spotlight: z.ZodOptional<z.ZodPipeline<z.ZodEffects<z.ZodString, boolean, string>, z.ZodBoolean>>;
             search: z.ZodOptional<z.ZodString>;
-            limit: z.ZodDefault<z.ZodNumber>;
-            offset: z.ZodDefault<z.ZodNumber>;
+            limit: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
+            offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
         }, "strip", z.ZodTypeAny, {
             limit: number;
             offset: number;
@@ -282,13 +282,13 @@ export declare const ProductsContracts: {
             credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
             is_spotlight?: boolean | undefined;
         }, {
-            limit?: number | undefined;
+            limit?: string | undefined;
             search?: string | undefined;
-            offset?: number | undefined;
+            offset?: string | undefined;
             product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
-            institution_id?: number | undefined;
+            institution_id?: string | undefined;
             credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
-            is_spotlight?: boolean | undefined;
+            is_spotlight?: string | undefined;
         }>;
         summary: "Get all financial products";
         description: "Retrieves all active financial products with optional filtering";
@@ -1032,16 +1032,16 @@ export declare const ProductsContracts: {
     searchProducts: {
         query: z.ZodObject<{
             q: z.ZodString;
-            limit: z.ZodDefault<z.ZodNumber>;
-            offset: z.ZodDefault<z.ZodNumber>;
+            limit: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
+            offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
         }, "strip", z.ZodTypeAny, {
             limit: number;
             offset: number;
             q: string;
         }, {
             q: string;
-            limit?: number | undefined;
-            offset?: number | undefined;
+            limit?: string | undefined;
+            offset?: string | undefined;
         }>;
         summary: "Search financial products";
         description: "Search financial products by name";
@@ -1250,14 +1250,14 @@ export declare const ProductsContracts: {
             type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
         }>;
         query: z.ZodObject<{
-            limit: z.ZodDefault<z.ZodNumber>;
-            offset: z.ZodDefault<z.ZodNumber>;
+            limit: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
+            offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
         }, "strip", z.ZodTypeAny, {
             limit: number;
             offset: number;
         }, {
-            limit?: number | undefined;
-            offset?: number | undefined;
+            limit?: string | undefined;
+            offset?: string | undefined;
         }>;
         summary: "Get products by type";
         description: "Retrieves financial products filtered by type";
@@ -1479,14 +1479,14 @@ export declare const ProductsContracts: {
             institutionId: string;
         }>;
         query: z.ZodObject<{
-            limit: z.ZodDefault<z.ZodNumber>;
-            offset: z.ZodDefault<z.ZodNumber>;
+            limit: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
+            offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
         }, "strip", z.ZodTypeAny, {
             limit: number;
             offset: number;
         }, {
-            limit?: number | undefined;
-            offset?: number | undefined;
+            limit?: string | undefined;
+            offset?: string | undefined;
         }>;
         summary: "Get products by institution";
         description: "Retrieves financial products for a specific institution";
@@ -1688,14 +1688,14 @@ export declare const ProductsContracts: {
     };
     getSpotlightProducts: {
         query: z.ZodObject<{
-            limit: z.ZodDefault<z.ZodNumber>;
-            offset: z.ZodDefault<z.ZodNumber>;
+            limit: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
+            offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
         }, "strip", z.ZodTypeAny, {
             limit: number;
             offset: number;
         }, {
-            limit?: number | undefined;
-            offset?: number | undefined;
+            limit?: string | undefined;
+            offset?: string | undefined;
         }>;
         summary: "Get spotlight products";
         description: "Retrieves featured/spotlight financial products";
@@ -1897,14 +1897,14 @@ export declare const ProductsContracts: {
     };
     getNoAnnualFeeProducts: {
         query: z.ZodObject<{
-            limit: z.ZodDefault<z.ZodNumber>;
-            offset: z.ZodDefault<z.ZodNumber>;
+            limit: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
+            offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
         }, "strip", z.ZodTypeAny, {
             limit: number;
             offset: number;
         }, {
-            limit?: number | undefined;
-            offset?: number | undefined;
+            limit?: string | undefined;
+            offset?: string | undefined;
         }>;
         summary: "Get products with no annual fee";
         description: "Retrieves financial products with no annual fee";
@@ -2113,14 +2113,14 @@ export declare const ProductsContracts: {
             requirement: "excellent" | "good" | "fair" | "poor";
         }>;
         query: z.ZodObject<{
-            limit: z.ZodDefault<z.ZodNumber>;
-            offset: z.ZodDefault<z.ZodNumber>;
+            limit: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
+            offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
         }, "strip", z.ZodTypeAny, {
             limit: number;
             offset: number;
         }, {
-            limit?: number | undefined;
-            offset?: number | undefined;
+            limit?: string | undefined;
+            offset?: string | undefined;
         }>;
         summary: "Get products by credit score requirement";
         description: "Retrieves financial products filtered by credit score requirement";

@@ -2953,8 +2953,8 @@ export declare const apiContract: {
                     country: import("zod").ZodOptional<import("zod").ZodString>;
                     region: import("zod").ZodOptional<import("zod").ZodString>;
                     search: import("zod").ZodOptional<import("zod").ZodString>;
-                    limit: import("zod").ZodDefault<import("zod").ZodNumber>;
-                    offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+                    limit: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
+                    offset: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
                 }, "strip", import("zod").ZodTypeAny, {
                     limit: number;
                     offset: number;
@@ -2963,9 +2963,9 @@ export declare const apiContract: {
                     country?: string | undefined;
                     region?: string | undefined;
                 }, {
-                    limit?: number | undefined;
+                    limit?: string | undefined;
                     search?: string | undefined;
-                    offset?: number | undefined;
+                    offset?: string | undefined;
                     institution_type?: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech" | undefined;
                     country?: string | undefined;
                     region?: string | undefined;
@@ -3590,16 +3590,16 @@ export declare const apiContract: {
                 strictStatusCodes: true;
                 query: import("zod").ZodObject<{
                     q: import("zod").ZodString;
-                    limit: import("zod").ZodDefault<import("zod").ZodNumber>;
-                    offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+                    limit: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
+                    offset: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
                 }, "strip", import("zod").ZodTypeAny, {
                     limit: number;
                     offset: number;
                     q: string;
                 }, {
                     q: string;
-                    limit?: number | undefined;
-                    offset?: number | undefined;
+                    limit?: string | undefined;
+                    offset?: string | undefined;
                 }>;
                 summary: "Search financial institutions";
                 description: "Search financial institutions by name";
@@ -3774,14 +3774,14 @@ export declare const apiContract: {
                     type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
                 }>;
                 query: import("zod").ZodObject<{
-                    limit: import("zod").ZodDefault<import("zod").ZodNumber>;
-                    offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+                    limit: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
+                    offset: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
                 }, "strip", import("zod").ZodTypeAny, {
                     limit: number;
                     offset: number;
                 }, {
-                    limit?: number | undefined;
-                    offset?: number | undefined;
+                    limit?: string | undefined;
+                    offset?: string | undefined;
                 }>;
                 summary: "Get institutions by type";
                 description: "Retrieves financial institutions filtered by type";
@@ -3962,14 +3962,14 @@ export declare const apiContract: {
             getInstitutionsWithProducts: {
                 strictStatusCodes: true;
                 query: import("zod").ZodObject<{
-                    limit: import("zod").ZodDefault<import("zod").ZodNumber>;
-                    offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+                    limit: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
+                    offset: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
                 }, "strip", import("zod").ZodTypeAny, {
                     limit: number;
                     offset: number;
                 }, {
-                    limit?: number | undefined;
-                    offset?: number | undefined;
+                    limit?: string | undefined;
+                    offset?: string | undefined;
                 }>;
                 summary: "Get institutions with products";
                 description: "Retrieves financial institutions that have active products";
@@ -4405,12 +4405,12 @@ export declare const apiContract: {
                 strictStatusCodes: true;
                 query: import("zod").ZodObject<{
                     product_type: import("zod").ZodOptional<import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
-                    institution_id: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    institution_id: import("zod").ZodOptional<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
                     credit_score_requirement: import("zod").ZodOptional<import("zod").ZodEnum<["excellent", "good", "fair", "poor"]>>;
-                    is_spotlight: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                    is_spotlight: import("zod").ZodOptional<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, boolean, string>, import("zod").ZodBoolean>>;
                     search: import("zod").ZodOptional<import("zod").ZodString>;
-                    limit: import("zod").ZodDefault<import("zod").ZodNumber>;
-                    offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+                    limit: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
+                    offset: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
                 }, "strip", import("zod").ZodTypeAny, {
                     limit: number;
                     offset: number;
@@ -4420,13 +4420,13 @@ export declare const apiContract: {
                     credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
                     is_spotlight?: boolean | undefined;
                 }, {
-                    limit?: number | undefined;
+                    limit?: string | undefined;
                     search?: string | undefined;
-                    offset?: number | undefined;
+                    offset?: string | undefined;
                     product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
-                    institution_id?: number | undefined;
+                    institution_id?: string | undefined;
                     credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
-                    is_spotlight?: boolean | undefined;
+                    is_spotlight?: string | undefined;
                 }>;
                 summary: "Get all financial products";
                 description: "Retrieves all active financial products with optional filtering";
@@ -5174,16 +5174,16 @@ export declare const apiContract: {
                 strictStatusCodes: true;
                 query: import("zod").ZodObject<{
                     q: import("zod").ZodString;
-                    limit: import("zod").ZodDefault<import("zod").ZodNumber>;
-                    offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+                    limit: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
+                    offset: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
                 }, "strip", import("zod").ZodTypeAny, {
                     limit: number;
                     offset: number;
                     q: string;
                 }, {
                     q: string;
-                    limit?: number | undefined;
-                    offset?: number | undefined;
+                    limit?: string | undefined;
+                    offset?: string | undefined;
                 }>;
                 summary: "Search financial products";
                 description: "Search financial products by name";
@@ -5393,14 +5393,14 @@ export declare const apiContract: {
                     type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                 }>;
                 query: import("zod").ZodObject<{
-                    limit: import("zod").ZodDefault<import("zod").ZodNumber>;
-                    offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+                    limit: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
+                    offset: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
                 }, "strip", import("zod").ZodTypeAny, {
                     limit: number;
                     offset: number;
                 }, {
-                    limit?: number | undefined;
-                    offset?: number | undefined;
+                    limit?: string | undefined;
+                    offset?: string | undefined;
                 }>;
                 summary: "Get products by type";
                 description: "Retrieves financial products filtered by type";
@@ -5623,14 +5623,14 @@ export declare const apiContract: {
                     institutionId: string;
                 }>;
                 query: import("zod").ZodObject<{
-                    limit: import("zod").ZodDefault<import("zod").ZodNumber>;
-                    offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+                    limit: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
+                    offset: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
                 }, "strip", import("zod").ZodTypeAny, {
                     limit: number;
                     offset: number;
                 }, {
-                    limit?: number | undefined;
-                    offset?: number | undefined;
+                    limit?: string | undefined;
+                    offset?: string | undefined;
                 }>;
                 summary: "Get products by institution";
                 description: "Retrieves financial products for a specific institution";
@@ -5833,14 +5833,14 @@ export declare const apiContract: {
             getSpotlightProducts: {
                 strictStatusCodes: true;
                 query: import("zod").ZodObject<{
-                    limit: import("zod").ZodDefault<import("zod").ZodNumber>;
-                    offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+                    limit: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
+                    offset: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
                 }, "strip", import("zod").ZodTypeAny, {
                     limit: number;
                     offset: number;
                 }, {
-                    limit?: number | undefined;
-                    offset?: number | undefined;
+                    limit?: string | undefined;
+                    offset?: string | undefined;
                 }>;
                 summary: "Get spotlight products";
                 description: "Retrieves featured/spotlight financial products";
@@ -6043,14 +6043,14 @@ export declare const apiContract: {
             getNoAnnualFeeProducts: {
                 strictStatusCodes: true;
                 query: import("zod").ZodObject<{
-                    limit: import("zod").ZodDefault<import("zod").ZodNumber>;
-                    offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+                    limit: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
+                    offset: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
                 }, "strip", import("zod").ZodTypeAny, {
                     limit: number;
                     offset: number;
                 }, {
-                    limit?: number | undefined;
-                    offset?: number | undefined;
+                    limit?: string | undefined;
+                    offset?: string | undefined;
                 }>;
                 summary: "Get products with no annual fee";
                 description: "Retrieves financial products with no annual fee";
@@ -6260,14 +6260,14 @@ export declare const apiContract: {
                     requirement: "excellent" | "good" | "fair" | "poor";
                 }>;
                 query: import("zod").ZodObject<{
-                    limit: import("zod").ZodDefault<import("zod").ZodNumber>;
-                    offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+                    limit: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
+                    offset: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
                 }, "strip", import("zod").ZodTypeAny, {
                     limit: number;
                     offset: number;
                 }, {
-                    limit?: number | undefined;
-                    offset?: number | undefined;
+                    limit?: string | undefined;
+                    offset?: string | undefined;
                 }>;
                 summary: "Get products by credit score requirement";
                 description: "Retrieves financial products filtered by credit score requirement";
@@ -8728,6 +8728,19 @@ export declare const apiContract: {
                         statusCode?: number | undefined;
                     }>;
                     401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
                         message: import("zod").ZodString;
                         error: import("zod").ZodOptional<import("zod").ZodString>;
                         statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;

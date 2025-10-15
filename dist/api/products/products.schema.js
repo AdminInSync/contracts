@@ -53,12 +53,12 @@ export const UpdateProductSchema = CreateProductSchema.partial();
 // Query schemas
 export const GetProductsQuerySchema = z.object({
     product_type: ProductTypeSchema.optional(),
-    institution_id: z.number().positive().optional(),
+    institution_id: z.string().transform(Number).pipe(z.number().positive()).optional(),
     credit_score_requirement: CreditScoreRequirementSchema.optional(),
-    is_spotlight: z.boolean().optional(),
+    is_spotlight: z.string().transform(val => val === 'true').pipe(z.boolean()).optional(),
     search: z.string().optional(),
-    limit: z.number().min(1).max(100).default(20),
-    offset: z.number().min(0).default(0),
+    limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
+    offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
 });
 // Response schemas
 export const ProductResponseSchema = z.object({

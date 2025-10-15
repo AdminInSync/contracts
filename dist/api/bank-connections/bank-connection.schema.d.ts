@@ -434,15 +434,15 @@ export declare const BankTransactionSchema: z.ZodObject<{
 }>;
 export declare const ListTransactionsRequestSchema: z.ZodObject<{
     refreshedSince: z.ZodOptional<z.ZodString>;
-    limit: z.ZodOptional<z.ZodNumber>;
-    offset: z.ZodOptional<z.ZodNumber>;
+    limit: z.ZodOptional<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
+    offset: z.ZodOptional<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
 }, "strip", z.ZodTypeAny, {
     limit?: number | undefined;
     offset?: number | undefined;
     refreshedSince?: string | undefined;
 }, {
-    limit?: number | undefined;
-    offset?: number | undefined;
+    limit?: string | undefined;
+    offset?: string | undefined;
     refreshedSince?: string | undefined;
 }>;
 export declare const ListTransactionsResponseSchema: z.ZodObject<{
