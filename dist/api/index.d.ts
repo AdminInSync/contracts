@@ -8624,4 +8624,957 @@ export declare const ApiContracts: {
             strictStatusCodes: true;
         };
     };
+    BankConnections: {
+        createConnection: {
+            strictStatusCodes: true;
+            summary: "Create Connection";
+            description: "Crear una conexión a partir de un ID de sesión.";
+            method: "POST";
+            body: import("zod").ZodObject<{
+                sessionId: import("zod").ZodString;
+                institution_id: import("zod").ZodNumber;
+                nickname: import("zod").ZodOptional<import("zod").ZodString>;
+                notes: import("zod").ZodOptional<import("zod").ZodString>;
+            }, "strip", import("zod").ZodTypeAny, {
+                institution_id: number;
+                sessionId: string;
+                notes?: string | undefined;
+                nickname?: string | undefined;
+            }, {
+                institution_id: number;
+                sessionId: string;
+                notes?: string | undefined;
+                nickname?: string | undefined;
+            }>;
+            path: "/api/bank-connections/connections";
+            responses: {
+                200: import("zod").ZodObject<{
+                    connection: import("zod").ZodObject<{
+                        id: import("zod").ZodString;
+                        institution_id: import("zod").ZodNumber;
+                        external_connection_id: import("zod").ZodString;
+                        status: import("zod").ZodEnum<["active", "pending", "disconnected", "error", "revoked"]>;
+                        nickname: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        last_sync_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        revoked_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        expires_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_active: import("zod").ZodBoolean;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                        id: string;
+                        is_active: boolean;
+                        created_at: string;
+                        institution_id: number;
+                        external_connection_id: string;
+                        nickname: string | null;
+                        last_sync_at: string | null;
+                        revoked_at: string | null;
+                        expires_at: string | null;
+                    }, {
+                        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                        id: string;
+                        is_active: boolean;
+                        created_at: string;
+                        institution_id: number;
+                        external_connection_id: string;
+                        nickname: string | null;
+                        last_sync_at: string | null;
+                        revoked_at: string | null;
+                        expires_at: string | null;
+                    }>;
+                    accessToken: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    connection: {
+                        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                        id: string;
+                        is_active: boolean;
+                        created_at: string;
+                        institution_id: number;
+                        external_connection_id: string;
+                        nickname: string | null;
+                        last_sync_at: string | null;
+                        revoked_at: string | null;
+                        expires_at: string | null;
+                    };
+                    accessToken: string;
+                }, {
+                    connection: {
+                        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                        id: string;
+                        is_active: boolean;
+                        created_at: string;
+                        institution_id: number;
+                        external_connection_id: string;
+                        nickname: string | null;
+                        last_sync_at: string | null;
+                        revoked_at: string | null;
+                        expires_at: string | null;
+                    };
+                    accessToken: string;
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+        getConnection: {
+            strictStatusCodes: true;
+            pathParams: import("zod").ZodObject<{
+                connectionId: import("zod").ZodString;
+            }, "strip", import("zod").ZodTypeAny, {
+                connectionId: string;
+            }, {
+                connectionId: string;
+            }>;
+            summary: "Get Connection";
+            description: "Buscar una conexión por su ID.";
+            method: "GET";
+            path: "/api/bank-connections/connections/:connectionId";
+            responses: {
+                200: import("zod").ZodObject<{
+                    connection: import("zod").ZodObject<{
+                        id: import("zod").ZodString;
+                        institution_id: import("zod").ZodNumber;
+                        external_connection_id: import("zod").ZodString;
+                        status: import("zod").ZodEnum<["active", "pending", "disconnected", "error", "revoked"]>;
+                        nickname: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                        last_sync_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        revoked_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        expires_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_active: import("zod").ZodBoolean;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                        id: string;
+                        is_active: boolean;
+                        created_at: string;
+                        institution_id: number;
+                        external_connection_id: string;
+                        nickname: string | null;
+                        last_sync_at: string | null;
+                        revoked_at: string | null;
+                        expires_at: string | null;
+                    }, {
+                        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                        id: string;
+                        is_active: boolean;
+                        created_at: string;
+                        institution_id: number;
+                        external_connection_id: string;
+                        nickname: string | null;
+                        last_sync_at: string | null;
+                        revoked_at: string | null;
+                        expires_at: string | null;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    connection: {
+                        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                        id: string;
+                        is_active: boolean;
+                        created_at: string;
+                        institution_id: number;
+                        external_connection_id: string;
+                        nickname: string | null;
+                        last_sync_at: string | null;
+                        revoked_at: string | null;
+                        expires_at: string | null;
+                    };
+                }, {
+                    connection: {
+                        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                        id: string;
+                        is_active: boolean;
+                        created_at: string;
+                        institution_id: number;
+                        external_connection_id: string;
+                        nickname: string | null;
+                        last_sync_at: string | null;
+                        revoked_at: string | null;
+                        expires_at: string | null;
+                    };
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+        revokeConnection: {
+            strictStatusCodes: true;
+            pathParams: import("zod").ZodObject<{
+                connectionId: import("zod").ZodString;
+            }, "strip", import("zod").ZodTypeAny, {
+                connectionId: string;
+            }, {
+                connectionId: string;
+            }>;
+            summary: "Revoke Connection";
+            description: "Revocar una conexión, impidiendo accesos futuros.";
+            method: "DELETE";
+            path: "/api/bank-connections/connections/:connectionId";
+            responses: {
+                204: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                }, {
+                    message: string;
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                403: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+        listAccounts: {
+            strictStatusCodes: true;
+            pathParams: import("zod").ZodObject<{
+                connectionId: import("zod").ZodString;
+            }, "strip", import("zod").ZodTypeAny, {
+                connectionId: string;
+            }, {
+                connectionId: string;
+            }>;
+            summary: "List Accounts";
+            description: "Listar cuentas asociadas a una conexión.";
+            method: "GET";
+            path: "/api/bank-connections/connections/:connectionId/accounts";
+            responses: {
+                200: import("zod").ZodObject<{
+                    accounts: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodString;
+                        connectionId: import("zod").ZodString;
+                        type: import("zod").ZodEnum<["checking", "savings", "credit_card", "loan", "investment", "depository", "other"]>;
+                        name: import("zod").ZodString;
+                        lastFour: import("zod").ZodNullable<import("zod").ZodString>;
+                        balance: import("zod").ZodObject<{
+                            current: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            available: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            limit: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            limit: number | null;
+                            current: number | null;
+                            available: number | null;
+                        }, {
+                            limit: number | null;
+                            current: number | null;
+                            available: number | null;
+                        }>;
+                        currency: import("zod").ZodString;
+                        lastTransactionRefresh: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        type: "other" | "credit_card" | "loan" | "investment" | "checking" | "savings" | "depository";
+                        id: string;
+                        name: string;
+                        currency: string;
+                        connectionId: string;
+                        lastFour: string | null;
+                        balance: {
+                            limit: number | null;
+                            current: number | null;
+                            available: number | null;
+                        };
+                        lastTransactionRefresh: string | null;
+                    }, {
+                        type: "other" | "credit_card" | "loan" | "investment" | "checking" | "savings" | "depository";
+                        id: string;
+                        name: string;
+                        currency: string;
+                        connectionId: string;
+                        lastFour: string | null;
+                        balance: {
+                            limit: number | null;
+                            current: number | null;
+                            available: number | null;
+                        };
+                        lastTransactionRefresh: string | null;
+                    }>, "many">;
+                }, "strip", import("zod").ZodTypeAny, {
+                    accounts: {
+                        type: "other" | "credit_card" | "loan" | "investment" | "checking" | "savings" | "depository";
+                        id: string;
+                        name: string;
+                        currency: string;
+                        connectionId: string;
+                        lastFour: string | null;
+                        balance: {
+                            limit: number | null;
+                            current: number | null;
+                            available: number | null;
+                        };
+                        lastTransactionRefresh: string | null;
+                    }[];
+                }, {
+                    accounts: {
+                        type: "other" | "credit_card" | "loan" | "investment" | "checking" | "savings" | "depository";
+                        id: string;
+                        name: string;
+                        currency: string;
+                        connectionId: string;
+                        lastFour: string | null;
+                        balance: {
+                            limit: number | null;
+                            current: number | null;
+                            available: number | null;
+                        };
+                        lastTransactionRefresh: string | null;
+                    }[];
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                403: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+        getAccount: {
+            strictStatusCodes: true;
+            pathParams: import("zod").ZodObject<{
+                accountId: import("zod").ZodString;
+            }, "strip", import("zod").ZodTypeAny, {
+                accountId: string;
+            }, {
+                accountId: string;
+            }>;
+            summary: "Get Account";
+            description: "Buscar una cuenta por su ID.";
+            method: "GET";
+            path: "/api/bank-connections/accounts/:accountId";
+            responses: {
+                200: import("zod").ZodObject<{
+                    account: import("zod").ZodObject<{
+                        id: import("zod").ZodString;
+                        connectionId: import("zod").ZodString;
+                        type: import("zod").ZodEnum<["checking", "savings", "credit_card", "loan", "investment", "depository", "other"]>;
+                        name: import("zod").ZodString;
+                        lastFour: import("zod").ZodNullable<import("zod").ZodString>;
+                        balance: import("zod").ZodObject<{
+                            current: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            available: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            limit: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            limit: number | null;
+                            current: number | null;
+                            available: number | null;
+                        }, {
+                            limit: number | null;
+                            current: number | null;
+                            available: number | null;
+                        }>;
+                        currency: import("zod").ZodString;
+                        lastTransactionRefresh: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        type: "other" | "credit_card" | "loan" | "investment" | "checking" | "savings" | "depository";
+                        id: string;
+                        name: string;
+                        currency: string;
+                        connectionId: string;
+                        lastFour: string | null;
+                        balance: {
+                            limit: number | null;
+                            current: number | null;
+                            available: number | null;
+                        };
+                        lastTransactionRefresh: string | null;
+                    }, {
+                        type: "other" | "credit_card" | "loan" | "investment" | "checking" | "savings" | "depository";
+                        id: string;
+                        name: string;
+                        currency: string;
+                        connectionId: string;
+                        lastFour: string | null;
+                        balance: {
+                            limit: number | null;
+                            current: number | null;
+                            available: number | null;
+                        };
+                        lastTransactionRefresh: string | null;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    account: {
+                        type: "other" | "credit_card" | "loan" | "investment" | "checking" | "savings" | "depository";
+                        id: string;
+                        name: string;
+                        currency: string;
+                        connectionId: string;
+                        lastFour: string | null;
+                        balance: {
+                            limit: number | null;
+                            current: number | null;
+                            available: number | null;
+                        };
+                        lastTransactionRefresh: string | null;
+                    };
+                }, {
+                    account: {
+                        type: "other" | "credit_card" | "loan" | "investment" | "checking" | "savings" | "depository";
+                        id: string;
+                        name: string;
+                        currency: string;
+                        connectionId: string;
+                        lastFour: string | null;
+                        balance: {
+                            limit: number | null;
+                            current: number | null;
+                            available: number | null;
+                        };
+                        lastTransactionRefresh: string | null;
+                    };
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                403: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+        listTransactions: {
+            strictStatusCodes: true;
+            pathParams: import("zod").ZodObject<{
+                connectionId: import("zod").ZodString;
+            }, "strip", import("zod").ZodTypeAny, {
+                connectionId: string;
+            }, {
+                connectionId: string;
+            }>;
+            query: import("zod").ZodObject<{
+                refreshedSince: import("zod").ZodOptional<import("zod").ZodString>;
+                limit: import("zod").ZodOptional<import("zod").ZodEffects<import("zod").ZodString, number, string>>;
+                offset: import("zod").ZodOptional<import("zod").ZodEffects<import("zod").ZodString, number, string>>;
+            }, "strip", import("zod").ZodTypeAny, {
+                limit?: number | undefined;
+                offset?: number | undefined;
+                refreshedSince?: string | undefined;
+            }, {
+                limit?: string | undefined;
+                offset?: string | undefined;
+                refreshedSince?: string | undefined;
+            }>;
+            summary: "List Transactions";
+            description: "Listar todas las transacciones de una conexión.";
+            method: "GET";
+            path: "/api/bank-connections/connections/:connectionId/transactions";
+            responses: {
+                200: import("zod").ZodObject<{
+                    transactions: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodString;
+                        accountId: import("zod").ZodString;
+                        amount: import("zod").ZodNumber;
+                        date: import("zod").ZodString;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        reference: import("zod").ZodNullable<import("zod").ZodString>;
+                        status: import("zod").ZodEnum<["pending", "completed", "cancelled", "failed"]>;
+                        transactionRefresh: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        status: "pending" | "completed" | "cancelled" | "failed";
+                        id: string;
+                        date: string;
+                        description: string | null;
+                        amount: number;
+                        accountId: string;
+                        reference: string | null;
+                        transactionRefresh: string | null;
+                    }, {
+                        status: "pending" | "completed" | "cancelled" | "failed";
+                        id: string;
+                        date: string;
+                        description: string | null;
+                        amount: number;
+                        accountId: string;
+                        reference: string | null;
+                        transactionRefresh: string | null;
+                    }>, "many">;
+                }, "strip", import("zod").ZodTypeAny, {
+                    transactions: {
+                        status: "pending" | "completed" | "cancelled" | "failed";
+                        id: string;
+                        date: string;
+                        description: string | null;
+                        amount: number;
+                        accountId: string;
+                        reference: string | null;
+                        transactionRefresh: string | null;
+                    }[];
+                }, {
+                    transactions: {
+                        status: "pending" | "completed" | "cancelled" | "failed";
+                        id: string;
+                        date: string;
+                        description: string | null;
+                        amount: number;
+                        accountId: string;
+                        reference: string | null;
+                        transactionRefresh: string | null;
+                    }[];
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                403: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+        getTransaction: {
+            strictStatusCodes: true;
+            pathParams: import("zod").ZodObject<{
+                accountId: import("zod").ZodString;
+                transactionId: import("zod").ZodString;
+            }, "strip", import("zod").ZodTypeAny, {
+                accountId: string;
+                transactionId: string;
+            }, {
+                accountId: string;
+                transactionId: string;
+            }>;
+            summary: "Get Transaction";
+            description: "Buscar una transacción por su identificador.";
+            method: "GET";
+            path: "/api/bank-connections/accounts/:accountId/transactions/:transactionId";
+            responses: {
+                200: import("zod").ZodObject<{
+                    transaction: import("zod").ZodObject<{
+                        id: import("zod").ZodString;
+                        accountId: import("zod").ZodString;
+                        amount: import("zod").ZodNumber;
+                        date: import("zod").ZodString;
+                        description: import("zod").ZodNullable<import("zod").ZodString>;
+                        reference: import("zod").ZodNullable<import("zod").ZodString>;
+                        status: import("zod").ZodEnum<["pending", "completed", "cancelled", "failed"]>;
+                        transactionRefresh: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        status: "pending" | "completed" | "cancelled" | "failed";
+                        id: string;
+                        date: string;
+                        description: string | null;
+                        amount: number;
+                        accountId: string;
+                        reference: string | null;
+                        transactionRefresh: string | null;
+                    }, {
+                        status: "pending" | "completed" | "cancelled" | "failed";
+                        id: string;
+                        date: string;
+                        description: string | null;
+                        amount: number;
+                        accountId: string;
+                        reference: string | null;
+                        transactionRefresh: string | null;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    transaction: {
+                        status: "pending" | "completed" | "cancelled" | "failed";
+                        id: string;
+                        date: string;
+                        description: string | null;
+                        amount: number;
+                        accountId: string;
+                        reference: string | null;
+                        transactionRefresh: string | null;
+                    };
+                }, {
+                    transaction: {
+                        status: "pending" | "completed" | "cancelled" | "failed";
+                        id: string;
+                        date: string;
+                        description: string | null;
+                        amount: number;
+                        accountId: string;
+                        reference: string | null;
+                        transactionRefresh: string | null;
+                    };
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                403: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+    };
 };
