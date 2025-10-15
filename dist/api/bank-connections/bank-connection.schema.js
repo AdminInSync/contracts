@@ -25,6 +25,9 @@ export const CreateConnectionResponseSchema = z.object({
 export const GetConnectionResponseSchema = z.object({
     connection: BankConnectionSchema,
 });
+export const ListConnectionsResponseSchema = z.object({
+    connections: z.array(BankConnectionSchema),
+});
 export const RevokeConnectionResponseSchema = z.object({
     message: z.string(),
 });

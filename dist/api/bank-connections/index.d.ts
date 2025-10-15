@@ -142,6 +142,103 @@ export declare const BankConnectionContracts: {
         };
         strictStatusCodes: true;
     };
+    listConnections: {
+        summary: "List Connections";
+        description: "Listar todas las conexiones del usuario autenticado.";
+        method: "GET";
+        path: "/bank-connections/connections";
+        responses: {
+            200: z.ZodObject<{
+                connections: z.ZodArray<z.ZodObject<{
+                    id: z.ZodString;
+                    institution_id: z.ZodNumber;
+                    external_connection_id: z.ZodString;
+                    status: z.ZodEnum<["active", "pending", "disconnected", "error", "revoked"]>;
+                    nickname: z.ZodNullable<z.ZodString>;
+                    created_at: z.ZodString;
+                    last_sync_at: z.ZodNullable<z.ZodString>;
+                    revoked_at: z.ZodNullable<z.ZodString>;
+                    expires_at: z.ZodNullable<z.ZodString>;
+                    is_active: z.ZodBoolean;
+                }, "strip", z.ZodTypeAny, {
+                    status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                    id: string;
+                    is_active: boolean;
+                    created_at: string;
+                    institution_id: number;
+                    external_connection_id: string;
+                    nickname: string | null;
+                    last_sync_at: string | null;
+                    revoked_at: string | null;
+                    expires_at: string | null;
+                }, {
+                    status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                    id: string;
+                    is_active: boolean;
+                    created_at: string;
+                    institution_id: number;
+                    external_connection_id: string;
+                    nickname: string | null;
+                    last_sync_at: string | null;
+                    revoked_at: string | null;
+                    expires_at: string | null;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                connections: {
+                    status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                    id: string;
+                    is_active: boolean;
+                    created_at: string;
+                    institution_id: number;
+                    external_connection_id: string;
+                    nickname: string | null;
+                    last_sync_at: string | null;
+                    revoked_at: string | null;
+                    expires_at: string | null;
+                }[];
+            }, {
+                connections: {
+                    status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                    id: string;
+                    is_active: boolean;
+                    created_at: string;
+                    institution_id: number;
+                    external_connection_id: string;
+                    nickname: string | null;
+                    last_sync_at: string | null;
+                    revoked_at: string | null;
+                    expires_at: string | null;
+                }[];
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+        strictStatusCodes: true;
+    };
     getConnection: {
         pathParams: z.ZodObject<{
             connectionId: z.ZodString;

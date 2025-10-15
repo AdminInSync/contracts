@@ -1,7 +1,7 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
-import { CreateConnectionResponseSchema, GetConnectionResponseSchema, RevokeConnectionResponseSchema, ListAccountsResponseSchema, GetAccountResponseSchema, ListTransactionsResponseSchema, GetTransactionResponseSchema } from './bank-connection.schema';
+import { CreateConnectionResponseSchema, GetConnectionResponseSchema, ListConnectionsResponseSchema, RevokeConnectionResponseSchema, ListAccountsResponseSchema, GetAccountResponseSchema, ListTransactionsResponseSchema, GetTransactionResponseSchema } from './bank-connection.schema';
 const c = initContract();
 export const BankConnectionContracts = c.router({
     // Connection Management
@@ -23,6 +23,17 @@ export const BankConnectionContracts = c.router({
         },
         summary: 'Create Connection',
         description: 'Crear una conexión a partir de un ID de sesión.',
+    },
+    listConnections: {
+        method: 'GET',
+        path: '/connections',
+        responses: {
+            200: ListConnectionsResponseSchema,
+            401: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        summary: 'List Connections',
+        description: 'Listar todas las conexiones del usuario autenticado.',
     },
     getConnection: {
         method: 'GET',
