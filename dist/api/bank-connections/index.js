@@ -76,8 +76,9 @@ export const BankConnectionContracts = c.router({
     },
     getAccount: {
         method: 'GET',
-        path: '/accounts/:accountId',
+        path: '/connections/:connectionId/accounts/:accountId',
         pathParams: z.object({
+            connectionId: z.string(),
             accountId: z.string(),
         }),
         responses: {
@@ -94,9 +95,10 @@ export const BankConnectionContracts = c.router({
     // Transaction Management
     listTransactions: {
         method: 'GET',
-        path: '/connections/:connectionId/transactions',
+        path: '/connections/:connectionId/accounts/:accountId/transactions',
         pathParams: z.object({
             connectionId: z.string(),
+            accountId: z.string(),
         }),
         query: z.object({
             refreshedSince: z.string().optional(),
@@ -112,12 +114,13 @@ export const BankConnectionContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'List Transactions',
-        description: 'Listar todas las transacciones de una conexión.',
+        description: 'Listar todas las transacciones de una cuenta.',
     },
     getTransaction: {
         method: 'GET',
-        path: '/accounts/:accountId/transactions/:transactionId',
+        path: '/connections/:connectionId/accounts/:accountId/transactions/:transactionId',
         pathParams: z.object({
+            connectionId: z.string(),
             accountId: z.string(),
             transactionId: z.string(),
         }),
