@@ -4200,6 +4200,7 @@ export declare const apiContract: {
                             name: import("zod").ZodString;
                             product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
                             institution_id: import("zod").ZodNumber;
+                            institution_name: import("zod").ZodString;
                             interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
                             annual_fee: import("zod").ZodNullable<import("zod").ZodNumber>;
                             minimum_balance: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -4242,6 +4243,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -4269,6 +4271,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -4299,6 +4302,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -4329,6 +4333,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -4441,6 +4446,7 @@ export declare const apiContract: {
                             name: import("zod").ZodString;
                             product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
                             institution_id: import("zod").ZodNumber;
+                            institution_name: import("zod").ZodString;
                             interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
                             annual_fee: import("zod").ZodNullable<import("zod").ZodNumber>;
                             minimum_balance: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -4483,6 +4489,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -4510,6 +4517,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -4553,6 +4561,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -4588,6 +4597,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -4648,6 +4658,7 @@ export declare const apiContract: {
                             name: import("zod").ZodString;
                             product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
                             institution_id: import("zod").ZodNumber;
+                            institution_name: import("zod").ZodString;
                             interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
                             annual_fee: import("zod").ZodNullable<import("zod").ZodNumber>;
                             minimum_balance: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -4690,6 +4701,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -4717,6 +4729,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -4747,6 +4760,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -4777,6 +4791,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -4894,6 +4909,7 @@ export declare const apiContract: {
                             name: import("zod").ZodString;
                             product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
                             institution_id: import("zod").ZodNumber;
+                            institution_name: import("zod").ZodString;
                             interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
                             annual_fee: import("zod").ZodNullable<import("zod").ZodNumber>;
                             minimum_balance: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -4936,6 +4952,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -4963,6 +4980,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -4993,6 +5011,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -5023,6 +5042,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -5198,6 +5218,7 @@ export declare const apiContract: {
                             name: import("zod").ZodString;
                             product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
                             institution_id: import("zod").ZodNumber;
+                            institution_name: import("zod").ZodString;
                             interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
                             annual_fee: import("zod").ZodNullable<import("zod").ZodNumber>;
                             minimum_balance: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -5240,6 +5261,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -5267,6 +5289,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -5310,6 +5333,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -5345,6 +5369,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -5415,6 +5440,7 @@ export declare const apiContract: {
                             name: import("zod").ZodString;
                             product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
                             institution_id: import("zod").ZodNumber;
+                            institution_name: import("zod").ZodString;
                             interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
                             annual_fee: import("zod").ZodNullable<import("zod").ZodNumber>;
                             minimum_balance: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -5457,6 +5483,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -5484,6 +5511,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -5527,6 +5555,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -5562,6 +5591,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -5645,6 +5675,7 @@ export declare const apiContract: {
                             name: import("zod").ZodString;
                             product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
                             institution_id: import("zod").ZodNumber;
+                            institution_name: import("zod").ZodString;
                             interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
                             annual_fee: import("zod").ZodNullable<import("zod").ZodNumber>;
                             minimum_balance: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -5687,6 +5718,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -5714,6 +5746,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -5757,6 +5790,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -5792,6 +5826,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -5855,6 +5890,7 @@ export declare const apiContract: {
                             name: import("zod").ZodString;
                             product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
                             institution_id: import("zod").ZodNumber;
+                            institution_name: import("zod").ZodString;
                             interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
                             annual_fee: import("zod").ZodNullable<import("zod").ZodNumber>;
                             minimum_balance: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -5897,6 +5933,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -5924,6 +5961,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -5967,6 +6005,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -6002,6 +6041,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -6065,6 +6105,7 @@ export declare const apiContract: {
                             name: import("zod").ZodString;
                             product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
                             institution_id: import("zod").ZodNumber;
+                            institution_name: import("zod").ZodString;
                             interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
                             annual_fee: import("zod").ZodNullable<import("zod").ZodNumber>;
                             minimum_balance: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -6107,6 +6148,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -6134,6 +6176,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -6177,6 +6220,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -6212,6 +6256,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -6282,6 +6327,7 @@ export declare const apiContract: {
                             name: import("zod").ZodString;
                             product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
                             institution_id: import("zod").ZodNumber;
+                            institution_name: import("zod").ZodString;
                             interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
                             annual_fee: import("zod").ZodNullable<import("zod").ZodNumber>;
                             minimum_balance: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -6324,6 +6370,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -6351,6 +6398,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -6394,6 +6442,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;
@@ -6429,6 +6478,7 @@ export declare const apiContract: {
                             deleted_at: string | null;
                             product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                             institution_id: number;
+                            institution_name: string;
                             interest_rate: number | null;
                             annual_fee: number | null;
                             minimum_balance: number | null;

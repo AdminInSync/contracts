@@ -9,6 +9,7 @@ export const FinancialProductSchema = z.object({
     name: z.string(),
     product_type: ProductTypeSchema,
     institution_id: z.number(),
+    institution_name: z.string(),
     interest_rate: z.number().nullable(),
     annual_fee: z.number().nullable(),
     minimum_balance: z.number().nullable(),
