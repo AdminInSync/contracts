@@ -7,6 +7,7 @@ export declare const FinancialProductSchema: z.ZodObject<{
     name: z.ZodString;
     product_type: z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
     institution_id: z.ZodNumber;
+    institution_name: z.ZodString;
     interest_rate: z.ZodNullable<z.ZodNumber>;
     annual_fee: z.ZodNullable<z.ZodNumber>;
     minimum_balance: z.ZodNullable<z.ZodNumber>;
@@ -49,6 +50,7 @@ export declare const FinancialProductSchema: z.ZodObject<{
     deleted_at: string | null;
     product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
     institution_id: number;
+    institution_name: string;
     interest_rate: number | null;
     annual_fee: number | null;
     minimum_balance: number | null;
@@ -76,6 +78,7 @@ export declare const FinancialProductSchema: z.ZodObject<{
     deleted_at: string | null;
     product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
     institution_id: number;
+    institution_name: string;
     interest_rate: number | null;
     annual_fee: number | null;
     minimum_balance: number | null;
@@ -224,6 +227,7 @@ export declare const ProductResponseSchema: z.ZodObject<{
         name: z.ZodString;
         product_type: z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
         institution_id: z.ZodNumber;
+        institution_name: z.ZodString;
         interest_rate: z.ZodNullable<z.ZodNumber>;
         annual_fee: z.ZodNullable<z.ZodNumber>;
         minimum_balance: z.ZodNullable<z.ZodNumber>;
@@ -266,6 +270,7 @@ export declare const ProductResponseSchema: z.ZodObject<{
         deleted_at: string | null;
         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
         institution_id: number;
+        institution_name: string;
         interest_rate: number | null;
         annual_fee: number | null;
         minimum_balance: number | null;
@@ -293,6 +298,7 @@ export declare const ProductResponseSchema: z.ZodObject<{
         deleted_at: string | null;
         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
         institution_id: number;
+        institution_name: string;
         interest_rate: number | null;
         annual_fee: number | null;
         minimum_balance: number | null;
@@ -323,6 +329,7 @@ export declare const ProductResponseSchema: z.ZodObject<{
         deleted_at: string | null;
         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
         institution_id: number;
+        institution_name: string;
         interest_rate: number | null;
         annual_fee: number | null;
         minimum_balance: number | null;
@@ -353,6 +360,7 @@ export declare const ProductResponseSchema: z.ZodObject<{
         deleted_at: string | null;
         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
         institution_id: number;
+        institution_name: string;
         interest_rate: number | null;
         annual_fee: number | null;
         minimum_balance: number | null;
@@ -379,6 +387,7 @@ export declare const ProductsListResponseSchema: z.ZodObject<{
         name: z.ZodString;
         product_type: z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
         institution_id: z.ZodNumber;
+        institution_name: z.ZodString;
         interest_rate: z.ZodNullable<z.ZodNumber>;
         annual_fee: z.ZodNullable<z.ZodNumber>;
         minimum_balance: z.ZodNullable<z.ZodNumber>;
@@ -421,6 +430,7 @@ export declare const ProductsListResponseSchema: z.ZodObject<{
         deleted_at: string | null;
         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
         institution_id: number;
+        institution_name: string;
         interest_rate: number | null;
         annual_fee: number | null;
         minimum_balance: number | null;
@@ -448,6 +458,7 @@ export declare const ProductsListResponseSchema: z.ZodObject<{
         deleted_at: string | null;
         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
         institution_id: number;
+        institution_name: string;
         interest_rate: number | null;
         annual_fee: number | null;
         minimum_balance: number | null;
@@ -491,6 +502,7 @@ export declare const ProductsListResponseSchema: z.ZodObject<{
         deleted_at: string | null;
         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
         institution_id: number;
+        institution_name: string;
         interest_rate: number | null;
         annual_fee: number | null;
         minimum_balance: number | null;
@@ -526,6 +538,7 @@ export declare const ProductsListResponseSchema: z.ZodObject<{
         deleted_at: string | null;
         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
         institution_id: number;
+        institution_name: string;
         interest_rate: number | null;
         annual_fee: number | null;
         minimum_balance: number | null;

@@ -10,6 +10,7 @@ import { InstitutionsContracts } from './institutions';
 import { ProductsContracts } from './products';
 import { PaymentRemindersContracts } from './payment-reminders';
 import { BankConnectionContracts } from './bank-connections';
+import { BudgetsContracts } from './budgets';
 const c = initContract();
 export const ApiContracts = c.router({
     Auth: AuthContracts,
@@ -23,6 +24,7 @@ export const ApiContracts = c.router({
     Products: ProductsContracts,
     PaymentReminders: PaymentRemindersContracts,
     BankConnections: BankConnectionContracts,
+    Budgets: BudgetsContracts,
 }, {
     strictStatusCodes: true,
     pathPrefix: '/api'

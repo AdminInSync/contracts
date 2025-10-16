@@ -29,75 +29,7 @@ export const ProductsContracts = c.router({
         },
         query: GetProductsQuerySchema,
         summary: 'Get all financial products',
-        description: 'Retrieves all active financial products with optional filtering',
-    },
-    // Get one financial product
-    getProduct: {
-        method: 'GET',
-        path: '/products/:id',
-        responses: {
-            200: ProductResponseSchema,
-            404: ErrorResSchema,
-            500: ErrorResSchema,
-        },
-        pathParams: z.object({
-            id: z.string().transform((val) => parseInt(val, 10)),
-        }),
-        summary: 'Get a specific financial product',
-        description: 'Retrieves a specific financial product by ID',
-    },
-    // Update financial product
-    updateProduct: {
-        method: 'PUT',
-        path: '/products/:id',
-        responses: {
-            200: ProductResponseSchema,
-            400: ErrorResSchema,
-            401: ErrorResSchema,
-            404: ErrorResSchema,
-            409: ErrorResSchema,
-            500: ErrorResSchema,
-        },
-        pathParams: z.object({
-            id: z.string().transform((val) => parseInt(val, 10)),
-        }),
-        body: UpdateProductSchema,
-        summary: 'Update a financial product',
-        description: 'Updates an existing financial product (admin only)',
-    },
-    // Delete financial product
-    deleteProduct: {
-        method: 'DELETE',
-        path: '/products/:id',
-        responses: {
-            200: z.object({
-                message: z.string(),
-            }),
-            401: ErrorResSchema,
-            404: ErrorResSchema,
-            500: ErrorResSchema,
-        },
-        pathParams: z.object({
-            id: z.string().transform((val) => parseInt(val, 10)),
-        }),
-        summary: 'Delete a financial product',
-        description: 'Soft deletes a financial product (admin only)',
-    },
-    // Search products
-    searchProducts: {
-        method: 'GET',
-        path: '/products/search',
-        responses: {
-            200: ProductsListResponseSchema,
-            500: ErrorResSchema,
-        },
-        query: z.object({
-            q: z.string().min(1),
-            limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
-            offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
-        }),
-        summary: 'Search financial products',
-        description: 'Search financial products by name',
+        description: 'Retrieves all active financial products with optional filtering and search',
     },
     // Get products by type
     getProductsByType: {
@@ -127,7 +59,7 @@ export const ProductsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({
-            institutionId: z.string().transform((val) => parseInt(val, 10)),
+            institutionId: z.string().regex(/^\d+$/, 'Institution ID must be a valid number').transform((val) => parseInt(val, 10)),
         }),
         query: z.object({
             limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
@@ -184,5 +116,57 @@ export const ProductsContracts = c.router({
         }),
         summary: 'Get products by credit score requirement',
         description: 'Retrieves financial products filtered by credit score requirement',
+    },
+    // Get one financial product (MUST come after all specific routes)
+    getProduct: {
+        method: 'GET',
+        path: '/products/:id',
+        responses: {
+            200: ProductResponseSchema,
+            404: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        pathParams: z.object({
+            id: z.string().regex(/^\d+$/, 'ID must be a valid number').transform((val) => parseInt(val, 10)),
+        }),
+        summary: 'Get a specific financial product',
+        description: 'Retrieves a specific financial product by ID',
+    },
+    // Update financial product
+    updateProduct: {
+        method: 'PUT',
+        path: '/products/:id',
+        responses: {
+            200: ProductResponseSchema,
+            400: ErrorResSchema,
+            401: ErrorResSchema,
+            404: ErrorResSchema,
+            409: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        pathParams: z.object({
+            id: z.string().regex(/^\d+$/, 'ID must be a valid number').transform((val) => parseInt(val, 10)),
+        }),
+        body: UpdateProductSchema,
+        summary: 'Update a financial product',
+        description: 'Updates an existing financial product (admin only)',
+    },
+    // Delete financial product
+    deleteProduct: {
+        method: 'DELETE',
+        path: '/products/:id',
+        responses: {
+            200: z.object({
+                message: z.string(),
+            }),
+            401: ErrorResSchema,
+            404: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        pathParams: z.object({
+            id: z.string().regex(/^\d+$/, 'ID must be a valid number').transform((val) => parseInt(val, 10)),
+        }),
+        summary: 'Delete a financial product',
+        description: 'Soft deletes a financial product (admin only)',
     },
 });
