@@ -117,6 +117,63 @@ export const ProductsContracts = c.router({
         summary: 'Get products by credit score requirement',
         description: 'Retrieves financial products filtered by credit score requirement',
     },
+    // Get my saved products
+    getMyProducts: {
+        method: 'GET',
+        path: '/products/my-products',
+        responses: {
+            200: ProductsListResponseSchema,
+            401: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        query: z.object({
+            limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
+            offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
+        }),
+        summary: 'Get my saved products',
+        description: 'Retrieves products saved by the authenticated user',
+    },
+    // Add product to my products
+    addToMyProducts: {
+        method: 'POST',
+        path: '/products/my-products/:productId',
+        responses: {
+            201: z.object({
+                message: z.string(),
+            }),
+            400: ErrorResSchema,
+            401: ErrorResSchema,
+            404: ErrorResSchema,
+            409: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        pathParams: z.object({
+            productId: z.string().regex(/^\d+$/, 'Product ID must be a valid number').transform((val) => parseInt(val, 10)),
+        }),
+        body: z.object({
+            notes: z.string().optional(),
+        }).optional(),
+        summary: 'Add product to my products',
+        description: 'Saves a product to the authenticated user\'s product list',
+    },
+    // Remove product from my products
+    removeFromMyProducts: {
+        method: 'DELETE',
+        path: '/products/my-products/:productId',
+        responses: {
+            200: z.object({
+                message: z.string(),
+            }),
+            401: ErrorResSchema,
+            404: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        pathParams: z.object({
+            productId: z.string().regex(/^\d+$/, 'Product ID must be a valid number').transform((val) => parseInt(val, 10)),
+        }),
+        summary: 'Remove product from my products',
+        description: 'Removes a product from the authenticated user\'s product list',
+    },
     // Get one financial product (MUST come after all specific routes)
     getProduct: {
         method: 'GET',
