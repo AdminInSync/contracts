@@ -700,14 +700,17 @@ export declare const apiContract: {
                     user_uid: import("zod").ZodString;
                     device_unique_id: import("zod").ZodString;
                     notes: import("zod").ZodString;
+                    notification_token: import("zod").ZodOptional<import("zod").ZodString>;
                 }, "strip", import("zod").ZodTypeAny, {
                     user_uid: string;
                     device_unique_id: string;
                     notes: string;
+                    notification_token?: string | undefined;
                 }, {
                     user_uid: string;
                     device_unique_id: string;
                     notes: string;
+                    notification_token?: string | undefined;
                 }>;
                 path: "/api/devices/";
                 responses: {
@@ -717,6 +720,7 @@ export declare const apiContract: {
                         user_uid: import("zod").ZodString;
                         device_unique_id: import("zod").ZodString;
                         notes: import("zod").ZodString;
+                        notification_token: import("zod").ZodNullable<import("zod").ZodString>;
                         created_at: import("zod").ZodString;
                         updated_at: import("zod").ZodString;
                     }, "strip", import("zod").ZodTypeAny, {
@@ -726,6 +730,7 @@ export declare const apiContract: {
                         created_at: string;
                         device_unique_id: string;
                         notes: string;
+                        notification_token: string | null;
                         updated_at: string;
                     }, {
                         id: number;
@@ -734,6 +739,7 @@ export declare const apiContract: {
                         created_at: string;
                         device_unique_id: string;
                         notes: string;
+                        notification_token: string | null;
                         updated_at: string;
                     }>;
                     400: import("zod").ZodObject<{
@@ -804,6 +810,7 @@ export declare const apiContract: {
                         user_uid: import("zod").ZodString;
                         device_unique_id: import("zod").ZodString;
                         notes: import("zod").ZodString;
+                        notification_token: import("zod").ZodNullable<import("zod").ZodString>;
                         created_at: import("zod").ZodString;
                         updated_at: import("zod").ZodString;
                     }, "strip", import("zod").ZodTypeAny, {
@@ -813,6 +820,7 @@ export declare const apiContract: {
                         created_at: string;
                         device_unique_id: string;
                         notes: string;
+                        notification_token: string | null;
                         updated_at: string;
                     }, {
                         id: number;
@@ -821,6 +829,7 @@ export declare const apiContract: {
                         created_at: string;
                         device_unique_id: string;
                         notes: string;
+                        notification_token: string | null;
                         updated_at: string;
                     }>, "many">;
                     400: import("zod").ZodObject<{
@@ -1249,6 +1258,104 @@ export declare const apiContract: {
                         isCloudBackupEnabled: boolean;
                         canExportData: boolean;
                         preferredTheme: "SYSTEM" | "LIGHT" | "DARK";
+                    }>;
+                    400: import("zod").ZodObject<{
+                        error: import("zod").ZodString;
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error: string;
+                    }, {
+                        message: string;
+                        error: string;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        error: import("zod").ZodString;
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error: string;
+                    }, {
+                        message: string;
+                        error: string;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            updateNotificationToken: {
+                strictStatusCodes: true;
+                summary: "Update notification token";
+                description: "Update the FCM notification token for a specific device";
+                method: "PUT";
+                body: import("zod").ZodObject<{
+                    device_unique_id: import("zod").ZodString;
+                    notification_token: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    device_unique_id: string;
+                    notification_token: string;
+                }, {
+                    device_unique_id: string;
+                    notification_token: string;
+                }>;
+                path: "/api/devices/notification-token";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<true>;
+                        data: import("zod").ZodObject<{
+                            device_id: import("zod").ZodNumber;
+                            device_unique_id: import("zod").ZodString;
+                            notification_token_updated: import("zod").ZodBoolean;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            device_unique_id: string;
+                            device_id: number;
+                            notification_token_updated: boolean;
+                        }, {
+                            device_unique_id: string;
+                            device_id: number;
+                            notification_token_updated: boolean;
+                        }>;
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            device_unique_id: string;
+                            device_id: number;
+                            notification_token_updated: boolean;
+                        };
+                        success: true;
+                    }, {
+                        message: string;
+                        data: {
+                            device_unique_id: string;
+                            device_id: number;
+                            notification_token_updated: boolean;
+                        };
+                        success: true;
                     }>;
                     400: import("zod").ZodObject<{
                         error: import("zod").ZodString;
@@ -10997,6 +11104,2597 @@ export declare const apiContract: {
                         message: string;
                         error?: string | undefined;
                         statusCode?: number | undefined;
+                    }>;
+                };
+            };
+        };
+        Dashboard: {
+            getDashboard: {
+                strictStatusCodes: true;
+                summary: "Obtener datos completos del dashboard";
+                description: "Retorna todos los datos necesarios para mostrar el dashboard completo del usuario, incluyendo balance, presupuestos, metas de ahorro, indicadores financieros, movimientos recientes y más.";
+                method: "GET";
+                path: "/api/dashboard";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<true>;
+                        data: import("zod").ZodObject<{
+                            balance: import("zod").ZodObject<{
+                                available: import("zod").ZodNumber;
+                                currency: import("zod").ZodString;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                currency: string;
+                                available: number;
+                            }, {
+                                currency: string;
+                                available: number;
+                            }>;
+                            monthlySummary: import("zod").ZodObject<{
+                                income: import("zod").ZodNumber;
+                                expenses: import("zod").ZodNumber;
+                                debts: import("zod").ZodNumber;
+                                netBalance: import("zod").ZodNumber;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                income: number;
+                                expenses: number;
+                                debts: number;
+                                netBalance: number;
+                            }, {
+                                income: number;
+                                expenses: number;
+                                debts: number;
+                                netBalance: number;
+                            }>;
+                            budgets: import("zod").ZodObject<{
+                                income: import("zod").ZodObject<{
+                                    active: import("zod").ZodNumber;
+                                    flexible: import("zod").ZodNumber;
+                                }, "strip", import("zod").ZodTypeAny, {
+                                    active: number;
+                                    flexible: number;
+                                }, {
+                                    active: number;
+                                    flexible: number;
+                                }>;
+                                expenses: import("zod").ZodObject<{
+                                    fixed: import("zod").ZodNumber;
+                                    flexible: import("zod").ZodNumber;
+                                }, "strip", import("zod").ZodTypeAny, {
+                                    fixed: number;
+                                    flexible: number;
+                                }, {
+                                    fixed: number;
+                                    flexible: number;
+                                }>;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                income: {
+                                    active: number;
+                                    flexible: number;
+                                };
+                                expenses: {
+                                    fixed: number;
+                                    flexible: number;
+                                };
+                            }, {
+                                income: {
+                                    active: number;
+                                    flexible: number;
+                                };
+                                expenses: {
+                                    fixed: number;
+                                    flexible: number;
+                                };
+                            }>;
+                            savingGoals: import("zod").ZodArray<import("zod").ZodObject<{
+                                id: import("zod").ZodNumber;
+                                name: import("zod").ZodString;
+                                currentAmount: import("zod").ZodNumber;
+                                targetAmount: import("zod").ZodNumber;
+                                progress: import("zod").ZodNumber;
+                                color: import("zod").ZodOptional<import("zod").ZodString>;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }, {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }>, "many">;
+                            financialIndicators: import("zod").ZodObject<{
+                                health: import("zod").ZodObject<{
+                                    score: import("zod").ZodNumber;
+                                    description: import("zod").ZodString;
+                                }, "strip", import("zod").ZodTypeAny, {
+                                    description: string;
+                                    score: number;
+                                }, {
+                                    description: string;
+                                    score: number;
+                                }>;
+                                cashFlow: import("zod").ZodObject<{
+                                    amount: import("zod").ZodNumber;
+                                    status: import("zod").ZodEnum<["positive", "negative", "neutral"]>;
+                                }, "strip", import("zod").ZodTypeAny, {
+                                    status: "positive" | "negative" | "neutral";
+                                    amount: number;
+                                }, {
+                                    status: "positive" | "negative" | "neutral";
+                                    amount: number;
+                                }>;
+                                savingsRate: import("zod").ZodObject<{
+                                    percentage: import("zod").ZodNumber;
+                                    status: import("zod").ZodEnum<["excellent", "good", "needs_improvement"]>;
+                                }, "strip", import("zod").ZodTypeAny, {
+                                    status: "excellent" | "good" | "needs_improvement";
+                                    percentage: number;
+                                }, {
+                                    status: "excellent" | "good" | "needs_improvement";
+                                    percentage: number;
+                                }>;
+                                debtToIncomeRatio: import("zod").ZodObject<{
+                                    percentage: import("zod").ZodNumber;
+                                    status: import("zod").ZodEnum<["healthy", "moderate", "high_risk"]>;
+                                }, "strip", import("zod").ZodTypeAny, {
+                                    status: "healthy" | "moderate" | "high_risk";
+                                    percentage: number;
+                                }, {
+                                    status: "healthy" | "moderate" | "high_risk";
+                                    percentage: number;
+                                }>;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                health: {
+                                    description: string;
+                                    score: number;
+                                };
+                                cashFlow: {
+                                    status: "positive" | "negative" | "neutral";
+                                    amount: number;
+                                };
+                                savingsRate: {
+                                    status: "excellent" | "good" | "needs_improvement";
+                                    percentage: number;
+                                };
+                                debtToIncomeRatio: {
+                                    status: "healthy" | "moderate" | "high_risk";
+                                    percentage: number;
+                                };
+                            }, {
+                                health: {
+                                    description: string;
+                                    score: number;
+                                };
+                                cashFlow: {
+                                    status: "positive" | "negative" | "neutral";
+                                    amount: number;
+                                };
+                                savingsRate: {
+                                    status: "excellent" | "good" | "needs_improvement";
+                                    percentage: number;
+                                };
+                                debtToIncomeRatio: {
+                                    status: "healthy" | "moderate" | "high_risk";
+                                    percentage: number;
+                                };
+                            }>;
+                            recentMovements: import("zod").ZodArray<import("zod").ZodObject<{
+                                id: import("zod").ZodString;
+                                description: import("zod").ZodString;
+                                amount: import("zod").ZodNumber;
+                                type: import("zod").ZodEnum<["income", "expense"]>;
+                                date: import("zod").ZodDate;
+                                status: import("zod").ZodString;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                type: "income" | "expense";
+                                status: string;
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }, {
+                                type: "income" | "expense";
+                                status: string;
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }>, "many">;
+                            upcomingEvents: import("zod").ZodArray<import("zod").ZodObject<{
+                                id: import("zod").ZodString;
+                                description: import("zod").ZodString;
+                                date: import("zod").ZodDate;
+                                amount: import("zod").ZodNumber;
+                                type: import("zod").ZodEnum<["income", "expense"]>;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                type: "income" | "expense";
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }, {
+                                type: "income" | "expense";
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }>, "many">;
+                            expenseDistribution: import("zod").ZodArray<import("zod").ZodObject<{
+                                category: import("zod").ZodString;
+                                percentage: import("zod").ZodNumber;
+                                amount: import("zod").ZodNumber;
+                                color: import("zod").ZodString;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }, {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }>, "many">;
+                            recommendations: import("zod").ZodArray<import("zod").ZodString, "many">;
+                            syncStatus: import("zod").ZodObject<{
+                                lastSync: import("zod").ZodNullable<import("zod").ZodDate>;
+                                needsSync: import("zod").ZodBoolean;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            }, {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            }>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            balance: {
+                                currency: string;
+                                available: number;
+                            };
+                            monthlySummary: {
+                                income: number;
+                                expenses: number;
+                                debts: number;
+                                netBalance: number;
+                            };
+                            budgets: {
+                                income: {
+                                    active: number;
+                                    flexible: number;
+                                };
+                                expenses: {
+                                    fixed: number;
+                                    flexible: number;
+                                };
+                            };
+                            savingGoals: {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }[];
+                            financialIndicators: {
+                                health: {
+                                    description: string;
+                                    score: number;
+                                };
+                                cashFlow: {
+                                    status: "positive" | "negative" | "neutral";
+                                    amount: number;
+                                };
+                                savingsRate: {
+                                    status: "excellent" | "good" | "needs_improvement";
+                                    percentage: number;
+                                };
+                                debtToIncomeRatio: {
+                                    status: "healthy" | "moderate" | "high_risk";
+                                    percentage: number;
+                                };
+                            };
+                            recentMovements: {
+                                type: "income" | "expense";
+                                status: string;
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }[];
+                            upcomingEvents: {
+                                type: "income" | "expense";
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }[];
+                            expenseDistribution: {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }[];
+                            recommendations: string[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                        }, {
+                            balance: {
+                                currency: string;
+                                available: number;
+                            };
+                            monthlySummary: {
+                                income: number;
+                                expenses: number;
+                                debts: number;
+                                netBalance: number;
+                            };
+                            budgets: {
+                                income: {
+                                    active: number;
+                                    flexible: number;
+                                };
+                                expenses: {
+                                    fixed: number;
+                                    flexible: number;
+                                };
+                            };
+                            savingGoals: {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }[];
+                            financialIndicators: {
+                                health: {
+                                    description: string;
+                                    score: number;
+                                };
+                                cashFlow: {
+                                    status: "positive" | "negative" | "neutral";
+                                    amount: number;
+                                };
+                                savingsRate: {
+                                    status: "excellent" | "good" | "needs_improvement";
+                                    percentage: number;
+                                };
+                                debtToIncomeRatio: {
+                                    status: "healthy" | "moderate" | "high_risk";
+                                    percentage: number;
+                                };
+                            };
+                            recentMovements: {
+                                type: "income" | "expense";
+                                status: string;
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }[];
+                            upcomingEvents: {
+                                type: "income" | "expense";
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }[];
+                            expenseDistribution: {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }[];
+                            recommendations: string[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                        }>;
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            balance: {
+                                currency: string;
+                                available: number;
+                            };
+                            monthlySummary: {
+                                income: number;
+                                expenses: number;
+                                debts: number;
+                                netBalance: number;
+                            };
+                            budgets: {
+                                income: {
+                                    active: number;
+                                    flexible: number;
+                                };
+                                expenses: {
+                                    fixed: number;
+                                    flexible: number;
+                                };
+                            };
+                            savingGoals: {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }[];
+                            financialIndicators: {
+                                health: {
+                                    description: string;
+                                    score: number;
+                                };
+                                cashFlow: {
+                                    status: "positive" | "negative" | "neutral";
+                                    amount: number;
+                                };
+                                savingsRate: {
+                                    status: "excellent" | "good" | "needs_improvement";
+                                    percentage: number;
+                                };
+                                debtToIncomeRatio: {
+                                    status: "healthy" | "moderate" | "high_risk";
+                                    percentage: number;
+                                };
+                            };
+                            recentMovements: {
+                                type: "income" | "expense";
+                                status: string;
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }[];
+                            upcomingEvents: {
+                                type: "income" | "expense";
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }[];
+                            expenseDistribution: {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }[];
+                            recommendations: string[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                        };
+                        success: true;
+                    }, {
+                        message: string;
+                        data: {
+                            balance: {
+                                currency: string;
+                                available: number;
+                            };
+                            monthlySummary: {
+                                income: number;
+                                expenses: number;
+                                debts: number;
+                                netBalance: number;
+                            };
+                            budgets: {
+                                income: {
+                                    active: number;
+                                    flexible: number;
+                                };
+                                expenses: {
+                                    fixed: number;
+                                    flexible: number;
+                                };
+                            };
+                            savingGoals: {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }[];
+                            financialIndicators: {
+                                health: {
+                                    description: string;
+                                    score: number;
+                                };
+                                cashFlow: {
+                                    status: "positive" | "negative" | "neutral";
+                                    amount: number;
+                                };
+                                savingsRate: {
+                                    status: "excellent" | "good" | "needs_improvement";
+                                    percentage: number;
+                                };
+                                debtToIncomeRatio: {
+                                    status: "healthy" | "moderate" | "high_risk";
+                                    percentage: number;
+                                };
+                            };
+                            recentMovements: {
+                                type: "income" | "expense";
+                                status: string;
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }[];
+                            upcomingEvents: {
+                                type: "income" | "expense";
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }[];
+                            expenseDistribution: {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }[];
+                            recommendations: string[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                        };
+                        success: true;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<false>;
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodAny>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<false>;
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodAny>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }>;
+                };
+            };
+            getDashboardSummary: {
+                strictStatusCodes: true;
+                summary: "Obtener resumen del dashboard";
+                description: "Retorna solo los datos esenciales del dashboard para carga rápida: balance, resumen mensual y estado de sincronización.";
+                method: "GET";
+                path: "/api/dashboard/summary";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<true>;
+                        data: import("zod").ZodObject<{
+                            balance: import("zod").ZodObject<{
+                                available: import("zod").ZodNumber;
+                                currency: import("zod").ZodString;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                currency: string;
+                                available: number;
+                            }, {
+                                currency: string;
+                                available: number;
+                            }>;
+                            monthlySummary: import("zod").ZodObject<{
+                                income: import("zod").ZodNumber;
+                                expenses: import("zod").ZodNumber;
+                                debts: import("zod").ZodNumber;
+                                netBalance: import("zod").ZodNumber;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                income: number;
+                                expenses: number;
+                                debts: number;
+                                netBalance: number;
+                            }, {
+                                income: number;
+                                expenses: number;
+                                debts: number;
+                                netBalance: number;
+                            }>;
+                            syncStatus: import("zod").ZodObject<{
+                                lastSync: import("zod").ZodNullable<import("zod").ZodDate>;
+                                needsSync: import("zod").ZodBoolean;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            }, {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            }>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            balance: {
+                                currency: string;
+                                available: number;
+                            };
+                            monthlySummary: {
+                                income: number;
+                                expenses: number;
+                                debts: number;
+                                netBalance: number;
+                            };
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                        }, {
+                            balance: {
+                                currency: string;
+                                available: number;
+                            };
+                            monthlySummary: {
+                                income: number;
+                                expenses: number;
+                                debts: number;
+                                netBalance: number;
+                            };
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                        }>;
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            balance: {
+                                currency: string;
+                                available: number;
+                            };
+                            monthlySummary: {
+                                income: number;
+                                expenses: number;
+                                debts: number;
+                                netBalance: number;
+                            };
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                        };
+                        success: true;
+                    }, {
+                        message: string;
+                        data: {
+                            balance: {
+                                currency: string;
+                                available: number;
+                            };
+                            monthlySummary: {
+                                income: number;
+                                expenses: number;
+                                debts: number;
+                                netBalance: number;
+                            };
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                        };
+                        success: true;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<false>;
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodAny>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<false>;
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodAny>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }>;
+                };
+            };
+            refreshDashboard: {
+                strictStatusCodes: true;
+                summary: "Actualizar datos del dashboard";
+                description: "Fuerza la sincronización de datos bancarios y regenera los datos del dashboard con información actualizada.";
+                method: "POST";
+                body: import("zod").ZodObject<{}, "strip", import("zod").ZodTypeAny, {}, {}>;
+                path: "/api/dashboard/refresh";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<true>;
+                        data: import("zod").ZodObject<{
+                            balance: import("zod").ZodObject<{
+                                available: import("zod").ZodNumber;
+                                currency: import("zod").ZodString;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                currency: string;
+                                available: number;
+                            }, {
+                                currency: string;
+                                available: number;
+                            }>;
+                            monthlySummary: import("zod").ZodObject<{
+                                income: import("zod").ZodNumber;
+                                expenses: import("zod").ZodNumber;
+                                debts: import("zod").ZodNumber;
+                                netBalance: import("zod").ZodNumber;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                income: number;
+                                expenses: number;
+                                debts: number;
+                                netBalance: number;
+                            }, {
+                                income: number;
+                                expenses: number;
+                                debts: number;
+                                netBalance: number;
+                            }>;
+                            budgets: import("zod").ZodObject<{
+                                income: import("zod").ZodObject<{
+                                    active: import("zod").ZodNumber;
+                                    flexible: import("zod").ZodNumber;
+                                }, "strip", import("zod").ZodTypeAny, {
+                                    active: number;
+                                    flexible: number;
+                                }, {
+                                    active: number;
+                                    flexible: number;
+                                }>;
+                                expenses: import("zod").ZodObject<{
+                                    fixed: import("zod").ZodNumber;
+                                    flexible: import("zod").ZodNumber;
+                                }, "strip", import("zod").ZodTypeAny, {
+                                    fixed: number;
+                                    flexible: number;
+                                }, {
+                                    fixed: number;
+                                    flexible: number;
+                                }>;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                income: {
+                                    active: number;
+                                    flexible: number;
+                                };
+                                expenses: {
+                                    fixed: number;
+                                    flexible: number;
+                                };
+                            }, {
+                                income: {
+                                    active: number;
+                                    flexible: number;
+                                };
+                                expenses: {
+                                    fixed: number;
+                                    flexible: number;
+                                };
+                            }>;
+                            savingGoals: import("zod").ZodArray<import("zod").ZodObject<{
+                                id: import("zod").ZodNumber;
+                                name: import("zod").ZodString;
+                                currentAmount: import("zod").ZodNumber;
+                                targetAmount: import("zod").ZodNumber;
+                                progress: import("zod").ZodNumber;
+                                color: import("zod").ZodOptional<import("zod").ZodString>;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }, {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }>, "many">;
+                            financialIndicators: import("zod").ZodObject<{
+                                health: import("zod").ZodObject<{
+                                    score: import("zod").ZodNumber;
+                                    description: import("zod").ZodString;
+                                }, "strip", import("zod").ZodTypeAny, {
+                                    description: string;
+                                    score: number;
+                                }, {
+                                    description: string;
+                                    score: number;
+                                }>;
+                                cashFlow: import("zod").ZodObject<{
+                                    amount: import("zod").ZodNumber;
+                                    status: import("zod").ZodEnum<["positive", "negative", "neutral"]>;
+                                }, "strip", import("zod").ZodTypeAny, {
+                                    status: "positive" | "negative" | "neutral";
+                                    amount: number;
+                                }, {
+                                    status: "positive" | "negative" | "neutral";
+                                    amount: number;
+                                }>;
+                                savingsRate: import("zod").ZodObject<{
+                                    percentage: import("zod").ZodNumber;
+                                    status: import("zod").ZodEnum<["excellent", "good", "needs_improvement"]>;
+                                }, "strip", import("zod").ZodTypeAny, {
+                                    status: "excellent" | "good" | "needs_improvement";
+                                    percentage: number;
+                                }, {
+                                    status: "excellent" | "good" | "needs_improvement";
+                                    percentage: number;
+                                }>;
+                                debtToIncomeRatio: import("zod").ZodObject<{
+                                    percentage: import("zod").ZodNumber;
+                                    status: import("zod").ZodEnum<["healthy", "moderate", "high_risk"]>;
+                                }, "strip", import("zod").ZodTypeAny, {
+                                    status: "healthy" | "moderate" | "high_risk";
+                                    percentage: number;
+                                }, {
+                                    status: "healthy" | "moderate" | "high_risk";
+                                    percentage: number;
+                                }>;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                health: {
+                                    description: string;
+                                    score: number;
+                                };
+                                cashFlow: {
+                                    status: "positive" | "negative" | "neutral";
+                                    amount: number;
+                                };
+                                savingsRate: {
+                                    status: "excellent" | "good" | "needs_improvement";
+                                    percentage: number;
+                                };
+                                debtToIncomeRatio: {
+                                    status: "healthy" | "moderate" | "high_risk";
+                                    percentage: number;
+                                };
+                            }, {
+                                health: {
+                                    description: string;
+                                    score: number;
+                                };
+                                cashFlow: {
+                                    status: "positive" | "negative" | "neutral";
+                                    amount: number;
+                                };
+                                savingsRate: {
+                                    status: "excellent" | "good" | "needs_improvement";
+                                    percentage: number;
+                                };
+                                debtToIncomeRatio: {
+                                    status: "healthy" | "moderate" | "high_risk";
+                                    percentage: number;
+                                };
+                            }>;
+                            recentMovements: import("zod").ZodArray<import("zod").ZodObject<{
+                                id: import("zod").ZodString;
+                                description: import("zod").ZodString;
+                                amount: import("zod").ZodNumber;
+                                type: import("zod").ZodEnum<["income", "expense"]>;
+                                date: import("zod").ZodDate;
+                                status: import("zod").ZodString;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                type: "income" | "expense";
+                                status: string;
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }, {
+                                type: "income" | "expense";
+                                status: string;
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }>, "many">;
+                            upcomingEvents: import("zod").ZodArray<import("zod").ZodObject<{
+                                id: import("zod").ZodString;
+                                description: import("zod").ZodString;
+                                date: import("zod").ZodDate;
+                                amount: import("zod").ZodNumber;
+                                type: import("zod").ZodEnum<["income", "expense"]>;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                type: "income" | "expense";
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }, {
+                                type: "income" | "expense";
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }>, "many">;
+                            expenseDistribution: import("zod").ZodArray<import("zod").ZodObject<{
+                                category: import("zod").ZodString;
+                                percentage: import("zod").ZodNumber;
+                                amount: import("zod").ZodNumber;
+                                color: import("zod").ZodString;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }, {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }>, "many">;
+                            recommendations: import("zod").ZodArray<import("zod").ZodString, "many">;
+                            syncStatus: import("zod").ZodObject<{
+                                lastSync: import("zod").ZodNullable<import("zod").ZodDate>;
+                                needsSync: import("zod").ZodBoolean;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            }, {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            }>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            balance: {
+                                currency: string;
+                                available: number;
+                            };
+                            monthlySummary: {
+                                income: number;
+                                expenses: number;
+                                debts: number;
+                                netBalance: number;
+                            };
+                            budgets: {
+                                income: {
+                                    active: number;
+                                    flexible: number;
+                                };
+                                expenses: {
+                                    fixed: number;
+                                    flexible: number;
+                                };
+                            };
+                            savingGoals: {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }[];
+                            financialIndicators: {
+                                health: {
+                                    description: string;
+                                    score: number;
+                                };
+                                cashFlow: {
+                                    status: "positive" | "negative" | "neutral";
+                                    amount: number;
+                                };
+                                savingsRate: {
+                                    status: "excellent" | "good" | "needs_improvement";
+                                    percentage: number;
+                                };
+                                debtToIncomeRatio: {
+                                    status: "healthy" | "moderate" | "high_risk";
+                                    percentage: number;
+                                };
+                            };
+                            recentMovements: {
+                                type: "income" | "expense";
+                                status: string;
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }[];
+                            upcomingEvents: {
+                                type: "income" | "expense";
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }[];
+                            expenseDistribution: {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }[];
+                            recommendations: string[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                        }, {
+                            balance: {
+                                currency: string;
+                                available: number;
+                            };
+                            monthlySummary: {
+                                income: number;
+                                expenses: number;
+                                debts: number;
+                                netBalance: number;
+                            };
+                            budgets: {
+                                income: {
+                                    active: number;
+                                    flexible: number;
+                                };
+                                expenses: {
+                                    fixed: number;
+                                    flexible: number;
+                                };
+                            };
+                            savingGoals: {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }[];
+                            financialIndicators: {
+                                health: {
+                                    description: string;
+                                    score: number;
+                                };
+                                cashFlow: {
+                                    status: "positive" | "negative" | "neutral";
+                                    amount: number;
+                                };
+                                savingsRate: {
+                                    status: "excellent" | "good" | "needs_improvement";
+                                    percentage: number;
+                                };
+                                debtToIncomeRatio: {
+                                    status: "healthy" | "moderate" | "high_risk";
+                                    percentage: number;
+                                };
+                            };
+                            recentMovements: {
+                                type: "income" | "expense";
+                                status: string;
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }[];
+                            upcomingEvents: {
+                                type: "income" | "expense";
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }[];
+                            expenseDistribution: {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }[];
+                            recommendations: string[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                        }>;
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            balance: {
+                                currency: string;
+                                available: number;
+                            };
+                            monthlySummary: {
+                                income: number;
+                                expenses: number;
+                                debts: number;
+                                netBalance: number;
+                            };
+                            budgets: {
+                                income: {
+                                    active: number;
+                                    flexible: number;
+                                };
+                                expenses: {
+                                    fixed: number;
+                                    flexible: number;
+                                };
+                            };
+                            savingGoals: {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }[];
+                            financialIndicators: {
+                                health: {
+                                    description: string;
+                                    score: number;
+                                };
+                                cashFlow: {
+                                    status: "positive" | "negative" | "neutral";
+                                    amount: number;
+                                };
+                                savingsRate: {
+                                    status: "excellent" | "good" | "needs_improvement";
+                                    percentage: number;
+                                };
+                                debtToIncomeRatio: {
+                                    status: "healthy" | "moderate" | "high_risk";
+                                    percentage: number;
+                                };
+                            };
+                            recentMovements: {
+                                type: "income" | "expense";
+                                status: string;
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }[];
+                            upcomingEvents: {
+                                type: "income" | "expense";
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }[];
+                            expenseDistribution: {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }[];
+                            recommendations: string[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                        };
+                        success: true;
+                    }, {
+                        message: string;
+                        data: {
+                            balance: {
+                                currency: string;
+                                available: number;
+                            };
+                            monthlySummary: {
+                                income: number;
+                                expenses: number;
+                                debts: number;
+                                netBalance: number;
+                            };
+                            budgets: {
+                                income: {
+                                    active: number;
+                                    flexible: number;
+                                };
+                                expenses: {
+                                    fixed: number;
+                                    flexible: number;
+                                };
+                            };
+                            savingGoals: {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }[];
+                            financialIndicators: {
+                                health: {
+                                    description: string;
+                                    score: number;
+                                };
+                                cashFlow: {
+                                    status: "positive" | "negative" | "neutral";
+                                    amount: number;
+                                };
+                                savingsRate: {
+                                    status: "excellent" | "good" | "needs_improvement";
+                                    percentage: number;
+                                };
+                                debtToIncomeRatio: {
+                                    status: "healthy" | "moderate" | "high_risk";
+                                    percentage: number;
+                                };
+                            };
+                            recentMovements: {
+                                type: "income" | "expense";
+                                status: string;
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }[];
+                            upcomingEvents: {
+                                type: "income" | "expense";
+                                id: string;
+                                date: Date;
+                                description: string;
+                                amount: number;
+                            }[];
+                            expenseDistribution: {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }[];
+                            recommendations: string[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                        };
+                        success: true;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<false>;
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodAny>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<false>;
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodAny>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }>;
+                };
+            };
+        };
+        CreditUtilization: {
+            getCreditUtilization: {
+                strictStatusCodes: true;
+                summary: "Obtener datos de utilización de crédito";
+                description: "Retorna todos los datos necesarios para mostrar la pantalla de utilización de crédito, incluyendo métricas de crédito, tarjetas, historial de pagos, gastos mensuales y recomendaciones.";
+                method: "GET";
+                path: "/api/credit-utilization";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<true>;
+                        data: import("zod").ZodObject<{
+                            creditMetrics: import("zod").ZodObject<{
+                                availableCredit: import("zod").ZodNumber;
+                                totalLimit: import("zod").ZodNumber;
+                                utilizationPercentage: import("zod").ZodNumber;
+                                recommendedUtilization: import("zod").ZodNumber;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                availableCredit: number;
+                                totalLimit: number;
+                                utilizationPercentage: number;
+                                recommendedUtilization: number;
+                            }, {
+                                availableCredit: number;
+                                totalLimit: number;
+                                utilizationPercentage: number;
+                                recommendedUtilization: number;
+                            }>;
+                            creditCards: import("zod").ZodArray<import("zod").ZodObject<{
+                                id: import("zod").ZodNumber;
+                                name: import("zod").ZodString;
+                                bankName: import("zod").ZodString;
+                                cardType: import("zod").ZodString;
+                                utilizedPercentage: import("zod").ZodNumber;
+                                totalLimit: import("zod").ZodNumber;
+                                availableAmount: import("zod").ZodNumber;
+                                usedAmount: import("zod").ZodNumber;
+                                color: import("zod").ZodString;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                id: number;
+                                name: string;
+                                color: string;
+                                totalLimit: number;
+                                bankName: string;
+                                cardType: string;
+                                utilizedPercentage: number;
+                                availableAmount: number;
+                                usedAmount: number;
+                            }, {
+                                id: number;
+                                name: string;
+                                color: string;
+                                totalLimit: number;
+                                bankName: string;
+                                cardType: string;
+                                utilizedPercentage: number;
+                                availableAmount: number;
+                                usedAmount: number;
+                            }>, "many">;
+                            paymentHistory: import("zod").ZodObject<{
+                                onTimePayments: import("zod").ZodNumber;
+                                averagePayment: import("zod").ZodNumber;
+                                totalPayments: import("zod").ZodNumber;
+                                latePayments: import("zod").ZodNumber;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                onTimePayments: number;
+                                averagePayment: number;
+                                totalPayments: number;
+                                latePayments: number;
+                            }, {
+                                onTimePayments: number;
+                                averagePayment: number;
+                                totalPayments: number;
+                                latePayments: number;
+                            }>;
+                            monthlySpending: import("zod").ZodArray<import("zod").ZodObject<{
+                                month: import("zod").ZodString;
+                                year: import("zod").ZodNumber;
+                                amount: import("zod").ZodNumber;
+                                monthName: import("zod").ZodString;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                amount: number;
+                                month: string;
+                                year: number;
+                                monthName: string;
+                            }, {
+                                amount: number;
+                                month: string;
+                                year: number;
+                                monthName: string;
+                            }>, "many">;
+                            creditProductsSummary: import("zod").ZodObject<{
+                                activeCreditCards: import("zod").ZodNumber;
+                                activeLoans: import("zod").ZodNumber;
+                                availableCreditLines: import("zod").ZodNumber;
+                                totalCreditLimit: import("zod").ZodNumber;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                activeCreditCards: number;
+                                activeLoans: number;
+                                availableCreditLines: number;
+                                totalCreditLimit: number;
+                            }, {
+                                activeCreditCards: number;
+                                activeLoans: number;
+                                availableCreditLines: number;
+                                totalCreditLimit: number;
+                            }>;
+                            recommendations: import("zod").ZodArray<import("zod").ZodString, "many">;
+                            syncStatus: import("zod").ZodObject<{
+                                lastSync: import("zod").ZodNullable<import("zod").ZodDate>;
+                                needsSync: import("zod").ZodBoolean;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            }, {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            }>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            recommendations: string[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                            creditMetrics: {
+                                availableCredit: number;
+                                totalLimit: number;
+                                utilizationPercentage: number;
+                                recommendedUtilization: number;
+                            };
+                            creditCards: {
+                                id: number;
+                                name: string;
+                                color: string;
+                                totalLimit: number;
+                                bankName: string;
+                                cardType: string;
+                                utilizedPercentage: number;
+                                availableAmount: number;
+                                usedAmount: number;
+                            }[];
+                            paymentHistory: {
+                                onTimePayments: number;
+                                averagePayment: number;
+                                totalPayments: number;
+                                latePayments: number;
+                            };
+                            monthlySpending: {
+                                amount: number;
+                                month: string;
+                                year: number;
+                                monthName: string;
+                            }[];
+                            creditProductsSummary: {
+                                activeCreditCards: number;
+                                activeLoans: number;
+                                availableCreditLines: number;
+                                totalCreditLimit: number;
+                            };
+                        }, {
+                            recommendations: string[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                            creditMetrics: {
+                                availableCredit: number;
+                                totalLimit: number;
+                                utilizationPercentage: number;
+                                recommendedUtilization: number;
+                            };
+                            creditCards: {
+                                id: number;
+                                name: string;
+                                color: string;
+                                totalLimit: number;
+                                bankName: string;
+                                cardType: string;
+                                utilizedPercentage: number;
+                                availableAmount: number;
+                                usedAmount: number;
+                            }[];
+                            paymentHistory: {
+                                onTimePayments: number;
+                                averagePayment: number;
+                                totalPayments: number;
+                                latePayments: number;
+                            };
+                            monthlySpending: {
+                                amount: number;
+                                month: string;
+                                year: number;
+                                monthName: string;
+                            }[];
+                            creditProductsSummary: {
+                                activeCreditCards: number;
+                                activeLoans: number;
+                                availableCreditLines: number;
+                                totalCreditLimit: number;
+                            };
+                        }>;
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            recommendations: string[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                            creditMetrics: {
+                                availableCredit: number;
+                                totalLimit: number;
+                                utilizationPercentage: number;
+                                recommendedUtilization: number;
+                            };
+                            creditCards: {
+                                id: number;
+                                name: string;
+                                color: string;
+                                totalLimit: number;
+                                bankName: string;
+                                cardType: string;
+                                utilizedPercentage: number;
+                                availableAmount: number;
+                                usedAmount: number;
+                            }[];
+                            paymentHistory: {
+                                onTimePayments: number;
+                                averagePayment: number;
+                                totalPayments: number;
+                                latePayments: number;
+                            };
+                            monthlySpending: {
+                                amount: number;
+                                month: string;
+                                year: number;
+                                monthName: string;
+                            }[];
+                            creditProductsSummary: {
+                                activeCreditCards: number;
+                                activeLoans: number;
+                                availableCreditLines: number;
+                                totalCreditLimit: number;
+                            };
+                        };
+                        success: true;
+                    }, {
+                        message: string;
+                        data: {
+                            recommendations: string[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                            creditMetrics: {
+                                availableCredit: number;
+                                totalLimit: number;
+                                utilizationPercentage: number;
+                                recommendedUtilization: number;
+                            };
+                            creditCards: {
+                                id: number;
+                                name: string;
+                                color: string;
+                                totalLimit: number;
+                                bankName: string;
+                                cardType: string;
+                                utilizedPercentage: number;
+                                availableAmount: number;
+                                usedAmount: number;
+                            }[];
+                            paymentHistory: {
+                                onTimePayments: number;
+                                averagePayment: number;
+                                totalPayments: number;
+                                latePayments: number;
+                            };
+                            monthlySpending: {
+                                amount: number;
+                                month: string;
+                                year: number;
+                                monthName: string;
+                            }[];
+                            creditProductsSummary: {
+                                activeCreditCards: number;
+                                activeLoans: number;
+                                availableCreditLines: number;
+                                totalCreditLimit: number;
+                            };
+                        };
+                        success: true;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<false>;
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodAny>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<false>;
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodAny>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }>;
+                };
+            };
+            refreshCreditUtilization: {
+                strictStatusCodes: true;
+                summary: "Actualizar datos de utilización de crédito";
+                description: "Fuerza la sincronización de datos bancarios y regenera los datos de utilización de crédito con información actualizada.";
+                method: "POST";
+                body: import("zod").ZodObject<{}, "strip", import("zod").ZodTypeAny, {}, {}>;
+                path: "/api/credit-utilization/refresh";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<true>;
+                        data: import("zod").ZodObject<{
+                            creditMetrics: import("zod").ZodObject<{
+                                availableCredit: import("zod").ZodNumber;
+                                totalLimit: import("zod").ZodNumber;
+                                utilizationPercentage: import("zod").ZodNumber;
+                                recommendedUtilization: import("zod").ZodNumber;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                availableCredit: number;
+                                totalLimit: number;
+                                utilizationPercentage: number;
+                                recommendedUtilization: number;
+                            }, {
+                                availableCredit: number;
+                                totalLimit: number;
+                                utilizationPercentage: number;
+                                recommendedUtilization: number;
+                            }>;
+                            creditCards: import("zod").ZodArray<import("zod").ZodObject<{
+                                id: import("zod").ZodNumber;
+                                name: import("zod").ZodString;
+                                bankName: import("zod").ZodString;
+                                cardType: import("zod").ZodString;
+                                utilizedPercentage: import("zod").ZodNumber;
+                                totalLimit: import("zod").ZodNumber;
+                                availableAmount: import("zod").ZodNumber;
+                                usedAmount: import("zod").ZodNumber;
+                                color: import("zod").ZodString;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                id: number;
+                                name: string;
+                                color: string;
+                                totalLimit: number;
+                                bankName: string;
+                                cardType: string;
+                                utilizedPercentage: number;
+                                availableAmount: number;
+                                usedAmount: number;
+                            }, {
+                                id: number;
+                                name: string;
+                                color: string;
+                                totalLimit: number;
+                                bankName: string;
+                                cardType: string;
+                                utilizedPercentage: number;
+                                availableAmount: number;
+                                usedAmount: number;
+                            }>, "many">;
+                            paymentHistory: import("zod").ZodObject<{
+                                onTimePayments: import("zod").ZodNumber;
+                                averagePayment: import("zod").ZodNumber;
+                                totalPayments: import("zod").ZodNumber;
+                                latePayments: import("zod").ZodNumber;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                onTimePayments: number;
+                                averagePayment: number;
+                                totalPayments: number;
+                                latePayments: number;
+                            }, {
+                                onTimePayments: number;
+                                averagePayment: number;
+                                totalPayments: number;
+                                latePayments: number;
+                            }>;
+                            monthlySpending: import("zod").ZodArray<import("zod").ZodObject<{
+                                month: import("zod").ZodString;
+                                year: import("zod").ZodNumber;
+                                amount: import("zod").ZodNumber;
+                                monthName: import("zod").ZodString;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                amount: number;
+                                month: string;
+                                year: number;
+                                monthName: string;
+                            }, {
+                                amount: number;
+                                month: string;
+                                year: number;
+                                monthName: string;
+                            }>, "many">;
+                            creditProductsSummary: import("zod").ZodObject<{
+                                activeCreditCards: import("zod").ZodNumber;
+                                activeLoans: import("zod").ZodNumber;
+                                availableCreditLines: import("zod").ZodNumber;
+                                totalCreditLimit: import("zod").ZodNumber;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                activeCreditCards: number;
+                                activeLoans: number;
+                                availableCreditLines: number;
+                                totalCreditLimit: number;
+                            }, {
+                                activeCreditCards: number;
+                                activeLoans: number;
+                                availableCreditLines: number;
+                                totalCreditLimit: number;
+                            }>;
+                            recommendations: import("zod").ZodArray<import("zod").ZodString, "many">;
+                            syncStatus: import("zod").ZodObject<{
+                                lastSync: import("zod").ZodNullable<import("zod").ZodDate>;
+                                needsSync: import("zod").ZodBoolean;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            }, {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            }>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            recommendations: string[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                            creditMetrics: {
+                                availableCredit: number;
+                                totalLimit: number;
+                                utilizationPercentage: number;
+                                recommendedUtilization: number;
+                            };
+                            creditCards: {
+                                id: number;
+                                name: string;
+                                color: string;
+                                totalLimit: number;
+                                bankName: string;
+                                cardType: string;
+                                utilizedPercentage: number;
+                                availableAmount: number;
+                                usedAmount: number;
+                            }[];
+                            paymentHistory: {
+                                onTimePayments: number;
+                                averagePayment: number;
+                                totalPayments: number;
+                                latePayments: number;
+                            };
+                            monthlySpending: {
+                                amount: number;
+                                month: string;
+                                year: number;
+                                monthName: string;
+                            }[];
+                            creditProductsSummary: {
+                                activeCreditCards: number;
+                                activeLoans: number;
+                                availableCreditLines: number;
+                                totalCreditLimit: number;
+                            };
+                        }, {
+                            recommendations: string[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                            creditMetrics: {
+                                availableCredit: number;
+                                totalLimit: number;
+                                utilizationPercentage: number;
+                                recommendedUtilization: number;
+                            };
+                            creditCards: {
+                                id: number;
+                                name: string;
+                                color: string;
+                                totalLimit: number;
+                                bankName: string;
+                                cardType: string;
+                                utilizedPercentage: number;
+                                availableAmount: number;
+                                usedAmount: number;
+                            }[];
+                            paymentHistory: {
+                                onTimePayments: number;
+                                averagePayment: number;
+                                totalPayments: number;
+                                latePayments: number;
+                            };
+                            monthlySpending: {
+                                amount: number;
+                                month: string;
+                                year: number;
+                                monthName: string;
+                            }[];
+                            creditProductsSummary: {
+                                activeCreditCards: number;
+                                activeLoans: number;
+                                availableCreditLines: number;
+                                totalCreditLimit: number;
+                            };
+                        }>;
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            recommendations: string[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                            creditMetrics: {
+                                availableCredit: number;
+                                totalLimit: number;
+                                utilizationPercentage: number;
+                                recommendedUtilization: number;
+                            };
+                            creditCards: {
+                                id: number;
+                                name: string;
+                                color: string;
+                                totalLimit: number;
+                                bankName: string;
+                                cardType: string;
+                                utilizedPercentage: number;
+                                availableAmount: number;
+                                usedAmount: number;
+                            }[];
+                            paymentHistory: {
+                                onTimePayments: number;
+                                averagePayment: number;
+                                totalPayments: number;
+                                latePayments: number;
+                            };
+                            monthlySpending: {
+                                amount: number;
+                                month: string;
+                                year: number;
+                                monthName: string;
+                            }[];
+                            creditProductsSummary: {
+                                activeCreditCards: number;
+                                activeLoans: number;
+                                availableCreditLines: number;
+                                totalCreditLimit: number;
+                            };
+                        };
+                        success: true;
+                    }, {
+                        message: string;
+                        data: {
+                            recommendations: string[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                            creditMetrics: {
+                                availableCredit: number;
+                                totalLimit: number;
+                                utilizationPercentage: number;
+                                recommendedUtilization: number;
+                            };
+                            creditCards: {
+                                id: number;
+                                name: string;
+                                color: string;
+                                totalLimit: number;
+                                bankName: string;
+                                cardType: string;
+                                utilizedPercentage: number;
+                                availableAmount: number;
+                                usedAmount: number;
+                            }[];
+                            paymentHistory: {
+                                onTimePayments: number;
+                                averagePayment: number;
+                                totalPayments: number;
+                                latePayments: number;
+                            };
+                            monthlySpending: {
+                                amount: number;
+                                month: string;
+                                year: number;
+                                monthName: string;
+                            }[];
+                            creditProductsSummary: {
+                                activeCreditCards: number;
+                                activeLoans: number;
+                                availableCreditLines: number;
+                                totalCreditLimit: number;
+                            };
+                        };
+                        success: true;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<false>;
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodAny>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<false>;
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodAny>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }>;
+                };
+            };
+        };
+        FinancialTrends: {
+            getFinancialTrends: {
+                strictStatusCodes: true;
+                summary: "Obtener datos de tendencias financieras";
+                description: "Retorna todos los datos necesarios para mostrar la pantalla de tendencias financieras, incluyendo comparaciones mensuales, crecimiento por categorías, proyecciones de fin de mes y metas de ahorro.";
+                method: "GET";
+                path: "/api/financial-trends";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<true>;
+                        data: import("zod").ZodObject<{
+                            monthlyComparison: import("zod").ZodObject<{
+                                savingsVsPreviousMonth: import("zod").ZodNumber;
+                                expensesVsPreviousMonth: import("zod").ZodNumber;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                savingsVsPreviousMonth: number;
+                                expensesVsPreviousMonth: number;
+                            }, {
+                                savingsVsPreviousMonth: number;
+                                expensesVsPreviousMonth: number;
+                            }>;
+                            categoryGrowth: import("zod").ZodArray<import("zod").ZodObject<{
+                                name: import("zod").ZodString;
+                                percentageChange: import("zod").ZodNumber;
+                                trend: import("zod").ZodEnum<["up", "down", "neutral"]>;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                name: string;
+                                percentageChange: number;
+                                trend: "neutral" | "up" | "down";
+                            }, {
+                                name: string;
+                                percentageChange: number;
+                                trend: "neutral" | "up" | "down";
+                            }>, "many">;
+                            monthEndProjection: import("zod").ZodObject<{
+                                projectedBalance: import("zod").ZodNumber;
+                                estimatedSavings: import("zod").ZodNumber;
+                                balanceTrend: import("zod").ZodEnum<["up", "down", "neutral"]>;
+                                savingsTrend: import("zod").ZodEnum<["up", "down", "neutral"]>;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                projectedBalance: number;
+                                estimatedSavings: number;
+                                balanceTrend: "neutral" | "up" | "down";
+                                savingsTrend: "neutral" | "up" | "down";
+                            }, {
+                                projectedBalance: number;
+                                estimatedSavings: number;
+                                balanceTrend: "neutral" | "up" | "down";
+                                savingsTrend: "neutral" | "up" | "down";
+                            }>;
+                            savingGoals: import("zod").ZodArray<import("zod").ZodObject<{
+                                id: import("zod").ZodNumber;
+                                name: import("zod").ZodString;
+                                currentAmount: import("zod").ZodNumber;
+                                targetAmount: import("zod").ZodNumber;
+                                progress: import("zod").ZodNumber;
+                                color: import("zod").ZodOptional<import("zod").ZodString>;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }, {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }>, "many">;
+                            syncStatus: import("zod").ZodObject<{
+                                lastSync: import("zod").ZodNullable<import("zod").ZodDate>;
+                                needsSync: import("zod").ZodBoolean;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            }, {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            }>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            savingGoals: {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                            monthlyComparison: {
+                                savingsVsPreviousMonth: number;
+                                expensesVsPreviousMonth: number;
+                            };
+                            categoryGrowth: {
+                                name: string;
+                                percentageChange: number;
+                                trend: "neutral" | "up" | "down";
+                            }[];
+                            monthEndProjection: {
+                                projectedBalance: number;
+                                estimatedSavings: number;
+                                balanceTrend: "neutral" | "up" | "down";
+                                savingsTrend: "neutral" | "up" | "down";
+                            };
+                        }, {
+                            savingGoals: {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                            monthlyComparison: {
+                                savingsVsPreviousMonth: number;
+                                expensesVsPreviousMonth: number;
+                            };
+                            categoryGrowth: {
+                                name: string;
+                                percentageChange: number;
+                                trend: "neutral" | "up" | "down";
+                            }[];
+                            monthEndProjection: {
+                                projectedBalance: number;
+                                estimatedSavings: number;
+                                balanceTrend: "neutral" | "up" | "down";
+                                savingsTrend: "neutral" | "up" | "down";
+                            };
+                        }>;
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            savingGoals: {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                            monthlyComparison: {
+                                savingsVsPreviousMonth: number;
+                                expensesVsPreviousMonth: number;
+                            };
+                            categoryGrowth: {
+                                name: string;
+                                percentageChange: number;
+                                trend: "neutral" | "up" | "down";
+                            }[];
+                            monthEndProjection: {
+                                projectedBalance: number;
+                                estimatedSavings: number;
+                                balanceTrend: "neutral" | "up" | "down";
+                                savingsTrend: "neutral" | "up" | "down";
+                            };
+                        };
+                        success: true;
+                    }, {
+                        message: string;
+                        data: {
+                            savingGoals: {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                            monthlyComparison: {
+                                savingsVsPreviousMonth: number;
+                                expensesVsPreviousMonth: number;
+                            };
+                            categoryGrowth: {
+                                name: string;
+                                percentageChange: number;
+                                trend: "neutral" | "up" | "down";
+                            }[];
+                            monthEndProjection: {
+                                projectedBalance: number;
+                                estimatedSavings: number;
+                                balanceTrend: "neutral" | "up" | "down";
+                                savingsTrend: "neutral" | "up" | "down";
+                            };
+                        };
+                        success: true;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<false>;
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodAny>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<false>;
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodAny>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }>;
+                };
+            };
+            refreshFinancialTrends: {
+                strictStatusCodes: true;
+                summary: "Actualizar datos de tendencias financieras";
+                description: "Fuerza la sincronización de datos bancarios y regenera los datos de tendencias financieras con información actualizada.";
+                method: "POST";
+                body: import("zod").ZodObject<{}, "strip", import("zod").ZodTypeAny, {}, {}>;
+                path: "/api/financial-trends/refresh";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<true>;
+                        data: import("zod").ZodObject<{
+                            monthlyComparison: import("zod").ZodObject<{
+                                savingsVsPreviousMonth: import("zod").ZodNumber;
+                                expensesVsPreviousMonth: import("zod").ZodNumber;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                savingsVsPreviousMonth: number;
+                                expensesVsPreviousMonth: number;
+                            }, {
+                                savingsVsPreviousMonth: number;
+                                expensesVsPreviousMonth: number;
+                            }>;
+                            categoryGrowth: import("zod").ZodArray<import("zod").ZodObject<{
+                                name: import("zod").ZodString;
+                                percentageChange: import("zod").ZodNumber;
+                                trend: import("zod").ZodEnum<["up", "down", "neutral"]>;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                name: string;
+                                percentageChange: number;
+                                trend: "neutral" | "up" | "down";
+                            }, {
+                                name: string;
+                                percentageChange: number;
+                                trend: "neutral" | "up" | "down";
+                            }>, "many">;
+                            monthEndProjection: import("zod").ZodObject<{
+                                projectedBalance: import("zod").ZodNumber;
+                                estimatedSavings: import("zod").ZodNumber;
+                                balanceTrend: import("zod").ZodEnum<["up", "down", "neutral"]>;
+                                savingsTrend: import("zod").ZodEnum<["up", "down", "neutral"]>;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                projectedBalance: number;
+                                estimatedSavings: number;
+                                balanceTrend: "neutral" | "up" | "down";
+                                savingsTrend: "neutral" | "up" | "down";
+                            }, {
+                                projectedBalance: number;
+                                estimatedSavings: number;
+                                balanceTrend: "neutral" | "up" | "down";
+                                savingsTrend: "neutral" | "up" | "down";
+                            }>;
+                            savingGoals: import("zod").ZodArray<import("zod").ZodObject<{
+                                id: import("zod").ZodNumber;
+                                name: import("zod").ZodString;
+                                currentAmount: import("zod").ZodNumber;
+                                targetAmount: import("zod").ZodNumber;
+                                progress: import("zod").ZodNumber;
+                                color: import("zod").ZodOptional<import("zod").ZodString>;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }, {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }>, "many">;
+                            syncStatus: import("zod").ZodObject<{
+                                lastSync: import("zod").ZodNullable<import("zod").ZodDate>;
+                                needsSync: import("zod").ZodBoolean;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            }, {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            }>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            savingGoals: {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                            monthlyComparison: {
+                                savingsVsPreviousMonth: number;
+                                expensesVsPreviousMonth: number;
+                            };
+                            categoryGrowth: {
+                                name: string;
+                                percentageChange: number;
+                                trend: "neutral" | "up" | "down";
+                            }[];
+                            monthEndProjection: {
+                                projectedBalance: number;
+                                estimatedSavings: number;
+                                balanceTrend: "neutral" | "up" | "down";
+                                savingsTrend: "neutral" | "up" | "down";
+                            };
+                        }, {
+                            savingGoals: {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                            monthlyComparison: {
+                                savingsVsPreviousMonth: number;
+                                expensesVsPreviousMonth: number;
+                            };
+                            categoryGrowth: {
+                                name: string;
+                                percentageChange: number;
+                                trend: "neutral" | "up" | "down";
+                            }[];
+                            monthEndProjection: {
+                                projectedBalance: number;
+                                estimatedSavings: number;
+                                balanceTrend: "neutral" | "up" | "down";
+                                savingsTrend: "neutral" | "up" | "down";
+                            };
+                        }>;
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            savingGoals: {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                            monthlyComparison: {
+                                savingsVsPreviousMonth: number;
+                                expensesVsPreviousMonth: number;
+                            };
+                            categoryGrowth: {
+                                name: string;
+                                percentageChange: number;
+                                trend: "neutral" | "up" | "down";
+                            }[];
+                            monthEndProjection: {
+                                projectedBalance: number;
+                                estimatedSavings: number;
+                                balanceTrend: "neutral" | "up" | "down";
+                                savingsTrend: "neutral" | "up" | "down";
+                            };
+                        };
+                        success: true;
+                    }, {
+                        message: string;
+                        data: {
+                            savingGoals: {
+                                id: number;
+                                name: string;
+                                currentAmount: number;
+                                targetAmount: number;
+                                progress: number;
+                                color?: string | undefined;
+                            }[];
+                            syncStatus: {
+                                lastSync: Date | null;
+                                needsSync: boolean;
+                            };
+                            monthlyComparison: {
+                                savingsVsPreviousMonth: number;
+                                expensesVsPreviousMonth: number;
+                            };
+                            categoryGrowth: {
+                                name: string;
+                                percentageChange: number;
+                                trend: "neutral" | "up" | "down";
+                            }[];
+                            monthEndProjection: {
+                                projectedBalance: number;
+                                estimatedSavings: number;
+                                balanceTrend: "neutral" | "up" | "down";
+                                savingsTrend: "neutral" | "up" | "down";
+                            };
+                        };
+                        success: true;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<false>;
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodAny>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<false>;
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodAny>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }, {
+                        message: string;
+                        success: false;
+                        error?: any;
+                    }>;
+                };
+            };
+        };
+        Reports: {
+            getReports: {
+                strictStatusCodes: true;
+                summary: "Obtener reportes financieros completos";
+                description: "Retorna resumen financiero, tendencia mensual y distribución de gastos";
+                method: "GET";
+                path: "/api/reports";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        success: import("zod").ZodBoolean;
+                        data: import("zod").ZodObject<{
+                            summary: import("zod").ZodObject<{
+                                income: import("zod").ZodNumber;
+                                expenses: import("zod").ZodNumber;
+                                netSavings: import("zod").ZodNumber;
+                                savingsRate: import("zod").ZodNumber;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                income: number;
+                                expenses: number;
+                                savingsRate: number;
+                                netSavings: number;
+                            }, {
+                                income: number;
+                                expenses: number;
+                                savingsRate: number;
+                                netSavings: number;
+                            }>;
+                            monthlyTrend: import("zod").ZodObject<{
+                                months: import("zod").ZodArray<import("zod").ZodString, "many">;
+                                income: import("zod").ZodArray<import("zod").ZodNumber, "many">;
+                                expenses: import("zod").ZodArray<import("zod").ZodNumber, "many">;
+                                period: import("zod").ZodString;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                period: string;
+                                income: number[];
+                                expenses: number[];
+                                months: string[];
+                            }, {
+                                period: string;
+                                income: number[];
+                                expenses: number[];
+                                months: string[];
+                            }>;
+                            expenseDistribution: import("zod").ZodArray<import("zod").ZodObject<{
+                                name: import("zod").ZodString;
+                                percentage: import("zod").ZodNumber;
+                                amount: import("zod").ZodNumber;
+                                color: import("zod").ZodString;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                name: string;
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                            }, {
+                                name: string;
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                            }>, "many">;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            summary: {
+                                income: number;
+                                expenses: number;
+                                savingsRate: number;
+                                netSavings: number;
+                            };
+                            expenseDistribution: {
+                                name: string;
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                            }[];
+                            monthlyTrend: {
+                                period: string;
+                                income: number[];
+                                expenses: number[];
+                                months: string[];
+                            };
+                        }, {
+                            summary: {
+                                income: number;
+                                expenses: number;
+                                savingsRate: number;
+                                netSavings: number;
+                            };
+                            expenseDistribution: {
+                                name: string;
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                            }[];
+                            monthlyTrend: {
+                                period: string;
+                                income: number[];
+                                expenses: number[];
+                                months: string[];
+                            };
+                        }>;
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            summary: {
+                                income: number;
+                                expenses: number;
+                                savingsRate: number;
+                                netSavings: number;
+                            };
+                            expenseDistribution: {
+                                name: string;
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                            }[];
+                            monthlyTrend: {
+                                period: string;
+                                income: number[];
+                                expenses: number[];
+                                months: string[];
+                            };
+                        };
+                        success: boolean;
+                    }, {
+                        message: string;
+                        data: {
+                            summary: {
+                                income: number;
+                                expenses: number;
+                                savingsRate: number;
+                                netSavings: number;
+                            };
+                            expenseDistribution: {
+                                name: string;
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                            }[];
+                            monthlyTrend: {
+                                period: string;
+                                income: number[];
+                                expenses: number[];
+                                months: string[];
+                            };
+                        };
+                        success: boolean;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<false>;
+                        error: import("zod").ZodObject<{
+                            message: import("zod").ZodString;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            message: string;
+                        }, {
+                            message: string;
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        error: {
+                            message: string;
+                        };
+                        success: false;
+                    }, {
+                        error: {
+                            message: string;
+                        };
+                        success: false;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<false>;
+                        error: import("zod").ZodObject<{
+                            message: import("zod").ZodString;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            message: string;
+                        }, {
+                            message: string;
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        error: {
+                            message: string;
+                        };
+                        success: false;
+                    }, {
+                        error: {
+                            message: string;
+                        };
+                        success: false;
                     }>;
                 };
             };
