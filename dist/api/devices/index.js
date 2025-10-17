@@ -1,7 +1,7 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
-import { CreateDeviceRequestSchema, DeviceResponseSchema, DeviceErrorResponseSchema, GetDevicesResponseSchema, GetDevicesQuerySchema, CreateDevicePreferencesRequestSchema, DevicePreferencesResponseSchema, UpdateDevicePreferencesRequestSchema, GetDevicePreferencesResponseSchema, GetDevicePreferencesQuerySchema } from './devices.schema';
+import { CreateDeviceRequestSchema, DeviceResponseSchema, DeviceErrorResponseSchema, GetDevicesResponseSchema, GetDevicesQuerySchema, CreateDevicePreferencesRequestSchema, DevicePreferencesResponseSchema, UpdateDevicePreferencesRequestSchema, GetDevicePreferencesResponseSchema, GetDevicePreferencesQuerySchema, UpdateNotificationTokenRequestSchema, UpdateNotificationTokenResponseSchema } from './devices.schema';
 const c = initContract();
 export const DevicesContracts = c.router({
     createDevice: {
@@ -78,6 +78,20 @@ export const DevicesContracts = c.router({
         body: UpdateDevicePreferencesRequestSchema,
         summary: 'Update device preferences',
         description: 'Update preferences for a specific device',
+    },
+    updateNotificationToken: {
+        method: 'PUT',
+        path: '/notification-token',
+        responses: {
+            200: UpdateNotificationTokenResponseSchema,
+            400: DeviceErrorResponseSchema,
+            401: ErrorResSchema,
+            404: DeviceErrorResponseSchema,
+            500: ErrorResSchema
+        },
+        body: UpdateNotificationTokenRequestSchema,
+        summary: 'Update notification token',
+        description: 'Update the FCM notification token for a specific device',
     }
 }, {
     strictStatusCodes: true,

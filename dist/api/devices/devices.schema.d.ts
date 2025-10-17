@@ -3,14 +3,17 @@ export declare const CreateDeviceRequestSchema: z.ZodObject<{
     user_uid: z.ZodString;
     device_unique_id: z.ZodString;
     notes: z.ZodString;
+    notification_token: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
     user_uid: string;
     device_unique_id: string;
     notes: string;
+    notification_token?: string | undefined;
 }, {
     user_uid: string;
     device_unique_id: string;
     notes: string;
+    notification_token?: string | undefined;
 }>;
 export declare const DeviceResponseSchema: z.ZodObject<{
     id: z.ZodNumber;
@@ -18,6 +21,7 @@ export declare const DeviceResponseSchema: z.ZodObject<{
     user_uid: z.ZodString;
     device_unique_id: z.ZodString;
     notes: z.ZodString;
+    notification_token: z.ZodNullable<z.ZodString>;
     created_at: z.ZodString;
     updated_at: z.ZodString;
 }, "strip", z.ZodTypeAny, {
@@ -27,6 +31,7 @@ export declare const DeviceResponseSchema: z.ZodObject<{
     created_at: string;
     device_unique_id: string;
     notes: string;
+    notification_token: string | null;
     updated_at: string;
 }, {
     id: number;
@@ -35,6 +40,7 @@ export declare const DeviceResponseSchema: z.ZodObject<{
     created_at: string;
     device_unique_id: string;
     notes: string;
+    notification_token: string | null;
     updated_at: string;
 }>;
 export declare const CreateDevicePreferencesRequestSchema: z.ZodObject<{
@@ -192,6 +198,7 @@ export declare const GetDevicesResponseSchema: z.ZodArray<z.ZodObject<{
     user_uid: z.ZodString;
     device_unique_id: z.ZodString;
     notes: z.ZodString;
+    notification_token: z.ZodNullable<z.ZodString>;
     created_at: z.ZodString;
     updated_at: z.ZodString;
 }, "strip", z.ZodTypeAny, {
@@ -201,6 +208,7 @@ export declare const GetDevicesResponseSchema: z.ZodArray<z.ZodObject<{
     created_at: string;
     device_unique_id: string;
     notes: string;
+    notification_token: string | null;
     updated_at: string;
 }, {
     id: number;
@@ -209,6 +217,7 @@ export declare const GetDevicesResponseSchema: z.ZodArray<z.ZodObject<{
     created_at: string;
     device_unique_id: string;
     notes: string;
+    notification_token: string | null;
     updated_at: string;
 }>, "many">;
 export declare const GetDevicePreferencesQuerySchema: z.ZodObject<{
@@ -273,3 +282,46 @@ export declare const GetDevicePreferencesResponseSchema: z.ZodArray<z.ZodObject<
     canExportData: boolean;
     preferredTheme: "SYSTEM" | "LIGHT" | "DARK";
 }>, "many">;
+export declare const UpdateNotificationTokenRequestSchema: z.ZodObject<{
+    device_unique_id: z.ZodString;
+    notification_token: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    device_unique_id: string;
+    notification_token: string;
+}, {
+    device_unique_id: string;
+    notification_token: string;
+}>;
+export declare const UpdateNotificationTokenResponseSchema: z.ZodObject<{
+    success: z.ZodLiteral<true>;
+    data: z.ZodObject<{
+        device_id: z.ZodNumber;
+        device_unique_id: z.ZodString;
+        notification_token_updated: z.ZodBoolean;
+    }, "strip", z.ZodTypeAny, {
+        device_unique_id: string;
+        device_id: number;
+        notification_token_updated: boolean;
+    }, {
+        device_unique_id: string;
+        device_id: number;
+        notification_token_updated: boolean;
+    }>;
+    message: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    message: string;
+    data: {
+        device_unique_id: string;
+        device_id: number;
+        notification_token_updated: boolean;
+    };
+    success: true;
+}, {
+    message: string;
+    data: {
+        device_unique_id: string;
+        device_id: number;
+        notification_token_updated: boolean;
+    };
+    success: true;
+}>;

@@ -11,6 +11,9 @@ export const CreateDeviceRequestSchema = z.object({
     }),
     notes: z.string().min(1).max(100).openapi({
         description: 'Device description or notes'
+    }),
+    notification_token: z.string().min(1).max(500).optional().openapi({
+        description: 'FCM notification token for push notifications'
     })
 }).openapi({
     title: 'CreateDeviceRequest',
@@ -32,6 +35,9 @@ export const DeviceResponseSchema = z.object({
     }),
     notes: z.string().openapi({
         description: 'Device description or notes'
+    }),
+    notification_token: z.string().nullable().openapi({
+        description: 'FCM notification token for push notifications'
     }),
     created_at: z.string().datetime().openapi({
         description: 'Creation timestamp'
@@ -232,4 +238,41 @@ export const GetDevicePreferencesQuerySchema = z.object({
 export const GetDevicePreferencesResponseSchema = z.array(DevicePreferencesResponseSchema).openapi({
     title: 'GetDevicePreferencesResponse',
     description: 'Response schema for getting device preferences list'
+});
+// Update Notification Token Request Schema
+export const UpdateNotificationTokenRequestSchema = z.object({
+    device_unique_id: z.string().min(1).max(100).openapi({
+        description: 'Unique device identifier'
+    }),
+    notification_token: z.string().min(1).max(500).openapi({
+        description: 'FCM notification token'
+    })
+}).openapi({
+    title: 'UpdateNotificationTokenRequest',
+    description: 'Request schema for updating notification token'
+});
+// Update Notification Token Response Schema
+export const UpdateNotificationTokenResponseSchema = z.object({
+    success: z.literal(true).openapi({
+        description: 'Success indicator'
+    }),
+    data: z.object({
+        device_id: z.number().openapi({
+            description: 'Internal database ID of the device'
+        }),
+        device_unique_id: z.string().openapi({
+            description: 'Unique device identifier'
+        }),
+        notification_token_updated: z.boolean().openapi({
+            description: 'Confirmation that token was updated'
+        })
+    }).openapi({
+        description: 'Response data'
+    }),
+    message: z.string().openapi({
+        description: 'Success message'
+    })
+}).openapi({
+    title: 'UpdateNotificationTokenResponse',
+    description: 'Response schema for updating notification token'
 });
