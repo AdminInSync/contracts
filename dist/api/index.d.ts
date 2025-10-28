@@ -5878,7 +5878,7 @@ export declare const ApiContracts: {
             summary: "Get my saved products";
             description: "Retrieves products saved by the authenticated user";
             method: "GET";
-            path: "/api/products/my-products";
+            path: "/api/products/all-my-products/";
             responses: {
                 200: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -6775,6 +6775,114 @@ export declare const ApiContracts: {
                     statusCode?: number | undefined;
                 }>;
                 404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getMyConnectedProducts: {
+            pathParams: import("zod").ZodObject<{
+                type: import("zod").ZodEnum<["accounts", "cards", "loans", "financial-certificate"]>;
+            }, "strip", import("zod").ZodTypeAny, {
+                type: "accounts" | "cards" | "loans" | "financial-certificate";
+            }, {
+                type: "accounts" | "cards" | "loans" | "financial-certificate";
+            }>;
+            summary: "Get my connected products by type";
+            description: "Retrieves connected products from bank connections filtered by type";
+            method: "GET";
+            path: "/api/products/my-products/connected/:type";
+            responses: {
+                200: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        summary: import("zod").ZodOptional<import("zod").ZodObject<{
+                            total_balance: import("zod").ZodOptional<import("zod").ZodNumber>;
+                            monthly_change: import("zod").ZodOptional<import("zod").ZodNumber>;
+                            active_count: import("zod").ZodNumber;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            active_count: number;
+                            total_balance?: number | undefined;
+                            monthly_change?: number | undefined;
+                        }, {
+                            active_count: number;
+                            total_balance?: number | undefined;
+                            monthly_change?: number | undefined;
+                        }>>;
+                        products: import("zod").ZodArray<import("zod").ZodAny, "many">;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        products: any[];
+                        summary?: {
+                            active_count: number;
+                            total_balance?: number | undefined;
+                            monthly_change?: number | undefined;
+                        } | undefined;
+                    }, {
+                        products: any[];
+                        summary?: {
+                            active_count: number;
+                            total_balance?: number | undefined;
+                            monthly_change?: number | undefined;
+                        } | undefined;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        products: any[];
+                        summary?: {
+                            active_count: number;
+                            total_balance?: number | undefined;
+                            monthly_change?: number | undefined;
+                        } | undefined;
+                    };
+                }, {
+                    message: string;
+                    data: {
+                        products: any[];
+                        summary?: {
+                            active_count: number;
+                            total_balance?: number | undefined;
+                            monthly_change?: number | undefined;
+                        } | undefined;
+                    };
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
                     message: import("zod").ZodString;
                     error: import("zod").ZodOptional<import("zod").ZodString>;
                     statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
