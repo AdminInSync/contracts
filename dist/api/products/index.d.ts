@@ -1629,7 +1629,7 @@ export declare const ProductsContracts: {
         summary: "Get my saved products";
         description: "Retrieves products saved by the authenticated user";
         method: "GET";
-        path: "/products/my-products";
+        path: "/products/all-my-products/";
         responses: {
             200: z.ZodObject<{
                 message: z.ZodString;
@@ -2521,6 +2521,113 @@ export declare const ProductsContracts: {
                 statusCode?: number | undefined;
             }>;
             404: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+    };
+    getMyConnectedProducts: {
+        pathParams: z.ZodObject<{
+            type: z.ZodEnum<["accounts", "cards", "loans", "financial-certificate"]>;
+        }, "strip", z.ZodTypeAny, {
+            type: "accounts" | "cards" | "loans" | "financial-certificate";
+        }, {
+            type: "accounts" | "cards" | "loans" | "financial-certificate";
+        }>;
+        summary: "Get my connected products by type";
+        description: "Retrieves connected products from bank connections filtered by type";
+        method: "GET";
+        path: "/products/my-products/connected/:type";
+        responses: {
+            200: z.ZodObject<{
+                message: z.ZodString;
+                data: z.ZodObject<{
+                    summary: z.ZodOptional<z.ZodObject<{
+                        total_balance: z.ZodOptional<z.ZodNumber>;
+                        monthly_change: z.ZodOptional<z.ZodNumber>;
+                        active_count: z.ZodNumber;
+                    }, "strip", z.ZodTypeAny, {
+                        active_count: number;
+                        total_balance?: number | undefined;
+                        monthly_change?: number | undefined;
+                    }, {
+                        active_count: number;
+                        total_balance?: number | undefined;
+                        monthly_change?: number | undefined;
+                    }>>;
+                    products: z.ZodArray<z.ZodAny, "many">;
+                }, "strip", z.ZodTypeAny, {
+                    products: any[];
+                    summary?: {
+                        active_count: number;
+                        total_balance?: number | undefined;
+                        monthly_change?: number | undefined;
+                    } | undefined;
+                }, {
+                    products: any[];
+                    summary?: {
+                        active_count: number;
+                        total_balance?: number | undefined;
+                        monthly_change?: number | undefined;
+                    } | undefined;
+                }>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                data: {
+                    products: any[];
+                    summary?: {
+                        active_count: number;
+                        total_balance?: number | undefined;
+                        monthly_change?: number | undefined;
+                    } | undefined;
+                };
+            }, {
+                message: string;
+                data: {
+                    products: any[];
+                    summary?: {
+                        active_count: number;
+                        total_balance?: number | undefined;
+                        monthly_change?: number | undefined;
+                    } | undefined;
+                };
+            }>;
+            400: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;

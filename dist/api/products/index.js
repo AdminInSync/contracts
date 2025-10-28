@@ -1,6 +1,6 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
-import { CreateProductSchema, UpdateProductSchema, GetProductsQuerySchema, ProductResponseSchema, ProductsListResponseSchema } from './products.schema';
+import { CreateProductSchema, UpdateProductSchema, GetProductsQuerySchema, ProductResponseSchema, ProductsListResponseSchema, ConnectedProductTypeSchema, ConnectedProductsResponseSchema } from './products.schema';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
 const c = initContract();
 export const ProductsContracts = c.router({
@@ -120,7 +120,7 @@ export const ProductsContracts = c.router({
     // Get my saved products
     getMyProducts: {
         method: 'GET',
-        path: '/products/my-products',
+        path: '/products/all-my-products/',
         responses: {
             200: ProductsListResponseSchema,
             401: ErrorResSchema,
@@ -225,5 +225,21 @@ export const ProductsContracts = c.router({
         }),
         summary: 'Delete a financial product',
         description: 'Soft deletes a financial product (admin only)',
+    },
+    // Get my connected products
+    getMyConnectedProducts: {
+        method: 'GET',
+        path: '/products/my-products/connected/:type',
+        responses: {
+            200: ConnectedProductsResponseSchema,
+            400: ErrorResSchema,
+            401: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        pathParams: z.object({
+            type: ConnectedProductTypeSchema,
+        }),
+        summary: 'Get my connected products by type',
+        description: 'Retrieves connected products from bank connections filtered by type',
     },
 });

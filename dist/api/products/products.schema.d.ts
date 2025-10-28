@@ -1,6 +1,7 @@
 import { z } from 'zod';
 export declare const ProductTypeSchema: z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
 export declare const CreditScoreRequirementSchema: z.ZodEnum<["excellent", "good", "fair", "poor"]>;
+export declare const ConnectedProductTypeSchema: z.ZodEnum<["accounts", "cards", "loans", "financial-certificate"]>;
 export declare const FinancialProductSchema: z.ZodObject<{
     id: z.ZodNumber;
     uuid: z.ZodString;
@@ -561,4 +562,100 @@ export declare const ProductsListResponseSchema: z.ZodObject<{
         total: number;
         offset: number;
     } | undefined;
+}>;
+export declare const ConnectedProductsSummarySchema: z.ZodObject<{
+    total_balance: z.ZodOptional<z.ZodNumber>;
+    monthly_change: z.ZodOptional<z.ZodNumber>;
+    active_count: z.ZodNumber;
+}, "strip", z.ZodTypeAny, {
+    active_count: number;
+    total_balance?: number | undefined;
+    monthly_change?: number | undefined;
+}, {
+    active_count: number;
+    total_balance?: number | undefined;
+    monthly_change?: number | undefined;
+}>;
+export declare const ConnectedProductsDataSchema: z.ZodObject<{
+    summary: z.ZodOptional<z.ZodObject<{
+        total_balance: z.ZodOptional<z.ZodNumber>;
+        monthly_change: z.ZodOptional<z.ZodNumber>;
+        active_count: z.ZodNumber;
+    }, "strip", z.ZodTypeAny, {
+        active_count: number;
+        total_balance?: number | undefined;
+        monthly_change?: number | undefined;
+    }, {
+        active_count: number;
+        total_balance?: number | undefined;
+        monthly_change?: number | undefined;
+    }>>;
+    products: z.ZodArray<z.ZodAny, "many">;
+}, "strip", z.ZodTypeAny, {
+    products: any[];
+    summary?: {
+        active_count: number;
+        total_balance?: number | undefined;
+        monthly_change?: number | undefined;
+    } | undefined;
+}, {
+    products: any[];
+    summary?: {
+        active_count: number;
+        total_balance?: number | undefined;
+        monthly_change?: number | undefined;
+    } | undefined;
+}>;
+export declare const ConnectedProductsResponseSchema: z.ZodObject<{
+    message: z.ZodString;
+    data: z.ZodObject<{
+        summary: z.ZodOptional<z.ZodObject<{
+            total_balance: z.ZodOptional<z.ZodNumber>;
+            monthly_change: z.ZodOptional<z.ZodNumber>;
+            active_count: z.ZodNumber;
+        }, "strip", z.ZodTypeAny, {
+            active_count: number;
+            total_balance?: number | undefined;
+            monthly_change?: number | undefined;
+        }, {
+            active_count: number;
+            total_balance?: number | undefined;
+            monthly_change?: number | undefined;
+        }>>;
+        products: z.ZodArray<z.ZodAny, "many">;
+    }, "strip", z.ZodTypeAny, {
+        products: any[];
+        summary?: {
+            active_count: number;
+            total_balance?: number | undefined;
+            monthly_change?: number | undefined;
+        } | undefined;
+    }, {
+        products: any[];
+        summary?: {
+            active_count: number;
+            total_balance?: number | undefined;
+            monthly_change?: number | undefined;
+        } | undefined;
+    }>;
+}, "strip", z.ZodTypeAny, {
+    message: string;
+    data: {
+        products: any[];
+        summary?: {
+            active_count: number;
+            total_balance?: number | undefined;
+            monthly_change?: number | undefined;
+        } | undefined;
+    };
+}, {
+    message: string;
+    data: {
+        products: any[];
+        summary?: {
+            active_count: number;
+            total_balance?: number | undefined;
+            monthly_change?: number | undefined;
+        } | undefined;
+    };
 }>;

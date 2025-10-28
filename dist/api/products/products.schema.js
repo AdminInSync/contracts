@@ -2,6 +2,7 @@ import { z } from 'zod';
 // Enums
 export const ProductTypeSchema = z.enum(['credit_card', 'loan', 'savings_account', 'checking_account', 'investment', 'insurance', 'mortgage']);
 export const CreditScoreRequirementSchema = z.enum(['excellent', 'good', 'fair', 'poor']);
+export const ConnectedProductTypeSchema = z.enum(['accounts', 'cards', 'loans', 'financial-certificate']);
 // Base schemas
 export const FinancialProductSchema = z.object({
     id: z.number(),
@@ -74,4 +75,18 @@ export const ProductsListResponseSchema = z.object({
         limit: z.number(),
         offset: z.number(),
     }).optional(),
+});
+// Connected products schemas
+export const ConnectedProductsSummarySchema = z.object({
+    total_balance: z.number().optional(),
+    monthly_change: z.number().optional(),
+    active_count: z.number(),
+});
+export const ConnectedProductsDataSchema = z.object({
+    summary: ConnectedProductsSummarySchema.optional(),
+    products: z.array(z.any()),
+});
+export const ConnectedProductsResponseSchema = z.object({
+    message: z.string(),
+    data: ConnectedProductsDataSchema,
 });
