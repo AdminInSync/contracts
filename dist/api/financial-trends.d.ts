@@ -58,16 +58,16 @@ export declare const FinancialTrendsContracts: {
                     }, "strip", z.ZodTypeAny, {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }, {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }>, "many">;
                     syncStatus: z.ZodObject<{
@@ -84,9 +84,9 @@ export declare const FinancialTrendsContracts: {
                     savingGoals: {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }[];
                     syncStatus: {
@@ -112,9 +112,9 @@ export declare const FinancialTrendsContracts: {
                     savingGoals: {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }[];
                     syncStatus: {
@@ -144,9 +144,9 @@ export declare const FinancialTrendsContracts: {
                     savingGoals: {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }[];
                     syncStatus: {
@@ -176,9 +176,9 @@ export declare const FinancialTrendsContracts: {
                     savingGoals: {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }[];
                     syncStatus: {
@@ -290,16 +290,16 @@ export declare const FinancialTrendsContracts: {
                     }, "strip", z.ZodTypeAny, {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }, {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }>, "many">;
                     syncStatus: z.ZodObject<{
@@ -316,9 +316,9 @@ export declare const FinancialTrendsContracts: {
                     savingGoals: {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }[];
                     syncStatus: {
@@ -344,9 +344,9 @@ export declare const FinancialTrendsContracts: {
                     savingGoals: {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }[];
                     syncStatus: {
@@ -376,9 +376,9 @@ export declare const FinancialTrendsContracts: {
                     savingGoals: {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }[];
                     syncStatus: {
@@ -408,9 +408,9 @@ export declare const FinancialTrendsContracts: {
                     savingGoals: {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }[];
                     syncStatus: {

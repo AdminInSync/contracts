@@ -85,16 +85,16 @@ export declare const DashboardContracts: {
                     }, "strip", z.ZodTypeAny, {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }, {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }>, "many">;
                     financialIndicators: z.ZodObject<{
@@ -265,9 +265,9 @@ export declare const DashboardContracts: {
                     savingGoals: {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }[];
                     financialIndicators: {
@@ -338,9 +338,9 @@ export declare const DashboardContracts: {
                     savingGoals: {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }[];
                     financialIndicators: {
@@ -415,9 +415,9 @@ export declare const DashboardContracts: {
                     savingGoals: {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }[];
                     financialIndicators: {
@@ -492,9 +492,9 @@ export declare const DashboardContracts: {
                     savingGoals: {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }[];
                     financialIndicators: {
@@ -802,16 +802,16 @@ export declare const DashboardContracts: {
                     }, "strip", z.ZodTypeAny, {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }, {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }>, "many">;
                     financialIndicators: z.ZodObject<{
@@ -982,9 +982,9 @@ export declare const DashboardContracts: {
                     savingGoals: {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }[];
                     financialIndicators: {
@@ -1055,9 +1055,9 @@ export declare const DashboardContracts: {
                     savingGoals: {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }[];
                     financialIndicators: {
@@ -1132,9 +1132,9 @@ export declare const DashboardContracts: {
                     savingGoals: {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }[];
                     financialIndicators: {
@@ -1209,9 +1209,9 @@ export declare const DashboardContracts: {
                     savingGoals: {
                         id: number;
                         name: string;
+                        progress: number;
                         currentAmount: number;
                         targetAmount: number;
-                        progress: number;
                         color?: string | undefined;
                     }[];
                     financialIndicators: {
