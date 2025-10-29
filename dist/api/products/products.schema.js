@@ -77,6 +77,35 @@ export const ProductsListResponseSchema = z.object({
     }).optional(),
 });
 // Connected products schemas
+export const ConnectedProductBalanceSchema = z.object({
+    current: z.number(),
+    available: z.number(),
+    limit: z.number().nullable(),
+});
+export const ConnectedProductMetadataSchema = z.object({
+    utilization: z.number().nullable(),
+    next_payment: z.string().nullable(),
+    minimum_payment: z.number().nullable(),
+    remaining_payments: z.number().nullable(),
+    progress: z.number().nullable(),
+    annual_rate: z.string().nullable(),
+    risk_level: z.string().nullable(),
+    interest_payment: z.string().nullable(),
+    initial_value: z.number().nullable(),
+    accumulated_gain: z.number().nullable(),
+});
+export const ConnectedProductSchema = z.object({
+    id: z.string(),
+    type: z.string(),
+    name: z.string(),
+    institution: z.string(),
+    institution_logo: z.string().nullable(),
+    lastFour: z.string(),
+    balance: ConnectedProductBalanceSchema,
+    metadata: ConnectedProductMetadataSchema,
+    percentage_change: z.string(),
+    currency: z.string(),
+});
 export const ConnectedProductsSummarySchema = z.object({
     total_balance: z.number().optional(),
     monthly_change: z.number().optional(),
@@ -84,7 +113,7 @@ export const ConnectedProductsSummarySchema = z.object({
 });
 export const ConnectedProductsDataSchema = z.object({
     summary: ConnectedProductsSummarySchema.optional(),
-    products: z.array(z.any()),
+    products: z.array(ConnectedProductSchema),
 });
 export const ConnectedProductsResponseSchema = z.object({
     message: z.string(),

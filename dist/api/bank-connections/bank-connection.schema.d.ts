@@ -284,26 +284,26 @@ export declare const BankAccountSchema: z.ZodObject<{
     id: string;
     name: string;
     currency: string;
-    connectionId: string;
     lastFour: string | null;
     balance: {
         limit: number | null;
         current: number | null;
         available: number | null;
     };
+    connectionId: string;
     lastTransactionRefresh: string | null;
 }, {
     type: "other" | "credit_card" | "loan" | "investment" | "checking" | "savings" | "depository";
     id: string;
     name: string;
     currency: string;
-    connectionId: string;
     lastFour: string | null;
     balance: {
         limit: number | null;
         current: number | null;
         available: number | null;
     };
+    connectionId: string;
     lastTransactionRefresh: string | null;
 }>;
 export declare const ListAccountsResponseSchema: z.ZodObject<{
@@ -333,26 +333,26 @@ export declare const ListAccountsResponseSchema: z.ZodObject<{
         id: string;
         name: string;
         currency: string;
-        connectionId: string;
         lastFour: string | null;
         balance: {
             limit: number | null;
             current: number | null;
             available: number | null;
         };
+        connectionId: string;
         lastTransactionRefresh: string | null;
     }, {
         type: "other" | "credit_card" | "loan" | "investment" | "checking" | "savings" | "depository";
         id: string;
         name: string;
         currency: string;
-        connectionId: string;
         lastFour: string | null;
         balance: {
             limit: number | null;
             current: number | null;
             available: number | null;
         };
+        connectionId: string;
         lastTransactionRefresh: string | null;
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
@@ -361,13 +361,13 @@ export declare const ListAccountsResponseSchema: z.ZodObject<{
         id: string;
         name: string;
         currency: string;
-        connectionId: string;
         lastFour: string | null;
         balance: {
             limit: number | null;
             current: number | null;
             available: number | null;
         };
+        connectionId: string;
         lastTransactionRefresh: string | null;
     }[];
 }, {
@@ -376,13 +376,13 @@ export declare const ListAccountsResponseSchema: z.ZodObject<{
         id: string;
         name: string;
         currency: string;
-        connectionId: string;
         lastFour: string | null;
         balance: {
             limit: number | null;
             current: number | null;
             available: number | null;
         };
+        connectionId: string;
         lastTransactionRefresh: string | null;
     }[];
 }>;
@@ -413,26 +413,26 @@ export declare const GetAccountResponseSchema: z.ZodObject<{
         id: string;
         name: string;
         currency: string;
-        connectionId: string;
         lastFour: string | null;
         balance: {
             limit: number | null;
             current: number | null;
             available: number | null;
         };
+        connectionId: string;
         lastTransactionRefresh: string | null;
     }, {
         type: "other" | "credit_card" | "loan" | "investment" | "checking" | "savings" | "depository";
         id: string;
         name: string;
         currency: string;
-        connectionId: string;
         lastFour: string | null;
         balance: {
             limit: number | null;
             current: number | null;
             available: number | null;
         };
+        connectionId: string;
         lastTransactionRefresh: string | null;
     }>;
 }, "strip", z.ZodTypeAny, {
@@ -441,13 +441,13 @@ export declare const GetAccountResponseSchema: z.ZodObject<{
         id: string;
         name: string;
         currency: string;
-        connectionId: string;
         lastFour: string | null;
         balance: {
             limit: number | null;
             current: number | null;
             available: number | null;
         };
+        connectionId: string;
         lastTransactionRefresh: string | null;
     };
 }, {
@@ -456,13 +456,13 @@ export declare const GetAccountResponseSchema: z.ZodObject<{
         id: string;
         name: string;
         currency: string;
-        connectionId: string;
         lastFour: string | null;
         balance: {
             limit: number | null;
             current: number | null;
             available: number | null;
         };
+        connectionId: string;
         lastTransactionRefresh: string | null;
     };
 }>;

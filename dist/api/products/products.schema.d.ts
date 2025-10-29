@@ -563,6 +563,162 @@ export declare const ProductsListResponseSchema: z.ZodObject<{
         offset: number;
     } | undefined;
 }>;
+export declare const ConnectedProductBalanceSchema: z.ZodObject<{
+    current: z.ZodNumber;
+    available: z.ZodNumber;
+    limit: z.ZodNullable<z.ZodNumber>;
+}, "strip", z.ZodTypeAny, {
+    limit: number | null;
+    current: number;
+    available: number;
+}, {
+    limit: number | null;
+    current: number;
+    available: number;
+}>;
+export declare const ConnectedProductMetadataSchema: z.ZodObject<{
+    utilization: z.ZodNullable<z.ZodNumber>;
+    next_payment: z.ZodNullable<z.ZodString>;
+    minimum_payment: z.ZodNullable<z.ZodNumber>;
+    remaining_payments: z.ZodNullable<z.ZodNumber>;
+    progress: z.ZodNullable<z.ZodNumber>;
+    annual_rate: z.ZodNullable<z.ZodString>;
+    risk_level: z.ZodNullable<z.ZodString>;
+    interest_payment: z.ZodNullable<z.ZodString>;
+    initial_value: z.ZodNullable<z.ZodNumber>;
+    accumulated_gain: z.ZodNullable<z.ZodNumber>;
+}, "strip", z.ZodTypeAny, {
+    utilization: number | null;
+    next_payment: string | null;
+    minimum_payment: number | null;
+    remaining_payments: number | null;
+    progress: number | null;
+    annual_rate: string | null;
+    risk_level: string | null;
+    interest_payment: string | null;
+    initial_value: number | null;
+    accumulated_gain: number | null;
+}, {
+    utilization: number | null;
+    next_payment: string | null;
+    minimum_payment: number | null;
+    remaining_payments: number | null;
+    progress: number | null;
+    annual_rate: string | null;
+    risk_level: string | null;
+    interest_payment: string | null;
+    initial_value: number | null;
+    accumulated_gain: number | null;
+}>;
+export declare const ConnectedProductSchema: z.ZodObject<{
+    id: z.ZodString;
+    type: z.ZodString;
+    name: z.ZodString;
+    institution: z.ZodString;
+    institution_logo: z.ZodNullable<z.ZodString>;
+    lastFour: z.ZodString;
+    balance: z.ZodObject<{
+        current: z.ZodNumber;
+        available: z.ZodNumber;
+        limit: z.ZodNullable<z.ZodNumber>;
+    }, "strip", z.ZodTypeAny, {
+        limit: number | null;
+        current: number;
+        available: number;
+    }, {
+        limit: number | null;
+        current: number;
+        available: number;
+    }>;
+    metadata: z.ZodObject<{
+        utilization: z.ZodNullable<z.ZodNumber>;
+        next_payment: z.ZodNullable<z.ZodString>;
+        minimum_payment: z.ZodNullable<z.ZodNumber>;
+        remaining_payments: z.ZodNullable<z.ZodNumber>;
+        progress: z.ZodNullable<z.ZodNumber>;
+        annual_rate: z.ZodNullable<z.ZodString>;
+        risk_level: z.ZodNullable<z.ZodString>;
+        interest_payment: z.ZodNullable<z.ZodString>;
+        initial_value: z.ZodNullable<z.ZodNumber>;
+        accumulated_gain: z.ZodNullable<z.ZodNumber>;
+    }, "strip", z.ZodTypeAny, {
+        utilization: number | null;
+        next_payment: string | null;
+        minimum_payment: number | null;
+        remaining_payments: number | null;
+        progress: number | null;
+        annual_rate: string | null;
+        risk_level: string | null;
+        interest_payment: string | null;
+        initial_value: number | null;
+        accumulated_gain: number | null;
+    }, {
+        utilization: number | null;
+        next_payment: string | null;
+        minimum_payment: number | null;
+        remaining_payments: number | null;
+        progress: number | null;
+        annual_rate: string | null;
+        risk_level: string | null;
+        interest_payment: string | null;
+        initial_value: number | null;
+        accumulated_gain: number | null;
+    }>;
+    percentage_change: z.ZodString;
+    currency: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    type: string;
+    id: string;
+    metadata: {
+        utilization: number | null;
+        next_payment: string | null;
+        minimum_payment: number | null;
+        remaining_payments: number | null;
+        progress: number | null;
+        annual_rate: string | null;
+        risk_level: string | null;
+        interest_payment: string | null;
+        initial_value: number | null;
+        accumulated_gain: number | null;
+    };
+    name: string;
+    currency: string;
+    institution: string;
+    institution_logo: string | null;
+    lastFour: string;
+    balance: {
+        limit: number | null;
+        current: number;
+        available: number;
+    };
+    percentage_change: string;
+}, {
+    type: string;
+    id: string;
+    metadata: {
+        utilization: number | null;
+        next_payment: string | null;
+        minimum_payment: number | null;
+        remaining_payments: number | null;
+        progress: number | null;
+        annual_rate: string | null;
+        risk_level: string | null;
+        interest_payment: string | null;
+        initial_value: number | null;
+        accumulated_gain: number | null;
+    };
+    name: string;
+    currency: string;
+    institution: string;
+    institution_logo: string | null;
+    lastFour: string;
+    balance: {
+        limit: number | null;
+        current: number;
+        available: number;
+    };
+    percentage_change: string;
+}>;
 export declare const ConnectedProductsSummarySchema: z.ZodObject<{
     total_balance: z.ZodOptional<z.ZodNumber>;
     monthly_change: z.ZodOptional<z.ZodNumber>;
@@ -590,16 +746,176 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         total_balance?: number | undefined;
         monthly_change?: number | undefined;
     }>>;
-    products: z.ZodArray<z.ZodAny, "many">;
+    products: z.ZodArray<z.ZodObject<{
+        id: z.ZodString;
+        type: z.ZodString;
+        name: z.ZodString;
+        institution: z.ZodString;
+        institution_logo: z.ZodNullable<z.ZodString>;
+        lastFour: z.ZodString;
+        balance: z.ZodObject<{
+            current: z.ZodNumber;
+            available: z.ZodNumber;
+            limit: z.ZodNullable<z.ZodNumber>;
+        }, "strip", z.ZodTypeAny, {
+            limit: number | null;
+            current: number;
+            available: number;
+        }, {
+            limit: number | null;
+            current: number;
+            available: number;
+        }>;
+        metadata: z.ZodObject<{
+            utilization: z.ZodNullable<z.ZodNumber>;
+            next_payment: z.ZodNullable<z.ZodString>;
+            minimum_payment: z.ZodNullable<z.ZodNumber>;
+            remaining_payments: z.ZodNullable<z.ZodNumber>;
+            progress: z.ZodNullable<z.ZodNumber>;
+            annual_rate: z.ZodNullable<z.ZodString>;
+            risk_level: z.ZodNullable<z.ZodString>;
+            interest_payment: z.ZodNullable<z.ZodString>;
+            initial_value: z.ZodNullable<z.ZodNumber>;
+            accumulated_gain: z.ZodNullable<z.ZodNumber>;
+        }, "strip", z.ZodTypeAny, {
+            utilization: number | null;
+            next_payment: string | null;
+            minimum_payment: number | null;
+            remaining_payments: number | null;
+            progress: number | null;
+            annual_rate: string | null;
+            risk_level: string | null;
+            interest_payment: string | null;
+            initial_value: number | null;
+            accumulated_gain: number | null;
+        }, {
+            utilization: number | null;
+            next_payment: string | null;
+            minimum_payment: number | null;
+            remaining_payments: number | null;
+            progress: number | null;
+            annual_rate: string | null;
+            risk_level: string | null;
+            interest_payment: string | null;
+            initial_value: number | null;
+            accumulated_gain: number | null;
+        }>;
+        percentage_change: z.ZodString;
+        currency: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        type: string;
+        id: string;
+        metadata: {
+            utilization: number | null;
+            next_payment: string | null;
+            minimum_payment: number | null;
+            remaining_payments: number | null;
+            progress: number | null;
+            annual_rate: string | null;
+            risk_level: string | null;
+            interest_payment: string | null;
+            initial_value: number | null;
+            accumulated_gain: number | null;
+        };
+        name: string;
+        currency: string;
+        institution: string;
+        institution_logo: string | null;
+        lastFour: string;
+        balance: {
+            limit: number | null;
+            current: number;
+            available: number;
+        };
+        percentage_change: string;
+    }, {
+        type: string;
+        id: string;
+        metadata: {
+            utilization: number | null;
+            next_payment: string | null;
+            minimum_payment: number | null;
+            remaining_payments: number | null;
+            progress: number | null;
+            annual_rate: string | null;
+            risk_level: string | null;
+            interest_payment: string | null;
+            initial_value: number | null;
+            accumulated_gain: number | null;
+        };
+        name: string;
+        currency: string;
+        institution: string;
+        institution_logo: string | null;
+        lastFour: string;
+        balance: {
+            limit: number | null;
+            current: number;
+            available: number;
+        };
+        percentage_change: string;
+    }>, "many">;
 }, "strip", z.ZodTypeAny, {
-    products: any[];
+    products: {
+        type: string;
+        id: string;
+        metadata: {
+            utilization: number | null;
+            next_payment: string | null;
+            minimum_payment: number | null;
+            remaining_payments: number | null;
+            progress: number | null;
+            annual_rate: string | null;
+            risk_level: string | null;
+            interest_payment: string | null;
+            initial_value: number | null;
+            accumulated_gain: number | null;
+        };
+        name: string;
+        currency: string;
+        institution: string;
+        institution_logo: string | null;
+        lastFour: string;
+        balance: {
+            limit: number | null;
+            current: number;
+            available: number;
+        };
+        percentage_change: string;
+    }[];
     summary?: {
         active_count: number;
         total_balance?: number | undefined;
         monthly_change?: number | undefined;
     } | undefined;
 }, {
-    products: any[];
+    products: {
+        type: string;
+        id: string;
+        metadata: {
+            utilization: number | null;
+            next_payment: string | null;
+            minimum_payment: number | null;
+            remaining_payments: number | null;
+            progress: number | null;
+            annual_rate: string | null;
+            risk_level: string | null;
+            interest_payment: string | null;
+            initial_value: number | null;
+            accumulated_gain: number | null;
+        };
+        name: string;
+        currency: string;
+        institution: string;
+        institution_logo: string | null;
+        lastFour: string;
+        balance: {
+            limit: number | null;
+            current: number;
+            available: number;
+        };
+        percentage_change: string;
+    }[];
     summary?: {
         active_count: number;
         total_balance?: number | undefined;
@@ -622,16 +938,176 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             total_balance?: number | undefined;
             monthly_change?: number | undefined;
         }>>;
-        products: z.ZodArray<z.ZodAny, "many">;
+        products: z.ZodArray<z.ZodObject<{
+            id: z.ZodString;
+            type: z.ZodString;
+            name: z.ZodString;
+            institution: z.ZodString;
+            institution_logo: z.ZodNullable<z.ZodString>;
+            lastFour: z.ZodString;
+            balance: z.ZodObject<{
+                current: z.ZodNumber;
+                available: z.ZodNumber;
+                limit: z.ZodNullable<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                limit: number | null;
+                current: number;
+                available: number;
+            }, {
+                limit: number | null;
+                current: number;
+                available: number;
+            }>;
+            metadata: z.ZodObject<{
+                utilization: z.ZodNullable<z.ZodNumber>;
+                next_payment: z.ZodNullable<z.ZodString>;
+                minimum_payment: z.ZodNullable<z.ZodNumber>;
+                remaining_payments: z.ZodNullable<z.ZodNumber>;
+                progress: z.ZodNullable<z.ZodNumber>;
+                annual_rate: z.ZodNullable<z.ZodString>;
+                risk_level: z.ZodNullable<z.ZodString>;
+                interest_payment: z.ZodNullable<z.ZodString>;
+                initial_value: z.ZodNullable<z.ZodNumber>;
+                accumulated_gain: z.ZodNullable<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                utilization: number | null;
+                next_payment: string | null;
+                minimum_payment: number | null;
+                remaining_payments: number | null;
+                progress: number | null;
+                annual_rate: string | null;
+                risk_level: string | null;
+                interest_payment: string | null;
+                initial_value: number | null;
+                accumulated_gain: number | null;
+            }, {
+                utilization: number | null;
+                next_payment: string | null;
+                minimum_payment: number | null;
+                remaining_payments: number | null;
+                progress: number | null;
+                annual_rate: string | null;
+                risk_level: string | null;
+                interest_payment: string | null;
+                initial_value: number | null;
+                accumulated_gain: number | null;
+            }>;
+            percentage_change: z.ZodString;
+            currency: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            type: string;
+            id: string;
+            metadata: {
+                utilization: number | null;
+                next_payment: string | null;
+                minimum_payment: number | null;
+                remaining_payments: number | null;
+                progress: number | null;
+                annual_rate: string | null;
+                risk_level: string | null;
+                interest_payment: string | null;
+                initial_value: number | null;
+                accumulated_gain: number | null;
+            };
+            name: string;
+            currency: string;
+            institution: string;
+            institution_logo: string | null;
+            lastFour: string;
+            balance: {
+                limit: number | null;
+                current: number;
+                available: number;
+            };
+            percentage_change: string;
+        }, {
+            type: string;
+            id: string;
+            metadata: {
+                utilization: number | null;
+                next_payment: string | null;
+                minimum_payment: number | null;
+                remaining_payments: number | null;
+                progress: number | null;
+                annual_rate: string | null;
+                risk_level: string | null;
+                interest_payment: string | null;
+                initial_value: number | null;
+                accumulated_gain: number | null;
+            };
+            name: string;
+            currency: string;
+            institution: string;
+            institution_logo: string | null;
+            lastFour: string;
+            balance: {
+                limit: number | null;
+                current: number;
+                available: number;
+            };
+            percentage_change: string;
+        }>, "many">;
     }, "strip", z.ZodTypeAny, {
-        products: any[];
+        products: {
+            type: string;
+            id: string;
+            metadata: {
+                utilization: number | null;
+                next_payment: string | null;
+                minimum_payment: number | null;
+                remaining_payments: number | null;
+                progress: number | null;
+                annual_rate: string | null;
+                risk_level: string | null;
+                interest_payment: string | null;
+                initial_value: number | null;
+                accumulated_gain: number | null;
+            };
+            name: string;
+            currency: string;
+            institution: string;
+            institution_logo: string | null;
+            lastFour: string;
+            balance: {
+                limit: number | null;
+                current: number;
+                available: number;
+            };
+            percentage_change: string;
+        }[];
         summary?: {
             active_count: number;
             total_balance?: number | undefined;
             monthly_change?: number | undefined;
         } | undefined;
     }, {
-        products: any[];
+        products: {
+            type: string;
+            id: string;
+            metadata: {
+                utilization: number | null;
+                next_payment: string | null;
+                minimum_payment: number | null;
+                remaining_payments: number | null;
+                progress: number | null;
+                annual_rate: string | null;
+                risk_level: string | null;
+                interest_payment: string | null;
+                initial_value: number | null;
+                accumulated_gain: number | null;
+            };
+            name: string;
+            currency: string;
+            institution: string;
+            institution_logo: string | null;
+            lastFour: string;
+            balance: {
+                limit: number | null;
+                current: number;
+                available: number;
+            };
+            percentage_change: string;
+        }[];
         summary?: {
             active_count: number;
             total_balance?: number | undefined;
@@ -641,7 +1117,33 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
 }, "strip", z.ZodTypeAny, {
     message: string;
     data: {
-        products: any[];
+        products: {
+            type: string;
+            id: string;
+            metadata: {
+                utilization: number | null;
+                next_payment: string | null;
+                minimum_payment: number | null;
+                remaining_payments: number | null;
+                progress: number | null;
+                annual_rate: string | null;
+                risk_level: string | null;
+                interest_payment: string | null;
+                initial_value: number | null;
+                accumulated_gain: number | null;
+            };
+            name: string;
+            currency: string;
+            institution: string;
+            institution_logo: string | null;
+            lastFour: string;
+            balance: {
+                limit: number | null;
+                current: number;
+                available: number;
+            };
+            percentage_change: string;
+        }[];
         summary?: {
             active_count: number;
             total_balance?: number | undefined;
@@ -651,7 +1153,33 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
 }, {
     message: string;
     data: {
-        products: any[];
+        products: {
+            type: string;
+            id: string;
+            metadata: {
+                utilization: number | null;
+                next_payment: string | null;
+                minimum_payment: number | null;
+                remaining_payments: number | null;
+                progress: number | null;
+                annual_rate: string | null;
+                risk_level: string | null;
+                interest_payment: string | null;
+                initial_value: number | null;
+                accumulated_gain: number | null;
+            };
+            name: string;
+            currency: string;
+            institution: string;
+            institution_logo: string | null;
+            lastFour: string;
+            balance: {
+                limit: number | null;
+                current: number;
+                available: number;
+            };
+            percentage_change: string;
+        }[];
         summary?: {
             active_count: number;
             total_balance?: number | undefined;

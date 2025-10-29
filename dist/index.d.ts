@@ -6834,16 +6834,176 @@ export declare const apiContract: {
                                 total_balance?: number | undefined;
                                 monthly_change?: number | undefined;
                             }>>;
-                            products: import("zod").ZodArray<import("zod").ZodAny, "many">;
+                            products: import("zod").ZodArray<import("zod").ZodObject<{
+                                id: import("zod").ZodString;
+                                type: import("zod").ZodString;
+                                name: import("zod").ZodString;
+                                institution: import("zod").ZodString;
+                                institution_logo: import("zod").ZodNullable<import("zod").ZodString>;
+                                lastFour: import("zod").ZodString;
+                                balance: import("zod").ZodObject<{
+                                    current: import("zod").ZodNumber;
+                                    available: import("zod").ZodNumber;
+                                    limit: import("zod").ZodNullable<import("zod").ZodNumber>;
+                                }, "strip", import("zod").ZodTypeAny, {
+                                    limit: number | null;
+                                    current: number;
+                                    available: number;
+                                }, {
+                                    limit: number | null;
+                                    current: number;
+                                    available: number;
+                                }>;
+                                metadata: import("zod").ZodObject<{
+                                    utilization: import("zod").ZodNullable<import("zod").ZodNumber>;
+                                    next_payment: import("zod").ZodNullable<import("zod").ZodString>;
+                                    minimum_payment: import("zod").ZodNullable<import("zod").ZodNumber>;
+                                    remaining_payments: import("zod").ZodNullable<import("zod").ZodNumber>;
+                                    progress: import("zod").ZodNullable<import("zod").ZodNumber>;
+                                    annual_rate: import("zod").ZodNullable<import("zod").ZodString>;
+                                    risk_level: import("zod").ZodNullable<import("zod").ZodString>;
+                                    interest_payment: import("zod").ZodNullable<import("zod").ZodString>;
+                                    initial_value: import("zod").ZodNullable<import("zod").ZodNumber>;
+                                    accumulated_gain: import("zod").ZodNullable<import("zod").ZodNumber>;
+                                }, "strip", import("zod").ZodTypeAny, {
+                                    utilization: number | null;
+                                    next_payment: string | null;
+                                    minimum_payment: number | null;
+                                    remaining_payments: number | null;
+                                    progress: number | null;
+                                    annual_rate: string | null;
+                                    risk_level: string | null;
+                                    interest_payment: string | null;
+                                    initial_value: number | null;
+                                    accumulated_gain: number | null;
+                                }, {
+                                    utilization: number | null;
+                                    next_payment: string | null;
+                                    minimum_payment: number | null;
+                                    remaining_payments: number | null;
+                                    progress: number | null;
+                                    annual_rate: string | null;
+                                    risk_level: string | null;
+                                    interest_payment: string | null;
+                                    initial_value: number | null;
+                                    accumulated_gain: number | null;
+                                }>;
+                                percentage_change: import("zod").ZodString;
+                                currency: import("zod").ZodString;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                type: string;
+                                id: string;
+                                metadata: {
+                                    utilization: number | null;
+                                    next_payment: string | null;
+                                    minimum_payment: number | null;
+                                    remaining_payments: number | null;
+                                    progress: number | null;
+                                    annual_rate: string | null;
+                                    risk_level: string | null;
+                                    interest_payment: string | null;
+                                    initial_value: number | null;
+                                    accumulated_gain: number | null;
+                                };
+                                name: string;
+                                currency: string;
+                                institution: string;
+                                institution_logo: string | null;
+                                lastFour: string;
+                                balance: {
+                                    limit: number | null;
+                                    current: number;
+                                    available: number;
+                                };
+                                percentage_change: string;
+                            }, {
+                                type: string;
+                                id: string;
+                                metadata: {
+                                    utilization: number | null;
+                                    next_payment: string | null;
+                                    minimum_payment: number | null;
+                                    remaining_payments: number | null;
+                                    progress: number | null;
+                                    annual_rate: string | null;
+                                    risk_level: string | null;
+                                    interest_payment: string | null;
+                                    initial_value: number | null;
+                                    accumulated_gain: number | null;
+                                };
+                                name: string;
+                                currency: string;
+                                institution: string;
+                                institution_logo: string | null;
+                                lastFour: string;
+                                balance: {
+                                    limit: number | null;
+                                    current: number;
+                                    available: number;
+                                };
+                                percentage_change: string;
+                            }>, "many">;
                         }, "strip", import("zod").ZodTypeAny, {
-                            products: any[];
+                            products: {
+                                type: string;
+                                id: string;
+                                metadata: {
+                                    utilization: number | null;
+                                    next_payment: string | null;
+                                    minimum_payment: number | null;
+                                    remaining_payments: number | null;
+                                    progress: number | null;
+                                    annual_rate: string | null;
+                                    risk_level: string | null;
+                                    interest_payment: string | null;
+                                    initial_value: number | null;
+                                    accumulated_gain: number | null;
+                                };
+                                name: string;
+                                currency: string;
+                                institution: string;
+                                institution_logo: string | null;
+                                lastFour: string;
+                                balance: {
+                                    limit: number | null;
+                                    current: number;
+                                    available: number;
+                                };
+                                percentage_change: string;
+                            }[];
                             summary?: {
                                 active_count: number;
                                 total_balance?: number | undefined;
                                 monthly_change?: number | undefined;
                             } | undefined;
                         }, {
-                            products: any[];
+                            products: {
+                                type: string;
+                                id: string;
+                                metadata: {
+                                    utilization: number | null;
+                                    next_payment: string | null;
+                                    minimum_payment: number | null;
+                                    remaining_payments: number | null;
+                                    progress: number | null;
+                                    annual_rate: string | null;
+                                    risk_level: string | null;
+                                    interest_payment: string | null;
+                                    initial_value: number | null;
+                                    accumulated_gain: number | null;
+                                };
+                                name: string;
+                                currency: string;
+                                institution: string;
+                                institution_logo: string | null;
+                                lastFour: string;
+                                balance: {
+                                    limit: number | null;
+                                    current: number;
+                                    available: number;
+                                };
+                                percentage_change: string;
+                            }[];
                             summary?: {
                                 active_count: number;
                                 total_balance?: number | undefined;
@@ -6853,7 +7013,33 @@ export declare const apiContract: {
                     }, "strip", import("zod").ZodTypeAny, {
                         message: string;
                         data: {
-                            products: any[];
+                            products: {
+                                type: string;
+                                id: string;
+                                metadata: {
+                                    utilization: number | null;
+                                    next_payment: string | null;
+                                    minimum_payment: number | null;
+                                    remaining_payments: number | null;
+                                    progress: number | null;
+                                    annual_rate: string | null;
+                                    risk_level: string | null;
+                                    interest_payment: string | null;
+                                    initial_value: number | null;
+                                    accumulated_gain: number | null;
+                                };
+                                name: string;
+                                currency: string;
+                                institution: string;
+                                institution_logo: string | null;
+                                lastFour: string;
+                                balance: {
+                                    limit: number | null;
+                                    current: number;
+                                    available: number;
+                                };
+                                percentage_change: string;
+                            }[];
                             summary?: {
                                 active_count: number;
                                 total_balance?: number | undefined;
@@ -6863,7 +7049,33 @@ export declare const apiContract: {
                     }, {
                         message: string;
                         data: {
-                            products: any[];
+                            products: {
+                                type: string;
+                                id: string;
+                                metadata: {
+                                    utilization: number | null;
+                                    next_payment: string | null;
+                                    minimum_payment: number | null;
+                                    remaining_payments: number | null;
+                                    progress: number | null;
+                                    annual_rate: string | null;
+                                    risk_level: string | null;
+                                    interest_payment: string | null;
+                                    initial_value: number | null;
+                                    accumulated_gain: number | null;
+                                };
+                                name: string;
+                                currency: string;
+                                institution: string;
+                                institution_logo: string | null;
+                                lastFour: string;
+                                balance: {
+                                    limit: number | null;
+                                    current: number;
+                                    available: number;
+                                };
+                                percentage_change: string;
+                            }[];
                             summary?: {
                                 active_count: number;
                                 total_balance?: number | undefined;
@@ -9556,26 +9768,26 @@ export declare const apiContract: {
                             id: string;
                             name: string;
                             currency: string;
-                            connectionId: string;
                             lastFour: string | null;
                             balance: {
                                 limit: number | null;
                                 current: number | null;
                                 available: number | null;
                             };
+                            connectionId: string;
                             lastTransactionRefresh: string | null;
                         }, {
                             type: "other" | "credit_card" | "loan" | "investment" | "checking" | "savings" | "depository";
                             id: string;
                             name: string;
                             currency: string;
-                            connectionId: string;
                             lastFour: string | null;
                             balance: {
                                 limit: number | null;
                                 current: number | null;
                                 available: number | null;
                             };
+                            connectionId: string;
                             lastTransactionRefresh: string | null;
                         }>, "many">;
                     }, "strip", import("zod").ZodTypeAny, {
@@ -9584,13 +9796,13 @@ export declare const apiContract: {
                             id: string;
                             name: string;
                             currency: string;
-                            connectionId: string;
                             lastFour: string | null;
                             balance: {
                                 limit: number | null;
                                 current: number | null;
                                 available: number | null;
                             };
+                            connectionId: string;
                             lastTransactionRefresh: string | null;
                         }[];
                     }, {
@@ -9599,13 +9811,13 @@ export declare const apiContract: {
                             id: string;
                             name: string;
                             currency: string;
-                            connectionId: string;
                             lastFour: string | null;
                             balance: {
                                 limit: number | null;
                                 current: number | null;
                                 available: number | null;
                             };
+                            connectionId: string;
                             lastTransactionRefresh: string | null;
                         }[];
                     }>;
@@ -9720,26 +9932,26 @@ export declare const apiContract: {
                             id: string;
                             name: string;
                             currency: string;
-                            connectionId: string;
                             lastFour: string | null;
                             balance: {
                                 limit: number | null;
                                 current: number | null;
                                 available: number | null;
                             };
+                            connectionId: string;
                             lastTransactionRefresh: string | null;
                         }, {
                             type: "other" | "credit_card" | "loan" | "investment" | "checking" | "savings" | "depository";
                             id: string;
                             name: string;
                             currency: string;
-                            connectionId: string;
                             lastFour: string | null;
                             balance: {
                                 limit: number | null;
                                 current: number | null;
                                 available: number | null;
                             };
+                            connectionId: string;
                             lastTransactionRefresh: string | null;
                         }>;
                     }, "strip", import("zod").ZodTypeAny, {
@@ -9748,13 +9960,13 @@ export declare const apiContract: {
                             id: string;
                             name: string;
                             currency: string;
-                            connectionId: string;
                             lastFour: string | null;
                             balance: {
                                 limit: number | null;
                                 current: number | null;
                                 available: number | null;
                             };
+                            connectionId: string;
                             lastTransactionRefresh: string | null;
                         };
                     }, {
@@ -9763,13 +9975,13 @@ export declare const apiContract: {
                             id: string;
                             name: string;
                             currency: string;
-                            connectionId: string;
                             lastFour: string | null;
                             balance: {
                                 limit: number | null;
                                 current: number | null;
                                 available: number | null;
                             };
+                            connectionId: string;
                             lastTransactionRefresh: string | null;
                         };
                     }>;
@@ -11303,16 +11515,16 @@ export declare const apiContract: {
                             }, "strip", import("zod").ZodTypeAny, {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }, {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }>, "many">;
                             financialIndicators: import("zod").ZodObject<{
@@ -11483,9 +11695,9 @@ export declare const apiContract: {
                             savingGoals: {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }[];
                             financialIndicators: {
@@ -11556,9 +11768,9 @@ export declare const apiContract: {
                             savingGoals: {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }[];
                             financialIndicators: {
@@ -11633,9 +11845,9 @@ export declare const apiContract: {
                             savingGoals: {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }[];
                             financialIndicators: {
@@ -11710,9 +11922,9 @@ export declare const apiContract: {
                             savingGoals: {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }[];
                             financialIndicators: {
@@ -12022,16 +12234,16 @@ export declare const apiContract: {
                             }, "strip", import("zod").ZodTypeAny, {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }, {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }>, "many">;
                             financialIndicators: import("zod").ZodObject<{
@@ -12202,9 +12414,9 @@ export declare const apiContract: {
                             savingGoals: {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }[];
                             financialIndicators: {
@@ -12275,9 +12487,9 @@ export declare const apiContract: {
                             savingGoals: {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }[];
                             financialIndicators: {
@@ -12352,9 +12564,9 @@ export declare const apiContract: {
                             savingGoals: {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }[];
                             financialIndicators: {
@@ -12429,9 +12641,9 @@ export declare const apiContract: {
                             savingGoals: {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }[];
                             financialIndicators: {
@@ -13211,16 +13423,16 @@ export declare const apiContract: {
                             }, "strip", import("zod").ZodTypeAny, {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }, {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }>, "many">;
                             syncStatus: import("zod").ZodObject<{
@@ -13237,9 +13449,9 @@ export declare const apiContract: {
                             savingGoals: {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }[];
                             syncStatus: {
@@ -13265,9 +13477,9 @@ export declare const apiContract: {
                             savingGoals: {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }[];
                             syncStatus: {
@@ -13297,9 +13509,9 @@ export declare const apiContract: {
                             savingGoals: {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }[];
                             syncStatus: {
@@ -13329,9 +13541,9 @@ export declare const apiContract: {
                             savingGoals: {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }[];
                             syncStatus: {
@@ -13444,16 +13656,16 @@ export declare const apiContract: {
                             }, "strip", import("zod").ZodTypeAny, {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }, {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }>, "many">;
                             syncStatus: import("zod").ZodObject<{
@@ -13470,9 +13682,9 @@ export declare const apiContract: {
                             savingGoals: {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }[];
                             syncStatus: {
@@ -13498,9 +13710,9 @@ export declare const apiContract: {
                             savingGoals: {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }[];
                             syncStatus: {
@@ -13530,9 +13742,9 @@ export declare const apiContract: {
                             savingGoals: {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }[];
                             syncStatus: {
@@ -13562,9 +13774,9 @@ export declare const apiContract: {
                             savingGoals: {
                                 id: number;
                                 name: string;
+                                progress: number;
                                 currentAmount: number;
                                 targetAmount: number;
-                                progress: number;
                                 color?: string | undefined;
                             }[];
                             syncStatus: {
