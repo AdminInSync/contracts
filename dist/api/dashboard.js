@@ -12,15 +12,27 @@ const MonthlySummarySchema = z.object({
     debts: z.number(),
     netBalance: z.number()
 });
+const BudgetItemSchema = z.object({
+    id: z.number(),
+    uuid: z.string().uuid(),
+    name: z.string(),
+    budget_period: z.enum(['monthly', 'quarterly', 'yearly']),
+    start_date: z.date(),
+    end_date: z.date(),
+    total_amount: z.number(),
+    used_amount: z.number(),
+    currency: z.string(),
+    is_active: z.boolean(),
+    notes: z.string().nullable(),
+    settings: z.any().nullable()
+});
+const BudgetOverviewSchema = z.object({
+    total: z.number(),
+    totalUsed: z.number()
+});
 const BudgetSummarySchema = z.object({
-    income: z.object({
-        active: z.number(),
-        flexible: z.number()
-    }),
-    expenses: z.object({
-        fixed: z.number(),
-        flexible: z.number()
-    })
+    overview: BudgetOverviewSchema,
+    budgets: z.array(BudgetItemSchema)
 });
 const SavingGoalSchema = z.object({
     id: z.number(),

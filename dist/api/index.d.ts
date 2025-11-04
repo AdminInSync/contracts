@@ -10409,6 +10409,7 @@ export declare const ApiContracts: {
                         start_date: import("zod").ZodString;
                         end_date: import("zod").ZodString;
                         total_amount: import("zod").ZodNumber;
+                        used_amount: import("zod").ZodNumber;
                         currency: import("zod").ZodString;
                         is_active: import("zod").ZodBoolean;
                         notes: import("zod").ZodNullable<import("zod").ZodString>;
@@ -10431,6 +10432,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     }, {
                         id: number;
@@ -10447,6 +10449,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     }>;
                 }, "strip", import("zod").ZodTypeAny, {
@@ -10466,6 +10469,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     };
                 }, {
@@ -10485,6 +10489,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     };
                 }>;
@@ -10563,6 +10568,7 @@ export declare const ApiContracts: {
                         start_date: import("zod").ZodString;
                         end_date: import("zod").ZodString;
                         total_amount: import("zod").ZodNumber;
+                        used_amount: import("zod").ZodNumber;
                         currency: import("zod").ZodString;
                         is_active: import("zod").ZodBoolean;
                         notes: import("zod").ZodNullable<import("zod").ZodString>;
@@ -10585,6 +10591,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     }, {
                         id: number;
@@ -10601,6 +10608,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     }>, "many">;
                     pagination: import("zod").ZodOptional<import("zod").ZodObject<{
@@ -10633,6 +10641,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     }[];
                     pagination?: {
@@ -10657,6 +10666,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     }[];
                     pagination?: {
@@ -10718,6 +10728,7 @@ export declare const ApiContracts: {
                         start_date: import("zod").ZodString;
                         end_date: import("zod").ZodString;
                         total_amount: import("zod").ZodNumber;
+                        used_amount: import("zod").ZodNumber;
                         currency: import("zod").ZodString;
                         is_active: import("zod").ZodBoolean;
                         notes: import("zod").ZodNullable<import("zod").ZodString>;
@@ -10740,6 +10751,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     }, {
                         id: number;
@@ -10756,6 +10768,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     }>;
                 }, "strip", import("zod").ZodTypeAny, {
@@ -10775,6 +10788,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     };
                 }, {
@@ -10794,6 +10808,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     };
                 }>;
@@ -10894,6 +10909,7 @@ export declare const ApiContracts: {
                         start_date: import("zod").ZodString;
                         end_date: import("zod").ZodString;
                         total_amount: import("zod").ZodNumber;
+                        used_amount: import("zod").ZodNumber;
                         currency: import("zod").ZodString;
                         is_active: import("zod").ZodBoolean;
                         notes: import("zod").ZodNullable<import("zod").ZodString>;
@@ -10916,6 +10932,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     }, {
                         id: number;
@@ -10932,6 +10949,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     }>;
                 }, "strip", import("zod").ZodTypeAny, {
@@ -10951,6 +10969,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     };
                 }, {
@@ -10970,6 +10989,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     };
                 }>;
@@ -11117,6 +11137,7 @@ export declare const ApiContracts: {
                         start_date: import("zod").ZodString;
                         end_date: import("zod").ZodString;
                         total_amount: import("zod").ZodNumber;
+                        used_amount: import("zod").ZodNumber;
                         currency: import("zod").ZodString;
                         is_active: import("zod").ZodBoolean;
                         notes: import("zod").ZodNullable<import("zod").ZodString>;
@@ -11139,6 +11160,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     }, {
                         id: number;
@@ -11155,6 +11177,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     }>, "many">;
                     pagination: import("zod").ZodOptional<import("zod").ZodObject<{
@@ -11187,6 +11210,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     }[];
                     pagination?: {
@@ -11211,6 +11235,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     }[];
                     pagination?: {
@@ -11282,6 +11307,7 @@ export declare const ApiContracts: {
                         start_date: import("zod").ZodString;
                         end_date: import("zod").ZodString;
                         total_amount: import("zod").ZodNumber;
+                        used_amount: import("zod").ZodNumber;
                         currency: import("zod").ZodString;
                         is_active: import("zod").ZodBoolean;
                         notes: import("zod").ZodNullable<import("zod").ZodString>;
@@ -11304,6 +11330,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     }, {
                         id: number;
@@ -11320,6 +11347,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     }>, "many">;
                     pagination: import("zod").ZodOptional<import("zod").ZodObject<{
@@ -11352,6 +11380,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     }[];
                     pagination?: {
@@ -11376,6 +11405,7 @@ export declare const ApiContracts: {
                         start_date: string;
                         end_date: string;
                         total_amount: number;
+                        used_amount: number;
                         settings?: any;
                     }[];
                     pagination?: {
@@ -11398,6 +11428,176 @@ export declare const ApiContracts: {
                     statusCode?: number | undefined;
                 }>;
                 401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        updateBudgetUsedAmount: {
+            pathParams: import("zod").ZodObject<{
+                id: import("zod").ZodEffects<import("zod").ZodString, number, string>;
+            }, "strip", import("zod").ZodTypeAny, {
+                id: number;
+            }, {
+                id: string;
+            }>;
+            summary: "Update budget used amount";
+            description: "Updates the used amount for a specific budget";
+            method: "PATCH";
+            body: import("zod").ZodObject<{
+                used_amount: import("zod").ZodNumber;
+            }, "strip", import("zod").ZodTypeAny, {
+                used_amount: number;
+            }, {
+                used_amount: number;
+            }>;
+            path: "/api/budgets/:id/used-amount";
+            responses: {
+                200: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        id: import("zod").ZodNumber;
+                        uuid: import("zod").ZodString;
+                        user_uid: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        budget_period: import("zod").ZodEnum<["monthly", "quarterly", "yearly"]>;
+                        start_date: import("zod").ZodString;
+                        end_date: import("zod").ZodString;
+                        total_amount: import("zod").ZodNumber;
+                        used_amount: import("zod").ZodNumber;
+                        currency: import("zod").ZodString;
+                        is_active: import("zod").ZodBoolean;
+                        notes: import("zod").ZodNullable<import("zod").ZodString>;
+                        settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                        created_at: import("zod").ZodString;
+                        updated_at: import("zod").ZodString;
+                        deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        user_uid: string;
+                        created_at: string;
+                        notes: string | null;
+                        updated_at: string;
+                        name: string;
+                        currency: string;
+                        deleted_at: string | null;
+                        budget_period: "monthly" | "quarterly" | "yearly";
+                        start_date: string;
+                        end_date: string;
+                        total_amount: number;
+                        used_amount: number;
+                        settings?: any;
+                    }, {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        user_uid: string;
+                        created_at: string;
+                        notes: string | null;
+                        updated_at: string;
+                        name: string;
+                        currency: string;
+                        deleted_at: string | null;
+                        budget_period: "monthly" | "quarterly" | "yearly";
+                        start_date: string;
+                        end_date: string;
+                        total_amount: number;
+                        used_amount: number;
+                        settings?: any;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        user_uid: string;
+                        created_at: string;
+                        notes: string | null;
+                        updated_at: string;
+                        name: string;
+                        currency: string;
+                        deleted_at: string | null;
+                        budget_period: "monthly" | "quarterly" | "yearly";
+                        start_date: string;
+                        end_date: string;
+                        total_amount: number;
+                        used_amount: number;
+                        settings?: any;
+                    };
+                }, {
+                    message: string;
+                    data: {
+                        id: number;
+                        is_active: boolean;
+                        uuid: string;
+                        user_uid: string;
+                        created_at: string;
+                        notes: string | null;
+                        updated_at: string;
+                        name: string;
+                        currency: string;
+                        deleted_at: string | null;
+                        budget_period: "monthly" | "quarterly" | "yearly";
+                        start_date: string;
+                        end_date: string;
+                        total_amount: number;
+                        used_amount: number;
+                        settings?: any;
+                    };
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
                     message: import("zod").ZodString;
                     error: import("zod").ZodOptional<import("zod").ZodString>;
                     statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
@@ -11464,44 +11664,94 @@ export declare const ApiContracts: {
                             netBalance: number;
                         }>;
                         budgets: import("zod").ZodObject<{
-                            income: import("zod").ZodObject<{
-                                active: import("zod").ZodNumber;
-                                flexible: import("zod").ZodNumber;
+                            overview: import("zod").ZodObject<{
+                                total: import("zod").ZodNumber;
+                                totalUsed: import("zod").ZodNumber;
                             }, "strip", import("zod").ZodTypeAny, {
-                                active: number;
-                                flexible: number;
+                                total: number;
+                                totalUsed: number;
                             }, {
-                                active: number;
-                                flexible: number;
+                                total: number;
+                                totalUsed: number;
                             }>;
-                            expenses: import("zod").ZodObject<{
-                                fixed: import("zod").ZodNumber;
-                                flexible: import("zod").ZodNumber;
+                            budgets: import("zod").ZodArray<import("zod").ZodObject<{
+                                id: import("zod").ZodNumber;
+                                uuid: import("zod").ZodString;
+                                name: import("zod").ZodString;
+                                budget_period: import("zod").ZodEnum<["monthly", "quarterly", "yearly"]>;
+                                start_date: import("zod").ZodDate;
+                                end_date: import("zod").ZodDate;
+                                total_amount: import("zod").ZodNumber;
+                                used_amount: import("zod").ZodNumber;
+                                currency: import("zod").ZodString;
+                                is_active: import("zod").ZodBoolean;
+                                notes: import("zod").ZodNullable<import("zod").ZodString>;
+                                settings: import("zod").ZodNullable<import("zod").ZodAny>;
                             }, "strip", import("zod").ZodTypeAny, {
-                                fixed: number;
-                                flexible: number;
+                                id: number;
+                                is_active: boolean;
+                                uuid: string;
+                                notes: string | null;
+                                name: string;
+                                currency: string;
+                                budget_period: "monthly" | "quarterly" | "yearly";
+                                start_date: Date;
+                                end_date: Date;
+                                total_amount: number;
+                                used_amount: number;
+                                settings?: any;
                             }, {
-                                fixed: number;
-                                flexible: number;
-                            }>;
+                                id: number;
+                                is_active: boolean;
+                                uuid: string;
+                                notes: string | null;
+                                name: string;
+                                currency: string;
+                                budget_period: "monthly" | "quarterly" | "yearly";
+                                start_date: Date;
+                                end_date: Date;
+                                total_amount: number;
+                                used_amount: number;
+                                settings?: any;
+                            }>, "many">;
                         }, "strip", import("zod").ZodTypeAny, {
-                            income: {
-                                active: number;
-                                flexible: number;
+                            overview: {
+                                total: number;
+                                totalUsed: number;
                             };
-                            expenses: {
-                                fixed: number;
-                                flexible: number;
-                            };
+                            budgets: {
+                                id: number;
+                                is_active: boolean;
+                                uuid: string;
+                                notes: string | null;
+                                name: string;
+                                currency: string;
+                                budget_period: "monthly" | "quarterly" | "yearly";
+                                start_date: Date;
+                                end_date: Date;
+                                total_amount: number;
+                                used_amount: number;
+                                settings?: any;
+                            }[];
                         }, {
-                            income: {
-                                active: number;
-                                flexible: number;
+                            overview: {
+                                total: number;
+                                totalUsed: number;
                             };
-                            expenses: {
-                                fixed: number;
-                                flexible: number;
-                            };
+                            budgets: {
+                                id: number;
+                                is_active: boolean;
+                                uuid: string;
+                                notes: string | null;
+                                name: string;
+                                currency: string;
+                                budget_period: "monthly" | "quarterly" | "yearly";
+                                start_date: Date;
+                                end_date: Date;
+                                total_amount: number;
+                                used_amount: number;
+                                settings?: any;
+                            }[];
                         }>;
                         savingGoals: import("zod").ZodArray<import("zod").ZodObject<{
                             id: import("zod").ZodNumber;
@@ -11674,21 +11924,31 @@ export declare const ApiContracts: {
                             currency: string;
                             available: number;
                         };
+                        budgets: {
+                            overview: {
+                                total: number;
+                                totalUsed: number;
+                            };
+                            budgets: {
+                                id: number;
+                                is_active: boolean;
+                                uuid: string;
+                                notes: string | null;
+                                name: string;
+                                currency: string;
+                                budget_period: "monthly" | "quarterly" | "yearly";
+                                start_date: Date;
+                                end_date: Date;
+                                total_amount: number;
+                                used_amount: number;
+                                settings?: any;
+                            }[];
+                        };
                         monthlySummary: {
                             income: number;
                             expenses: number;
                             debts: number;
                             netBalance: number;
-                        };
-                        budgets: {
-                            income: {
-                                active: number;
-                                flexible: number;
-                            };
-                            expenses: {
-                                fixed: number;
-                                flexible: number;
-                            };
                         };
                         savingGoals: {
                             id: number;
@@ -11747,21 +12007,31 @@ export declare const ApiContracts: {
                             currency: string;
                             available: number;
                         };
+                        budgets: {
+                            overview: {
+                                total: number;
+                                totalUsed: number;
+                            };
+                            budgets: {
+                                id: number;
+                                is_active: boolean;
+                                uuid: string;
+                                notes: string | null;
+                                name: string;
+                                currency: string;
+                                budget_period: "monthly" | "quarterly" | "yearly";
+                                start_date: Date;
+                                end_date: Date;
+                                total_amount: number;
+                                used_amount: number;
+                                settings?: any;
+                            }[];
+                        };
                         monthlySummary: {
                             income: number;
                             expenses: number;
                             debts: number;
                             netBalance: number;
-                        };
-                        budgets: {
-                            income: {
-                                active: number;
-                                flexible: number;
-                            };
-                            expenses: {
-                                fixed: number;
-                                flexible: number;
-                            };
                         };
                         savingGoals: {
                             id: number;
@@ -11824,21 +12094,31 @@ export declare const ApiContracts: {
                             currency: string;
                             available: number;
                         };
+                        budgets: {
+                            overview: {
+                                total: number;
+                                totalUsed: number;
+                            };
+                            budgets: {
+                                id: number;
+                                is_active: boolean;
+                                uuid: string;
+                                notes: string | null;
+                                name: string;
+                                currency: string;
+                                budget_period: "monthly" | "quarterly" | "yearly";
+                                start_date: Date;
+                                end_date: Date;
+                                total_amount: number;
+                                used_amount: number;
+                                settings?: any;
+                            }[];
+                        };
                         monthlySummary: {
                             income: number;
                             expenses: number;
                             debts: number;
                             netBalance: number;
-                        };
-                        budgets: {
-                            income: {
-                                active: number;
-                                flexible: number;
-                            };
-                            expenses: {
-                                fixed: number;
-                                flexible: number;
-                            };
                         };
                         savingGoals: {
                             id: number;
@@ -11901,21 +12181,31 @@ export declare const ApiContracts: {
                             currency: string;
                             available: number;
                         };
+                        budgets: {
+                            overview: {
+                                total: number;
+                                totalUsed: number;
+                            };
+                            budgets: {
+                                id: number;
+                                is_active: boolean;
+                                uuid: string;
+                                notes: string | null;
+                                name: string;
+                                currency: string;
+                                budget_period: "monthly" | "quarterly" | "yearly";
+                                start_date: Date;
+                                end_date: Date;
+                                total_amount: number;
+                                used_amount: number;
+                                settings?: any;
+                            }[];
+                        };
                         monthlySummary: {
                             income: number;
                             expenses: number;
                             debts: number;
                             netBalance: number;
-                        };
-                        budgets: {
-                            income: {
-                                active: number;
-                                flexible: number;
-                            };
-                            expenses: {
-                                fixed: number;
-                                flexible: number;
-                            };
                         };
                         savingGoals: {
                             id: number;
@@ -12183,44 +12473,94 @@ export declare const ApiContracts: {
                             netBalance: number;
                         }>;
                         budgets: import("zod").ZodObject<{
-                            income: import("zod").ZodObject<{
-                                active: import("zod").ZodNumber;
-                                flexible: import("zod").ZodNumber;
+                            overview: import("zod").ZodObject<{
+                                total: import("zod").ZodNumber;
+                                totalUsed: import("zod").ZodNumber;
                             }, "strip", import("zod").ZodTypeAny, {
-                                active: number;
-                                flexible: number;
+                                total: number;
+                                totalUsed: number;
                             }, {
-                                active: number;
-                                flexible: number;
+                                total: number;
+                                totalUsed: number;
                             }>;
-                            expenses: import("zod").ZodObject<{
-                                fixed: import("zod").ZodNumber;
-                                flexible: import("zod").ZodNumber;
+                            budgets: import("zod").ZodArray<import("zod").ZodObject<{
+                                id: import("zod").ZodNumber;
+                                uuid: import("zod").ZodString;
+                                name: import("zod").ZodString;
+                                budget_period: import("zod").ZodEnum<["monthly", "quarterly", "yearly"]>;
+                                start_date: import("zod").ZodDate;
+                                end_date: import("zod").ZodDate;
+                                total_amount: import("zod").ZodNumber;
+                                used_amount: import("zod").ZodNumber;
+                                currency: import("zod").ZodString;
+                                is_active: import("zod").ZodBoolean;
+                                notes: import("zod").ZodNullable<import("zod").ZodString>;
+                                settings: import("zod").ZodNullable<import("zod").ZodAny>;
                             }, "strip", import("zod").ZodTypeAny, {
-                                fixed: number;
-                                flexible: number;
+                                id: number;
+                                is_active: boolean;
+                                uuid: string;
+                                notes: string | null;
+                                name: string;
+                                currency: string;
+                                budget_period: "monthly" | "quarterly" | "yearly";
+                                start_date: Date;
+                                end_date: Date;
+                                total_amount: number;
+                                used_amount: number;
+                                settings?: any;
                             }, {
-                                fixed: number;
-                                flexible: number;
-                            }>;
+                                id: number;
+                                is_active: boolean;
+                                uuid: string;
+                                notes: string | null;
+                                name: string;
+                                currency: string;
+                                budget_period: "monthly" | "quarterly" | "yearly";
+                                start_date: Date;
+                                end_date: Date;
+                                total_amount: number;
+                                used_amount: number;
+                                settings?: any;
+                            }>, "many">;
                         }, "strip", import("zod").ZodTypeAny, {
-                            income: {
-                                active: number;
-                                flexible: number;
+                            overview: {
+                                total: number;
+                                totalUsed: number;
                             };
-                            expenses: {
-                                fixed: number;
-                                flexible: number;
-                            };
+                            budgets: {
+                                id: number;
+                                is_active: boolean;
+                                uuid: string;
+                                notes: string | null;
+                                name: string;
+                                currency: string;
+                                budget_period: "monthly" | "quarterly" | "yearly";
+                                start_date: Date;
+                                end_date: Date;
+                                total_amount: number;
+                                used_amount: number;
+                                settings?: any;
+                            }[];
                         }, {
-                            income: {
-                                active: number;
-                                flexible: number;
+                            overview: {
+                                total: number;
+                                totalUsed: number;
                             };
-                            expenses: {
-                                fixed: number;
-                                flexible: number;
-                            };
+                            budgets: {
+                                id: number;
+                                is_active: boolean;
+                                uuid: string;
+                                notes: string | null;
+                                name: string;
+                                currency: string;
+                                budget_period: "monthly" | "quarterly" | "yearly";
+                                start_date: Date;
+                                end_date: Date;
+                                total_amount: number;
+                                used_amount: number;
+                                settings?: any;
+                            }[];
                         }>;
                         savingGoals: import("zod").ZodArray<import("zod").ZodObject<{
                             id: import("zod").ZodNumber;
@@ -12393,21 +12733,31 @@ export declare const ApiContracts: {
                             currency: string;
                             available: number;
                         };
+                        budgets: {
+                            overview: {
+                                total: number;
+                                totalUsed: number;
+                            };
+                            budgets: {
+                                id: number;
+                                is_active: boolean;
+                                uuid: string;
+                                notes: string | null;
+                                name: string;
+                                currency: string;
+                                budget_period: "monthly" | "quarterly" | "yearly";
+                                start_date: Date;
+                                end_date: Date;
+                                total_amount: number;
+                                used_amount: number;
+                                settings?: any;
+                            }[];
+                        };
                         monthlySummary: {
                             income: number;
                             expenses: number;
                             debts: number;
                             netBalance: number;
-                        };
-                        budgets: {
-                            income: {
-                                active: number;
-                                flexible: number;
-                            };
-                            expenses: {
-                                fixed: number;
-                                flexible: number;
-                            };
                         };
                         savingGoals: {
                             id: number;
@@ -12466,21 +12816,31 @@ export declare const ApiContracts: {
                             currency: string;
                             available: number;
                         };
+                        budgets: {
+                            overview: {
+                                total: number;
+                                totalUsed: number;
+                            };
+                            budgets: {
+                                id: number;
+                                is_active: boolean;
+                                uuid: string;
+                                notes: string | null;
+                                name: string;
+                                currency: string;
+                                budget_period: "monthly" | "quarterly" | "yearly";
+                                start_date: Date;
+                                end_date: Date;
+                                total_amount: number;
+                                used_amount: number;
+                                settings?: any;
+                            }[];
+                        };
                         monthlySummary: {
                             income: number;
                             expenses: number;
                             debts: number;
                             netBalance: number;
-                        };
-                        budgets: {
-                            income: {
-                                active: number;
-                                flexible: number;
-                            };
-                            expenses: {
-                                fixed: number;
-                                flexible: number;
-                            };
                         };
                         savingGoals: {
                             id: number;
@@ -12543,21 +12903,31 @@ export declare const ApiContracts: {
                             currency: string;
                             available: number;
                         };
+                        budgets: {
+                            overview: {
+                                total: number;
+                                totalUsed: number;
+                            };
+                            budgets: {
+                                id: number;
+                                is_active: boolean;
+                                uuid: string;
+                                notes: string | null;
+                                name: string;
+                                currency: string;
+                                budget_period: "monthly" | "quarterly" | "yearly";
+                                start_date: Date;
+                                end_date: Date;
+                                total_amount: number;
+                                used_amount: number;
+                                settings?: any;
+                            }[];
+                        };
                         monthlySummary: {
                             income: number;
                             expenses: number;
                             debts: number;
                             netBalance: number;
-                        };
-                        budgets: {
-                            income: {
-                                active: number;
-                                flexible: number;
-                            };
-                            expenses: {
-                                fixed: number;
-                                flexible: number;
-                            };
                         };
                         savingGoals: {
                             id: number;
@@ -12620,21 +12990,31 @@ export declare const ApiContracts: {
                             currency: string;
                             available: number;
                         };
+                        budgets: {
+                            overview: {
+                                total: number;
+                                totalUsed: number;
+                            };
+                            budgets: {
+                                id: number;
+                                is_active: boolean;
+                                uuid: string;
+                                notes: string | null;
+                                name: string;
+                                currency: string;
+                                budget_period: "monthly" | "quarterly" | "yearly";
+                                start_date: Date;
+                                end_date: Date;
+                                total_amount: number;
+                                used_amount: number;
+                                settings?: any;
+                            }[];
+                        };
                         monthlySummary: {
                             income: number;
                             expenses: number;
                             debts: number;
                             netBalance: number;
-                        };
-                        budgets: {
-                            income: {
-                                active: number;
-                                flexible: number;
-                            };
-                            expenses: {
-                                fixed: number;
-                                flexible: number;
-                            };
                         };
                         savingGoals: {
                             id: number;

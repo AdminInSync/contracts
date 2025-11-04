@@ -9,6 +9,7 @@ export declare const BudgetSchema: z.ZodObject<{
     start_date: z.ZodString;
     end_date: z.ZodString;
     total_amount: z.ZodNumber;
+    used_amount: z.ZodNumber;
     currency: z.ZodString;
     is_active: z.ZodBoolean;
     notes: z.ZodNullable<z.ZodString>;
@@ -31,6 +32,7 @@ export declare const BudgetSchema: z.ZodObject<{
     start_date: string;
     end_date: string;
     total_amount: number;
+    used_amount: number;
     settings?: any;
 }, {
     id: number;
@@ -47,6 +49,7 @@ export declare const BudgetSchema: z.ZodObject<{
     start_date: string;
     end_date: string;
     total_amount: number;
+    used_amount: number;
     settings?: any;
 }>;
 export declare const CreateBudgetSchema: z.ZodEffects<z.ZodObject<{
@@ -131,6 +134,13 @@ export declare const UpdateBudgetSchema: z.ZodObject<{
     total_amount?: number | undefined;
     settings?: any;
 }>;
+export declare const UpdateBudgetUsedAmountSchema: z.ZodObject<{
+    used_amount: z.ZodNumber;
+}, "strip", z.ZodTypeAny, {
+    used_amount: number;
+}, {
+    used_amount: number;
+}>;
 export declare const GetBudgetsQuerySchema: z.ZodObject<{
     budget_period: z.ZodOptional<z.ZodEnum<["monthly", "quarterly", "yearly"]>>;
     is_active: z.ZodOptional<z.ZodPipeline<z.ZodEffects<z.ZodString, boolean, string>, z.ZodBoolean>>;
@@ -158,6 +168,7 @@ export declare const BudgetResponseSchema: z.ZodObject<{
         start_date: z.ZodString;
         end_date: z.ZodString;
         total_amount: z.ZodNumber;
+        used_amount: z.ZodNumber;
         currency: z.ZodString;
         is_active: z.ZodBoolean;
         notes: z.ZodNullable<z.ZodString>;
@@ -180,6 +191,7 @@ export declare const BudgetResponseSchema: z.ZodObject<{
         start_date: string;
         end_date: string;
         total_amount: number;
+        used_amount: number;
         settings?: any;
     }, {
         id: number;
@@ -196,6 +208,7 @@ export declare const BudgetResponseSchema: z.ZodObject<{
         start_date: string;
         end_date: string;
         total_amount: number;
+        used_amount: number;
         settings?: any;
     }>;
 }, "strip", z.ZodTypeAny, {
@@ -215,6 +228,7 @@ export declare const BudgetResponseSchema: z.ZodObject<{
         start_date: string;
         end_date: string;
         total_amount: number;
+        used_amount: number;
         settings?: any;
     };
 }, {
@@ -234,6 +248,7 @@ export declare const BudgetResponseSchema: z.ZodObject<{
         start_date: string;
         end_date: string;
         total_amount: number;
+        used_amount: number;
         settings?: any;
     };
 }>;
@@ -248,6 +263,7 @@ export declare const BudgetsListResponseSchema: z.ZodObject<{
         start_date: z.ZodString;
         end_date: z.ZodString;
         total_amount: z.ZodNumber;
+        used_amount: z.ZodNumber;
         currency: z.ZodString;
         is_active: z.ZodBoolean;
         notes: z.ZodNullable<z.ZodString>;
@@ -270,6 +286,7 @@ export declare const BudgetsListResponseSchema: z.ZodObject<{
         start_date: string;
         end_date: string;
         total_amount: number;
+        used_amount: number;
         settings?: any;
     }, {
         id: number;
@@ -286,6 +303,7 @@ export declare const BudgetsListResponseSchema: z.ZodObject<{
         start_date: string;
         end_date: string;
         total_amount: number;
+        used_amount: number;
         settings?: any;
     }>, "many">;
     pagination: z.ZodOptional<z.ZodObject<{
@@ -318,6 +336,7 @@ export declare const BudgetsListResponseSchema: z.ZodObject<{
         start_date: string;
         end_date: string;
         total_amount: number;
+        used_amount: number;
         settings?: any;
     }[];
     pagination?: {
@@ -342,6 +361,7 @@ export declare const BudgetsListResponseSchema: z.ZodObject<{
         start_date: string;
         end_date: string;
         total_amount: number;
+        used_amount: number;
         settings?: any;
     }[];
     pagination?: {
