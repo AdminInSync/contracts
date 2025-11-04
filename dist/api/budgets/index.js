@@ -1,6 +1,6 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
-import { CreateBudgetSchema, UpdateBudgetSchema, GetBudgetsQuerySchema, BudgetResponseSchema, BudgetsListResponseSchema } from './budgets.schema';
+import { CreateBudgetSchema, UpdateBudgetSchema, UpdateBudgetUsedAmountSchema, GetBudgetsQuerySchema, BudgetResponseSchema, BudgetsListResponseSchema } from './budgets.schema';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
 const c = initContract();
 export const BudgetsContracts = c.router({
@@ -118,5 +118,23 @@ export const BudgetsContracts = c.router({
         }),
         summary: 'Get budgets by period',
         description: 'Retrieves budgets filtered by budget period for the authenticated user',
+    },
+    // Update budget used amount
+    updateBudgetUsedAmount: {
+        method: 'PATCH',
+        path: '/budgets/:id/used-amount',
+        responses: {
+            200: BudgetResponseSchema,
+            400: ErrorResSchema,
+            401: ErrorResSchema,
+            404: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        pathParams: z.object({
+            id: z.string().regex(/^\d+$/, 'ID must be a valid number').transform((val) => parseInt(val, 10)),
+        }),
+        body: UpdateBudgetUsedAmountSchema,
+        summary: 'Update budget used amount',
+        description: 'Updates the used amount for a specific budget',
     },
 });

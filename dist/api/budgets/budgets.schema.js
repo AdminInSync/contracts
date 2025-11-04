@@ -11,6 +11,7 @@ export const BudgetSchema = z.object({
     start_date: z.string().date(),
     end_date: z.string().date(),
     total_amount: z.number(),
+    used_amount: z.number(),
     currency: z.string(),
     is_active: z.boolean(),
     notes: z.string().nullable(),
@@ -40,6 +41,9 @@ export const CreateBudgetSchema = BaseBudgetSchema.refine((data) => {
     path: ["end_date"],
 });
 export const UpdateBudgetSchema = BaseBudgetSchema.partial();
+export const UpdateBudgetUsedAmountSchema = z.object({
+    used_amount: z.number().min(0),
+});
 // Query schemas
 export const GetBudgetsQuerySchema = z.object({
     budget_period: BudgetPeriodSchema.optional(),

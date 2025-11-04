@@ -36,44 +36,94 @@ export declare const DashboardContracts: {
                         netBalance: number;
                     }>;
                     budgets: z.ZodObject<{
-                        income: z.ZodObject<{
-                            active: z.ZodNumber;
-                            flexible: z.ZodNumber;
+                        overview: z.ZodObject<{
+                            total: z.ZodNumber;
+                            totalUsed: z.ZodNumber;
                         }, "strip", z.ZodTypeAny, {
-                            active: number;
-                            flexible: number;
+                            total: number;
+                            totalUsed: number;
                         }, {
-                            active: number;
-                            flexible: number;
+                            total: number;
+                            totalUsed: number;
                         }>;
-                        expenses: z.ZodObject<{
-                            fixed: z.ZodNumber;
-                            flexible: z.ZodNumber;
+                        budgets: z.ZodArray<z.ZodObject<{
+                            id: z.ZodNumber;
+                            uuid: z.ZodString;
+                            name: z.ZodString;
+                            budget_period: z.ZodEnum<["monthly", "quarterly", "yearly"]>;
+                            start_date: z.ZodDate;
+                            end_date: z.ZodDate;
+                            total_amount: z.ZodNumber;
+                            used_amount: z.ZodNumber;
+                            currency: z.ZodString;
+                            is_active: z.ZodBoolean;
+                            notes: z.ZodNullable<z.ZodString>;
+                            settings: z.ZodNullable<z.ZodAny>;
                         }, "strip", z.ZodTypeAny, {
-                            fixed: number;
-                            flexible: number;
+                            id: number;
+                            is_active: boolean;
+                            uuid: string;
+                            notes: string | null;
+                            name: string;
+                            currency: string;
+                            budget_period: "monthly" | "quarterly" | "yearly";
+                            start_date: Date;
+                            end_date: Date;
+                            total_amount: number;
+                            used_amount: number;
+                            settings?: any;
                         }, {
-                            fixed: number;
-                            flexible: number;
-                        }>;
+                            id: number;
+                            is_active: boolean;
+                            uuid: string;
+                            notes: string | null;
+                            name: string;
+                            currency: string;
+                            budget_period: "monthly" | "quarterly" | "yearly";
+                            start_date: Date;
+                            end_date: Date;
+                            total_amount: number;
+                            used_amount: number;
+                            settings?: any;
+                        }>, "many">;
                     }, "strip", z.ZodTypeAny, {
-                        income: {
-                            active: number;
-                            flexible: number;
+                        overview: {
+                            total: number;
+                            totalUsed: number;
                         };
-                        expenses: {
-                            fixed: number;
-                            flexible: number;
-                        };
+                        budgets: {
+                            id: number;
+                            is_active: boolean;
+                            uuid: string;
+                            notes: string | null;
+                            name: string;
+                            currency: string;
+                            budget_period: "monthly" | "quarterly" | "yearly";
+                            start_date: Date;
+                            end_date: Date;
+                            total_amount: number;
+                            used_amount: number;
+                            settings?: any;
+                        }[];
                     }, {
-                        income: {
-                            active: number;
-                            flexible: number;
+                        overview: {
+                            total: number;
+                            totalUsed: number;
                         };
-                        expenses: {
-                            fixed: number;
-                            flexible: number;
-                        };
+                        budgets: {
+                            id: number;
+                            is_active: boolean;
+                            uuid: string;
+                            notes: string | null;
+                            name: string;
+                            currency: string;
+                            budget_period: "monthly" | "quarterly" | "yearly";
+                            start_date: Date;
+                            end_date: Date;
+                            total_amount: number;
+                            used_amount: number;
+                            settings?: any;
+                        }[];
                     }>;
                     savingGoals: z.ZodArray<z.ZodObject<{
                         id: z.ZodNumber;
@@ -246,21 +296,31 @@ export declare const DashboardContracts: {
                         currency: string;
                         available: number;
                     };
+                    budgets: {
+                        overview: {
+                            total: number;
+                            totalUsed: number;
+                        };
+                        budgets: {
+                            id: number;
+                            is_active: boolean;
+                            uuid: string;
+                            notes: string | null;
+                            name: string;
+                            currency: string;
+                            budget_period: "monthly" | "quarterly" | "yearly";
+                            start_date: Date;
+                            end_date: Date;
+                            total_amount: number;
+                            used_amount: number;
+                            settings?: any;
+                        }[];
+                    };
                     monthlySummary: {
                         income: number;
                         expenses: number;
                         debts: number;
                         netBalance: number;
-                    };
-                    budgets: {
-                        income: {
-                            active: number;
-                            flexible: number;
-                        };
-                        expenses: {
-                            fixed: number;
-                            flexible: number;
-                        };
                     };
                     savingGoals: {
                         id: number;
@@ -319,21 +379,31 @@ export declare const DashboardContracts: {
                         currency: string;
                         available: number;
                     };
+                    budgets: {
+                        overview: {
+                            total: number;
+                            totalUsed: number;
+                        };
+                        budgets: {
+                            id: number;
+                            is_active: boolean;
+                            uuid: string;
+                            notes: string | null;
+                            name: string;
+                            currency: string;
+                            budget_period: "monthly" | "quarterly" | "yearly";
+                            start_date: Date;
+                            end_date: Date;
+                            total_amount: number;
+                            used_amount: number;
+                            settings?: any;
+                        }[];
+                    };
                     monthlySummary: {
                         income: number;
                         expenses: number;
                         debts: number;
                         netBalance: number;
-                    };
-                    budgets: {
-                        income: {
-                            active: number;
-                            flexible: number;
-                        };
-                        expenses: {
-                            fixed: number;
-                            flexible: number;
-                        };
                     };
                     savingGoals: {
                         id: number;
@@ -396,21 +466,31 @@ export declare const DashboardContracts: {
                         currency: string;
                         available: number;
                     };
+                    budgets: {
+                        overview: {
+                            total: number;
+                            totalUsed: number;
+                        };
+                        budgets: {
+                            id: number;
+                            is_active: boolean;
+                            uuid: string;
+                            notes: string | null;
+                            name: string;
+                            currency: string;
+                            budget_period: "monthly" | "quarterly" | "yearly";
+                            start_date: Date;
+                            end_date: Date;
+                            total_amount: number;
+                            used_amount: number;
+                            settings?: any;
+                        }[];
+                    };
                     monthlySummary: {
                         income: number;
                         expenses: number;
                         debts: number;
                         netBalance: number;
-                    };
-                    budgets: {
-                        income: {
-                            active: number;
-                            flexible: number;
-                        };
-                        expenses: {
-                            fixed: number;
-                            flexible: number;
-                        };
                     };
                     savingGoals: {
                         id: number;
@@ -473,21 +553,31 @@ export declare const DashboardContracts: {
                         currency: string;
                         available: number;
                     };
+                    budgets: {
+                        overview: {
+                            total: number;
+                            totalUsed: number;
+                        };
+                        budgets: {
+                            id: number;
+                            is_active: boolean;
+                            uuid: string;
+                            notes: string | null;
+                            name: string;
+                            currency: string;
+                            budget_period: "monthly" | "quarterly" | "yearly";
+                            start_date: Date;
+                            end_date: Date;
+                            total_amount: number;
+                            used_amount: number;
+                            settings?: any;
+                        }[];
+                    };
                     monthlySummary: {
                         income: number;
                         expenses: number;
                         debts: number;
                         netBalance: number;
-                    };
-                    budgets: {
-                        income: {
-                            active: number;
-                            flexible: number;
-                        };
-                        expenses: {
-                            fixed: number;
-                            flexible: number;
-                        };
                     };
                     savingGoals: {
                         id: number;
@@ -753,44 +843,94 @@ export declare const DashboardContracts: {
                         netBalance: number;
                     }>;
                     budgets: z.ZodObject<{
-                        income: z.ZodObject<{
-                            active: z.ZodNumber;
-                            flexible: z.ZodNumber;
+                        overview: z.ZodObject<{
+                            total: z.ZodNumber;
+                            totalUsed: z.ZodNumber;
                         }, "strip", z.ZodTypeAny, {
-                            active: number;
-                            flexible: number;
+                            total: number;
+                            totalUsed: number;
                         }, {
-                            active: number;
-                            flexible: number;
+                            total: number;
+                            totalUsed: number;
                         }>;
-                        expenses: z.ZodObject<{
-                            fixed: z.ZodNumber;
-                            flexible: z.ZodNumber;
+                        budgets: z.ZodArray<z.ZodObject<{
+                            id: z.ZodNumber;
+                            uuid: z.ZodString;
+                            name: z.ZodString;
+                            budget_period: z.ZodEnum<["monthly", "quarterly", "yearly"]>;
+                            start_date: z.ZodDate;
+                            end_date: z.ZodDate;
+                            total_amount: z.ZodNumber;
+                            used_amount: z.ZodNumber;
+                            currency: z.ZodString;
+                            is_active: z.ZodBoolean;
+                            notes: z.ZodNullable<z.ZodString>;
+                            settings: z.ZodNullable<z.ZodAny>;
                         }, "strip", z.ZodTypeAny, {
-                            fixed: number;
-                            flexible: number;
+                            id: number;
+                            is_active: boolean;
+                            uuid: string;
+                            notes: string | null;
+                            name: string;
+                            currency: string;
+                            budget_period: "monthly" | "quarterly" | "yearly";
+                            start_date: Date;
+                            end_date: Date;
+                            total_amount: number;
+                            used_amount: number;
+                            settings?: any;
                         }, {
-                            fixed: number;
-                            flexible: number;
-                        }>;
+                            id: number;
+                            is_active: boolean;
+                            uuid: string;
+                            notes: string | null;
+                            name: string;
+                            currency: string;
+                            budget_period: "monthly" | "quarterly" | "yearly";
+                            start_date: Date;
+                            end_date: Date;
+                            total_amount: number;
+                            used_amount: number;
+                            settings?: any;
+                        }>, "many">;
                     }, "strip", z.ZodTypeAny, {
-                        income: {
-                            active: number;
-                            flexible: number;
+                        overview: {
+                            total: number;
+                            totalUsed: number;
                         };
-                        expenses: {
-                            fixed: number;
-                            flexible: number;
-                        };
+                        budgets: {
+                            id: number;
+                            is_active: boolean;
+                            uuid: string;
+                            notes: string | null;
+                            name: string;
+                            currency: string;
+                            budget_period: "monthly" | "quarterly" | "yearly";
+                            start_date: Date;
+                            end_date: Date;
+                            total_amount: number;
+                            used_amount: number;
+                            settings?: any;
+                        }[];
                     }, {
-                        income: {
-                            active: number;
-                            flexible: number;
+                        overview: {
+                            total: number;
+                            totalUsed: number;
                         };
-                        expenses: {
-                            fixed: number;
-                            flexible: number;
-                        };
+                        budgets: {
+                            id: number;
+                            is_active: boolean;
+                            uuid: string;
+                            notes: string | null;
+                            name: string;
+                            currency: string;
+                            budget_period: "monthly" | "quarterly" | "yearly";
+                            start_date: Date;
+                            end_date: Date;
+                            total_amount: number;
+                            used_amount: number;
+                            settings?: any;
+                        }[];
                     }>;
                     savingGoals: z.ZodArray<z.ZodObject<{
                         id: z.ZodNumber;
@@ -963,21 +1103,31 @@ export declare const DashboardContracts: {
                         currency: string;
                         available: number;
                     };
+                    budgets: {
+                        overview: {
+                            total: number;
+                            totalUsed: number;
+                        };
+                        budgets: {
+                            id: number;
+                            is_active: boolean;
+                            uuid: string;
+                            notes: string | null;
+                            name: string;
+                            currency: string;
+                            budget_period: "monthly" | "quarterly" | "yearly";
+                            start_date: Date;
+                            end_date: Date;
+                            total_amount: number;
+                            used_amount: number;
+                            settings?: any;
+                        }[];
+                    };
                     monthlySummary: {
                         income: number;
                         expenses: number;
                         debts: number;
                         netBalance: number;
-                    };
-                    budgets: {
-                        income: {
-                            active: number;
-                            flexible: number;
-                        };
-                        expenses: {
-                            fixed: number;
-                            flexible: number;
-                        };
                     };
                     savingGoals: {
                         id: number;
@@ -1036,21 +1186,31 @@ export declare const DashboardContracts: {
                         currency: string;
                         available: number;
                     };
+                    budgets: {
+                        overview: {
+                            total: number;
+                            totalUsed: number;
+                        };
+                        budgets: {
+                            id: number;
+                            is_active: boolean;
+                            uuid: string;
+                            notes: string | null;
+                            name: string;
+                            currency: string;
+                            budget_period: "monthly" | "quarterly" | "yearly";
+                            start_date: Date;
+                            end_date: Date;
+                            total_amount: number;
+                            used_amount: number;
+                            settings?: any;
+                        }[];
+                    };
                     monthlySummary: {
                         income: number;
                         expenses: number;
                         debts: number;
                         netBalance: number;
-                    };
-                    budgets: {
-                        income: {
-                            active: number;
-                            flexible: number;
-                        };
-                        expenses: {
-                            fixed: number;
-                            flexible: number;
-                        };
                     };
                     savingGoals: {
                         id: number;
@@ -1113,21 +1273,31 @@ export declare const DashboardContracts: {
                         currency: string;
                         available: number;
                     };
+                    budgets: {
+                        overview: {
+                            total: number;
+                            totalUsed: number;
+                        };
+                        budgets: {
+                            id: number;
+                            is_active: boolean;
+                            uuid: string;
+                            notes: string | null;
+                            name: string;
+                            currency: string;
+                            budget_period: "monthly" | "quarterly" | "yearly";
+                            start_date: Date;
+                            end_date: Date;
+                            total_amount: number;
+                            used_amount: number;
+                            settings?: any;
+                        }[];
+                    };
                     monthlySummary: {
                         income: number;
                         expenses: number;
                         debts: number;
                         netBalance: number;
-                    };
-                    budgets: {
-                        income: {
-                            active: number;
-                            flexible: number;
-                        };
-                        expenses: {
-                            fixed: number;
-                            flexible: number;
-                        };
                     };
                     savingGoals: {
                         id: number;
@@ -1190,21 +1360,31 @@ export declare const DashboardContracts: {
                         currency: string;
                         available: number;
                     };
+                    budgets: {
+                        overview: {
+                            total: number;
+                            totalUsed: number;
+                        };
+                        budgets: {
+                            id: number;
+                            is_active: boolean;
+                            uuid: string;
+                            notes: string | null;
+                            name: string;
+                            currency: string;
+                            budget_period: "monthly" | "quarterly" | "yearly";
+                            start_date: Date;
+                            end_date: Date;
+                            total_amount: number;
+                            used_amount: number;
+                            settings?: any;
+                        }[];
+                    };
                     monthlySummary: {
                         income: number;
                         expenses: number;
                         debts: number;
                         netBalance: number;
-                    };
-                    budgets: {
-                        income: {
-                            active: number;
-                            flexible: number;
-                        };
-                        expenses: {
-                            fixed: number;
-                            flexible: number;
-                        };
                     };
                     savingGoals: {
                         id: number;
