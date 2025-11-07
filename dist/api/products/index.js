@@ -16,8 +16,8 @@ export const ProductsContracts = c.router({
             500: ErrorResSchema,
         },
         body: CreateProductSchema,
-        summary: 'Create a new financial product',
-        description: 'Creates a new financial product (admin only)',
+        summary: 'Crear un nuevo producto financiero',
+        description: 'Crea un nuevo producto financiero (solo administrador)',
     },
     // Get all financial products
     getProducts: {
@@ -28,8 +28,8 @@ export const ProductsContracts = c.router({
             500: ErrorResSchema,
         },
         query: GetProductsQuerySchema,
-        summary: 'Get all financial products',
-        description: 'Retrieves all active financial products with optional filtering and search',
+        summary: 'Obtener todos los productos financieros',
+        description: 'Obtiene todos los productos financieros activos con filtrado y búsqueda opcionales',
     },
     // Get products by type
     getProductsByType: {
@@ -47,8 +47,8 @@ export const ProductsContracts = c.router({
             limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
             offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
         }),
-        summary: 'Get products by type',
-        description: 'Retrieves financial products filtered by type',
+        summary: 'Obtener productos por tipo',
+        description: 'Obtiene productos financieros filtrados por tipo',
     },
     // Get products by institution
     getProductsByInstitution: {
@@ -59,14 +59,14 @@ export const ProductsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({
-            institutionId: z.string().regex(/^\d+$/, 'Institution ID must be a valid number').transform((val) => parseInt(val, 10)),
+            institutionId: z.string().regex(/^\d+$/, 'El ID de institución debe ser un número válido').transform((val) => parseInt(val, 10)),
         }),
         query: z.object({
             limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
             offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
         }),
-        summary: 'Get products by institution',
-        description: 'Retrieves financial products for a specific institution',
+        summary: 'Obtener productos por institución',
+        description: 'Obtiene productos financieros para una institución específica',
     },
     // Get spotlight products
     getSpotlightProducts: {
@@ -80,8 +80,8 @@ export const ProductsContracts = c.router({
             limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
             offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
         }),
-        summary: 'Get spotlight products',
-        description: 'Retrieves featured/spotlight financial products',
+        summary: 'Obtener productos destacados',
+        description: 'Obtiene productos financieros destacados',
     },
     // Get products with no annual fee
     getNoAnnualFeeProducts: {
@@ -95,8 +95,8 @@ export const ProductsContracts = c.router({
             limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
             offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
         }),
-        summary: 'Get products with no annual fee',
-        description: 'Retrieves financial products with no annual fee',
+        summary: 'Obtener productos sin tarifa anual',
+        description: 'Obtiene productos financieros sin tarifa anual',
     },
     // Get products by credit score requirement
     getProductsByCreditScore: {
@@ -114,8 +114,8 @@ export const ProductsContracts = c.router({
             limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
             offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
         }),
-        summary: 'Get products by credit score requirement',
-        description: 'Retrieves financial products filtered by credit score requirement',
+        summary: 'Obtener productos por requisito de puntaje de crédito',
+        description: 'Obtiene productos financieros filtrados por requisito de puntaje de crédito',
     },
     // Get my saved products
     getMyProducts: {
@@ -130,8 +130,8 @@ export const ProductsContracts = c.router({
             limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
             offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
         }),
-        summary: 'Get my saved products',
-        description: 'Retrieves products saved by the authenticated user',
+        summary: 'Obtener mis productos guardados',
+        description: 'Obtiene productos guardados por el usuario autenticado',
     },
     // Add product to my products
     addToMyProducts: {
@@ -148,13 +148,13 @@ export const ProductsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({
-            productId: z.string().regex(/^\d+$/, 'Product ID must be a valid number').transform((val) => parseInt(val, 10)),
+            productId: z.string().regex(/^\d+$/, 'El ID de producto debe ser un número válido').transform((val) => parseInt(val, 10)),
         }),
         body: z.object({
             notes: z.string().optional(),
         }).optional(),
-        summary: 'Add product to my products',
-        description: 'Saves a product to the authenticated user\'s product list',
+        summary: 'Agregar producto a mis productos',
+        description: 'Guarda un producto en la lista de productos del usuario autenticado',
     },
     // Remove product from my products
     removeFromMyProducts: {
@@ -169,10 +169,10 @@ export const ProductsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({
-            productId: z.string().regex(/^\d+$/, 'Product ID must be a valid number').transform((val) => parseInt(val, 10)),
+            productId: z.string().regex(/^\d+$/, 'El ID de producto debe ser un número válido').transform((val) => parseInt(val, 10)),
         }),
-        summary: 'Remove product from my products',
-        description: 'Removes a product from the authenticated user\'s product list',
+        summary: 'Eliminar producto de mis productos',
+        description: 'Elimina un producto de la lista de productos del usuario autenticado',
     },
     // Get one financial product (MUST come after all specific routes)
     getProduct: {
@@ -184,10 +184,10 @@ export const ProductsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({
-            id: z.string().regex(/^\d+$/, 'ID must be a valid number').transform((val) => parseInt(val, 10)),
+            id: z.string().regex(/^\d+$/, 'El ID debe ser un número válido').transform((val) => parseInt(val, 10)),
         }),
-        summary: 'Get a specific financial product',
-        description: 'Retrieves a specific financial product by ID',
+        summary: 'Obtener un producto financiero específico',
+        description: 'Obtiene un producto financiero específico por ID',
     },
     // Update financial product
     updateProduct: {
@@ -202,11 +202,11 @@ export const ProductsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({
-            id: z.string().regex(/^\d+$/, 'ID must be a valid number').transform((val) => parseInt(val, 10)),
+            id: z.string().regex(/^\d+$/, 'El ID debe ser un número válido').transform((val) => parseInt(val, 10)),
         }),
         body: UpdateProductSchema,
-        summary: 'Update a financial product',
-        description: 'Updates an existing financial product (admin only)',
+        summary: 'Actualizar un producto financiero',
+        description: 'Actualiza un producto financiero existente (solo administrador)',
     },
     // Delete financial product
     deleteProduct: {
@@ -221,10 +221,10 @@ export const ProductsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({
-            id: z.string().regex(/^\d+$/, 'ID must be a valid number').transform((val) => parseInt(val, 10)),
+            id: z.string().regex(/^\d+$/, 'El ID debe ser un número válido').transform((val) => parseInt(val, 10)),
         }),
-        summary: 'Delete a financial product',
-        description: 'Soft deletes a financial product (admin only)',
+        summary: 'Eliminar un producto financiero',
+        description: 'Elimina suavemente un producto financiero (solo administrador)',
     },
     // Get my connected products
     getMyConnectedProducts: {
@@ -239,7 +239,7 @@ export const ProductsContracts = c.router({
         pathParams: z.object({
             type: ConnectedProductTypeSchema,
         }),
-        summary: 'Get my connected products by type',
-        description: 'Retrieves connected products from bank connections filtered by type',
+        summary: 'Obtener mis productos conectados por tipo',
+        description: 'Obtiene productos conectados de conexiones bancarias filtrados por tipo',
     },
 });

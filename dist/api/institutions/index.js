@@ -16,8 +16,8 @@ export const InstitutionsContracts = c.router({
             500: ErrorResSchema,
         },
         body: CreateInstitutionSchema,
-        summary: 'Create a new financial institution',
-        description: 'Creates a new financial institution (admin only)',
+        summary: 'Crear una nueva institución financiera',
+        description: 'Crea una nueva institución financiera (solo administrador)',
     },
     // Get all financial institutions
     getInstitutions: {
@@ -28,8 +28,8 @@ export const InstitutionsContracts = c.router({
             500: ErrorResSchema,
         },
         query: GetInstitutionsQuerySchema,
-        summary: 'Get all financial institutions',
-        description: 'Retrieves all active financial institutions with optional filtering',
+        summary: 'Obtener todas las instituciones financieras',
+        description: 'Obtiene todas las instituciones financieras activas con filtrado opcional',
     },
     // Get one financial institution
     getInstitution: {
@@ -43,8 +43,8 @@ export const InstitutionsContracts = c.router({
         pathParams: z.object({
             id: z.string().transform((val) => parseInt(val, 10)),
         }),
-        summary: 'Get a specific financial institution',
-        description: 'Retrieves a specific financial institution by ID',
+        summary: 'Obtener una institución financiera específica',
+        description: 'Obtiene una institución financiera específica por ID',
     },
     // Update financial institution
     updateInstitution: {
@@ -62,8 +62,8 @@ export const InstitutionsContracts = c.router({
             id: z.string().transform((val) => parseInt(val, 10)),
         }),
         body: UpdateInstitutionSchema,
-        summary: 'Update a financial institution',
-        description: 'Updates an existing financial institution (admin only)',
+        summary: 'Actualizar una institución financiera',
+        description: 'Actualiza una institución financiera existente (solo administrador)',
     },
     // Delete financial institution
     deleteInstitution: {
@@ -80,8 +80,8 @@ export const InstitutionsContracts = c.router({
         pathParams: z.object({
             id: z.string().transform((val) => parseInt(val, 10)),
         }),
-        summary: 'Delete a financial institution',
-        description: 'Soft deletes a financial institution (admin only)',
+        summary: 'Eliminar una institución financiera',
+        description: 'Elimina suavemente una institución financiera (solo administrador)',
     },
     // Search institutions
     searchInstitutions: {
@@ -96,8 +96,8 @@ export const InstitutionsContracts = c.router({
             limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
             offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
         }),
-        summary: 'Search financial institutions',
-        description: 'Search financial institutions by name',
+        summary: 'Buscar instituciones financieras',
+        description: 'Busca instituciones financieras por nombre',
     },
     // Get institutions by type
     getInstitutionsByType: {
@@ -115,8 +115,8 @@ export const InstitutionsContracts = c.router({
             limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
             offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
         }),
-        summary: 'Get institutions by type',
-        description: 'Retrieves financial institutions filtered by type',
+        summary: 'Obtener instituciones por tipo',
+        description: 'Obtiene instituciones financieras filtradas por tipo',
     },
     // Get institutions with products
     getInstitutionsWithProducts: {
@@ -130,7 +130,7 @@ export const InstitutionsContracts = c.router({
             limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
             offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
         }),
-        summary: 'Get institutions with products',
-        description: 'Retrieves financial institutions that have active products',
+        summary: 'Obtener instituciones con productos',
+        description: 'Obtiene instituciones financieras que tienen productos activos',
     },
 });
