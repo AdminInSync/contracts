@@ -1,8 +1,8 @@
 import { z } from 'zod';
 export declare const ProductsContracts: {
     createProduct: {
-        summary: "Create a new financial product";
-        description: "Creates a new financial product (admin only)";
+        summary: "Crear un nuevo producto financiero";
+        description: "Crea un nuevo producto financiero (solo administrador)";
         method: "POST";
         body: z.ZodObject<{
             name: z.ZodString;
@@ -295,8 +295,8 @@ export declare const ProductsContracts: {
             credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
             is_spotlight?: string | undefined;
         }>;
-        summary: "Get all financial products";
-        description: "Retrieves all active financial products with optional filtering and search";
+        summary: "Obtener todos los productos financieros";
+        description: "Obtiene todos los productos financieros activos con filtrado y búsqueda opcionales";
         method: "GET";
         path: "/products";
         responses: {
@@ -516,8 +516,8 @@ export declare const ProductsContracts: {
             limit?: string | undefined;
             offset?: string | undefined;
         }>;
-        summary: "Get products by type";
-        description: "Retrieves financial products filtered by type";
+        summary: "Obtener productos por tipo";
+        description: "Obtiene productos financieros filtrados por tipo";
         method: "GET";
         path: "/products/type/:type";
         responses: {
@@ -750,8 +750,8 @@ export declare const ProductsContracts: {
             limit?: string | undefined;
             offset?: string | undefined;
         }>;
-        summary: "Get products by institution";
-        description: "Retrieves financial products for a specific institution";
+        summary: "Obtener productos por institución";
+        description: "Obtiene productos financieros para una institución específica";
         method: "GET";
         path: "/products/institution/:institutionId";
         responses: {
@@ -964,8 +964,8 @@ export declare const ProductsContracts: {
             limit?: string | undefined;
             offset?: string | undefined;
         }>;
-        summary: "Get spotlight products";
-        description: "Retrieves featured/spotlight financial products";
+        summary: "Obtener productos destacados";
+        description: "Obtiene productos financieros destacados";
         method: "GET";
         path: "/products/spotlight";
         responses: {
@@ -1178,8 +1178,8 @@ export declare const ProductsContracts: {
             limit?: string | undefined;
             offset?: string | undefined;
         }>;
-        summary: "Get products with no annual fee";
-        description: "Retrieves financial products with no annual fee";
+        summary: "Obtener productos sin tarifa anual";
+        description: "Obtiene productos financieros sin tarifa anual";
         method: "GET";
         path: "/products/no-annual-fee";
         responses: {
@@ -1399,8 +1399,8 @@ export declare const ProductsContracts: {
             limit?: string | undefined;
             offset?: string | undefined;
         }>;
-        summary: "Get products by credit score requirement";
-        description: "Retrieves financial products filtered by credit score requirement";
+        summary: "Obtener productos por requisito de puntaje de crédito";
+        description: "Obtiene productos financieros filtrados por requisito de puntaje de crédito";
         method: "GET";
         path: "/products/credit-score/:requirement";
         responses: {
@@ -1626,8 +1626,8 @@ export declare const ProductsContracts: {
             limit?: string | undefined;
             offset?: string | undefined;
         }>;
-        summary: "Get my saved products";
-        description: "Retrieves products saved by the authenticated user";
+        summary: "Obtener mis productos guardados";
+        description: "Obtiene productos guardados por el usuario autenticado";
         method: "GET";
         path: "/products/all-my-products/";
         responses: {
@@ -1850,8 +1850,8 @@ export declare const ProductsContracts: {
         }, {
             productId: string;
         }>;
-        summary: "Add product to my products";
-        description: "Saves a product to the authenticated user's product list";
+        summary: "Agregar producto a mis productos";
+        description: "Guarda un producto en la lista de productos del usuario autenticado";
         method: "POST";
         body: z.ZodOptional<z.ZodObject<{
             notes: z.ZodOptional<z.ZodString>;
@@ -1944,8 +1944,8 @@ export declare const ProductsContracts: {
         }, {
             productId: string;
         }>;
-        summary: "Remove product from my products";
-        description: "Removes a product from the authenticated user's product list";
+        summary: "Eliminar producto de mis productos";
+        description: "Elimina un producto de la lista de productos del usuario autenticado";
         method: "DELETE";
         path: "/products/my-products/:productId";
         responses: {
@@ -2005,8 +2005,8 @@ export declare const ProductsContracts: {
         }, {
             id: string;
         }>;
-        summary: "Get a specific financial product";
-        description: "Retrieves a specific financial product by ID";
+        summary: "Obtener un producto financiero específico";
+        description: "Obtiene un producto financiero específico por ID";
         method: "GET";
         path: "/products/:id";
         responses: {
@@ -2206,8 +2206,8 @@ export declare const ProductsContracts: {
         }, {
             id: string;
         }>;
-        summary: "Update a financial product";
-        description: "Updates an existing financial product (admin only)";
+        summary: "Actualizar un producto financiero";
+        description: "Actualiza un producto financiero existente (solo administrador)";
         method: "PUT";
         body: z.ZodObject<{
             name: z.ZodOptional<z.ZodString>;
@@ -2495,8 +2495,8 @@ export declare const ProductsContracts: {
         }, {
             id: string;
         }>;
-        summary: "Delete a financial product";
-        description: "Soft deletes a financial product (admin only)";
+        summary: "Eliminar un producto financiero";
+        description: "Elimina suavemente un producto financiero (solo administrador)";
         method: "DELETE";
         path: "/products/:id";
         responses: {
@@ -2556,8 +2556,8 @@ export declare const ProductsContracts: {
         }, {
             type: "accounts" | "cards" | "loans" | "financial-certificate";
         }>;
-        summary: "Get my connected products by type";
-        description: "Retrieves connected products from bank connections filtered by type";
+        summary: "Obtener mis productos conectados por tipo";
+        description: "Obtiene productos conectados de conexiones bancarias filtrados por tipo";
         method: "GET";
         path: "/products/my-products/connected/:type";
         responses: {

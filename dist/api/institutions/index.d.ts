@@ -1,8 +1,8 @@
 import { z } from 'zod';
 export declare const InstitutionsContracts: {
     createInstitution: {
-        summary: "Create a new financial institution";
-        description: "Creates a new financial institution (admin only)";
+        summary: "Crear una nueva institución financiera";
+        description: "Crea una nueva institución financiera (solo administrador)";
         method: "POST";
         body: z.ZodObject<{
             name: z.ZodString;
@@ -231,8 +231,8 @@ export declare const InstitutionsContracts: {
             country?: string | undefined;
             region?: string | undefined;
         }>;
-        summary: "Get all financial institutions";
-        description: "Retrieves all active financial institutions with optional filtering";
+        summary: "Obtener todas las instituciones financieras";
+        description: "Obtiene todas las instituciones financieras activas con filtrado opcional";
         method: "GET";
         path: "/institutions";
         responses: {
@@ -402,8 +402,8 @@ export declare const InstitutionsContracts: {
         }, {
             id: string;
         }>;
-        summary: "Get a specific financial institution";
-        description: "Retrieves a specific financial institution by ID";
+        summary: "Obtener una institución financiera específica";
+        description: "Obtiene una institución financiera específica por ID";
         method: "GET";
         path: "/institutions/:id";
         responses: {
@@ -563,8 +563,8 @@ export declare const InstitutionsContracts: {
         }, {
             id: string;
         }>;
-        summary: "Update a financial institution";
-        description: "Updates an existing financial institution (admin only)";
+        summary: "Actualizar una institución financiera";
+        description: "Actualiza una institución financiera existente (solo administrador)";
         method: "PUT";
         body: z.ZodObject<{
             name: z.ZodOptional<z.ZodString>;
@@ -791,8 +791,8 @@ export declare const InstitutionsContracts: {
         }, {
             id: string;
         }>;
-        summary: "Delete a financial institution";
-        description: "Soft deletes a financial institution (admin only)";
+        summary: "Eliminar una institución financiera";
+        description: "Elimina suavemente una institución financiera (solo administrador)";
         method: "DELETE";
         path: "/institutions/:id";
         responses: {
@@ -858,8 +858,8 @@ export declare const InstitutionsContracts: {
             limit?: string | undefined;
             offset?: string | undefined;
         }>;
-        summary: "Search financial institutions";
-        description: "Search financial institutions by name";
+        summary: "Buscar instituciones financieras";
+        description: "Busca instituciones financieras por nombre";
         method: "GET";
         path: "/institutions/search";
         responses: {
@@ -1039,8 +1039,8 @@ export declare const InstitutionsContracts: {
             limit?: string | undefined;
             offset?: string | undefined;
         }>;
-        summary: "Get institutions by type";
-        description: "Retrieves financial institutions filtered by type";
+        summary: "Obtener instituciones por tipo";
+        description: "Obtiene instituciones financieras filtradas por tipo";
         method: "GET";
         path: "/institutions/type/:type";
         responses: {
@@ -1226,8 +1226,8 @@ export declare const InstitutionsContracts: {
             limit?: string | undefined;
             offset?: string | undefined;
         }>;
-        summary: "Get institutions with products";
-        description: "Retrieves financial institutions that have active products";
+        summary: "Obtener instituciones con productos";
+        description: "Obtiene instituciones financieras que tienen productos activos";
         method: "GET";
         path: "/institutions/with-products";
         responses: {

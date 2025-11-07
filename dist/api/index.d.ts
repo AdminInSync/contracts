@@ -692,8 +692,8 @@ export declare const ApiContracts: {
     Devices: {
         createDevice: {
             strictStatusCodes: true;
-            summary: "Create new device";
-            description: "Create a new device for the authenticated user";
+            summary: "Crear nuevo dispositivo";
+            description: "Crea un nuevo dispositivo para el usuario autenticado";
             method: "POST";
             body: import("zod").ZodObject<{
                 user_uid: import("zod").ZodString;
@@ -798,8 +798,8 @@ export declare const ApiContracts: {
             }, {
                 device_unique_id?: string | undefined;
             }>;
-            summary: "Get user devices";
-            description: "Get all devices for the authenticated user with optional filtering by device ID";
+            summary: "Obtener dispositivos del usuario";
+            description: "Obtiene todos los dispositivos del usuario autenticado con filtrado opcional por ID de dispositivo";
             method: "GET";
             path: "/api/devices/";
             responses: {
@@ -874,8 +874,8 @@ export declare const ApiContracts: {
         };
         createDevicePreferences: {
             strictStatusCodes: true;
-            summary: "Create device preferences";
-            description: "Create preferences for a specific device";
+            summary: "Crear preferencias de dispositivo";
+            description: "Crea preferencias para un dispositivo específico";
             method: "POST";
             body: import("zod").ZodObject<{
                 device_unique_id: import("zod").ZodString;
@@ -1041,8 +1041,8 @@ export declare const ApiContracts: {
             }, {
                 device_id?: string | undefined;
             }>;
-            summary: "Get device preferences";
-            description: "Get all device preferences for the authenticated user with optional filtering by device ID";
+            summary: "Obtener preferencias de dispositivo";
+            description: "Obtiene todas las preferencias de dispositivo del usuario autenticado con filtrado opcional por ID de dispositivo";
             method: "GET";
             path: "/api/devices/preferences";
             responses: {
@@ -1161,8 +1161,8 @@ export declare const ApiContracts: {
             }, {
                 id: string;
             }>;
-            summary: "Update device preferences";
-            description: "Update preferences for a specific device";
+            summary: "Actualizar preferencias de dispositivo";
+            description: "Actualiza preferencias para un dispositivo específico";
             method: "PUT";
             body: import("zod").ZodObject<{
                 arePushNotificationsEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
@@ -1308,8 +1308,8 @@ export declare const ApiContracts: {
         };
         updateNotificationToken: {
             strictStatusCodes: true;
-            summary: "Update notification token";
-            description: "Update the FCM notification token for a specific device";
+            summary: "Actualizar token de notificación";
+            description: "Actualiza el token de notificación FCM para un dispositivo específico";
             method: "PUT";
             body: import("zod").ZodObject<{
                 device_unique_id: import("zod").ZodString;
@@ -1522,8 +1522,8 @@ export declare const ApiContracts: {
     };
     SavingGoals: {
         createSavingGoal: {
-            summary: "Create a new saving goal";
-            description: "Creates a new saving goal for the authenticated user";
+            summary: "Crear una nueva meta de ahorro";
+            description: "Crea una nueva meta de ahorro para el usuario autenticado";
             method: "POST";
             body: import("zod").ZodObject<{
                 name: import("zod").ZodString;
@@ -1734,8 +1734,8 @@ export declare const ApiContracts: {
                 is_public?: boolean | undefined;
                 offset?: number | undefined;
             }>;
-            summary: "Get all saving goals";
-            description: "Retrieves all saving goals for the authenticated user with optional filtering";
+            summary: "Obtener todas las metas de ahorro";
+            description: "Obtiene todas las metas de ahorro del usuario autenticado con filtrado opcional";
             method: "GET";
             path: "/api/saving-goals";
             responses: {
@@ -1904,8 +1904,8 @@ export declare const ApiContracts: {
             }, {
                 id: number;
             }>;
-            summary: "Get a specific saving goal";
-            description: "Retrieves a specific saving goal by ID";
+            summary: "Obtener una meta de ahorro específica";
+            description: "Obtiene una meta de ahorro específica por ID";
             method: "GET";
             path: "/api/get-saving-goals-by-id/:id/";
             responses: {
@@ -2064,8 +2064,8 @@ export declare const ApiContracts: {
             }, {
                 id: number;
             }>;
-            summary: "Update a saving goal";
-            description: "Updates an existing saving goal";
+            summary: "Actualizar una meta de ahorro";
+            description: "Actualiza una meta de ahorro existente";
             method: "PUT";
             body: import("zod").ZodObject<{
                 name: import("zod").ZodOptional<import("zod").ZodString>;
@@ -2277,8 +2277,8 @@ export declare const ApiContracts: {
             }, {
                 id: number;
             }>;
-            summary: "Update saving goal progress";
-            description: "Updates the current amount of a saving goal";
+            summary: "Actualizar progreso de meta de ahorro";
+            description: "Actualiza el monto actual de una meta de ahorro";
             method: "PATCH";
             body: import("zod").ZodObject<{
                 current_amount: import("zod").ZodNumber;
@@ -2457,8 +2457,8 @@ export declare const ApiContracts: {
             }, {
                 id: number;
             }>;
-            summary: "Delete a saving goal";
-            description: "Soft deletes a saving goal";
+            summary: "Eliminar una meta de ahorro";
+            description: "Elimina suavemente una meta de ahorro";
             method: "DELETE";
             path: "/api/delete-saving-goals-by-id/:id/soft/";
             responses: {
@@ -2522,8 +2522,8 @@ export declare const ApiContracts: {
                 limit?: number | undefined;
                 offset?: number | undefined;
             }>;
-            summary: "Get public saving goals";
-            description: "Retrieves public saving goals from all users";
+            summary: "Obtener metas de ahorro públicas";
+            description: "Obtiene metas de ahorro públicas de todos los usuarios";
             method: "GET";
             path: "/api/get-saving-goals-public/";
             responses: {
@@ -2679,8 +2679,8 @@ export declare const ApiContracts: {
             }, {
                 days?: number | undefined;
             }>;
-            summary: "Get goals due soon";
-            description: "Retrieves saving goals that are due within the specified number of days";
+            summary: "Obtener metas próximas a vencer";
+            description: "Obtiene metas de ahorro que vencen dentro del número de días especificado";
             method: "GET";
             path: "/api/get-saving-goals-due-soon/";
             responses: {
@@ -2844,8 +2844,8 @@ export declare const ApiContracts: {
     };
     Institutions: {
         createInstitution: {
-            summary: "Create a new financial institution";
-            description: "Creates a new financial institution (admin only)";
+            summary: "Crear una nueva institución financiera";
+            description: "Crea una nueva institución financiera (solo administrador)";
             method: "POST";
             body: import("zod").ZodObject<{
                 name: import("zod").ZodString;
@@ -3075,8 +3075,8 @@ export declare const ApiContracts: {
                 country?: string | undefined;
                 region?: string | undefined;
             }>;
-            summary: "Get all financial institutions";
-            description: "Retrieves all active financial institutions with optional filtering";
+            summary: "Obtener todas las instituciones financieras";
+            description: "Obtiene todas las instituciones financieras activas con filtrado opcional";
             method: "GET";
             path: "/api/institutions";
             responses: {
@@ -3247,8 +3247,8 @@ export declare const ApiContracts: {
             }, {
                 id: string;
             }>;
-            summary: "Get a specific financial institution";
-            description: "Retrieves a specific financial institution by ID";
+            summary: "Obtener una institución financiera específica";
+            description: "Obtiene una institución financiera específica por ID";
             method: "GET";
             path: "/api/institutions/:id";
             responses: {
@@ -3409,8 +3409,8 @@ export declare const ApiContracts: {
             }, {
                 id: string;
             }>;
-            summary: "Update a financial institution";
-            description: "Updates an existing financial institution (admin only)";
+            summary: "Actualizar una institución financiera";
+            description: "Actualiza una institución financiera existente (solo administrador)";
             method: "PUT";
             body: import("zod").ZodObject<{
                 name: import("zod").ZodOptional<import("zod").ZodString>;
@@ -3638,8 +3638,8 @@ export declare const ApiContracts: {
             }, {
                 id: string;
             }>;
-            summary: "Delete a financial institution";
-            description: "Soft deletes a financial institution (admin only)";
+            summary: "Eliminar una institución financiera";
+            description: "Elimina suavemente una institución financiera (solo administrador)";
             method: "DELETE";
             path: "/api/institutions/:id";
             responses: {
@@ -3706,8 +3706,8 @@ export declare const ApiContracts: {
                 limit?: string | undefined;
                 offset?: string | undefined;
             }>;
-            summary: "Search financial institutions";
-            description: "Search financial institutions by name";
+            summary: "Buscar instituciones financieras";
+            description: "Busca instituciones financieras por nombre";
             method: "GET";
             path: "/api/institutions/search";
             responses: {
@@ -3888,8 +3888,8 @@ export declare const ApiContracts: {
                 limit?: string | undefined;
                 offset?: string | undefined;
             }>;
-            summary: "Get institutions by type";
-            description: "Retrieves financial institutions filtered by type";
+            summary: "Obtener instituciones por tipo";
+            description: "Obtiene instituciones financieras filtradas por tipo";
             method: "GET";
             path: "/api/institutions/type/:type";
             responses: {
@@ -4076,8 +4076,8 @@ export declare const ApiContracts: {
                 limit?: string | undefined;
                 offset?: string | undefined;
             }>;
-            summary: "Get institutions with products";
-            description: "Retrieves financial institutions that have active products";
+            summary: "Obtener instituciones con productos";
+            description: "Obtiene instituciones financieras que tienen productos activos";
             method: "GET";
             path: "/api/institutions/with-products";
             responses: {
@@ -4243,8 +4243,8 @@ export declare const ApiContracts: {
     };
     Products: {
         createProduct: {
-            summary: "Create a new financial product";
-            description: "Creates a new financial product (admin only)";
+            summary: "Crear un nuevo producto financiero";
+            description: "Crea un nuevo producto financiero (solo administrador)";
             method: "POST";
             body: import("zod").ZodObject<{
                 name: import("zod").ZodString;
@@ -4538,8 +4538,8 @@ export declare const ApiContracts: {
                 credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
                 is_spotlight?: string | undefined;
             }>;
-            summary: "Get all financial products";
-            description: "Retrieves all active financial products with optional filtering and search";
+            summary: "Obtener todos los productos financieros";
+            description: "Obtiene todos los productos financieros activos con filtrado y búsqueda opcionales";
             method: "GET";
             path: "/api/products";
             responses: {
@@ -4760,8 +4760,8 @@ export declare const ApiContracts: {
                 limit?: string | undefined;
                 offset?: string | undefined;
             }>;
-            summary: "Get products by type";
-            description: "Retrieves financial products filtered by type";
+            summary: "Obtener productos por tipo";
+            description: "Obtiene productos financieros filtrados por tipo";
             method: "GET";
             path: "/api/products/type/:type";
             responses: {
@@ -4995,8 +4995,8 @@ export declare const ApiContracts: {
                 limit?: string | undefined;
                 offset?: string | undefined;
             }>;
-            summary: "Get products by institution";
-            description: "Retrieves financial products for a specific institution";
+            summary: "Obtener productos por institución";
+            description: "Obtiene productos financieros para una institución específica";
             method: "GET";
             path: "/api/products/institution/:institutionId";
             responses: {
@@ -5210,8 +5210,8 @@ export declare const ApiContracts: {
                 limit?: string | undefined;
                 offset?: string | undefined;
             }>;
-            summary: "Get spotlight products";
-            description: "Retrieves featured/spotlight financial products";
+            summary: "Obtener productos destacados";
+            description: "Obtiene productos financieros destacados";
             method: "GET";
             path: "/api/products/spotlight";
             responses: {
@@ -5425,8 +5425,8 @@ export declare const ApiContracts: {
                 limit?: string | undefined;
                 offset?: string | undefined;
             }>;
-            summary: "Get products with no annual fee";
-            description: "Retrieves financial products with no annual fee";
+            summary: "Obtener productos sin tarifa anual";
+            description: "Obtiene productos financieros sin tarifa anual";
             method: "GET";
             path: "/api/products/no-annual-fee";
             responses: {
@@ -5647,8 +5647,8 @@ export declare const ApiContracts: {
                 limit?: string | undefined;
                 offset?: string | undefined;
             }>;
-            summary: "Get products by credit score requirement";
-            description: "Retrieves financial products filtered by credit score requirement";
+            summary: "Obtener productos por requisito de puntaje de crédito";
+            description: "Obtiene productos financieros filtrados por requisito de puntaje de crédito";
             method: "GET";
             path: "/api/products/credit-score/:requirement";
             responses: {
@@ -5875,8 +5875,8 @@ export declare const ApiContracts: {
                 limit?: string | undefined;
                 offset?: string | undefined;
             }>;
-            summary: "Get my saved products";
-            description: "Retrieves products saved by the authenticated user";
+            summary: "Obtener mis productos guardados";
+            description: "Obtiene productos guardados por el usuario autenticado";
             method: "GET";
             path: "/api/products/all-my-products/";
             responses: {
@@ -6100,8 +6100,8 @@ export declare const ApiContracts: {
             }, {
                 productId: string;
             }>;
-            summary: "Add product to my products";
-            description: "Saves a product to the authenticated user's product list";
+            summary: "Agregar producto a mis productos";
+            description: "Guarda un producto en la lista de productos del usuario autenticado";
             method: "POST";
             body: import("zod").ZodOptional<import("zod").ZodObject<{
                 notes: import("zod").ZodOptional<import("zod").ZodString>;
@@ -6195,8 +6195,8 @@ export declare const ApiContracts: {
             }, {
                 productId: string;
             }>;
-            summary: "Remove product from my products";
-            description: "Removes a product from the authenticated user's product list";
+            summary: "Eliminar producto de mis productos";
+            description: "Elimina un producto de la lista de productos del usuario autenticado";
             method: "DELETE";
             path: "/api/products/my-products/:productId";
             responses: {
@@ -6257,8 +6257,8 @@ export declare const ApiContracts: {
             }, {
                 id: string;
             }>;
-            summary: "Get a specific financial product";
-            description: "Retrieves a specific financial product by ID";
+            summary: "Obtener un producto financiero específico";
+            description: "Obtiene un producto financiero específico por ID";
             method: "GET";
             path: "/api/products/:id";
             responses: {
@@ -6459,8 +6459,8 @@ export declare const ApiContracts: {
             }, {
                 id: string;
             }>;
-            summary: "Update a financial product";
-            description: "Updates an existing financial product (admin only)";
+            summary: "Actualizar un producto financiero";
+            description: "Actualiza un producto financiero existente (solo administrador)";
             method: "PUT";
             body: import("zod").ZodObject<{
                 name: import("zod").ZodOptional<import("zod").ZodString>;
@@ -6749,8 +6749,8 @@ export declare const ApiContracts: {
             }, {
                 id: string;
             }>;
-            summary: "Delete a financial product";
-            description: "Soft deletes a financial product (admin only)";
+            summary: "Eliminar un producto financiero";
+            description: "Elimina suavemente un producto financiero (solo administrador)";
             method: "DELETE";
             path: "/api/products/:id";
             responses: {
@@ -6811,8 +6811,8 @@ export declare const ApiContracts: {
             }, {
                 type: "accounts" | "cards" | "loans" | "financial-certificate";
             }>;
-            summary: "Get my connected products by type";
-            description: "Retrieves connected products from bank connections filtered by type";
+            summary: "Obtener mis productos conectados por tipo";
+            description: "Obtiene productos conectados de conexiones bancarias filtrados por tipo";
             method: "GET";
             path: "/api/products/my-products/connected/:type";
             responses: {
@@ -10342,8 +10342,8 @@ export declare const ApiContracts: {
     };
     Budgets: {
         createBudget: {
-            summary: "Create a new budget";
-            description: "Creates a new budget for the authenticated user";
+            summary: "Crear un nuevo presupuesto";
+            description: "Crea un nuevo presupuesto para el usuario autenticado";
             method: "POST";
             body: import("zod").ZodEffects<import("zod").ZodObject<{
                 name: import("zod").ZodString;
@@ -10552,8 +10552,8 @@ export declare const ApiContracts: {
                 offset?: string | undefined;
                 budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
             }>;
-            summary: "Get all budgets";
-            description: "Retrieves all budgets for the authenticated user with optional filtering";
+            summary: "Obtener todos los presupuestos";
+            description: "Obtiene todos los presupuestos del usuario autenticado con filtrado opcional";
             method: "GET";
             path: "/api/budgets";
             responses: {
@@ -10712,8 +10712,8 @@ export declare const ApiContracts: {
             }, {
                 id: string;
             }>;
-            summary: "Get a specific budget";
-            description: "Retrieves a specific budget by ID for the authenticated user";
+            summary: "Obtener un presupuesto específico";
+            description: "Obtiene un presupuesto específico por ID para el usuario autenticado";
             method: "GET";
             path: "/api/budgets/:id";
             responses: {
@@ -10862,8 +10862,8 @@ export declare const ApiContracts: {
             }, {
                 id: string;
             }>;
-            summary: "Update a budget";
-            description: "Updates an existing budget for the authenticated user";
+            summary: "Actualizar un presupuesto";
+            description: "Actualiza un presupuesto existente para el usuario autenticado";
             method: "PUT";
             body: import("zod").ZodObject<{
                 name: import("zod").ZodOptional<import("zod").ZodString>;
@@ -11056,8 +11056,8 @@ export declare const ApiContracts: {
             }, {
                 id: string;
             }>;
-            summary: "Delete a budget";
-            description: "Soft deletes a budget for the authenticated user";
+            summary: "Eliminar un presupuesto";
+            description: "Elimina suavemente un presupuesto para el usuario autenticado";
             method: "DELETE";
             path: "/api/budgets/:id";
             responses: {
@@ -11121,8 +11121,8 @@ export declare const ApiContracts: {
                 limit?: string | undefined;
                 offset?: string | undefined;
             }>;
-            summary: "Get active budgets";
-            description: "Retrieves all active budgets for the authenticated user";
+            summary: "Obtener presupuestos activos";
+            description: "Obtiene todos los presupuestos activos para el usuario autenticado";
             method: "GET";
             path: "/api/budgets/active";
             responses: {
@@ -11291,8 +11291,8 @@ export declare const ApiContracts: {
                 limit?: string | undefined;
                 offset?: string | undefined;
             }>;
-            summary: "Get budgets by period";
-            description: "Retrieves budgets filtered by budget period for the authenticated user";
+            summary: "Obtener presupuestos por período";
+            description: "Obtiene presupuestos filtrados por período para el usuario autenticado";
             method: "GET";
             path: "/api/budgets/period/:period";
             responses: {
@@ -11464,8 +11464,8 @@ export declare const ApiContracts: {
             }, {
                 id: string;
             }>;
-            summary: "Update budget used amount";
-            description: "Updates the used amount for a specific budget";
+            summary: "Actualizar monto usado del presupuesto";
+            description: "Actualiza el monto usado para un presupuesto específico";
             method: "PATCH";
             body: import("zod").ZodObject<{
                 used_amount: import("zod").ZodNumber;
