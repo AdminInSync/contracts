@@ -86,6 +86,7 @@ export const ConnectedProductMetadataSchema = z.object({
     utilization: z.number().nullable(),
     next_payment: z.string().nullable(),
     minimum_payment: z.number().nullable(),
+    monthly_payment: z.number().nullable(),
     remaining_payments: z.number().nullable(),
     progress: z.number().nullable(),
     annual_rate: z.string().nullable(),
@@ -107,6 +108,9 @@ export const ConnectedProductSchema = z.object({
     currency: z.string(),
 });
 export const ConnectedProductsSummarySchema = z.object({
+    pending_balance: z.number().optional(),
+    initial_debt: z.number().optional(),
+    monthly_payment: z.number().optional(),
     total_balance: z.number().optional(),
     monthly_change: z.number().optional(),
     active_count: z.number(),
