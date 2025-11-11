@@ -6820,15 +6820,24 @@ export declare const ApiContracts: {
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         summary: import("zod").ZodOptional<import("zod").ZodObject<{
+                            pending_balance: import("zod").ZodOptional<import("zod").ZodNumber>;
+                            initial_debt: import("zod").ZodOptional<import("zod").ZodNumber>;
+                            monthly_payment: import("zod").ZodOptional<import("zod").ZodNumber>;
                             total_balance: import("zod").ZodOptional<import("zod").ZodNumber>;
                             monthly_change: import("zod").ZodOptional<import("zod").ZodNumber>;
                             active_count: import("zod").ZodNumber;
                         }, "strip", import("zod").ZodTypeAny, {
                             active_count: number;
+                            monthly_payment?: number | undefined;
+                            pending_balance?: number | undefined;
+                            initial_debt?: number | undefined;
                             total_balance?: number | undefined;
                             monthly_change?: number | undefined;
                         }, {
                             active_count: number;
+                            monthly_payment?: number | undefined;
+                            pending_balance?: number | undefined;
+                            initial_debt?: number | undefined;
                             total_balance?: number | undefined;
                             monthly_change?: number | undefined;
                         }>>;
@@ -6856,6 +6865,7 @@ export declare const ApiContracts: {
                                 utilization: import("zod").ZodNullable<import("zod").ZodNumber>;
                                 next_payment: import("zod").ZodNullable<import("zod").ZodString>;
                                 minimum_payment: import("zod").ZodNullable<import("zod").ZodNumber>;
+                                monthly_payment: import("zod").ZodNullable<import("zod").ZodNumber>;
                                 remaining_payments: import("zod").ZodNullable<import("zod").ZodNumber>;
                                 progress: import("zod").ZodNullable<import("zod").ZodNumber>;
                                 annual_rate: import("zod").ZodNullable<import("zod").ZodString>;
@@ -6867,6 +6877,7 @@ export declare const ApiContracts: {
                                 utilization: number | null;
                                 next_payment: string | null;
                                 minimum_payment: number | null;
+                                monthly_payment: number | null;
                                 remaining_payments: number | null;
                                 progress: number | null;
                                 annual_rate: string | null;
@@ -6878,6 +6889,7 @@ export declare const ApiContracts: {
                                 utilization: number | null;
                                 next_payment: string | null;
                                 minimum_payment: number | null;
+                                monthly_payment: number | null;
                                 remaining_payments: number | null;
                                 progress: number | null;
                                 annual_rate: string | null;
@@ -6895,6 +6907,7 @@ export declare const ApiContracts: {
                                 utilization: number | null;
                                 next_payment: string | null;
                                 minimum_payment: number | null;
+                                monthly_payment: number | null;
                                 remaining_payments: number | null;
                                 progress: number | null;
                                 annual_rate: string | null;
@@ -6921,6 +6934,7 @@ export declare const ApiContracts: {
                                 utilization: number | null;
                                 next_payment: string | null;
                                 minimum_payment: number | null;
+                                monthly_payment: number | null;
                                 remaining_payments: number | null;
                                 progress: number | null;
                                 annual_rate: string | null;
@@ -6949,6 +6963,7 @@ export declare const ApiContracts: {
                                 utilization: number | null;
                                 next_payment: string | null;
                                 minimum_payment: number | null;
+                                monthly_payment: number | null;
                                 remaining_payments: number | null;
                                 progress: number | null;
                                 annual_rate: string | null;
@@ -6971,6 +6986,9 @@ export declare const ApiContracts: {
                         }[];
                         summary?: {
                             active_count: number;
+                            monthly_payment?: number | undefined;
+                            pending_balance?: number | undefined;
+                            initial_debt?: number | undefined;
                             total_balance?: number | undefined;
                             monthly_change?: number | undefined;
                         } | undefined;
@@ -6982,6 +7000,7 @@ export declare const ApiContracts: {
                                 utilization: number | null;
                                 next_payment: string | null;
                                 minimum_payment: number | null;
+                                monthly_payment: number | null;
                                 remaining_payments: number | null;
                                 progress: number | null;
                                 annual_rate: string | null;
@@ -7004,6 +7023,9 @@ export declare const ApiContracts: {
                         }[];
                         summary?: {
                             active_count: number;
+                            monthly_payment?: number | undefined;
+                            pending_balance?: number | undefined;
+                            initial_debt?: number | undefined;
                             total_balance?: number | undefined;
                             monthly_change?: number | undefined;
                         } | undefined;
@@ -7018,6 +7040,7 @@ export declare const ApiContracts: {
                                 utilization: number | null;
                                 next_payment: string | null;
                                 minimum_payment: number | null;
+                                monthly_payment: number | null;
                                 remaining_payments: number | null;
                                 progress: number | null;
                                 annual_rate: string | null;
@@ -7040,6 +7063,9 @@ export declare const ApiContracts: {
                         }[];
                         summary?: {
                             active_count: number;
+                            monthly_payment?: number | undefined;
+                            pending_balance?: number | undefined;
+                            initial_debt?: number | undefined;
                             total_balance?: number | undefined;
                             monthly_change?: number | undefined;
                         } | undefined;
@@ -7054,6 +7080,7 @@ export declare const ApiContracts: {
                                 utilization: number | null;
                                 next_payment: string | null;
                                 minimum_payment: number | null;
+                                monthly_payment: number | null;
                                 remaining_payments: number | null;
                                 progress: number | null;
                                 annual_rate: string | null;
@@ -7076,6 +7103,9 @@ export declare const ApiContracts: {
                         }[];
                         summary?: {
                             active_count: number;
+                            monthly_payment?: number | undefined;
+                            pending_balance?: number | undefined;
+                            initial_debt?: number | undefined;
                             total_balance?: number | undefined;
                             monthly_change?: number | undefined;
                         } | undefined;

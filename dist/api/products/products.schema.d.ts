@@ -580,6 +580,7 @@ export declare const ConnectedProductMetadataSchema: z.ZodObject<{
     utilization: z.ZodNullable<z.ZodNumber>;
     next_payment: z.ZodNullable<z.ZodString>;
     minimum_payment: z.ZodNullable<z.ZodNumber>;
+    monthly_payment: z.ZodNullable<z.ZodNumber>;
     remaining_payments: z.ZodNullable<z.ZodNumber>;
     progress: z.ZodNullable<z.ZodNumber>;
     annual_rate: z.ZodNullable<z.ZodString>;
@@ -591,6 +592,7 @@ export declare const ConnectedProductMetadataSchema: z.ZodObject<{
     utilization: number | null;
     next_payment: string | null;
     minimum_payment: number | null;
+    monthly_payment: number | null;
     remaining_payments: number | null;
     progress: number | null;
     annual_rate: string | null;
@@ -602,6 +604,7 @@ export declare const ConnectedProductMetadataSchema: z.ZodObject<{
     utilization: number | null;
     next_payment: string | null;
     minimum_payment: number | null;
+    monthly_payment: number | null;
     remaining_payments: number | null;
     progress: number | null;
     annual_rate: string | null;
@@ -634,6 +637,7 @@ export declare const ConnectedProductSchema: z.ZodObject<{
         utilization: z.ZodNullable<z.ZodNumber>;
         next_payment: z.ZodNullable<z.ZodString>;
         minimum_payment: z.ZodNullable<z.ZodNumber>;
+        monthly_payment: z.ZodNullable<z.ZodNumber>;
         remaining_payments: z.ZodNullable<z.ZodNumber>;
         progress: z.ZodNullable<z.ZodNumber>;
         annual_rate: z.ZodNullable<z.ZodString>;
@@ -645,6 +649,7 @@ export declare const ConnectedProductSchema: z.ZodObject<{
         utilization: number | null;
         next_payment: string | null;
         minimum_payment: number | null;
+        monthly_payment: number | null;
         remaining_payments: number | null;
         progress: number | null;
         annual_rate: string | null;
@@ -656,6 +661,7 @@ export declare const ConnectedProductSchema: z.ZodObject<{
         utilization: number | null;
         next_payment: string | null;
         minimum_payment: number | null;
+        monthly_payment: number | null;
         remaining_payments: number | null;
         progress: number | null;
         annual_rate: string | null;
@@ -673,6 +679,7 @@ export declare const ConnectedProductSchema: z.ZodObject<{
         utilization: number | null;
         next_payment: string | null;
         minimum_payment: number | null;
+        monthly_payment: number | null;
         remaining_payments: number | null;
         progress: number | null;
         annual_rate: string | null;
@@ -699,6 +706,7 @@ export declare const ConnectedProductSchema: z.ZodObject<{
         utilization: number | null;
         next_payment: string | null;
         minimum_payment: number | null;
+        monthly_payment: number | null;
         remaining_payments: number | null;
         progress: number | null;
         annual_rate: string | null;
@@ -720,29 +728,47 @@ export declare const ConnectedProductSchema: z.ZodObject<{
     percentage_change: string;
 }>;
 export declare const ConnectedProductsSummarySchema: z.ZodObject<{
+    pending_balance: z.ZodOptional<z.ZodNumber>;
+    initial_debt: z.ZodOptional<z.ZodNumber>;
+    monthly_payment: z.ZodOptional<z.ZodNumber>;
     total_balance: z.ZodOptional<z.ZodNumber>;
     monthly_change: z.ZodOptional<z.ZodNumber>;
     active_count: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
     active_count: number;
+    monthly_payment?: number | undefined;
+    pending_balance?: number | undefined;
+    initial_debt?: number | undefined;
     total_balance?: number | undefined;
     monthly_change?: number | undefined;
 }, {
     active_count: number;
+    monthly_payment?: number | undefined;
+    pending_balance?: number | undefined;
+    initial_debt?: number | undefined;
     total_balance?: number | undefined;
     monthly_change?: number | undefined;
 }>;
 export declare const ConnectedProductsDataSchema: z.ZodObject<{
     summary: z.ZodOptional<z.ZodObject<{
+        pending_balance: z.ZodOptional<z.ZodNumber>;
+        initial_debt: z.ZodOptional<z.ZodNumber>;
+        monthly_payment: z.ZodOptional<z.ZodNumber>;
         total_balance: z.ZodOptional<z.ZodNumber>;
         monthly_change: z.ZodOptional<z.ZodNumber>;
         active_count: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
         active_count: number;
+        monthly_payment?: number | undefined;
+        pending_balance?: number | undefined;
+        initial_debt?: number | undefined;
         total_balance?: number | undefined;
         monthly_change?: number | undefined;
     }, {
         active_count: number;
+        monthly_payment?: number | undefined;
+        pending_balance?: number | undefined;
+        initial_debt?: number | undefined;
         total_balance?: number | undefined;
         monthly_change?: number | undefined;
     }>>;
@@ -770,6 +796,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
             utilization: z.ZodNullable<z.ZodNumber>;
             next_payment: z.ZodNullable<z.ZodString>;
             minimum_payment: z.ZodNullable<z.ZodNumber>;
+            monthly_payment: z.ZodNullable<z.ZodNumber>;
             remaining_payments: z.ZodNullable<z.ZodNumber>;
             progress: z.ZodNullable<z.ZodNumber>;
             annual_rate: z.ZodNullable<z.ZodString>;
@@ -781,6 +808,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
             utilization: number | null;
             next_payment: string | null;
             minimum_payment: number | null;
+            monthly_payment: number | null;
             remaining_payments: number | null;
             progress: number | null;
             annual_rate: string | null;
@@ -792,6 +820,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
             utilization: number | null;
             next_payment: string | null;
             minimum_payment: number | null;
+            monthly_payment: number | null;
             remaining_payments: number | null;
             progress: number | null;
             annual_rate: string | null;
@@ -809,6 +838,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
             utilization: number | null;
             next_payment: string | null;
             minimum_payment: number | null;
+            monthly_payment: number | null;
             remaining_payments: number | null;
             progress: number | null;
             annual_rate: string | null;
@@ -835,6 +865,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
             utilization: number | null;
             next_payment: string | null;
             minimum_payment: number | null;
+            monthly_payment: number | null;
             remaining_payments: number | null;
             progress: number | null;
             annual_rate: string | null;
@@ -863,6 +894,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
             utilization: number | null;
             next_payment: string | null;
             minimum_payment: number | null;
+            monthly_payment: number | null;
             remaining_payments: number | null;
             progress: number | null;
             annual_rate: string | null;
@@ -885,6 +917,9 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
     }[];
     summary?: {
         active_count: number;
+        monthly_payment?: number | undefined;
+        pending_balance?: number | undefined;
+        initial_debt?: number | undefined;
         total_balance?: number | undefined;
         monthly_change?: number | undefined;
     } | undefined;
@@ -896,6 +931,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
             utilization: number | null;
             next_payment: string | null;
             minimum_payment: number | null;
+            monthly_payment: number | null;
             remaining_payments: number | null;
             progress: number | null;
             annual_rate: string | null;
@@ -918,6 +954,9 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
     }[];
     summary?: {
         active_count: number;
+        monthly_payment?: number | undefined;
+        pending_balance?: number | undefined;
+        initial_debt?: number | undefined;
         total_balance?: number | undefined;
         monthly_change?: number | undefined;
     } | undefined;
@@ -926,15 +965,24 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
     message: z.ZodString;
     data: z.ZodObject<{
         summary: z.ZodOptional<z.ZodObject<{
+            pending_balance: z.ZodOptional<z.ZodNumber>;
+            initial_debt: z.ZodOptional<z.ZodNumber>;
+            monthly_payment: z.ZodOptional<z.ZodNumber>;
             total_balance: z.ZodOptional<z.ZodNumber>;
             monthly_change: z.ZodOptional<z.ZodNumber>;
             active_count: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
             active_count: number;
+            monthly_payment?: number | undefined;
+            pending_balance?: number | undefined;
+            initial_debt?: number | undefined;
             total_balance?: number | undefined;
             monthly_change?: number | undefined;
         }, {
             active_count: number;
+            monthly_payment?: number | undefined;
+            pending_balance?: number | undefined;
+            initial_debt?: number | undefined;
             total_balance?: number | undefined;
             monthly_change?: number | undefined;
         }>>;
@@ -962,6 +1010,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 utilization: z.ZodNullable<z.ZodNumber>;
                 next_payment: z.ZodNullable<z.ZodString>;
                 minimum_payment: z.ZodNullable<z.ZodNumber>;
+                monthly_payment: z.ZodNullable<z.ZodNumber>;
                 remaining_payments: z.ZodNullable<z.ZodNumber>;
                 progress: z.ZodNullable<z.ZodNumber>;
                 annual_rate: z.ZodNullable<z.ZodString>;
@@ -973,6 +1022,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 utilization: number | null;
                 next_payment: string | null;
                 minimum_payment: number | null;
+                monthly_payment: number | null;
                 remaining_payments: number | null;
                 progress: number | null;
                 annual_rate: string | null;
@@ -984,6 +1034,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 utilization: number | null;
                 next_payment: string | null;
                 minimum_payment: number | null;
+                monthly_payment: number | null;
                 remaining_payments: number | null;
                 progress: number | null;
                 annual_rate: string | null;
@@ -1001,6 +1052,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 utilization: number | null;
                 next_payment: string | null;
                 minimum_payment: number | null;
+                monthly_payment: number | null;
                 remaining_payments: number | null;
                 progress: number | null;
                 annual_rate: string | null;
@@ -1027,6 +1079,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 utilization: number | null;
                 next_payment: string | null;
                 minimum_payment: number | null;
+                monthly_payment: number | null;
                 remaining_payments: number | null;
                 progress: number | null;
                 annual_rate: string | null;
@@ -1055,6 +1108,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 utilization: number | null;
                 next_payment: string | null;
                 minimum_payment: number | null;
+                monthly_payment: number | null;
                 remaining_payments: number | null;
                 progress: number | null;
                 annual_rate: string | null;
@@ -1077,6 +1131,9 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
         }[];
         summary?: {
             active_count: number;
+            monthly_payment?: number | undefined;
+            pending_balance?: number | undefined;
+            initial_debt?: number | undefined;
             total_balance?: number | undefined;
             monthly_change?: number | undefined;
         } | undefined;
@@ -1088,6 +1145,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 utilization: number | null;
                 next_payment: string | null;
                 minimum_payment: number | null;
+                monthly_payment: number | null;
                 remaining_payments: number | null;
                 progress: number | null;
                 annual_rate: string | null;
@@ -1110,6 +1168,9 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
         }[];
         summary?: {
             active_count: number;
+            monthly_payment?: number | undefined;
+            pending_balance?: number | undefined;
+            initial_debt?: number | undefined;
             total_balance?: number | undefined;
             monthly_change?: number | undefined;
         } | undefined;
@@ -1124,6 +1185,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 utilization: number | null;
                 next_payment: string | null;
                 minimum_payment: number | null;
+                monthly_payment: number | null;
                 remaining_payments: number | null;
                 progress: number | null;
                 annual_rate: string | null;
@@ -1146,6 +1208,9 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
         }[];
         summary?: {
             active_count: number;
+            monthly_payment?: number | undefined;
+            pending_balance?: number | undefined;
+            initial_debt?: number | undefined;
             total_balance?: number | undefined;
             monthly_change?: number | undefined;
         } | undefined;
@@ -1160,6 +1225,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 utilization: number | null;
                 next_payment: string | null;
                 minimum_payment: number | null;
+                monthly_payment: number | null;
                 remaining_payments: number | null;
                 progress: number | null;
                 annual_rate: string | null;
@@ -1182,6 +1248,9 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
         }[];
         summary?: {
             active_count: number;
+            monthly_payment?: number | undefined;
+            pending_balance?: number | undefined;
+            initial_debt?: number | undefined;
             total_balance?: number | undefined;
             monthly_change?: number | undefined;
         } | undefined;
