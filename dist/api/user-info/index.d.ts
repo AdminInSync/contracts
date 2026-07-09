@@ -4,15 +4,15 @@ export declare const UserInfoContracts: {
         description: "Create a new user info document for the authenticated user";
         method: "POST";
         body: import("zod").ZodObject<{
-            info_type: import("zod").ZodNativeEnum<typeof import("../../enums").DocumentType>;
+            info_type: import("zod").ZodNativeEnum<typeof import("../..").DocumentType>;
             document_number: import("zod").ZodOptional<import("zod").ZodString>;
             document_url: import("zod").ZodOptional<import("zod").ZodString>;
         }, "strip", import("zod").ZodTypeAny, {
-            info_type: import("../../enums").DocumentType;
+            info_type: import("../..").DocumentType;
             document_number?: string | undefined;
             document_url?: string | undefined;
         }, {
-            info_type: import("../../enums").DocumentType;
+            info_type: import("../..").DocumentType;
             document_number?: string | undefined;
             document_url?: string | undefined;
         }>;
@@ -22,24 +22,24 @@ export declare const UserInfoContracts: {
                 id: import("zod").ZodNumber;
                 uuid: import("zod").ZodString;
                 user_uid: import("zod").ZodString;
-                info_type: import("zod").ZodNativeEnum<typeof import("../../enums").DocumentType>;
-                status: import("zod").ZodNativeEnum<typeof import("../../enums").DocumentStatus>;
+                info_type: import("zod").ZodNativeEnum<typeof import("../..").DocumentType>;
+                status: import("zod").ZodNativeEnum<typeof import("../..").DocumentStatus>;
                 document_number: import("zod").ZodNullable<import("zod").ZodString>;
                 document_url: import("zod").ZodNullable<import("zod").ZodString>;
                 created_at: import("zod").ZodString;
             }, "strip", import("zod").ZodTypeAny, {
-                status: import("../../enums").DocumentStatus;
+                status: import("../..").DocumentStatus;
                 id: number;
-                info_type: import("../../enums").DocumentType;
+                info_type: import("../..").DocumentType;
                 document_number: string | null;
                 document_url: string | null;
                 uuid: string;
                 user_uid: string;
                 created_at: string;
             }, {
-                status: import("../../enums").DocumentStatus;
+                status: import("../..").DocumentStatus;
                 id: number;
-                info_type: import("../../enums").DocumentType;
+                info_type: import("../..").DocumentType;
                 document_number: string | null;
                 document_url: string | null;
                 uuid: string;
@@ -97,14 +97,14 @@ export declare const UserInfoContracts: {
     };
     getUserInfo: {
         query: import("zod").ZodObject<{
-            info_type: import("zod").ZodOptional<import("zod").ZodNativeEnum<typeof import("../../enums").DocumentType>>;
-            status: import("zod").ZodOptional<import("zod").ZodNativeEnum<typeof import("../../enums").DocumentStatus>>;
+            info_type: import("zod").ZodOptional<import("zod").ZodNativeEnum<typeof import("../..").DocumentType>>;
+            status: import("zod").ZodOptional<import("zod").ZodNativeEnum<typeof import("../..").DocumentStatus>>;
         }, "strip", import("zod").ZodTypeAny, {
-            status?: import("../../enums").DocumentStatus | undefined;
-            info_type?: import("../../enums").DocumentType | undefined;
+            status?: import("../..").DocumentStatus | undefined;
+            info_type?: import("../..").DocumentType | undefined;
         }, {
-            status?: import("../../enums").DocumentStatus | undefined;
-            info_type?: import("../../enums").DocumentType | undefined;
+            status?: import("../..").DocumentStatus | undefined;
+            info_type?: import("../..").DocumentType | undefined;
         }>;
         summary: "Get user info documents";
         description: "Get all user info documents for the authenticated user with optional filtering by document type and status";
@@ -115,24 +115,24 @@ export declare const UserInfoContracts: {
                 id: import("zod").ZodNumber;
                 uuid: import("zod").ZodString;
                 user_uid: import("zod").ZodString;
-                info_type: import("zod").ZodNativeEnum<typeof import("../../enums").DocumentType>;
-                status: import("zod").ZodNativeEnum<typeof import("../../enums").DocumentStatus>;
+                info_type: import("zod").ZodNativeEnum<typeof import("../..").DocumentType>;
+                status: import("zod").ZodNativeEnum<typeof import("../..").DocumentStatus>;
                 document_number: import("zod").ZodNullable<import("zod").ZodString>;
                 document_url: import("zod").ZodNullable<import("zod").ZodString>;
                 created_at: import("zod").ZodString;
             }, "strip", import("zod").ZodTypeAny, {
-                status: import("../../enums").DocumentStatus;
+                status: import("../..").DocumentStatus;
                 id: number;
-                info_type: import("../../enums").DocumentType;
+                info_type: import("../..").DocumentType;
                 document_number: string | null;
                 document_url: string | null;
                 uuid: string;
                 user_uid: string;
                 created_at: string;
             }, {
-                status: import("../../enums").DocumentStatus;
+                status: import("../..").DocumentStatus;
                 id: number;
-                info_type: import("../../enums").DocumentType;
+                info_type: import("../..").DocumentType;
                 document_number: string | null;
                 document_url: string | null;
                 uuid: string;

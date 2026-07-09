@@ -204,45 +204,45 @@ export declare const EmailIngestionContracts: {
             200: z.ZodObject<{
                 connections: z.ZodArray<z.ZodObject<{
                     uuid: z.ZodString;
-                    provider: z.ZodNativeEnum<typeof import("../../enums").EmailProvider>;
-                    status: z.ZodNativeEnum<typeof import("../../enums").EmailConnectionStatus>;
+                    provider: z.ZodNativeEnum<typeof import("../..").EmailProvider>;
+                    status: z.ZodNativeEnum<typeof import("../..").EmailConnectionStatus>;
                     provider_account_id: z.ZodNullable<z.ZodString>;
                     last_successful_sync_at: z.ZodNullable<z.ZodString>;
                     last_error_message: z.ZodNullable<z.ZodString>;
                     created_at: z.ZodString;
                 }, "strip", z.ZodTypeAny, {
-                    status: import("../../enums").EmailConnectionStatus;
+                    status: import("../..").EmailConnectionStatus;
                     uuid: string;
                     created_at: string;
-                    provider: import("../../enums").EmailProvider;
+                    provider: import("../..").EmailProvider;
                     provider_account_id: string | null;
                     last_successful_sync_at: string | null;
                     last_error_message: string | null;
                 }, {
-                    status: import("../../enums").EmailConnectionStatus;
+                    status: import("../..").EmailConnectionStatus;
                     uuid: string;
                     created_at: string;
-                    provider: import("../../enums").EmailProvider;
+                    provider: import("../..").EmailProvider;
                     provider_account_id: string | null;
                     last_successful_sync_at: string | null;
                     last_error_message: string | null;
                 }>, "many">;
             }, "strip", z.ZodTypeAny, {
                 connections: {
-                    status: import("../../enums").EmailConnectionStatus;
+                    status: import("../..").EmailConnectionStatus;
                     uuid: string;
                     created_at: string;
-                    provider: import("../../enums").EmailProvider;
+                    provider: import("../..").EmailProvider;
                     provider_account_id: string | null;
                     last_successful_sync_at: string | null;
                     last_error_message: string | null;
                 }[];
             }, {
                 connections: {
-                    status: import("../../enums").EmailConnectionStatus;
+                    status: import("../..").EmailConnectionStatus;
                     uuid: string;
                     created_at: string;
-                    provider: import("../../enums").EmailProvider;
+                    provider: import("../..").EmailProvider;
                     provider_account_id: string | null;
                     last_successful_sync_at: string | null;
                     last_error_message: string | null;
@@ -405,19 +405,19 @@ export declare const EmailIngestionContracts: {
     };
     listEvents: {
         query: z.ZodObject<{
-            status: z.ZodOptional<z.ZodNativeEnum<typeof import("../../enums").FinancialEmailEventStatus>>;
+            status: z.ZodOptional<z.ZodNativeEnum<typeof import("../..").FinancialEmailEventStatus>>;
             fromDate: z.ZodOptional<z.ZodString>;
             toDate: z.ZodOptional<z.ZodString>;
             limit: z.ZodOptional<z.ZodEffects<z.ZodString, number, string>>;
             offset: z.ZodOptional<z.ZodEffects<z.ZodString, number, string>>;
         }, "strip", z.ZodTypeAny, {
-            status?: import("../../enums").FinancialEmailEventStatus | undefined;
+            status?: import("../..").FinancialEmailEventStatus | undefined;
             limit?: number | undefined;
             offset?: number | undefined;
             fromDate?: string | undefined;
             toDate?: string | undefined;
         }, {
-            status?: import("../../enums").FinancialEmailEventStatus | undefined;
+            status?: import("../..").FinancialEmailEventStatus | undefined;
             limit?: string | undefined;
             offset?: string | undefined;
             fromDate?: string | undefined;
@@ -430,7 +430,7 @@ export declare const EmailIngestionContracts: {
             200: z.ZodObject<{
                 events: z.ZodArray<z.ZodObject<{
                     uuid: z.ZodString;
-                    status: z.ZodNativeEnum<typeof import("../../enums").FinancialEmailEventStatus>;
+                    status: z.ZodNativeEnum<typeof import("../..").FinancialEmailEventStatus>;
                     institution_name: z.ZodNullable<z.ZodString>;
                     transaction_description: z.ZodNullable<z.ZodString>;
                     amount: z.ZodNullable<z.ZodNumber>;
@@ -442,7 +442,7 @@ export declare const EmailIngestionContracts: {
                     source_metadata: z.ZodNullable<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
                     created_at: z.ZodString;
                 }, "strip", z.ZodTypeAny, {
-                    status: import("../../enums").FinancialEmailEventStatus;
+                    status: import("../..").FinancialEmailEventStatus;
                     uuid: string;
                     created_at: string;
                     currency: string | null;
@@ -455,7 +455,7 @@ export declare const EmailIngestionContracts: {
                     confidence: number | null;
                     source_metadata: Record<string, unknown> | null;
                 }, {
-                    status: import("../../enums").FinancialEmailEventStatus;
+                    status: import("../..").FinancialEmailEventStatus;
                     uuid: string;
                     created_at: string;
                     currency: string | null;
@@ -476,7 +476,7 @@ export declare const EmailIngestionContracts: {
                 total: number;
                 offset: number;
                 events: {
-                    status: import("../../enums").FinancialEmailEventStatus;
+                    status: import("../..").FinancialEmailEventStatus;
                     uuid: string;
                     created_at: string;
                     currency: string | null;
@@ -494,7 +494,7 @@ export declare const EmailIngestionContracts: {
                 total: number;
                 offset: number;
                 events: {
-                    status: import("../../enums").FinancialEmailEventStatus;
+                    status: import("../..").FinancialEmailEventStatus;
                     uuid: string;
                     created_at: string;
                     currency: string | null;

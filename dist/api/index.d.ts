@@ -512,15 +512,15 @@ export declare const ApiContracts: {
             description: "Create a new user info document for the authenticated user";
             method: "POST";
             body: import("zod").ZodObject<{
-                info_type: import("zod").ZodNativeEnum<typeof import("../enums").DocumentType>;
+                info_type: import("zod").ZodNativeEnum<typeof import("..").DocumentType>;
                 document_number: import("zod").ZodOptional<import("zod").ZodString>;
                 document_url: import("zod").ZodOptional<import("zod").ZodString>;
             }, "strip", import("zod").ZodTypeAny, {
-                info_type: import("../enums").DocumentType;
+                info_type: import("..").DocumentType;
                 document_number?: string | undefined;
                 document_url?: string | undefined;
             }, {
-                info_type: import("../enums").DocumentType;
+                info_type: import("..").DocumentType;
                 document_number?: string | undefined;
                 document_url?: string | undefined;
             }>;
@@ -530,24 +530,24 @@ export declare const ApiContracts: {
                     id: import("zod").ZodNumber;
                     uuid: import("zod").ZodString;
                     user_uid: import("zod").ZodString;
-                    info_type: import("zod").ZodNativeEnum<typeof import("../enums").DocumentType>;
-                    status: import("zod").ZodNativeEnum<typeof import("../enums").DocumentStatus>;
+                    info_type: import("zod").ZodNativeEnum<typeof import("..").DocumentType>;
+                    status: import("zod").ZodNativeEnum<typeof import("..").DocumentStatus>;
                     document_number: import("zod").ZodNullable<import("zod").ZodString>;
                     document_url: import("zod").ZodNullable<import("zod").ZodString>;
                     created_at: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
-                    status: import("../enums").DocumentStatus;
+                    status: import("..").DocumentStatus;
                     id: number;
-                    info_type: import("../enums").DocumentType;
+                    info_type: import("..").DocumentType;
                     document_number: string | null;
                     document_url: string | null;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
                 }, {
-                    status: import("../enums").DocumentStatus;
+                    status: import("..").DocumentStatus;
                     id: number;
-                    info_type: import("../enums").DocumentType;
+                    info_type: import("..").DocumentType;
                     document_number: string | null;
                     document_url: string | null;
                     uuid: string;
@@ -605,14 +605,14 @@ export declare const ApiContracts: {
         getUserInfo: {
             strictStatusCodes: true;
             query: import("zod").ZodObject<{
-                info_type: import("zod").ZodOptional<import("zod").ZodNativeEnum<typeof import("../enums").DocumentType>>;
-                status: import("zod").ZodOptional<import("zod").ZodNativeEnum<typeof import("../enums").DocumentStatus>>;
+                info_type: import("zod").ZodOptional<import("zod").ZodNativeEnum<typeof import("..").DocumentType>>;
+                status: import("zod").ZodOptional<import("zod").ZodNativeEnum<typeof import("..").DocumentStatus>>;
             }, "strip", import("zod").ZodTypeAny, {
-                status?: import("../enums").DocumentStatus | undefined;
-                info_type?: import("../enums").DocumentType | undefined;
+                status?: import("..").DocumentStatus | undefined;
+                info_type?: import("..").DocumentType | undefined;
             }, {
-                status?: import("../enums").DocumentStatus | undefined;
-                info_type?: import("../enums").DocumentType | undefined;
+                status?: import("..").DocumentStatus | undefined;
+                info_type?: import("..").DocumentType | undefined;
             }>;
             summary: "Get user info documents";
             description: "Get all user info documents for the authenticated user with optional filtering by document type and status";
@@ -623,24 +623,24 @@ export declare const ApiContracts: {
                     id: import("zod").ZodNumber;
                     uuid: import("zod").ZodString;
                     user_uid: import("zod").ZodString;
-                    info_type: import("zod").ZodNativeEnum<typeof import("../enums").DocumentType>;
-                    status: import("zod").ZodNativeEnum<typeof import("../enums").DocumentStatus>;
+                    info_type: import("zod").ZodNativeEnum<typeof import("..").DocumentType>;
+                    status: import("zod").ZodNativeEnum<typeof import("..").DocumentStatus>;
                     document_number: import("zod").ZodNullable<import("zod").ZodString>;
                     document_url: import("zod").ZodNullable<import("zod").ZodString>;
                     created_at: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
-                    status: import("../enums").DocumentStatus;
+                    status: import("..").DocumentStatus;
                     id: number;
-                    info_type: import("../enums").DocumentType;
+                    info_type: import("..").DocumentType;
                     document_number: string | null;
                     document_url: string | null;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
                 }, {
-                    status: import("../enums").DocumentStatus;
+                    status: import("..").DocumentStatus;
                     id: number;
-                    info_type: import("../enums").DocumentType;
+                    info_type: import("..").DocumentType;
                     document_number: string | null;
                     document_url: string | null;
                     uuid: string;
@@ -14634,45 +14634,45 @@ export declare const ApiContracts: {
                 200: import("zod").ZodObject<{
                     connections: import("zod").ZodArray<import("zod").ZodObject<{
                         uuid: import("zod").ZodString;
-                        provider: import("zod").ZodNativeEnum<typeof import("../enums").EmailProvider>;
-                        status: import("zod").ZodNativeEnum<typeof import("../enums").EmailConnectionStatus>;
+                        provider: import("zod").ZodNativeEnum<typeof import("..").EmailProvider>;
+                        status: import("zod").ZodNativeEnum<typeof import("..").EmailConnectionStatus>;
                         provider_account_id: import("zod").ZodNullable<import("zod").ZodString>;
                         last_successful_sync_at: import("zod").ZodNullable<import("zod").ZodString>;
                         last_error_message: import("zod").ZodNullable<import("zod").ZodString>;
                         created_at: import("zod").ZodString;
                     }, "strip", import("zod").ZodTypeAny, {
-                        status: import("../enums").EmailConnectionStatus;
+                        status: import("..").EmailConnectionStatus;
                         uuid: string;
                         created_at: string;
-                        provider: import("../enums").EmailProvider;
+                        provider: import("..").EmailProvider;
                         provider_account_id: string | null;
                         last_successful_sync_at: string | null;
                         last_error_message: string | null;
                     }, {
-                        status: import("../enums").EmailConnectionStatus;
+                        status: import("..").EmailConnectionStatus;
                         uuid: string;
                         created_at: string;
-                        provider: import("../enums").EmailProvider;
+                        provider: import("..").EmailProvider;
                         provider_account_id: string | null;
                         last_successful_sync_at: string | null;
                         last_error_message: string | null;
                     }>, "many">;
                 }, "strip", import("zod").ZodTypeAny, {
                     connections: {
-                        status: import("../enums").EmailConnectionStatus;
+                        status: import("..").EmailConnectionStatus;
                         uuid: string;
                         created_at: string;
-                        provider: import("../enums").EmailProvider;
+                        provider: import("..").EmailProvider;
                         provider_account_id: string | null;
                         last_successful_sync_at: string | null;
                         last_error_message: string | null;
                     }[];
                 }, {
                     connections: {
-                        status: import("../enums").EmailConnectionStatus;
+                        status: import("..").EmailConnectionStatus;
                         uuid: string;
                         created_at: string;
-                        provider: import("../enums").EmailProvider;
+                        provider: import("..").EmailProvider;
                         provider_account_id: string | null;
                         last_successful_sync_at: string | null;
                         last_error_message: string | null;
@@ -14835,19 +14835,19 @@ export declare const ApiContracts: {
         listEvents: {
             strictStatusCodes: true;
             query: import("zod").ZodObject<{
-                status: import("zod").ZodOptional<import("zod").ZodNativeEnum<typeof import("../enums").FinancialEmailEventStatus>>;
+                status: import("zod").ZodOptional<import("zod").ZodNativeEnum<typeof import("..").FinancialEmailEventStatus>>;
                 fromDate: import("zod").ZodOptional<import("zod").ZodString>;
                 toDate: import("zod").ZodOptional<import("zod").ZodString>;
                 limit: import("zod").ZodOptional<import("zod").ZodEffects<import("zod").ZodString, number, string>>;
                 offset: import("zod").ZodOptional<import("zod").ZodEffects<import("zod").ZodString, number, string>>;
             }, "strip", import("zod").ZodTypeAny, {
-                status?: import("../enums").FinancialEmailEventStatus | undefined;
+                status?: import("..").FinancialEmailEventStatus | undefined;
                 limit?: number | undefined;
                 offset?: number | undefined;
                 fromDate?: string | undefined;
                 toDate?: string | undefined;
             }, {
-                status?: import("../enums").FinancialEmailEventStatus | undefined;
+                status?: import("..").FinancialEmailEventStatus | undefined;
                 limit?: string | undefined;
                 offset?: string | undefined;
                 fromDate?: string | undefined;
@@ -14860,7 +14860,7 @@ export declare const ApiContracts: {
                 200: import("zod").ZodObject<{
                     events: import("zod").ZodArray<import("zod").ZodObject<{
                         uuid: import("zod").ZodString;
-                        status: import("zod").ZodNativeEnum<typeof import("../enums").FinancialEmailEventStatus>;
+                        status: import("zod").ZodNativeEnum<typeof import("..").FinancialEmailEventStatus>;
                         institution_name: import("zod").ZodNullable<import("zod").ZodString>;
                         transaction_description: import("zod").ZodNullable<import("zod").ZodString>;
                         amount: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -14872,7 +14872,7 @@ export declare const ApiContracts: {
                         source_metadata: import("zod").ZodNullable<import("zod").ZodRecord<import("zod").ZodString, import("zod").ZodUnknown>>;
                         created_at: import("zod").ZodString;
                     }, "strip", import("zod").ZodTypeAny, {
-                        status: import("../enums").FinancialEmailEventStatus;
+                        status: import("..").FinancialEmailEventStatus;
                         uuid: string;
                         created_at: string;
                         currency: string | null;
@@ -14885,7 +14885,7 @@ export declare const ApiContracts: {
                         confidence: number | null;
                         source_metadata: Record<string, unknown> | null;
                     }, {
-                        status: import("../enums").FinancialEmailEventStatus;
+                        status: import("..").FinancialEmailEventStatus;
                         uuid: string;
                         created_at: string;
                         currency: string | null;
@@ -14906,7 +14906,7 @@ export declare const ApiContracts: {
                     total: number;
                     offset: number;
                     events: {
-                        status: import("../enums").FinancialEmailEventStatus;
+                        status: import("..").FinancialEmailEventStatus;
                         uuid: string;
                         created_at: string;
                         currency: string | null;
@@ -14924,7 +14924,7 @@ export declare const ApiContracts: {
                     total: number;
                     offset: number;
                     events: {
-                        status: import("../enums").FinancialEmailEventStatus;
+                        status: import("..").FinancialEmailEventStatus;
                         uuid: string;
                         created_at: string;
                         currency: string | null;
