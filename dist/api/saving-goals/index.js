@@ -15,8 +15,8 @@ export const SavingGoalsContracts = c.router({
             500: ErrorResSchema,
         },
         body: CreateSavingGoalSchema,
-        summary: 'Crear una nueva meta de ahorro',
-        description: 'Crea una nueva meta de ahorro para el usuario autenticado',
+        summary: 'Create a new saving goal',
+        description: 'Creates a new saving goal for the authenticated user',
     },
     // Get all saving goals
     getSavingGoals: {
@@ -28,8 +28,8 @@ export const SavingGoalsContracts = c.router({
             500: ErrorResSchema,
         },
         query: GetSavingGoalsQuerySchema,
-        summary: 'Obtener todas las metas de ahorro',
-        description: 'Obtiene todas las metas de ahorro del usuario autenticado con filtrado opcional',
+        summary: 'Get all saving goals',
+        description: 'Returns all saving goals for the authenticated user with optional filtering',
     },
     // Get one saving goal
     getSavingGoal: {
@@ -44,8 +44,8 @@ export const SavingGoalsContracts = c.router({
         pathParams: z.object({
             id: z.coerce.number().int().positive(),
         }),
-        summary: 'Obtener una meta de ahorro específica',
-        description: 'Obtiene una meta de ahorro específica por ID',
+        summary: 'Get a specific saving goal',
+        description: 'Returns a specific saving goal by ID',
     },
     // Update saving goal
     updateSavingGoal: {
@@ -62,8 +62,8 @@ export const SavingGoalsContracts = c.router({
             id: z.coerce.number().int().positive(),
         }),
         body: UpdateSavingGoalSchema,
-        summary: 'Actualizar una meta de ahorro',
-        description: 'Actualiza una meta de ahorro existente',
+        summary: 'Update a saving goal',
+        description: 'Updates an existing saving goal',
     },
     // Update goal progress
     updateProgress: {
@@ -80,8 +80,8 @@ export const SavingGoalsContracts = c.router({
             id: z.coerce.number().int().positive(),
         }),
         body: UpdateProgressSchema,
-        summary: 'Actualizar progreso de meta de ahorro',
-        description: 'Actualiza el monto actual de una meta de ahorro',
+        summary: 'Update saving goal progress',
+        description: 'Updates the current amount of a saving goal',
     },
     // Delete saving goal
     deleteSavingGoal: {
@@ -98,8 +98,8 @@ export const SavingGoalsContracts = c.router({
         pathParams: z.object({
             id: z.coerce.number().int().positive(),
         }),
-        summary: 'Eliminar una meta de ahorro',
-        description: 'Elimina suavemente una meta de ahorro',
+        summary: 'Delete a saving goal',
+        description: 'Soft-deletes a saving goal',
     },
     // Get public saving goals
     getPublicSavingGoals: {
@@ -113,8 +113,8 @@ export const SavingGoalsContracts = c.router({
             limit: z.coerce.number().min(1).max(100).default(20),
             offset: z.coerce.number().min(0).default(0),
         }),
-        summary: 'Obtener metas de ahorro públicas',
-        description: 'Obtiene metas de ahorro públicas de todos los usuarios',
+        summary: 'Get public saving goals',
+        description: 'Returns public saving goals from all users',
     },
     // Get goals due soon
     getGoalsDueSoon: {
@@ -128,7 +128,7 @@ export const SavingGoalsContracts = c.router({
         query: z.object({
             days: z.coerce.number().min(1).max(365).default(30),
         }),
-        summary: 'Obtener metas próximas a vencer',
-        description: 'Obtiene metas de ahorro que vencen dentro del número de días especificado',
+        summary: 'Get upcoming saving goals',
+        description: 'Returns saving goals due within the specified number of days',
     },
 });

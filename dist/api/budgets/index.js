@@ -15,8 +15,8 @@ export const BudgetsContracts = c.router({
             500: ErrorResSchema,
         },
         body: CreateBudgetSchema,
-        summary: 'Crear un nuevo presupuesto',
-        description: 'Crea un nuevo presupuesto para el usuario autenticado',
+        summary: 'Create a new budget',
+        description: 'Creates a new budget for the authenticated user',
     },
     // Get all budgets for the authenticated user
     getBudgets: {
@@ -28,8 +28,8 @@ export const BudgetsContracts = c.router({
             500: ErrorResSchema,
         },
         query: GetBudgetsQuerySchema,
-        summary: 'Obtener todos los presupuestos',
-        description: 'Obtiene todos los presupuestos del usuario autenticado con filtrado opcional',
+        summary: 'Get all budgets',
+        description: 'Returns all budgets for the authenticated user with optional filtering',
     },
     // Get one budget
     getBudget: {
@@ -42,10 +42,10 @@ export const BudgetsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({
-            id: z.string().regex(/^\d+$/, 'El ID debe ser un número válido').transform((val) => parseInt(val, 10)),
+            id: z.string().regex(/^\d+$/, 'ID must be a valid number').transform((val) => parseInt(val, 10)),
         }),
-        summary: 'Obtener un presupuesto específico',
-        description: 'Obtiene un presupuesto específico por ID para el usuario autenticado',
+        summary: 'Get a specific budget',
+        description: 'Returns a specific budget by ID for the authenticated user',
     },
     // Update budget
     updateBudget: {
@@ -59,11 +59,11 @@ export const BudgetsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({
-            id: z.string().regex(/^\d+$/, 'El ID debe ser un número válido').transform((val) => parseInt(val, 10)),
+            id: z.string().regex(/^\d+$/, 'ID must be a valid number').transform((val) => parseInt(val, 10)),
         }),
         body: UpdateBudgetSchema,
-        summary: 'Actualizar un presupuesto',
-        description: 'Actualiza un presupuesto existente para el usuario autenticado',
+        summary: 'Update a budget',
+        description: 'Updates an existing budget for the authenticated user',
     },
     // Delete budget
     deleteBudget: {
@@ -78,10 +78,10 @@ export const BudgetsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({
-            id: z.string().regex(/^\d+$/, 'El ID debe ser un número válido').transform((val) => parseInt(val, 10)),
+            id: z.string().regex(/^\d+$/, 'ID must be a valid number').transform((val) => parseInt(val, 10)),
         }),
-        summary: 'Eliminar un presupuesto',
-        description: 'Elimina suavemente un presupuesto para el usuario autenticado',
+        summary: 'Delete a budget',
+        description: 'Soft-deletes a budget for the authenticated user',
     },
     // Get active budgets
     getActiveBudgets: {
@@ -96,8 +96,8 @@ export const BudgetsContracts = c.router({
             limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
             offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
         }),
-        summary: 'Obtener presupuestos activos',
-        description: 'Obtiene todos los presupuestos activos para el usuario autenticado',
+        summary: 'Get active budgets',
+        description: 'Returns all active budgets for the authenticated user',
     },
     // Get budgets by period
     getBudgetsByPeriod: {
@@ -116,8 +116,8 @@ export const BudgetsContracts = c.router({
             limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
             offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
         }),
-        summary: 'Obtener presupuestos por período',
-        description: 'Obtiene presupuestos filtrados por período para el usuario autenticado',
+        summary: 'Get budgets by period',
+        description: 'Returns budgets filtered by period for the authenticated user',
     },
     // Update budget used amount
     updateBudgetUsedAmount: {
@@ -131,10 +131,10 @@ export const BudgetsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({
-            id: z.string().regex(/^\d+$/, 'El ID debe ser un número válido').transform((val) => parseInt(val, 10)),
+            id: z.string().regex(/^\d+$/, 'ID must be a valid number').transform((val) => parseInt(val, 10)),
         }),
         body: UpdateBudgetUsedAmountSchema,
-        summary: 'Actualizar monto usado del presupuesto',
-        description: 'Actualiza el monto usado para un presupuesto específico',
+        summary: 'Update budget used amount',
+        description: 'Updates the used amount for a specific budget',
     },
 });

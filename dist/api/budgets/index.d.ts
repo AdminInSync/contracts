@@ -1,8 +1,8 @@
 import { z } from 'zod';
 export declare const BudgetsContracts: {
     createBudget: {
-        summary: "Crear un nuevo presupuesto";
-        description: "Crea un nuevo presupuesto para el usuario autenticado";
+        summary: "Create a new budget";
+        description: "Creates a new budget for the authenticated user";
         method: "POST";
         body: z.ZodEffects<z.ZodObject<{
             name: z.ZodString;
@@ -210,8 +210,8 @@ export declare const BudgetsContracts: {
             offset?: string | undefined;
             budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
         }>;
-        summary: "Obtener todos los presupuestos";
-        description: "Obtiene todos los presupuestos del usuario autenticado con filtrado opcional";
+        summary: "Get all budgets";
+        description: "Returns all budgets for the authenticated user with optional filtering";
         method: "GET";
         path: "/budgets";
         responses: {
@@ -369,8 +369,8 @@ export declare const BudgetsContracts: {
         }, {
             id: string;
         }>;
-        summary: "Obtener un presupuesto específico";
-        description: "Obtiene un presupuesto específico por ID para el usuario autenticado";
+        summary: "Get a specific budget";
+        description: "Returns a specific budget by ID for the authenticated user";
         method: "GET";
         path: "/budgets/:id";
         responses: {
@@ -518,8 +518,8 @@ export declare const BudgetsContracts: {
         }, {
             id: string;
         }>;
-        summary: "Actualizar un presupuesto";
-        description: "Actualiza un presupuesto existente para el usuario autenticado";
+        summary: "Update a budget";
+        description: "Updates an existing budget for the authenticated user";
         method: "PUT";
         body: z.ZodObject<{
             name: z.ZodOptional<z.ZodString>;
@@ -711,8 +711,8 @@ export declare const BudgetsContracts: {
         }, {
             id: string;
         }>;
-        summary: "Eliminar un presupuesto";
-        description: "Elimina suavemente un presupuesto para el usuario autenticado";
+        summary: "Delete a budget";
+        description: "Soft-deletes a budget for the authenticated user";
         method: "DELETE";
         path: "/budgets/:id";
         responses: {
@@ -775,8 +775,8 @@ export declare const BudgetsContracts: {
             limit?: string | undefined;
             offset?: string | undefined;
         }>;
-        summary: "Obtener presupuestos activos";
-        description: "Obtiene todos los presupuestos activos para el usuario autenticado";
+        summary: "Get active budgets";
+        description: "Returns all active budgets for the authenticated user";
         method: "GET";
         path: "/budgets/active";
         responses: {
@@ -944,8 +944,8 @@ export declare const BudgetsContracts: {
             limit?: string | undefined;
             offset?: string | undefined;
         }>;
-        summary: "Obtener presupuestos por período";
-        description: "Obtiene presupuestos filtrados por período para el usuario autenticado";
+        summary: "Get budgets by period";
+        description: "Returns budgets filtered by period for the authenticated user";
         method: "GET";
         path: "/budgets/period/:period";
         responses: {
@@ -1116,8 +1116,8 @@ export declare const BudgetsContracts: {
         }, {
             id: string;
         }>;
-        summary: "Actualizar monto usado del presupuesto";
-        description: "Actualiza el monto usado para un presupuesto específico";
+        summary: "Update budget used amount";
+        description: "Updates the used amount for a specific budget";
         method: "PATCH";
         body: z.ZodObject<{
             used_amount: z.ZodNumber;

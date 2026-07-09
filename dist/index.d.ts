@@ -693,8 +693,8 @@ export declare const apiContract: {
         Devices: {
             createDevice: {
                 strictStatusCodes: true;
-                summary: "Crear nuevo dispositivo";
-                description: "Crea un nuevo dispositivo para el usuario autenticado";
+                summary: "Register a new device";
+                description: "Registers a new device for the authenticated user";
                 method: "POST";
                 body: import("zod").ZodObject<{
                     user_uid: import("zod").ZodString;
@@ -799,8 +799,8 @@ export declare const apiContract: {
                 }, {
                     device_unique_id?: string | undefined;
                 }>;
-                summary: "Obtener dispositivos del usuario";
-                description: "Obtiene todos los dispositivos del usuario autenticado con filtrado opcional por ID de dispositivo";
+                summary: "Get user devices";
+                description: "Returns all devices for the authenticated user with optional device ID filter";
                 method: "GET";
                 path: "/api/devices/";
                 responses: {
@@ -875,8 +875,8 @@ export declare const apiContract: {
             };
             createDevicePreferences: {
                 strictStatusCodes: true;
-                summary: "Crear preferencias de dispositivo";
-                description: "Crea preferencias para un dispositivo específico";
+                summary: "Create device preferences";
+                description: "Creates preferences for a specific device";
                 method: "POST";
                 body: import("zod").ZodObject<{
                     device_unique_id: import("zod").ZodString;
@@ -1042,8 +1042,8 @@ export declare const apiContract: {
                 }, {
                     device_id?: string | undefined;
                 }>;
-                summary: "Obtener preferencias de dispositivo";
-                description: "Obtiene todas las preferencias de dispositivo del usuario autenticado con filtrado opcional por ID de dispositivo";
+                summary: "Get device preferences";
+                description: "Returns all device preferences for the authenticated user with optional device ID filter";
                 method: "GET";
                 path: "/api/devices/preferences";
                 responses: {
@@ -1162,8 +1162,8 @@ export declare const apiContract: {
                 }, {
                     id: string;
                 }>;
-                summary: "Actualizar preferencias de dispositivo";
-                description: "Actualiza preferencias para un dispositivo específico";
+                summary: "Update device preferences";
+                description: "Updates preferences for a specific device";
                 method: "PUT";
                 body: import("zod").ZodObject<{
                     arePushNotificationsEnabled: import("zod").ZodOptional<import("zod").ZodBoolean>;
@@ -1309,8 +1309,8 @@ export declare const apiContract: {
             };
             updateNotificationToken: {
                 strictStatusCodes: true;
-                summary: "Actualizar token de notificación";
-                description: "Actualiza el token de notificación FCM para un dispositivo específico";
+                summary: "Update notification token";
+                description: "Updates the FCM notification token for a specific device";
                 method: "PUT";
                 body: import("zod").ZodObject<{
                     device_unique_id: import("zod").ZodString;
@@ -1524,8 +1524,8 @@ export declare const apiContract: {
         SavingGoals: {
             createSavingGoal: {
                 strictStatusCodes: true;
-                summary: "Crear una nueva meta de ahorro";
-                description: "Crea una nueva meta de ahorro para el usuario autenticado";
+                summary: "Create a new saving goal";
+                description: "Creates a new saving goal for the authenticated user";
                 method: "POST";
                 body: import("zod").ZodObject<{
                     name: import("zod").ZodString;
@@ -1736,8 +1736,8 @@ export declare const apiContract: {
                     is_public?: boolean | undefined;
                     offset?: number | undefined;
                 }>;
-                summary: "Obtener todas las metas de ahorro";
-                description: "Obtiene todas las metas de ahorro del usuario autenticado con filtrado opcional";
+                summary: "Get all saving goals";
+                description: "Returns all saving goals for the authenticated user with optional filtering";
                 method: "GET";
                 path: "/api/saving-goals";
                 responses: {
@@ -1906,8 +1906,8 @@ export declare const apiContract: {
                 }, {
                     id: number;
                 }>;
-                summary: "Obtener una meta de ahorro específica";
-                description: "Obtiene una meta de ahorro específica por ID";
+                summary: "Get a specific saving goal";
+                description: "Returns a specific saving goal by ID";
                 method: "GET";
                 path: "/api/get-saving-goals-by-id/:id/";
                 responses: {
@@ -2066,8 +2066,8 @@ export declare const apiContract: {
                 }, {
                     id: number;
                 }>;
-                summary: "Actualizar una meta de ahorro";
-                description: "Actualiza una meta de ahorro existente";
+                summary: "Update a saving goal";
+                description: "Updates an existing saving goal";
                 method: "PUT";
                 body: import("zod").ZodObject<{
                     name: import("zod").ZodOptional<import("zod").ZodString>;
@@ -2279,8 +2279,8 @@ export declare const apiContract: {
                 }, {
                     id: number;
                 }>;
-                summary: "Actualizar progreso de meta de ahorro";
-                description: "Actualiza el monto actual de una meta de ahorro";
+                summary: "Update saving goal progress";
+                description: "Updates the current amount of a saving goal";
                 method: "PATCH";
                 body: import("zod").ZodObject<{
                     current_amount: import("zod").ZodNumber;
@@ -2459,8 +2459,8 @@ export declare const apiContract: {
                 }, {
                     id: number;
                 }>;
-                summary: "Eliminar una meta de ahorro";
-                description: "Elimina suavemente una meta de ahorro";
+                summary: "Delete a saving goal";
+                description: "Soft-deletes a saving goal";
                 method: "DELETE";
                 path: "/api/delete-saving-goals-by-id/:id/soft/";
                 responses: {
@@ -2524,8 +2524,8 @@ export declare const apiContract: {
                     limit?: number | undefined;
                     offset?: number | undefined;
                 }>;
-                summary: "Obtener metas de ahorro públicas";
-                description: "Obtiene metas de ahorro públicas de todos los usuarios";
+                summary: "Get public saving goals";
+                description: "Returns public saving goals from all users";
                 method: "GET";
                 path: "/api/get-saving-goals-public/";
                 responses: {
@@ -2681,8 +2681,8 @@ export declare const apiContract: {
                 }, {
                     days?: number | undefined;
                 }>;
-                summary: "Obtener metas próximas a vencer";
-                description: "Obtiene metas de ahorro que vencen dentro del número de días especificado";
+                summary: "Get upcoming saving goals";
+                description: "Returns saving goals due within the specified number of days";
                 method: "GET";
                 path: "/api/get-saving-goals-due-soon/";
                 responses: {
@@ -2846,8 +2846,8 @@ export declare const apiContract: {
         Institutions: {
             createInstitution: {
                 strictStatusCodes: true;
-                summary: "Crear una nueva institución financiera";
-                description: "Crea una nueva institución financiera (solo administrador)";
+                summary: "Create a new financial institution";
+                description: "Creates a new financial institution (admin only)";
                 method: "POST";
                 body: import("zod").ZodObject<{
                     name: import("zod").ZodString;
@@ -3077,8 +3077,8 @@ export declare const apiContract: {
                     country?: string | undefined;
                     region?: string | undefined;
                 }>;
-                summary: "Obtener todas las instituciones financieras";
-                description: "Obtiene todas las instituciones financieras activas con filtrado opcional";
+                summary: "Get all financial institutions";
+                description: "Returns all active financial institutions with optional filtering";
                 method: "GET";
                 path: "/api/institutions";
                 responses: {
@@ -3249,8 +3249,8 @@ export declare const apiContract: {
                 }, {
                     id: string;
                 }>;
-                summary: "Obtener una institución financiera específica";
-                description: "Obtiene una institución financiera específica por ID";
+                summary: "Get a specific financial institution";
+                description: "Returns a specific financial institution by ID";
                 method: "GET";
                 path: "/api/institutions/:id";
                 responses: {
@@ -3411,8 +3411,8 @@ export declare const apiContract: {
                 }, {
                     id: string;
                 }>;
-                summary: "Actualizar una institución financiera";
-                description: "Actualiza una institución financiera existente (solo administrador)";
+                summary: "Update a financial institution";
+                description: "Updates an existing financial institution (admin only)";
                 method: "PUT";
                 body: import("zod").ZodObject<{
                     name: import("zod").ZodOptional<import("zod").ZodString>;
@@ -3640,8 +3640,8 @@ export declare const apiContract: {
                 }, {
                     id: string;
                 }>;
-                summary: "Eliminar una institución financiera";
-                description: "Elimina suavemente una institución financiera (solo administrador)";
+                summary: "Delete a financial institution";
+                description: "Soft-deletes a financial institution (admin only)";
                 method: "DELETE";
                 path: "/api/institutions/:id";
                 responses: {
@@ -3708,8 +3708,8 @@ export declare const apiContract: {
                     limit?: string | undefined;
                     offset?: string | undefined;
                 }>;
-                summary: "Buscar instituciones financieras";
-                description: "Busca instituciones financieras por nombre";
+                summary: "Search financial institutions";
+                description: "Searches financial institutions by name";
                 method: "GET";
                 path: "/api/institutions/search";
                 responses: {
@@ -3890,8 +3890,8 @@ export declare const apiContract: {
                     limit?: string | undefined;
                     offset?: string | undefined;
                 }>;
-                summary: "Obtener instituciones por tipo";
-                description: "Obtiene instituciones financieras filtradas por tipo";
+                summary: "Get institutions by type";
+                description: "Returns financial institutions filtered by type";
                 method: "GET";
                 path: "/api/institutions/type/:type";
                 responses: {
@@ -4078,8 +4078,8 @@ export declare const apiContract: {
                     limit?: string | undefined;
                     offset?: string | undefined;
                 }>;
-                summary: "Obtener instituciones con productos";
-                description: "Obtiene instituciones financieras que tienen productos activos";
+                summary: "Get institutions with products";
+                description: "Returns financial institutions that have active products";
                 method: "GET";
                 path: "/api/institutions/with-products";
                 responses: {
@@ -4245,8 +4245,8 @@ export declare const apiContract: {
         Products: {
             createProduct: {
                 strictStatusCodes: true;
-                summary: "Crear un nuevo producto financiero";
-                description: "Crea un nuevo producto financiero (solo administrador)";
+                summary: "Create a new financial product";
+                description: "Creates a new financial product (admin only)";
                 method: "POST";
                 body: import("zod").ZodObject<{
                     name: import("zod").ZodString;
@@ -4540,8 +4540,8 @@ export declare const apiContract: {
                     credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
                     is_spotlight?: string | undefined;
                 }>;
-                summary: "Obtener todos los productos financieros";
-                description: "Obtiene todos los productos financieros activos con filtrado y búsqueda opcionales";
+                summary: "Get all financial products";
+                description: "Returns all active financial products with optional filtering and search";
                 method: "GET";
                 path: "/api/products";
                 responses: {
@@ -4762,8 +4762,8 @@ export declare const apiContract: {
                     limit?: string | undefined;
                     offset?: string | undefined;
                 }>;
-                summary: "Obtener productos por tipo";
-                description: "Obtiene productos financieros filtrados por tipo";
+                summary: "Get products by type";
+                description: "Returns financial products filtered by type";
                 method: "GET";
                 path: "/api/products/type/:type";
                 responses: {
@@ -4997,8 +4997,8 @@ export declare const apiContract: {
                     limit?: string | undefined;
                     offset?: string | undefined;
                 }>;
-                summary: "Obtener productos por institución";
-                description: "Obtiene productos financieros para una institución específica";
+                summary: "Get products by institution";
+                description: "Returns financial products for a specific institution";
                 method: "GET";
                 path: "/api/products/institution/:institutionId";
                 responses: {
@@ -5212,8 +5212,8 @@ export declare const apiContract: {
                     limit?: string | undefined;
                     offset?: string | undefined;
                 }>;
-                summary: "Obtener productos destacados";
-                description: "Obtiene productos financieros destacados";
+                summary: "Get featured products";
+                description: "Returns featured financial products";
                 method: "GET";
                 path: "/api/products/spotlight";
                 responses: {
@@ -5427,8 +5427,8 @@ export declare const apiContract: {
                     limit?: string | undefined;
                     offset?: string | undefined;
                 }>;
-                summary: "Obtener productos sin tarifa anual";
-                description: "Obtiene productos financieros sin tarifa anual";
+                summary: "Get no-annual-fee products";
+                description: "Returns financial products with no annual fee";
                 method: "GET";
                 path: "/api/products/no-annual-fee";
                 responses: {
@@ -5649,8 +5649,8 @@ export declare const apiContract: {
                     limit?: string | undefined;
                     offset?: string | undefined;
                 }>;
-                summary: "Obtener productos por requisito de puntaje de crédito";
-                description: "Obtiene productos financieros filtrados por requisito de puntaje de crédito";
+                summary: "Get products by credit score requirement";
+                description: "Returns financial products filtered by credit score requirement";
                 method: "GET";
                 path: "/api/products/credit-score/:requirement";
                 responses: {
@@ -5877,8 +5877,8 @@ export declare const apiContract: {
                     limit?: string | undefined;
                     offset?: string | undefined;
                 }>;
-                summary: "Obtener mis productos guardados";
-                description: "Obtiene productos guardados por el usuario autenticado";
+                summary: "Get my saved products";
+                description: "Returns products saved by the authenticated user";
                 method: "GET";
                 path: "/api/products/all-my-products/";
                 responses: {
@@ -6102,8 +6102,8 @@ export declare const apiContract: {
                 }, {
                     productId: string;
                 }>;
-                summary: "Agregar producto a mis productos";
-                description: "Guarda un producto en la lista de productos del usuario autenticado";
+                summary: "Add product to my list";
+                description: "Saves a product to the authenticated user product list";
                 method: "POST";
                 body: import("zod").ZodOptional<import("zod").ZodObject<{
                     notes: import("zod").ZodOptional<import("zod").ZodString>;
@@ -6197,8 +6197,8 @@ export declare const apiContract: {
                 }, {
                     productId: string;
                 }>;
-                summary: "Eliminar producto de mis productos";
-                description: "Elimina un producto de la lista de productos del usuario autenticado";
+                summary: "Remove product from my list";
+                description: "Removes a product from the authenticated user product list";
                 method: "DELETE";
                 path: "/api/products/my-products/:productId";
                 responses: {
@@ -6259,8 +6259,8 @@ export declare const apiContract: {
                 }, {
                     id: string;
                 }>;
-                summary: "Obtener un producto financiero específico";
-                description: "Obtiene un producto financiero específico por ID";
+                summary: "Get a specific financial product";
+                description: "Returns a specific financial product by ID";
                 method: "GET";
                 path: "/api/products/:id";
                 responses: {
@@ -6461,8 +6461,8 @@ export declare const apiContract: {
                 }, {
                     id: string;
                 }>;
-                summary: "Actualizar un producto financiero";
-                description: "Actualiza un producto financiero existente (solo administrador)";
+                summary: "Update a financial product";
+                description: "Updates an existing financial product (admin only)";
                 method: "PUT";
                 body: import("zod").ZodObject<{
                     name: import("zod").ZodOptional<import("zod").ZodString>;
@@ -6751,8 +6751,8 @@ export declare const apiContract: {
                 }, {
                     id: string;
                 }>;
-                summary: "Eliminar un producto financiero";
-                description: "Elimina suavemente un producto financiero (solo administrador)";
+                summary: "Delete a financial product";
+                description: "Soft-deletes a financial product (admin only)";
                 method: "DELETE";
                 path: "/api/products/:id";
                 responses: {
@@ -6813,8 +6813,8 @@ export declare const apiContract: {
                 }, {
                     type: "accounts" | "cards" | "loans" | "financial-certificate";
                 }>;
-                summary: "Obtener mis productos conectados por tipo";
-                description: "Obtiene productos conectados de conexiones bancarias filtrados por tipo";
+                summary: "Get my connected products by type";
+                description: "Returns products from bank connections filtered by type";
                 method: "GET";
                 path: "/api/products/my-products/connected/:type";
                 responses: {
@@ -9303,7 +9303,7 @@ export declare const apiContract: {
             createConnection: {
                 strictStatusCodes: true;
                 summary: "Create Connection";
-                description: "Crear una conexión a partir de un ID de sesión.";
+                description: "Create a connection from a session ID.";
                 method: "POST";
                 body: import("zod").ZodObject<{
                     sessionId: import("zod").ZodString;
@@ -9336,7 +9336,7 @@ export declare const apiContract: {
                             expires_at: import("zod").ZodNullable<import("zod").ZodString>;
                             is_active: import("zod").ZodBoolean;
                         }, "strip", import("zod").ZodTypeAny, {
-                            status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                            status: "error" | "pending" | "active" | "revoked" | "disconnected";
                             id: string;
                             is_active: boolean;
                             created_at: string;
@@ -9347,7 +9347,7 @@ export declare const apiContract: {
                             revoked_at: string | null;
                             expires_at: string | null;
                         }, {
-                            status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                            status: "error" | "pending" | "active" | "revoked" | "disconnected";
                             id: string;
                             is_active: boolean;
                             created_at: string;
@@ -9361,7 +9361,7 @@ export declare const apiContract: {
                         accessToken: import("zod").ZodString;
                     }, "strip", import("zod").ZodTypeAny, {
                         connection: {
-                            status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                            status: "error" | "pending" | "active" | "revoked" | "disconnected";
                             id: string;
                             is_active: boolean;
                             created_at: string;
@@ -9375,7 +9375,7 @@ export declare const apiContract: {
                         accessToken: string;
                     }, {
                         connection: {
-                            status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                            status: "error" | "pending" | "active" | "revoked" | "disconnected";
                             id: string;
                             is_active: boolean;
                             created_at: string;
@@ -9445,7 +9445,7 @@ export declare const apiContract: {
             listConnections: {
                 strictStatusCodes: true;
                 summary: "List Connections";
-                description: "Listar todas las conexiones del usuario autenticado.";
+                description: "List all connections for the authenticated user.";
                 method: "GET";
                 path: "/api/bank-connections/connections";
                 responses: {
@@ -9462,7 +9462,7 @@ export declare const apiContract: {
                             expires_at: import("zod").ZodNullable<import("zod").ZodString>;
                             is_active: import("zod").ZodBoolean;
                         }, "strip", import("zod").ZodTypeAny, {
-                            status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                            status: "error" | "pending" | "active" | "revoked" | "disconnected";
                             id: string;
                             is_active: boolean;
                             created_at: string;
@@ -9473,7 +9473,7 @@ export declare const apiContract: {
                             revoked_at: string | null;
                             expires_at: string | null;
                         }, {
-                            status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                            status: "error" | "pending" | "active" | "revoked" | "disconnected";
                             id: string;
                             is_active: boolean;
                             created_at: string;
@@ -9486,7 +9486,7 @@ export declare const apiContract: {
                         }>, "many">;
                     }, "strip", import("zod").ZodTypeAny, {
                         connections: {
-                            status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                            status: "error" | "pending" | "active" | "revoked" | "disconnected";
                             id: string;
                             is_active: boolean;
                             created_at: string;
@@ -9499,7 +9499,7 @@ export declare const apiContract: {
                         }[];
                     }, {
                         connections: {
-                            status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                            status: "error" | "pending" | "active" | "revoked" | "disconnected";
                             id: string;
                             is_active: boolean;
                             created_at: string;
@@ -9549,7 +9549,7 @@ export declare const apiContract: {
                     connectionId: string;
                 }>;
                 summary: "Get Connection";
-                description: "Buscar una conexión por su ID.";
+                description: "Look up a connection by its ID.";
                 method: "GET";
                 path: "/api/bank-connections/connections/:connectionId";
                 responses: {
@@ -9566,7 +9566,7 @@ export declare const apiContract: {
                             expires_at: import("zod").ZodNullable<import("zod").ZodString>;
                             is_active: import("zod").ZodBoolean;
                         }, "strip", import("zod").ZodTypeAny, {
-                            status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                            status: "error" | "pending" | "active" | "revoked" | "disconnected";
                             id: string;
                             is_active: boolean;
                             created_at: string;
@@ -9577,7 +9577,7 @@ export declare const apiContract: {
                             revoked_at: string | null;
                             expires_at: string | null;
                         }, {
-                            status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                            status: "error" | "pending" | "active" | "revoked" | "disconnected";
                             id: string;
                             is_active: boolean;
                             created_at: string;
@@ -9590,7 +9590,7 @@ export declare const apiContract: {
                         }>;
                     }, "strip", import("zod").ZodTypeAny, {
                         connection: {
-                            status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                            status: "error" | "pending" | "active" | "revoked" | "disconnected";
                             id: string;
                             is_active: boolean;
                             created_at: string;
@@ -9603,7 +9603,7 @@ export declare const apiContract: {
                         };
                     }, {
                         connection: {
-                            status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                            status: "error" | "pending" | "active" | "revoked" | "disconnected";
                             id: string;
                             is_active: boolean;
                             created_at: string;
@@ -9679,7 +9679,7 @@ export declare const apiContract: {
                     connectionId: string;
                 }>;
                 summary: "Revoke Connection";
-                description: "Revocar una conexión, impidiendo accesos futuros.";
+                description: "Revoke a connection, blocking future access.";
                 method: "DELETE";
                 path: "/api/bank-connections/connections/:connectionId";
                 responses: {
@@ -9767,7 +9767,7 @@ export declare const apiContract: {
                     connectionId: string;
                 }>;
                 summary: "List Accounts";
-                description: "Listar cuentas asociadas a una conexión.";
+                description: "List accounts linked to a connection.";
                 method: "GET";
                 path: "/api/bank-connections/connections/:connectionId/accounts";
                 responses: {
@@ -9931,7 +9931,7 @@ export declare const apiContract: {
                     accountId: string;
                 }>;
                 summary: "Get Account";
-                description: "Buscar una cuenta por su ID.";
+                description: "Look up an account by its ID.";
                 method: "GET";
                 path: "/api/bank-connections/connections/:connectionId/accounts/:accountId";
                 responses: {
@@ -10108,7 +10108,7 @@ export declare const apiContract: {
                     refreshedSince?: string | undefined;
                 }>;
                 summary: "List Transactions";
-                description: "Listar todas las transacciones de una cuenta.";
+                description: "List all transactions for an account.";
                 method: "GET";
                 path: "/api/bank-connections/connections/:connectionId/accounts/:accountId/transactions";
                 responses: {
@@ -10247,7 +10247,7 @@ export declare const apiContract: {
                     transactionId: string;
                 }>;
                 summary: "Get Transaction";
-                description: "Buscar una transacción por su identificador.";
+                description: "Look up a transaction by its identifier.";
                 method: "GET";
                 path: "/api/bank-connections/connections/:connectionId/accounts/:accountId/transactions/:transactionId";
                 responses: {
@@ -10374,8 +10374,8 @@ export declare const apiContract: {
         Budgets: {
             createBudget: {
                 strictStatusCodes: true;
-                summary: "Crear un nuevo presupuesto";
-                description: "Crea un nuevo presupuesto para el usuario autenticado";
+                summary: "Create a new budget";
+                description: "Creates a new budget for the authenticated user";
                 method: "POST";
                 body: import("zod").ZodEffects<import("zod").ZodObject<{
                     name: import("zod").ZodString;
@@ -10584,8 +10584,8 @@ export declare const apiContract: {
                     offset?: string | undefined;
                     budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
                 }>;
-                summary: "Obtener todos los presupuestos";
-                description: "Obtiene todos los presupuestos del usuario autenticado con filtrado opcional";
+                summary: "Get all budgets";
+                description: "Returns all budgets for the authenticated user with optional filtering";
                 method: "GET";
                 path: "/api/budgets";
                 responses: {
@@ -10744,8 +10744,8 @@ export declare const apiContract: {
                 }, {
                     id: string;
                 }>;
-                summary: "Obtener un presupuesto específico";
-                description: "Obtiene un presupuesto específico por ID para el usuario autenticado";
+                summary: "Get a specific budget";
+                description: "Returns a specific budget by ID for the authenticated user";
                 method: "GET";
                 path: "/api/budgets/:id";
                 responses: {
@@ -10894,8 +10894,8 @@ export declare const apiContract: {
                 }, {
                     id: string;
                 }>;
-                summary: "Actualizar un presupuesto";
-                description: "Actualiza un presupuesto existente para el usuario autenticado";
+                summary: "Update a budget";
+                description: "Updates an existing budget for the authenticated user";
                 method: "PUT";
                 body: import("zod").ZodObject<{
                     name: import("zod").ZodOptional<import("zod").ZodString>;
@@ -11088,8 +11088,8 @@ export declare const apiContract: {
                 }, {
                     id: string;
                 }>;
-                summary: "Eliminar un presupuesto";
-                description: "Elimina suavemente un presupuesto para el usuario autenticado";
+                summary: "Delete a budget";
+                description: "Soft-deletes a budget for the authenticated user";
                 method: "DELETE";
                 path: "/api/budgets/:id";
                 responses: {
@@ -11153,8 +11153,8 @@ export declare const apiContract: {
                     limit?: string | undefined;
                     offset?: string | undefined;
                 }>;
-                summary: "Obtener presupuestos activos";
-                description: "Obtiene todos los presupuestos activos para el usuario autenticado";
+                summary: "Get active budgets";
+                description: "Returns all active budgets for the authenticated user";
                 method: "GET";
                 path: "/api/budgets/active";
                 responses: {
@@ -11323,8 +11323,8 @@ export declare const apiContract: {
                     limit?: string | undefined;
                     offset?: string | undefined;
                 }>;
-                summary: "Obtener presupuestos por período";
-                description: "Obtiene presupuestos filtrados por período para el usuario autenticado";
+                summary: "Get budgets by period";
+                description: "Returns budgets filtered by period for the authenticated user";
                 method: "GET";
                 path: "/api/budgets/period/:period";
                 responses: {
@@ -11496,8 +11496,8 @@ export declare const apiContract: {
                 }, {
                     id: string;
                 }>;
-                summary: "Actualizar monto usado del presupuesto";
-                description: "Actualiza el monto usado para un presupuesto específico";
+                summary: "Update budget used amount";
+                description: "Updates the used amount for a specific budget";
                 method: "PATCH";
                 body: import("zod").ZodObject<{
                     used_amount: import("zod").ZodNumber;
@@ -11661,8 +11661,8 @@ export declare const apiContract: {
         Dashboard: {
             getDashboard: {
                 strictStatusCodes: true;
-                summary: "Obtener datos completos del dashboard";
-                description: "Retorna todos los datos necesarios para mostrar el dashboard completo del usuario, incluyendo balance, presupuestos, metas de ahorro, indicadores financieros, movimientos recientes y más.";
+                summary: "Get full dashboard data";
+                description: "Returns all data for the full user dashboard, including balance, budgets, saving goals, financial indicators, recent activity, and more.";
                 method: "GET";
                 path: "/api/dashboard";
                 responses: {
@@ -12324,8 +12324,8 @@ export declare const apiContract: {
             };
             getDashboardSummary: {
                 strictStatusCodes: true;
-                summary: "Obtener resumen del dashboard";
-                description: "Retorna solo los datos esenciales del dashboard para carga rápida: balance, resumen mensual y estado de sincronización.";
+                summary: "Get dashboard summary";
+                description: "Returns essential dashboard data for fast loading: balance, monthly summary, and sync status.";
                 method: "GET";
                 path: "/api/dashboard/summary";
                 responses: {
@@ -12469,8 +12469,8 @@ export declare const apiContract: {
             };
             refreshDashboard: {
                 strictStatusCodes: true;
-                summary: "Actualizar datos del dashboard";
-                description: "Fuerza la sincronización de datos bancarios y regenera los datos del dashboard con información actualizada.";
+                summary: "Refresh dashboard data";
+                description: "Forces bank data synchronization and regenerates dashboard data with up-to-date information.";
                 method: "POST";
                 body: import("zod").ZodObject<{}, "strip", import("zod").ZodTypeAny, {}, {}>;
                 path: "/api/dashboard/refresh";
@@ -13135,8 +13135,8 @@ export declare const apiContract: {
         CreditUtilization: {
             getCreditUtilization: {
                 strictStatusCodes: true;
-                summary: "Obtener datos de utilización de crédito";
-                description: "Retorna todos los datos necesarios para mostrar la pantalla de utilización de crédito, incluyendo métricas de crédito, tarjetas, historial de pagos, gastos mensuales y recomendaciones.";
+                summary: "Get credit utilization data";
+                description: "Returns all data for the credit utilization screen, including credit metrics, cards, payment history, monthly spending, and recommendations.";
                 method: "GET";
                 path: "/api/credit-utilization";
                 responses: {
@@ -13454,8 +13454,8 @@ export declare const apiContract: {
             };
             refreshCreditUtilization: {
                 strictStatusCodes: true;
-                summary: "Actualizar datos de utilización de crédito";
-                description: "Fuerza la sincronización de datos bancarios y regenera los datos de utilización de crédito con información actualizada.";
+                summary: "Refresh credit utilization data";
+                description: "Forces bank data synchronization and regenerates credit utilization data with up-to-date information.";
                 method: "POST";
                 body: import("zod").ZodObject<{}, "strip", import("zod").ZodTypeAny, {}, {}>;
                 path: "/api/credit-utilization/refresh";
@@ -13776,8 +13776,8 @@ export declare const apiContract: {
         FinancialTrends: {
             getFinancialTrends: {
                 strictStatusCodes: true;
-                summary: "Obtener datos de tendencias financieras";
-                description: "Retorna todos los datos necesarios para mostrar la pantalla de tendencias financieras, incluyendo comparaciones mensuales, crecimiento por categorías, proyecciones de fin de mes y metas de ahorro.";
+                summary: "Get financial trends data";
+                description: "Returns all data needed for the financial trends screen, including monthly comparisons, category growth, end-of-month projections, and saving goals.";
                 method: "GET";
                 path: "/api/financial-trends";
                 responses: {
@@ -14008,8 +14008,8 @@ export declare const apiContract: {
             };
             refreshFinancialTrends: {
                 strictStatusCodes: true;
-                summary: "Actualizar datos de tendencias financieras";
-                description: "Fuerza la sincronización de datos bancarios y regenera los datos de tendencias financieras con información actualizada.";
+                summary: "Refresh financial trends data";
+                description: "Forces bank data synchronization and regenerates financial trends with up-to-date information.";
                 method: "POST";
                 body: import("zod").ZodObject<{}, "strip", import("zod").ZodTypeAny, {}, {}>;
                 path: "/api/financial-trends/refresh";
@@ -14243,8 +14243,8 @@ export declare const apiContract: {
         Reports: {
             getReports: {
                 strictStatusCodes: true;
-                summary: "Obtener reportes financieros completos";
-                description: "Retorna resumen financiero, tendencia mensual y distribución de gastos";
+                summary: "Get full financial reports";
+                description: "Returns financial summary, monthly trend, and expense distribution";
                 method: "GET";
                 path: "/api/reports";
                 responses: {
@@ -14425,6 +14425,825 @@ export declare const apiContract: {
                             message: string;
                         };
                         success: false;
+                    }>;
+                };
+            };
+        };
+        EmailIngestion: {
+            gmailOAuthStart: {
+                strictStatusCodes: true;
+                summary: "Start Gmail OAuth";
+                method: "GET";
+                path: "/api/email-ingestion/gmail/oauth/start";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        authorizationUrl: import("zod").ZodString;
+                        state: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        authorizationUrl: string;
+                        state: string;
+                    }, {
+                        authorizationUrl: string;
+                        state: string;
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            gmailOAuthCallback: {
+                strictStatusCodes: true;
+                query: import("zod").ZodObject<{
+                    code: import("zod").ZodOptional<import("zod").ZodString>;
+                    state: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    state: string;
+                    error?: string | undefined;
+                    code?: string | undefined;
+                }, {
+                    state: string;
+                    error?: string | undefined;
+                    code?: string | undefined;
+                }>;
+                summary: "Gmail OAuth callback";
+                method: "GET";
+                path: "/api/email-ingestion/gmail/oauth/callback";
+                responses: {
+                    302: import("zod").ZodOptional<import("zod").ZodObject<{
+                        redirect: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        redirect: string;
+                    }, {
+                        redirect: string;
+                    }>>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            outlookOAuthStart: {
+                strictStatusCodes: true;
+                summary: "Start Outlook OAuth";
+                method: "GET";
+                path: "/api/email-ingestion/outlook/oauth/start";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        authorizationUrl: import("zod").ZodString;
+                        state: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        authorizationUrl: string;
+                        state: string;
+                    }, {
+                        authorizationUrl: string;
+                        state: string;
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            outlookOAuthCallback: {
+                strictStatusCodes: true;
+                query: import("zod").ZodObject<{
+                    code: import("zod").ZodOptional<import("zod").ZodString>;
+                    state: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    state: string;
+                    error?: string | undefined;
+                    code?: string | undefined;
+                }, {
+                    state: string;
+                    error?: string | undefined;
+                    code?: string | undefined;
+                }>;
+                summary: "Outlook OAuth callback";
+                method: "GET";
+                path: "/api/email-ingestion/outlook/oauth/callback";
+                responses: {
+                    302: import("zod").ZodOptional<import("zod").ZodObject<{
+                        redirect: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        redirect: string;
+                    }, {
+                        redirect: string;
+                    }>>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            listEmailConnections: {
+                strictStatusCodes: true;
+                summary: "List email provider connections";
+                method: "GET";
+                path: "/api/email-ingestion/connections";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        connections: import("zod").ZodArray<import("zod").ZodObject<{
+                            uuid: import("zod").ZodString;
+                            provider: import("zod").ZodNativeEnum<typeof import("./enums").EmailProvider>;
+                            status: import("zod").ZodNativeEnum<typeof import("./enums").EmailConnectionStatus>;
+                            provider_account_id: import("zod").ZodNullable<import("zod").ZodString>;
+                            last_successful_sync_at: import("zod").ZodNullable<import("zod").ZodString>;
+                            last_error_message: import("zod").ZodNullable<import("zod").ZodString>;
+                            created_at: import("zod").ZodString;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            status: import("./enums").EmailConnectionStatus;
+                            uuid: string;
+                            created_at: string;
+                            provider: import("./enums").EmailProvider;
+                            provider_account_id: string | null;
+                            last_successful_sync_at: string | null;
+                            last_error_message: string | null;
+                        }, {
+                            status: import("./enums").EmailConnectionStatus;
+                            uuid: string;
+                            created_at: string;
+                            provider: import("./enums").EmailProvider;
+                            provider_account_id: string | null;
+                            last_successful_sync_at: string | null;
+                            last_error_message: string | null;
+                        }>, "many">;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        connections: {
+                            status: import("./enums").EmailConnectionStatus;
+                            uuid: string;
+                            created_at: string;
+                            provider: import("./enums").EmailProvider;
+                            provider_account_id: string | null;
+                            last_successful_sync_at: string | null;
+                            last_error_message: string | null;
+                        }[];
+                    }, {
+                        connections: {
+                            status: import("./enums").EmailConnectionStatus;
+                            uuid: string;
+                            created_at: string;
+                            provider: import("./enums").EmailProvider;
+                            provider_account_id: string | null;
+                            last_successful_sync_at: string | null;
+                            last_error_message: string | null;
+                        }[];
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            disconnectConnection: {
+                strictStatusCodes: true;
+                pathParams: import("zod").ZodObject<{
+                    connectionUuid: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    connectionUuid: string;
+                }, {
+                    connectionUuid: string;
+                }>;
+                summary: "Disconnect email provider";
+                method: "DELETE";
+                path: "/api/email-ingestion/connections/:connectionUuid";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<true>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        success: true;
+                    }, {
+                        success: true;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            syncConnection: {
+                strictStatusCodes: true;
+                pathParams: import("zod").ZodObject<{
+                    connectionUuid: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    connectionUuid: string;
+                }, {
+                    connectionUuid: string;
+                }>;
+                summary: "Enqueue manual email sync";
+                method: "POST";
+                body: import("zod").ZodObject<{}, "strip", import("zod").ZodTypeAny, {}, {}>;
+                path: "/api/email-ingestion/connections/:connectionUuid/sync";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        enqueued: import("zod").ZodLiteral<true>;
+                        job_uuid: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        enqueued: true;
+                        job_uuid: string;
+                    }, {
+                        enqueued: true;
+                        job_uuid: string;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            listEvents: {
+                strictStatusCodes: true;
+                query: import("zod").ZodObject<{
+                    status: import("zod").ZodOptional<import("zod").ZodNativeEnum<typeof import("./enums").FinancialEmailEventStatus>>;
+                    fromDate: import("zod").ZodOptional<import("zod").ZodString>;
+                    toDate: import("zod").ZodOptional<import("zod").ZodString>;
+                    limit: import("zod").ZodOptional<import("zod").ZodEffects<import("zod").ZodString, number, string>>;
+                    offset: import("zod").ZodOptional<import("zod").ZodEffects<import("zod").ZodString, number, string>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    status?: import("./enums").FinancialEmailEventStatus | undefined;
+                    limit?: number | undefined;
+                    offset?: number | undefined;
+                    fromDate?: string | undefined;
+                    toDate?: string | undefined;
+                }, {
+                    status?: import("./enums").FinancialEmailEventStatus | undefined;
+                    limit?: string | undefined;
+                    offset?: string | undefined;
+                    fromDate?: string | undefined;
+                    toDate?: string | undefined;
+                }>;
+                summary: "List parsed financial email events";
+                method: "GET";
+                path: "/api/email-ingestion/events";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        events: import("zod").ZodArray<import("zod").ZodObject<{
+                            uuid: import("zod").ZodString;
+                            status: import("zod").ZodNativeEnum<typeof import("./enums").FinancialEmailEventStatus>;
+                            institution_name: import("zod").ZodNullable<import("zod").ZodString>;
+                            transaction_description: import("zod").ZodNullable<import("zod").ZodString>;
+                            amount: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            currency: import("zod").ZodNullable<import("zod").ZodString>;
+                            transaction_date: import("zod").ZodNullable<import("zod").ZodString>;
+                            transaction_direction: import("zod").ZodNullable<import("zod").ZodEnum<["credit", "debit"]>>;
+                            category: import("zod").ZodNullable<import("zod").ZodString>;
+                            confidence: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            source_metadata: import("zod").ZodNullable<import("zod").ZodRecord<import("zod").ZodString, import("zod").ZodUnknown>>;
+                            created_at: import("zod").ZodString;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            status: import("./enums").FinancialEmailEventStatus;
+                            uuid: string;
+                            created_at: string;
+                            currency: string | null;
+                            institution_name: string | null;
+                            amount: number | null;
+                            category: string | null;
+                            transaction_description: string | null;
+                            transaction_date: string | null;
+                            transaction_direction: "credit" | "debit" | null;
+                            confidence: number | null;
+                            source_metadata: Record<string, unknown> | null;
+                        }, {
+                            status: import("./enums").FinancialEmailEventStatus;
+                            uuid: string;
+                            created_at: string;
+                            currency: string | null;
+                            institution_name: string | null;
+                            amount: number | null;
+                            category: string | null;
+                            transaction_description: string | null;
+                            transaction_date: string | null;
+                            transaction_direction: "credit" | "debit" | null;
+                            confidence: number | null;
+                            source_metadata: Record<string, unknown> | null;
+                        }>, "many">;
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                        events: {
+                            status: import("./enums").FinancialEmailEventStatus;
+                            uuid: string;
+                            created_at: string;
+                            currency: string | null;
+                            institution_name: string | null;
+                            amount: number | null;
+                            category: string | null;
+                            transaction_description: string | null;
+                            transaction_date: string | null;
+                            transaction_direction: "credit" | "debit" | null;
+                            confidence: number | null;
+                            source_metadata: Record<string, unknown> | null;
+                        }[];
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                        events: {
+                            status: import("./enums").FinancialEmailEventStatus;
+                            uuid: string;
+                            created_at: string;
+                            currency: string | null;
+                            institution_name: string | null;
+                            amount: number | null;
+                            category: string | null;
+                            transaction_description: string | null;
+                            transaction_date: string | null;
+                            transaction_direction: "credit" | "debit" | null;
+                            confidence: number | null;
+                            source_metadata: Record<string, unknown> | null;
+                        }[];
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            approveEvent: {
+                strictStatusCodes: true;
+                pathParams: import("zod").ZodObject<{
+                    eventUuid: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    eventUuid: string;
+                }, {
+                    eventUuid: string;
+                }>;
+                summary: "Approve event and import as product transaction";
+                method: "POST";
+                body: import("zod").ZodObject<{
+                    user_product_uuid: import("zod").ZodString;
+                    amount: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    description: import("zod").ZodOptional<import("zod").ZodString>;
+                    transaction_date: import("zod").ZodOptional<import("zod").ZodString>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    user_product_uuid: string;
+                    description?: string | undefined;
+                    amount?: number | undefined;
+                    transaction_date?: string | undefined;
+                }, {
+                    user_product_uuid: string;
+                    description?: string | undefined;
+                    amount?: number | undefined;
+                    transaction_date?: string | undefined;
+                }>;
+                path: "/api/email-ingestion/events/:eventUuid/approve";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        transaction_uuid: import("zod").ZodString;
+                        event_uuid: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        transaction_uuid: string;
+                        event_uuid: string;
+                    }, {
+                        transaction_uuid: string;
+                        event_uuid: string;
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    409: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            rejectEvent: {
+                strictStatusCodes: true;
+                pathParams: import("zod").ZodObject<{
+                    eventUuid: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    eventUuid: string;
+                }, {
+                    eventUuid: string;
+                }>;
+                summary: "Reject parsed financial email event";
+                method: "POST";
+                body: import("zod").ZodObject<{
+                    reason: import("zod").ZodOptional<import("zod").ZodString>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    reason?: string | undefined;
+                }, {
+                    reason?: string | undefined;
+                }>;
+                path: "/api/email-ingestion/events/:eventUuid/reject";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<true>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        success: true;
+                    }, {
+                        success: true;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            convertEvent: {
+                strictStatusCodes: true;
+                pathParams: import("zod").ZodObject<{
+                    eventUuid: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    eventUuid: string;
+                }, {
+                    eventUuid: string;
+                }>;
+                summary: "Convert event (same as approve)";
+                method: "POST";
+                body: import("zod").ZodObject<{
+                    user_product_uuid: import("zod").ZodString;
+                    amount: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    description: import("zod").ZodOptional<import("zod").ZodString>;
+                    transaction_date: import("zod").ZodOptional<import("zod").ZodString>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    user_product_uuid: string;
+                    description?: string | undefined;
+                    amount?: number | undefined;
+                    transaction_date?: string | undefined;
+                }, {
+                    user_product_uuid: string;
+                    description?: string | undefined;
+                    amount?: number | undefined;
+                    transaction_date?: string | undefined;
+                }>;
+                path: "/api/email-ingestion/events/:eventUuid/convert";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        transaction_uuid: import("zod").ZodString;
+                        event_uuid: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        transaction_uuid: string;
+                        event_uuid: string;
+                    }, {
+                        transaction_uuid: string;
+                        event_uuid: string;
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    409: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
                     }>;
                 };
             };

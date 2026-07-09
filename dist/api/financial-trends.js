@@ -60,8 +60,8 @@ export const FinancialTrendsContracts = c.router({
             401: ErrorResponseSchema,
             500: ErrorResponseSchema
         },
-        summary: 'Obtener datos de tendencias financieras',
-        description: 'Retorna todos los datos necesarios para mostrar la pantalla de tendencias financieras, incluyendo comparaciones mensuales, crecimiento por categorías, proyecciones de fin de mes y metas de ahorro.'
+        summary: 'Get financial trends data',
+        description: 'Returns all data needed for the financial trends screen, including monthly comparisons, category growth, end-of-month projections, and saving goals.'
     },
     /**
      * Refresh financial trends data
@@ -76,7 +76,7 @@ export const FinancialTrendsContracts = c.router({
             401: ErrorResponseSchema,
             500: ErrorResponseSchema
         },
-        summary: 'Actualizar datos de tendencias financieras',
-        description: 'Fuerza la sincronización de datos bancarios y regenera los datos de tendencias financieras con información actualizada.'
+        summary: 'Refresh financial trends data',
+        description: 'Forces bank data synchronization and regenerates financial trends with up-to-date information.'
     }
 });

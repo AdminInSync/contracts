@@ -29,55 +29,55 @@ export const PaymentReminderSchema = z.object({
 // Request schemas
 export const CreatePaymentReminderSchema = z.object({
     user_connection_id: z.number().positive().optional().openapi({
-        description: 'Opcional - Vincula el recordatorio a una conexión financiera específica (cuenta bancaria, tarjeta de crédito, etc.). Omitir para recordatorios generales.'
+        description: 'Optional — links the reminder to a specific financial connection (bank account, credit card, etc.). Omit for general reminders.'
     }),
     title: z.string().min(1).max(255).openapi({
-        description: 'Título del recordatorio de pago',
+        description: 'Payment reminder title',
         example: 'Credit Card Payment'
     }),
     description: z.string().optional().openapi({
-        description: 'Detalles adicionales sobre el pago',
+        description: 'Additional payment details',
         example: 'Monthly Chase Visa payment'
     }),
     reminder_type: ReminderTypeSchema.optional().openapi({
-        description: 'Tipo de recordatorio. Opciones: credit_card, loan, bill, subscription, custom'
+        description: 'Reminder type. Options: credit_card, loan, bill, subscription, custom'
     }),
     amount: z.number().min(0).optional().openapi({
-        description: 'Monto del pago',
+        description: 'Payment amount',
         example: 1200.50
     }),
     currency: z.string().min(1).max(100).openapi({
-        description: 'Código de moneda',
+        description: 'Currency code',
         example: 'USD'
     }),
     due_date: z.string().date().openapi({
-        description: 'Fecha de vencimiento del pago (YYYY-MM-DD)',
+        description: 'Payment due date (YYYY-MM-DD)',
         example: '2025-10-08'
     }),
     reminder_date: z.string().datetime().optional().openapi({
-        description: 'Cuándo enviar la notificación del recordatorio',
+        description: 'When to send the reminder notification',
         example: '2025-10-07T19:21:45.752Z'
     }),
     reminder_status: ReminderStatusSchema.optional().openapi({
-        description: 'Estado del recordatorio. Opciones: pending, sent, acknowledged, completed, overdue'
+        description: 'Reminder status. Options: pending, sent, acknowledged, completed, overdue'
     }),
     priority: PriorityLevelSchema.optional().openapi({
-        description: 'Nivel de prioridad. Opciones: low, medium, high, urgent'
+        description: 'Priority level. Options: low, medium, high, urgent'
     }),
     is_recurring: z.boolean().optional().openapi({
-        description: 'Si este es un pago recurrente',
+        description: 'Whether this is a recurring payment',
         example: true
     }),
     recurrence_pattern: z.string().optional().openapi({
-        description: 'Con qué frecuencia se repite el pago. Ejemplos: "monthly", "quarterly", "yearly", "weekly"',
+        description: 'How often the payment repeats. Examples: "monthly", "quarterly", "yearly", "weekly"',
         example: 'monthly'
     }),
     notification_settings: z.any().optional().openapi({
-        description: 'Objeto JSON con preferencias de notificación (email, push, SMS). Ejemplo: {"email": true, "push": true, "sms": false}',
+        description: 'JSON object with notification preferences (email, push, SMS). Example: {"email": true, "push": true, "sms": false}',
         example: { email: true, push: true, sms: false }
     }),
     notes: z.string().optional().openapi({
-        description: 'Notas o comentarios adicionales',
+        description: 'Additional notes or comments',
         example: 'Auto-pay enabled'
     }),
 });

@@ -74,8 +74,8 @@ export const CreditUtilizationContracts = c.router({
             401: ErrorResponseSchema,
             500: ErrorResponseSchema
         },
-        summary: 'Obtener datos de utilización de crédito',
-        description: 'Retorna todos los datos necesarios para mostrar la pantalla de utilización de crédito, incluyendo métricas de crédito, tarjetas, historial de pagos, gastos mensuales y recomendaciones.'
+        summary: 'Get credit utilization data',
+        description: 'Returns all data for the credit utilization screen, including credit metrics, cards, payment history, monthly spending, and recommendations.'
     },
     /**
      * Refresh credit utilization data
@@ -92,7 +92,7 @@ export const CreditUtilizationContracts = c.router({
             401: ErrorResponseSchema,
             500: ErrorResponseSchema
         },
-        summary: 'Actualizar datos de utilización de crédito',
-        description: 'Fuerza la sincronización de datos bancarios y regenera los datos de utilización de crédito con información actualizada.'
+        summary: 'Refresh credit utilization data',
+        description: 'Forces bank data synchronization and regenerates credit utilization data with up-to-date information.'
     }
 });

@@ -11,7 +11,7 @@ export declare const BankConnectionSchema: z.ZodObject<{
     expires_at: z.ZodNullable<z.ZodString>;
     is_active: z.ZodBoolean;
 }, "strip", z.ZodTypeAny, {
-    status: "error" | "pending" | "active" | "disconnected" | "revoked";
+    status: "error" | "pending" | "active" | "revoked" | "disconnected";
     id: string;
     is_active: boolean;
     created_at: string;
@@ -22,7 +22,7 @@ export declare const BankConnectionSchema: z.ZodObject<{
     revoked_at: string | null;
     expires_at: string | null;
 }, {
-    status: "error" | "pending" | "active" | "disconnected" | "revoked";
+    status: "error" | "pending" | "active" | "revoked" | "disconnected";
     id: string;
     is_active: boolean;
     created_at: string;
@@ -62,7 +62,7 @@ export declare const CreateConnectionResponseSchema: z.ZodObject<{
         expires_at: z.ZodNullable<z.ZodString>;
         is_active: z.ZodBoolean;
     }, "strip", z.ZodTypeAny, {
-        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+        status: "error" | "pending" | "active" | "revoked" | "disconnected";
         id: string;
         is_active: boolean;
         created_at: string;
@@ -73,7 +73,7 @@ export declare const CreateConnectionResponseSchema: z.ZodObject<{
         revoked_at: string | null;
         expires_at: string | null;
     }, {
-        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+        status: "error" | "pending" | "active" | "revoked" | "disconnected";
         id: string;
         is_active: boolean;
         created_at: string;
@@ -87,7 +87,7 @@ export declare const CreateConnectionResponseSchema: z.ZodObject<{
     accessToken: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     connection: {
-        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+        status: "error" | "pending" | "active" | "revoked" | "disconnected";
         id: string;
         is_active: boolean;
         created_at: string;
@@ -101,7 +101,7 @@ export declare const CreateConnectionResponseSchema: z.ZodObject<{
     accessToken: string;
 }, {
     connection: {
-        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+        status: "error" | "pending" | "active" | "revoked" | "disconnected";
         id: string;
         is_active: boolean;
         created_at: string;
@@ -127,7 +127,7 @@ export declare const GetConnectionResponseSchema: z.ZodObject<{
         expires_at: z.ZodNullable<z.ZodString>;
         is_active: z.ZodBoolean;
     }, "strip", z.ZodTypeAny, {
-        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+        status: "error" | "pending" | "active" | "revoked" | "disconnected";
         id: string;
         is_active: boolean;
         created_at: string;
@@ -138,7 +138,7 @@ export declare const GetConnectionResponseSchema: z.ZodObject<{
         revoked_at: string | null;
         expires_at: string | null;
     }, {
-        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+        status: "error" | "pending" | "active" | "revoked" | "disconnected";
         id: string;
         is_active: boolean;
         created_at: string;
@@ -151,7 +151,7 @@ export declare const GetConnectionResponseSchema: z.ZodObject<{
     }>;
 }, "strip", z.ZodTypeAny, {
     connection: {
-        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+        status: "error" | "pending" | "active" | "revoked" | "disconnected";
         id: string;
         is_active: boolean;
         created_at: string;
@@ -164,7 +164,7 @@ export declare const GetConnectionResponseSchema: z.ZodObject<{
     };
 }, {
     connection: {
-        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+        status: "error" | "pending" | "active" | "revoked" | "disconnected";
         id: string;
         is_active: boolean;
         created_at: string;
@@ -189,7 +189,7 @@ export declare const ListConnectionsResponseSchema: z.ZodObject<{
         expires_at: z.ZodNullable<z.ZodString>;
         is_active: z.ZodBoolean;
     }, "strip", z.ZodTypeAny, {
-        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+        status: "error" | "pending" | "active" | "revoked" | "disconnected";
         id: string;
         is_active: boolean;
         created_at: string;
@@ -200,7 +200,7 @@ export declare const ListConnectionsResponseSchema: z.ZodObject<{
         revoked_at: string | null;
         expires_at: string | null;
     }, {
-        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+        status: "error" | "pending" | "active" | "revoked" | "disconnected";
         id: string;
         is_active: boolean;
         created_at: string;
@@ -213,7 +213,7 @@ export declare const ListConnectionsResponseSchema: z.ZodObject<{
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
     connections: {
-        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+        status: "error" | "pending" | "active" | "revoked" | "disconnected";
         id: string;
         is_active: boolean;
         created_at: string;
@@ -226,7 +226,7 @@ export declare const ListConnectionsResponseSchema: z.ZodObject<{
     }[];
 }, {
     connections: {
-        status: "error" | "pending" | "active" | "disconnected" | "revoked";
+        status: "error" | "pending" | "active" | "revoked" | "disconnected";
         id: string;
         is_active: boolean;
         created_at: string;

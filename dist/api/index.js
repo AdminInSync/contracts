@@ -15,6 +15,7 @@ import { DashboardContracts } from './dashboard';
 import { CreditUtilizationContracts } from './credit-utilization';
 import { FinancialTrendsContracts } from './financial-trends';
 import { ReportsContracts } from './reports';
+import { EmailIngestionContracts } from './email-ingestion';
 const c = initContract();
 export const ApiContracts = c.router({
     Auth: AuthContracts,
@@ -33,6 +34,7 @@ export const ApiContracts = c.router({
     CreditUtilization: CreditUtilizationContracts,
     FinancialTrends: FinancialTrendsContracts,
     Reports: ReportsContracts,
+    EmailIngestion: EmailIngestionContracts,
 }, {
     strictStatusCodes: true,
     pathPrefix: '/api'

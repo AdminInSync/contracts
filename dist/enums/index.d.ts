@@ -16,3 +16,21 @@ export declare enum DocumentStatus {
     REJECTED = "rejected",
     EXPIRED = "expired"
 }
+export declare enum EmailProvider {
+    GMAIL = "gmail",
+    OUTLOOK = "outlook"
+}
+export declare enum EmailConnectionStatus {
+    PENDING = "pending",
+    ACTIVE = "active",
+    ERROR = "error",
+    REVOKED = "revoked"
+}
+export declare enum FinancialEmailEventStatus {
+    DISCOVERED = "discovered",
+    PARSED = "parsed",
+    PENDING_REVIEW = "pending_review",
+    APPROVED = "approved",
+    REJECTED = "rejected",
+    IMPORTED = "imported"
+}

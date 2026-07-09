@@ -2,7 +2,7 @@ import { z } from 'zod';
 export declare const BankConnectionContracts: {
     createConnection: {
         summary: "Create Connection";
-        description: "Crear una conexión a partir de un ID de sesión.";
+        description: "Create a connection from a session ID.";
         method: "POST";
         body: z.ZodObject<{
             sessionId: z.ZodString;
@@ -35,7 +35,7 @@ export declare const BankConnectionContracts: {
                     expires_at: z.ZodNullable<z.ZodString>;
                     is_active: z.ZodBoolean;
                 }, "strip", z.ZodTypeAny, {
-                    status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                    status: "error" | "pending" | "active" | "revoked" | "disconnected";
                     id: string;
                     is_active: boolean;
                     created_at: string;
@@ -46,7 +46,7 @@ export declare const BankConnectionContracts: {
                     revoked_at: string | null;
                     expires_at: string | null;
                 }, {
-                    status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                    status: "error" | "pending" | "active" | "revoked" | "disconnected";
                     id: string;
                     is_active: boolean;
                     created_at: string;
@@ -60,7 +60,7 @@ export declare const BankConnectionContracts: {
                 accessToken: z.ZodString;
             }, "strip", z.ZodTypeAny, {
                 connection: {
-                    status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                    status: "error" | "pending" | "active" | "revoked" | "disconnected";
                     id: string;
                     is_active: boolean;
                     created_at: string;
@@ -74,7 +74,7 @@ export declare const BankConnectionContracts: {
                 accessToken: string;
             }, {
                 connection: {
-                    status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                    status: "error" | "pending" | "active" | "revoked" | "disconnected";
                     id: string;
                     is_active: boolean;
                     created_at: string;
@@ -144,7 +144,7 @@ export declare const BankConnectionContracts: {
     };
     listConnections: {
         summary: "List Connections";
-        description: "Listar todas las conexiones del usuario autenticado.";
+        description: "List all connections for the authenticated user.";
         method: "GET";
         path: "/bank-connections/connections";
         responses: {
@@ -161,7 +161,7 @@ export declare const BankConnectionContracts: {
                     expires_at: z.ZodNullable<z.ZodString>;
                     is_active: z.ZodBoolean;
                 }, "strip", z.ZodTypeAny, {
-                    status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                    status: "error" | "pending" | "active" | "revoked" | "disconnected";
                     id: string;
                     is_active: boolean;
                     created_at: string;
@@ -172,7 +172,7 @@ export declare const BankConnectionContracts: {
                     revoked_at: string | null;
                     expires_at: string | null;
                 }, {
-                    status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                    status: "error" | "pending" | "active" | "revoked" | "disconnected";
                     id: string;
                     is_active: boolean;
                     created_at: string;
@@ -185,7 +185,7 @@ export declare const BankConnectionContracts: {
                 }>, "many">;
             }, "strip", z.ZodTypeAny, {
                 connections: {
-                    status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                    status: "error" | "pending" | "active" | "revoked" | "disconnected";
                     id: string;
                     is_active: boolean;
                     created_at: string;
@@ -198,7 +198,7 @@ export declare const BankConnectionContracts: {
                 }[];
             }, {
                 connections: {
-                    status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                    status: "error" | "pending" | "active" | "revoked" | "disconnected";
                     id: string;
                     is_active: boolean;
                     created_at: string;
@@ -248,7 +248,7 @@ export declare const BankConnectionContracts: {
             connectionId: string;
         }>;
         summary: "Get Connection";
-        description: "Buscar una conexión por su ID.";
+        description: "Look up a connection by its ID.";
         method: "GET";
         path: "/bank-connections/connections/:connectionId";
         responses: {
@@ -265,7 +265,7 @@ export declare const BankConnectionContracts: {
                     expires_at: z.ZodNullable<z.ZodString>;
                     is_active: z.ZodBoolean;
                 }, "strip", z.ZodTypeAny, {
-                    status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                    status: "error" | "pending" | "active" | "revoked" | "disconnected";
                     id: string;
                     is_active: boolean;
                     created_at: string;
@@ -276,7 +276,7 @@ export declare const BankConnectionContracts: {
                     revoked_at: string | null;
                     expires_at: string | null;
                 }, {
-                    status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                    status: "error" | "pending" | "active" | "revoked" | "disconnected";
                     id: string;
                     is_active: boolean;
                     created_at: string;
@@ -289,7 +289,7 @@ export declare const BankConnectionContracts: {
                 }>;
             }, "strip", z.ZodTypeAny, {
                 connection: {
-                    status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                    status: "error" | "pending" | "active" | "revoked" | "disconnected";
                     id: string;
                     is_active: boolean;
                     created_at: string;
@@ -302,7 +302,7 @@ export declare const BankConnectionContracts: {
                 };
             }, {
                 connection: {
-                    status: "error" | "pending" | "active" | "disconnected" | "revoked";
+                    status: "error" | "pending" | "active" | "revoked" | "disconnected";
                     id: string;
                     is_active: boolean;
                     created_at: string;
@@ -378,7 +378,7 @@ export declare const BankConnectionContracts: {
             connectionId: string;
         }>;
         summary: "Revoke Connection";
-        description: "Revocar una conexión, impidiendo accesos futuros.";
+        description: "Revoke a connection, blocking future access.";
         method: "DELETE";
         path: "/bank-connections/connections/:connectionId";
         responses: {
@@ -466,7 +466,7 @@ export declare const BankConnectionContracts: {
             connectionId: string;
         }>;
         summary: "List Accounts";
-        description: "Listar cuentas asociadas a una conexión.";
+        description: "List accounts linked to a connection.";
         method: "GET";
         path: "/bank-connections/connections/:connectionId/accounts";
         responses: {
@@ -630,7 +630,7 @@ export declare const BankConnectionContracts: {
             accountId: string;
         }>;
         summary: "Get Account";
-        description: "Buscar una cuenta por su ID.";
+        description: "Look up an account by its ID.";
         method: "GET";
         path: "/bank-connections/connections/:connectionId/accounts/:accountId";
         responses: {
@@ -807,7 +807,7 @@ export declare const BankConnectionContracts: {
             refreshedSince?: string | undefined;
         }>;
         summary: "List Transactions";
-        description: "Listar todas las transacciones de una cuenta.";
+        description: "List all transactions for an account.";
         method: "GET";
         path: "/bank-connections/connections/:connectionId/accounts/:accountId/transactions";
         responses: {
@@ -946,7 +946,7 @@ export declare const BankConnectionContracts: {
             transactionId: string;
         }>;
         summary: "Get Transaction";
-        description: "Buscar una transacción por su identificador.";
+        description: "Look up a transaction by its identifier.";
         method: "GET";
         path: "/bank-connections/connections/:connectionId/accounts/:accountId/transactions/:transactionId";
         responses: {

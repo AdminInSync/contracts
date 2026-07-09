@@ -1,8 +1,8 @@
 import { z } from 'zod';
 export declare const SavingGoalsContracts: {
     createSavingGoal: {
-        summary: "Crear una nueva meta de ahorro";
-        description: "Crea una nueva meta de ahorro para el usuario autenticado";
+        summary: "Create a new saving goal";
+        description: "Creates a new saving goal for the authenticated user";
         method: "POST";
         body: z.ZodObject<{
             name: z.ZodString;
@@ -212,8 +212,8 @@ export declare const SavingGoalsContracts: {
             is_public?: boolean | undefined;
             offset?: number | undefined;
         }>;
-        summary: "Obtener todas las metas de ahorro";
-        description: "Obtiene todas las metas de ahorro del usuario autenticado con filtrado opcional";
+        summary: "Get all saving goals";
+        description: "Returns all saving goals for the authenticated user with optional filtering";
         method: "GET";
         path: "/saving-goals";
         responses: {
@@ -381,8 +381,8 @@ export declare const SavingGoalsContracts: {
         }, {
             id: number;
         }>;
-        summary: "Obtener una meta de ahorro específica";
-        description: "Obtiene una meta de ahorro específica por ID";
+        summary: "Get a specific saving goal";
+        description: "Returns a specific saving goal by ID";
         method: "GET";
         path: "/get-saving-goals-by-id/:id/";
         responses: {
@@ -540,8 +540,8 @@ export declare const SavingGoalsContracts: {
         }, {
             id: number;
         }>;
-        summary: "Actualizar una meta de ahorro";
-        description: "Actualiza una meta de ahorro existente";
+        summary: "Update a saving goal";
+        description: "Updates an existing saving goal";
         method: "PUT";
         body: z.ZodObject<{
             name: z.ZodOptional<z.ZodString>;
@@ -752,8 +752,8 @@ export declare const SavingGoalsContracts: {
         }, {
             id: number;
         }>;
-        summary: "Actualizar progreso de meta de ahorro";
-        description: "Actualiza el monto actual de una meta de ahorro";
+        summary: "Update saving goal progress";
+        description: "Updates the current amount of a saving goal";
         method: "PATCH";
         body: z.ZodObject<{
             current_amount: z.ZodNumber;
@@ -931,8 +931,8 @@ export declare const SavingGoalsContracts: {
         }, {
             id: number;
         }>;
-        summary: "Eliminar una meta de ahorro";
-        description: "Elimina suavemente una meta de ahorro";
+        summary: "Delete a saving goal";
+        description: "Soft-deletes a saving goal";
         method: "DELETE";
         path: "/delete-saving-goals-by-id/:id/soft/";
         responses: {
@@ -995,8 +995,8 @@ export declare const SavingGoalsContracts: {
             limit?: number | undefined;
             offset?: number | undefined;
         }>;
-        summary: "Obtener metas de ahorro públicas";
-        description: "Obtiene metas de ahorro públicas de todos los usuarios";
+        summary: "Get public saving goals";
+        description: "Returns public saving goals from all users";
         method: "GET";
         path: "/get-saving-goals-public/";
         responses: {
@@ -1151,8 +1151,8 @@ export declare const SavingGoalsContracts: {
         }, {
             days?: number | undefined;
         }>;
-        summary: "Obtener metas próximas a vencer";
-        description: "Obtiene metas de ahorro que vencen dentro del número de días especificado";
+        summary: "Get upcoming saving goals";
+        description: "Returns saving goals due within the specified number of days";
         method: "GET";
         path: "/get-saving-goals-due-soon/";
         responses: {

@@ -1,8 +1,8 @@
 import { z } from 'zod';
 export declare const DashboardContracts: {
     getDashboard: {
-        summary: "Obtener datos completos del dashboard";
-        description: "Retorna todos los datos necesarios para mostrar el dashboard completo del usuario, incluyendo balance, presupuestos, metas de ahorro, indicadores financieros, movimientos recientes y más.";
+        summary: "Get full dashboard data";
+        description: "Returns all data for the full user dashboard, including balance, budgets, saving goals, financial indicators, recent activity, and more.";
         method: "GET";
         path: "/dashboard";
         responses: {
@@ -663,8 +663,8 @@ export declare const DashboardContracts: {
         };
     };
     getDashboardSummary: {
-        summary: "Obtener resumen del dashboard";
-        description: "Retorna solo los datos esenciales del dashboard para carga rápida: balance, resumen mensual y estado de sincronización.";
+        summary: "Get dashboard summary";
+        description: "Returns essential dashboard data for fast loading: balance, monthly summary, and sync status.";
         method: "GET";
         path: "/dashboard/summary";
         responses: {
@@ -807,8 +807,8 @@ export declare const DashboardContracts: {
         };
     };
     refreshDashboard: {
-        summary: "Actualizar datos del dashboard";
-        description: "Fuerza la sincronización de datos bancarios y regenera los datos del dashboard con información actualizada.";
+        summary: "Refresh dashboard data";
+        description: "Forces bank data synchronization and regenerates dashboard data with up-to-date information.";
         method: "POST";
         body: z.ZodObject<{}, "strip", z.ZodTypeAny, {}, {}>;
         path: "/dashboard/refresh";

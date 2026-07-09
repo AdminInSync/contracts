@@ -20,3 +20,24 @@ export var DocumentStatus;
     DocumentStatus["REJECTED"] = "rejected";
     DocumentStatus["EXPIRED"] = "expired";
 })(DocumentStatus || (DocumentStatus = {}));
+export var EmailProvider;
+(function (EmailProvider) {
+    EmailProvider["GMAIL"] = "gmail";
+    EmailProvider["OUTLOOK"] = "outlook";
+})(EmailProvider || (EmailProvider = {}));
+export var EmailConnectionStatus;
+(function (EmailConnectionStatus) {
+    EmailConnectionStatus["PENDING"] = "pending";
+    EmailConnectionStatus["ACTIVE"] = "active";
+    EmailConnectionStatus["ERROR"] = "error";
+    EmailConnectionStatus["REVOKED"] = "revoked";
+})(EmailConnectionStatus || (EmailConnectionStatus = {}));
+export var FinancialEmailEventStatus;
+(function (FinancialEmailEventStatus) {
+    FinancialEmailEventStatus["DISCOVERED"] = "discovered";
+    FinancialEmailEventStatus["PARSED"] = "parsed";
+    FinancialEmailEventStatus["PENDING_REVIEW"] = "pending_review";
+    FinancialEmailEventStatus["APPROVED"] = "approved";
+    FinancialEmailEventStatus["REJECTED"] = "rejected";
+    FinancialEmailEventStatus["IMPORTED"] = "imported";
+})(FinancialEmailEventStatus || (FinancialEmailEventStatus = {}));

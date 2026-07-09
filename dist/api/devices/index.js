@@ -15,8 +15,8 @@ export const DevicesContracts = c.router({
             500: ErrorResSchema
         },
         body: CreateDeviceRequestSchema,
-        summary: 'Crear nuevo dispositivo',
-        description: 'Crea un nuevo dispositivo para el usuario autenticado',
+        summary: 'Register a new device',
+        description: 'Registers a new device for the authenticated user',
     },
     getDevices: {
         method: 'GET',
@@ -28,8 +28,8 @@ export const DevicesContracts = c.router({
             401: ErrorResSchema,
             500: ErrorResSchema
         },
-        summary: 'Obtener dispositivos del usuario',
-        description: 'Obtiene todos los dispositivos del usuario autenticado con filtrado opcional por ID de dispositivo',
+        summary: 'Get user devices',
+        description: 'Returns all devices for the authenticated user with optional device ID filter',
     },
     createDevicePreferences: {
         method: 'POST',
@@ -43,8 +43,8 @@ export const DevicesContracts = c.router({
             500: ErrorResSchema
         },
         body: CreateDevicePreferencesRequestSchema,
-        summary: 'Crear preferencias de dispositivo',
-        description: 'Crea preferencias para un dispositivo específico',
+        summary: 'Create device preferences',
+        description: 'Creates preferences for a specific device',
     },
     getDevicePreferences: {
         method: 'GET',
@@ -57,15 +57,15 @@ export const DevicesContracts = c.router({
             404: DeviceErrorResponseSchema,
             500: ErrorResSchema
         },
-        summary: 'Obtener preferencias de dispositivo',
-        description: 'Obtiene todas las preferencias de dispositivo del usuario autenticado con filtrado opcional por ID de dispositivo',
+        summary: 'Get device preferences',
+        description: 'Returns all device preferences for the authenticated user with optional device ID filter',
     },
     updateDevicePreferences: {
         method: 'PUT',
         path: '/preferences/:id',
         pathParams: z.object({
             id: z.string().openapi({
-                description: 'ID de preferencias de dispositivo'
+                description: 'Device preferences ID'
             })
         }),
         responses: {
@@ -76,8 +76,8 @@ export const DevicesContracts = c.router({
             500: ErrorResSchema
         },
         body: UpdateDevicePreferencesRequestSchema,
-        summary: 'Actualizar preferencias de dispositivo',
-        description: 'Actualiza preferencias para un dispositivo específico',
+        summary: 'Update device preferences',
+        description: 'Updates preferences for a specific device',
     },
     updateNotificationToken: {
         method: 'PUT',
@@ -90,8 +90,8 @@ export const DevicesContracts = c.router({
             500: ErrorResSchema
         },
         body: UpdateNotificationTokenRequestSchema,
-        summary: 'Actualizar token de notificación',
-        description: 'Actualiza el token de notificación FCM para un dispositivo específico',
+        summary: 'Update notification token',
+        description: 'Updates the FCM notification token for a specific device',
     }
 }, {
     strictStatusCodes: true,

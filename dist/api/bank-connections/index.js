@@ -22,7 +22,7 @@ export const BankConnectionContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'Create Connection',
-        description: 'Crear una conexión a partir de un ID de sesión.',
+        description: 'Create a connection from a session ID.',
     },
     listConnections: {
         method: 'GET',
@@ -33,7 +33,7 @@ export const BankConnectionContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'List Connections',
-        description: 'Listar todas las conexiones del usuario autenticado.',
+        description: 'List all connections for the authenticated user.',
     },
     getConnection: {
         method: 'GET',
@@ -49,7 +49,7 @@ export const BankConnectionContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'Get Connection',
-        description: 'Buscar una conexión por su ID.',
+        description: 'Look up a connection by its ID.',
     },
     revokeConnection: {
         method: 'DELETE',
@@ -66,7 +66,7 @@ export const BankConnectionContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'Revoke Connection',
-        description: 'Revocar una conexión, impidiendo accesos futuros.',
+        description: 'Revoke a connection, blocking future access.',
     },
     // Account Management
     listAccounts: {
@@ -84,7 +84,7 @@ export const BankConnectionContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'List Accounts',
-        description: 'Listar cuentas asociadas a una conexión.',
+        description: 'List accounts linked to a connection.',
     },
     getAccount: {
         method: 'GET',
@@ -102,7 +102,7 @@ export const BankConnectionContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'Get Account',
-        description: 'Buscar una cuenta por su ID.',
+        description: 'Look up an account by its ID.',
     },
     // Transaction Management
     listTransactions: {
@@ -126,7 +126,7 @@ export const BankConnectionContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'List Transactions',
-        description: 'Listar todas las transacciones de una cuenta.',
+        description: 'List all transactions for an account.',
     },
     getTransaction: {
         method: 'GET',
@@ -145,7 +145,7 @@ export const BankConnectionContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'Get Transaction',
-        description: 'Buscar una transacción por su identificador.',
+        description: 'Look up a transaction by its identifier.',
     },
 }, {
     strictStatusCodes: true,

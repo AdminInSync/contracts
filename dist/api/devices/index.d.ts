@@ -1,8 +1,8 @@
 import { z } from 'zod';
 export declare const DevicesContracts: {
     createDevice: {
-        summary: "Crear nuevo dispositivo";
-        description: "Crea un nuevo dispositivo para el usuario autenticado";
+        summary: "Register a new device";
+        description: "Registers a new device for the authenticated user";
         method: "POST";
         body: z.ZodObject<{
             user_uid: z.ZodString;
@@ -107,8 +107,8 @@ export declare const DevicesContracts: {
         }, {
             device_unique_id?: string | undefined;
         }>;
-        summary: "Obtener dispositivos del usuario";
-        description: "Obtiene todos los dispositivos del usuario autenticado con filtrado opcional por ID de dispositivo";
+        summary: "Get user devices";
+        description: "Returns all devices for the authenticated user with optional device ID filter";
         method: "GET";
         path: "/devices/";
         responses: {
@@ -183,8 +183,8 @@ export declare const DevicesContracts: {
         strictStatusCodes: true;
     };
     createDevicePreferences: {
-        summary: "Crear preferencias de dispositivo";
-        description: "Crea preferencias para un dispositivo específico";
+        summary: "Create device preferences";
+        description: "Creates preferences for a specific device";
         method: "POST";
         body: z.ZodObject<{
             device_unique_id: z.ZodString;
@@ -350,8 +350,8 @@ export declare const DevicesContracts: {
         }, {
             device_id?: string | undefined;
         }>;
-        summary: "Obtener preferencias de dispositivo";
-        description: "Obtiene todas las preferencias de dispositivo del usuario autenticado con filtrado opcional por ID de dispositivo";
+        summary: "Get device preferences";
+        description: "Returns all device preferences for the authenticated user with optional device ID filter";
         method: "GET";
         path: "/devices/preferences";
         responses: {
@@ -470,8 +470,8 @@ export declare const DevicesContracts: {
         }, {
             id: string;
         }>;
-        summary: "Actualizar preferencias de dispositivo";
-        description: "Actualiza preferencias para un dispositivo específico";
+        summary: "Update device preferences";
+        description: "Updates preferences for a specific device";
         method: "PUT";
         body: z.ZodObject<{
             arePushNotificationsEnabled: z.ZodOptional<z.ZodBoolean>;
@@ -617,8 +617,8 @@ export declare const DevicesContracts: {
         strictStatusCodes: true;
     };
     updateNotificationToken: {
-        summary: "Actualizar token de notificación";
-        description: "Actualiza el token de notificación FCM para un dispositivo específico";
+        summary: "Update notification token";
+        description: "Updates the FCM notification token for a specific device";
         method: "PUT";
         body: z.ZodObject<{
             device_unique_id: z.ZodString;

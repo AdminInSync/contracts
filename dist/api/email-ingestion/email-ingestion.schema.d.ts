@@ -1,0 +1,275 @@
+import { z } from 'zod';
+import { EmailConnectionStatus, EmailProvider, FinancialEmailEventStatus } from '../../enums';
+export declare const EmailProviderSchema: z.ZodNativeEnum<typeof EmailProvider>;
+export declare const EmailConnectionStatusSchema: z.ZodNativeEnum<typeof EmailConnectionStatus>;
+export declare const FinancialEmailEventStatusSchema: z.ZodNativeEnum<typeof FinancialEmailEventStatus>;
+export declare const OAuthStartResponseSchema: z.ZodObject<{
+    authorizationUrl: z.ZodString;
+    state: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    authorizationUrl: string;
+    state: string;
+}, {
+    authorizationUrl: string;
+    state: string;
+}>;
+export declare const EmailConnectionListItemSchema: z.ZodObject<{
+    uuid: z.ZodString;
+    provider: z.ZodNativeEnum<typeof EmailProvider>;
+    status: z.ZodNativeEnum<typeof EmailConnectionStatus>;
+    provider_account_id: z.ZodNullable<z.ZodString>;
+    last_successful_sync_at: z.ZodNullable<z.ZodString>;
+    last_error_message: z.ZodNullable<z.ZodString>;
+    created_at: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    status: EmailConnectionStatus;
+    uuid: string;
+    created_at: string;
+    provider: EmailProvider;
+    provider_account_id: string | null;
+    last_successful_sync_at: string | null;
+    last_error_message: string | null;
+}, {
+    status: EmailConnectionStatus;
+    uuid: string;
+    created_at: string;
+    provider: EmailProvider;
+    provider_account_id: string | null;
+    last_successful_sync_at: string | null;
+    last_error_message: string | null;
+}>;
+export declare const ListEmailConnectionsResponseSchema: z.ZodObject<{
+    connections: z.ZodArray<z.ZodObject<{
+        uuid: z.ZodString;
+        provider: z.ZodNativeEnum<typeof EmailProvider>;
+        status: z.ZodNativeEnum<typeof EmailConnectionStatus>;
+        provider_account_id: z.ZodNullable<z.ZodString>;
+        last_successful_sync_at: z.ZodNullable<z.ZodString>;
+        last_error_message: z.ZodNullable<z.ZodString>;
+        created_at: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        status: EmailConnectionStatus;
+        uuid: string;
+        created_at: string;
+        provider: EmailProvider;
+        provider_account_id: string | null;
+        last_successful_sync_at: string | null;
+        last_error_message: string | null;
+    }, {
+        status: EmailConnectionStatus;
+        uuid: string;
+        created_at: string;
+        provider: EmailProvider;
+        provider_account_id: string | null;
+        last_successful_sync_at: string | null;
+        last_error_message: string | null;
+    }>, "many">;
+}, "strip", z.ZodTypeAny, {
+    connections: {
+        status: EmailConnectionStatus;
+        uuid: string;
+        created_at: string;
+        provider: EmailProvider;
+        provider_account_id: string | null;
+        last_successful_sync_at: string | null;
+        last_error_message: string | null;
+    }[];
+}, {
+    connections: {
+        status: EmailConnectionStatus;
+        uuid: string;
+        created_at: string;
+        provider: EmailProvider;
+        provider_account_id: string | null;
+        last_successful_sync_at: string | null;
+        last_error_message: string | null;
+    }[];
+}>;
+export declare const DisconnectEmailConnectionResponseSchema: z.ZodObject<{
+    success: z.ZodLiteral<true>;
+}, "strip", z.ZodTypeAny, {
+    success: true;
+}, {
+    success: true;
+}>;
+export declare const SyncEmailConnectionResponseSchema: z.ZodObject<{
+    enqueued: z.ZodLiteral<true>;
+    job_uuid: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    enqueued: true;
+    job_uuid: string;
+}, {
+    enqueued: true;
+    job_uuid: string;
+}>;
+export declare const FinancialEmailEventResponseSchema: z.ZodObject<{
+    uuid: z.ZodString;
+    status: z.ZodNativeEnum<typeof FinancialEmailEventStatus>;
+    institution_name: z.ZodNullable<z.ZodString>;
+    transaction_description: z.ZodNullable<z.ZodString>;
+    amount: z.ZodNullable<z.ZodNumber>;
+    currency: z.ZodNullable<z.ZodString>;
+    transaction_date: z.ZodNullable<z.ZodString>;
+    transaction_direction: z.ZodNullable<z.ZodEnum<["credit", "debit"]>>;
+    category: z.ZodNullable<z.ZodString>;
+    confidence: z.ZodNullable<z.ZodNumber>;
+    source_metadata: z.ZodNullable<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
+    created_at: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    status: FinancialEmailEventStatus;
+    uuid: string;
+    created_at: string;
+    currency: string | null;
+    institution_name: string | null;
+    amount: number | null;
+    category: string | null;
+    transaction_description: string | null;
+    transaction_date: string | null;
+    transaction_direction: "credit" | "debit" | null;
+    confidence: number | null;
+    source_metadata: Record<string, unknown> | null;
+}, {
+    status: FinancialEmailEventStatus;
+    uuid: string;
+    created_at: string;
+    currency: string | null;
+    institution_name: string | null;
+    amount: number | null;
+    category: string | null;
+    transaction_description: string | null;
+    transaction_date: string | null;
+    transaction_direction: "credit" | "debit" | null;
+    confidence: number | null;
+    source_metadata: Record<string, unknown> | null;
+}>;
+export declare const ListFinancialEmailEventsResponseSchema: z.ZodObject<{
+    events: z.ZodArray<z.ZodObject<{
+        uuid: z.ZodString;
+        status: z.ZodNativeEnum<typeof FinancialEmailEventStatus>;
+        institution_name: z.ZodNullable<z.ZodString>;
+        transaction_description: z.ZodNullable<z.ZodString>;
+        amount: z.ZodNullable<z.ZodNumber>;
+        currency: z.ZodNullable<z.ZodString>;
+        transaction_date: z.ZodNullable<z.ZodString>;
+        transaction_direction: z.ZodNullable<z.ZodEnum<["credit", "debit"]>>;
+        category: z.ZodNullable<z.ZodString>;
+        confidence: z.ZodNullable<z.ZodNumber>;
+        source_metadata: z.ZodNullable<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
+        created_at: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        status: FinancialEmailEventStatus;
+        uuid: string;
+        created_at: string;
+        currency: string | null;
+        institution_name: string | null;
+        amount: number | null;
+        category: string | null;
+        transaction_description: string | null;
+        transaction_date: string | null;
+        transaction_direction: "credit" | "debit" | null;
+        confidence: number | null;
+        source_metadata: Record<string, unknown> | null;
+    }, {
+        status: FinancialEmailEventStatus;
+        uuid: string;
+        created_at: string;
+        currency: string | null;
+        institution_name: string | null;
+        amount: number | null;
+        category: string | null;
+        transaction_description: string | null;
+        transaction_date: string | null;
+        transaction_direction: "credit" | "debit" | null;
+        confidence: number | null;
+        source_metadata: Record<string, unknown> | null;
+    }>, "many">;
+    total: z.ZodNumber;
+    limit: z.ZodNumber;
+    offset: z.ZodNumber;
+}, "strip", z.ZodTypeAny, {
+    limit: number;
+    total: number;
+    offset: number;
+    events: {
+        status: FinancialEmailEventStatus;
+        uuid: string;
+        created_at: string;
+        currency: string | null;
+        institution_name: string | null;
+        amount: number | null;
+        category: string | null;
+        transaction_description: string | null;
+        transaction_date: string | null;
+        transaction_direction: "credit" | "debit" | null;
+        confidence: number | null;
+        source_metadata: Record<string, unknown> | null;
+    }[];
+}, {
+    limit: number;
+    total: number;
+    offset: number;
+    events: {
+        status: FinancialEmailEventStatus;
+        uuid: string;
+        created_at: string;
+        currency: string | null;
+        institution_name: string | null;
+        amount: number | null;
+        category: string | null;
+        transaction_description: string | null;
+        transaction_date: string | null;
+        transaction_direction: "credit" | "debit" | null;
+        confidence: number | null;
+        source_metadata: Record<string, unknown> | null;
+    }[];
+}>;
+export declare const ApproveFinancialEmailEventBodySchema: z.ZodObject<{
+    user_product_uuid: z.ZodString;
+    amount: z.ZodOptional<z.ZodNumber>;
+    description: z.ZodOptional<z.ZodString>;
+    transaction_date: z.ZodOptional<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+    user_product_uuid: string;
+    description?: string | undefined;
+    amount?: number | undefined;
+    transaction_date?: string | undefined;
+}, {
+    user_product_uuid: string;
+    description?: string | undefined;
+    amount?: number | undefined;
+    transaction_date?: string | undefined;
+}>;
+export declare const ApproveFinancialEmailEventResponseSchema: z.ZodObject<{
+    transaction_uuid: z.ZodString;
+    event_uuid: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    transaction_uuid: string;
+    event_uuid: string;
+}, {
+    transaction_uuid: string;
+    event_uuid: string;
+}>;
+export declare const RejectFinancialEmailEventBodySchema: z.ZodObject<{
+    reason: z.ZodOptional<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+    reason?: string | undefined;
+}, {
+    reason?: string | undefined;
+}>;
+export declare const RejectFinancialEmailEventResponseSchema: z.ZodObject<{
+    success: z.ZodLiteral<true>;
+}, "strip", z.ZodTypeAny, {
+    success: true;
+}, {
+    success: true;
+}>;
+export declare const ConvertFinancialEmailEventResponseSchema: z.ZodObject<{
+    transaction_uuid: z.ZodString;
+    event_uuid: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    transaction_uuid: string;
+    event_uuid: string;
+}, {
+    transaction_uuid: string;
+    event_uuid: string;
+}>;

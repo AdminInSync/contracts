@@ -79,7 +79,7 @@ export const ReportsContracts = c.router({
                 })
             })
         },
-        summary: 'Obtener reportes financieros completos',
-        description: 'Retorna resumen financiero, tendencia mensual y distribución de gastos'
+        summary: 'Get full financial reports',
+        description: 'Returns financial summary, monthly trend, and expense distribution'
     }
 });
