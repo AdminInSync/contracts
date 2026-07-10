@@ -7154,6 +7154,129 @@ export declare const apiContract: {
                     }>;
                 };
             };
+            getMyTransactions: {
+                strictStatusCodes: true;
+                query: import("zod").ZodObject<{
+                    limit: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
+                    offset: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    limit: number;
+                    offset: number;
+                }, {
+                    limit?: string | undefined;
+                    offset?: string | undefined;
+                }>;
+                summary: "Get my product transactions";
+                description: "Returns product transactions for the authenticated user";
+                method: "GET";
+                path: "/api/products/my-transactions";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        data: import("zod").ZodArray<import("zod").ZodObject<{
+                            uuid: import("zod").ZodString;
+                            amount: import("zod").ZodNumber;
+                            currency: import("zod").ZodString;
+                            transaction_date: import("zod").ZodString;
+                            description: import("zod").ZodNullable<import("zod").ZodString>;
+                            transaction_type: import("zod").ZodEnum<["credit", "debit"]>;
+                            user_product_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                            source_financial_email_event_id: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodNumber>>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            description: string | null;
+                            uuid: string;
+                            currency: string;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "credit" | "debit";
+                            user_product_uuid?: string | null | undefined;
+                            source_financial_email_event_id?: number | null | undefined;
+                        }, {
+                            description: string | null;
+                            uuid: string;
+                            currency: string;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "credit" | "debit";
+                            user_product_uuid?: string | null | undefined;
+                            source_financial_email_event_id?: number | null | undefined;
+                        }>, "many">;
+                        pagination: import("zod").ZodObject<{
+                            total: import("zod").ZodNumber;
+                            limit: import("zod").ZodNumber;
+                            offset: import("zod").ZodNumber;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            limit: number;
+                            total: number;
+                            offset: number;
+                        }, {
+                            limit: number;
+                            total: number;
+                            offset: number;
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            description: string | null;
+                            uuid: string;
+                            currency: string;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "credit" | "debit";
+                            user_product_uuid?: string | null | undefined;
+                            source_financial_email_event_id?: number | null | undefined;
+                        }[];
+                        pagination: {
+                            limit: number;
+                            total: number;
+                            offset: number;
+                        };
+                    }, {
+                        message: string;
+                        data: {
+                            description: string | null;
+                            uuid: string;
+                            currency: string;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "credit" | "debit";
+                            user_product_uuid?: string | null | undefined;
+                            source_financial_email_event_id?: number | null | undefined;
+                        }[];
+                        pagination: {
+                            limit: number;
+                            total: number;
+                            offset: number;
+                        };
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
         };
         PaymentReminders: {
             createPaymentReminder: {
@@ -7183,9 +7306,9 @@ export declare const apiContract: {
                     description?: string | undefined;
                     notes?: string | undefined;
                     priority?: "low" | "medium" | "high" | "urgent" | undefined;
+                    amount?: number | undefined;
                     user_connection_id?: number | undefined;
                     reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
-                    amount?: number | undefined;
                     reminder_date?: string | undefined;
                     reminder_status?: "pending" | "completed" | "sent" | "acknowledged" | "overdue" | undefined;
                     is_recurring?: boolean | undefined;
@@ -7198,9 +7321,9 @@ export declare const apiContract: {
                     description?: string | undefined;
                     notes?: string | undefined;
                     priority?: "low" | "medium" | "high" | "urgent" | undefined;
+                    amount?: number | undefined;
                     user_connection_id?: number | undefined;
                     reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
-                    amount?: number | undefined;
                     reminder_date?: string | undefined;
                     reminder_status?: "pending" | "completed" | "sent" | "acknowledged" | "overdue" | undefined;
                     is_recurring?: boolean | undefined;
@@ -7244,9 +7367,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -7265,9 +7388,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -7289,9 +7412,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -7313,9 +7436,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -7432,9 +7555,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -7453,9 +7576,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -7490,9 +7613,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -7519,9 +7642,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -7605,9 +7728,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -7626,9 +7749,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -7663,9 +7786,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -7692,9 +7815,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -7785,9 +7908,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -7806,9 +7929,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -7843,9 +7966,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -7872,9 +7995,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -7958,9 +8081,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -7979,9 +8102,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -8016,9 +8139,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -8045,9 +8168,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -8148,9 +8271,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -8169,9 +8292,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -8206,9 +8329,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -8235,9 +8358,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -8351,9 +8474,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -8372,9 +8495,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -8409,9 +8532,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -8438,9 +8561,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -8544,9 +8667,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -8565,9 +8688,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -8589,9 +8712,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -8613,9 +8736,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -8698,9 +8821,9 @@ export declare const apiContract: {
                     notes?: string | undefined;
                     currency?: string | undefined;
                     priority?: "low" | "medium" | "high" | "urgent" | undefined;
+                    amount?: number | undefined;
                     user_connection_id?: number | undefined;
                     reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
-                    amount?: number | undefined;
                     due_date?: string | undefined;
                     reminder_date?: string | undefined;
                     reminder_status?: "pending" | "completed" | "sent" | "acknowledged" | "overdue" | undefined;
@@ -8713,9 +8836,9 @@ export declare const apiContract: {
                     notes?: string | undefined;
                     currency?: string | undefined;
                     priority?: "low" | "medium" | "high" | "urgent" | undefined;
+                    amount?: number | undefined;
                     user_connection_id?: number | undefined;
                     reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
-                    amount?: number | undefined;
                     due_date?: string | undefined;
                     reminder_date?: string | undefined;
                     reminder_status?: "pending" | "completed" | "sent" | "acknowledged" | "overdue" | undefined;
@@ -8760,9 +8883,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -8781,9 +8904,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -8805,9 +8928,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -8829,9 +8952,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -9006,9 +9129,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -9027,9 +9150,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -9051,9 +9174,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -9075,9 +9198,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -9177,9 +9300,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -9198,9 +9321,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -9222,9 +9345,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -9246,9 +9369,9 @@ export declare const apiContract: {
                             currency: string;
                             priority: "low" | "medium" | "high" | "urgent" | null;
                             deleted_at: string | null;
+                            amount: number | null;
                             user_connection_id: number | null;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
-                            amount: number | null;
                             due_date: string;
                             reminder_date: string | null;
                             reminder_status: "pending" | "completed" | "sent" | "acknowledged" | "overdue";
@@ -9415,6 +9538,19 @@ export declare const apiContract: {
                         statusCode?: number | undefined;
                     }>;
                     404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    501: import("zod").ZodObject<{
                         message: import("zod").ZodString;
                         error: import("zod").ZodOptional<import("zod").ZodString>;
                         statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
@@ -14879,9 +15015,9 @@ export declare const apiContract: {
                             currency: string | null;
                             institution_name: string | null;
                             amount: number | null;
+                            transaction_date: string | null;
                             category: string | null;
                             transaction_description: string | null;
-                            transaction_date: string | null;
                             transaction_direction: "credit" | "debit" | null;
                             confidence: number | null;
                             source_metadata: Record<string, unknown> | null;
@@ -14892,9 +15028,9 @@ export declare const apiContract: {
                             currency: string | null;
                             institution_name: string | null;
                             amount: number | null;
+                            transaction_date: string | null;
                             category: string | null;
                             transaction_description: string | null;
-                            transaction_date: string | null;
                             transaction_direction: "credit" | "debit" | null;
                             confidence: number | null;
                             source_metadata: Record<string, unknown> | null;
@@ -14913,9 +15049,9 @@ export declare const apiContract: {
                             currency: string | null;
                             institution_name: string | null;
                             amount: number | null;
+                            transaction_date: string | null;
                             category: string | null;
                             transaction_description: string | null;
-                            transaction_date: string | null;
                             transaction_direction: "credit" | "debit" | null;
                             confidence: number | null;
                             source_metadata: Record<string, unknown> | null;
@@ -14931,9 +15067,9 @@ export declare const apiContract: {
                             currency: string | null;
                             institution_name: string | null;
                             amount: number | null;
+                            transaction_date: string | null;
                             category: string | null;
                             transaction_description: string | null;
-                            transaction_date: string | null;
                             transaction_direction: "credit" | "debit" | null;
                             confidence: number | null;
                             source_metadata: Record<string, unknown> | null;

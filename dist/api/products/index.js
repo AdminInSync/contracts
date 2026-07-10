@@ -1,6 +1,6 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
-import { CreateProductSchema, UpdateProductSchema, GetProductsQuerySchema, ProductResponseSchema, ProductsListResponseSchema, ConnectedProductTypeSchema, ConnectedProductsResponseSchema } from './products.schema';
+import { CreateProductSchema, UpdateProductSchema, GetProductsQuerySchema, ProductResponseSchema, ProductsListResponseSchema, ConnectedProductTypeSchema, ConnectedProductsResponseSchema, ProductTransactionsListResponseSchema } from './products.schema';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
 const c = initContract();
 export const ProductsContracts = c.router({
@@ -241,5 +241,20 @@ export const ProductsContracts = c.router({
         }),
         summary: 'Get my connected products by type',
         description: 'Returns products from bank connections filtered by type',
+    },
+    getMyTransactions: {
+        method: 'GET',
+        path: '/products/my-transactions',
+        responses: {
+            200: ProductTransactionsListResponseSchema,
+            401: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        query: z.object({
+            limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
+            offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
+        }),
+        summary: 'Get my product transactions',
+        description: 'Returns product transactions for the authenticated user',
     },
 });

@@ -2897,4 +2897,126 @@ export declare const ProductsContracts: {
             }>;
         };
     };
+    getMyTransactions: {
+        query: z.ZodObject<{
+            limit: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
+            offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
+        }, "strip", z.ZodTypeAny, {
+            limit: number;
+            offset: number;
+        }, {
+            limit?: string | undefined;
+            offset?: string | undefined;
+        }>;
+        summary: "Get my product transactions";
+        description: "Returns product transactions for the authenticated user";
+        method: "GET";
+        path: "/products/my-transactions";
+        responses: {
+            200: z.ZodObject<{
+                message: z.ZodString;
+                data: z.ZodArray<z.ZodObject<{
+                    uuid: z.ZodString;
+                    amount: z.ZodNumber;
+                    currency: z.ZodString;
+                    transaction_date: z.ZodString;
+                    description: z.ZodNullable<z.ZodString>;
+                    transaction_type: z.ZodEnum<["credit", "debit"]>;
+                    user_product_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+                    source_financial_email_event_id: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+                }, "strip", z.ZodTypeAny, {
+                    description: string | null;
+                    uuid: string;
+                    currency: string;
+                    amount: number;
+                    transaction_date: string;
+                    transaction_type: "credit" | "debit";
+                    user_product_uuid?: string | null | undefined;
+                    source_financial_email_event_id?: number | null | undefined;
+                }, {
+                    description: string | null;
+                    uuid: string;
+                    currency: string;
+                    amount: number;
+                    transaction_date: string;
+                    transaction_type: "credit" | "debit";
+                    user_product_uuid?: string | null | undefined;
+                    source_financial_email_event_id?: number | null | undefined;
+                }>, "many">;
+                pagination: z.ZodObject<{
+                    total: z.ZodNumber;
+                    limit: z.ZodNumber;
+                    offset: z.ZodNumber;
+                }, "strip", z.ZodTypeAny, {
+                    limit: number;
+                    total: number;
+                    offset: number;
+                }, {
+                    limit: number;
+                    total: number;
+                    offset: number;
+                }>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                data: {
+                    description: string | null;
+                    uuid: string;
+                    currency: string;
+                    amount: number;
+                    transaction_date: string;
+                    transaction_type: "credit" | "debit";
+                    user_product_uuid?: string | null | undefined;
+                    source_financial_email_event_id?: number | null | undefined;
+                }[];
+                pagination: {
+                    limit: number;
+                    total: number;
+                    offset: number;
+                };
+            }, {
+                message: string;
+                data: {
+                    description: string | null;
+                    uuid: string;
+                    currency: string;
+                    amount: number;
+                    transaction_date: string;
+                    transaction_type: "credit" | "debit";
+                    user_product_uuid?: string | null | undefined;
+                    source_financial_email_event_id?: number | null | undefined;
+                }[];
+                pagination: {
+                    limit: number;
+                    total: number;
+                    offset: number;
+                };
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+    };
 };

@@ -448,9 +448,9 @@ export declare const EmailIngestionContracts: {
                     currency: string | null;
                     institution_name: string | null;
                     amount: number | null;
+                    transaction_date: string | null;
                     category: string | null;
                     transaction_description: string | null;
-                    transaction_date: string | null;
                     transaction_direction: "credit" | "debit" | null;
                     confidence: number | null;
                     source_metadata: Record<string, unknown> | null;
@@ -461,9 +461,9 @@ export declare const EmailIngestionContracts: {
                     currency: string | null;
                     institution_name: string | null;
                     amount: number | null;
+                    transaction_date: string | null;
                     category: string | null;
                     transaction_description: string | null;
-                    transaction_date: string | null;
                     transaction_direction: "credit" | "debit" | null;
                     confidence: number | null;
                     source_metadata: Record<string, unknown> | null;
@@ -482,9 +482,9 @@ export declare const EmailIngestionContracts: {
                     currency: string | null;
                     institution_name: string | null;
                     amount: number | null;
+                    transaction_date: string | null;
                     category: string | null;
                     transaction_description: string | null;
-                    transaction_date: string | null;
                     transaction_direction: "credit" | "debit" | null;
                     confidence: number | null;
                     source_metadata: Record<string, unknown> | null;
@@ -500,9 +500,9 @@ export declare const EmailIngestionContracts: {
                     currency: string | null;
                     institution_name: string | null;
                     amount: number | null;
+                    transaction_date: string | null;
                     category: string | null;
                     transaction_description: string | null;
-                    transaction_date: string | null;
                     transaction_direction: "credit" | "debit" | null;
                     confidence: number | null;
                     source_metadata: Record<string, unknown> | null;

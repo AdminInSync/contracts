@@ -123,3 +123,22 @@ export const ConnectedProductsResponseSchema = z.object({
     message: z.string(),
     data: ConnectedProductsDataSchema,
 });
+export const ProductTransactionItemSchema = z.object({
+    uuid: z.string().uuid(),
+    amount: z.number(),
+    currency: z.string(),
+    transaction_date: z.string(),
+    description: z.string().nullable(),
+    transaction_type: z.enum(['credit', 'debit']),
+    user_product_uuid: z.string().uuid().nullable().optional(),
+    source_financial_email_event_id: z.number().nullable().optional(),
+});
+export const ProductTransactionsListResponseSchema = z.object({
+    message: z.string(),
+    data: z.array(ProductTransactionItemSchema),
+    pagination: z.object({
+        total: z.number(),
+        limit: z.number(),
+        offset: z.number(),
+    }),
+});
