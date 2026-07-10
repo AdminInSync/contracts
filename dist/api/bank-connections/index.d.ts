@@ -615,6 +615,19 @@ export declare const BankConnectionContracts: {
                 error?: string | undefined;
                 statusCode?: number | undefined;
             }>;
+            502: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
@@ -779,6 +792,19 @@ export declare const BankConnectionContracts: {
                 error?: string | undefined;
                 statusCode?: number | undefined;
             }>;
+            502: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
@@ -928,6 +954,19 @@ export declare const BankConnectionContracts: {
                 error?: string | undefined;
                 statusCode?: number | undefined;
             }>;
+            502: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
@@ -1055,6 +1094,19 @@ export declare const BankConnectionContracts: {
                 statusCode?: number | undefined;
             }>;
             404: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            502: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;

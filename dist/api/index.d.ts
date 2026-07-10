@@ -10038,6 +10038,19 @@ export declare const ApiContracts: {
                     error?: string | undefined;
                     statusCode?: number | undefined;
                 }>;
+                502: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
                 500: import("zod").ZodObject<{
                     message: import("zod").ZodString;
                     error: import("zod").ZodOptional<import("zod").ZodString>;
@@ -10202,6 +10215,19 @@ export declare const ApiContracts: {
                     error?: string | undefined;
                     statusCode?: number | undefined;
                 }>;
+                502: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
                 500: import("zod").ZodObject<{
                     message: import("zod").ZodString;
                     error: import("zod").ZodOptional<import("zod").ZodString>;
@@ -10351,6 +10377,19 @@ export declare const ApiContracts: {
                     error?: string | undefined;
                     statusCode?: number | undefined;
                 }>;
+                502: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
                 500: import("zod").ZodObject<{
                     message: import("zod").ZodString;
                     error: import("zod").ZodOptional<import("zod").ZodString>;
@@ -10478,6 +10517,19 @@ export declare const ApiContracts: {
                     statusCode?: number | undefined;
                 }>;
                 404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                502: import("zod").ZodObject<{
                     message: import("zod").ZodString;
                     error: import("zod").ZodOptional<import("zod").ZodString>;
                     statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
