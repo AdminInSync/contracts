@@ -40,4 +40,5 @@ export var FinancialEmailEventStatus;
     FinancialEmailEventStatus["APPROVED"] = "approved";
     FinancialEmailEventStatus["REJECTED"] = "rejected";
     FinancialEmailEventStatus["IMPORTED"] = "imported";
+    FinancialEmailEventStatus["DISCARDED"] = "discarded";
 })(FinancialEmailEventStatus || (FinancialEmailEventStatus = {}));

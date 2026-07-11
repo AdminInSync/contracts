@@ -1,7 +1,7 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
-import { OAuthStartResponseSchema, ListEmailConnectionsResponseSchema, DisconnectEmailConnectionResponseSchema, SyncEmailConnectionResponseSchema, ListFinancialEmailEventsResponseSchema, FinancialEmailEventStatusSchema, ApproveFinancialEmailEventBodySchema, ApproveFinancialEmailEventResponseSchema, RejectFinancialEmailEventBodySchema, RejectFinancialEmailEventResponseSchema, ConvertFinancialEmailEventResponseSchema, } from './email-ingestion.schema';
+import { OAuthStartResponseSchema, ListEmailConnectionsResponseSchema, DisconnectEmailConnectionResponseSchema, SyncEmailConnectionResponseSchema, ListFinancialEmailEventsResponseSchema, FinancialEmailEventStatusSchema, } from './email-ingestion.schema';
 const c = initContract();
 export const EmailIngestionContracts = c.router({
     gmailOAuthStart: {
@@ -105,49 +105,6 @@ export const EmailIngestionContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'List parsed financial email events',
-    },
-    approveEvent: {
-        method: 'POST',
-        path: '/events/:eventUuid/approve',
-        pathParams: z.object({ eventUuid: z.string().uuid() }),
-        body: ApproveFinancialEmailEventBodySchema,
-        responses: {
-            200: ApproveFinancialEmailEventResponseSchema,
-            400: ErrorResSchema,
-            401: ErrorResSchema,
-            404: ErrorResSchema,
-            409: ErrorResSchema,
-            500: ErrorResSchema,
-        },
-        summary: 'Approve event and import as product transaction',
-    },
-    rejectEvent: {
-        method: 'POST',
-        path: '/events/:eventUuid/reject',
-        pathParams: z.object({ eventUuid: z.string().uuid() }),
-        body: RejectFinancialEmailEventBodySchema,
-        responses: {
-            200: RejectFinancialEmailEventResponseSchema,
-            401: ErrorResSchema,
-            404: ErrorResSchema,
-            500: ErrorResSchema,
-        },
-        summary: 'Reject parsed financial email event',
-    },
-    convertEvent: {
-        method: 'POST',
-        path: '/events/:eventUuid/convert',
-        pathParams: z.object({ eventUuid: z.string().uuid() }),
-        body: ApproveFinancialEmailEventBodySchema,
-        responses: {
-            200: ConvertFinancialEmailEventResponseSchema,
-            400: ErrorResSchema,
-            401: ErrorResSchema,
-            404: ErrorResSchema,
-            409: ErrorResSchema,
-            500: ErrorResSchema,
-        },
-        summary: 'Convert event (same as approve)',
     },
 }, {
     strictStatusCodes: true,

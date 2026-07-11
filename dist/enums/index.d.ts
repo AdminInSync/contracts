@@ -32,5 +32,6 @@ export declare enum FinancialEmailEventStatus {
     PENDING_REVIEW = "pending_review",
     APPROVED = "approved",
     REJECTED = "rejected",
-    IMPORTED = "imported"
+    IMPORTED = "imported",
+    DISCARDED = "discarded"
 }

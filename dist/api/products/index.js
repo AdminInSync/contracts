@@ -133,29 +133,6 @@ export const ProductsContracts = c.router({
         summary: 'Get my saved products',
         description: 'Returns products saved by the authenticated user',
     },
-    // Add product to my products
-    addToMyProducts: {
-        method: 'POST',
-        path: '/products/my-products/:productId',
-        responses: {
-            201: z.object({
-                message: z.string(),
-            }),
-            400: ErrorResSchema,
-            401: ErrorResSchema,
-            404: ErrorResSchema,
-            409: ErrorResSchema,
-            500: ErrorResSchema,
-        },
-        pathParams: z.object({
-            productId: z.string().regex(/^\d+$/, 'Product ID must be a valid number').transform((val) => parseInt(val, 10)),
-        }),
-        body: z.object({
-            notes: z.string().optional(),
-        }).optional(),
-        summary: 'Add product to my list',
-        description: 'Saves a product to the authenticated user product list',
-    },
     // Remove product from my products
     removeFromMyProducts: {
         method: 'DELETE',
