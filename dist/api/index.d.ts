@@ -14925,6 +14925,88 @@ export declare const ApiContracts: {
                 }>;
             };
         };
+        getSyncStatus: {
+            strictStatusCodes: true;
+            summary: "Email ingestion sync status for the authenticated user";
+            method: "GET";
+            path: "/api/email-ingestion/sync-status";
+            responses: {
+                200: import("zod").ZodObject<{
+                    is_syncing: import("zod").ZodBoolean;
+                    imported_total: import("zod").ZodNumber;
+                    connections: import("zod").ZodArray<import("zod").ZodObject<{
+                        uuid: import("zod").ZodString;
+                        provider: import("zod").ZodNativeEnum<typeof import("..").EmailProvider>;
+                        sync_state: import("zod").ZodEnum<["idle", "syncing", "failed"]>;
+                        last_successful_sync_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        active_job_uuid: import("zod").ZodNullable<import("zod").ZodString>;
+                        error_message: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        uuid: string;
+                        provider: import("..").EmailProvider;
+                        last_successful_sync_at: string | null;
+                        sync_state: "failed" | "idle" | "syncing";
+                        active_job_uuid: string | null;
+                        error_message: string | null;
+                    }, {
+                        uuid: string;
+                        provider: import("..").EmailProvider;
+                        last_successful_sync_at: string | null;
+                        sync_state: "failed" | "idle" | "syncing";
+                        active_job_uuid: string | null;
+                        error_message: string | null;
+                    }>, "many">;
+                }, "strip", import("zod").ZodTypeAny, {
+                    connections: {
+                        uuid: string;
+                        provider: import("..").EmailProvider;
+                        last_successful_sync_at: string | null;
+                        sync_state: "failed" | "idle" | "syncing";
+                        active_job_uuid: string | null;
+                        error_message: string | null;
+                    }[];
+                    is_syncing: boolean;
+                    imported_total: number;
+                }, {
+                    connections: {
+                        uuid: string;
+                        provider: import("..").EmailProvider;
+                        last_successful_sync_at: string | null;
+                        sync_state: "failed" | "idle" | "syncing";
+                        active_job_uuid: string | null;
+                        error_message: string | null;
+                    }[];
+                    is_syncing: boolean;
+                    imported_total: number;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
         listEvents: {
             strictStatusCodes: true;
             query: import("zod").ZodObject<{

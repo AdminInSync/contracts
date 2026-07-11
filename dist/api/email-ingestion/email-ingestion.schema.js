@@ -26,6 +26,20 @@ export const SyncEmailConnectionResponseSchema = z.object({
     enqueued: z.literal(true),
     job_uuid: z.string().uuid(),
 });
+export const EmailConnectionSyncStateSchema = z.enum(['idle', 'syncing', 'failed']);
+export const EmailSyncStatusConnectionSchema = z.object({
+    uuid: z.string().uuid(),
+    provider: EmailProviderSchema,
+    sync_state: EmailConnectionSyncStateSchema,
+    last_successful_sync_at: z.string().datetime().nullable(),
+    active_job_uuid: z.string().uuid().nullable(),
+    error_message: z.string().nullable(),
+});
+export const EmailSyncStatusResponseSchema = z.object({
+    is_syncing: z.boolean(),
+    imported_total: z.number(),
+    connections: z.array(EmailSyncStatusConnectionSchema),
+});
 export const FinancialEmailEventResponseSchema = z.object({
     uuid: z.string().uuid(),
     status: FinancialEmailEventStatusSchema,

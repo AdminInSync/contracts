@@ -1,7 +1,7 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
-import { OAuthStartResponseSchema, ListEmailConnectionsResponseSchema, DisconnectEmailConnectionResponseSchema, SyncEmailConnectionResponseSchema, ListFinancialEmailEventsResponseSchema, FinancialEmailEventStatusSchema, } from './email-ingestion.schema';
+import { OAuthStartResponseSchema, ListEmailConnectionsResponseSchema, DisconnectEmailConnectionResponseSchema, SyncEmailConnectionResponseSchema, ListFinancialEmailEventsResponseSchema, FinancialEmailEventStatusSchema, EmailSyncStatusResponseSchema, } from './email-ingestion.schema';
 const c = initContract();
 export const EmailIngestionContracts = c.router({
     gmailOAuthStart: {
@@ -88,6 +88,16 @@ export const EmailIngestionContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'Enqueue manual email sync',
+    },
+    getSyncStatus: {
+        method: 'GET',
+        path: '/sync-status',
+        responses: {
+            200: EmailSyncStatusResponseSchema,
+            401: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        summary: 'Email ingestion sync status for the authenticated user',
     },
     listEvents: {
         method: 'GET',

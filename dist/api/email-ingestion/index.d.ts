@@ -403,6 +403,88 @@ export declare const EmailIngestionContracts: {
         };
         strictStatusCodes: true;
     };
+    getSyncStatus: {
+        summary: "Email ingestion sync status for the authenticated user";
+        method: "GET";
+        path: "/email-ingestion/sync-status";
+        responses: {
+            200: z.ZodObject<{
+                is_syncing: z.ZodBoolean;
+                imported_total: z.ZodNumber;
+                connections: z.ZodArray<z.ZodObject<{
+                    uuid: z.ZodString;
+                    provider: z.ZodNativeEnum<typeof import("../..").EmailProvider>;
+                    sync_state: z.ZodEnum<["idle", "syncing", "failed"]>;
+                    last_successful_sync_at: z.ZodNullable<z.ZodString>;
+                    active_job_uuid: z.ZodNullable<z.ZodString>;
+                    error_message: z.ZodNullable<z.ZodString>;
+                }, "strip", z.ZodTypeAny, {
+                    uuid: string;
+                    provider: import("../..").EmailProvider;
+                    last_successful_sync_at: string | null;
+                    sync_state: "failed" | "idle" | "syncing";
+                    active_job_uuid: string | null;
+                    error_message: string | null;
+                }, {
+                    uuid: string;
+                    provider: import("../..").EmailProvider;
+                    last_successful_sync_at: string | null;
+                    sync_state: "failed" | "idle" | "syncing";
+                    active_job_uuid: string | null;
+                    error_message: string | null;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                connections: {
+                    uuid: string;
+                    provider: import("../..").EmailProvider;
+                    last_successful_sync_at: string | null;
+                    sync_state: "failed" | "idle" | "syncing";
+                    active_job_uuid: string | null;
+                    error_message: string | null;
+                }[];
+                is_syncing: boolean;
+                imported_total: number;
+            }, {
+                connections: {
+                    uuid: string;
+                    provider: import("../..").EmailProvider;
+                    last_successful_sync_at: string | null;
+                    sync_state: "failed" | "idle" | "syncing";
+                    active_job_uuid: string | null;
+                    error_message: string | null;
+                }[];
+                is_syncing: boolean;
+                imported_total: number;
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+        strictStatusCodes: true;
+    };
     listEvents: {
         query: z.ZodObject<{
             status: z.ZodOptional<z.ZodNativeEnum<typeof import("../..").FinancialEmailEventStatus>>;

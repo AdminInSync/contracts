@@ -102,6 +102,77 @@ export declare const SyncEmailConnectionResponseSchema: z.ZodObject<{
     enqueued: true;
     job_uuid: string;
 }>;
+export declare const EmailConnectionSyncStateSchema: z.ZodEnum<["idle", "syncing", "failed"]>;
+export declare const EmailSyncStatusConnectionSchema: z.ZodObject<{
+    uuid: z.ZodString;
+    provider: z.ZodNativeEnum<typeof EmailProvider>;
+    sync_state: z.ZodEnum<["idle", "syncing", "failed"]>;
+    last_successful_sync_at: z.ZodNullable<z.ZodString>;
+    active_job_uuid: z.ZodNullable<z.ZodString>;
+    error_message: z.ZodNullable<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+    uuid: string;
+    provider: EmailProvider;
+    last_successful_sync_at: string | null;
+    sync_state: "failed" | "idle" | "syncing";
+    active_job_uuid: string | null;
+    error_message: string | null;
+}, {
+    uuid: string;
+    provider: EmailProvider;
+    last_successful_sync_at: string | null;
+    sync_state: "failed" | "idle" | "syncing";
+    active_job_uuid: string | null;
+    error_message: string | null;
+}>;
+export declare const EmailSyncStatusResponseSchema: z.ZodObject<{
+    is_syncing: z.ZodBoolean;
+    imported_total: z.ZodNumber;
+    connections: z.ZodArray<z.ZodObject<{
+        uuid: z.ZodString;
+        provider: z.ZodNativeEnum<typeof EmailProvider>;
+        sync_state: z.ZodEnum<["idle", "syncing", "failed"]>;
+        last_successful_sync_at: z.ZodNullable<z.ZodString>;
+        active_job_uuid: z.ZodNullable<z.ZodString>;
+        error_message: z.ZodNullable<z.ZodString>;
+    }, "strip", z.ZodTypeAny, {
+        uuid: string;
+        provider: EmailProvider;
+        last_successful_sync_at: string | null;
+        sync_state: "failed" | "idle" | "syncing";
+        active_job_uuid: string | null;
+        error_message: string | null;
+    }, {
+        uuid: string;
+        provider: EmailProvider;
+        last_successful_sync_at: string | null;
+        sync_state: "failed" | "idle" | "syncing";
+        active_job_uuid: string | null;
+        error_message: string | null;
+    }>, "many">;
+}, "strip", z.ZodTypeAny, {
+    connections: {
+        uuid: string;
+        provider: EmailProvider;
+        last_successful_sync_at: string | null;
+        sync_state: "failed" | "idle" | "syncing";
+        active_job_uuid: string | null;
+        error_message: string | null;
+    }[];
+    is_syncing: boolean;
+    imported_total: number;
+}, {
+    connections: {
+        uuid: string;
+        provider: EmailProvider;
+        last_successful_sync_at: string | null;
+        sync_state: "failed" | "idle" | "syncing";
+        active_job_uuid: string | null;
+        error_message: string | null;
+    }[];
+    is_syncing: boolean;
+    imported_total: number;
+}>;
 export declare const FinancialEmailEventResponseSchema: z.ZodObject<{
     uuid: z.ZodString;
     status: z.ZodNativeEnum<typeof FinancialEmailEventStatus>;
