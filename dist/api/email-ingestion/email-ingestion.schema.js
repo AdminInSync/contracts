@@ -40,10 +40,15 @@ export const EmailSyncStatusResponseSchema = z.object({
     imported_total: z.number(),
     connections: z.array(EmailSyncStatusConnectionSchema),
 });
+export const ProductKindSchema = z.enum(['debit', 'credit']);
 export const FinancialEmailEventResponseSchema = z.object({
     uuid: z.string().uuid(),
     status: FinancialEmailEventStatusSchema,
     institution_name: z.string().nullable(),
+    institution_logo: z.string().nullable(),
+    product_kind: ProductKindSchema.nullable(),
+    product_type: z.string().nullable(),
+    product_label: z.string().nullable(),
     transaction_description: z.string().nullable(),
     amount: z.coerce.number().nullable(),
     currency: z.string().nullable(),

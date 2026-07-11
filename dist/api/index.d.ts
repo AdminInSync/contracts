@@ -6752,6 +6752,8 @@ export declare const ApiContracts: {
                             name: import("zod").ZodString;
                             institution: import("zod").ZodString;
                             institution_logo: import("zod").ZodNullable<import("zod").ZodString>;
+                            product_kind: import("zod").ZodEnum<["debit", "credit"]>;
+                            product_label: import("zod").ZodString;
                             lastFour: import("zod").ZodString;
                             balance: import("zod").ZodObject<{
                                 current: import("zod").ZodNumber;
@@ -6825,6 +6827,8 @@ export declare const ApiContracts: {
                             currency: string;
                             institution: string;
                             institution_logo: string | null;
+                            product_kind: "debit" | "credit";
+                            product_label: string;
                             lastFour: string;
                             balance: {
                                 limit: number | null;
@@ -6852,6 +6856,8 @@ export declare const ApiContracts: {
                             currency: string;
                             institution: string;
                             institution_logo: string | null;
+                            product_kind: "debit" | "credit";
+                            product_label: string;
                             lastFour: string;
                             balance: {
                                 limit: number | null;
@@ -6881,6 +6887,8 @@ export declare const ApiContracts: {
                             currency: string;
                             institution: string;
                             institution_logo: string | null;
+                            product_kind: "debit" | "credit";
+                            product_label: string;
                             lastFour: string;
                             balance: {
                                 limit: number | null;
@@ -6918,6 +6926,8 @@ export declare const ApiContracts: {
                             currency: string;
                             institution: string;
                             institution_logo: string | null;
+                            product_kind: "debit" | "credit";
+                            product_label: string;
                             lastFour: string;
                             balance: {
                                 limit: number | null;
@@ -6958,6 +6968,8 @@ export declare const ApiContracts: {
                             currency: string;
                             institution: string;
                             institution_logo: string | null;
+                            product_kind: "debit" | "credit";
+                            product_label: string;
                             lastFour: string;
                             balance: {
                                 limit: number | null;
@@ -6998,6 +7010,8 @@ export declare const ApiContracts: {
                             currency: string;
                             institution: string;
                             institution_logo: string | null;
+                            product_kind: "debit" | "credit";
+                            product_label: string;
                             lastFour: string;
                             balance: {
                                 limit: number | null;
@@ -7085,22 +7099,40 @@ export declare const ApiContracts: {
                         transaction_type: import("zod").ZodEnum<["credit", "debit"]>;
                         user_product_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                         source_financial_email_event_id: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodNumber>>;
+                        institution_name: import("zod").ZodNullable<import("zod").ZodString>;
+                        institution_logo: import("zod").ZodNullable<import("zod").ZodString>;
+                        product_type: import("zod").ZodNullable<import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
+                        product_kind: import("zod").ZodNullable<import("zod").ZodEnum<["debit", "credit"]>>;
+                        product_label: import("zod").ZodNullable<import("zod").ZodString>;
+                        account_last4: import("zod").ZodNullable<import("zod").ZodString>;
                     }, "strip", import("zod").ZodTypeAny, {
                         description: string | null;
                         uuid: string;
                         currency: string;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
+                        institution_name: string | null;
+                        institution_logo: string | null;
+                        product_kind: "debit" | "credit" | null;
+                        product_label: string | null;
                         amount: number;
                         transaction_date: string;
-                        transaction_type: "credit" | "debit";
+                        transaction_type: "debit" | "credit";
+                        account_last4: string | null;
                         user_product_uuid?: string | null | undefined;
                         source_financial_email_event_id?: number | null | undefined;
                     }, {
                         description: string | null;
                         uuid: string;
                         currency: string;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
+                        institution_name: string | null;
+                        institution_logo: string | null;
+                        product_kind: "debit" | "credit" | null;
+                        product_label: string | null;
                         amount: number;
                         transaction_date: string;
-                        transaction_type: "credit" | "debit";
+                        transaction_type: "debit" | "credit";
+                        account_last4: string | null;
                         user_product_uuid?: string | null | undefined;
                         source_financial_email_event_id?: number | null | undefined;
                     }>, "many">;
@@ -7123,9 +7155,15 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         currency: string;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
+                        institution_name: string | null;
+                        institution_logo: string | null;
+                        product_kind: "debit" | "credit" | null;
+                        product_label: string | null;
                         amount: number;
                         transaction_date: string;
-                        transaction_type: "credit" | "debit";
+                        transaction_type: "debit" | "credit";
+                        account_last4: string | null;
                         user_product_uuid?: string | null | undefined;
                         source_financial_email_event_id?: number | null | undefined;
                     }[];
@@ -7140,9 +7178,15 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         currency: string;
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
+                        institution_name: string | null;
+                        institution_logo: string | null;
+                        product_kind: "debit" | "credit" | null;
+                        product_label: string | null;
                         amount: number;
                         transaction_date: string;
-                        transaction_type: "credit" | "debit";
+                        transaction_type: "debit" | "credit";
+                        account_last4: string | null;
                         user_product_uuid?: string | null | undefined;
                         source_financial_email_event_id?: number | null | undefined;
                     }[];
@@ -15037,6 +15081,10 @@ export declare const ApiContracts: {
                         uuid: import("zod").ZodString;
                         status: import("zod").ZodNativeEnum<typeof import("..").FinancialEmailEventStatus>;
                         institution_name: import("zod").ZodNullable<import("zod").ZodString>;
+                        institution_logo: import("zod").ZodNullable<import("zod").ZodString>;
+                        product_kind: import("zod").ZodNullable<import("zod").ZodEnum<["debit", "credit"]>>;
+                        product_type: import("zod").ZodNullable<import("zod").ZodString>;
+                        product_label: import("zod").ZodNullable<import("zod").ZodString>;
                         transaction_description: import("zod").ZodNullable<import("zod").ZodString>;
                         amount: import("zod").ZodNullable<import("zod").ZodNumber>;
                         currency: import("zod").ZodNullable<import("zod").ZodString>;
@@ -15051,12 +15099,16 @@ export declare const ApiContracts: {
                         uuid: string;
                         created_at: string;
                         currency: string | null;
+                        product_type: string | null;
                         institution_name: string | null;
+                        institution_logo: string | null;
+                        product_kind: "debit" | "credit" | null;
+                        product_label: string | null;
                         amount: number | null;
                         transaction_date: string | null;
                         category: string | null;
                         transaction_description: string | null;
-                        transaction_direction: "credit" | "debit" | null;
+                        transaction_direction: "debit" | "credit" | null;
                         confidence: number | null;
                         source_metadata: Record<string, unknown> | null;
                     }, {
@@ -15064,12 +15116,16 @@ export declare const ApiContracts: {
                         uuid: string;
                         created_at: string;
                         currency: string | null;
+                        product_type: string | null;
                         institution_name: string | null;
+                        institution_logo: string | null;
+                        product_kind: "debit" | "credit" | null;
+                        product_label: string | null;
                         amount: number | null;
                         transaction_date: string | null;
                         category: string | null;
                         transaction_description: string | null;
-                        transaction_direction: "credit" | "debit" | null;
+                        transaction_direction: "debit" | "credit" | null;
                         confidence: number | null;
                         source_metadata: Record<string, unknown> | null;
                     }>, "many">;
@@ -15085,12 +15141,16 @@ export declare const ApiContracts: {
                         uuid: string;
                         created_at: string;
                         currency: string | null;
+                        product_type: string | null;
                         institution_name: string | null;
+                        institution_logo: string | null;
+                        product_kind: "debit" | "credit" | null;
+                        product_label: string | null;
                         amount: number | null;
                         transaction_date: string | null;
                         category: string | null;
                         transaction_description: string | null;
-                        transaction_direction: "credit" | "debit" | null;
+                        transaction_direction: "debit" | "credit" | null;
                         confidence: number | null;
                         source_metadata: Record<string, unknown> | null;
                     }[];
@@ -15103,12 +15163,16 @@ export declare const ApiContracts: {
                         uuid: string;
                         created_at: string;
                         currency: string | null;
+                        product_type: string | null;
                         institution_name: string | null;
+                        institution_logo: string | null;
+                        product_kind: "debit" | "credit" | null;
+                        product_label: string | null;
                         amount: number | null;
                         transaction_date: string | null;
                         category: string | null;
                         transaction_description: string | null;
-                        transaction_direction: "credit" | "debit" | null;
+                        transaction_direction: "debit" | "credit" | null;
                         confidence: number | null;
                         source_metadata: Record<string, unknown> | null;
                     }[];

@@ -2498,6 +2498,8 @@ export declare const ProductsContracts: {
                         name: z.ZodString;
                         institution: z.ZodString;
                         institution_logo: z.ZodNullable<z.ZodString>;
+                        product_kind: z.ZodEnum<["debit", "credit"]>;
+                        product_label: z.ZodString;
                         lastFour: z.ZodString;
                         balance: z.ZodObject<{
                             current: z.ZodNumber;
@@ -2571,6 +2573,8 @@ export declare const ProductsContracts: {
                         currency: string;
                         institution: string;
                         institution_logo: string | null;
+                        product_kind: "debit" | "credit";
+                        product_label: string;
                         lastFour: string;
                         balance: {
                             limit: number | null;
@@ -2598,6 +2602,8 @@ export declare const ProductsContracts: {
                         currency: string;
                         institution: string;
                         institution_logo: string | null;
+                        product_kind: "debit" | "credit";
+                        product_label: string;
                         lastFour: string;
                         balance: {
                             limit: number | null;
@@ -2627,6 +2633,8 @@ export declare const ProductsContracts: {
                         currency: string;
                         institution: string;
                         institution_logo: string | null;
+                        product_kind: "debit" | "credit";
+                        product_label: string;
                         lastFour: string;
                         balance: {
                             limit: number | null;
@@ -2664,6 +2672,8 @@ export declare const ProductsContracts: {
                         currency: string;
                         institution: string;
                         institution_logo: string | null;
+                        product_kind: "debit" | "credit";
+                        product_label: string;
                         lastFour: string;
                         balance: {
                             limit: number | null;
@@ -2704,6 +2714,8 @@ export declare const ProductsContracts: {
                         currency: string;
                         institution: string;
                         institution_logo: string | null;
+                        product_kind: "debit" | "credit";
+                        product_label: string;
                         lastFour: string;
                         balance: {
                             limit: number | null;
@@ -2744,6 +2756,8 @@ export declare const ProductsContracts: {
                         currency: string;
                         institution: string;
                         institution_logo: string | null;
+                        product_kind: "debit" | "credit";
+                        product_label: string;
                         lastFour: string;
                         balance: {
                             limit: number | null;
@@ -2830,22 +2844,40 @@ export declare const ProductsContracts: {
                     transaction_type: z.ZodEnum<["credit", "debit"]>;
                     user_product_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     source_financial_email_event_id: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+                    institution_name: z.ZodNullable<z.ZodString>;
+                    institution_logo: z.ZodNullable<z.ZodString>;
+                    product_type: z.ZodNullable<z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
+                    product_kind: z.ZodNullable<z.ZodEnum<["debit", "credit"]>>;
+                    product_label: z.ZodNullable<z.ZodString>;
+                    account_last4: z.ZodNullable<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
                     description: string | null;
                     uuid: string;
                     currency: string;
+                    product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
+                    institution_name: string | null;
+                    institution_logo: string | null;
+                    product_kind: "debit" | "credit" | null;
+                    product_label: string | null;
                     amount: number;
                     transaction_date: string;
-                    transaction_type: "credit" | "debit";
+                    transaction_type: "debit" | "credit";
+                    account_last4: string | null;
                     user_product_uuid?: string | null | undefined;
                     source_financial_email_event_id?: number | null | undefined;
                 }, {
                     description: string | null;
                     uuid: string;
                     currency: string;
+                    product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
+                    institution_name: string | null;
+                    institution_logo: string | null;
+                    product_kind: "debit" | "credit" | null;
+                    product_label: string | null;
                     amount: number;
                     transaction_date: string;
-                    transaction_type: "credit" | "debit";
+                    transaction_type: "debit" | "credit";
+                    account_last4: string | null;
                     user_product_uuid?: string | null | undefined;
                     source_financial_email_event_id?: number | null | undefined;
                 }>, "many">;
@@ -2868,9 +2900,15 @@ export declare const ProductsContracts: {
                     description: string | null;
                     uuid: string;
                     currency: string;
+                    product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
+                    institution_name: string | null;
+                    institution_logo: string | null;
+                    product_kind: "debit" | "credit" | null;
+                    product_label: string | null;
                     amount: number;
                     transaction_date: string;
-                    transaction_type: "credit" | "debit";
+                    transaction_type: "debit" | "credit";
+                    account_last4: string | null;
                     user_product_uuid?: string | null | undefined;
                     source_financial_email_event_id?: number | null | undefined;
                 }[];
@@ -2885,9 +2923,15 @@ export declare const ProductsContracts: {
                     description: string | null;
                     uuid: string;
                     currency: string;
+                    product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
+                    institution_name: string | null;
+                    institution_logo: string | null;
+                    product_kind: "debit" | "credit" | null;
+                    product_label: string | null;
                     amount: number;
                     transaction_date: string;
-                    transaction_type: "credit" | "debit";
+                    transaction_type: "debit" | "credit";
+                    account_last4: string | null;
                     user_product_uuid?: string | null | undefined;
                     source_financial_email_event_id?: number | null | undefined;
                 }[];

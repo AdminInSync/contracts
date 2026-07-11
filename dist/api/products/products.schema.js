@@ -95,12 +95,15 @@ export const ConnectedProductMetadataSchema = z.object({
     initial_value: z.number().nullable(),
     accumulated_gain: z.number().nullable(),
 });
+export const ProductKindSchema = z.enum(['debit', 'credit']);
 export const ConnectedProductSchema = z.object({
     id: z.string(),
     type: z.string(),
     name: z.string(),
     institution: z.string(),
     institution_logo: z.string().nullable(),
+    product_kind: ProductKindSchema,
+    product_label: z.string(),
     lastFour: z.string(),
     balance: ConnectedProductBalanceSchema,
     metadata: ConnectedProductMetadataSchema,
@@ -132,6 +135,12 @@ export const ProductTransactionItemSchema = z.object({
     transaction_type: z.enum(['credit', 'debit']),
     user_product_uuid: z.string().uuid().nullable().optional(),
     source_financial_email_event_id: z.number().nullable().optional(),
+    institution_name: z.string().nullable(),
+    institution_logo: z.string().nullable(),
+    product_type: ProductTypeSchema.nullable(),
+    product_kind: ProductKindSchema.nullable(),
+    product_label: z.string().nullable(),
+    account_last4: z.string().nullable(),
 });
 export const ProductTransactionsListResponseSchema = z.object({
     message: z.string(),
