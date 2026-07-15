@@ -16,8 +16,16 @@ import { CreditUtilizationContracts } from './credit-utilization';
 import { FinancialTrendsContracts } from './financial-trends';
 import { ReportsContracts } from './reports';
 import { EmailIngestionContracts } from './email-ingestion';
+import { AdminAuthContracts } from './admin-auth';
+import { AdminWaitlistContracts } from './admin-waitlist';
+import { AdminClientsContracts } from './admin-clients';
+import { AdminDashboardContracts } from './admin-dashboard';
 const c = initContract();
 export const ApiContracts = c.router({
+    AdminAuth: AdminAuthContracts,
+    AdminWaitlist: AdminWaitlistContracts,
+    AdminClients: AdminClientsContracts,
+    AdminDashboard: AdminDashboardContracts,
     Auth: AuthContracts,
     Kyc: KycContracts,
     UserInfo: UserInfoContracts,

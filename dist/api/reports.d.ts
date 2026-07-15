@@ -44,30 +44,30 @@ export declare const ExpenseAnalysisResponseSchema: z.ZodObject<{
         }, "strip", z.ZodTypeAny, {
             type: string;
             description: string;
-            title: string;
             color: string;
+            title: string;
             icon: string;
         }, {
             type: string;
             description: string;
-            title: string;
             color: string;
+            title: string;
             icon: string;
         }>, "many">;
     }, "strip", z.ZodTypeAny, {
         insights: {
             type: string;
             description: string;
-            title: string;
             color: string;
+            title: string;
             icon: string;
         }[];
     }, {
         insights: {
             type: string;
             description: string;
-            title: string;
             color: string;
+            title: string;
             icon: string;
         }[];
     }>;
@@ -78,8 +78,8 @@ export declare const ExpenseAnalysisResponseSchema: z.ZodObject<{
         insights: {
             type: string;
             description: string;
-            title: string;
             color: string;
+            title: string;
             icon: string;
         }[];
     };
@@ -90,8 +90,8 @@ export declare const ExpenseAnalysisResponseSchema: z.ZodObject<{
         insights: {
             type: string;
             description: string;
-            title: string;
             color: string;
+            title: string;
             icon: string;
         }[];
     };

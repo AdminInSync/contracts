@@ -20,8 +20,8 @@ export declare const PaymentRemindersContracts: {
             notification_settings: z.ZodOptional<z.ZodAny>;
             notes: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            title: string;
             currency: string;
+            title: string;
             due_date: string;
             description?: string | undefined;
             notes?: string | undefined;
@@ -35,8 +35,8 @@ export declare const PaymentRemindersContracts: {
             recurrence_pattern?: string | undefined;
             notification_settings?: any;
         }, {
-            title: string;
             currency: string;
+            title: string;
             due_date: string;
             description?: string | undefined;
             notes?: string | undefined;
@@ -78,7 +78,6 @@ export declare const PaymentRemindersContracts: {
                 }, "strip", z.ZodTypeAny, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -89,6 +88,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -99,7 +99,6 @@ export declare const PaymentRemindersContracts: {
                 }, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -110,6 +109,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -123,7 +123,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -134,6 +133,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -147,7 +147,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -158,6 +157,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -265,7 +265,6 @@ export declare const PaymentRemindersContracts: {
                 }, "strip", z.ZodTypeAny, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -276,6 +275,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -286,7 +286,6 @@ export declare const PaymentRemindersContracts: {
                 }, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -297,6 +296,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -323,7 +323,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -334,6 +333,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -352,7 +352,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -363,6 +362,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -437,7 +437,6 @@ export declare const PaymentRemindersContracts: {
                 }, "strip", z.ZodTypeAny, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -448,6 +447,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -458,7 +458,6 @@ export declare const PaymentRemindersContracts: {
                 }, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -469,6 +468,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -495,7 +495,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -506,6 +505,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -524,7 +524,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -535,6 +534,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -616,7 +616,6 @@ export declare const PaymentRemindersContracts: {
                 }, "strip", z.ZodTypeAny, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -627,6 +626,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -637,7 +637,6 @@ export declare const PaymentRemindersContracts: {
                 }, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -648,6 +647,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -674,7 +674,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -685,6 +684,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -703,7 +703,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -714,6 +713,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -788,7 +788,6 @@ export declare const PaymentRemindersContracts: {
                 }, "strip", z.ZodTypeAny, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -799,6 +798,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -809,7 +809,6 @@ export declare const PaymentRemindersContracts: {
                 }, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -820,6 +819,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -846,7 +846,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -857,6 +856,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -875,7 +875,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -886,6 +885,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -977,7 +977,6 @@ export declare const PaymentRemindersContracts: {
                 }, "strip", z.ZodTypeAny, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -988,6 +987,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -998,7 +998,6 @@ export declare const PaymentRemindersContracts: {
                 }, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -1009,6 +1008,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -1035,7 +1035,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -1046,6 +1045,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -1064,7 +1064,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -1075,6 +1074,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -1179,7 +1179,6 @@ export declare const PaymentRemindersContracts: {
                 }, "strip", z.ZodTypeAny, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -1190,6 +1189,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -1200,7 +1200,6 @@ export declare const PaymentRemindersContracts: {
                 }, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -1211,6 +1210,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -1237,7 +1237,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -1248,6 +1247,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -1266,7 +1266,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -1277,6 +1276,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -1371,7 +1371,6 @@ export declare const PaymentRemindersContracts: {
                 }, "strip", z.ZodTypeAny, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -1382,6 +1381,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -1392,7 +1392,6 @@ export declare const PaymentRemindersContracts: {
                 }, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -1403,6 +1402,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -1416,7 +1416,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -1427,6 +1426,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -1440,7 +1440,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -1451,6 +1450,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -1529,12 +1529,12 @@ export declare const PaymentRemindersContracts: {
             notes: z.ZodOptional<z.ZodOptional<z.ZodString>>;
         }, "strip", z.ZodTypeAny, {
             description?: string | undefined;
-            title?: string | undefined;
             notes?: string | undefined;
             currency?: string | undefined;
             priority?: "low" | "medium" | "high" | "urgent" | undefined;
             amount?: number | undefined;
             user_connection_id?: number | undefined;
+            title?: string | undefined;
             reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
             due_date?: string | undefined;
             reminder_date?: string | undefined;
@@ -1544,12 +1544,12 @@ export declare const PaymentRemindersContracts: {
             notification_settings?: any;
         }, {
             description?: string | undefined;
-            title?: string | undefined;
             notes?: string | undefined;
             currency?: string | undefined;
             priority?: "low" | "medium" | "high" | "urgent" | undefined;
             amount?: number | undefined;
             user_connection_id?: number | undefined;
+            title?: string | undefined;
             reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
             due_date?: string | undefined;
             reminder_date?: string | undefined;
@@ -1586,7 +1586,6 @@ export declare const PaymentRemindersContracts: {
                 }, "strip", z.ZodTypeAny, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -1597,6 +1596,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -1607,7 +1607,6 @@ export declare const PaymentRemindersContracts: {
                 }, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -1618,6 +1617,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -1631,7 +1631,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -1642,6 +1641,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -1655,7 +1655,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -1666,6 +1665,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -1830,7 +1830,6 @@ export declare const PaymentRemindersContracts: {
                 }, "strip", z.ZodTypeAny, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -1841,6 +1840,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -1851,7 +1851,6 @@ export declare const PaymentRemindersContracts: {
                 }, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -1862,6 +1861,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -1875,7 +1875,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -1886,6 +1885,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -1899,7 +1899,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -1910,6 +1909,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -2000,7 +2000,6 @@ export declare const PaymentRemindersContracts: {
                 }, "strip", z.ZodTypeAny, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -2011,6 +2010,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -2021,7 +2021,6 @@ export declare const PaymentRemindersContracts: {
                 }, {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -2032,6 +2031,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -2045,7 +2045,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -2056,6 +2055,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;
@@ -2069,7 +2069,6 @@ export declare const PaymentRemindersContracts: {
                 data: {
                     id: number;
                     description: string | null;
-                    title: string;
                     uuid: string;
                     user_uid: string;
                     created_at: string;
@@ -2080,6 +2079,7 @@ export declare const PaymentRemindersContracts: {
                     deleted_at: string | null;
                     amount: number | null;
                     user_connection_id: number | null;
+                    title: string;
                     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                     due_date: string;
                     reminder_date: string | null;

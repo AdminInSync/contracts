@@ -26,7 +26,6 @@ export declare const PaymentReminderSchema: z.ZodObject<{
 }, "strip", z.ZodTypeAny, {
     id: number;
     description: string | null;
-    title: string;
     uuid: string;
     user_uid: string;
     created_at: string;
@@ -37,6 +36,7 @@ export declare const PaymentReminderSchema: z.ZodObject<{
     deleted_at: string | null;
     amount: number | null;
     user_connection_id: number | null;
+    title: string;
     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
     due_date: string;
     reminder_date: string | null;
@@ -47,7 +47,6 @@ export declare const PaymentReminderSchema: z.ZodObject<{
 }, {
     id: number;
     description: string | null;
-    title: string;
     uuid: string;
     user_uid: string;
     created_at: string;
@@ -58,6 +57,7 @@ export declare const PaymentReminderSchema: z.ZodObject<{
     deleted_at: string | null;
     amount: number | null;
     user_connection_id: number | null;
+    title: string;
     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
     due_date: string;
     reminder_date: string | null;
@@ -82,8 +82,8 @@ export declare const CreatePaymentReminderSchema: z.ZodObject<{
     notification_settings: z.ZodOptional<z.ZodAny>;
     notes: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
-    title: string;
     currency: string;
+    title: string;
     due_date: string;
     description?: string | undefined;
     notes?: string | undefined;
@@ -97,8 +97,8 @@ export declare const CreatePaymentReminderSchema: z.ZodObject<{
     recurrence_pattern?: string | undefined;
     notification_settings?: any;
 }, {
-    title: string;
     currency: string;
+    title: string;
     due_date: string;
     description?: string | undefined;
     notes?: string | undefined;
@@ -129,12 +129,12 @@ export declare const UpdatePaymentReminderSchema: z.ZodObject<{
     notes: z.ZodOptional<z.ZodOptional<z.ZodString>>;
 }, "strip", z.ZodTypeAny, {
     description?: string | undefined;
-    title?: string | undefined;
     notes?: string | undefined;
     currency?: string | undefined;
     priority?: "low" | "medium" | "high" | "urgent" | undefined;
     amount?: number | undefined;
     user_connection_id?: number | undefined;
+    title?: string | undefined;
     reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
     due_date?: string | undefined;
     reminder_date?: string | undefined;
@@ -144,12 +144,12 @@ export declare const UpdatePaymentReminderSchema: z.ZodObject<{
     notification_settings?: any;
 }, {
     description?: string | undefined;
-    title?: string | undefined;
     notes?: string | undefined;
     currency?: string | undefined;
     priority?: "low" | "medium" | "high" | "urgent" | undefined;
     amount?: number | undefined;
     user_connection_id?: number | undefined;
+    title?: string | undefined;
     reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
     due_date?: string | undefined;
     reminder_date?: string | undefined;
@@ -209,7 +209,6 @@ export declare const PaymentReminderResponseSchema: z.ZodObject<{
     }, "strip", z.ZodTypeAny, {
         id: number;
         description: string | null;
-        title: string;
         uuid: string;
         user_uid: string;
         created_at: string;
@@ -220,6 +219,7 @@ export declare const PaymentReminderResponseSchema: z.ZodObject<{
         deleted_at: string | null;
         amount: number | null;
         user_connection_id: number | null;
+        title: string;
         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
         due_date: string;
         reminder_date: string | null;
@@ -230,7 +230,6 @@ export declare const PaymentReminderResponseSchema: z.ZodObject<{
     }, {
         id: number;
         description: string | null;
-        title: string;
         uuid: string;
         user_uid: string;
         created_at: string;
@@ -241,6 +240,7 @@ export declare const PaymentReminderResponseSchema: z.ZodObject<{
         deleted_at: string | null;
         amount: number | null;
         user_connection_id: number | null;
+        title: string;
         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
         due_date: string;
         reminder_date: string | null;
@@ -254,7 +254,6 @@ export declare const PaymentReminderResponseSchema: z.ZodObject<{
     data: {
         id: number;
         description: string | null;
-        title: string;
         uuid: string;
         user_uid: string;
         created_at: string;
@@ -265,6 +264,7 @@ export declare const PaymentReminderResponseSchema: z.ZodObject<{
         deleted_at: string | null;
         amount: number | null;
         user_connection_id: number | null;
+        title: string;
         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
         due_date: string;
         reminder_date: string | null;
@@ -278,7 +278,6 @@ export declare const PaymentReminderResponseSchema: z.ZodObject<{
     data: {
         id: number;
         description: string | null;
-        title: string;
         uuid: string;
         user_uid: string;
         created_at: string;
@@ -289,6 +288,7 @@ export declare const PaymentReminderResponseSchema: z.ZodObject<{
         deleted_at: string | null;
         amount: number | null;
         user_connection_id: number | null;
+        title: string;
         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
         due_date: string;
         reminder_date: string | null;
@@ -324,7 +324,6 @@ export declare const PaymentRemindersListResponseSchema: z.ZodObject<{
     }, "strip", z.ZodTypeAny, {
         id: number;
         description: string | null;
-        title: string;
         uuid: string;
         user_uid: string;
         created_at: string;
@@ -335,6 +334,7 @@ export declare const PaymentRemindersListResponseSchema: z.ZodObject<{
         deleted_at: string | null;
         amount: number | null;
         user_connection_id: number | null;
+        title: string;
         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
         due_date: string;
         reminder_date: string | null;
@@ -345,7 +345,6 @@ export declare const PaymentRemindersListResponseSchema: z.ZodObject<{
     }, {
         id: number;
         description: string | null;
-        title: string;
         uuid: string;
         user_uid: string;
         created_at: string;
@@ -356,6 +355,7 @@ export declare const PaymentRemindersListResponseSchema: z.ZodObject<{
         deleted_at: string | null;
         amount: number | null;
         user_connection_id: number | null;
+        title: string;
         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
         due_date: string;
         reminder_date: string | null;
@@ -382,7 +382,6 @@ export declare const PaymentRemindersListResponseSchema: z.ZodObject<{
     data: {
         id: number;
         description: string | null;
-        title: string;
         uuid: string;
         user_uid: string;
         created_at: string;
@@ -393,6 +392,7 @@ export declare const PaymentRemindersListResponseSchema: z.ZodObject<{
         deleted_at: string | null;
         amount: number | null;
         user_connection_id: number | null;
+        title: string;
         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
         due_date: string;
         reminder_date: string | null;
@@ -411,7 +411,6 @@ export declare const PaymentRemindersListResponseSchema: z.ZodObject<{
     data: {
         id: number;
         description: string | null;
-        title: string;
         uuid: string;
         user_uid: string;
         created_at: string;
@@ -422,6 +421,7 @@ export declare const PaymentRemindersListResponseSchema: z.ZodObject<{
         deleted_at: string | null;
         amount: number | null;
         user_connection_id: number | null;
+        title: string;
         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
         due_date: string;
         reminder_date: string | null;

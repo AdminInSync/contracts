@@ -1,4 +1,1110 @@
 export declare const ApiContracts: {
+    AdminAuth: {
+        login: {
+            strictStatusCodes: true;
+            summary: "Admin login";
+            description: "Authenticate an admin user with email and password.";
+            method: "POST";
+            body: import("zod").ZodObject<{
+                email: import("zod").ZodString;
+                password: import("zod").ZodString;
+            }, "strip", import("zod").ZodTypeAny, {
+                email: string;
+                password: string;
+            }, {
+                email: string;
+                password: string;
+            }>;
+            path: "/api/admin/auth/login";
+            responses: {
+                200: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        token: import("zod").ZodString;
+                        admin: import("zod").ZodObject<{
+                            id: import("zod").ZodString;
+                            name: import("zod").ZodString;
+                            email: import("zod").ZodString;
+                            role: import("zod").ZodEnum<["superadmin"]>;
+                            is_active: import("zod").ZodBoolean;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: string;
+                            email: string;
+                            is_active: boolean;
+                            name: string;
+                            role: "superadmin";
+                        }, {
+                            id: string;
+                            email: string;
+                            is_active: boolean;
+                            name: string;
+                            role: "superadmin";
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        token: string;
+                        admin: {
+                            id: string;
+                            email: string;
+                            is_active: boolean;
+                            name: string;
+                            role: "superadmin";
+                        };
+                    }, {
+                        token: string;
+                        admin: {
+                            id: string;
+                            email: string;
+                            is_active: boolean;
+                            name: string;
+                            role: "superadmin";
+                        };
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        token: string;
+                        admin: {
+                            id: string;
+                            email: string;
+                            is_active: boolean;
+                            name: string;
+                            role: "superadmin";
+                        };
+                    };
+                }, {
+                    message: string;
+                    data: {
+                        token: string;
+                        admin: {
+                            id: string;
+                            email: string;
+                            is_active: boolean;
+                            name: string;
+                            role: "superadmin";
+                        };
+                    };
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+        getMe: {
+            strictStatusCodes: true;
+            summary: "Get current admin";
+            description: "Get the currently authenticated admin user.";
+            method: "GET";
+            path: "/api/admin/auth/me";
+            responses: {
+                200: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        admin: import("zod").ZodObject<{
+                            id: import("zod").ZodString;
+                            name: import("zod").ZodString;
+                            email: import("zod").ZodString;
+                            role: import("zod").ZodEnum<["superadmin"]>;
+                            is_active: import("zod").ZodBoolean;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: string;
+                            email: string;
+                            is_active: boolean;
+                            name: string;
+                            role: "superadmin";
+                        }, {
+                            id: string;
+                            email: string;
+                            is_active: boolean;
+                            name: string;
+                            role: "superadmin";
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        admin: {
+                            id: string;
+                            email: string;
+                            is_active: boolean;
+                            name: string;
+                            role: "superadmin";
+                        };
+                    }, {
+                        admin: {
+                            id: string;
+                            email: string;
+                            is_active: boolean;
+                            name: string;
+                            role: "superadmin";
+                        };
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        admin: {
+                            id: string;
+                            email: string;
+                            is_active: boolean;
+                            name: string;
+                            role: "superadmin";
+                        };
+                    };
+                }, {
+                    message: string;
+                    data: {
+                        admin: {
+                            id: string;
+                            email: string;
+                            is_active: boolean;
+                            name: string;
+                            role: "superadmin";
+                        };
+                    };
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+        logout: {
+            strictStatusCodes: true;
+            summary: "Admin logout";
+            description: "Logout the current admin user (stateless).";
+            method: "POST";
+            body: import("zod").ZodObject<{}, "strip", import("zod").ZodTypeAny, {}, {}>;
+            path: "/api/admin/auth/logout";
+            responses: {
+                200: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                }, {
+                    message: string;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+    };
+    AdminWaitlist: {
+        list: {
+            strictStatusCodes: true;
+            query: import("zod").ZodObject<{
+                source: import("zod").ZodOptional<import("zod").ZodString>;
+            }, "strip", import("zod").ZodTypeAny, {
+                source?: string | undefined;
+            }, {
+                source?: string | undefined;
+            }>;
+            summary: "List waitlist entries";
+            description: "Returns newsletter subscriptions for the admin waitlist view.";
+            method: "GET";
+            path: "/api/admin/waitlist/";
+            responses: {
+                200: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodString;
+                        first_name: import("zod").ZodString;
+                        last_name: import("zod").ZodString;
+                        email: import("zod").ZodString;
+                        source: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: string;
+                        email: string;
+                        created_at: string;
+                        first_name: string;
+                        last_name: string;
+                        source: string | null;
+                    }, {
+                        id: string;
+                        email: string;
+                        created_at: string;
+                        first_name: string;
+                        last_name: string;
+                        source: string | null;
+                    }>, "many">;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: string;
+                        email: string;
+                        created_at: string;
+                        first_name: string;
+                        last_name: string;
+                        source: string | null;
+                    }[];
+                }, {
+                    message: string;
+                    data: {
+                        id: string;
+                        email: string;
+                        created_at: string;
+                        first_name: string;
+                        last_name: string;
+                        source: string | null;
+                    }[];
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+        stats: {
+            strictStatusCodes: true;
+            summary: "Waitlist stats";
+            description: "Returns aggregate stats for the admin waitlist dashboard cards.";
+            method: "GET";
+            path: "/api/admin/waitlist/stats";
+            responses: {
+                200: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        this_month: import("zod").ZodNumber;
+                        by_source: import("zod").ZodArray<import("zod").ZodObject<{
+                            source: import("zod").ZodNullable<import("zod").ZodString>;
+                            count: import("zod").ZodNumber;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            source: string | null;
+                            count: number;
+                        }, {
+                            source: string | null;
+                            count: number;
+                        }>, "many">;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        total: number;
+                        this_month: number;
+                        by_source: {
+                            source: string | null;
+                            count: number;
+                        }[];
+                    }, {
+                        total: number;
+                        this_month: number;
+                        by_source: {
+                            source: string | null;
+                            count: number;
+                        }[];
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        total: number;
+                        this_month: number;
+                        by_source: {
+                            source: string | null;
+                            count: number;
+                        }[];
+                    };
+                }, {
+                    message: string;
+                    data: {
+                        total: number;
+                        this_month: number;
+                        by_source: {
+                            source: string | null;
+                            count: number;
+                        }[];
+                    };
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+    };
+    AdminClients: {
+        listClients: {
+            strictStatusCodes: true;
+            query: import("zod").ZodObject<{
+                kyc_status: import("zod").ZodOptional<import("zod").ZodEnum<["none", "pending", "on_hold", "approved", "rejected"]>>;
+            }, "strip", import("zod").ZodTypeAny, {
+                kyc_status?: "none" | "pending" | "on_hold" | "approved" | "rejected" | undefined;
+            }, {
+                kyc_status?: "none" | "pending" | "on_hold" | "approved" | "rejected" | undefined;
+            }>;
+            summary: "List admin clients";
+            description: "Returns clients sourced from user_info enriched with Firebase identity data.";
+            method: "GET";
+            path: "/api/admin/clients/";
+            responses: {
+                200: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        last_name: import("zod").ZodString;
+                        email: import("zod").ZodString;
+                        email_verified: import("zod").ZodBoolean;
+                        phone: import("zod").ZodNullable<import("zod").ZodString>;
+                        kyc_status: import("zod").ZodEnum<["none", "pending", "on_hold", "approved", "rejected"]>;
+                        is_active: import("zod").ZodBoolean;
+                        created_at: import("zod").ZodString;
+                        last_login_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        product_count: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: string;
+                        email: string;
+                        email_verified: boolean;
+                        is_active: boolean;
+                        created_at: string;
+                        last_name: string;
+                        name: string;
+                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                        phone: string | null;
+                        last_login_at: string | null;
+                        product_count: number;
+                    }, {
+                        id: string;
+                        email: string;
+                        email_verified: boolean;
+                        is_active: boolean;
+                        created_at: string;
+                        last_name: string;
+                        name: string;
+                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                        phone: string | null;
+                        last_login_at: string | null;
+                        product_count: number;
+                    }>, "many">;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: string;
+                        email: string;
+                        email_verified: boolean;
+                        is_active: boolean;
+                        created_at: string;
+                        last_name: string;
+                        name: string;
+                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                        phone: string | null;
+                        last_login_at: string | null;
+                        product_count: number;
+                    }[];
+                }, {
+                    message: string;
+                    data: {
+                        id: string;
+                        email: string;
+                        email_verified: boolean;
+                        is_active: boolean;
+                        created_at: string;
+                        last_name: string;
+                        name: string;
+                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                        phone: string | null;
+                        last_login_at: string | null;
+                        product_count: number;
+                    }[];
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+        getClientDetail: {
+            strictStatusCodes: true;
+            pathParams: import("zod").ZodObject<{
+                uid: import("zod").ZodString;
+            }, "strip", import("zod").ZodTypeAny, {
+                uid: string;
+            }, {
+                uid: string;
+            }>;
+            summary: "Get admin client detail";
+            description: "Returns a single client with KYC, devices, preferences, and products.";
+            method: "GET";
+            path: "/api/admin/clients/:uid";
+            responses: {
+                200: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        id: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        last_name: import("zod").ZodString;
+                        email: import("zod").ZodString;
+                        email_verified: import("zod").ZodBoolean;
+                        phone: import("zod").ZodNullable<import("zod").ZodString>;
+                        kyc_status: import("zod").ZodEnum<["none", "pending", "on_hold", "approved", "rejected"]>;
+                        is_active: import("zod").ZodBoolean;
+                        created_at: import("zod").ZodString;
+                        last_login_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        product_count: import("zod").ZodNumber;
+                    } & {
+                        document_type: import("zod").ZodNullable<import("zod").ZodNativeEnum<typeof import("..").DocumentType>>;
+                        document_number: import("zod").ZodNullable<import("zod").ZodString>;
+                        document_status: import("zod").ZodNullable<import("zod").ZodNativeEnum<typeof import("..").DocumentStatus>>;
+                        devices: import("zod").ZodArray<import("zod").ZodObject<{
+                            id: import("zod").ZodString;
+                            device_unique_id: import("zod").ZodString;
+                            notes: import("zod").ZodString;
+                            created_at: import("zod").ZodString;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: string;
+                            created_at: string;
+                            device_unique_id: string;
+                            notes: string;
+                        }, {
+                            id: string;
+                            created_at: string;
+                            device_unique_id: string;
+                            notes: string;
+                        }>, "many">;
+                        preferences: import("zod").ZodNullable<import("zod").ZodObject<{
+                            are_push_notifications_enabled: import("zod").ZodBoolean;
+                            are_transaction_alerts_enabled: import("zod").ZodBoolean;
+                            are_notification_sounds_enabled: import("zod").ZodBoolean;
+                            is_vibration_enabled: import("zod").ZodBoolean;
+                            is_biometric_auth_enabled: import("zod").ZodBoolean;
+                            auto_lock_after_minutes: import("zod").ZodNumber;
+                            is_auto_sync_enabled: import("zod").ZodBoolean;
+                            is_cloud_backup_enabled: import("zod").ZodBoolean;
+                            preferred_theme: import("zod").ZodEnum<["SYSTEM", "LIGHT", "DARK"]>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            are_push_notifications_enabled: boolean;
+                            are_transaction_alerts_enabled: boolean;
+                            are_notification_sounds_enabled: boolean;
+                            is_vibration_enabled: boolean;
+                            is_biometric_auth_enabled: boolean;
+                            auto_lock_after_minutes: number;
+                            is_auto_sync_enabled: boolean;
+                            is_cloud_backup_enabled: boolean;
+                            preferred_theme: "SYSTEM" | "LIGHT" | "DARK";
+                        }, {
+                            are_push_notifications_enabled: boolean;
+                            are_transaction_alerts_enabled: boolean;
+                            are_notification_sounds_enabled: boolean;
+                            is_vibration_enabled: boolean;
+                            is_biometric_auth_enabled: boolean;
+                            auto_lock_after_minutes: number;
+                            is_auto_sync_enabled: boolean;
+                            is_cloud_backup_enabled: boolean;
+                            preferred_theme: "SYSTEM" | "LIGHT" | "DARK";
+                        }>>;
+                        products: import("zod").ZodArray<import("zod").ZodObject<{
+                            id: import("zod").ZodString;
+                            name: import("zod").ZodString;
+                            institution_name: import("zod").ZodNullable<import("zod").ZodString>;
+                            product_type: import("zod").ZodString;
+                            account_last4: import("zod").ZodString;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: string;
+                            name: string;
+                            product_type: string;
+                            institution_name: string | null;
+                            account_last4: string;
+                        }, {
+                            id: string;
+                            name: string;
+                            product_type: string;
+                            institution_name: string | null;
+                            account_last4: string;
+                        }>, "many">;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: string;
+                        email: string;
+                        email_verified: boolean;
+                        is_active: boolean;
+                        document_number: string | null;
+                        created_at: string;
+                        last_name: string;
+                        name: string;
+                        products: {
+                            id: string;
+                            name: string;
+                            product_type: string;
+                            institution_name: string | null;
+                            account_last4: string;
+                        }[];
+                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                        phone: string | null;
+                        last_login_at: string | null;
+                        product_count: number;
+                        document_type: import("..").DocumentType | null;
+                        document_status: import("..").DocumentStatus | null;
+                        devices: {
+                            id: string;
+                            created_at: string;
+                            device_unique_id: string;
+                            notes: string;
+                        }[];
+                        preferences: {
+                            are_push_notifications_enabled: boolean;
+                            are_transaction_alerts_enabled: boolean;
+                            are_notification_sounds_enabled: boolean;
+                            is_vibration_enabled: boolean;
+                            is_biometric_auth_enabled: boolean;
+                            auto_lock_after_minutes: number;
+                            is_auto_sync_enabled: boolean;
+                            is_cloud_backup_enabled: boolean;
+                            preferred_theme: "SYSTEM" | "LIGHT" | "DARK";
+                        } | null;
+                    }, {
+                        id: string;
+                        email: string;
+                        email_verified: boolean;
+                        is_active: boolean;
+                        document_number: string | null;
+                        created_at: string;
+                        last_name: string;
+                        name: string;
+                        products: {
+                            id: string;
+                            name: string;
+                            product_type: string;
+                            institution_name: string | null;
+                            account_last4: string;
+                        }[];
+                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                        phone: string | null;
+                        last_login_at: string | null;
+                        product_count: number;
+                        document_type: import("..").DocumentType | null;
+                        document_status: import("..").DocumentStatus | null;
+                        devices: {
+                            id: string;
+                            created_at: string;
+                            device_unique_id: string;
+                            notes: string;
+                        }[];
+                        preferences: {
+                            are_push_notifications_enabled: boolean;
+                            are_transaction_alerts_enabled: boolean;
+                            are_notification_sounds_enabled: boolean;
+                            is_vibration_enabled: boolean;
+                            is_biometric_auth_enabled: boolean;
+                            auto_lock_after_minutes: number;
+                            is_auto_sync_enabled: boolean;
+                            is_cloud_backup_enabled: boolean;
+                            preferred_theme: "SYSTEM" | "LIGHT" | "DARK";
+                        } | null;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: string;
+                        email: string;
+                        email_verified: boolean;
+                        is_active: boolean;
+                        document_number: string | null;
+                        created_at: string;
+                        last_name: string;
+                        name: string;
+                        products: {
+                            id: string;
+                            name: string;
+                            product_type: string;
+                            institution_name: string | null;
+                            account_last4: string;
+                        }[];
+                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                        phone: string | null;
+                        last_login_at: string | null;
+                        product_count: number;
+                        document_type: import("..").DocumentType | null;
+                        document_status: import("..").DocumentStatus | null;
+                        devices: {
+                            id: string;
+                            created_at: string;
+                            device_unique_id: string;
+                            notes: string;
+                        }[];
+                        preferences: {
+                            are_push_notifications_enabled: boolean;
+                            are_transaction_alerts_enabled: boolean;
+                            are_notification_sounds_enabled: boolean;
+                            is_vibration_enabled: boolean;
+                            is_biometric_auth_enabled: boolean;
+                            auto_lock_after_minutes: number;
+                            is_auto_sync_enabled: boolean;
+                            is_cloud_backup_enabled: boolean;
+                            preferred_theme: "SYSTEM" | "LIGHT" | "DARK";
+                        } | null;
+                    };
+                }, {
+                    message: string;
+                    data: {
+                        id: string;
+                        email: string;
+                        email_verified: boolean;
+                        is_active: boolean;
+                        document_number: string | null;
+                        created_at: string;
+                        last_name: string;
+                        name: string;
+                        products: {
+                            id: string;
+                            name: string;
+                            product_type: string;
+                            institution_name: string | null;
+                            account_last4: string;
+                        }[];
+                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                        phone: string | null;
+                        last_login_at: string | null;
+                        product_count: number;
+                        document_type: import("..").DocumentType | null;
+                        document_status: import("..").DocumentStatus | null;
+                        devices: {
+                            id: string;
+                            created_at: string;
+                            device_unique_id: string;
+                            notes: string;
+                        }[];
+                        preferences: {
+                            are_push_notifications_enabled: boolean;
+                            are_transaction_alerts_enabled: boolean;
+                            are_notification_sounds_enabled: boolean;
+                            is_vibration_enabled: boolean;
+                            is_biometric_auth_enabled: boolean;
+                            auto_lock_after_minutes: number;
+                            is_auto_sync_enabled: boolean;
+                            is_cloud_backup_enabled: boolean;
+                            preferred_theme: "SYSTEM" | "LIGHT" | "DARK";
+                        } | null;
+                    };
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+    };
+    AdminDashboard: {
+        getStats: {
+            strictStatusCodes: true;
+            summary: "Admin dashboard stats";
+            description: "Returns platform-wide dashboard aggregates from Firebase users and Postgres.";
+            method: "GET";
+            path: "/api/admin/dashboard/stats";
+            responses: {
+                200: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        total_clients: import("zod").ZodNumber;
+                        active_clients: import("zod").ZodNumber;
+                        new_clients_this_month: import("zod").ZodNumber;
+                        new_clients_previous_month: import("zod").ZodNumber;
+                        users_with_products: import("zod").ZodNumber;
+                        total_products: import("zod").ZodNumber;
+                        avg_products_per_user: import("zod").ZodNumber;
+                        kyc_funnel: import("zod").ZodObject<{
+                            none: import("zod").ZodNumber;
+                            pending: import("zod").ZodNumber;
+                            on_hold: import("zod").ZodNumber;
+                            approved: import("zod").ZodNumber;
+                            rejected: import("zod").ZodNumber;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            none: number;
+                            pending: number;
+                            on_hold: number;
+                            approved: number;
+                            rejected: number;
+                        }, {
+                            none: number;
+                            pending: number;
+                            on_hold: number;
+                            approved: number;
+                            rejected: number;
+                        }>;
+                        clients_growth: import("zod").ZodArray<import("zod").ZodObject<{
+                            month: import("zod").ZodString;
+                            count: import("zod").ZodNumber;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            month: string;
+                            count: number;
+                        }, {
+                            month: string;
+                            count: number;
+                        }>, "many">;
+                        product_type_distribution: import("zod").ZodArray<import("zod").ZodObject<{
+                            product_type: import("zod").ZodString;
+                            count: import("zod").ZodNumber;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            product_type: string;
+                            count: number;
+                        }, {
+                            product_type: string;
+                            count: number;
+                        }>, "many">;
+                        recent_signups: import("zod").ZodArray<import("zod").ZodObject<{
+                            id: import("zod").ZodString;
+                            name: import("zod").ZodString;
+                            last_name: import("zod").ZodString;
+                            email: import("zod").ZodUnion<[import("zod").ZodString, import("zod").ZodLiteral<"">]>;
+                            kyc_status: import("zod").ZodEnum<["none", "pending", "on_hold", "approved", "rejected"]>;
+                            product_count: import("zod").ZodNumber;
+                            created_at: import("zod").ZodString;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: string;
+                            email: string;
+                            created_at: string;
+                            last_name: string;
+                            name: string;
+                            kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                            product_count: number;
+                        }, {
+                            id: string;
+                            email: string;
+                            created_at: string;
+                            last_name: string;
+                            name: string;
+                            kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                            product_count: number;
+                        }>, "many">;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        total_clients: number;
+                        active_clients: number;
+                        new_clients_this_month: number;
+                        new_clients_previous_month: number;
+                        users_with_products: number;
+                        total_products: number;
+                        avg_products_per_user: number;
+                        kyc_funnel: {
+                            none: number;
+                            pending: number;
+                            on_hold: number;
+                            approved: number;
+                            rejected: number;
+                        };
+                        clients_growth: {
+                            month: string;
+                            count: number;
+                        }[];
+                        product_type_distribution: {
+                            product_type: string;
+                            count: number;
+                        }[];
+                        recent_signups: {
+                            id: string;
+                            email: string;
+                            created_at: string;
+                            last_name: string;
+                            name: string;
+                            kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                            product_count: number;
+                        }[];
+                    }, {
+                        total_clients: number;
+                        active_clients: number;
+                        new_clients_this_month: number;
+                        new_clients_previous_month: number;
+                        users_with_products: number;
+                        total_products: number;
+                        avg_products_per_user: number;
+                        kyc_funnel: {
+                            none: number;
+                            pending: number;
+                            on_hold: number;
+                            approved: number;
+                            rejected: number;
+                        };
+                        clients_growth: {
+                            month: string;
+                            count: number;
+                        }[];
+                        product_type_distribution: {
+                            product_type: string;
+                            count: number;
+                        }[];
+                        recent_signups: {
+                            id: string;
+                            email: string;
+                            created_at: string;
+                            last_name: string;
+                            name: string;
+                            kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                            product_count: number;
+                        }[];
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        total_clients: number;
+                        active_clients: number;
+                        new_clients_this_month: number;
+                        new_clients_previous_month: number;
+                        users_with_products: number;
+                        total_products: number;
+                        avg_products_per_user: number;
+                        kyc_funnel: {
+                            none: number;
+                            pending: number;
+                            on_hold: number;
+                            approved: number;
+                            rejected: number;
+                        };
+                        clients_growth: {
+                            month: string;
+                            count: number;
+                        }[];
+                        product_type_distribution: {
+                            product_type: string;
+                            count: number;
+                        }[];
+                        recent_signups: {
+                            id: string;
+                            email: string;
+                            created_at: string;
+                            last_name: string;
+                            name: string;
+                            kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                            product_count: number;
+                        }[];
+                    };
+                }, {
+                    message: string;
+                    data: {
+                        total_clients: number;
+                        active_clients: number;
+                        new_clients_this_month: number;
+                        new_clients_previous_month: number;
+                        users_with_products: number;
+                        total_products: number;
+                        avg_products_per_user: number;
+                        kyc_funnel: {
+                            none: number;
+                            pending: number;
+                            on_hold: number;
+                            approved: number;
+                            rejected: number;
+                        };
+                        clients_growth: {
+                            month: string;
+                            count: number;
+                        }[];
+                        product_type_distribution: {
+                            product_type: string;
+                            count: number;
+                        }[];
+                        recent_signups: {
+                            id: string;
+                            email: string;
+                            created_at: string;
+                            last_name: string;
+                            name: string;
+                            kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                            product_count: number;
+                        }[];
+                    };
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+    };
     Auth: {
         me: {
             strictStatusCodes: true;
@@ -7247,8 +8353,8 @@ export declare const ApiContracts: {
                 notification_settings: import("zod").ZodOptional<import("zod").ZodAny>;
                 notes: import("zod").ZodOptional<import("zod").ZodString>;
             }, "strip", import("zod").ZodTypeAny, {
-                title: string;
                 currency: string;
+                title: string;
                 due_date: string;
                 description?: string | undefined;
                 notes?: string | undefined;
@@ -7262,8 +8368,8 @@ export declare const ApiContracts: {
                 recurrence_pattern?: string | undefined;
                 notification_settings?: any;
             }, {
-                title: string;
                 currency: string;
+                title: string;
                 due_date: string;
                 description?: string | undefined;
                 notes?: string | undefined;
@@ -7305,7 +8411,6 @@ export declare const ApiContracts: {
                     }, "strip", import("zod").ZodTypeAny, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -7316,6 +8421,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -7326,7 +8432,6 @@ export declare const ApiContracts: {
                     }, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -7337,6 +8442,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -7350,7 +8456,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -7361,6 +8466,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -7374,7 +8480,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -7385,6 +8490,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -7493,7 +8599,6 @@ export declare const ApiContracts: {
                     }, "strip", import("zod").ZodTypeAny, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -7504,6 +8609,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -7514,7 +8620,6 @@ export declare const ApiContracts: {
                     }, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -7525,6 +8630,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -7551,7 +8657,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -7562,6 +8667,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -7580,7 +8686,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -7591,6 +8696,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -7666,7 +8772,6 @@ export declare const ApiContracts: {
                     }, "strip", import("zod").ZodTypeAny, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -7677,6 +8782,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -7687,7 +8793,6 @@ export declare const ApiContracts: {
                     }, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -7698,6 +8803,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -7724,7 +8830,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -7735,6 +8840,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -7753,7 +8859,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -7764,6 +8869,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -7846,7 +8952,6 @@ export declare const ApiContracts: {
                     }, "strip", import("zod").ZodTypeAny, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -7857,6 +8962,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -7867,7 +8973,6 @@ export declare const ApiContracts: {
                     }, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -7878,6 +8983,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -7904,7 +9010,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -7915,6 +9020,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -7933,7 +9039,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -7944,6 +9049,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -8019,7 +9125,6 @@ export declare const ApiContracts: {
                     }, "strip", import("zod").ZodTypeAny, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -8030,6 +9135,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -8040,7 +9146,6 @@ export declare const ApiContracts: {
                     }, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -8051,6 +9156,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -8077,7 +9183,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -8088,6 +9193,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -8106,7 +9212,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -8117,6 +9222,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -8209,7 +9315,6 @@ export declare const ApiContracts: {
                     }, "strip", import("zod").ZodTypeAny, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -8220,6 +9325,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -8230,7 +9336,6 @@ export declare const ApiContracts: {
                     }, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -8241,6 +9346,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -8267,7 +9373,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -8278,6 +9383,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -8296,7 +9402,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -8307,6 +9412,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -8412,7 +9518,6 @@ export declare const ApiContracts: {
                     }, "strip", import("zod").ZodTypeAny, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -8423,6 +9528,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -8433,7 +9539,6 @@ export declare const ApiContracts: {
                     }, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -8444,6 +9549,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -8470,7 +9576,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -8481,6 +9586,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -8499,7 +9605,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -8510,6 +9615,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -8605,7 +9711,6 @@ export declare const ApiContracts: {
                     }, "strip", import("zod").ZodTypeAny, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -8616,6 +9721,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -8626,7 +9732,6 @@ export declare const ApiContracts: {
                     }, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -8637,6 +9742,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -8650,7 +9756,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -8661,6 +9766,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -8674,7 +9780,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -8685,6 +9790,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -8764,12 +9870,12 @@ export declare const ApiContracts: {
                 notes: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodString>>;
             }, "strip", import("zod").ZodTypeAny, {
                 description?: string | undefined;
-                title?: string | undefined;
                 notes?: string | undefined;
                 currency?: string | undefined;
                 priority?: "low" | "medium" | "high" | "urgent" | undefined;
                 amount?: number | undefined;
                 user_connection_id?: number | undefined;
+                title?: string | undefined;
                 reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
                 due_date?: string | undefined;
                 reminder_date?: string | undefined;
@@ -8779,12 +9885,12 @@ export declare const ApiContracts: {
                 notification_settings?: any;
             }, {
                 description?: string | undefined;
-                title?: string | undefined;
                 notes?: string | undefined;
                 currency?: string | undefined;
                 priority?: "low" | "medium" | "high" | "urgent" | undefined;
                 amount?: number | undefined;
                 user_connection_id?: number | undefined;
+                title?: string | undefined;
                 reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
                 due_date?: string | undefined;
                 reminder_date?: string | undefined;
@@ -8821,7 +9927,6 @@ export declare const ApiContracts: {
                     }, "strip", import("zod").ZodTypeAny, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -8832,6 +9937,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -8842,7 +9948,6 @@ export declare const ApiContracts: {
                     }, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -8853,6 +9958,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -8866,7 +9972,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -8877,6 +9982,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -8890,7 +9996,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -8901,6 +10006,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -9067,7 +10173,6 @@ export declare const ApiContracts: {
                     }, "strip", import("zod").ZodTypeAny, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -9078,6 +10183,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -9088,7 +10194,6 @@ export declare const ApiContracts: {
                     }, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -9099,6 +10204,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -9112,7 +10218,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -9123,6 +10228,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -9136,7 +10242,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -9147,6 +10252,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -9238,7 +10344,6 @@ export declare const ApiContracts: {
                     }, "strip", import("zod").ZodTypeAny, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -9249,6 +10354,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -9259,7 +10365,6 @@ export declare const ApiContracts: {
                     }, {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -9270,6 +10375,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -9283,7 +10389,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -9294,6 +10399,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
@@ -9307,7 +10413,6 @@ export declare const ApiContracts: {
                     data: {
                         id: number;
                         description: string | null;
-                        title: string;
                         uuid: string;
                         user_uid: string;
                         created_at: string;
@@ -9318,6 +10423,7 @@ export declare const ApiContracts: {
                         deleted_at: string | null;
                         amount: number | null;
                         user_connection_id: number | null;
+                        title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                         due_date: string;
                         reminder_date: string | null;
