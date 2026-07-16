@@ -16312,6 +16312,179 @@ export declare const apiContract: {
                     }>;
                 };
             };
+            listDiscoveredAccounts: {
+                strictStatusCodes: true;
+                summary: "List unique bank accounts discovered from email but not yet linked";
+                method: "GET";
+                path: "/api/email-ingestion/discovered-accounts";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        accounts: import("zod").ZodArray<import("zod").ZodObject<{
+                            institution_id: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            institution_name: import("zod").ZodNullable<import("zod").ZodString>;
+                            institution_logo: import("zod").ZodNullable<import("zod").ZodString>;
+                            product_type: import("zod").ZodString;
+                            account_last4: import("zod").ZodString;
+                            event_count: import("zod").ZodNumber;
+                            latest_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            product_type: string;
+                            institution_id: number | null;
+                            institution_name: string | null;
+                            institution_logo: string | null;
+                            account_last4: string;
+                            event_count: number;
+                            latest_at: string | null;
+                        }, {
+                            product_type: string;
+                            institution_id: number | null;
+                            institution_name: string | null;
+                            institution_logo: string | null;
+                            account_last4: string;
+                            event_count: number;
+                            latest_at: string | null;
+                        }>, "many">;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        accounts: {
+                            product_type: string;
+                            institution_id: number | null;
+                            institution_name: string | null;
+                            institution_logo: string | null;
+                            account_last4: string;
+                            event_count: number;
+                            latest_at: string | null;
+                        }[];
+                    }, {
+                        accounts: {
+                            product_type: string;
+                            institution_id: number | null;
+                            institution_name: string | null;
+                            institution_logo: string | null;
+                            account_last4: string;
+                            event_count: number;
+                            latest_at: string | null;
+                        }[];
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            linkAccounts: {
+                strictStatusCodes: true;
+                summary: "Link discovered accounts for monitoring and backfill matching events";
+                method: "POST";
+                body: import("zod").ZodObject<{
+                    accounts: import("zod").ZodArray<import("zod").ZodObject<{
+                        institution_id: import("zod").ZodNumber;
+                        institution_name: import("zod").ZodString;
+                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        account_last4: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        institution_name: string;
+                        account_last4: string;
+                    }, {
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        institution_name: string;
+                        account_last4: string;
+                    }>, "many">;
+                }, "strip", import("zod").ZodTypeAny, {
+                    accounts: {
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        institution_name: string;
+                        account_last4: string;
+                    }[];
+                }, {
+                    accounts: {
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        institution_name: string;
+                        account_last4: string;
+                    }[];
+                }>;
+                path: "/api/email-ingestion/link-accounts";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        linked: import("zod").ZodNumber;
+                        imported_events: import("zod").ZodNumber;
+                        product_uuids: import("zod").ZodArray<import("zod").ZodString, "many">;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        linked: number;
+                        imported_events: number;
+                        product_uuids: string[];
+                    }, {
+                        linked: number;
+                        imported_events: number;
+                        product_uuids: string[];
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
         };
     };
     Docs: {

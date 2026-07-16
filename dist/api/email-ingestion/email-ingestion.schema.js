@@ -82,3 +82,37 @@ export const RejectFinancialEmailEventResponseSchema = z.object({
     success: z.literal(true),
 });
 export const ConvertFinancialEmailEventResponseSchema = ApproveFinancialEmailEventResponseSchema;
+export const DiscoveredAccountSchema = z.object({
+    institution_id: z.number().nullable(),
+    institution_name: z.string().nullable(),
+    institution_logo: z.string().nullable(),
+    product_type: z.string(),
+    account_last4: z.string().length(4),
+    event_count: z.number(),
+    latest_at: z.string().datetime().nullable(),
+});
+export const ListDiscoveredAccountsResponseSchema = z.object({
+    accounts: z.array(DiscoveredAccountSchema),
+});
+export const LinkAccountItemSchema = z.object({
+    institution_id: z.number(),
+    institution_name: z.string().min(1).max(200),
+    product_type: z.enum([
+        'credit_card',
+        'loan',
+        'savings_account',
+        'checking_account',
+        'investment',
+        'insurance',
+        'mortgage',
+    ]),
+    account_last4: z.string().length(4),
+});
+export const LinkAccountsBodySchema = z.object({
+    accounts: z.array(LinkAccountItemSchema).min(1).max(50),
+});
+export const LinkAccountsResponseSchema = z.object({
+    linked: z.number(),
+    imported_events: z.number(),
+    product_uuids: z.array(z.string().uuid()),
+});
