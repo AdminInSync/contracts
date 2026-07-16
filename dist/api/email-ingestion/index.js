@@ -1,7 +1,7 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
-import { OAuthStartResponseSchema, ListEmailConnectionsResponseSchema, DisconnectEmailConnectionResponseSchema, SyncEmailConnectionResponseSchema, ListFinancialEmailEventsResponseSchema, FinancialEmailEventStatusSchema, EmailSyncStatusResponseSchema, ListDiscoveredAccountsResponseSchema, LinkAccountsBodySchema, LinkAccountsResponseSchema, } from './email-ingestion.schema';
+import { OAuthStartResponseSchema, ListEmailConnectionsResponseSchema, DisconnectEmailConnectionResponseSchema, SyncEmailConnectionResponseSchema, ListFinancialEmailEventsResponseSchema, FinancialEmailEventStatusSchema, EmailSyncStatusResponseSchema, } from './email-ingestion.schema';
 const c = initContract();
 export const EmailIngestionContracts = c.router({
     gmailOAuthStart: {
@@ -115,28 +115,6 @@ export const EmailIngestionContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'List parsed financial email events',
-    },
-    listDiscoveredAccounts: {
-        method: 'GET',
-        path: '/discovered-accounts',
-        responses: {
-            200: ListDiscoveredAccountsResponseSchema,
-            401: ErrorResSchema,
-            500: ErrorResSchema,
-        },
-        summary: 'List unique bank accounts discovered from email but not yet linked',
-    },
-    linkAccounts: {
-        method: 'POST',
-        path: '/link-accounts',
-        body: LinkAccountsBodySchema,
-        responses: {
-            200: LinkAccountsResponseSchema,
-            400: ErrorResSchema,
-            401: ErrorResSchema,
-            500: ErrorResSchema,
-        },
-        summary: 'Link discovered accounts for monitoring and backfill matching events',
     },
 }, {
     strictStatusCodes: true,
