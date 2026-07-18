@@ -16484,5 +16484,179 @@ export declare const ApiContracts: {
                 }>;
             };
         };
+        approveEvent: {
+            strictStatusCodes: true;
+            pathParams: import("zod").ZodObject<{
+                eventUuid: import("zod").ZodString;
+            }, "strip", import("zod").ZodTypeAny, {
+                eventUuid: string;
+            }, {
+                eventUuid: string;
+            }>;
+            summary: "Approve a pending financial email event into a product transaction";
+            method: "POST";
+            body: import("zod").ZodObject<{
+                user_product_uuid: import("zod").ZodString;
+                amount: import("zod").ZodOptional<import("zod").ZodNumber>;
+                description: import("zod").ZodOptional<import("zod").ZodString>;
+                transaction_date: import("zod").ZodOptional<import("zod").ZodString>;
+            }, "strip", import("zod").ZodTypeAny, {
+                user_product_uuid: string;
+                description?: string | undefined;
+                amount?: number | undefined;
+                transaction_date?: string | undefined;
+            }, {
+                user_product_uuid: string;
+                description?: string | undefined;
+                amount?: number | undefined;
+                transaction_date?: string | undefined;
+            }>;
+            path: "/api/email-ingestion/events/:eventUuid/approve";
+            responses: {
+                200: import("zod").ZodObject<{
+                    transaction_uuid: import("zod").ZodString;
+                    event_uuid: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    transaction_uuid: string;
+                    event_uuid: string;
+                }, {
+                    transaction_uuid: string;
+                    event_uuid: string;
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+        rejectEvent: {
+            strictStatusCodes: true;
+            pathParams: import("zod").ZodObject<{
+                eventUuid: import("zod").ZodString;
+            }, "strip", import("zod").ZodTypeAny, {
+                eventUuid: string;
+            }, {
+                eventUuid: string;
+            }>;
+            summary: "Reject a pending financial email event";
+            method: "POST";
+            body: import("zod").ZodObject<{
+                reason: import("zod").ZodOptional<import("zod").ZodString>;
+            }, "strip", import("zod").ZodTypeAny, {
+                reason?: string | undefined;
+            }, {
+                reason?: string | undefined;
+            }>;
+            path: "/api/email-ingestion/events/:eventUuid/reject";
+            responses: {
+                200: import("zod").ZodObject<{
+                    success: import("zod").ZodLiteral<true>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    success: true;
+                }, {
+                    success: true;
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
     };
 };

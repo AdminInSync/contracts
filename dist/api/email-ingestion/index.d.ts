@@ -812,4 +812,178 @@ export declare const EmailIngestionContracts: {
         };
         strictStatusCodes: true;
     };
+    approveEvent: {
+        pathParams: z.ZodObject<{
+            eventUuid: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            eventUuid: string;
+        }, {
+            eventUuid: string;
+        }>;
+        summary: "Approve a pending financial email event into a product transaction";
+        method: "POST";
+        body: z.ZodObject<{
+            user_product_uuid: z.ZodString;
+            amount: z.ZodOptional<z.ZodNumber>;
+            description: z.ZodOptional<z.ZodString>;
+            transaction_date: z.ZodOptional<z.ZodString>;
+        }, "strip", z.ZodTypeAny, {
+            user_product_uuid: string;
+            description?: string | undefined;
+            amount?: number | undefined;
+            transaction_date?: string | undefined;
+        }, {
+            user_product_uuid: string;
+            description?: string | undefined;
+            amount?: number | undefined;
+            transaction_date?: string | undefined;
+        }>;
+        path: "/email-ingestion/events/:eventUuid/approve";
+        responses: {
+            200: z.ZodObject<{
+                transaction_uuid: z.ZodString;
+                event_uuid: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                transaction_uuid: string;
+                event_uuid: string;
+            }, {
+                transaction_uuid: string;
+                event_uuid: string;
+            }>;
+            400: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            404: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+        strictStatusCodes: true;
+    };
+    rejectEvent: {
+        pathParams: z.ZodObject<{
+            eventUuid: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            eventUuid: string;
+        }, {
+            eventUuid: string;
+        }>;
+        summary: "Reject a pending financial email event";
+        method: "POST";
+        body: z.ZodObject<{
+            reason: z.ZodOptional<z.ZodString>;
+        }, "strip", z.ZodTypeAny, {
+            reason?: string | undefined;
+        }, {
+            reason?: string | undefined;
+        }>;
+        path: "/email-ingestion/events/:eventUuid/reject";
+        responses: {
+            200: z.ZodObject<{
+                success: z.ZodLiteral<true>;
+            }, "strip", z.ZodTypeAny, {
+                success: true;
+            }, {
+                success: true;
+            }>;
+            400: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            404: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+        strictStatusCodes: true;
+    };
 };

@@ -1,7 +1,7 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
-import { OAuthStartResponseSchema, ListEmailConnectionsResponseSchema, DisconnectEmailConnectionResponseSchema, SyncEmailConnectionResponseSchema, ListFinancialEmailEventsResponseSchema, FinancialEmailEventStatusSchema, EmailSyncStatusResponseSchema, ListDiscoveredAccountsResponseSchema, LinkAccountsBodySchema, LinkAccountsResponseSchema, } from './email-ingestion.schema';
+import { OAuthStartResponseSchema, ListEmailConnectionsResponseSchema, DisconnectEmailConnectionResponseSchema, SyncEmailConnectionResponseSchema, ListFinancialEmailEventsResponseSchema, FinancialEmailEventStatusSchema, EmailSyncStatusResponseSchema, ListDiscoveredAccountsResponseSchema, LinkAccountsBodySchema, LinkAccountsResponseSchema, ApproveFinancialEmailEventBodySchema, ApproveFinancialEmailEventResponseSchema, RejectFinancialEmailEventBodySchema, RejectFinancialEmailEventResponseSchema, } from './email-ingestion.schema';
 const c = initContract();
 export const EmailIngestionContracts = c.router({
     gmailOAuthStart: {
@@ -137,6 +137,34 @@ export const EmailIngestionContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'Link discovered accounts for monitoring and backfill matching events',
+    },
+    approveEvent: {
+        method: 'POST',
+        path: '/events/:eventUuid/approve',
+        pathParams: z.object({ eventUuid: z.string().uuid() }),
+        body: ApproveFinancialEmailEventBodySchema,
+        responses: {
+            200: ApproveFinancialEmailEventResponseSchema,
+            400: ErrorResSchema,
+            401: ErrorResSchema,
+            404: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        summary: 'Approve a pending financial email event into a product transaction',
+    },
+    rejectEvent: {
+        method: 'POST',
+        path: '/events/:eventUuid/reject',
+        pathParams: z.object({ eventUuid: z.string().uuid() }),
+        body: RejectFinancialEmailEventBodySchema,
+        responses: {
+            200: RejectFinancialEmailEventResponseSchema,
+            400: ErrorResSchema,
+            401: ErrorResSchema,
+            404: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        summary: 'Reject a pending financial email event',
     },
 }, {
     strictStatusCodes: true,
