@@ -94,19 +94,23 @@ export const DiscoveredAccountSchema = z.object({
 export const ListDiscoveredAccountsResponseSchema = z.object({
     accounts: z.array(DiscoveredAccountSchema),
 });
+const LinkProductTypeSchema = z.preprocess((v) => String(v ?? '').trim().toLowerCase(), z.enum([
+    'credit_card',
+    'loan',
+    'savings_account',
+    'checking_account',
+    'investment',
+    'insurance',
+    'mortgage',
+]));
 export const LinkAccountItemSchema = z.object({
-    institution_id: z.number(),
-    institution_name: z.string().min(1).max(200),
-    product_type: z.enum([
-        'credit_card',
-        'loan',
-        'savings_account',
-        'checking_account',
-        'investment',
-        'insurance',
-        'mortgage',
-    ]),
-    account_last4: z.string().length(4),
+    institution_id: z.coerce.number().int().positive(),
+    institution_name: z.string().trim().min(1).max(200),
+    product_type: LinkProductTypeSchema,
+    account_last4: z
+        .string()
+        .transform((s) => s.replace(/\D/g, '').slice(-4))
+        .pipe(z.string().length(4)),
 });
 export const LinkAccountsBodySchema = z.object({
     accounts: z.array(LinkAccountItemSchema).min(1).max(50),

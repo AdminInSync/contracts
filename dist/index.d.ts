@@ -16401,18 +16401,18 @@ export declare const apiContract: {
                     accounts: import("zod").ZodArray<import("zod").ZodObject<{
                         institution_id: import("zod").ZodNumber;
                         institution_name: import("zod").ZodString;
-                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
-                        account_last4: import("zod").ZodString;
+                        product_type: import("zod").ZodEffects<import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
+                        account_last4: import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, string, string>, import("zod").ZodString>;
                     }, "strip", import("zod").ZodTypeAny, {
                         product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         account_last4: string;
                     }, {
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         account_last4: string;
+                        product_type?: unknown;
                     }>, "many">;
                 }, "strip", import("zod").ZodTypeAny, {
                     accounts: {
@@ -16423,10 +16423,10 @@ export declare const apiContract: {
                     }[];
                 }, {
                     accounts: {
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         account_last4: string;
+                        product_type?: unknown;
                     }[];
                 }>;
                 path: "/api/email-ingestion/link-accounts";
