@@ -377,3 +377,136 @@ export declare const ConvertFinancialEmailEventResponseSchema: z.ZodObject<{
     transaction_uuid: string;
     event_uuid: string;
 }>;
+export declare const DiscoveredAccountSchema: z.ZodObject<{
+    institution_id: z.ZodNullable<z.ZodNumber>;
+    institution_name: z.ZodNullable<z.ZodString>;
+    institution_logo: z.ZodNullable<z.ZodString>;
+    product_type: z.ZodString;
+    account_last4: z.ZodString;
+    event_count: z.ZodNumber;
+    latest_at: z.ZodNullable<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+    product_type: string;
+    institution_id: number | null;
+    institution_name: string | null;
+    institution_logo: string | null;
+    account_last4: string;
+    event_count: number;
+    latest_at: string | null;
+}, {
+    product_type: string;
+    institution_id: number | null;
+    institution_name: string | null;
+    institution_logo: string | null;
+    account_last4: string;
+    event_count: number;
+    latest_at: string | null;
+}>;
+export declare const ListDiscoveredAccountsResponseSchema: z.ZodObject<{
+    accounts: z.ZodArray<z.ZodObject<{
+        institution_id: z.ZodNullable<z.ZodNumber>;
+        institution_name: z.ZodNullable<z.ZodString>;
+        institution_logo: z.ZodNullable<z.ZodString>;
+        product_type: z.ZodString;
+        account_last4: z.ZodString;
+        event_count: z.ZodNumber;
+        latest_at: z.ZodNullable<z.ZodString>;
+    }, "strip", z.ZodTypeAny, {
+        product_type: string;
+        institution_id: number | null;
+        institution_name: string | null;
+        institution_logo: string | null;
+        account_last4: string;
+        event_count: number;
+        latest_at: string | null;
+    }, {
+        product_type: string;
+        institution_id: number | null;
+        institution_name: string | null;
+        institution_logo: string | null;
+        account_last4: string;
+        event_count: number;
+        latest_at: string | null;
+    }>, "many">;
+}, "strip", z.ZodTypeAny, {
+    accounts: {
+        product_type: string;
+        institution_id: number | null;
+        institution_name: string | null;
+        institution_logo: string | null;
+        account_last4: string;
+        event_count: number;
+        latest_at: string | null;
+    }[];
+}, {
+    accounts: {
+        product_type: string;
+        institution_id: number | null;
+        institution_name: string | null;
+        institution_logo: string | null;
+        account_last4: string;
+        event_count: number;
+        latest_at: string | null;
+    }[];
+}>;
+export declare const LinkAccountItemSchema: z.ZodObject<{
+    institution_id: z.ZodNumber;
+    institution_name: z.ZodString;
+    product_type: z.ZodEffects<z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
+    account_last4: z.ZodPipeline<z.ZodEffects<z.ZodString, string, string>, z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+    product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+    institution_id: number;
+    institution_name: string;
+    account_last4: string;
+}, {
+    institution_id: number;
+    institution_name: string;
+    account_last4: string;
+    product_type?: unknown;
+}>;
+export declare const LinkAccountsBodySchema: z.ZodObject<{
+    accounts: z.ZodArray<z.ZodObject<{
+        institution_id: z.ZodNumber;
+        institution_name: z.ZodString;
+        product_type: z.ZodEffects<z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
+        account_last4: z.ZodPipeline<z.ZodEffects<z.ZodString, string, string>, z.ZodString>;
+    }, "strip", z.ZodTypeAny, {
+        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+        institution_id: number;
+        institution_name: string;
+        account_last4: string;
+    }, {
+        institution_id: number;
+        institution_name: string;
+        account_last4: string;
+        product_type?: unknown;
+    }>, "many">;
+}, "strip", z.ZodTypeAny, {
+    accounts: {
+        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+        institution_id: number;
+        institution_name: string;
+        account_last4: string;
+    }[];
+}, {
+    accounts: {
+        institution_id: number;
+        institution_name: string;
+        account_last4: string;
+        product_type?: unknown;
+    }[];
+}>;
+export declare const LinkAccountsResponseSchema: z.ZodObject<{
+    linked: z.ZodNumber;
+    imported_events: z.ZodNumber;
+    product_uuids: z.ZodArray<z.ZodString, "many">;
+}, "strip", z.ZodTypeAny, {
+    linked: number;
+    imported_events: number;
+    product_uuids: string[];
+}, {
+    linked: number;
+    imported_events: number;
+    product_uuids: string[];
+}>;
