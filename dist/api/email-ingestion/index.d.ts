@@ -411,6 +411,16 @@ export declare const EmailIngestionContracts: {
             200: z.ZodObject<{
                 is_syncing: z.ZodBoolean;
                 imported_total: z.ZodNumber;
+                supported_institutions: z.ZodArray<z.ZodObject<{
+                    key: z.ZodString;
+                    name: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    name: string;
+                    key: string;
+                }, {
+                    name: string;
+                    key: string;
+                }>, "many">;
                 connections: z.ZodArray<z.ZodObject<{
                     uuid: z.ZodString;
                     provider: z.ZodNativeEnum<typeof import("../..").EmailProvider>;
@@ -418,6 +428,37 @@ export declare const EmailIngestionContracts: {
                     last_successful_sync_at: z.ZodNullable<z.ZodString>;
                     active_job_uuid: z.ZodNullable<z.ZodString>;
                     error_message: z.ZodNullable<z.ZodString>;
+                    last_summary: z.ZodNullable<z.ZodObject<{
+                        messages_seen: z.ZodNumber;
+                        messages_routed: z.ZodNumber;
+                        duration_ms: z.ZodNumber;
+                        imported: z.ZodNumber;
+                        discovered: z.ZodNumber;
+                        discarded: z.ZodNumber;
+                        duplicate_tx: z.ZodNumber;
+                        already_imported: z.ZodNumber;
+                        pending_review: z.ZodNumber;
+                    }, "strip", z.ZodTypeAny, {
+                        discovered: number;
+                        pending_review: number;
+                        imported: number;
+                        discarded: number;
+                        messages_seen: number;
+                        messages_routed: number;
+                        duration_ms: number;
+                        duplicate_tx: number;
+                        already_imported: number;
+                    }, {
+                        discovered: number;
+                        pending_review: number;
+                        imported: number;
+                        discarded: number;
+                        messages_seen: number;
+                        messages_routed: number;
+                        duration_ms: number;
+                        duplicate_tx: number;
+                        already_imported: number;
+                    }>>;
                 }, "strip", z.ZodTypeAny, {
                     uuid: string;
                     provider: import("../..").EmailProvider;
@@ -425,6 +466,17 @@ export declare const EmailIngestionContracts: {
                     sync_state: "failed" | "idle" | "syncing";
                     active_job_uuid: string | null;
                     error_message: string | null;
+                    last_summary: {
+                        discovered: number;
+                        pending_review: number;
+                        imported: number;
+                        discarded: number;
+                        messages_seen: number;
+                        messages_routed: number;
+                        duration_ms: number;
+                        duplicate_tx: number;
+                        already_imported: number;
+                    } | null;
                 }, {
                     uuid: string;
                     provider: import("../..").EmailProvider;
@@ -432,6 +484,17 @@ export declare const EmailIngestionContracts: {
                     sync_state: "failed" | "idle" | "syncing";
                     active_job_uuid: string | null;
                     error_message: string | null;
+                    last_summary: {
+                        discovered: number;
+                        pending_review: number;
+                        imported: number;
+                        discarded: number;
+                        messages_seen: number;
+                        messages_routed: number;
+                        duration_ms: number;
+                        duplicate_tx: number;
+                        already_imported: number;
+                    } | null;
                 }>, "many">;
             }, "strip", z.ZodTypeAny, {
                 connections: {
@@ -441,9 +504,24 @@ export declare const EmailIngestionContracts: {
                     sync_state: "failed" | "idle" | "syncing";
                     active_job_uuid: string | null;
                     error_message: string | null;
+                    last_summary: {
+                        discovered: number;
+                        pending_review: number;
+                        imported: number;
+                        discarded: number;
+                        messages_seen: number;
+                        messages_routed: number;
+                        duration_ms: number;
+                        duplicate_tx: number;
+                        already_imported: number;
+                    } | null;
                 }[];
                 is_syncing: boolean;
                 imported_total: number;
+                supported_institutions: {
+                    name: string;
+                    key: string;
+                }[];
             }, {
                 connections: {
                     uuid: string;
@@ -452,9 +530,24 @@ export declare const EmailIngestionContracts: {
                     sync_state: "failed" | "idle" | "syncing";
                     active_job_uuid: string | null;
                     error_message: string | null;
+                    last_summary: {
+                        discovered: number;
+                        pending_review: number;
+                        imported: number;
+                        discarded: number;
+                        messages_seen: number;
+                        messages_routed: number;
+                        duration_ms: number;
+                        duplicate_tx: number;
+                        already_imported: number;
+                    } | null;
                 }[];
                 is_syncing: boolean;
                 imported_total: number;
+                supported_institutions: {
+                    name: string;
+                    key: string;
+                }[];
             }>;
             401: z.ZodObject<{
                 message: z.ZodString;
@@ -522,6 +615,7 @@ export declare const EmailIngestionContracts: {
                     amount: z.ZodNullable<z.ZodNumber>;
                     currency: z.ZodNullable<z.ZodString>;
                     transaction_date: z.ZodNullable<z.ZodString>;
+                    transaction_occurred_at: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     transaction_direction: z.ZodNullable<z.ZodEnum<["credit", "debit"]>>;
                     category: z.ZodNullable<z.ZodString>;
                     confidence: z.ZodNullable<z.ZodNumber>;
@@ -544,6 +638,7 @@ export declare const EmailIngestionContracts: {
                     transaction_direction: "debit" | "credit" | null;
                     confidence: number | null;
                     source_metadata: Record<string, unknown> | null;
+                    transaction_occurred_at?: string | null | undefined;
                 }, {
                     status: import("../..").FinancialEmailEventStatus;
                     uuid: string;
@@ -561,6 +656,7 @@ export declare const EmailIngestionContracts: {
                     transaction_direction: "debit" | "credit" | null;
                     confidence: number | null;
                     source_metadata: Record<string, unknown> | null;
+                    transaction_occurred_at?: string | null | undefined;
                 }>, "many">;
                 total: z.ZodNumber;
                 limit: z.ZodNumber;
@@ -586,6 +682,7 @@ export declare const EmailIngestionContracts: {
                     transaction_direction: "debit" | "credit" | null;
                     confidence: number | null;
                     source_metadata: Record<string, unknown> | null;
+                    transaction_occurred_at?: string | null | undefined;
                 }[];
             }, {
                 limit: number;
@@ -608,6 +705,7 @@ export declare const EmailIngestionContracts: {
                     transaction_direction: "debit" | "credit" | null;
                     confidence: number | null;
                     source_metadata: Record<string, unknown> | null;
+                    transaction_occurred_at?: string | null | undefined;
                 }[];
             }>;
             401: z.ZodObject<{
@@ -758,17 +856,49 @@ export declare const EmailIngestionContracts: {
         path: "/email-ingestion/link-accounts";
         responses: {
             200: z.ZodObject<{
+                requested: z.ZodNumber;
                 linked: z.ZodNumber;
                 imported_events: z.ZodNumber;
+                backfill_failed_events: z.ZodNumber;
+                backfill_pending: z.ZodBoolean;
                 product_uuids: z.ZodArray<z.ZodString, "many">;
+                failed_accounts: z.ZodArray<z.ZodObject<{
+                    institution_id: z.ZodNumber;
+                    product_type: z.ZodEffects<z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
+                    account_last4: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                    institution_id: number;
+                    account_last4: string;
+                }, {
+                    institution_id: number;
+                    account_last4: string;
+                    product_type?: unknown;
+                }>, "many">;
             }, "strip", z.ZodTypeAny, {
+                requested: number;
                 linked: number;
                 imported_events: number;
+                backfill_failed_events: number;
+                backfill_pending: boolean;
                 product_uuids: string[];
+                failed_accounts: {
+                    product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                    institution_id: number;
+                    account_last4: string;
+                }[];
             }, {
+                requested: number;
                 linked: number;
                 imported_events: number;
+                backfill_failed_events: number;
+                backfill_pending: boolean;
                 product_uuids: string[];
+                failed_accounts: {
+                    institution_id: number;
+                    account_last4: string;
+                    product_type?: unknown;
+                }[];
             }>;
             400: z.ZodObject<{
                 message: z.ZodString;

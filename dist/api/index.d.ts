@@ -8201,6 +8201,7 @@ export declare const ApiContracts: {
                         amount: import("zod").ZodNumber;
                         currency: import("zod").ZodString;
                         transaction_date: import("zod").ZodString;
+                        transaction_occurred_at: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                         description: import("zod").ZodNullable<import("zod").ZodString>;
                         transaction_type: import("zod").ZodEnum<["credit", "debit"]>;
                         user_product_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
@@ -8224,6 +8225,7 @@ export declare const ApiContracts: {
                         transaction_date: string;
                         transaction_type: "debit" | "credit";
                         account_last4: string | null;
+                        transaction_occurred_at?: string | null | undefined;
                         user_product_uuid?: string | null | undefined;
                         source_financial_email_event_id?: number | null | undefined;
                     }, {
@@ -8239,6 +8241,7 @@ export declare const ApiContracts: {
                         transaction_date: string;
                         transaction_type: "debit" | "credit";
                         account_last4: string | null;
+                        transaction_occurred_at?: string | null | undefined;
                         user_product_uuid?: string | null | undefined;
                         source_financial_email_event_id?: number | null | undefined;
                     }>, "many">;
@@ -8270,6 +8273,7 @@ export declare const ApiContracts: {
                         transaction_date: string;
                         transaction_type: "debit" | "credit";
                         account_last4: string | null;
+                        transaction_occurred_at?: string | null | undefined;
                         user_product_uuid?: string | null | undefined;
                         source_financial_email_event_id?: number | null | undefined;
                     }[];
@@ -8293,6 +8297,7 @@ export declare const ApiContracts: {
                         transaction_date: string;
                         transaction_type: "debit" | "credit";
                         account_last4: string | null;
+                        transaction_occurred_at?: string | null | undefined;
                         user_product_uuid?: string | null | undefined;
                         source_financial_email_event_id?: number | null | undefined;
                     }[];
@@ -16084,6 +16089,16 @@ export declare const ApiContracts: {
                 200: import("zod").ZodObject<{
                     is_syncing: import("zod").ZodBoolean;
                     imported_total: import("zod").ZodNumber;
+                    supported_institutions: import("zod").ZodArray<import("zod").ZodObject<{
+                        key: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        name: string;
+                        key: string;
+                    }, {
+                        name: string;
+                        key: string;
+                    }>, "many">;
                     connections: import("zod").ZodArray<import("zod").ZodObject<{
                         uuid: import("zod").ZodString;
                         provider: import("zod").ZodNativeEnum<typeof import("..").EmailProvider>;
@@ -16091,6 +16106,37 @@ export declare const ApiContracts: {
                         last_successful_sync_at: import("zod").ZodNullable<import("zod").ZodString>;
                         active_job_uuid: import("zod").ZodNullable<import("zod").ZodString>;
                         error_message: import("zod").ZodNullable<import("zod").ZodString>;
+                        last_summary: import("zod").ZodNullable<import("zod").ZodObject<{
+                            messages_seen: import("zod").ZodNumber;
+                            messages_routed: import("zod").ZodNumber;
+                            duration_ms: import("zod").ZodNumber;
+                            imported: import("zod").ZodNumber;
+                            discovered: import("zod").ZodNumber;
+                            discarded: import("zod").ZodNumber;
+                            duplicate_tx: import("zod").ZodNumber;
+                            already_imported: import("zod").ZodNumber;
+                            pending_review: import("zod").ZodNumber;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            discovered: number;
+                            pending_review: number;
+                            imported: number;
+                            discarded: number;
+                            messages_seen: number;
+                            messages_routed: number;
+                            duration_ms: number;
+                            duplicate_tx: number;
+                            already_imported: number;
+                        }, {
+                            discovered: number;
+                            pending_review: number;
+                            imported: number;
+                            discarded: number;
+                            messages_seen: number;
+                            messages_routed: number;
+                            duration_ms: number;
+                            duplicate_tx: number;
+                            already_imported: number;
+                        }>>;
                     }, "strip", import("zod").ZodTypeAny, {
                         uuid: string;
                         provider: import("..").EmailProvider;
@@ -16098,6 +16144,17 @@ export declare const ApiContracts: {
                         sync_state: "failed" | "idle" | "syncing";
                         active_job_uuid: string | null;
                         error_message: string | null;
+                        last_summary: {
+                            discovered: number;
+                            pending_review: number;
+                            imported: number;
+                            discarded: number;
+                            messages_seen: number;
+                            messages_routed: number;
+                            duration_ms: number;
+                            duplicate_tx: number;
+                            already_imported: number;
+                        } | null;
                     }, {
                         uuid: string;
                         provider: import("..").EmailProvider;
@@ -16105,6 +16162,17 @@ export declare const ApiContracts: {
                         sync_state: "failed" | "idle" | "syncing";
                         active_job_uuid: string | null;
                         error_message: string | null;
+                        last_summary: {
+                            discovered: number;
+                            pending_review: number;
+                            imported: number;
+                            discarded: number;
+                            messages_seen: number;
+                            messages_routed: number;
+                            duration_ms: number;
+                            duplicate_tx: number;
+                            already_imported: number;
+                        } | null;
                     }>, "many">;
                 }, "strip", import("zod").ZodTypeAny, {
                     connections: {
@@ -16114,9 +16182,24 @@ export declare const ApiContracts: {
                         sync_state: "failed" | "idle" | "syncing";
                         active_job_uuid: string | null;
                         error_message: string | null;
+                        last_summary: {
+                            discovered: number;
+                            pending_review: number;
+                            imported: number;
+                            discarded: number;
+                            messages_seen: number;
+                            messages_routed: number;
+                            duration_ms: number;
+                            duplicate_tx: number;
+                            already_imported: number;
+                        } | null;
                     }[];
                     is_syncing: boolean;
                     imported_total: number;
+                    supported_institutions: {
+                        name: string;
+                        key: string;
+                    }[];
                 }, {
                     connections: {
                         uuid: string;
@@ -16125,9 +16208,24 @@ export declare const ApiContracts: {
                         sync_state: "failed" | "idle" | "syncing";
                         active_job_uuid: string | null;
                         error_message: string | null;
+                        last_summary: {
+                            discovered: number;
+                            pending_review: number;
+                            imported: number;
+                            discarded: number;
+                            messages_seen: number;
+                            messages_routed: number;
+                            duration_ms: number;
+                            duplicate_tx: number;
+                            already_imported: number;
+                        } | null;
                     }[];
                     is_syncing: boolean;
                     imported_total: number;
+                    supported_institutions: {
+                        name: string;
+                        key: string;
+                    }[];
                 }>;
                 401: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -16195,6 +16293,7 @@ export declare const ApiContracts: {
                         amount: import("zod").ZodNullable<import("zod").ZodNumber>;
                         currency: import("zod").ZodNullable<import("zod").ZodString>;
                         transaction_date: import("zod").ZodNullable<import("zod").ZodString>;
+                        transaction_occurred_at: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                         transaction_direction: import("zod").ZodNullable<import("zod").ZodEnum<["credit", "debit"]>>;
                         category: import("zod").ZodNullable<import("zod").ZodString>;
                         confidence: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -16217,6 +16316,7 @@ export declare const ApiContracts: {
                         transaction_direction: "debit" | "credit" | null;
                         confidence: number | null;
                         source_metadata: Record<string, unknown> | null;
+                        transaction_occurred_at?: string | null | undefined;
                     }, {
                         status: import("..").FinancialEmailEventStatus;
                         uuid: string;
@@ -16234,6 +16334,7 @@ export declare const ApiContracts: {
                         transaction_direction: "debit" | "credit" | null;
                         confidence: number | null;
                         source_metadata: Record<string, unknown> | null;
+                        transaction_occurred_at?: string | null | undefined;
                     }>, "many">;
                     total: import("zod").ZodNumber;
                     limit: import("zod").ZodNumber;
@@ -16259,6 +16360,7 @@ export declare const ApiContracts: {
                         transaction_direction: "debit" | "credit" | null;
                         confidence: number | null;
                         source_metadata: Record<string, unknown> | null;
+                        transaction_occurred_at?: string | null | undefined;
                     }[];
                 }, {
                     limit: number;
@@ -16281,6 +16383,7 @@ export declare const ApiContracts: {
                         transaction_direction: "debit" | "credit" | null;
                         confidence: number | null;
                         source_metadata: Record<string, unknown> | null;
+                        transaction_occurred_at?: string | null | undefined;
                     }[];
                 }>;
                 401: import("zod").ZodObject<{
@@ -16431,17 +16534,49 @@ export declare const ApiContracts: {
             path: "/api/email-ingestion/link-accounts";
             responses: {
                 200: import("zod").ZodObject<{
+                    requested: import("zod").ZodNumber;
                     linked: import("zod").ZodNumber;
                     imported_events: import("zod").ZodNumber;
+                    backfill_failed_events: import("zod").ZodNumber;
+                    backfill_pending: import("zod").ZodBoolean;
                     product_uuids: import("zod").ZodArray<import("zod").ZodString, "many">;
+                    failed_accounts: import("zod").ZodArray<import("zod").ZodObject<{
+                        institution_id: import("zod").ZodNumber;
+                        product_type: import("zod").ZodEffects<import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
+                        account_last4: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        account_last4: string;
+                    }, {
+                        institution_id: number;
+                        account_last4: string;
+                        product_type?: unknown;
+                    }>, "many">;
                 }, "strip", import("zod").ZodTypeAny, {
+                    requested: number;
                     linked: number;
                     imported_events: number;
+                    backfill_failed_events: number;
+                    backfill_pending: boolean;
                     product_uuids: string[];
+                    failed_accounts: {
+                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        institution_id: number;
+                        account_last4: string;
+                    }[];
                 }, {
+                    requested: number;
                     linked: number;
                     imported_events: number;
+                    backfill_failed_events: number;
+                    backfill_pending: boolean;
                     product_uuids: string[];
+                    failed_accounts: {
+                        institution_id: number;
+                        account_last4: string;
+                        product_type?: unknown;
+                    }[];
                 }>;
                 400: import("zod").ZodObject<{
                     message: import("zod").ZodString;

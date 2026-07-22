@@ -27,6 +27,17 @@ export const SyncEmailConnectionResponseSchema = z.object({
     job_uuid: z.string().uuid(),
 });
 export const EmailConnectionSyncStateSchema = z.enum(['idle', 'syncing', 'failed']);
+export const EmailSyncSummarySchema = z.object({
+    messages_seen: z.number().int().nonnegative(),
+    messages_routed: z.number().int().nonnegative(),
+    duration_ms: z.number().int().nonnegative(),
+    imported: z.number().int().nonnegative(),
+    discovered: z.number().int().nonnegative(),
+    discarded: z.number().int().nonnegative(),
+    duplicate_tx: z.number().int().nonnegative(),
+    already_imported: z.number().int().nonnegative(),
+    pending_review: z.number().int().nonnegative(),
+});
 export const EmailSyncStatusConnectionSchema = z.object({
     uuid: z.string().uuid(),
     provider: EmailProviderSchema,
@@ -34,10 +45,15 @@ export const EmailSyncStatusConnectionSchema = z.object({
     last_successful_sync_at: z.string().datetime().nullable(),
     active_job_uuid: z.string().uuid().nullable(),
     error_message: z.string().nullable(),
+    last_summary: EmailSyncSummarySchema.nullable(),
 });
 export const EmailSyncStatusResponseSchema = z.object({
     is_syncing: z.boolean(),
     imported_total: z.number(),
+    supported_institutions: z.array(z.object({
+        key: z.string(),
+        name: z.string(),
+    })),
     connections: z.array(EmailSyncStatusConnectionSchema),
 });
 export const ProductKindSchema = z.enum(['debit', 'credit']);
@@ -53,6 +69,7 @@ export const FinancialEmailEventResponseSchema = z.object({
     amount: z.coerce.number().nullable(),
     currency: z.string().nullable(),
     transaction_date: z.string().nullable(),
+    transaction_occurred_at: z.string().datetime().nullable().optional(),
     transaction_direction: z.enum(['credit', 'debit']).nullable(),
     category: z.string().nullable(),
     confidence: z.coerce.number().nullable(),
@@ -116,7 +133,15 @@ export const LinkAccountsBodySchema = z.object({
     accounts: z.array(LinkAccountItemSchema).min(1).max(50),
 });
 export const LinkAccountsResponseSchema = z.object({
+    requested: z.number().int().nonnegative(),
     linked: z.number(),
     imported_events: z.number(),
+    backfill_failed_events: z.number().int().nonnegative(),
+    backfill_pending: z.boolean(),
     product_uuids: z.array(z.string().uuid()),
+    failed_accounts: z.array(z.object({
+        institution_id: z.number().int().positive(),
+        product_type: LinkProductTypeSchema,
+        account_last4: z.string().length(4),
+    })),
 });
