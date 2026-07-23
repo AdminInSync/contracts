@@ -216,8 +216,12 @@ export const ProductsContracts = c.router({
         pathParams: z.object({
             type: ConnectedProductTypeSchema,
         }),
+        query: z.object({
+            from: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+            to: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+        }),
         summary: 'Get my connected products by type',
-        description: 'Returns products from bank connections filtered by type',
+        description: 'Returns products from bank connections filtered by type. Optional from/to (YYYY-MM-DD) limit debit spend totals.',
     },
     getMyTransactions: {
         method: 'GET',

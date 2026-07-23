@@ -7824,8 +7824,18 @@ export declare const apiContract: {
                 }, {
                     type: "accounts" | "cards" | "loans" | "financial-certificate";
                 }>;
+                query: import("zod").ZodObject<{
+                    from: import("zod").ZodOptional<import("zod").ZodString>;
+                    to: import("zod").ZodOptional<import("zod").ZodString>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    from?: string | undefined;
+                    to?: string | undefined;
+                }, {
+                    from?: string | undefined;
+                    to?: string | undefined;
+                }>;
                 summary: "Get my connected products by type";
-                description: "Returns products from bank connections filtered by type";
+                description: "Returns products from bank connections filtered by type. Optional from/to (YYYY-MM-DD) limit debit spend totals.";
                 method: "GET";
                 path: "/api/products/my-products/connected/:type";
                 responses: {
