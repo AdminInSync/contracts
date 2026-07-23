@@ -411,6 +411,16 @@ export declare const EmailIngestionContracts: {
             200: z.ZodObject<{
                 is_syncing: z.ZodBoolean;
                 imported_total: z.ZodNumber;
+                supported_institutions: z.ZodArray<z.ZodObject<{
+                    key: z.ZodString;
+                    name: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    name: string;
+                    key: string;
+                }, {
+                    name: string;
+                    key: string;
+                }>, "many">;
                 connections: z.ZodArray<z.ZodObject<{
                     uuid: z.ZodString;
                     provider: z.ZodNativeEnum<typeof import("../..").EmailProvider>;
@@ -418,6 +428,37 @@ export declare const EmailIngestionContracts: {
                     last_successful_sync_at: z.ZodNullable<z.ZodString>;
                     active_job_uuid: z.ZodNullable<z.ZodString>;
                     error_message: z.ZodNullable<z.ZodString>;
+                    last_summary: z.ZodNullable<z.ZodObject<{
+                        messages_seen: z.ZodNumber;
+                        messages_routed: z.ZodNumber;
+                        duration_ms: z.ZodNumber;
+                        imported: z.ZodNumber;
+                        discovered: z.ZodNumber;
+                        discarded: z.ZodNumber;
+                        duplicate_tx: z.ZodNumber;
+                        already_imported: z.ZodNumber;
+                        pending_review: z.ZodNumber;
+                    }, "strip", z.ZodTypeAny, {
+                        discovered: number;
+                        pending_review: number;
+                        imported: number;
+                        discarded: number;
+                        messages_seen: number;
+                        messages_routed: number;
+                        duration_ms: number;
+                        duplicate_tx: number;
+                        already_imported: number;
+                    }, {
+                        discovered: number;
+                        pending_review: number;
+                        imported: number;
+                        discarded: number;
+                        messages_seen: number;
+                        messages_routed: number;
+                        duration_ms: number;
+                        duplicate_tx: number;
+                        already_imported: number;
+                    }>>;
                 }, "strip", z.ZodTypeAny, {
                     uuid: string;
                     provider: import("../..").EmailProvider;
@@ -425,6 +466,17 @@ export declare const EmailIngestionContracts: {
                     sync_state: "failed" | "idle" | "syncing";
                     active_job_uuid: string | null;
                     error_message: string | null;
+                    last_summary: {
+                        discovered: number;
+                        pending_review: number;
+                        imported: number;
+                        discarded: number;
+                        messages_seen: number;
+                        messages_routed: number;
+                        duration_ms: number;
+                        duplicate_tx: number;
+                        already_imported: number;
+                    } | null;
                 }, {
                     uuid: string;
                     provider: import("../..").EmailProvider;
@@ -432,6 +484,17 @@ export declare const EmailIngestionContracts: {
                     sync_state: "failed" | "idle" | "syncing";
                     active_job_uuid: string | null;
                     error_message: string | null;
+                    last_summary: {
+                        discovered: number;
+                        pending_review: number;
+                        imported: number;
+                        discarded: number;
+                        messages_seen: number;
+                        messages_routed: number;
+                        duration_ms: number;
+                        duplicate_tx: number;
+                        already_imported: number;
+                    } | null;
                 }>, "many">;
             }, "strip", z.ZodTypeAny, {
                 connections: {
@@ -441,9 +504,24 @@ export declare const EmailIngestionContracts: {
                     sync_state: "failed" | "idle" | "syncing";
                     active_job_uuid: string | null;
                     error_message: string | null;
+                    last_summary: {
+                        discovered: number;
+                        pending_review: number;
+                        imported: number;
+                        discarded: number;
+                        messages_seen: number;
+                        messages_routed: number;
+                        duration_ms: number;
+                        duplicate_tx: number;
+                        already_imported: number;
+                    } | null;
                 }[];
                 is_syncing: boolean;
                 imported_total: number;
+                supported_institutions: {
+                    name: string;
+                    key: string;
+                }[];
             }, {
                 connections: {
                     uuid: string;
@@ -452,9 +530,24 @@ export declare const EmailIngestionContracts: {
                     sync_state: "failed" | "idle" | "syncing";
                     active_job_uuid: string | null;
                     error_message: string | null;
+                    last_summary: {
+                        discovered: number;
+                        pending_review: number;
+                        imported: number;
+                        discarded: number;
+                        messages_seen: number;
+                        messages_routed: number;
+                        duration_ms: number;
+                        duplicate_tx: number;
+                        already_imported: number;
+                    } | null;
                 }[];
                 is_syncing: boolean;
                 imported_total: number;
+                supported_institutions: {
+                    name: string;
+                    key: string;
+                }[];
             }>;
             401: z.ZodObject<{
                 message: z.ZodString;
@@ -522,6 +615,7 @@ export declare const EmailIngestionContracts: {
                     amount: z.ZodNullable<z.ZodNumber>;
                     currency: z.ZodNullable<z.ZodString>;
                     transaction_date: z.ZodNullable<z.ZodString>;
+                    transaction_occurred_at: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     transaction_direction: z.ZodNullable<z.ZodEnum<["credit", "debit"]>>;
                     category: z.ZodNullable<z.ZodString>;
                     confidence: z.ZodNullable<z.ZodNumber>;
@@ -544,6 +638,7 @@ export declare const EmailIngestionContracts: {
                     transaction_direction: "debit" | "credit" | null;
                     confidence: number | null;
                     source_metadata: Record<string, unknown> | null;
+                    transaction_occurred_at?: string | null | undefined;
                 }, {
                     status: import("../..").FinancialEmailEventStatus;
                     uuid: string;
@@ -561,6 +656,7 @@ export declare const EmailIngestionContracts: {
                     transaction_direction: "debit" | "credit" | null;
                     confidence: number | null;
                     source_metadata: Record<string, unknown> | null;
+                    transaction_occurred_at?: string | null | undefined;
                 }>, "many">;
                 total: z.ZodNumber;
                 limit: z.ZodNumber;
@@ -586,6 +682,7 @@ export declare const EmailIngestionContracts: {
                     transaction_direction: "debit" | "credit" | null;
                     confidence: number | null;
                     source_metadata: Record<string, unknown> | null;
+                    transaction_occurred_at?: string | null | undefined;
                 }[];
             }, {
                 limit: number;
@@ -608,9 +705,389 @@ export declare const EmailIngestionContracts: {
                     transaction_direction: "debit" | "credit" | null;
                     confidence: number | null;
                     source_metadata: Record<string, unknown> | null;
+                    transaction_occurred_at?: string | null | undefined;
                 }[];
             }>;
             401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+        strictStatusCodes: true;
+    };
+    listDiscoveredAccounts: {
+        summary: "List unique bank accounts discovered from email but not yet linked";
+        method: "GET";
+        path: "/email-ingestion/discovered-accounts";
+        responses: {
+            200: z.ZodObject<{
+                accounts: z.ZodArray<z.ZodObject<{
+                    institution_id: z.ZodNullable<z.ZodNumber>;
+                    institution_name: z.ZodNullable<z.ZodString>;
+                    institution_logo: z.ZodNullable<z.ZodString>;
+                    product_type: z.ZodString;
+                    account_last4: z.ZodString;
+                    event_count: z.ZodNumber;
+                    latest_at: z.ZodNullable<z.ZodString>;
+                }, "strip", z.ZodTypeAny, {
+                    product_type: string;
+                    institution_id: number | null;
+                    institution_name: string | null;
+                    institution_logo: string | null;
+                    account_last4: string;
+                    event_count: number;
+                    latest_at: string | null;
+                }, {
+                    product_type: string;
+                    institution_id: number | null;
+                    institution_name: string | null;
+                    institution_logo: string | null;
+                    account_last4: string;
+                    event_count: number;
+                    latest_at: string | null;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                accounts: {
+                    product_type: string;
+                    institution_id: number | null;
+                    institution_name: string | null;
+                    institution_logo: string | null;
+                    account_last4: string;
+                    event_count: number;
+                    latest_at: string | null;
+                }[];
+            }, {
+                accounts: {
+                    product_type: string;
+                    institution_id: number | null;
+                    institution_name: string | null;
+                    institution_logo: string | null;
+                    account_last4: string;
+                    event_count: number;
+                    latest_at: string | null;
+                }[];
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+        strictStatusCodes: true;
+    };
+    linkAccounts: {
+        summary: "Link discovered accounts for monitoring and backfill matching events";
+        method: "POST";
+        body: z.ZodObject<{
+            accounts: z.ZodArray<z.ZodObject<{
+                institution_id: z.ZodNumber;
+                institution_name: z.ZodString;
+                product_type: z.ZodEffects<z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
+                account_last4: z.ZodPipeline<z.ZodEffects<z.ZodString, string, string>, z.ZodString>;
+            }, "strip", z.ZodTypeAny, {
+                product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                institution_id: number;
+                institution_name: string;
+                account_last4: string;
+            }, {
+                institution_id: number;
+                institution_name: string;
+                account_last4: string;
+                product_type?: unknown;
+            }>, "many">;
+        }, "strip", z.ZodTypeAny, {
+            accounts: {
+                product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                institution_id: number;
+                institution_name: string;
+                account_last4: string;
+            }[];
+        }, {
+            accounts: {
+                institution_id: number;
+                institution_name: string;
+                account_last4: string;
+                product_type?: unknown;
+            }[];
+        }>;
+        path: "/email-ingestion/link-accounts";
+        responses: {
+            200: z.ZodObject<{
+                requested: z.ZodNumber;
+                linked: z.ZodNumber;
+                imported_events: z.ZodNumber;
+                backfill_failed_events: z.ZodNumber;
+                backfill_pending: z.ZodBoolean;
+                product_uuids: z.ZodArray<z.ZodString, "many">;
+                failed_accounts: z.ZodArray<z.ZodObject<{
+                    institution_id: z.ZodNumber;
+                    product_type: z.ZodEffects<z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
+                    account_last4: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                    institution_id: number;
+                    account_last4: string;
+                }, {
+                    institution_id: number;
+                    account_last4: string;
+                    product_type?: unknown;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                requested: number;
+                linked: number;
+                imported_events: number;
+                backfill_failed_events: number;
+                backfill_pending: boolean;
+                product_uuids: string[];
+                failed_accounts: {
+                    product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                    institution_id: number;
+                    account_last4: string;
+                }[];
+            }, {
+                requested: number;
+                linked: number;
+                imported_events: number;
+                backfill_failed_events: number;
+                backfill_pending: boolean;
+                product_uuids: string[];
+                failed_accounts: {
+                    institution_id: number;
+                    account_last4: string;
+                    product_type?: unknown;
+                }[];
+            }>;
+            400: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+        strictStatusCodes: true;
+    };
+    approveEvent: {
+        pathParams: z.ZodObject<{
+            eventUuid: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            eventUuid: string;
+        }, {
+            eventUuid: string;
+        }>;
+        summary: "Approve a pending financial email event into a product transaction";
+        method: "POST";
+        body: z.ZodObject<{
+            user_product_uuid: z.ZodString;
+            amount: z.ZodOptional<z.ZodNumber>;
+            description: z.ZodOptional<z.ZodString>;
+            transaction_date: z.ZodOptional<z.ZodString>;
+        }, "strip", z.ZodTypeAny, {
+            user_product_uuid: string;
+            description?: string | undefined;
+            amount?: number | undefined;
+            transaction_date?: string | undefined;
+        }, {
+            user_product_uuid: string;
+            description?: string | undefined;
+            amount?: number | undefined;
+            transaction_date?: string | undefined;
+        }>;
+        path: "/email-ingestion/events/:eventUuid/approve";
+        responses: {
+            200: z.ZodObject<{
+                transaction_uuid: z.ZodString;
+                event_uuid: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                transaction_uuid: string;
+                event_uuid: string;
+            }, {
+                transaction_uuid: string;
+                event_uuid: string;
+            }>;
+            400: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            404: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+        strictStatusCodes: true;
+    };
+    rejectEvent: {
+        pathParams: z.ZodObject<{
+            eventUuid: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            eventUuid: string;
+        }, {
+            eventUuid: string;
+        }>;
+        summary: "Reject a pending financial email event";
+        method: "POST";
+        body: z.ZodObject<{
+            reason: z.ZodOptional<z.ZodString>;
+        }, "strip", z.ZodTypeAny, {
+            reason?: string | undefined;
+        }, {
+            reason?: string | undefined;
+        }>;
+        path: "/email-ingestion/events/:eventUuid/reject";
+        responses: {
+            200: z.ZodObject<{
+                success: z.ZodLiteral<true>;
+            }, "strip", z.ZodTypeAny, {
+                success: true;
+            }, {
+                success: true;
+            }>;
+            400: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            404: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
