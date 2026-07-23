@@ -2840,7 +2840,6 @@ export declare const ProductsContracts: {
                     amount: z.ZodNumber;
                     currency: z.ZodString;
                     transaction_date: z.ZodString;
-                    transaction_occurred_at: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     description: z.ZodNullable<z.ZodString>;
                     transaction_type: z.ZodEnum<["credit", "debit"]>;
                     user_product_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
@@ -2864,7 +2863,6 @@ export declare const ProductsContracts: {
                     transaction_date: string;
                     transaction_type: "debit" | "credit";
                     account_last4: string | null;
-                    transaction_occurred_at?: string | null | undefined;
                     user_product_uuid?: string | null | undefined;
                     source_financial_email_event_id?: number | null | undefined;
                 }, {
@@ -2880,7 +2878,6 @@ export declare const ProductsContracts: {
                     transaction_date: string;
                     transaction_type: "debit" | "credit";
                     account_last4: string | null;
-                    transaction_occurred_at?: string | null | undefined;
                     user_product_uuid?: string | null | undefined;
                     source_financial_email_event_id?: number | null | undefined;
                 }>, "many">;
@@ -2912,7 +2909,6 @@ export declare const ProductsContracts: {
                     transaction_date: string;
                     transaction_type: "debit" | "credit";
                     account_last4: string | null;
-                    transaction_occurred_at?: string | null | undefined;
                     user_product_uuid?: string | null | undefined;
                     source_financial_email_event_id?: number | null | undefined;
                 }[];
@@ -2936,7 +2932,6 @@ export declare const ProductsContracts: {
                     transaction_date: string;
                     transaction_type: "debit" | "credit";
                     account_last4: string | null;
-                    transaction_occurred_at?: string | null | undefined;
                     user_product_uuid?: string | null | undefined;
                     source_financial_email_event_id?: number | null | undefined;
                 }[];

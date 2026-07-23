@@ -131,7 +131,6 @@ export const ProductTransactionItemSchema = z.object({
     amount: z.number(),
     currency: z.string(),
     transaction_date: z.string(),
-    transaction_occurred_at: z.string().datetime().nullable().optional(),
     description: z.string().nullable(),
     transaction_type: z.enum(['credit', 'debit']),
     user_product_uuid: z.string().uuid().nullable().optional(),
