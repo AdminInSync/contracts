@@ -148,79 +148,119 @@ export declare const DashboardContracts: {
                         color?: string | undefined;
                     }>, "many">;
                     financialIndicators: z.ZodObject<{
-                        health: z.ZodObject<{
-                            score: z.ZodNumber;
-                            description: z.ZodString;
-                        }, "strip", z.ZodTypeAny, {
-                            description: string;
-                            score: number;
-                        }, {
-                            description: string;
-                            score: number;
-                        }>;
-                        cashFlow: z.ZodObject<{
+                        monthlyExpenses: z.ZodObject<{
                             amount: z.ZodNumber;
-                            status: z.ZodEnum<["positive", "negative", "neutral"]>;
+                            previousMonthAmount: z.ZodNumber;
+                            changePercentage: z.ZodNumber;
+                            status: z.ZodEnum<["down", "up", "stable"]>;
                         }, "strip", z.ZodTypeAny, {
-                            status: "positive" | "negative" | "neutral";
+                            status: "down" | "up" | "stable";
                             amount: number;
+                            previousMonthAmount: number;
+                            changePercentage: number;
                         }, {
-                            status: "positive" | "negative" | "neutral";
+                            status: "down" | "up" | "stable";
                             amount: number;
+                            previousMonthAmount: number;
+                            changePercentage: number;
                         }>;
-                        savingsRate: z.ZodObject<{
+                        budgetUsage: z.ZodObject<{
+                            total: z.ZodNumber;
+                            used: z.ZodNumber;
+                            remaining: z.ZodNumber;
                             percentage: z.ZodNumber;
-                            status: z.ZodEnum<["excellent", "good", "needs_improvement"]>;
+                            status: z.ZodEnum<["on_track", "warning", "over_budget", "no_budget"]>;
                         }, "strip", z.ZodTypeAny, {
-                            status: "excellent" | "good" | "needs_improvement";
+                            status: "on_track" | "warning" | "over_budget" | "no_budget";
+                            total: number;
+                            used: number;
+                            remaining: number;
                             percentage: number;
                         }, {
-                            status: "excellent" | "good" | "needs_improvement";
+                            status: "on_track" | "warning" | "over_budget" | "no_budget";
+                            total: number;
+                            used: number;
+                            remaining: number;
                             percentage: number;
                         }>;
-                        debtToIncomeRatio: z.ZodObject<{
-                            percentage: z.ZodNumber;
-                            status: z.ZodEnum<["healthy", "moderate", "high_risk"]>;
+                        expenseProjection: z.ZodObject<{
+                            currentAmount: z.ZodNumber;
+                            projectedAmount: z.ZodNumber;
+                            status: z.ZodEnum<["on_track", "warning", "over_pace", "no_data"]>;
                         }, "strip", z.ZodTypeAny, {
-                            status: "healthy" | "moderate" | "high_risk";
-                            percentage: number;
+                            status: "on_track" | "warning" | "over_pace" | "no_data";
+                            currentAmount: number;
+                            projectedAmount: number;
                         }, {
-                            status: "healthy" | "moderate" | "high_risk";
+                            status: "on_track" | "warning" | "over_pace" | "no_data";
+                            currentAmount: number;
+                            projectedAmount: number;
+                        }>;
+                        topCategory: z.ZodObject<{
+                            category: z.ZodNullable<z.ZodString>;
+                            amount: z.ZodNumber;
+                            percentage: z.ZodNumber;
+                            status: z.ZodEnum<["available", "empty"]>;
+                        }, "strip", z.ZodTypeAny, {
+                            status: "available" | "empty";
+                            amount: number;
                             percentage: number;
+                            category: string | null;
+                        }, {
+                            status: "available" | "empty";
+                            amount: number;
+                            percentage: number;
+                            category: string | null;
                         }>;
                     }, "strip", z.ZodTypeAny, {
-                        health: {
-                            description: string;
-                            score: number;
-                        };
-                        cashFlow: {
-                            status: "positive" | "negative" | "neutral";
+                        monthlyExpenses: {
+                            status: "down" | "up" | "stable";
                             amount: number;
+                            previousMonthAmount: number;
+                            changePercentage: number;
                         };
-                        savingsRate: {
-                            status: "excellent" | "good" | "needs_improvement";
+                        budgetUsage: {
+                            status: "on_track" | "warning" | "over_budget" | "no_budget";
+                            total: number;
+                            used: number;
+                            remaining: number;
                             percentage: number;
                         };
-                        debtToIncomeRatio: {
-                            status: "healthy" | "moderate" | "high_risk";
+                        expenseProjection: {
+                            status: "on_track" | "warning" | "over_pace" | "no_data";
+                            currentAmount: number;
+                            projectedAmount: number;
+                        };
+                        topCategory: {
+                            status: "available" | "empty";
+                            amount: number;
                             percentage: number;
+                            category: string | null;
                         };
                     }, {
-                        health: {
-                            description: string;
-                            score: number;
-                        };
-                        cashFlow: {
-                            status: "positive" | "negative" | "neutral";
+                        monthlyExpenses: {
+                            status: "down" | "up" | "stable";
                             amount: number;
+                            previousMonthAmount: number;
+                            changePercentage: number;
                         };
-                        savingsRate: {
-                            status: "excellent" | "good" | "needs_improvement";
+                        budgetUsage: {
+                            status: "on_track" | "warning" | "over_budget" | "no_budget";
+                            total: number;
+                            used: number;
+                            remaining: number;
                             percentage: number;
                         };
-                        debtToIncomeRatio: {
-                            status: "healthy" | "moderate" | "high_risk";
+                        expenseProjection: {
+                            status: "on_track" | "warning" | "over_pace" | "no_data";
+                            currentAmount: number;
+                            projectedAmount: number;
+                        };
+                        topCategory: {
+                            status: "available" | "empty";
+                            amount: number;
                             percentage: number;
+                            category: string | null;
                         };
                     }>;
                     recentMovements: z.ZodArray<z.ZodObject<{
@@ -331,21 +371,29 @@ export declare const DashboardContracts: {
                         color?: string | undefined;
                     }[];
                     financialIndicators: {
-                        health: {
-                            description: string;
-                            score: number;
-                        };
-                        cashFlow: {
-                            status: "positive" | "negative" | "neutral";
+                        monthlyExpenses: {
+                            status: "down" | "up" | "stable";
                             amount: number;
+                            previousMonthAmount: number;
+                            changePercentage: number;
                         };
-                        savingsRate: {
-                            status: "excellent" | "good" | "needs_improvement";
+                        budgetUsage: {
+                            status: "on_track" | "warning" | "over_budget" | "no_budget";
+                            total: number;
+                            used: number;
+                            remaining: number;
                             percentage: number;
                         };
-                        debtToIncomeRatio: {
-                            status: "healthy" | "moderate" | "high_risk";
+                        expenseProjection: {
+                            status: "on_track" | "warning" | "over_pace" | "no_data";
+                            currentAmount: number;
+                            projectedAmount: number;
+                        };
+                        topCategory: {
+                            status: "available" | "empty";
+                            amount: number;
                             percentage: number;
+                            category: string | null;
                         };
                     };
                     recentMovements: {
@@ -414,21 +462,29 @@ export declare const DashboardContracts: {
                         color?: string | undefined;
                     }[];
                     financialIndicators: {
-                        health: {
-                            description: string;
-                            score: number;
-                        };
-                        cashFlow: {
-                            status: "positive" | "negative" | "neutral";
+                        monthlyExpenses: {
+                            status: "down" | "up" | "stable";
                             amount: number;
+                            previousMonthAmount: number;
+                            changePercentage: number;
                         };
-                        savingsRate: {
-                            status: "excellent" | "good" | "needs_improvement";
+                        budgetUsage: {
+                            status: "on_track" | "warning" | "over_budget" | "no_budget";
+                            total: number;
+                            used: number;
+                            remaining: number;
                             percentage: number;
                         };
-                        debtToIncomeRatio: {
-                            status: "healthy" | "moderate" | "high_risk";
+                        expenseProjection: {
+                            status: "on_track" | "warning" | "over_pace" | "no_data";
+                            currentAmount: number;
+                            projectedAmount: number;
+                        };
+                        topCategory: {
+                            status: "available" | "empty";
+                            amount: number;
                             percentage: number;
+                            category: string | null;
                         };
                     };
                     recentMovements: {
@@ -501,21 +557,29 @@ export declare const DashboardContracts: {
                         color?: string | undefined;
                     }[];
                     financialIndicators: {
-                        health: {
-                            description: string;
-                            score: number;
-                        };
-                        cashFlow: {
-                            status: "positive" | "negative" | "neutral";
+                        monthlyExpenses: {
+                            status: "down" | "up" | "stable";
                             amount: number;
+                            previousMonthAmount: number;
+                            changePercentage: number;
                         };
-                        savingsRate: {
-                            status: "excellent" | "good" | "needs_improvement";
+                        budgetUsage: {
+                            status: "on_track" | "warning" | "over_budget" | "no_budget";
+                            total: number;
+                            used: number;
+                            remaining: number;
                             percentage: number;
                         };
-                        debtToIncomeRatio: {
-                            status: "healthy" | "moderate" | "high_risk";
+                        expenseProjection: {
+                            status: "on_track" | "warning" | "over_pace" | "no_data";
+                            currentAmount: number;
+                            projectedAmount: number;
+                        };
+                        topCategory: {
+                            status: "available" | "empty";
+                            amount: number;
                             percentage: number;
+                            category: string | null;
                         };
                     };
                     recentMovements: {
@@ -588,21 +652,29 @@ export declare const DashboardContracts: {
                         color?: string | undefined;
                     }[];
                     financialIndicators: {
-                        health: {
-                            description: string;
-                            score: number;
-                        };
-                        cashFlow: {
-                            status: "positive" | "negative" | "neutral";
+                        monthlyExpenses: {
+                            status: "down" | "up" | "stable";
                             amount: number;
+                            previousMonthAmount: number;
+                            changePercentage: number;
                         };
-                        savingsRate: {
-                            status: "excellent" | "good" | "needs_improvement";
+                        budgetUsage: {
+                            status: "on_track" | "warning" | "over_budget" | "no_budget";
+                            total: number;
+                            used: number;
+                            remaining: number;
                             percentage: number;
                         };
-                        debtToIncomeRatio: {
-                            status: "healthy" | "moderate" | "high_risk";
+                        expenseProjection: {
+                            status: "on_track" | "warning" | "over_pace" | "no_data";
+                            currentAmount: number;
+                            projectedAmount: number;
+                        };
+                        topCategory: {
+                            status: "available" | "empty";
+                            amount: number;
                             percentage: number;
+                            category: string | null;
                         };
                     };
                     recentMovements: {
@@ -955,79 +1027,119 @@ export declare const DashboardContracts: {
                         color?: string | undefined;
                     }>, "many">;
                     financialIndicators: z.ZodObject<{
-                        health: z.ZodObject<{
-                            score: z.ZodNumber;
-                            description: z.ZodString;
-                        }, "strip", z.ZodTypeAny, {
-                            description: string;
-                            score: number;
-                        }, {
-                            description: string;
-                            score: number;
-                        }>;
-                        cashFlow: z.ZodObject<{
+                        monthlyExpenses: z.ZodObject<{
                             amount: z.ZodNumber;
-                            status: z.ZodEnum<["positive", "negative", "neutral"]>;
+                            previousMonthAmount: z.ZodNumber;
+                            changePercentage: z.ZodNumber;
+                            status: z.ZodEnum<["down", "up", "stable"]>;
                         }, "strip", z.ZodTypeAny, {
-                            status: "positive" | "negative" | "neutral";
+                            status: "down" | "up" | "stable";
                             amount: number;
+                            previousMonthAmount: number;
+                            changePercentage: number;
                         }, {
-                            status: "positive" | "negative" | "neutral";
+                            status: "down" | "up" | "stable";
                             amount: number;
+                            previousMonthAmount: number;
+                            changePercentage: number;
                         }>;
-                        savingsRate: z.ZodObject<{
+                        budgetUsage: z.ZodObject<{
+                            total: z.ZodNumber;
+                            used: z.ZodNumber;
+                            remaining: z.ZodNumber;
                             percentage: z.ZodNumber;
-                            status: z.ZodEnum<["excellent", "good", "needs_improvement"]>;
+                            status: z.ZodEnum<["on_track", "warning", "over_budget", "no_budget"]>;
                         }, "strip", z.ZodTypeAny, {
-                            status: "excellent" | "good" | "needs_improvement";
+                            status: "on_track" | "warning" | "over_budget" | "no_budget";
+                            total: number;
+                            used: number;
+                            remaining: number;
                             percentage: number;
                         }, {
-                            status: "excellent" | "good" | "needs_improvement";
+                            status: "on_track" | "warning" | "over_budget" | "no_budget";
+                            total: number;
+                            used: number;
+                            remaining: number;
                             percentage: number;
                         }>;
-                        debtToIncomeRatio: z.ZodObject<{
-                            percentage: z.ZodNumber;
-                            status: z.ZodEnum<["healthy", "moderate", "high_risk"]>;
+                        expenseProjection: z.ZodObject<{
+                            currentAmount: z.ZodNumber;
+                            projectedAmount: z.ZodNumber;
+                            status: z.ZodEnum<["on_track", "warning", "over_pace", "no_data"]>;
                         }, "strip", z.ZodTypeAny, {
-                            status: "healthy" | "moderate" | "high_risk";
-                            percentage: number;
+                            status: "on_track" | "warning" | "over_pace" | "no_data";
+                            currentAmount: number;
+                            projectedAmount: number;
                         }, {
-                            status: "healthy" | "moderate" | "high_risk";
+                            status: "on_track" | "warning" | "over_pace" | "no_data";
+                            currentAmount: number;
+                            projectedAmount: number;
+                        }>;
+                        topCategory: z.ZodObject<{
+                            category: z.ZodNullable<z.ZodString>;
+                            amount: z.ZodNumber;
+                            percentage: z.ZodNumber;
+                            status: z.ZodEnum<["available", "empty"]>;
+                        }, "strip", z.ZodTypeAny, {
+                            status: "available" | "empty";
+                            amount: number;
                             percentage: number;
+                            category: string | null;
+                        }, {
+                            status: "available" | "empty";
+                            amount: number;
+                            percentage: number;
+                            category: string | null;
                         }>;
                     }, "strip", z.ZodTypeAny, {
-                        health: {
-                            description: string;
-                            score: number;
-                        };
-                        cashFlow: {
-                            status: "positive" | "negative" | "neutral";
+                        monthlyExpenses: {
+                            status: "down" | "up" | "stable";
                             amount: number;
+                            previousMonthAmount: number;
+                            changePercentage: number;
                         };
-                        savingsRate: {
-                            status: "excellent" | "good" | "needs_improvement";
+                        budgetUsage: {
+                            status: "on_track" | "warning" | "over_budget" | "no_budget";
+                            total: number;
+                            used: number;
+                            remaining: number;
                             percentage: number;
                         };
-                        debtToIncomeRatio: {
-                            status: "healthy" | "moderate" | "high_risk";
+                        expenseProjection: {
+                            status: "on_track" | "warning" | "over_pace" | "no_data";
+                            currentAmount: number;
+                            projectedAmount: number;
+                        };
+                        topCategory: {
+                            status: "available" | "empty";
+                            amount: number;
                             percentage: number;
+                            category: string | null;
                         };
                     }, {
-                        health: {
-                            description: string;
-                            score: number;
-                        };
-                        cashFlow: {
-                            status: "positive" | "negative" | "neutral";
+                        monthlyExpenses: {
+                            status: "down" | "up" | "stable";
                             amount: number;
+                            previousMonthAmount: number;
+                            changePercentage: number;
                         };
-                        savingsRate: {
-                            status: "excellent" | "good" | "needs_improvement";
+                        budgetUsage: {
+                            status: "on_track" | "warning" | "over_budget" | "no_budget";
+                            total: number;
+                            used: number;
+                            remaining: number;
                             percentage: number;
                         };
-                        debtToIncomeRatio: {
-                            status: "healthy" | "moderate" | "high_risk";
+                        expenseProjection: {
+                            status: "on_track" | "warning" | "over_pace" | "no_data";
+                            currentAmount: number;
+                            projectedAmount: number;
+                        };
+                        topCategory: {
+                            status: "available" | "empty";
+                            amount: number;
                             percentage: number;
+                            category: string | null;
                         };
                     }>;
                     recentMovements: z.ZodArray<z.ZodObject<{
@@ -1138,21 +1250,29 @@ export declare const DashboardContracts: {
                         color?: string | undefined;
                     }[];
                     financialIndicators: {
-                        health: {
-                            description: string;
-                            score: number;
-                        };
-                        cashFlow: {
-                            status: "positive" | "negative" | "neutral";
+                        monthlyExpenses: {
+                            status: "down" | "up" | "stable";
                             amount: number;
+                            previousMonthAmount: number;
+                            changePercentage: number;
                         };
-                        savingsRate: {
-                            status: "excellent" | "good" | "needs_improvement";
+                        budgetUsage: {
+                            status: "on_track" | "warning" | "over_budget" | "no_budget";
+                            total: number;
+                            used: number;
+                            remaining: number;
                             percentage: number;
                         };
-                        debtToIncomeRatio: {
-                            status: "healthy" | "moderate" | "high_risk";
+                        expenseProjection: {
+                            status: "on_track" | "warning" | "over_pace" | "no_data";
+                            currentAmount: number;
+                            projectedAmount: number;
+                        };
+                        topCategory: {
+                            status: "available" | "empty";
+                            amount: number;
                             percentage: number;
+                            category: string | null;
                         };
                     };
                     recentMovements: {
@@ -1221,21 +1341,29 @@ export declare const DashboardContracts: {
                         color?: string | undefined;
                     }[];
                     financialIndicators: {
-                        health: {
-                            description: string;
-                            score: number;
-                        };
-                        cashFlow: {
-                            status: "positive" | "negative" | "neutral";
+                        monthlyExpenses: {
+                            status: "down" | "up" | "stable";
                             amount: number;
+                            previousMonthAmount: number;
+                            changePercentage: number;
                         };
-                        savingsRate: {
-                            status: "excellent" | "good" | "needs_improvement";
+                        budgetUsage: {
+                            status: "on_track" | "warning" | "over_budget" | "no_budget";
+                            total: number;
+                            used: number;
+                            remaining: number;
                             percentage: number;
                         };
-                        debtToIncomeRatio: {
-                            status: "healthy" | "moderate" | "high_risk";
+                        expenseProjection: {
+                            status: "on_track" | "warning" | "over_pace" | "no_data";
+                            currentAmount: number;
+                            projectedAmount: number;
+                        };
+                        topCategory: {
+                            status: "available" | "empty";
+                            amount: number;
                             percentage: number;
+                            category: string | null;
                         };
                     };
                     recentMovements: {
@@ -1308,21 +1436,29 @@ export declare const DashboardContracts: {
                         color?: string | undefined;
                     }[];
                     financialIndicators: {
-                        health: {
-                            description: string;
-                            score: number;
-                        };
-                        cashFlow: {
-                            status: "positive" | "negative" | "neutral";
+                        monthlyExpenses: {
+                            status: "down" | "up" | "stable";
                             amount: number;
+                            previousMonthAmount: number;
+                            changePercentage: number;
                         };
-                        savingsRate: {
-                            status: "excellent" | "good" | "needs_improvement";
+                        budgetUsage: {
+                            status: "on_track" | "warning" | "over_budget" | "no_budget";
+                            total: number;
+                            used: number;
+                            remaining: number;
                             percentage: number;
                         };
-                        debtToIncomeRatio: {
-                            status: "healthy" | "moderate" | "high_risk";
+                        expenseProjection: {
+                            status: "on_track" | "warning" | "over_pace" | "no_data";
+                            currentAmount: number;
+                            projectedAmount: number;
+                        };
+                        topCategory: {
+                            status: "available" | "empty";
+                            amount: number;
                             percentage: number;
+                            category: string | null;
                         };
                     };
                     recentMovements: {
@@ -1395,21 +1531,29 @@ export declare const DashboardContracts: {
                         color?: string | undefined;
                     }[];
                     financialIndicators: {
-                        health: {
-                            description: string;
-                            score: number;
-                        };
-                        cashFlow: {
-                            status: "positive" | "negative" | "neutral";
+                        monthlyExpenses: {
+                            status: "down" | "up" | "stable";
                             amount: number;
+                            previousMonthAmount: number;
+                            changePercentage: number;
                         };
-                        savingsRate: {
-                            status: "excellent" | "good" | "needs_improvement";
+                        budgetUsage: {
+                            status: "on_track" | "warning" | "over_budget" | "no_budget";
+                            total: number;
+                            used: number;
+                            remaining: number;
                             percentage: number;
                         };
-                        debtToIncomeRatio: {
-                            status: "healthy" | "moderate" | "high_risk";
+                        expenseProjection: {
+                            status: "on_track" | "warning" | "over_pace" | "no_data";
+                            currentAmount: number;
+                            projectedAmount: number;
+                        };
+                        topCategory: {
+                            status: "available" | "empty";
+                            amount: number;
                             percentage: number;
+                            category: string | null;
                         };
                     };
                     recentMovements: {

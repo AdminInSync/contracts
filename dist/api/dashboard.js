@@ -42,27 +42,35 @@ const SavingGoalSchema = z.object({
     progress: z.number(),
     color: z.string().optional()
 });
-const FinancialHealthSchema = z.object({
-    score: z.number(),
-    description: z.string()
-});
-const CashFlowSchema = z.object({
+const MonthlyExpensesIndicatorSchema = z.object({
     amount: z.number(),
-    status: z.enum(['positive', 'negative', 'neutral'])
+    previousMonthAmount: z.number(),
+    changePercentage: z.number(),
+    status: z.enum(['down', 'up', 'stable'])
 });
-const SavingsRateSchema = z.object({
+const BudgetUsageIndicatorSchema = z.object({
+    total: z.number(),
+    used: z.number(),
+    remaining: z.number(),
     percentage: z.number(),
-    status: z.enum(['excellent', 'good', 'needs_improvement'])
+    status: z.enum(['on_track', 'warning', 'over_budget', 'no_budget'])
 });
-const DebtToIncomeRatioSchema = z.object({
+const ExpenseProjectionIndicatorSchema = z.object({
+    currentAmount: z.number(),
+    projectedAmount: z.number(),
+    status: z.enum(['on_track', 'warning', 'over_pace', 'no_data'])
+});
+const TopCategoryIndicatorSchema = z.object({
+    category: z.string().nullable(),
+    amount: z.number(),
     percentage: z.number(),
-    status: z.enum(['healthy', 'moderate', 'high_risk'])
+    status: z.enum(['available', 'empty'])
 });
 const FinancialIndicatorsSchema = z.object({
-    health: FinancialHealthSchema,
-    cashFlow: CashFlowSchema,
-    savingsRate: SavingsRateSchema,
-    debtToIncomeRatio: DebtToIncomeRatioSchema
+    monthlyExpenses: MonthlyExpensesIndicatorSchema,
+    budgetUsage: BudgetUsageIndicatorSchema,
+    expenseProjection: ExpenseProjectionIndicatorSchema,
+    topCategory: TopCategoryIndicatorSchema
 });
 const RecentMovementSchema = z.object({
     id: z.string(),

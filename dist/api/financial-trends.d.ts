@@ -26,11 +26,11 @@ export declare const FinancialTrendsContracts: {
                     }, "strip", z.ZodTypeAny, {
                         name: string;
                         percentageChange: number;
-                        trend: "neutral" | "up" | "down";
+                        trend: "down" | "up" | "neutral";
                     }, {
                         name: string;
                         percentageChange: number;
-                        trend: "neutral" | "up" | "down";
+                        trend: "down" | "up" | "neutral";
                     }>, "many">;
                     monthEndProjection: z.ZodObject<{
                         projectedBalance: z.ZodNumber;
@@ -40,13 +40,13 @@ export declare const FinancialTrendsContracts: {
                     }, "strip", z.ZodTypeAny, {
                         projectedBalance: number;
                         estimatedSavings: number;
-                        balanceTrend: "neutral" | "up" | "down";
-                        savingsTrend: "neutral" | "up" | "down";
+                        balanceTrend: "down" | "up" | "neutral";
+                        savingsTrend: "down" | "up" | "neutral";
                     }, {
                         projectedBalance: number;
                         estimatedSavings: number;
-                        balanceTrend: "neutral" | "up" | "down";
-                        savingsTrend: "neutral" | "up" | "down";
+                        balanceTrend: "down" | "up" | "neutral";
+                        savingsTrend: "down" | "up" | "neutral";
                     }>;
                     savingGoals: z.ZodArray<z.ZodObject<{
                         id: z.ZodNumber;
@@ -100,13 +100,13 @@ export declare const FinancialTrendsContracts: {
                     categoryGrowth: {
                         name: string;
                         percentageChange: number;
-                        trend: "neutral" | "up" | "down";
+                        trend: "down" | "up" | "neutral";
                     }[];
                     monthEndProjection: {
                         projectedBalance: number;
                         estimatedSavings: number;
-                        balanceTrend: "neutral" | "up" | "down";
-                        savingsTrend: "neutral" | "up" | "down";
+                        balanceTrend: "down" | "up" | "neutral";
+                        savingsTrend: "down" | "up" | "neutral";
                     };
                 }, {
                     savingGoals: {
@@ -128,13 +128,13 @@ export declare const FinancialTrendsContracts: {
                     categoryGrowth: {
                         name: string;
                         percentageChange: number;
-                        trend: "neutral" | "up" | "down";
+                        trend: "down" | "up" | "neutral";
                     }[];
                     monthEndProjection: {
                         projectedBalance: number;
                         estimatedSavings: number;
-                        balanceTrend: "neutral" | "up" | "down";
-                        savingsTrend: "neutral" | "up" | "down";
+                        balanceTrend: "down" | "up" | "neutral";
+                        savingsTrend: "down" | "up" | "neutral";
                     };
                 }>;
                 message: z.ZodString;
@@ -160,13 +160,13 @@ export declare const FinancialTrendsContracts: {
                     categoryGrowth: {
                         name: string;
                         percentageChange: number;
-                        trend: "neutral" | "up" | "down";
+                        trend: "down" | "up" | "neutral";
                     }[];
                     monthEndProjection: {
                         projectedBalance: number;
                         estimatedSavings: number;
-                        balanceTrend: "neutral" | "up" | "down";
-                        savingsTrend: "neutral" | "up" | "down";
+                        balanceTrend: "down" | "up" | "neutral";
+                        savingsTrend: "down" | "up" | "neutral";
                     };
                 };
                 success: true;
@@ -192,13 +192,13 @@ export declare const FinancialTrendsContracts: {
                     categoryGrowth: {
                         name: string;
                         percentageChange: number;
-                        trend: "neutral" | "up" | "down";
+                        trend: "down" | "up" | "neutral";
                     }[];
                     monthEndProjection: {
                         projectedBalance: number;
                         estimatedSavings: number;
-                        balanceTrend: "neutral" | "up" | "down";
-                        savingsTrend: "neutral" | "up" | "down";
+                        balanceTrend: "down" | "up" | "neutral";
+                        savingsTrend: "down" | "up" | "neutral";
                     };
                 };
                 success: true;
@@ -258,11 +258,11 @@ export declare const FinancialTrendsContracts: {
                     }, "strip", z.ZodTypeAny, {
                         name: string;
                         percentageChange: number;
-                        trend: "neutral" | "up" | "down";
+                        trend: "down" | "up" | "neutral";
                     }, {
                         name: string;
                         percentageChange: number;
-                        trend: "neutral" | "up" | "down";
+                        trend: "down" | "up" | "neutral";
                     }>, "many">;
                     monthEndProjection: z.ZodObject<{
                         projectedBalance: z.ZodNumber;
@@ -272,13 +272,13 @@ export declare const FinancialTrendsContracts: {
                     }, "strip", z.ZodTypeAny, {
                         projectedBalance: number;
                         estimatedSavings: number;
-                        balanceTrend: "neutral" | "up" | "down";
-                        savingsTrend: "neutral" | "up" | "down";
+                        balanceTrend: "down" | "up" | "neutral";
+                        savingsTrend: "down" | "up" | "neutral";
                     }, {
                         projectedBalance: number;
                         estimatedSavings: number;
-                        balanceTrend: "neutral" | "up" | "down";
-                        savingsTrend: "neutral" | "up" | "down";
+                        balanceTrend: "down" | "up" | "neutral";
+                        savingsTrend: "down" | "up" | "neutral";
                     }>;
                     savingGoals: z.ZodArray<z.ZodObject<{
                         id: z.ZodNumber;
@@ -332,13 +332,13 @@ export declare const FinancialTrendsContracts: {
                     categoryGrowth: {
                         name: string;
                         percentageChange: number;
-                        trend: "neutral" | "up" | "down";
+                        trend: "down" | "up" | "neutral";
                     }[];
                     monthEndProjection: {
                         projectedBalance: number;
                         estimatedSavings: number;
-                        balanceTrend: "neutral" | "up" | "down";
-                        savingsTrend: "neutral" | "up" | "down";
+                        balanceTrend: "down" | "up" | "neutral";
+                        savingsTrend: "down" | "up" | "neutral";
                     };
                 }, {
                     savingGoals: {
@@ -360,13 +360,13 @@ export declare const FinancialTrendsContracts: {
                     categoryGrowth: {
                         name: string;
                         percentageChange: number;
-                        trend: "neutral" | "up" | "down";
+                        trend: "down" | "up" | "neutral";
                     }[];
                     monthEndProjection: {
                         projectedBalance: number;
                         estimatedSavings: number;
-                        balanceTrend: "neutral" | "up" | "down";
-                        savingsTrend: "neutral" | "up" | "down";
+                        balanceTrend: "down" | "up" | "neutral";
+                        savingsTrend: "down" | "up" | "neutral";
                     };
                 }>;
                 message: z.ZodString;
@@ -392,13 +392,13 @@ export declare const FinancialTrendsContracts: {
                     categoryGrowth: {
                         name: string;
                         percentageChange: number;
-                        trend: "neutral" | "up" | "down";
+                        trend: "down" | "up" | "neutral";
                     }[];
                     monthEndProjection: {
                         projectedBalance: number;
                         estimatedSavings: number;
-                        balanceTrend: "neutral" | "up" | "down";
-                        savingsTrend: "neutral" | "up" | "down";
+                        balanceTrend: "down" | "up" | "neutral";
+                        savingsTrend: "down" | "up" | "neutral";
                     };
                 };
                 success: true;
@@ -424,13 +424,13 @@ export declare const FinancialTrendsContracts: {
                     categoryGrowth: {
                         name: string;
                         percentageChange: number;
-                        trend: "neutral" | "up" | "down";
+                        trend: "down" | "up" | "neutral";
                     }[];
                     monthEndProjection: {
                         projectedBalance: number;
                         estimatedSavings: number;
-                        balanceTrend: "neutral" | "up" | "down";
-                        savingsTrend: "neutral" | "up" | "down";
+                        balanceTrend: "down" | "up" | "neutral";
+                        savingsTrend: "down" | "up" | "neutral";
                     };
                 };
                 success: true;

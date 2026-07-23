@@ -13056,79 +13056,119 @@ export declare const apiContract: {
                                 color?: string | undefined;
                             }>, "many">;
                             financialIndicators: import("zod").ZodObject<{
-                                health: import("zod").ZodObject<{
-                                    score: import("zod").ZodNumber;
-                                    description: import("zod").ZodString;
-                                }, "strip", import("zod").ZodTypeAny, {
-                                    description: string;
-                                    score: number;
-                                }, {
-                                    description: string;
-                                    score: number;
-                                }>;
-                                cashFlow: import("zod").ZodObject<{
+                                monthlyExpenses: import("zod").ZodObject<{
                                     amount: import("zod").ZodNumber;
-                                    status: import("zod").ZodEnum<["positive", "negative", "neutral"]>;
+                                    previousMonthAmount: import("zod").ZodNumber;
+                                    changePercentage: import("zod").ZodNumber;
+                                    status: import("zod").ZodEnum<["down", "up", "stable"]>;
                                 }, "strip", import("zod").ZodTypeAny, {
-                                    status: "positive" | "negative" | "neutral";
+                                    status: "down" | "up" | "stable";
                                     amount: number;
+                                    previousMonthAmount: number;
+                                    changePercentage: number;
                                 }, {
-                                    status: "positive" | "negative" | "neutral";
+                                    status: "down" | "up" | "stable";
                                     amount: number;
+                                    previousMonthAmount: number;
+                                    changePercentage: number;
                                 }>;
-                                savingsRate: import("zod").ZodObject<{
+                                budgetUsage: import("zod").ZodObject<{
+                                    total: import("zod").ZodNumber;
+                                    used: import("zod").ZodNumber;
+                                    remaining: import("zod").ZodNumber;
                                     percentage: import("zod").ZodNumber;
-                                    status: import("zod").ZodEnum<["excellent", "good", "needs_improvement"]>;
+                                    status: import("zod").ZodEnum<["on_track", "warning", "over_budget", "no_budget"]>;
                                 }, "strip", import("zod").ZodTypeAny, {
-                                    status: "excellent" | "good" | "needs_improvement";
+                                    status: "on_track" | "warning" | "over_budget" | "no_budget";
+                                    total: number;
+                                    used: number;
+                                    remaining: number;
                                     percentage: number;
                                 }, {
-                                    status: "excellent" | "good" | "needs_improvement";
+                                    status: "on_track" | "warning" | "over_budget" | "no_budget";
+                                    total: number;
+                                    used: number;
+                                    remaining: number;
                                     percentage: number;
                                 }>;
-                                debtToIncomeRatio: import("zod").ZodObject<{
-                                    percentage: import("zod").ZodNumber;
-                                    status: import("zod").ZodEnum<["healthy", "moderate", "high_risk"]>;
+                                expenseProjection: import("zod").ZodObject<{
+                                    currentAmount: import("zod").ZodNumber;
+                                    projectedAmount: import("zod").ZodNumber;
+                                    status: import("zod").ZodEnum<["on_track", "warning", "over_pace", "no_data"]>;
                                 }, "strip", import("zod").ZodTypeAny, {
-                                    status: "healthy" | "moderate" | "high_risk";
-                                    percentage: number;
+                                    status: "on_track" | "warning" | "over_pace" | "no_data";
+                                    currentAmount: number;
+                                    projectedAmount: number;
                                 }, {
-                                    status: "healthy" | "moderate" | "high_risk";
+                                    status: "on_track" | "warning" | "over_pace" | "no_data";
+                                    currentAmount: number;
+                                    projectedAmount: number;
+                                }>;
+                                topCategory: import("zod").ZodObject<{
+                                    category: import("zod").ZodNullable<import("zod").ZodString>;
+                                    amount: import("zod").ZodNumber;
+                                    percentage: import("zod").ZodNumber;
+                                    status: import("zod").ZodEnum<["available", "empty"]>;
+                                }, "strip", import("zod").ZodTypeAny, {
+                                    status: "available" | "empty";
+                                    amount: number;
                                     percentage: number;
+                                    category: string | null;
+                                }, {
+                                    status: "available" | "empty";
+                                    amount: number;
+                                    percentage: number;
+                                    category: string | null;
                                 }>;
                             }, "strip", import("zod").ZodTypeAny, {
-                                health: {
-                                    description: string;
-                                    score: number;
-                                };
-                                cashFlow: {
-                                    status: "positive" | "negative" | "neutral";
+                                monthlyExpenses: {
+                                    status: "down" | "up" | "stable";
                                     amount: number;
+                                    previousMonthAmount: number;
+                                    changePercentage: number;
                                 };
-                                savingsRate: {
-                                    status: "excellent" | "good" | "needs_improvement";
+                                budgetUsage: {
+                                    status: "on_track" | "warning" | "over_budget" | "no_budget";
+                                    total: number;
+                                    used: number;
+                                    remaining: number;
                                     percentage: number;
                                 };
-                                debtToIncomeRatio: {
-                                    status: "healthy" | "moderate" | "high_risk";
+                                expenseProjection: {
+                                    status: "on_track" | "warning" | "over_pace" | "no_data";
+                                    currentAmount: number;
+                                    projectedAmount: number;
+                                };
+                                topCategory: {
+                                    status: "available" | "empty";
+                                    amount: number;
                                     percentage: number;
+                                    category: string | null;
                                 };
                             }, {
-                                health: {
-                                    description: string;
-                                    score: number;
-                                };
-                                cashFlow: {
-                                    status: "positive" | "negative" | "neutral";
+                                monthlyExpenses: {
+                                    status: "down" | "up" | "stable";
                                     amount: number;
+                                    previousMonthAmount: number;
+                                    changePercentage: number;
                                 };
-                                savingsRate: {
-                                    status: "excellent" | "good" | "needs_improvement";
+                                budgetUsage: {
+                                    status: "on_track" | "warning" | "over_budget" | "no_budget";
+                                    total: number;
+                                    used: number;
+                                    remaining: number;
                                     percentage: number;
                                 };
-                                debtToIncomeRatio: {
-                                    status: "healthy" | "moderate" | "high_risk";
+                                expenseProjection: {
+                                    status: "on_track" | "warning" | "over_pace" | "no_data";
+                                    currentAmount: number;
+                                    projectedAmount: number;
+                                };
+                                topCategory: {
+                                    status: "available" | "empty";
+                                    amount: number;
                                     percentage: number;
+                                    category: string | null;
                                 };
                             }>;
                             recentMovements: import("zod").ZodArray<import("zod").ZodObject<{
@@ -13239,21 +13279,29 @@ export declare const apiContract: {
                                 color?: string | undefined;
                             }[];
                             financialIndicators: {
-                                health: {
-                                    description: string;
-                                    score: number;
-                                };
-                                cashFlow: {
-                                    status: "positive" | "negative" | "neutral";
+                                monthlyExpenses: {
+                                    status: "down" | "up" | "stable";
                                     amount: number;
+                                    previousMonthAmount: number;
+                                    changePercentage: number;
                                 };
-                                savingsRate: {
-                                    status: "excellent" | "good" | "needs_improvement";
+                                budgetUsage: {
+                                    status: "on_track" | "warning" | "over_budget" | "no_budget";
+                                    total: number;
+                                    used: number;
+                                    remaining: number;
                                     percentage: number;
                                 };
-                                debtToIncomeRatio: {
-                                    status: "healthy" | "moderate" | "high_risk";
+                                expenseProjection: {
+                                    status: "on_track" | "warning" | "over_pace" | "no_data";
+                                    currentAmount: number;
+                                    projectedAmount: number;
+                                };
+                                topCategory: {
+                                    status: "available" | "empty";
+                                    amount: number;
                                     percentage: number;
+                                    category: string | null;
                                 };
                             };
                             recentMovements: {
@@ -13322,21 +13370,29 @@ export declare const apiContract: {
                                 color?: string | undefined;
                             }[];
                             financialIndicators: {
-                                health: {
-                                    description: string;
-                                    score: number;
-                                };
-                                cashFlow: {
-                                    status: "positive" | "negative" | "neutral";
+                                monthlyExpenses: {
+                                    status: "down" | "up" | "stable";
                                     amount: number;
+                                    previousMonthAmount: number;
+                                    changePercentage: number;
                                 };
-                                savingsRate: {
-                                    status: "excellent" | "good" | "needs_improvement";
+                                budgetUsage: {
+                                    status: "on_track" | "warning" | "over_budget" | "no_budget";
+                                    total: number;
+                                    used: number;
+                                    remaining: number;
                                     percentage: number;
                                 };
-                                debtToIncomeRatio: {
-                                    status: "healthy" | "moderate" | "high_risk";
+                                expenseProjection: {
+                                    status: "on_track" | "warning" | "over_pace" | "no_data";
+                                    currentAmount: number;
+                                    projectedAmount: number;
+                                };
+                                topCategory: {
+                                    status: "available" | "empty";
+                                    amount: number;
                                     percentage: number;
+                                    category: string | null;
                                 };
                             };
                             recentMovements: {
@@ -13409,21 +13465,29 @@ export declare const apiContract: {
                                 color?: string | undefined;
                             }[];
                             financialIndicators: {
-                                health: {
-                                    description: string;
-                                    score: number;
-                                };
-                                cashFlow: {
-                                    status: "positive" | "negative" | "neutral";
+                                monthlyExpenses: {
+                                    status: "down" | "up" | "stable";
                                     amount: number;
+                                    previousMonthAmount: number;
+                                    changePercentage: number;
                                 };
-                                savingsRate: {
-                                    status: "excellent" | "good" | "needs_improvement";
+                                budgetUsage: {
+                                    status: "on_track" | "warning" | "over_budget" | "no_budget";
+                                    total: number;
+                                    used: number;
+                                    remaining: number;
                                     percentage: number;
                                 };
-                                debtToIncomeRatio: {
-                                    status: "healthy" | "moderate" | "high_risk";
+                                expenseProjection: {
+                                    status: "on_track" | "warning" | "over_pace" | "no_data";
+                                    currentAmount: number;
+                                    projectedAmount: number;
+                                };
+                                topCategory: {
+                                    status: "available" | "empty";
+                                    amount: number;
                                     percentage: number;
+                                    category: string | null;
                                 };
                             };
                             recentMovements: {
@@ -13496,21 +13560,29 @@ export declare const apiContract: {
                                 color?: string | undefined;
                             }[];
                             financialIndicators: {
-                                health: {
-                                    description: string;
-                                    score: number;
-                                };
-                                cashFlow: {
-                                    status: "positive" | "negative" | "neutral";
+                                monthlyExpenses: {
+                                    status: "down" | "up" | "stable";
                                     amount: number;
+                                    previousMonthAmount: number;
+                                    changePercentage: number;
                                 };
-                                savingsRate: {
-                                    status: "excellent" | "good" | "needs_improvement";
+                                budgetUsage: {
+                                    status: "on_track" | "warning" | "over_budget" | "no_budget";
+                                    total: number;
+                                    used: number;
+                                    remaining: number;
                                     percentage: number;
                                 };
-                                debtToIncomeRatio: {
-                                    status: "healthy" | "moderate" | "high_risk";
+                                expenseProjection: {
+                                    status: "on_track" | "warning" | "over_pace" | "no_data";
+                                    currentAmount: number;
+                                    projectedAmount: number;
+                                };
+                                topCategory: {
+                                    status: "available" | "empty";
+                                    amount: number;
                                     percentage: number;
+                                    category: string | null;
                                 };
                             };
                             recentMovements: {
@@ -13865,79 +13937,119 @@ export declare const apiContract: {
                                 color?: string | undefined;
                             }>, "many">;
                             financialIndicators: import("zod").ZodObject<{
-                                health: import("zod").ZodObject<{
-                                    score: import("zod").ZodNumber;
-                                    description: import("zod").ZodString;
-                                }, "strip", import("zod").ZodTypeAny, {
-                                    description: string;
-                                    score: number;
-                                }, {
-                                    description: string;
-                                    score: number;
-                                }>;
-                                cashFlow: import("zod").ZodObject<{
+                                monthlyExpenses: import("zod").ZodObject<{
                                     amount: import("zod").ZodNumber;
-                                    status: import("zod").ZodEnum<["positive", "negative", "neutral"]>;
+                                    previousMonthAmount: import("zod").ZodNumber;
+                                    changePercentage: import("zod").ZodNumber;
+                                    status: import("zod").ZodEnum<["down", "up", "stable"]>;
                                 }, "strip", import("zod").ZodTypeAny, {
-                                    status: "positive" | "negative" | "neutral";
+                                    status: "down" | "up" | "stable";
                                     amount: number;
+                                    previousMonthAmount: number;
+                                    changePercentage: number;
                                 }, {
-                                    status: "positive" | "negative" | "neutral";
+                                    status: "down" | "up" | "stable";
                                     amount: number;
+                                    previousMonthAmount: number;
+                                    changePercentage: number;
                                 }>;
-                                savingsRate: import("zod").ZodObject<{
+                                budgetUsage: import("zod").ZodObject<{
+                                    total: import("zod").ZodNumber;
+                                    used: import("zod").ZodNumber;
+                                    remaining: import("zod").ZodNumber;
                                     percentage: import("zod").ZodNumber;
-                                    status: import("zod").ZodEnum<["excellent", "good", "needs_improvement"]>;
+                                    status: import("zod").ZodEnum<["on_track", "warning", "over_budget", "no_budget"]>;
                                 }, "strip", import("zod").ZodTypeAny, {
-                                    status: "excellent" | "good" | "needs_improvement";
+                                    status: "on_track" | "warning" | "over_budget" | "no_budget";
+                                    total: number;
+                                    used: number;
+                                    remaining: number;
                                     percentage: number;
                                 }, {
-                                    status: "excellent" | "good" | "needs_improvement";
+                                    status: "on_track" | "warning" | "over_budget" | "no_budget";
+                                    total: number;
+                                    used: number;
+                                    remaining: number;
                                     percentage: number;
                                 }>;
-                                debtToIncomeRatio: import("zod").ZodObject<{
-                                    percentage: import("zod").ZodNumber;
-                                    status: import("zod").ZodEnum<["healthy", "moderate", "high_risk"]>;
+                                expenseProjection: import("zod").ZodObject<{
+                                    currentAmount: import("zod").ZodNumber;
+                                    projectedAmount: import("zod").ZodNumber;
+                                    status: import("zod").ZodEnum<["on_track", "warning", "over_pace", "no_data"]>;
                                 }, "strip", import("zod").ZodTypeAny, {
-                                    status: "healthy" | "moderate" | "high_risk";
-                                    percentage: number;
+                                    status: "on_track" | "warning" | "over_pace" | "no_data";
+                                    currentAmount: number;
+                                    projectedAmount: number;
                                 }, {
-                                    status: "healthy" | "moderate" | "high_risk";
+                                    status: "on_track" | "warning" | "over_pace" | "no_data";
+                                    currentAmount: number;
+                                    projectedAmount: number;
+                                }>;
+                                topCategory: import("zod").ZodObject<{
+                                    category: import("zod").ZodNullable<import("zod").ZodString>;
+                                    amount: import("zod").ZodNumber;
+                                    percentage: import("zod").ZodNumber;
+                                    status: import("zod").ZodEnum<["available", "empty"]>;
+                                }, "strip", import("zod").ZodTypeAny, {
+                                    status: "available" | "empty";
+                                    amount: number;
                                     percentage: number;
+                                    category: string | null;
+                                }, {
+                                    status: "available" | "empty";
+                                    amount: number;
+                                    percentage: number;
+                                    category: string | null;
                                 }>;
                             }, "strip", import("zod").ZodTypeAny, {
-                                health: {
-                                    description: string;
-                                    score: number;
-                                };
-                                cashFlow: {
-                                    status: "positive" | "negative" | "neutral";
+                                monthlyExpenses: {
+                                    status: "down" | "up" | "stable";
                                     amount: number;
+                                    previousMonthAmount: number;
+                                    changePercentage: number;
                                 };
-                                savingsRate: {
-                                    status: "excellent" | "good" | "needs_improvement";
+                                budgetUsage: {
+                                    status: "on_track" | "warning" | "over_budget" | "no_budget";
+                                    total: number;
+                                    used: number;
+                                    remaining: number;
                                     percentage: number;
                                 };
-                                debtToIncomeRatio: {
-                                    status: "healthy" | "moderate" | "high_risk";
+                                expenseProjection: {
+                                    status: "on_track" | "warning" | "over_pace" | "no_data";
+                                    currentAmount: number;
+                                    projectedAmount: number;
+                                };
+                                topCategory: {
+                                    status: "available" | "empty";
+                                    amount: number;
                                     percentage: number;
+                                    category: string | null;
                                 };
                             }, {
-                                health: {
-                                    description: string;
-                                    score: number;
-                                };
-                                cashFlow: {
-                                    status: "positive" | "negative" | "neutral";
+                                monthlyExpenses: {
+                                    status: "down" | "up" | "stable";
                                     amount: number;
+                                    previousMonthAmount: number;
+                                    changePercentage: number;
                                 };
-                                savingsRate: {
-                                    status: "excellent" | "good" | "needs_improvement";
+                                budgetUsage: {
+                                    status: "on_track" | "warning" | "over_budget" | "no_budget";
+                                    total: number;
+                                    used: number;
+                                    remaining: number;
                                     percentage: number;
                                 };
-                                debtToIncomeRatio: {
-                                    status: "healthy" | "moderate" | "high_risk";
+                                expenseProjection: {
+                                    status: "on_track" | "warning" | "over_pace" | "no_data";
+                                    currentAmount: number;
+                                    projectedAmount: number;
+                                };
+                                topCategory: {
+                                    status: "available" | "empty";
+                                    amount: number;
                                     percentage: number;
+                                    category: string | null;
                                 };
                             }>;
                             recentMovements: import("zod").ZodArray<import("zod").ZodObject<{
@@ -14048,21 +14160,29 @@ export declare const apiContract: {
                                 color?: string | undefined;
                             }[];
                             financialIndicators: {
-                                health: {
-                                    description: string;
-                                    score: number;
-                                };
-                                cashFlow: {
-                                    status: "positive" | "negative" | "neutral";
+                                monthlyExpenses: {
+                                    status: "down" | "up" | "stable";
                                     amount: number;
+                                    previousMonthAmount: number;
+                                    changePercentage: number;
                                 };
-                                savingsRate: {
-                                    status: "excellent" | "good" | "needs_improvement";
+                                budgetUsage: {
+                                    status: "on_track" | "warning" | "over_budget" | "no_budget";
+                                    total: number;
+                                    used: number;
+                                    remaining: number;
                                     percentage: number;
                                 };
-                                debtToIncomeRatio: {
-                                    status: "healthy" | "moderate" | "high_risk";
+                                expenseProjection: {
+                                    status: "on_track" | "warning" | "over_pace" | "no_data";
+                                    currentAmount: number;
+                                    projectedAmount: number;
+                                };
+                                topCategory: {
+                                    status: "available" | "empty";
+                                    amount: number;
                                     percentage: number;
+                                    category: string | null;
                                 };
                             };
                             recentMovements: {
@@ -14131,21 +14251,29 @@ export declare const apiContract: {
                                 color?: string | undefined;
                             }[];
                             financialIndicators: {
-                                health: {
-                                    description: string;
-                                    score: number;
-                                };
-                                cashFlow: {
-                                    status: "positive" | "negative" | "neutral";
+                                monthlyExpenses: {
+                                    status: "down" | "up" | "stable";
                                     amount: number;
+                                    previousMonthAmount: number;
+                                    changePercentage: number;
                                 };
-                                savingsRate: {
-                                    status: "excellent" | "good" | "needs_improvement";
+                                budgetUsage: {
+                                    status: "on_track" | "warning" | "over_budget" | "no_budget";
+                                    total: number;
+                                    used: number;
+                                    remaining: number;
                                     percentage: number;
                                 };
-                                debtToIncomeRatio: {
-                                    status: "healthy" | "moderate" | "high_risk";
+                                expenseProjection: {
+                                    status: "on_track" | "warning" | "over_pace" | "no_data";
+                                    currentAmount: number;
+                                    projectedAmount: number;
+                                };
+                                topCategory: {
+                                    status: "available" | "empty";
+                                    amount: number;
                                     percentage: number;
+                                    category: string | null;
                                 };
                             };
                             recentMovements: {
@@ -14218,21 +14346,29 @@ export declare const apiContract: {
                                 color?: string | undefined;
                             }[];
                             financialIndicators: {
-                                health: {
-                                    description: string;
-                                    score: number;
-                                };
-                                cashFlow: {
-                                    status: "positive" | "negative" | "neutral";
+                                monthlyExpenses: {
+                                    status: "down" | "up" | "stable";
                                     amount: number;
+                                    previousMonthAmount: number;
+                                    changePercentage: number;
                                 };
-                                savingsRate: {
-                                    status: "excellent" | "good" | "needs_improvement";
+                                budgetUsage: {
+                                    status: "on_track" | "warning" | "over_budget" | "no_budget";
+                                    total: number;
+                                    used: number;
+                                    remaining: number;
                                     percentage: number;
                                 };
-                                debtToIncomeRatio: {
-                                    status: "healthy" | "moderate" | "high_risk";
+                                expenseProjection: {
+                                    status: "on_track" | "warning" | "over_pace" | "no_data";
+                                    currentAmount: number;
+                                    projectedAmount: number;
+                                };
+                                topCategory: {
+                                    status: "available" | "empty";
+                                    amount: number;
                                     percentage: number;
+                                    category: string | null;
                                 };
                             };
                             recentMovements: {
@@ -14305,21 +14441,29 @@ export declare const apiContract: {
                                 color?: string | undefined;
                             }[];
                             financialIndicators: {
-                                health: {
-                                    description: string;
-                                    score: number;
-                                };
-                                cashFlow: {
-                                    status: "positive" | "negative" | "neutral";
+                                monthlyExpenses: {
+                                    status: "down" | "up" | "stable";
                                     amount: number;
+                                    previousMonthAmount: number;
+                                    changePercentage: number;
                                 };
-                                savingsRate: {
-                                    status: "excellent" | "good" | "needs_improvement";
+                                budgetUsage: {
+                                    status: "on_track" | "warning" | "over_budget" | "no_budget";
+                                    total: number;
+                                    used: number;
+                                    remaining: number;
                                     percentage: number;
                                 };
-                                debtToIncomeRatio: {
-                                    status: "healthy" | "moderate" | "high_risk";
+                                expenseProjection: {
+                                    status: "on_track" | "warning" | "over_pace" | "no_data";
+                                    currentAmount: number;
+                                    projectedAmount: number;
+                                };
+                                topCategory: {
+                                    status: "available" | "empty";
+                                    amount: number;
                                     percentage: number;
+                                    category: string | null;
                                 };
                             };
                             recentMovements: {
@@ -15049,11 +15193,11 @@ export declare const apiContract: {
                             }, "strip", import("zod").ZodTypeAny, {
                                 name: string;
                                 percentageChange: number;
-                                trend: "neutral" | "up" | "down";
+                                trend: "down" | "up" | "neutral";
                             }, {
                                 name: string;
                                 percentageChange: number;
-                                trend: "neutral" | "up" | "down";
+                                trend: "down" | "up" | "neutral";
                             }>, "many">;
                             monthEndProjection: import("zod").ZodObject<{
                                 projectedBalance: import("zod").ZodNumber;
@@ -15063,13 +15207,13 @@ export declare const apiContract: {
                             }, "strip", import("zod").ZodTypeAny, {
                                 projectedBalance: number;
                                 estimatedSavings: number;
-                                balanceTrend: "neutral" | "up" | "down";
-                                savingsTrend: "neutral" | "up" | "down";
+                                balanceTrend: "down" | "up" | "neutral";
+                                savingsTrend: "down" | "up" | "neutral";
                             }, {
                                 projectedBalance: number;
                                 estimatedSavings: number;
-                                balanceTrend: "neutral" | "up" | "down";
-                                savingsTrend: "neutral" | "up" | "down";
+                                balanceTrend: "down" | "up" | "neutral";
+                                savingsTrend: "down" | "up" | "neutral";
                             }>;
                             savingGoals: import("zod").ZodArray<import("zod").ZodObject<{
                                 id: import("zod").ZodNumber;
@@ -15123,13 +15267,13 @@ export declare const apiContract: {
                             categoryGrowth: {
                                 name: string;
                                 percentageChange: number;
-                                trend: "neutral" | "up" | "down";
+                                trend: "down" | "up" | "neutral";
                             }[];
                             monthEndProjection: {
                                 projectedBalance: number;
                                 estimatedSavings: number;
-                                balanceTrend: "neutral" | "up" | "down";
-                                savingsTrend: "neutral" | "up" | "down";
+                                balanceTrend: "down" | "up" | "neutral";
+                                savingsTrend: "down" | "up" | "neutral";
                             };
                         }, {
                             savingGoals: {
@@ -15151,13 +15295,13 @@ export declare const apiContract: {
                             categoryGrowth: {
                                 name: string;
                                 percentageChange: number;
-                                trend: "neutral" | "up" | "down";
+                                trend: "down" | "up" | "neutral";
                             }[];
                             monthEndProjection: {
                                 projectedBalance: number;
                                 estimatedSavings: number;
-                                balanceTrend: "neutral" | "up" | "down";
-                                savingsTrend: "neutral" | "up" | "down";
+                                balanceTrend: "down" | "up" | "neutral";
+                                savingsTrend: "down" | "up" | "neutral";
                             };
                         }>;
                         message: import("zod").ZodString;
@@ -15183,13 +15327,13 @@ export declare const apiContract: {
                             categoryGrowth: {
                                 name: string;
                                 percentageChange: number;
-                                trend: "neutral" | "up" | "down";
+                                trend: "down" | "up" | "neutral";
                             }[];
                             monthEndProjection: {
                                 projectedBalance: number;
                                 estimatedSavings: number;
-                                balanceTrend: "neutral" | "up" | "down";
-                                savingsTrend: "neutral" | "up" | "down";
+                                balanceTrend: "down" | "up" | "neutral";
+                                savingsTrend: "down" | "up" | "neutral";
                             };
                         };
                         success: true;
@@ -15215,13 +15359,13 @@ export declare const apiContract: {
                             categoryGrowth: {
                                 name: string;
                                 percentageChange: number;
-                                trend: "neutral" | "up" | "down";
+                                trend: "down" | "up" | "neutral";
                             }[];
                             monthEndProjection: {
                                 projectedBalance: number;
                                 estimatedSavings: number;
-                                balanceTrend: "neutral" | "up" | "down";
-                                savingsTrend: "neutral" | "up" | "down";
+                                balanceTrend: "down" | "up" | "neutral";
+                                savingsTrend: "down" | "up" | "neutral";
                             };
                         };
                         success: true;
@@ -15282,11 +15426,11 @@ export declare const apiContract: {
                             }, "strip", import("zod").ZodTypeAny, {
                                 name: string;
                                 percentageChange: number;
-                                trend: "neutral" | "up" | "down";
+                                trend: "down" | "up" | "neutral";
                             }, {
                                 name: string;
                                 percentageChange: number;
-                                trend: "neutral" | "up" | "down";
+                                trend: "down" | "up" | "neutral";
                             }>, "many">;
                             monthEndProjection: import("zod").ZodObject<{
                                 projectedBalance: import("zod").ZodNumber;
@@ -15296,13 +15440,13 @@ export declare const apiContract: {
                             }, "strip", import("zod").ZodTypeAny, {
                                 projectedBalance: number;
                                 estimatedSavings: number;
-                                balanceTrend: "neutral" | "up" | "down";
-                                savingsTrend: "neutral" | "up" | "down";
+                                balanceTrend: "down" | "up" | "neutral";
+                                savingsTrend: "down" | "up" | "neutral";
                             }, {
                                 projectedBalance: number;
                                 estimatedSavings: number;
-                                balanceTrend: "neutral" | "up" | "down";
-                                savingsTrend: "neutral" | "up" | "down";
+                                balanceTrend: "down" | "up" | "neutral";
+                                savingsTrend: "down" | "up" | "neutral";
                             }>;
                             savingGoals: import("zod").ZodArray<import("zod").ZodObject<{
                                 id: import("zod").ZodNumber;
@@ -15356,13 +15500,13 @@ export declare const apiContract: {
                             categoryGrowth: {
                                 name: string;
                                 percentageChange: number;
-                                trend: "neutral" | "up" | "down";
+                                trend: "down" | "up" | "neutral";
                             }[];
                             monthEndProjection: {
                                 projectedBalance: number;
                                 estimatedSavings: number;
-                                balanceTrend: "neutral" | "up" | "down";
-                                savingsTrend: "neutral" | "up" | "down";
+                                balanceTrend: "down" | "up" | "neutral";
+                                savingsTrend: "down" | "up" | "neutral";
                             };
                         }, {
                             savingGoals: {
@@ -15384,13 +15528,13 @@ export declare const apiContract: {
                             categoryGrowth: {
                                 name: string;
                                 percentageChange: number;
-                                trend: "neutral" | "up" | "down";
+                                trend: "down" | "up" | "neutral";
                             }[];
                             monthEndProjection: {
                                 projectedBalance: number;
                                 estimatedSavings: number;
-                                balanceTrend: "neutral" | "up" | "down";
-                                savingsTrend: "neutral" | "up" | "down";
+                                balanceTrend: "down" | "up" | "neutral";
+                                savingsTrend: "down" | "up" | "neutral";
                             };
                         }>;
                         message: import("zod").ZodString;
@@ -15416,13 +15560,13 @@ export declare const apiContract: {
                             categoryGrowth: {
                                 name: string;
                                 percentageChange: number;
-                                trend: "neutral" | "up" | "down";
+                                trend: "down" | "up" | "neutral";
                             }[];
                             monthEndProjection: {
                                 projectedBalance: number;
                                 estimatedSavings: number;
-                                balanceTrend: "neutral" | "up" | "down";
-                                savingsTrend: "neutral" | "up" | "down";
+                                balanceTrend: "down" | "up" | "neutral";
+                                savingsTrend: "down" | "up" | "neutral";
                             };
                         };
                         success: true;
@@ -15448,13 +15592,13 @@ export declare const apiContract: {
                             categoryGrowth: {
                                 name: string;
                                 percentageChange: number;
-                                trend: "neutral" | "up" | "down";
+                                trend: "down" | "up" | "neutral";
                             }[];
                             monthEndProjection: {
                                 projectedBalance: number;
                                 estimatedSavings: number;
-                                balanceTrend: "neutral" | "up" | "down";
-                                savingsTrend: "neutral" | "up" | "down";
+                                balanceTrend: "down" | "up" | "neutral";
+                                savingsTrend: "down" | "up" | "neutral";
                             };
                         };
                         success: true;
@@ -15507,13 +15651,13 @@ export declare const apiContract: {
                             }, "strip", import("zod").ZodTypeAny, {
                                 income: number;
                                 expenses: number;
-                                savingsRate: number;
                                 netSavings: number;
+                                savingsRate: number;
                             }, {
                                 income: number;
                                 expenses: number;
-                                savingsRate: number;
                                 netSavings: number;
+                                savingsRate: number;
                             }>;
                             monthlyTrend: import("zod").ZodObject<{
                                 months: import("zod").ZodArray<import("zod").ZodString, "many">;
@@ -15551,8 +15695,8 @@ export declare const apiContract: {
                             summary: {
                                 income: number;
                                 expenses: number;
-                                savingsRate: number;
                                 netSavings: number;
+                                savingsRate: number;
                             };
                             expenseDistribution: {
                                 name: string;
@@ -15570,8 +15714,8 @@ export declare const apiContract: {
                             summary: {
                                 income: number;
                                 expenses: number;
-                                savingsRate: number;
                                 netSavings: number;
+                                savingsRate: number;
                             };
                             expenseDistribution: {
                                 name: string;
@@ -15593,8 +15737,8 @@ export declare const apiContract: {
                             summary: {
                                 income: number;
                                 expenses: number;
-                                savingsRate: number;
                                 netSavings: number;
+                                savingsRate: number;
                             };
                             expenseDistribution: {
                                 name: string;
@@ -15616,8 +15760,8 @@ export declare const apiContract: {
                             summary: {
                                 income: number;
                                 expenses: number;
-                                savingsRate: number;
                                 netSavings: number;
+                                savingsRate: number;
                             };
                             expenseDistribution: {
                                 name: string;

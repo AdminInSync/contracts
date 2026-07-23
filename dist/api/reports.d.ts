@@ -115,13 +115,13 @@ export declare const ReportsContracts: {
                     }, "strip", z.ZodTypeAny, {
                         income: number;
                         expenses: number;
-                        savingsRate: number;
                         netSavings: number;
+                        savingsRate: number;
                     }, {
                         income: number;
                         expenses: number;
-                        savingsRate: number;
                         netSavings: number;
+                        savingsRate: number;
                     }>;
                     monthlyTrend: z.ZodObject<{
                         months: z.ZodArray<z.ZodString, "many">;
@@ -159,8 +159,8 @@ export declare const ReportsContracts: {
                     summary: {
                         income: number;
                         expenses: number;
-                        savingsRate: number;
                         netSavings: number;
+                        savingsRate: number;
                     };
                     expenseDistribution: {
                         name: string;
@@ -178,8 +178,8 @@ export declare const ReportsContracts: {
                     summary: {
                         income: number;
                         expenses: number;
-                        savingsRate: number;
                         netSavings: number;
+                        savingsRate: number;
                     };
                     expenseDistribution: {
                         name: string;
@@ -201,8 +201,8 @@ export declare const ReportsContracts: {
                     summary: {
                         income: number;
                         expenses: number;
-                        savingsRate: number;
                         netSavings: number;
+                        savingsRate: number;
                     };
                     expenseDistribution: {
                         name: string;
@@ -224,8 +224,8 @@ export declare const ReportsContracts: {
                     summary: {
                         income: number;
                         expenses: number;
-                        savingsRate: number;
                         netSavings: number;
+                        savingsRate: number;
                     };
                     expenseDistribution: {
                         name: string;
