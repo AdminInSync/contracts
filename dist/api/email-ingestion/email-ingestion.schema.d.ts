@@ -103,37 +103,6 @@ export declare const SyncEmailConnectionResponseSchema: z.ZodObject<{
     job_uuid: string;
 }>;
 export declare const EmailConnectionSyncStateSchema: z.ZodEnum<["idle", "syncing", "failed"]>;
-export declare const EmailSyncSummarySchema: z.ZodObject<{
-    messages_seen: z.ZodNumber;
-    messages_routed: z.ZodNumber;
-    duration_ms: z.ZodNumber;
-    imported: z.ZodNumber;
-    discovered: z.ZodNumber;
-    discarded: z.ZodNumber;
-    duplicate_tx: z.ZodNumber;
-    already_imported: z.ZodNumber;
-    pending_review: z.ZodNumber;
-}, "strip", z.ZodTypeAny, {
-    discovered: number;
-    pending_review: number;
-    imported: number;
-    discarded: number;
-    messages_seen: number;
-    messages_routed: number;
-    duration_ms: number;
-    duplicate_tx: number;
-    already_imported: number;
-}, {
-    discovered: number;
-    pending_review: number;
-    imported: number;
-    discarded: number;
-    messages_seen: number;
-    messages_routed: number;
-    duration_ms: number;
-    duplicate_tx: number;
-    already_imported: number;
-}>;
 export declare const EmailSyncStatusConnectionSchema: z.ZodObject<{
     uuid: z.ZodString;
     provider: z.ZodNativeEnum<typeof EmailProvider>;
@@ -141,37 +110,6 @@ export declare const EmailSyncStatusConnectionSchema: z.ZodObject<{
     last_successful_sync_at: z.ZodNullable<z.ZodString>;
     active_job_uuid: z.ZodNullable<z.ZodString>;
     error_message: z.ZodNullable<z.ZodString>;
-    last_summary: z.ZodNullable<z.ZodObject<{
-        messages_seen: z.ZodNumber;
-        messages_routed: z.ZodNumber;
-        duration_ms: z.ZodNumber;
-        imported: z.ZodNumber;
-        discovered: z.ZodNumber;
-        discarded: z.ZodNumber;
-        duplicate_tx: z.ZodNumber;
-        already_imported: z.ZodNumber;
-        pending_review: z.ZodNumber;
-    }, "strip", z.ZodTypeAny, {
-        discovered: number;
-        pending_review: number;
-        imported: number;
-        discarded: number;
-        messages_seen: number;
-        messages_routed: number;
-        duration_ms: number;
-        duplicate_tx: number;
-        already_imported: number;
-    }, {
-        discovered: number;
-        pending_review: number;
-        imported: number;
-        discarded: number;
-        messages_seen: number;
-        messages_routed: number;
-        duration_ms: number;
-        duplicate_tx: number;
-        already_imported: number;
-    }>>;
 }, "strip", z.ZodTypeAny, {
     uuid: string;
     provider: EmailProvider;
@@ -179,17 +117,6 @@ export declare const EmailSyncStatusConnectionSchema: z.ZodObject<{
     sync_state: "failed" | "idle" | "syncing";
     active_job_uuid: string | null;
     error_message: string | null;
-    last_summary: {
-        discovered: number;
-        pending_review: number;
-        imported: number;
-        discarded: number;
-        messages_seen: number;
-        messages_routed: number;
-        duration_ms: number;
-        duplicate_tx: number;
-        already_imported: number;
-    } | null;
 }, {
     uuid: string;
     provider: EmailProvider;
@@ -197,31 +124,10 @@ export declare const EmailSyncStatusConnectionSchema: z.ZodObject<{
     sync_state: "failed" | "idle" | "syncing";
     active_job_uuid: string | null;
     error_message: string | null;
-    last_summary: {
-        discovered: number;
-        pending_review: number;
-        imported: number;
-        discarded: number;
-        messages_seen: number;
-        messages_routed: number;
-        duration_ms: number;
-        duplicate_tx: number;
-        already_imported: number;
-    } | null;
 }>;
 export declare const EmailSyncStatusResponseSchema: z.ZodObject<{
     is_syncing: z.ZodBoolean;
     imported_total: z.ZodNumber;
-    supported_institutions: z.ZodArray<z.ZodObject<{
-        key: z.ZodString;
-        name: z.ZodString;
-    }, "strip", z.ZodTypeAny, {
-        name: string;
-        key: string;
-    }, {
-        name: string;
-        key: string;
-    }>, "many">;
     connections: z.ZodArray<z.ZodObject<{
         uuid: z.ZodString;
         provider: z.ZodNativeEnum<typeof EmailProvider>;
@@ -229,37 +135,6 @@ export declare const EmailSyncStatusResponseSchema: z.ZodObject<{
         last_successful_sync_at: z.ZodNullable<z.ZodString>;
         active_job_uuid: z.ZodNullable<z.ZodString>;
         error_message: z.ZodNullable<z.ZodString>;
-        last_summary: z.ZodNullable<z.ZodObject<{
-            messages_seen: z.ZodNumber;
-            messages_routed: z.ZodNumber;
-            duration_ms: z.ZodNumber;
-            imported: z.ZodNumber;
-            discovered: z.ZodNumber;
-            discarded: z.ZodNumber;
-            duplicate_tx: z.ZodNumber;
-            already_imported: z.ZodNumber;
-            pending_review: z.ZodNumber;
-        }, "strip", z.ZodTypeAny, {
-            discovered: number;
-            pending_review: number;
-            imported: number;
-            discarded: number;
-            messages_seen: number;
-            messages_routed: number;
-            duration_ms: number;
-            duplicate_tx: number;
-            already_imported: number;
-        }, {
-            discovered: number;
-            pending_review: number;
-            imported: number;
-            discarded: number;
-            messages_seen: number;
-            messages_routed: number;
-            duration_ms: number;
-            duplicate_tx: number;
-            already_imported: number;
-        }>>;
     }, "strip", z.ZodTypeAny, {
         uuid: string;
         provider: EmailProvider;
@@ -267,17 +142,6 @@ export declare const EmailSyncStatusResponseSchema: z.ZodObject<{
         sync_state: "failed" | "idle" | "syncing";
         active_job_uuid: string | null;
         error_message: string | null;
-        last_summary: {
-            discovered: number;
-            pending_review: number;
-            imported: number;
-            discarded: number;
-            messages_seen: number;
-            messages_routed: number;
-            duration_ms: number;
-            duplicate_tx: number;
-            already_imported: number;
-        } | null;
     }, {
         uuid: string;
         provider: EmailProvider;
@@ -285,17 +149,6 @@ export declare const EmailSyncStatusResponseSchema: z.ZodObject<{
         sync_state: "failed" | "idle" | "syncing";
         active_job_uuid: string | null;
         error_message: string | null;
-        last_summary: {
-            discovered: number;
-            pending_review: number;
-            imported: number;
-            discarded: number;
-            messages_seen: number;
-            messages_routed: number;
-            duration_ms: number;
-            duplicate_tx: number;
-            already_imported: number;
-        } | null;
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
     connections: {
@@ -305,24 +158,9 @@ export declare const EmailSyncStatusResponseSchema: z.ZodObject<{
         sync_state: "failed" | "idle" | "syncing";
         active_job_uuid: string | null;
         error_message: string | null;
-        last_summary: {
-            discovered: number;
-            pending_review: number;
-            imported: number;
-            discarded: number;
-            messages_seen: number;
-            messages_routed: number;
-            duration_ms: number;
-            duplicate_tx: number;
-            already_imported: number;
-        } | null;
     }[];
     is_syncing: boolean;
     imported_total: number;
-    supported_institutions: {
-        name: string;
-        key: string;
-    }[];
 }, {
     connections: {
         uuid: string;
@@ -331,24 +169,9 @@ export declare const EmailSyncStatusResponseSchema: z.ZodObject<{
         sync_state: "failed" | "idle" | "syncing";
         active_job_uuid: string | null;
         error_message: string | null;
-        last_summary: {
-            discovered: number;
-            pending_review: number;
-            imported: number;
-            discarded: number;
-            messages_seen: number;
-            messages_routed: number;
-            duration_ms: number;
-            duplicate_tx: number;
-            already_imported: number;
-        } | null;
     }[];
     is_syncing: boolean;
     imported_total: number;
-    supported_institutions: {
-        name: string;
-        key: string;
-    }[];
 }>;
 export declare const ProductKindSchema: z.ZodEnum<["debit", "credit"]>;
 export declare const FinancialEmailEventResponseSchema: z.ZodObject<{
@@ -363,7 +186,6 @@ export declare const FinancialEmailEventResponseSchema: z.ZodObject<{
     amount: z.ZodNullable<z.ZodNumber>;
     currency: z.ZodNullable<z.ZodString>;
     transaction_date: z.ZodNullable<z.ZodString>;
-    transaction_occurred_at: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     transaction_direction: z.ZodNullable<z.ZodEnum<["credit", "debit"]>>;
     category: z.ZodNullable<z.ZodString>;
     confidence: z.ZodNullable<z.ZodNumber>;
@@ -386,7 +208,6 @@ export declare const FinancialEmailEventResponseSchema: z.ZodObject<{
     transaction_direction: "debit" | "credit" | null;
     confidence: number | null;
     source_metadata: Record<string, unknown> | null;
-    transaction_occurred_at?: string | null | undefined;
 }, {
     status: FinancialEmailEventStatus;
     uuid: string;
@@ -404,7 +225,6 @@ export declare const FinancialEmailEventResponseSchema: z.ZodObject<{
     transaction_direction: "debit" | "credit" | null;
     confidence: number | null;
     source_metadata: Record<string, unknown> | null;
-    transaction_occurred_at?: string | null | undefined;
 }>;
 export declare const ListFinancialEmailEventsResponseSchema: z.ZodObject<{
     events: z.ZodArray<z.ZodObject<{
@@ -419,7 +239,6 @@ export declare const ListFinancialEmailEventsResponseSchema: z.ZodObject<{
         amount: z.ZodNullable<z.ZodNumber>;
         currency: z.ZodNullable<z.ZodString>;
         transaction_date: z.ZodNullable<z.ZodString>;
-        transaction_occurred_at: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         transaction_direction: z.ZodNullable<z.ZodEnum<["credit", "debit"]>>;
         category: z.ZodNullable<z.ZodString>;
         confidence: z.ZodNullable<z.ZodNumber>;
@@ -442,7 +261,6 @@ export declare const ListFinancialEmailEventsResponseSchema: z.ZodObject<{
         transaction_direction: "debit" | "credit" | null;
         confidence: number | null;
         source_metadata: Record<string, unknown> | null;
-        transaction_occurred_at?: string | null | undefined;
     }, {
         status: FinancialEmailEventStatus;
         uuid: string;
@@ -460,7 +278,6 @@ export declare const ListFinancialEmailEventsResponseSchema: z.ZodObject<{
         transaction_direction: "debit" | "credit" | null;
         confidence: number | null;
         source_metadata: Record<string, unknown> | null;
-        transaction_occurred_at?: string | null | undefined;
     }>, "many">;
     total: z.ZodNumber;
     limit: z.ZodNumber;
@@ -486,7 +303,6 @@ export declare const ListFinancialEmailEventsResponseSchema: z.ZodObject<{
         transaction_direction: "debit" | "credit" | null;
         confidence: number | null;
         source_metadata: Record<string, unknown> | null;
-        transaction_occurred_at?: string | null | undefined;
     }[];
 }, {
     limit: number;
@@ -509,7 +325,6 @@ export declare const ListFinancialEmailEventsResponseSchema: z.ZodObject<{
         transaction_direction: "debit" | "credit" | null;
         confidence: number | null;
         source_metadata: Record<string, unknown> | null;
-        transaction_occurred_at?: string | null | undefined;
     }[];
 }>;
 export declare const ApproveFinancialEmailEventBodySchema: z.ZodObject<{
@@ -561,169 +376,4 @@ export declare const ConvertFinancialEmailEventResponseSchema: z.ZodObject<{
 }, {
     transaction_uuid: string;
     event_uuid: string;
-}>;
-export declare const DiscoveredAccountSchema: z.ZodObject<{
-    institution_id: z.ZodNullable<z.ZodNumber>;
-    institution_name: z.ZodNullable<z.ZodString>;
-    institution_logo: z.ZodNullable<z.ZodString>;
-    product_type: z.ZodString;
-    account_last4: z.ZodString;
-    event_count: z.ZodNumber;
-    latest_at: z.ZodNullable<z.ZodString>;
-}, "strip", z.ZodTypeAny, {
-    product_type: string;
-    institution_id: number | null;
-    institution_name: string | null;
-    institution_logo: string | null;
-    account_last4: string;
-    event_count: number;
-    latest_at: string | null;
-}, {
-    product_type: string;
-    institution_id: number | null;
-    institution_name: string | null;
-    institution_logo: string | null;
-    account_last4: string;
-    event_count: number;
-    latest_at: string | null;
-}>;
-export declare const ListDiscoveredAccountsResponseSchema: z.ZodObject<{
-    accounts: z.ZodArray<z.ZodObject<{
-        institution_id: z.ZodNullable<z.ZodNumber>;
-        institution_name: z.ZodNullable<z.ZodString>;
-        institution_logo: z.ZodNullable<z.ZodString>;
-        product_type: z.ZodString;
-        account_last4: z.ZodString;
-        event_count: z.ZodNumber;
-        latest_at: z.ZodNullable<z.ZodString>;
-    }, "strip", z.ZodTypeAny, {
-        product_type: string;
-        institution_id: number | null;
-        institution_name: string | null;
-        institution_logo: string | null;
-        account_last4: string;
-        event_count: number;
-        latest_at: string | null;
-    }, {
-        product_type: string;
-        institution_id: number | null;
-        institution_name: string | null;
-        institution_logo: string | null;
-        account_last4: string;
-        event_count: number;
-        latest_at: string | null;
-    }>, "many">;
-}, "strip", z.ZodTypeAny, {
-    accounts: {
-        product_type: string;
-        institution_id: number | null;
-        institution_name: string | null;
-        institution_logo: string | null;
-        account_last4: string;
-        event_count: number;
-        latest_at: string | null;
-    }[];
-}, {
-    accounts: {
-        product_type: string;
-        institution_id: number | null;
-        institution_name: string | null;
-        institution_logo: string | null;
-        account_last4: string;
-        event_count: number;
-        latest_at: string | null;
-    }[];
-}>;
-export declare const LinkAccountItemSchema: z.ZodObject<{
-    institution_id: z.ZodNumber;
-    institution_name: z.ZodString;
-    product_type: z.ZodEffects<z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
-    account_last4: z.ZodPipeline<z.ZodEffects<z.ZodString, string, string>, z.ZodString>;
-}, "strip", z.ZodTypeAny, {
-    product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
-    institution_id: number;
-    institution_name: string;
-    account_last4: string;
-}, {
-    institution_id: number;
-    institution_name: string;
-    account_last4: string;
-    product_type?: unknown;
-}>;
-export declare const LinkAccountsBodySchema: z.ZodObject<{
-    accounts: z.ZodArray<z.ZodObject<{
-        institution_id: z.ZodNumber;
-        institution_name: z.ZodString;
-        product_type: z.ZodEffects<z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
-        account_last4: z.ZodPipeline<z.ZodEffects<z.ZodString, string, string>, z.ZodString>;
-    }, "strip", z.ZodTypeAny, {
-        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
-        institution_id: number;
-        institution_name: string;
-        account_last4: string;
-    }, {
-        institution_id: number;
-        institution_name: string;
-        account_last4: string;
-        product_type?: unknown;
-    }>, "many">;
-}, "strip", z.ZodTypeAny, {
-    accounts: {
-        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
-        institution_id: number;
-        institution_name: string;
-        account_last4: string;
-    }[];
-}, {
-    accounts: {
-        institution_id: number;
-        institution_name: string;
-        account_last4: string;
-        product_type?: unknown;
-    }[];
-}>;
-export declare const LinkAccountsResponseSchema: z.ZodObject<{
-    requested: z.ZodNumber;
-    linked: z.ZodNumber;
-    imported_events: z.ZodNumber;
-    backfill_failed_events: z.ZodNumber;
-    backfill_pending: z.ZodBoolean;
-    product_uuids: z.ZodArray<z.ZodString, "many">;
-    failed_accounts: z.ZodArray<z.ZodObject<{
-        institution_id: z.ZodNumber;
-        product_type: z.ZodEffects<z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
-        account_last4: z.ZodString;
-    }, "strip", z.ZodTypeAny, {
-        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
-        institution_id: number;
-        account_last4: string;
-    }, {
-        institution_id: number;
-        account_last4: string;
-        product_type?: unknown;
-    }>, "many">;
-}, "strip", z.ZodTypeAny, {
-    requested: number;
-    linked: number;
-    imported_events: number;
-    backfill_failed_events: number;
-    backfill_pending: boolean;
-    product_uuids: string[];
-    failed_accounts: {
-        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
-        institution_id: number;
-        account_last4: string;
-    }[];
-}, {
-    requested: number;
-    linked: number;
-    imported_events: number;
-    backfill_failed_events: number;
-    backfill_pending: boolean;
-    product_uuids: string[];
-    failed_accounts: {
-        institution_id: number;
-        account_last4: string;
-        product_type?: unknown;
-    }[];
 }>;

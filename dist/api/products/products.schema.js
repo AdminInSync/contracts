@@ -109,12 +109,14 @@ export const ConnectedProductSchema = z.object({
     metadata: ConnectedProductMetadataSchema,
     percentage_change: z.string(),
     currency: z.string(),
+    income: z.number(),
 });
 export const ConnectedProductsSummarySchema = z.object({
     pending_balance: z.number().optional(),
     initial_debt: z.number().optional(),
     monthly_payment: z.number().optional(),
     total_balance: z.number().optional(),
+    total_income: z.number().optional(),
     monthly_change: z.number().optional(),
     active_count: z.number(),
 });
@@ -131,7 +133,6 @@ export const ProductTransactionItemSchema = z.object({
     amount: z.number(),
     currency: z.string(),
     transaction_date: z.string(),
-    transaction_occurred_at: z.string().datetime().nullable().optional(),
     description: z.string().nullable(),
     transaction_type: z.enum(['credit', 'debit']),
     user_product_uuid: z.string().uuid().nullable().optional(),

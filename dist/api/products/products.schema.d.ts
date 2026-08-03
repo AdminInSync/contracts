@@ -675,6 +675,7 @@ export declare const ConnectedProductSchema: z.ZodObject<{
     }>;
     percentage_change: z.ZodString;
     currency: z.ZodString;
+    income: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
     type: string;
     id: string;
@@ -704,6 +705,7 @@ export declare const ConnectedProductSchema: z.ZodObject<{
         available: number;
     };
     percentage_change: string;
+    income: number;
 }, {
     type: string;
     id: string;
@@ -733,12 +735,14 @@ export declare const ConnectedProductSchema: z.ZodObject<{
         available: number;
     };
     percentage_change: string;
+    income: number;
 }>;
 export declare const ConnectedProductsSummarySchema: z.ZodObject<{
     pending_balance: z.ZodOptional<z.ZodNumber>;
     initial_debt: z.ZodOptional<z.ZodNumber>;
     monthly_payment: z.ZodOptional<z.ZodNumber>;
     total_balance: z.ZodOptional<z.ZodNumber>;
+    total_income: z.ZodOptional<z.ZodNumber>;
     monthly_change: z.ZodOptional<z.ZodNumber>;
     active_count: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
@@ -747,6 +751,7 @@ export declare const ConnectedProductsSummarySchema: z.ZodObject<{
     pending_balance?: number | undefined;
     initial_debt?: number | undefined;
     total_balance?: number | undefined;
+    total_income?: number | undefined;
     monthly_change?: number | undefined;
 }, {
     active_count: number;
@@ -754,6 +759,7 @@ export declare const ConnectedProductsSummarySchema: z.ZodObject<{
     pending_balance?: number | undefined;
     initial_debt?: number | undefined;
     total_balance?: number | undefined;
+    total_income?: number | undefined;
     monthly_change?: number | undefined;
 }>;
 export declare const ConnectedProductsDataSchema: z.ZodObject<{
@@ -762,6 +768,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         initial_debt: z.ZodOptional<z.ZodNumber>;
         monthly_payment: z.ZodOptional<z.ZodNumber>;
         total_balance: z.ZodOptional<z.ZodNumber>;
+        total_income: z.ZodOptional<z.ZodNumber>;
         monthly_change: z.ZodOptional<z.ZodNumber>;
         active_count: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
@@ -770,6 +777,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         pending_balance?: number | undefined;
         initial_debt?: number | undefined;
         total_balance?: number | undefined;
+        total_income?: number | undefined;
         monthly_change?: number | undefined;
     }, {
         active_count: number;
@@ -777,6 +785,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         pending_balance?: number | undefined;
         initial_debt?: number | undefined;
         total_balance?: number | undefined;
+        total_income?: number | undefined;
         monthly_change?: number | undefined;
     }>>;
     products: z.ZodArray<z.ZodObject<{
@@ -840,6 +849,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         }>;
         percentage_change: z.ZodString;
         currency: z.ZodString;
+        income: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
         type: string;
         id: string;
@@ -869,6 +879,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
             available: number;
         };
         percentage_change: string;
+        income: number;
     }, {
         type: string;
         id: string;
@@ -898,6 +909,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
             available: number;
         };
         percentage_change: string;
+        income: number;
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
     products: {
@@ -929,6 +941,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
             available: number;
         };
         percentage_change: string;
+        income: number;
     }[];
     summary?: {
         active_count: number;
@@ -936,6 +949,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         pending_balance?: number | undefined;
         initial_debt?: number | undefined;
         total_balance?: number | undefined;
+        total_income?: number | undefined;
         monthly_change?: number | undefined;
     } | undefined;
 }, {
@@ -968,6 +982,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
             available: number;
         };
         percentage_change: string;
+        income: number;
     }[];
     summary?: {
         active_count: number;
@@ -975,6 +990,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         pending_balance?: number | undefined;
         initial_debt?: number | undefined;
         total_balance?: number | undefined;
+        total_income?: number | undefined;
         monthly_change?: number | undefined;
     } | undefined;
 }>;
@@ -986,6 +1002,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             initial_debt: z.ZodOptional<z.ZodNumber>;
             monthly_payment: z.ZodOptional<z.ZodNumber>;
             total_balance: z.ZodOptional<z.ZodNumber>;
+            total_income: z.ZodOptional<z.ZodNumber>;
             monthly_change: z.ZodOptional<z.ZodNumber>;
             active_count: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
@@ -994,6 +1011,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             pending_balance?: number | undefined;
             initial_debt?: number | undefined;
             total_balance?: number | undefined;
+            total_income?: number | undefined;
             monthly_change?: number | undefined;
         }, {
             active_count: number;
@@ -1001,6 +1019,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             pending_balance?: number | undefined;
             initial_debt?: number | undefined;
             total_balance?: number | undefined;
+            total_income?: number | undefined;
             monthly_change?: number | undefined;
         }>>;
         products: z.ZodArray<z.ZodObject<{
@@ -1064,6 +1083,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             }>;
             percentage_change: z.ZodString;
             currency: z.ZodString;
+            income: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
             type: string;
             id: string;
@@ -1093,6 +1113,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 available: number;
             };
             percentage_change: string;
+            income: number;
         }, {
             type: string;
             id: string;
@@ -1122,6 +1143,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 available: number;
             };
             percentage_change: string;
+            income: number;
         }>, "many">;
     }, "strip", z.ZodTypeAny, {
         products: {
@@ -1153,6 +1175,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 available: number;
             };
             percentage_change: string;
+            income: number;
         }[];
         summary?: {
             active_count: number;
@@ -1160,6 +1183,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             pending_balance?: number | undefined;
             initial_debt?: number | undefined;
             total_balance?: number | undefined;
+            total_income?: number | undefined;
             monthly_change?: number | undefined;
         } | undefined;
     }, {
@@ -1192,6 +1216,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 available: number;
             };
             percentage_change: string;
+            income: number;
         }[];
         summary?: {
             active_count: number;
@@ -1199,6 +1224,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             pending_balance?: number | undefined;
             initial_debt?: number | undefined;
             total_balance?: number | undefined;
+            total_income?: number | undefined;
             monthly_change?: number | undefined;
         } | undefined;
     }>;
@@ -1234,6 +1260,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 available: number;
             };
             percentage_change: string;
+            income: number;
         }[];
         summary?: {
             active_count: number;
@@ -1241,6 +1268,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             pending_balance?: number | undefined;
             initial_debt?: number | undefined;
             total_balance?: number | undefined;
+            total_income?: number | undefined;
             monthly_change?: number | undefined;
         } | undefined;
     };
@@ -1276,6 +1304,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 available: number;
             };
             percentage_change: string;
+            income: number;
         }[];
         summary?: {
             active_count: number;
@@ -1283,6 +1312,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             pending_balance?: number | undefined;
             initial_debt?: number | undefined;
             total_balance?: number | undefined;
+            total_income?: number | undefined;
             monthly_change?: number | undefined;
         } | undefined;
     };
@@ -1292,7 +1322,6 @@ export declare const ProductTransactionItemSchema: z.ZodObject<{
     amount: z.ZodNumber;
     currency: z.ZodString;
     transaction_date: z.ZodString;
-    transaction_occurred_at: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     description: z.ZodNullable<z.ZodString>;
     transaction_type: z.ZodEnum<["credit", "debit"]>;
     user_product_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
@@ -1316,7 +1345,6 @@ export declare const ProductTransactionItemSchema: z.ZodObject<{
     transaction_date: string;
     transaction_type: "debit" | "credit";
     account_last4: string | null;
-    transaction_occurred_at?: string | null | undefined;
     user_product_uuid?: string | null | undefined;
     source_financial_email_event_id?: number | null | undefined;
 }, {
@@ -1332,7 +1360,6 @@ export declare const ProductTransactionItemSchema: z.ZodObject<{
     transaction_date: string;
     transaction_type: "debit" | "credit";
     account_last4: string | null;
-    transaction_occurred_at?: string | null | undefined;
     user_product_uuid?: string | null | undefined;
     source_financial_email_event_id?: number | null | undefined;
 }>;
@@ -1343,7 +1370,6 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         amount: z.ZodNumber;
         currency: z.ZodString;
         transaction_date: z.ZodString;
-        transaction_occurred_at: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         description: z.ZodNullable<z.ZodString>;
         transaction_type: z.ZodEnum<["credit", "debit"]>;
         user_product_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
@@ -1367,7 +1393,6 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         transaction_date: string;
         transaction_type: "debit" | "credit";
         account_last4: string | null;
-        transaction_occurred_at?: string | null | undefined;
         user_product_uuid?: string | null | undefined;
         source_financial_email_event_id?: number | null | undefined;
     }, {
@@ -1383,7 +1408,6 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         transaction_date: string;
         transaction_type: "debit" | "credit";
         account_last4: string | null;
-        transaction_occurred_at?: string | null | undefined;
         user_product_uuid?: string | null | undefined;
         source_financial_email_event_id?: number | null | undefined;
     }>, "many">;
@@ -1415,7 +1439,6 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         transaction_date: string;
         transaction_type: "debit" | "credit";
         account_last4: string | null;
-        transaction_occurred_at?: string | null | undefined;
         user_product_uuid?: string | null | undefined;
         source_financial_email_event_id?: number | null | undefined;
     }[];
@@ -1439,7 +1462,6 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         transaction_date: string;
         transaction_type: "debit" | "credit";
         account_last4: string | null;
-        transaction_occurred_at?: string | null | undefined;
         user_product_uuid?: string | null | undefined;
         source_financial_email_event_id?: number | null | undefined;
     }[];

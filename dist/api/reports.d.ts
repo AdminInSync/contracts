@@ -129,13 +129,13 @@ export declare const ReportsContracts: {
                         expenses: z.ZodArray<z.ZodNumber, "many">;
                         period: z.ZodString;
                     }, "strip", z.ZodTypeAny, {
-                        period: string;
                         income: number[];
+                        period: string;
                         expenses: number[];
                         months: string[];
                     }, {
-                        period: string;
                         income: number[];
+                        period: string;
                         expenses: number[];
                         months: string[];
                     }>;
@@ -169,8 +169,8 @@ export declare const ReportsContracts: {
                         percentage: number;
                     }[];
                     monthlyTrend: {
-                        period: string;
                         income: number[];
+                        period: string;
                         expenses: number[];
                         months: string[];
                     };
@@ -188,8 +188,8 @@ export declare const ReportsContracts: {
                         percentage: number;
                     }[];
                     monthlyTrend: {
-                        period: string;
                         income: number[];
+                        period: string;
                         expenses: number[];
                         months: string[];
                     };
@@ -211,8 +211,8 @@ export declare const ReportsContracts: {
                         percentage: number;
                     }[];
                     monthlyTrend: {
-                        period: string;
                         income: number[];
+                        period: string;
                         expenses: number[];
                         months: string[];
                     };
@@ -234,8 +234,8 @@ export declare const ReportsContracts: {
                         percentage: number;
                     }[];
                     monthlyTrend: {
-                        period: string;
                         income: number[];
+                        period: string;
                         expenses: number[];
                         months: string[];
                     };
