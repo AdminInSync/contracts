@@ -1,6 +1,6 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
-import { CreatePaymentReminderSchema, UpdatePaymentReminderSchema, GetPaymentRemindersQuerySchema, PaymentReminderResponseSchema, PaymentRemindersListResponseSchema } from './payment-reminders.schema';
+import { CreatePaymentReminderSchema, UpdatePaymentReminderSchema, GetPaymentRemindersQuerySchema, GetSentReminderNotificationsQuerySchema, PaymentReminderResponseSchema, PaymentRemindersListResponseSchema, SentReminderNotificationsListResponseSchema, } from './payment-reminders.schema';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
 const c = initContract();
 export const PaymentRemindersContracts = c.router({
@@ -68,6 +68,19 @@ export const PaymentRemindersContracts = c.router({
         },
         summary: 'Get payment reminders due today',
         description: 'Retrieves all payment reminders due today for the authenticated user',
+    },
+    // Sent reminder push notifications inbox
+    getSentReminderNotifications: {
+        method: 'GET',
+        path: '/payment-reminders/notifications',
+        responses: {
+            200: SentReminderNotificationsListResponseSchema,
+            401: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        query: GetSentReminderNotificationsQuerySchema,
+        summary: 'Get sent reminder notifications',
+        description: 'Retrieves push notifications that were sent to the user for payment reminders, newest first',
     },
     // Get reminders by type
     getRemindersByType: {

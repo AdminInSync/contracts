@@ -10,26 +10,44 @@ export declare const FinancialTrendsContracts: {
                 success: z.ZodLiteral<true>;
                 data: z.ZodObject<{
                     monthlyComparison: z.ZodObject<{
-                        savingsVsPreviousMonth: z.ZodNumber;
-                        expensesVsPreviousMonth: z.ZodNumber;
+                        savingsVsPreviousMonth: z.ZodNullable<z.ZodNumber>;
+                        expensesVsPreviousMonth: z.ZodNullable<z.ZodNumber>;
+                        currentSavings: z.ZodNumber;
+                        previousSavings: z.ZodNumber;
+                        currentExpenses: z.ZodNumber;
+                        previousExpenses: z.ZodNumber;
                     }, "strip", z.ZodTypeAny, {
-                        savingsVsPreviousMonth: number;
-                        expensesVsPreviousMonth: number;
+                        savingsVsPreviousMonth: number | null;
+                        expensesVsPreviousMonth: number | null;
+                        currentSavings: number;
+                        previousSavings: number;
+                        currentExpenses: number;
+                        previousExpenses: number;
                     }, {
-                        savingsVsPreviousMonth: number;
-                        expensesVsPreviousMonth: number;
+                        savingsVsPreviousMonth: number | null;
+                        expensesVsPreviousMonth: number | null;
+                        currentSavings: number;
+                        previousSavings: number;
+                        currentExpenses: number;
+                        previousExpenses: number;
                     }>;
                     categoryGrowth: z.ZodArray<z.ZodObject<{
                         name: z.ZodString;
-                        percentageChange: z.ZodNumber;
+                        percentageChange: z.ZodNullable<z.ZodNumber>;
+                        currentAmount: z.ZodNumber;
+                        previousAmount: z.ZodNumber;
                         trend: z.ZodEnum<["up", "down", "neutral"]>;
                     }, "strip", z.ZodTypeAny, {
                         name: string;
-                        percentageChange: number;
+                        currentAmount: number;
+                        percentageChange: number | null;
+                        previousAmount: number;
                         trend: "down" | "up" | "neutral";
                     }, {
                         name: string;
-                        percentageChange: number;
+                        currentAmount: number;
+                        percentageChange: number | null;
+                        previousAmount: number;
                         trend: "down" | "up" | "neutral";
                     }>, "many">;
                     monthEndProjection: z.ZodObject<{
@@ -94,12 +112,18 @@ export declare const FinancialTrendsContracts: {
                         needsSync: boolean;
                     };
                     monthlyComparison: {
-                        savingsVsPreviousMonth: number;
-                        expensesVsPreviousMonth: number;
+                        savingsVsPreviousMonth: number | null;
+                        expensesVsPreviousMonth: number | null;
+                        currentSavings: number;
+                        previousSavings: number;
+                        currentExpenses: number;
+                        previousExpenses: number;
                     };
                     categoryGrowth: {
                         name: string;
-                        percentageChange: number;
+                        currentAmount: number;
+                        percentageChange: number | null;
+                        previousAmount: number;
                         trend: "down" | "up" | "neutral";
                     }[];
                     monthEndProjection: {
@@ -122,12 +146,18 @@ export declare const FinancialTrendsContracts: {
                         needsSync: boolean;
                     };
                     monthlyComparison: {
-                        savingsVsPreviousMonth: number;
-                        expensesVsPreviousMonth: number;
+                        savingsVsPreviousMonth: number | null;
+                        expensesVsPreviousMonth: number | null;
+                        currentSavings: number;
+                        previousSavings: number;
+                        currentExpenses: number;
+                        previousExpenses: number;
                     };
                     categoryGrowth: {
                         name: string;
-                        percentageChange: number;
+                        currentAmount: number;
+                        percentageChange: number | null;
+                        previousAmount: number;
                         trend: "down" | "up" | "neutral";
                     }[];
                     monthEndProjection: {
@@ -154,12 +184,18 @@ export declare const FinancialTrendsContracts: {
                         needsSync: boolean;
                     };
                     monthlyComparison: {
-                        savingsVsPreviousMonth: number;
-                        expensesVsPreviousMonth: number;
+                        savingsVsPreviousMonth: number | null;
+                        expensesVsPreviousMonth: number | null;
+                        currentSavings: number;
+                        previousSavings: number;
+                        currentExpenses: number;
+                        previousExpenses: number;
                     };
                     categoryGrowth: {
                         name: string;
-                        percentageChange: number;
+                        currentAmount: number;
+                        percentageChange: number | null;
+                        previousAmount: number;
                         trend: "down" | "up" | "neutral";
                     }[];
                     monthEndProjection: {
@@ -186,12 +222,18 @@ export declare const FinancialTrendsContracts: {
                         needsSync: boolean;
                     };
                     monthlyComparison: {
-                        savingsVsPreviousMonth: number;
-                        expensesVsPreviousMonth: number;
+                        savingsVsPreviousMonth: number | null;
+                        expensesVsPreviousMonth: number | null;
+                        currentSavings: number;
+                        previousSavings: number;
+                        currentExpenses: number;
+                        previousExpenses: number;
                     };
                     categoryGrowth: {
                         name: string;
-                        percentageChange: number;
+                        currentAmount: number;
+                        percentageChange: number | null;
+                        previousAmount: number;
                         trend: "down" | "up" | "neutral";
                     }[];
                     monthEndProjection: {
@@ -242,26 +284,44 @@ export declare const FinancialTrendsContracts: {
                 success: z.ZodLiteral<true>;
                 data: z.ZodObject<{
                     monthlyComparison: z.ZodObject<{
-                        savingsVsPreviousMonth: z.ZodNumber;
-                        expensesVsPreviousMonth: z.ZodNumber;
+                        savingsVsPreviousMonth: z.ZodNullable<z.ZodNumber>;
+                        expensesVsPreviousMonth: z.ZodNullable<z.ZodNumber>;
+                        currentSavings: z.ZodNumber;
+                        previousSavings: z.ZodNumber;
+                        currentExpenses: z.ZodNumber;
+                        previousExpenses: z.ZodNumber;
                     }, "strip", z.ZodTypeAny, {
-                        savingsVsPreviousMonth: number;
-                        expensesVsPreviousMonth: number;
+                        savingsVsPreviousMonth: number | null;
+                        expensesVsPreviousMonth: number | null;
+                        currentSavings: number;
+                        previousSavings: number;
+                        currentExpenses: number;
+                        previousExpenses: number;
                     }, {
-                        savingsVsPreviousMonth: number;
-                        expensesVsPreviousMonth: number;
+                        savingsVsPreviousMonth: number | null;
+                        expensesVsPreviousMonth: number | null;
+                        currentSavings: number;
+                        previousSavings: number;
+                        currentExpenses: number;
+                        previousExpenses: number;
                     }>;
                     categoryGrowth: z.ZodArray<z.ZodObject<{
                         name: z.ZodString;
-                        percentageChange: z.ZodNumber;
+                        percentageChange: z.ZodNullable<z.ZodNumber>;
+                        currentAmount: z.ZodNumber;
+                        previousAmount: z.ZodNumber;
                         trend: z.ZodEnum<["up", "down", "neutral"]>;
                     }, "strip", z.ZodTypeAny, {
                         name: string;
-                        percentageChange: number;
+                        currentAmount: number;
+                        percentageChange: number | null;
+                        previousAmount: number;
                         trend: "down" | "up" | "neutral";
                     }, {
                         name: string;
-                        percentageChange: number;
+                        currentAmount: number;
+                        percentageChange: number | null;
+                        previousAmount: number;
                         trend: "down" | "up" | "neutral";
                     }>, "many">;
                     monthEndProjection: z.ZodObject<{
@@ -326,12 +386,18 @@ export declare const FinancialTrendsContracts: {
                         needsSync: boolean;
                     };
                     monthlyComparison: {
-                        savingsVsPreviousMonth: number;
-                        expensesVsPreviousMonth: number;
+                        savingsVsPreviousMonth: number | null;
+                        expensesVsPreviousMonth: number | null;
+                        currentSavings: number;
+                        previousSavings: number;
+                        currentExpenses: number;
+                        previousExpenses: number;
                     };
                     categoryGrowth: {
                         name: string;
-                        percentageChange: number;
+                        currentAmount: number;
+                        percentageChange: number | null;
+                        previousAmount: number;
                         trend: "down" | "up" | "neutral";
                     }[];
                     monthEndProjection: {
@@ -354,12 +420,18 @@ export declare const FinancialTrendsContracts: {
                         needsSync: boolean;
                     };
                     monthlyComparison: {
-                        savingsVsPreviousMonth: number;
-                        expensesVsPreviousMonth: number;
+                        savingsVsPreviousMonth: number | null;
+                        expensesVsPreviousMonth: number | null;
+                        currentSavings: number;
+                        previousSavings: number;
+                        currentExpenses: number;
+                        previousExpenses: number;
                     };
                     categoryGrowth: {
                         name: string;
-                        percentageChange: number;
+                        currentAmount: number;
+                        percentageChange: number | null;
+                        previousAmount: number;
                         trend: "down" | "up" | "neutral";
                     }[];
                     monthEndProjection: {
@@ -386,12 +458,18 @@ export declare const FinancialTrendsContracts: {
                         needsSync: boolean;
                     };
                     monthlyComparison: {
-                        savingsVsPreviousMonth: number;
-                        expensesVsPreviousMonth: number;
+                        savingsVsPreviousMonth: number | null;
+                        expensesVsPreviousMonth: number | null;
+                        currentSavings: number;
+                        previousSavings: number;
+                        currentExpenses: number;
+                        previousExpenses: number;
                     };
                     categoryGrowth: {
                         name: string;
-                        percentageChange: number;
+                        currentAmount: number;
+                        percentageChange: number | null;
+                        previousAmount: number;
                         trend: "down" | "up" | "neutral";
                     }[];
                     monthEndProjection: {
@@ -418,12 +496,18 @@ export declare const FinancialTrendsContracts: {
                         needsSync: boolean;
                     };
                     monthlyComparison: {
-                        savingsVsPreviousMonth: number;
-                        expensesVsPreviousMonth: number;
+                        savingsVsPreviousMonth: number | null;
+                        expensesVsPreviousMonth: number | null;
+                        currentSavings: number;
+                        previousSavings: number;
+                        currentExpenses: number;
+                        previousExpenses: number;
                     };
                     categoryGrowth: {
                         name: string;
-                        percentageChange: number;
+                        currentAmount: number;
+                        percentageChange: number | null;
+                        previousAmount: number;
                         trend: "down" | "up" | "neutral";
                     }[];
                     monthEndProjection: {

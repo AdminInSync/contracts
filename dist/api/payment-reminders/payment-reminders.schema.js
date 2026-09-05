@@ -6,6 +6,7 @@ export const PriorityLevelSchema = z.enum(['low', 'medium', 'high', 'urgent']);
 // Base schemas
 export const PaymentReminderSchema = z.object({
     id: z.number(),
+    series_id: z.number(),
     uuid: z.string().uuid(),
     user_uid: z.string(),
     user_connection_id: z.number().nullable(),
@@ -89,6 +90,8 @@ export const GetPaymentRemindersQuerySchema = z.object({
     priority: PriorityLevelSchema.optional(),
     is_recurring: z.coerce.boolean().optional(),
     search: z.string().optional(),
+    from: z.string().date().optional(),
+    to: z.string().date().optional(),
     limit: z.coerce.number().min(1).max(100).default(20),
     offset: z.coerce.number().min(0).default(0),
 });
@@ -105,4 +108,26 @@ export const PaymentRemindersListResponseSchema = z.object({
         limit: z.number(),
         offset: z.number(),
     }).optional(),
+});
+export const ReminderNotificationPhaseSchema = z.enum(['early', 'due', 'overdue']);
+export const SentReminderNotificationSchema = z.object({
+    uuid: z.string().uuid(),
+    title: z.string(),
+    phase: ReminderNotificationPhaseSchema,
+    due_date: z.string().date(),
+    sent_at: z.string().datetime(),
+    payment_reminder_id: z.number(),
+});
+export const GetSentReminderNotificationsQuerySchema = z.object({
+    limit: z.coerce.number().min(1).max(100).default(20),
+    offset: z.coerce.number().min(0).default(0),
+});
+export const SentReminderNotificationsListResponseSchema = z.object({
+    message: z.string(),
+    data: z.array(SentReminderNotificationSchema),
+    pagination: z.object({
+        total: z.number(),
+        limit: z.number(),
+        offset: z.number(),
+    }),
 });

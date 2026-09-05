@@ -3,13 +3,19 @@ import { z } from 'zod';
 const c = initContract();
 // Schemas for financial trends data types
 const MonthlyComparisonSchema = z.object({
-    savingsVsPreviousMonth: z.number(),
-    expensesVsPreviousMonth: z.number()
+    savingsVsPreviousMonth: z.number().nullable(),
+    expensesVsPreviousMonth: z.number().nullable(),
+    currentSavings: z.number(),
+    previousSavings: z.number(),
+    currentExpenses: z.number(),
+    previousExpenses: z.number(),
 });
 const CategoryGrowthItemSchema = z.object({
     name: z.string(),
-    percentageChange: z.number(),
-    trend: z.enum(['up', 'down', 'neutral'])
+    percentageChange: z.number().nullable(),
+    currentAmount: z.number(),
+    previousAmount: z.number(),
+    trend: z.enum(['up', 'down', 'neutral']),
 });
 const MonthEndProjectionSchema = z.object({
     projectedBalance: z.number(),

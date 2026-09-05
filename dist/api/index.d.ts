@@ -8418,6 +8418,7 @@ export declare const ApiContracts: {
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
+                        series_id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         user_uid: import("zod").ZodString;
                         user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -8449,6 +8450,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8470,6 +8472,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8494,6 +8497,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8518,6 +8522,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8578,6 +8583,8 @@ export declare const ApiContracts: {
                 priority: import("zod").ZodOptional<import("zod").ZodEnum<["low", "medium", "high", "urgent"]>>;
                 is_recurring: import("zod").ZodOptional<import("zod").ZodBoolean>;
                 search: import("zod").ZodOptional<import("zod").ZodString>;
+                from: import("zod").ZodOptional<import("zod").ZodString>;
+                to: import("zod").ZodOptional<import("zod").ZodString>;
                 limit: import("zod").ZodDefault<import("zod").ZodNumber>;
                 offset: import("zod").ZodDefault<import("zod").ZodNumber>;
             }, "strip", import("zod").ZodTypeAny, {
@@ -8585,6 +8592,8 @@ export declare const ApiContracts: {
                 offset: number;
                 search?: string | undefined;
                 priority?: "low" | "medium" | "high" | "urgent" | undefined;
+                from?: string | undefined;
+                to?: string | undefined;
                 reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
                 reminder_status?: "pending" | "completed" | "sent" | "acknowledged" | "overdue" | undefined;
                 is_recurring?: boolean | undefined;
@@ -8593,6 +8602,8 @@ export declare const ApiContracts: {
                 search?: string | undefined;
                 priority?: "low" | "medium" | "high" | "urgent" | undefined;
                 offset?: number | undefined;
+                from?: string | undefined;
+                to?: string | undefined;
                 reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
                 reminder_status?: "pending" | "completed" | "sent" | "acknowledged" | "overdue" | undefined;
                 is_recurring?: boolean | undefined;
@@ -8606,6 +8617,7 @@ export declare const ApiContracts: {
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
+                        series_id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         user_uid: import("zod").ZodString;
                         user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -8637,6 +8649,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8658,6 +8671,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8695,6 +8709,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8724,6 +8739,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8779,6 +8795,7 @@ export declare const ApiContracts: {
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
+                        series_id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         user_uid: import("zod").ZodString;
                         user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -8810,6 +8827,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8831,6 +8849,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8868,6 +8887,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8897,6 +8917,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -8959,6 +8980,7 @@ export declare const ApiContracts: {
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
+                        series_id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         user_uid: import("zod").ZodString;
                         user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -8990,6 +9012,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9011,6 +9034,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9048,6 +9072,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9077,6 +9102,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9132,6 +9158,7 @@ export declare const ApiContracts: {
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
+                        series_id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         user_uid: import("zod").ZodString;
                         user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -9163,6 +9190,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9184,6 +9212,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9221,6 +9250,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9250,6 +9280,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9265,6 +9296,119 @@ export declare const ApiContracts: {
                         total: number;
                         offset: number;
                     } | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        getSentReminderNotifications: {
+            query: import("zod").ZodObject<{
+                limit: import("zod").ZodDefault<import("zod").ZodNumber>;
+                offset: import("zod").ZodDefault<import("zod").ZodNumber>;
+            }, "strip", import("zod").ZodTypeAny, {
+                limit: number;
+                offset: number;
+            }, {
+                limit?: number | undefined;
+                offset?: number | undefined;
+            }>;
+            summary: "Get sent reminder notifications";
+            description: "Retrieves push notifications that were sent to the user for payment reminders, newest first";
+            method: "GET";
+            path: "/api/payment-reminders/notifications";
+            responses: {
+                200: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        uuid: import("zod").ZodString;
+                        title: import("zod").ZodString;
+                        phase: import("zod").ZodEnum<["early", "due", "overdue"]>;
+                        due_date: import("zod").ZodString;
+                        sent_at: import("zod").ZodString;
+                        payment_reminder_id: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        uuid: string;
+                        title: string;
+                        due_date: string;
+                        phase: "overdue" | "early" | "due";
+                        sent_at: string;
+                        payment_reminder_id: number;
+                    }, {
+                        uuid: string;
+                        title: string;
+                        due_date: string;
+                        phase: "overdue" | "early" | "due";
+                        sent_at: string;
+                        payment_reminder_id: number;
+                    }>, "many">;
+                    pagination: import("zod").ZodObject<{
+                        total: import("zod").ZodNumber;
+                        limit: import("zod").ZodNumber;
+                        offset: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }, {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        uuid: string;
+                        title: string;
+                        due_date: string;
+                        phase: "overdue" | "early" | "due";
+                        sent_at: string;
+                        payment_reminder_id: number;
+                    }[];
+                    pagination: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    };
+                }, {
+                    message: string;
+                    data: {
+                        uuid: string;
+                        title: string;
+                        due_date: string;
+                        phase: "overdue" | "early" | "due";
+                        sent_at: string;
+                        payment_reminder_id: number;
+                    }[];
+                    pagination: {
+                        limit: number;
+                        total: number;
+                        offset: number;
+                    };
                 }>;
                 401: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -9322,6 +9466,7 @@ export declare const ApiContracts: {
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
+                        series_id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         user_uid: import("zod").ZodString;
                         user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -9353,6 +9498,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9374,6 +9520,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9411,6 +9558,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9440,6 +9588,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9525,6 +9674,7 @@ export declare const ApiContracts: {
                     message: import("zod").ZodString;
                     data: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
+                        series_id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         user_uid: import("zod").ZodString;
                         user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -9556,6 +9706,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9577,6 +9728,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9614,6 +9766,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9643,6 +9796,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9718,6 +9872,7 @@ export declare const ApiContracts: {
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
+                        series_id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         user_uid: import("zod").ZodString;
                         user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -9749,6 +9904,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9770,6 +9926,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9794,6 +9951,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9818,6 +9976,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9934,6 +10093,7 @@ export declare const ApiContracts: {
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
+                        series_id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         user_uid: import("zod").ZodString;
                         user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -9965,6 +10125,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -9986,6 +10147,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -10010,6 +10172,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -10034,6 +10197,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -10180,6 +10344,7 @@ export declare const ApiContracts: {
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
+                        series_id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         user_uid: import("zod").ZodString;
                         user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -10211,6 +10376,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -10232,6 +10398,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -10256,6 +10423,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -10280,6 +10448,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -10351,6 +10520,7 @@ export declare const ApiContracts: {
                     message: import("zod").ZodString;
                     data: import("zod").ZodObject<{
                         id: import("zod").ZodNumber;
+                        series_id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         user_uid: import("zod").ZodString;
                         user_connection_id: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -10382,6 +10552,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -10403,6 +10574,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -10427,6 +10599,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -10451,6 +10624,7 @@ export declare const ApiContracts: {
                         priority: "low" | "medium" | "high" | "urgent" | null;
                         deleted_at: string | null;
                         amount: number | null;
+                        series_id: number;
                         user_connection_id: number | null;
                         title: string;
                         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -15199,26 +15373,44 @@ export declare const ApiContracts: {
                     success: import("zod").ZodLiteral<true>;
                     data: import("zod").ZodObject<{
                         monthlyComparison: import("zod").ZodObject<{
-                            savingsVsPreviousMonth: import("zod").ZodNumber;
-                            expensesVsPreviousMonth: import("zod").ZodNumber;
+                            savingsVsPreviousMonth: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            expensesVsPreviousMonth: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            currentSavings: import("zod").ZodNumber;
+                            previousSavings: import("zod").ZodNumber;
+                            currentExpenses: import("zod").ZodNumber;
+                            previousExpenses: import("zod").ZodNumber;
                         }, "strip", import("zod").ZodTypeAny, {
-                            savingsVsPreviousMonth: number;
-                            expensesVsPreviousMonth: number;
+                            savingsVsPreviousMonth: number | null;
+                            expensesVsPreviousMonth: number | null;
+                            currentSavings: number;
+                            previousSavings: number;
+                            currentExpenses: number;
+                            previousExpenses: number;
                         }, {
-                            savingsVsPreviousMonth: number;
-                            expensesVsPreviousMonth: number;
+                            savingsVsPreviousMonth: number | null;
+                            expensesVsPreviousMonth: number | null;
+                            currentSavings: number;
+                            previousSavings: number;
+                            currentExpenses: number;
+                            previousExpenses: number;
                         }>;
                         categoryGrowth: import("zod").ZodArray<import("zod").ZodObject<{
                             name: import("zod").ZodString;
-                            percentageChange: import("zod").ZodNumber;
+                            percentageChange: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            currentAmount: import("zod").ZodNumber;
+                            previousAmount: import("zod").ZodNumber;
                             trend: import("zod").ZodEnum<["up", "down", "neutral"]>;
                         }, "strip", import("zod").ZodTypeAny, {
                             name: string;
-                            percentageChange: number;
+                            currentAmount: number;
+                            percentageChange: number | null;
+                            previousAmount: number;
                             trend: "down" | "up" | "neutral";
                         }, {
                             name: string;
-                            percentageChange: number;
+                            currentAmount: number;
+                            percentageChange: number | null;
+                            previousAmount: number;
                             trend: "down" | "up" | "neutral";
                         }>, "many">;
                         monthEndProjection: import("zod").ZodObject<{
@@ -15283,12 +15475,18 @@ export declare const ApiContracts: {
                             needsSync: boolean;
                         };
                         monthlyComparison: {
-                            savingsVsPreviousMonth: number;
-                            expensesVsPreviousMonth: number;
+                            savingsVsPreviousMonth: number | null;
+                            expensesVsPreviousMonth: number | null;
+                            currentSavings: number;
+                            previousSavings: number;
+                            currentExpenses: number;
+                            previousExpenses: number;
                         };
                         categoryGrowth: {
                             name: string;
-                            percentageChange: number;
+                            currentAmount: number;
+                            percentageChange: number | null;
+                            previousAmount: number;
                             trend: "down" | "up" | "neutral";
                         }[];
                         monthEndProjection: {
@@ -15311,12 +15509,18 @@ export declare const ApiContracts: {
                             needsSync: boolean;
                         };
                         monthlyComparison: {
-                            savingsVsPreviousMonth: number;
-                            expensesVsPreviousMonth: number;
+                            savingsVsPreviousMonth: number | null;
+                            expensesVsPreviousMonth: number | null;
+                            currentSavings: number;
+                            previousSavings: number;
+                            currentExpenses: number;
+                            previousExpenses: number;
                         };
                         categoryGrowth: {
                             name: string;
-                            percentageChange: number;
+                            currentAmount: number;
+                            percentageChange: number | null;
+                            previousAmount: number;
                             trend: "down" | "up" | "neutral";
                         }[];
                         monthEndProjection: {
@@ -15343,12 +15547,18 @@ export declare const ApiContracts: {
                             needsSync: boolean;
                         };
                         monthlyComparison: {
-                            savingsVsPreviousMonth: number;
-                            expensesVsPreviousMonth: number;
+                            savingsVsPreviousMonth: number | null;
+                            expensesVsPreviousMonth: number | null;
+                            currentSavings: number;
+                            previousSavings: number;
+                            currentExpenses: number;
+                            previousExpenses: number;
                         };
                         categoryGrowth: {
                             name: string;
-                            percentageChange: number;
+                            currentAmount: number;
+                            percentageChange: number | null;
+                            previousAmount: number;
                             trend: "down" | "up" | "neutral";
                         }[];
                         monthEndProjection: {
@@ -15375,12 +15585,18 @@ export declare const ApiContracts: {
                             needsSync: boolean;
                         };
                         monthlyComparison: {
-                            savingsVsPreviousMonth: number;
-                            expensesVsPreviousMonth: number;
+                            savingsVsPreviousMonth: number | null;
+                            expensesVsPreviousMonth: number | null;
+                            currentSavings: number;
+                            previousSavings: number;
+                            currentExpenses: number;
+                            previousExpenses: number;
                         };
                         categoryGrowth: {
                             name: string;
-                            percentageChange: number;
+                            currentAmount: number;
+                            percentageChange: number | null;
+                            previousAmount: number;
                             trend: "down" | "up" | "neutral";
                         }[];
                         monthEndProjection: {
@@ -15432,26 +15648,44 @@ export declare const ApiContracts: {
                     success: import("zod").ZodLiteral<true>;
                     data: import("zod").ZodObject<{
                         monthlyComparison: import("zod").ZodObject<{
-                            savingsVsPreviousMonth: import("zod").ZodNumber;
-                            expensesVsPreviousMonth: import("zod").ZodNumber;
+                            savingsVsPreviousMonth: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            expensesVsPreviousMonth: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            currentSavings: import("zod").ZodNumber;
+                            previousSavings: import("zod").ZodNumber;
+                            currentExpenses: import("zod").ZodNumber;
+                            previousExpenses: import("zod").ZodNumber;
                         }, "strip", import("zod").ZodTypeAny, {
-                            savingsVsPreviousMonth: number;
-                            expensesVsPreviousMonth: number;
+                            savingsVsPreviousMonth: number | null;
+                            expensesVsPreviousMonth: number | null;
+                            currentSavings: number;
+                            previousSavings: number;
+                            currentExpenses: number;
+                            previousExpenses: number;
                         }, {
-                            savingsVsPreviousMonth: number;
-                            expensesVsPreviousMonth: number;
+                            savingsVsPreviousMonth: number | null;
+                            expensesVsPreviousMonth: number | null;
+                            currentSavings: number;
+                            previousSavings: number;
+                            currentExpenses: number;
+                            previousExpenses: number;
                         }>;
                         categoryGrowth: import("zod").ZodArray<import("zod").ZodObject<{
                             name: import("zod").ZodString;
-                            percentageChange: import("zod").ZodNumber;
+                            percentageChange: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            currentAmount: import("zod").ZodNumber;
+                            previousAmount: import("zod").ZodNumber;
                             trend: import("zod").ZodEnum<["up", "down", "neutral"]>;
                         }, "strip", import("zod").ZodTypeAny, {
                             name: string;
-                            percentageChange: number;
+                            currentAmount: number;
+                            percentageChange: number | null;
+                            previousAmount: number;
                             trend: "down" | "up" | "neutral";
                         }, {
                             name: string;
-                            percentageChange: number;
+                            currentAmount: number;
+                            percentageChange: number | null;
+                            previousAmount: number;
                             trend: "down" | "up" | "neutral";
                         }>, "many">;
                         monthEndProjection: import("zod").ZodObject<{
@@ -15516,12 +15750,18 @@ export declare const ApiContracts: {
                             needsSync: boolean;
                         };
                         monthlyComparison: {
-                            savingsVsPreviousMonth: number;
-                            expensesVsPreviousMonth: number;
+                            savingsVsPreviousMonth: number | null;
+                            expensesVsPreviousMonth: number | null;
+                            currentSavings: number;
+                            previousSavings: number;
+                            currentExpenses: number;
+                            previousExpenses: number;
                         };
                         categoryGrowth: {
                             name: string;
-                            percentageChange: number;
+                            currentAmount: number;
+                            percentageChange: number | null;
+                            previousAmount: number;
                             trend: "down" | "up" | "neutral";
                         }[];
                         monthEndProjection: {
@@ -15544,12 +15784,18 @@ export declare const ApiContracts: {
                             needsSync: boolean;
                         };
                         monthlyComparison: {
-                            savingsVsPreviousMonth: number;
-                            expensesVsPreviousMonth: number;
+                            savingsVsPreviousMonth: number | null;
+                            expensesVsPreviousMonth: number | null;
+                            currentSavings: number;
+                            previousSavings: number;
+                            currentExpenses: number;
+                            previousExpenses: number;
                         };
                         categoryGrowth: {
                             name: string;
-                            percentageChange: number;
+                            currentAmount: number;
+                            percentageChange: number | null;
+                            previousAmount: number;
                             trend: "down" | "up" | "neutral";
                         }[];
                         monthEndProjection: {
@@ -15576,12 +15822,18 @@ export declare const ApiContracts: {
                             needsSync: boolean;
                         };
                         monthlyComparison: {
-                            savingsVsPreviousMonth: number;
-                            expensesVsPreviousMonth: number;
+                            savingsVsPreviousMonth: number | null;
+                            expensesVsPreviousMonth: number | null;
+                            currentSavings: number;
+                            previousSavings: number;
+                            currentExpenses: number;
+                            previousExpenses: number;
                         };
                         categoryGrowth: {
                             name: string;
-                            percentageChange: number;
+                            currentAmount: number;
+                            percentageChange: number | null;
+                            previousAmount: number;
                             trend: "down" | "up" | "neutral";
                         }[];
                         monthEndProjection: {
@@ -15608,12 +15860,18 @@ export declare const ApiContracts: {
                             needsSync: boolean;
                         };
                         monthlyComparison: {
-                            savingsVsPreviousMonth: number;
-                            expensesVsPreviousMonth: number;
+                            savingsVsPreviousMonth: number | null;
+                            expensesVsPreviousMonth: number | null;
+                            currentSavings: number;
+                            previousSavings: number;
+                            currentExpenses: number;
+                            previousExpenses: number;
                         };
                         categoryGrowth: {
                             name: string;
-                            percentageChange: number;
+                            currentAmount: number;
+                            percentageChange: number | null;
+                            previousAmount: number;
                             trend: "down" | "up" | "neutral";
                         }[];
                         monthEndProjection: {
@@ -16194,7 +16452,13 @@ export declare const ApiContracts: {
             }>;
             summary: "Enqueue manual email sync";
             method: "POST";
-            body: import("zod").ZodObject<{}, "strip", import("zod").ZodTypeAny, {}, {}>;
+            body: import("zod").ZodObject<{
+                institution_key: import("zod").ZodOptional<import("zod").ZodString>;
+            }, "strip", import("zod").ZodTypeAny, {
+                institution_key?: string | undefined;
+            }, {
+                institution_key?: string | undefined;
+            }>;
             path: "/api/email-ingestion/connections/:connectionUuid/sync";
             responses: {
                 200: import("zod").ZodObject<{
@@ -16206,6 +16470,19 @@ export declare const ApiContracts: {
                 }, {
                     enqueued: true;
                     job_uuid: string;
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
                 }>;
                 401: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -16745,6 +17022,73 @@ export declare const ApiContracts: {
                         account_last4: string;
                         product_type?: unknown;
                     }[];
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+        unlinkAccounts: {
+            strictStatusCodes: true;
+            summary: "Unlink connected user products and restore matching email events as discovered";
+            method: "POST";
+            body: import("zod").ZodObject<{
+                product_uuids: import("zod").ZodArray<import("zod").ZodString, "many">;
+            }, "strip", import("zod").ZodTypeAny, {
+                product_uuids: string[];
+            }, {
+                product_uuids: string[];
+            }>;
+            path: "/api/email-ingestion/unlink-accounts";
+            responses: {
+                200: import("zod").ZodObject<{
+                    requested: import("zod").ZodNumber;
+                    unlinked: import("zod").ZodNumber;
+                    failed_uuids: import("zod").ZodArray<import("zod").ZodString, "many">;
+                }, "strip", import("zod").ZodTypeAny, {
+                    requested: number;
+                    unlinked: number;
+                    failed_uuids: string[];
+                }, {
+                    requested: number;
+                    unlinked: number;
+                    failed_uuids: string[];
                 }>;
                 400: import("zod").ZodObject<{
                     message: import("zod").ZodString;

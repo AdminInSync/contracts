@@ -145,3 +145,11 @@ export const LinkAccountsResponseSchema = z.object({
         account_last4: z.string().length(4),
     })),
 });
+export const UnlinkAccountsBodySchema = z.object({
+    product_uuids: z.array(z.string().uuid()).min(1).max(50),
+});
+export const UnlinkAccountsResponseSchema = z.object({
+    requested: z.number().int().nonnegative(),
+    unlinked: z.number().int().nonnegative(),
+    failed_uuids: z.array(z.string().uuid()),
+});

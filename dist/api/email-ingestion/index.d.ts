@@ -348,7 +348,13 @@ export declare const EmailIngestionContracts: {
         }>;
         summary: "Enqueue manual email sync";
         method: "POST";
-        body: z.ZodObject<{}, "strip", z.ZodTypeAny, {}, {}>;
+        body: z.ZodObject<{
+            institution_key: z.ZodOptional<z.ZodString>;
+        }, "strip", z.ZodTypeAny, {
+            institution_key?: string | undefined;
+        }, {
+            institution_key?: string | undefined;
+        }>;
         path: "/email-ingestion/connections/:connectionUuid/sync";
         responses: {
             200: z.ZodObject<{
@@ -360,6 +366,19 @@ export declare const EmailIngestionContracts: {
             }, {
                 enqueued: true;
                 job_uuid: string;
+            }>;
+            400: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
             }>;
             401: z.ZodObject<{
                 message: z.ZodString;
@@ -899,6 +918,73 @@ export declare const EmailIngestionContracts: {
                     account_last4: string;
                     product_type?: unknown;
                 }[];
+            }>;
+            400: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+        strictStatusCodes: true;
+    };
+    unlinkAccounts: {
+        summary: "Unlink connected user products and restore matching email events as discovered";
+        method: "POST";
+        body: z.ZodObject<{
+            product_uuids: z.ZodArray<z.ZodString, "many">;
+        }, "strip", z.ZodTypeAny, {
+            product_uuids: string[];
+        }, {
+            product_uuids: string[];
+        }>;
+        path: "/email-ingestion/unlink-accounts";
+        responses: {
+            200: z.ZodObject<{
+                requested: z.ZodNumber;
+                unlinked: z.ZodNumber;
+                failed_uuids: z.ZodArray<z.ZodString, "many">;
+            }, "strip", z.ZodTypeAny, {
+                requested: number;
+                unlinked: number;
+                failed_uuids: string[];
+            }, {
+                requested: number;
+                unlinked: number;
+                failed_uuids: string[];
             }>;
             400: z.ZodObject<{
                 message: z.ZodString;

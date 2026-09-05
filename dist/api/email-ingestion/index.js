@@ -1,7 +1,7 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
-import { OAuthStartResponseSchema, ListEmailConnectionsResponseSchema, DisconnectEmailConnectionResponseSchema, SyncEmailConnectionResponseSchema, ListFinancialEmailEventsResponseSchema, FinancialEmailEventStatusSchema, EmailSyncStatusResponseSchema, ListDiscoveredAccountsResponseSchema, LinkAccountsBodySchema, LinkAccountsResponseSchema, ApproveFinancialEmailEventBodySchema, ApproveFinancialEmailEventResponseSchema, RejectFinancialEmailEventBodySchema, RejectFinancialEmailEventResponseSchema, } from './email-ingestion.schema';
+import { OAuthStartResponseSchema, ListEmailConnectionsResponseSchema, DisconnectEmailConnectionResponseSchema, SyncEmailConnectionResponseSchema, ListFinancialEmailEventsResponseSchema, FinancialEmailEventStatusSchema, EmailSyncStatusResponseSchema, ListDiscoveredAccountsResponseSchema, LinkAccountsBodySchema, LinkAccountsResponseSchema, UnlinkAccountsBodySchema, UnlinkAccountsResponseSchema, ApproveFinancialEmailEventBodySchema, ApproveFinancialEmailEventResponseSchema, RejectFinancialEmailEventBodySchema, RejectFinancialEmailEventResponseSchema, } from './email-ingestion.schema';
 const c = initContract();
 export const EmailIngestionContracts = c.router({
     gmailOAuthStart: {
@@ -80,9 +80,12 @@ export const EmailIngestionContracts = c.router({
         method: 'POST',
         path: '/connections/:connectionUuid/sync',
         pathParams: z.object({ connectionUuid: z.string().uuid() }),
-        body: z.object({}),
+        body: z.object({
+            institution_key: z.string().min(1).optional(),
+        }),
         responses: {
             200: SyncEmailConnectionResponseSchema,
+            400: ErrorResSchema,
             401: ErrorResSchema,
             404: ErrorResSchema,
             500: ErrorResSchema,
@@ -137,6 +140,18 @@ export const EmailIngestionContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'Link discovered accounts for monitoring and backfill matching events',
+    },
+    unlinkAccounts: {
+        method: 'POST',
+        path: '/unlink-accounts',
+        body: UnlinkAccountsBodySchema,
+        responses: {
+            200: UnlinkAccountsResponseSchema,
+            400: ErrorResSchema,
+            401: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        summary: 'Unlink connected user products and restore matching email events as discovered',
     },
     approveEvent: {
         method: 'POST',

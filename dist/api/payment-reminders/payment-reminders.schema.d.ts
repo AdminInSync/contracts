@@ -4,6 +4,7 @@ export declare const ReminderStatusSchema: z.ZodEnum<["pending", "sent", "acknow
 export declare const PriorityLevelSchema: z.ZodEnum<["low", "medium", "high", "urgent"]>;
 export declare const PaymentReminderSchema: z.ZodObject<{
     id: z.ZodNumber;
+    series_id: z.ZodNumber;
     uuid: z.ZodString;
     user_uid: z.ZodString;
     user_connection_id: z.ZodNullable<z.ZodNumber>;
@@ -35,6 +36,7 @@ export declare const PaymentReminderSchema: z.ZodObject<{
     priority: "low" | "medium" | "high" | "urgent" | null;
     deleted_at: string | null;
     amount: number | null;
+    series_id: number;
     user_connection_id: number | null;
     title: string;
     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -56,6 +58,7 @@ export declare const PaymentReminderSchema: z.ZodObject<{
     priority: "low" | "medium" | "high" | "urgent" | null;
     deleted_at: string | null;
     amount: number | null;
+    series_id: number;
     user_connection_id: number | null;
     title: string;
     reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -164,6 +167,8 @@ export declare const GetPaymentRemindersQuerySchema: z.ZodObject<{
     priority: z.ZodOptional<z.ZodEnum<["low", "medium", "high", "urgent"]>>;
     is_recurring: z.ZodOptional<z.ZodBoolean>;
     search: z.ZodOptional<z.ZodString>;
+    from: z.ZodOptional<z.ZodString>;
+    to: z.ZodOptional<z.ZodString>;
     limit: z.ZodDefault<z.ZodNumber>;
     offset: z.ZodDefault<z.ZodNumber>;
 }, "strip", z.ZodTypeAny, {
@@ -171,6 +176,8 @@ export declare const GetPaymentRemindersQuerySchema: z.ZodObject<{
     offset: number;
     search?: string | undefined;
     priority?: "low" | "medium" | "high" | "urgent" | undefined;
+    from?: string | undefined;
+    to?: string | undefined;
     reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
     reminder_status?: "pending" | "completed" | "sent" | "acknowledged" | "overdue" | undefined;
     is_recurring?: boolean | undefined;
@@ -179,6 +186,8 @@ export declare const GetPaymentRemindersQuerySchema: z.ZodObject<{
     search?: string | undefined;
     priority?: "low" | "medium" | "high" | "urgent" | undefined;
     offset?: number | undefined;
+    from?: string | undefined;
+    to?: string | undefined;
     reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
     reminder_status?: "pending" | "completed" | "sent" | "acknowledged" | "overdue" | undefined;
     is_recurring?: boolean | undefined;
@@ -187,6 +196,7 @@ export declare const PaymentReminderResponseSchema: z.ZodObject<{
     message: z.ZodString;
     data: z.ZodObject<{
         id: z.ZodNumber;
+        series_id: z.ZodNumber;
         uuid: z.ZodString;
         user_uid: z.ZodString;
         user_connection_id: z.ZodNullable<z.ZodNumber>;
@@ -218,6 +228,7 @@ export declare const PaymentReminderResponseSchema: z.ZodObject<{
         priority: "low" | "medium" | "high" | "urgent" | null;
         deleted_at: string | null;
         amount: number | null;
+        series_id: number;
         user_connection_id: number | null;
         title: string;
         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -239,6 +250,7 @@ export declare const PaymentReminderResponseSchema: z.ZodObject<{
         priority: "low" | "medium" | "high" | "urgent" | null;
         deleted_at: string | null;
         amount: number | null;
+        series_id: number;
         user_connection_id: number | null;
         title: string;
         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -263,6 +275,7 @@ export declare const PaymentReminderResponseSchema: z.ZodObject<{
         priority: "low" | "medium" | "high" | "urgent" | null;
         deleted_at: string | null;
         amount: number | null;
+        series_id: number;
         user_connection_id: number | null;
         title: string;
         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -287,6 +300,7 @@ export declare const PaymentReminderResponseSchema: z.ZodObject<{
         priority: "low" | "medium" | "high" | "urgent" | null;
         deleted_at: string | null;
         amount: number | null;
+        series_id: number;
         user_connection_id: number | null;
         title: string;
         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -302,6 +316,7 @@ export declare const PaymentRemindersListResponseSchema: z.ZodObject<{
     message: z.ZodString;
     data: z.ZodArray<z.ZodObject<{
         id: z.ZodNumber;
+        series_id: z.ZodNumber;
         uuid: z.ZodString;
         user_uid: z.ZodString;
         user_connection_id: z.ZodNullable<z.ZodNumber>;
@@ -333,6 +348,7 @@ export declare const PaymentRemindersListResponseSchema: z.ZodObject<{
         priority: "low" | "medium" | "high" | "urgent" | null;
         deleted_at: string | null;
         amount: number | null;
+        series_id: number;
         user_connection_id: number | null;
         title: string;
         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -354,6 +370,7 @@ export declare const PaymentRemindersListResponseSchema: z.ZodObject<{
         priority: "low" | "medium" | "high" | "urgent" | null;
         deleted_at: string | null;
         amount: number | null;
+        series_id: number;
         user_connection_id: number | null;
         title: string;
         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -391,6 +408,7 @@ export declare const PaymentRemindersListResponseSchema: z.ZodObject<{
         priority: "low" | "medium" | "high" | "urgent" | null;
         deleted_at: string | null;
         amount: number | null;
+        series_id: number;
         user_connection_id: number | null;
         title: string;
         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -420,6 +438,7 @@ export declare const PaymentRemindersListResponseSchema: z.ZodObject<{
         priority: "low" | "medium" | "high" | "urgent" | null;
         deleted_at: string | null;
         amount: number | null;
+        series_id: number;
         user_connection_id: number | null;
         title: string;
         reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
@@ -435,4 +454,105 @@ export declare const PaymentRemindersListResponseSchema: z.ZodObject<{
         total: number;
         offset: number;
     } | undefined;
+}>;
+export declare const ReminderNotificationPhaseSchema: z.ZodEnum<["early", "due", "overdue"]>;
+export declare const SentReminderNotificationSchema: z.ZodObject<{
+    uuid: z.ZodString;
+    title: z.ZodString;
+    phase: z.ZodEnum<["early", "due", "overdue"]>;
+    due_date: z.ZodString;
+    sent_at: z.ZodString;
+    payment_reminder_id: z.ZodNumber;
+}, "strip", z.ZodTypeAny, {
+    uuid: string;
+    title: string;
+    due_date: string;
+    phase: "overdue" | "early" | "due";
+    sent_at: string;
+    payment_reminder_id: number;
+}, {
+    uuid: string;
+    title: string;
+    due_date: string;
+    phase: "overdue" | "early" | "due";
+    sent_at: string;
+    payment_reminder_id: number;
+}>;
+export declare const GetSentReminderNotificationsQuerySchema: z.ZodObject<{
+    limit: z.ZodDefault<z.ZodNumber>;
+    offset: z.ZodDefault<z.ZodNumber>;
+}, "strip", z.ZodTypeAny, {
+    limit: number;
+    offset: number;
+}, {
+    limit?: number | undefined;
+    offset?: number | undefined;
+}>;
+export declare const SentReminderNotificationsListResponseSchema: z.ZodObject<{
+    message: z.ZodString;
+    data: z.ZodArray<z.ZodObject<{
+        uuid: z.ZodString;
+        title: z.ZodString;
+        phase: z.ZodEnum<["early", "due", "overdue"]>;
+        due_date: z.ZodString;
+        sent_at: z.ZodString;
+        payment_reminder_id: z.ZodNumber;
+    }, "strip", z.ZodTypeAny, {
+        uuid: string;
+        title: string;
+        due_date: string;
+        phase: "overdue" | "early" | "due";
+        sent_at: string;
+        payment_reminder_id: number;
+    }, {
+        uuid: string;
+        title: string;
+        due_date: string;
+        phase: "overdue" | "early" | "due";
+        sent_at: string;
+        payment_reminder_id: number;
+    }>, "many">;
+    pagination: z.ZodObject<{
+        total: z.ZodNumber;
+        limit: z.ZodNumber;
+        offset: z.ZodNumber;
+    }, "strip", z.ZodTypeAny, {
+        limit: number;
+        total: number;
+        offset: number;
+    }, {
+        limit: number;
+        total: number;
+        offset: number;
+    }>;
+}, "strip", z.ZodTypeAny, {
+    message: string;
+    data: {
+        uuid: string;
+        title: string;
+        due_date: string;
+        phase: "overdue" | "early" | "due";
+        sent_at: string;
+        payment_reminder_id: number;
+    }[];
+    pagination: {
+        limit: number;
+        total: number;
+        offset: number;
+    };
+}, {
+    message: string;
+    data: {
+        uuid: string;
+        title: string;
+        due_date: string;
+        phase: "overdue" | "early" | "due";
+        sent_at: string;
+        payment_reminder_id: number;
+    }[];
+    pagination: {
+        limit: number;
+        total: number;
+        offset: number;
+    };
 }>;

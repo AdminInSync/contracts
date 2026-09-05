@@ -727,3 +727,23 @@ export declare const LinkAccountsResponseSchema: z.ZodObject<{
         product_type?: unknown;
     }[];
 }>;
+export declare const UnlinkAccountsBodySchema: z.ZodObject<{
+    product_uuids: z.ZodArray<z.ZodString, "many">;
+}, "strip", z.ZodTypeAny, {
+    product_uuids: string[];
+}, {
+    product_uuids: string[];
+}>;
+export declare const UnlinkAccountsResponseSchema: z.ZodObject<{
+    requested: z.ZodNumber;
+    unlinked: z.ZodNumber;
+    failed_uuids: z.ZodArray<z.ZodString, "many">;
+}, "strip", z.ZodTypeAny, {
+    requested: number;
+    unlinked: number;
+    failed_uuids: string[];
+}, {
+    requested: number;
+    unlinked: number;
+    failed_uuids: string[];
+}>;
