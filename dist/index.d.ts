@@ -16424,16 +16424,22 @@ export declare const apiContract: {
                 strictStatusCodes: true;
                 query: import("zod").ZodObject<{
                     code: import("zod").ZodOptional<import("zod").ZodString>;
-                    state: import("zod").ZodString;
+                    state: import("zod").ZodOptional<import("zod").ZodString>;
                     error: import("zod").ZodOptional<import("zod").ZodString>;
+                    error_description: import("zod").ZodOptional<import("zod").ZodString>;
+                    error_uri: import("zod").ZodOptional<import("zod").ZodString>;
                 }, "strip", import("zod").ZodTypeAny, {
-                    state: string;
                     error?: string | undefined;
                     code?: string | undefined;
+                    state?: string | undefined;
+                    error_description?: string | undefined;
+                    error_uri?: string | undefined;
                 }, {
-                    state: string;
                     error?: string | undefined;
                     code?: string | undefined;
+                    state?: string | undefined;
+                    error_description?: string | undefined;
+                    error_uri?: string | undefined;
                 }>;
                 summary: "Outlook OAuth callback";
                 method: "GET";

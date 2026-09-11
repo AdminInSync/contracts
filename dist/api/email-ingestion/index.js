@@ -45,8 +45,10 @@ export const EmailIngestionContracts = c.router({
         path: '/outlook/oauth/callback',
         query: z.object({
             code: z.string().optional(),
-            state: z.string(),
+            state: z.string().optional(),
             error: z.string().optional(),
+            error_description: z.string().optional(),
+            error_uri: z.string().optional(),
         }),
         responses: {
             302: z.object({ redirect: z.string().url() }).optional(),

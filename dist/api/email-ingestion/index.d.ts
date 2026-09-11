@@ -158,16 +158,22 @@ export declare const EmailIngestionContracts: {
     outlookOAuthCallback: {
         query: z.ZodObject<{
             code: z.ZodOptional<z.ZodString>;
-            state: z.ZodString;
+            state: z.ZodOptional<z.ZodString>;
             error: z.ZodOptional<z.ZodString>;
+            error_description: z.ZodOptional<z.ZodString>;
+            error_uri: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            state: string;
             error?: string | undefined;
             code?: string | undefined;
+            state?: string | undefined;
+            error_description?: string | undefined;
+            error_uri?: string | undefined;
         }, {
-            state: string;
             error?: string | undefined;
             code?: string | undefined;
+            state?: string | undefined;
+            error_description?: string | undefined;
+            error_uri?: string | undefined;
         }>;
         summary: "Outlook OAuth callback";
         method: "GET";
