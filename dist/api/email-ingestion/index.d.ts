@@ -768,6 +768,7 @@ export declare const EmailIngestionContracts: {
                     institution_logo: z.ZodNullable<z.ZodString>;
                     product_type: z.ZodString;
                     account_last4: z.ZodString;
+                    card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
                     event_count: z.ZodNumber;
                     latest_at: z.ZodNullable<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
@@ -775,6 +776,7 @@ export declare const EmailIngestionContracts: {
                     institution_id: number | null;
                     institution_name: string | null;
                     institution_logo: string | null;
+                    card_brand: "visa" | "mastercard" | "amex" | null;
                     account_last4: string;
                     event_count: number;
                     latest_at: string | null;
@@ -783,6 +785,7 @@ export declare const EmailIngestionContracts: {
                     institution_id: number | null;
                     institution_name: string | null;
                     institution_logo: string | null;
+                    card_brand: "visa" | "mastercard" | "amex" | null;
                     account_last4: string;
                     event_count: number;
                     latest_at: string | null;
@@ -793,6 +796,7 @@ export declare const EmailIngestionContracts: {
                     institution_id: number | null;
                     institution_name: string | null;
                     institution_logo: string | null;
+                    card_brand: "visa" | "mastercard" | "amex" | null;
                     account_last4: string;
                     event_count: number;
                     latest_at: string | null;
@@ -803,6 +807,7 @@ export declare const EmailIngestionContracts: {
                     institution_id: number | null;
                     institution_name: string | null;
                     institution_logo: string | null;
+                    card_brand: "visa" | "mastercard" | "amex" | null;
                     account_last4: string;
                     event_count: number;
                     latest_at: string | null;
@@ -844,25 +849,47 @@ export declare const EmailIngestionContracts: {
             accounts: z.ZodArray<z.ZodObject<{
                 institution_id: z.ZodNumber;
                 institution_name: z.ZodString;
-                product_type: z.ZodEffects<z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
+                product_type: z.ZodEffects<z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
                 account_last4: z.ZodPipeline<z.ZodEffects<z.ZodString, string, string>, z.ZodString>;
+                linked_account: z.ZodOptional<z.ZodNullable<z.ZodObject<{
+                    product_type: z.ZodEnum<["savings_account", "checking_account"]>;
+                    account_last4: z.ZodPipeline<z.ZodEffects<z.ZodString, string, string>, z.ZodString>;
+                }, "strip", z.ZodTypeAny, {
+                    product_type: "savings_account" | "checking_account";
+                    account_last4: string;
+                }, {
+                    product_type: "savings_account" | "checking_account";
+                    account_last4: string;
+                }>>>;
             }, "strip", z.ZodTypeAny, {
-                product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                 institution_id: number;
                 institution_name: string;
                 account_last4: string;
+                linked_account?: {
+                    product_type: "savings_account" | "checking_account";
+                    account_last4: string;
+                } | null | undefined;
             }, {
                 institution_id: number;
                 institution_name: string;
                 account_last4: string;
                 product_type?: unknown;
+                linked_account?: {
+                    product_type: "savings_account" | "checking_account";
+                    account_last4: string;
+                } | null | undefined;
             }>, "many">;
         }, "strip", z.ZodTypeAny, {
             accounts: {
-                product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                 institution_id: number;
                 institution_name: string;
                 account_last4: string;
+                linked_account?: {
+                    product_type: "savings_account" | "checking_account";
+                    account_last4: string;
+                } | null | undefined;
             }[];
         }, {
             accounts: {
@@ -870,6 +897,10 @@ export declare const EmailIngestionContracts: {
                 institution_name: string;
                 account_last4: string;
                 product_type?: unknown;
+                linked_account?: {
+                    product_type: "savings_account" | "checking_account";
+                    account_last4: string;
+                } | null | undefined;
             }[];
         }>;
         path: "/email-ingestion/link-accounts";
@@ -883,10 +914,10 @@ export declare const EmailIngestionContracts: {
                 product_uuids: z.ZodArray<z.ZodString, "many">;
                 failed_accounts: z.ZodArray<z.ZodObject<{
                     institution_id: z.ZodNumber;
-                    product_type: z.ZodEffects<z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
+                    product_type: z.ZodEffects<z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
                     account_last4: z.ZodString;
                 }, "strip", z.ZodTypeAny, {
-                    product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                    product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                     institution_id: number;
                     account_last4: string;
                 }, {
@@ -902,7 +933,7 @@ export declare const EmailIngestionContracts: {
                 backfill_pending: boolean;
                 product_uuids: string[];
                 failed_accounts: {
-                    product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                    product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                     institution_id: number;
                     account_last4: string;
                 }[];

@@ -35,6 +35,28 @@ export declare const DashboardContracts: {
                         debts: number;
                         netBalance: number;
                     }>;
+                    currencySummaries: z.ZodArray<z.ZodObject<{
+                        currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
+                        available: z.ZodNumber;
+                        income: z.ZodNumber;
+                        expenses: z.ZodNumber;
+                        debts: z.ZodNumber;
+                        netBalance: z.ZodNumber;
+                    }, "strip", z.ZodTypeAny, {
+                        currency: "DOP" | "USD" | "EUR";
+                        available: number;
+                        income: number;
+                        expenses: number;
+                        debts: number;
+                        netBalance: number;
+                    }, {
+                        currency: "DOP" | "USD" | "EUR";
+                        available: number;
+                        income: number;
+                        expenses: number;
+                        debts: number;
+                        netBalance: number;
+                    }>, "many">;
                     budgets: z.ZodObject<{
                         overview: z.ZodObject<{
                             total: z.ZodNumber;
@@ -267,6 +289,7 @@ export declare const DashboardContracts: {
                         id: z.ZodString;
                         description: z.ZodString;
                         amount: z.ZodNumber;
+                        currency: z.ZodString;
                         type: z.ZodEnum<["income", "expense"]>;
                         date: z.ZodDate;
                         status: z.ZodString;
@@ -276,6 +299,7 @@ export declare const DashboardContracts: {
                         id: string;
                         date: Date;
                         description: string;
+                        currency: string;
                         amount: number;
                     }, {
                         type: "income" | "expense";
@@ -283,6 +307,7 @@ export declare const DashboardContracts: {
                         id: string;
                         date: Date;
                         description: string;
+                        currency: string;
                         amount: number;
                     }>, "many">;
                     upcomingEvents: z.ZodArray<z.ZodObject<{
@@ -362,6 +387,14 @@ export declare const DashboardContracts: {
                         debts: number;
                         netBalance: number;
                     };
+                    currencySummaries: {
+                        currency: "DOP" | "USD" | "EUR";
+                        available: number;
+                        income: number;
+                        expenses: number;
+                        debts: number;
+                        netBalance: number;
+                    }[];
                     savingGoals: {
                         id: number;
                         name: string;
@@ -402,6 +435,7 @@ export declare const DashboardContracts: {
                         id: string;
                         date: Date;
                         description: string;
+                        currency: string;
                         amount: number;
                     }[];
                     upcomingEvents: {
@@ -453,6 +487,14 @@ export declare const DashboardContracts: {
                         debts: number;
                         netBalance: number;
                     };
+                    currencySummaries: {
+                        currency: "DOP" | "USD" | "EUR";
+                        available: number;
+                        income: number;
+                        expenses: number;
+                        debts: number;
+                        netBalance: number;
+                    }[];
                     savingGoals: {
                         id: number;
                         name: string;
@@ -493,6 +535,7 @@ export declare const DashboardContracts: {
                         id: string;
                         date: Date;
                         description: string;
+                        currency: string;
                         amount: number;
                     }[];
                     upcomingEvents: {
@@ -548,6 +591,14 @@ export declare const DashboardContracts: {
                         debts: number;
                         netBalance: number;
                     };
+                    currencySummaries: {
+                        currency: "DOP" | "USD" | "EUR";
+                        available: number;
+                        income: number;
+                        expenses: number;
+                        debts: number;
+                        netBalance: number;
+                    }[];
                     savingGoals: {
                         id: number;
                         name: string;
@@ -588,6 +639,7 @@ export declare const DashboardContracts: {
                         id: string;
                         date: Date;
                         description: string;
+                        currency: string;
                         amount: number;
                     }[];
                     upcomingEvents: {
@@ -643,6 +695,14 @@ export declare const DashboardContracts: {
                         debts: number;
                         netBalance: number;
                     };
+                    currencySummaries: {
+                        currency: "DOP" | "USD" | "EUR";
+                        available: number;
+                        income: number;
+                        expenses: number;
+                        debts: number;
+                        netBalance: number;
+                    }[];
                     savingGoals: {
                         id: number;
                         name: string;
@@ -683,6 +743,7 @@ export declare const DashboardContracts: {
                         id: string;
                         date: Date;
                         description: string;
+                        currency: string;
                         amount: number;
                     }[];
                     upcomingEvents: {
@@ -914,6 +975,28 @@ export declare const DashboardContracts: {
                         debts: number;
                         netBalance: number;
                     }>;
+                    currencySummaries: z.ZodArray<z.ZodObject<{
+                        currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
+                        available: z.ZodNumber;
+                        income: z.ZodNumber;
+                        expenses: z.ZodNumber;
+                        debts: z.ZodNumber;
+                        netBalance: z.ZodNumber;
+                    }, "strip", z.ZodTypeAny, {
+                        currency: "DOP" | "USD" | "EUR";
+                        available: number;
+                        income: number;
+                        expenses: number;
+                        debts: number;
+                        netBalance: number;
+                    }, {
+                        currency: "DOP" | "USD" | "EUR";
+                        available: number;
+                        income: number;
+                        expenses: number;
+                        debts: number;
+                        netBalance: number;
+                    }>, "many">;
                     budgets: z.ZodObject<{
                         overview: z.ZodObject<{
                             total: z.ZodNumber;
@@ -1146,6 +1229,7 @@ export declare const DashboardContracts: {
                         id: z.ZodString;
                         description: z.ZodString;
                         amount: z.ZodNumber;
+                        currency: z.ZodString;
                         type: z.ZodEnum<["income", "expense"]>;
                         date: z.ZodDate;
                         status: z.ZodString;
@@ -1155,6 +1239,7 @@ export declare const DashboardContracts: {
                         id: string;
                         date: Date;
                         description: string;
+                        currency: string;
                         amount: number;
                     }, {
                         type: "income" | "expense";
@@ -1162,6 +1247,7 @@ export declare const DashboardContracts: {
                         id: string;
                         date: Date;
                         description: string;
+                        currency: string;
                         amount: number;
                     }>, "many">;
                     upcomingEvents: z.ZodArray<z.ZodObject<{
@@ -1241,6 +1327,14 @@ export declare const DashboardContracts: {
                         debts: number;
                         netBalance: number;
                     };
+                    currencySummaries: {
+                        currency: "DOP" | "USD" | "EUR";
+                        available: number;
+                        income: number;
+                        expenses: number;
+                        debts: number;
+                        netBalance: number;
+                    }[];
                     savingGoals: {
                         id: number;
                         name: string;
@@ -1281,6 +1375,7 @@ export declare const DashboardContracts: {
                         id: string;
                         date: Date;
                         description: string;
+                        currency: string;
                         amount: number;
                     }[];
                     upcomingEvents: {
@@ -1332,6 +1427,14 @@ export declare const DashboardContracts: {
                         debts: number;
                         netBalance: number;
                     };
+                    currencySummaries: {
+                        currency: "DOP" | "USD" | "EUR";
+                        available: number;
+                        income: number;
+                        expenses: number;
+                        debts: number;
+                        netBalance: number;
+                    }[];
                     savingGoals: {
                         id: number;
                         name: string;
@@ -1372,6 +1475,7 @@ export declare const DashboardContracts: {
                         id: string;
                         date: Date;
                         description: string;
+                        currency: string;
                         amount: number;
                     }[];
                     upcomingEvents: {
@@ -1427,6 +1531,14 @@ export declare const DashboardContracts: {
                         debts: number;
                         netBalance: number;
                     };
+                    currencySummaries: {
+                        currency: "DOP" | "USD" | "EUR";
+                        available: number;
+                        income: number;
+                        expenses: number;
+                        debts: number;
+                        netBalance: number;
+                    }[];
                     savingGoals: {
                         id: number;
                         name: string;
@@ -1467,6 +1579,7 @@ export declare const DashboardContracts: {
                         id: string;
                         date: Date;
                         description: string;
+                        currency: string;
                         amount: number;
                     }[];
                     upcomingEvents: {
@@ -1522,6 +1635,14 @@ export declare const DashboardContracts: {
                         debts: number;
                         netBalance: number;
                     };
+                    currencySummaries: {
+                        currency: "DOP" | "USD" | "EUR";
+                        available: number;
+                        income: number;
+                        expenses: number;
+                        debts: number;
+                        netBalance: number;
+                    }[];
                     savingGoals: {
                         id: number;
                         name: string;
@@ -1562,6 +1683,7 @@ export declare const DashboardContracts: {
                         id: string;
                         date: Date;
                         description: string;
+                        currency: string;
                         amount: number;
                     }[];
                     upcomingEvents: {

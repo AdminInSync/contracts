@@ -99,8 +99,15 @@ export declare const ExpenseAnalysisResponseSchema: z.ZodObject<{
 }>;
 export declare const ReportsContracts: {
     getReports: {
+        query: z.ZodObject<{
+            currency: z.ZodOptional<z.ZodEnum<["DOP", "USD", "EUR"]>>;
+        }, "strip", z.ZodTypeAny, {
+            currency?: "DOP" | "USD" | "EUR" | undefined;
+        }, {
+            currency?: "DOP" | "USD" | "EUR" | undefined;
+        }>;
         summary: "Get full financial reports";
-        description: "Returns financial summary, monthly trend, and expense distribution";
+        description: "Returns financial summary, monthly trend, and expense distribution. Optional currency limits totals to DOP, USD, or EUR.";
         method: "GET";
         path: "/reports";
         responses: {

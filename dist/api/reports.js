@@ -64,6 +64,9 @@ export const ReportsContracts = c.router({
     getReports: {
         method: 'GET',
         path: '/reports',
+        query: z.object({
+            currency: z.enum(['DOP', 'USD', 'EUR']).optional(),
+        }),
         responses: {
             200: ReportsResponseSchemaWithMeta,
             401: z.object({
@@ -80,6 +83,6 @@ export const ReportsContracts = c.router({
             })
         },
         summary: 'Get full financial reports',
-        description: 'Returns financial summary, monthly trend, and expense distribution'
+        description: 'Returns financial summary, monthly trend, and expense distribution. Optional currency limits totals to DOP, USD, or EUR.'
     }
 });

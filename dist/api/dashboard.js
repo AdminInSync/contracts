@@ -76,9 +76,18 @@ const RecentMovementSchema = z.object({
     id: z.string(),
     description: z.string(),
     amount: z.number(),
+    currency: z.string(),
     type: z.enum(['income', 'expense']),
     date: z.date(),
     status: z.string()
+});
+const CurrencySummarySchema = z.object({
+    currency: z.enum(['DOP', 'USD', 'EUR']),
+    available: z.number(),
+    income: z.number(),
+    expenses: z.number(),
+    debts: z.number(),
+    netBalance: z.number()
 });
 const UpcomingEventSchema = z.object({
     id: z.string(),
@@ -100,6 +109,7 @@ const SyncStatusSchema = z.object({
 const DashboardDataSchema = z.object({
     balance: BalanceSchema,
     monthlySummary: MonthlySummarySchema,
+    currencySummaries: z.array(CurrencySummarySchema),
     budgets: BudgetSummarySchema,
     savingGoals: z.array(SavingGoalSchema),
     financialIndicators: FinancialIndicatorsSchema,

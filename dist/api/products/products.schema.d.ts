@@ -1,12 +1,12 @@
 import { z } from 'zod';
-export declare const ProductTypeSchema: z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+export declare const ProductTypeSchema: z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
 export declare const CreditScoreRequirementSchema: z.ZodEnum<["excellent", "good", "fair", "poor"]>;
 export declare const ConnectedProductTypeSchema: z.ZodEnum<["accounts", "cards", "loans", "financial-certificate"]>;
 export declare const FinancialProductSchema: z.ZodObject<{
     id: z.ZodNumber;
     uuid: z.ZodString;
     name: z.ZodString;
-    product_type: z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+    product_type: z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
     institution_id: z.ZodNumber;
     institution_name: z.ZodString;
     interest_rate: z.ZodNullable<z.ZodNumber>;
@@ -49,7 +49,7 @@ export declare const FinancialProductSchema: z.ZodObject<{
     name: string;
     currency: string | null;
     deleted_at: string | null;
-    product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+    product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
     institution_id: number;
     institution_name: string;
     interest_rate: number | null;
@@ -77,7 +77,7 @@ export declare const FinancialProductSchema: z.ZodObject<{
     name: string;
     currency: string | null;
     deleted_at: string | null;
-    product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+    product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
     institution_id: number;
     institution_name: string;
     interest_rate: number | null;
@@ -99,7 +99,7 @@ export declare const FinancialProductSchema: z.ZodObject<{
 }>;
 export declare const CreateProductSchema: z.ZodObject<{
     name: z.ZodString;
-    product_type: z.ZodOptional<z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
+    product_type: z.ZodOptional<z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
     institution_id: z.ZodNumber;
     interest_rate: z.ZodOptional<z.ZodNumber>;
     annual_fee: z.ZodOptional<z.ZodNumber>;
@@ -118,7 +118,7 @@ export declare const CreateProductSchema: z.ZodObject<{
     institution_id: number;
     is_active?: boolean | undefined;
     currency?: string | undefined;
-    product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
+    product_type?: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
     interest_rate?: number | undefined;
     annual_fee?: number | undefined;
     minimum_balance?: number | undefined;
@@ -134,7 +134,7 @@ export declare const CreateProductSchema: z.ZodObject<{
     institution_id: number;
     is_active?: boolean | undefined;
     currency?: string | undefined;
-    product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
+    product_type?: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
     interest_rate?: number | undefined;
     annual_fee?: number | undefined;
     minimum_balance?: number | undefined;
@@ -148,7 +148,7 @@ export declare const CreateProductSchema: z.ZodObject<{
 }>;
 export declare const UpdateProductSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
-    product_type: z.ZodOptional<z.ZodOptional<z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>>;
+    product_type: z.ZodOptional<z.ZodOptional<z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>>;
     institution_id: z.ZodOptional<z.ZodNumber>;
     interest_rate: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
     annual_fee: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
@@ -166,7 +166,7 @@ export declare const UpdateProductSchema: z.ZodObject<{
     is_active?: boolean | undefined;
     name?: string | undefined;
     currency?: string | undefined;
-    product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
+    product_type?: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
     institution_id?: number | undefined;
     interest_rate?: number | undefined;
     annual_fee?: number | undefined;
@@ -182,7 +182,7 @@ export declare const UpdateProductSchema: z.ZodObject<{
     is_active?: boolean | undefined;
     name?: string | undefined;
     currency?: string | undefined;
-    product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
+    product_type?: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
     institution_id?: number | undefined;
     interest_rate?: number | undefined;
     annual_fee?: number | undefined;
@@ -196,7 +196,7 @@ export declare const UpdateProductSchema: z.ZodObject<{
     valid_until?: string | undefined;
 }>;
 export declare const GetProductsQuerySchema: z.ZodObject<{
-    product_type: z.ZodOptional<z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
+    product_type: z.ZodOptional<z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
     institution_id: z.ZodOptional<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
     credit_score_requirement: z.ZodOptional<z.ZodEnum<["excellent", "good", "fair", "poor"]>>;
     is_spotlight: z.ZodOptional<z.ZodPipeline<z.ZodEffects<z.ZodString, boolean, string>, z.ZodBoolean>>;
@@ -207,7 +207,7 @@ export declare const GetProductsQuerySchema: z.ZodObject<{
     limit: number;
     offset: number;
     search?: string | undefined;
-    product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
+    product_type?: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
     institution_id?: number | undefined;
     credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
     is_spotlight?: boolean | undefined;
@@ -215,7 +215,7 @@ export declare const GetProductsQuerySchema: z.ZodObject<{
     limit?: string | undefined;
     search?: string | undefined;
     offset?: string | undefined;
-    product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
+    product_type?: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
     institution_id?: string | undefined;
     credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
     is_spotlight?: string | undefined;
@@ -226,7 +226,7 @@ export declare const ProductResponseSchema: z.ZodObject<{
         id: z.ZodNumber;
         uuid: z.ZodString;
         name: z.ZodString;
-        product_type: z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+        product_type: z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
         institution_id: z.ZodNumber;
         institution_name: z.ZodString;
         interest_rate: z.ZodNullable<z.ZodNumber>;
@@ -269,7 +269,7 @@ export declare const ProductResponseSchema: z.ZodObject<{
         name: string;
         currency: string | null;
         deleted_at: string | null;
-        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
         institution_id: number;
         institution_name: string;
         interest_rate: number | null;
@@ -297,7 +297,7 @@ export declare const ProductResponseSchema: z.ZodObject<{
         name: string;
         currency: string | null;
         deleted_at: string | null;
-        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
         institution_id: number;
         institution_name: string;
         interest_rate: number | null;
@@ -328,7 +328,7 @@ export declare const ProductResponseSchema: z.ZodObject<{
         name: string;
         currency: string | null;
         deleted_at: string | null;
-        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
         institution_id: number;
         institution_name: string;
         interest_rate: number | null;
@@ -359,7 +359,7 @@ export declare const ProductResponseSchema: z.ZodObject<{
         name: string;
         currency: string | null;
         deleted_at: string | null;
-        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
         institution_id: number;
         institution_name: string;
         interest_rate: number | null;
@@ -386,7 +386,7 @@ export declare const ProductsListResponseSchema: z.ZodObject<{
         id: z.ZodNumber;
         uuid: z.ZodString;
         name: z.ZodString;
-        product_type: z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+        product_type: z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
         institution_id: z.ZodNumber;
         institution_name: z.ZodString;
         interest_rate: z.ZodNullable<z.ZodNumber>;
@@ -429,7 +429,7 @@ export declare const ProductsListResponseSchema: z.ZodObject<{
         name: string;
         currency: string | null;
         deleted_at: string | null;
-        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
         institution_id: number;
         institution_name: string;
         interest_rate: number | null;
@@ -457,7 +457,7 @@ export declare const ProductsListResponseSchema: z.ZodObject<{
         name: string;
         currency: string | null;
         deleted_at: string | null;
-        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
         institution_id: number;
         institution_name: string;
         interest_rate: number | null;
@@ -501,7 +501,7 @@ export declare const ProductsListResponseSchema: z.ZodObject<{
         name: string;
         currency: string | null;
         deleted_at: string | null;
-        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
         institution_id: number;
         institution_name: string;
         interest_rate: number | null;
@@ -537,7 +537,7 @@ export declare const ProductsListResponseSchema: z.ZodObject<{
         name: string;
         currency: string | null;
         deleted_at: string | null;
-        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
         institution_id: number;
         institution_name: string;
         interest_rate: number | null;
@@ -614,6 +614,7 @@ export declare const ConnectedProductMetadataSchema: z.ZodObject<{
     accumulated_gain: number | null;
 }>;
 export declare const ProductKindSchema: z.ZodEnum<["debit", "credit"]>;
+export declare const CardBrandSchema: z.ZodEnum<["visa", "mastercard", "amex"]>;
 export declare const ConnectedProductSchema: z.ZodObject<{
     id: z.ZodString;
     type: z.ZodString;
@@ -623,6 +624,8 @@ export declare const ConnectedProductSchema: z.ZodObject<{
     product_kind: z.ZodEnum<["debit", "credit"]>;
     product_label: z.ZodString;
     lastFour: z.ZodString;
+    card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
+    linked_account_id: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     balance: z.ZodObject<{
         current: z.ZodNumber;
         available: z.ZodNumber;
@@ -699,6 +702,7 @@ export declare const ConnectedProductSchema: z.ZodObject<{
     product_kind: "debit" | "credit";
     product_label: string;
     lastFour: string;
+    card_brand: "visa" | "mastercard" | "amex" | null;
     balance: {
         limit: number | null;
         current: number;
@@ -706,6 +710,7 @@ export declare const ConnectedProductSchema: z.ZodObject<{
     };
     percentage_change: string;
     income: number;
+    linked_account_id?: string | null | undefined;
 }, {
     type: string;
     id: string;
@@ -729,6 +734,7 @@ export declare const ConnectedProductSchema: z.ZodObject<{
     product_kind: "debit" | "credit";
     product_label: string;
     lastFour: string;
+    card_brand: "visa" | "mastercard" | "amex" | null;
     balance: {
         limit: number | null;
         current: number;
@@ -736,6 +742,7 @@ export declare const ConnectedProductSchema: z.ZodObject<{
     };
     percentage_change: string;
     income: number;
+    linked_account_id?: string | null | undefined;
 }>;
 export declare const ConnectedProductsSummarySchema: z.ZodObject<{
     pending_balance: z.ZodOptional<z.ZodNumber>;
@@ -797,6 +804,8 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         product_kind: z.ZodEnum<["debit", "credit"]>;
         product_label: z.ZodString;
         lastFour: z.ZodString;
+        card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
+        linked_account_id: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         balance: z.ZodObject<{
             current: z.ZodNumber;
             available: z.ZodNumber;
@@ -873,6 +882,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         product_kind: "debit" | "credit";
         product_label: string;
         lastFour: string;
+        card_brand: "visa" | "mastercard" | "amex" | null;
         balance: {
             limit: number | null;
             current: number;
@@ -880,6 +890,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         };
         percentage_change: string;
         income: number;
+        linked_account_id?: string | null | undefined;
     }, {
         type: string;
         id: string;
@@ -903,6 +914,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         product_kind: "debit" | "credit";
         product_label: string;
         lastFour: string;
+        card_brand: "visa" | "mastercard" | "amex" | null;
         balance: {
             limit: number | null;
             current: number;
@@ -910,6 +922,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         };
         percentage_change: string;
         income: number;
+        linked_account_id?: string | null | undefined;
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
     products: {
@@ -935,6 +948,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         product_kind: "debit" | "credit";
         product_label: string;
         lastFour: string;
+        card_brand: "visa" | "mastercard" | "amex" | null;
         balance: {
             limit: number | null;
             current: number;
@@ -942,6 +956,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         };
         percentage_change: string;
         income: number;
+        linked_account_id?: string | null | undefined;
     }[];
     summary?: {
         active_count: number;
@@ -976,6 +991,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         product_kind: "debit" | "credit";
         product_label: string;
         lastFour: string;
+        card_brand: "visa" | "mastercard" | "amex" | null;
         balance: {
             limit: number | null;
             current: number;
@@ -983,6 +999,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         };
         percentage_change: string;
         income: number;
+        linked_account_id?: string | null | undefined;
     }[];
     summary?: {
         active_count: number;
@@ -1031,6 +1048,8 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: z.ZodEnum<["debit", "credit"]>;
             product_label: z.ZodString;
             lastFour: z.ZodString;
+            card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
+            linked_account_id: z.ZodOptional<z.ZodNullable<z.ZodString>>;
             balance: z.ZodObject<{
                 current: z.ZodNumber;
                 available: z.ZodNumber;
@@ -1107,6 +1126,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: "debit" | "credit";
             product_label: string;
             lastFour: string;
+            card_brand: "visa" | "mastercard" | "amex" | null;
             balance: {
                 limit: number | null;
                 current: number;
@@ -1114,6 +1134,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             };
             percentage_change: string;
             income: number;
+            linked_account_id?: string | null | undefined;
         }, {
             type: string;
             id: string;
@@ -1137,6 +1158,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: "debit" | "credit";
             product_label: string;
             lastFour: string;
+            card_brand: "visa" | "mastercard" | "amex" | null;
             balance: {
                 limit: number | null;
                 current: number;
@@ -1144,6 +1166,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             };
             percentage_change: string;
             income: number;
+            linked_account_id?: string | null | undefined;
         }>, "many">;
     }, "strip", z.ZodTypeAny, {
         products: {
@@ -1169,6 +1192,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: "debit" | "credit";
             product_label: string;
             lastFour: string;
+            card_brand: "visa" | "mastercard" | "amex" | null;
             balance: {
                 limit: number | null;
                 current: number;
@@ -1176,6 +1200,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             };
             percentage_change: string;
             income: number;
+            linked_account_id?: string | null | undefined;
         }[];
         summary?: {
             active_count: number;
@@ -1210,6 +1235,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: "debit" | "credit";
             product_label: string;
             lastFour: string;
+            card_brand: "visa" | "mastercard" | "amex" | null;
             balance: {
                 limit: number | null;
                 current: number;
@@ -1217,6 +1243,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             };
             percentage_change: string;
             income: number;
+            linked_account_id?: string | null | undefined;
         }[];
         summary?: {
             active_count: number;
@@ -1254,6 +1281,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: "debit" | "credit";
             product_label: string;
             lastFour: string;
+            card_brand: "visa" | "mastercard" | "amex" | null;
             balance: {
                 limit: number | null;
                 current: number;
@@ -1261,6 +1289,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             };
             percentage_change: string;
             income: number;
+            linked_account_id?: string | null | undefined;
         }[];
         summary?: {
             active_count: number;
@@ -1298,6 +1327,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: "debit" | "credit";
             product_label: string;
             lastFour: string;
+            card_brand: "visa" | "mastercard" | "amex" | null;
             balance: {
                 limit: number | null;
                 current: number;
@@ -1305,6 +1335,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             };
             percentage_change: string;
             income: number;
+            linked_account_id?: string | null | undefined;
         }[];
         summary?: {
             active_count: number;
@@ -1329,19 +1360,23 @@ export declare const ProductTransactionItemSchema: z.ZodObject<{
     source_financial_email_event_id: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
     institution_name: z.ZodNullable<z.ZodString>;
     institution_logo: z.ZodNullable<z.ZodString>;
-    product_type: z.ZodNullable<z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
+    product_type: z.ZodNullable<z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
     product_kind: z.ZodNullable<z.ZodEnum<["debit", "credit"]>>;
     product_label: z.ZodNullable<z.ZodString>;
     account_last4: z.ZodNullable<z.ZodString>;
+    card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
+    linked_account_last4: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    linked_account_label: z.ZodOptional<z.ZodNullable<z.ZodString>>;
 }, "strip", z.ZodTypeAny, {
     description: string | null;
     uuid: string;
     currency: string;
-    product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
+    product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
     institution_name: string | null;
     institution_logo: string | null;
     product_kind: "debit" | "credit" | null;
     product_label: string | null;
+    card_brand: "visa" | "mastercard" | "amex" | null;
     amount: number;
     transaction_date: string;
     transaction_type: "debit" | "credit";
@@ -1349,15 +1384,18 @@ export declare const ProductTransactionItemSchema: z.ZodObject<{
     transaction_occurred_at?: string | null | undefined;
     user_product_uuid?: string | null | undefined;
     source_financial_email_event_id?: number | null | undefined;
+    linked_account_last4?: string | null | undefined;
+    linked_account_label?: string | null | undefined;
 }, {
     description: string | null;
     uuid: string;
     currency: string;
-    product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
+    product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
     institution_name: string | null;
     institution_logo: string | null;
     product_kind: "debit" | "credit" | null;
     product_label: string | null;
+    card_brand: "visa" | "mastercard" | "amex" | null;
     amount: number;
     transaction_date: string;
     transaction_type: "debit" | "credit";
@@ -1365,6 +1403,8 @@ export declare const ProductTransactionItemSchema: z.ZodObject<{
     transaction_occurred_at?: string | null | undefined;
     user_product_uuid?: string | null | undefined;
     source_financial_email_event_id?: number | null | undefined;
+    linked_account_last4?: string | null | undefined;
+    linked_account_label?: string | null | undefined;
 }>;
 export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
     message: z.ZodString;
@@ -1380,19 +1420,23 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         source_financial_email_event_id: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
         institution_name: z.ZodNullable<z.ZodString>;
         institution_logo: z.ZodNullable<z.ZodString>;
-        product_type: z.ZodNullable<z.ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
+        product_type: z.ZodNullable<z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
         product_kind: z.ZodNullable<z.ZodEnum<["debit", "credit"]>>;
         product_label: z.ZodNullable<z.ZodString>;
         account_last4: z.ZodNullable<z.ZodString>;
+        card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
+        linked_account_last4: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+        linked_account_label: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     }, "strip", z.ZodTypeAny, {
         description: string | null;
         uuid: string;
         currency: string;
-        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
+        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
         institution_name: string | null;
         institution_logo: string | null;
         product_kind: "debit" | "credit" | null;
         product_label: string | null;
+        card_brand: "visa" | "mastercard" | "amex" | null;
         amount: number;
         transaction_date: string;
         transaction_type: "debit" | "credit";
@@ -1400,15 +1444,18 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         transaction_occurred_at?: string | null | undefined;
         user_product_uuid?: string | null | undefined;
         source_financial_email_event_id?: number | null | undefined;
+        linked_account_last4?: string | null | undefined;
+        linked_account_label?: string | null | undefined;
     }, {
         description: string | null;
         uuid: string;
         currency: string;
-        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
+        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
         institution_name: string | null;
         institution_logo: string | null;
         product_kind: "debit" | "credit" | null;
         product_label: string | null;
+        card_brand: "visa" | "mastercard" | "amex" | null;
         amount: number;
         transaction_date: string;
         transaction_type: "debit" | "credit";
@@ -1416,6 +1463,8 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         transaction_occurred_at?: string | null | undefined;
         user_product_uuid?: string | null | undefined;
         source_financial_email_event_id?: number | null | undefined;
+        linked_account_last4?: string | null | undefined;
+        linked_account_label?: string | null | undefined;
     }>, "many">;
     pagination: z.ZodObject<{
         total: z.ZodNumber;
@@ -1436,11 +1485,12 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         description: string | null;
         uuid: string;
         currency: string;
-        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
+        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
         institution_name: string | null;
         institution_logo: string | null;
         product_kind: "debit" | "credit" | null;
         product_label: string | null;
+        card_brand: "visa" | "mastercard" | "amex" | null;
         amount: number;
         transaction_date: string;
         transaction_type: "debit" | "credit";
@@ -1448,6 +1498,8 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         transaction_occurred_at?: string | null | undefined;
         user_product_uuid?: string | null | undefined;
         source_financial_email_event_id?: number | null | undefined;
+        linked_account_last4?: string | null | undefined;
+        linked_account_label?: string | null | undefined;
     }[];
     pagination: {
         limit: number;
@@ -1460,11 +1512,12 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         description: string | null;
         uuid: string;
         currency: string;
-        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
+        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
         institution_name: string | null;
         institution_logo: string | null;
         product_kind: "debit" | "credit" | null;
         product_label: string | null;
+        card_brand: "visa" | "mastercard" | "amex" | null;
         amount: number;
         transaction_date: string;
         transaction_type: "debit" | "credit";
@@ -1472,6 +1525,8 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         transaction_occurred_at?: string | null | undefined;
         user_product_uuid?: string | null | undefined;
         source_financial_email_event_id?: number | null | undefined;
+        linked_account_last4?: string | null | undefined;
+        linked_account_label?: string | null | undefined;
     }[];
     pagination: {
         limit: number;

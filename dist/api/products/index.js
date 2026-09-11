@@ -41,7 +41,7 @@ export const ProductsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({
-            type: z.enum(['credit_card', 'loan', 'savings_account', 'checking_account', 'investment', 'insurance', 'mortgage']),
+            type: z.enum(['credit_card', 'debit_card', 'loan', 'savings_account', 'checking_account', 'investment', 'insurance', 'mortgage']),
         }),
         query: z.object({
             limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
@@ -234,8 +234,9 @@ export const ProductsContracts = c.router({
         query: z.object({
             limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
             offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
+            currency: z.enum(['DOP', 'USD', 'EUR']).optional(),
         }),
         summary: 'Get my product transactions',
-        description: 'Returns product transactions for the authenticated user',
+        description: 'Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR.',
     },
 });

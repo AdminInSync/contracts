@@ -57,6 +57,7 @@ export const EmailSyncStatusResponseSchema = z.object({
     connections: z.array(EmailSyncStatusConnectionSchema),
 });
 export const ProductKindSchema = z.enum(['debit', 'credit']);
+export const CardBrandSchema = z.enum(['visa', 'mastercard', 'amex']);
 export const FinancialEmailEventResponseSchema = z.object({
     uuid: z.string().uuid(),
     status: FinancialEmailEventStatusSchema,
@@ -105,6 +106,7 @@ export const DiscoveredAccountSchema = z.object({
     institution_logo: z.string().nullable(),
     product_type: z.string(),
     account_last4: z.string().length(4),
+    card_brand: CardBrandSchema.nullable(),
     event_count: z.number(),
     latest_at: z.string().datetime().nullable(),
 });
@@ -113,6 +115,7 @@ export const ListDiscoveredAccountsResponseSchema = z.object({
 });
 const LinkProductTypeSchema = z.preprocess((v) => String(v ?? '').trim().toLowerCase(), z.enum([
     'credit_card',
+    'debit_card',
     'loan',
     'savings_account',
     'checking_account',
@@ -120,6 +123,13 @@ const LinkProductTypeSchema = z.preprocess((v) => String(v ?? '').trim().toLower
     'insurance',
     'mortgage',
 ]));
+export const LinkedAccountRefSchema = z.object({
+    product_type: z.enum(['savings_account', 'checking_account']),
+    account_last4: z
+        .string()
+        .transform((s) => s.replace(/\D/g, '').slice(-4))
+        .pipe(z.string().length(4)),
+});
 export const LinkAccountItemSchema = z.object({
     institution_id: z.coerce.number().int().positive(),
     institution_name: z.string().trim().min(1).max(200),
@@ -128,6 +138,7 @@ export const LinkAccountItemSchema = z.object({
         .string()
         .transform((s) => s.replace(/\D/g, '').slice(-4))
         .pipe(z.string().length(4)),
+    linked_account: LinkedAccountRefSchema.nullable().optional(),
 });
 export const LinkAccountsBodySchema = z.object({
     accounts: z.array(LinkAccountItemSchema).min(1).max(50),

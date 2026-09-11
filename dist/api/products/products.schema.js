@@ -1,6 +1,6 @@
 import { z } from 'zod';
 // Enums
-export const ProductTypeSchema = z.enum(['credit_card', 'loan', 'savings_account', 'checking_account', 'investment', 'insurance', 'mortgage']);
+export const ProductTypeSchema = z.enum(['credit_card', 'debit_card', 'loan', 'savings_account', 'checking_account', 'investment', 'insurance', 'mortgage']);
 export const CreditScoreRequirementSchema = z.enum(['excellent', 'good', 'fair', 'poor']);
 export const ConnectedProductTypeSchema = z.enum(['accounts', 'cards', 'loans', 'financial-certificate']);
 // Base schemas
@@ -96,6 +96,7 @@ export const ConnectedProductMetadataSchema = z.object({
     accumulated_gain: z.number().nullable(),
 });
 export const ProductKindSchema = z.enum(['debit', 'credit']);
+export const CardBrandSchema = z.enum(['visa', 'mastercard', 'amex']);
 export const ConnectedProductSchema = z.object({
     id: z.string(),
     type: z.string(),
@@ -105,6 +106,8 @@ export const ConnectedProductSchema = z.object({
     product_kind: ProductKindSchema,
     product_label: z.string(),
     lastFour: z.string(),
+    card_brand: CardBrandSchema.nullable(),
+    linked_account_id: z.string().uuid().nullable().optional(),
     balance: ConnectedProductBalanceSchema,
     metadata: ConnectedProductMetadataSchema,
     percentage_change: z.string(),
@@ -144,6 +147,9 @@ export const ProductTransactionItemSchema = z.object({
     product_kind: ProductKindSchema.nullable(),
     product_label: z.string().nullable(),
     account_last4: z.string().nullable(),
+    card_brand: CardBrandSchema.nullable(),
+    linked_account_last4: z.string().nullable().optional(),
+    linked_account_label: z.string().nullable().optional(),
 });
 export const ProductTransactionsListResponseSchema = z.object({
     message: z.string(),

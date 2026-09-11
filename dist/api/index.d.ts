@@ -5354,7 +5354,7 @@ export declare const ApiContracts: {
             method: "POST";
             body: import("zod").ZodObject<{
                 name: import("zod").ZodString;
-                product_type: import("zod").ZodOptional<import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
+                product_type: import("zod").ZodOptional<import("zod").ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
                 institution_id: import("zod").ZodNumber;
                 interest_rate: import("zod").ZodOptional<import("zod").ZodNumber>;
                 annual_fee: import("zod").ZodOptional<import("zod").ZodNumber>;
@@ -5373,7 +5373,7 @@ export declare const ApiContracts: {
                 institution_id: number;
                 is_active?: boolean | undefined;
                 currency?: string | undefined;
-                product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
+                product_type?: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
                 interest_rate?: number | undefined;
                 annual_fee?: number | undefined;
                 minimum_balance?: number | undefined;
@@ -5389,7 +5389,7 @@ export declare const ApiContracts: {
                 institution_id: number;
                 is_active?: boolean | undefined;
                 currency?: string | undefined;
-                product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
+                product_type?: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
                 interest_rate?: number | undefined;
                 annual_fee?: number | undefined;
                 minimum_balance?: number | undefined;
@@ -5409,7 +5409,7 @@ export declare const ApiContracts: {
                         id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         name: import("zod").ZodString;
-                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        product_type: import("zod").ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
                         institution_id: import("zod").ZodNumber;
                         institution_name: import("zod").ZodString;
                         interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -5452,7 +5452,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -5480,7 +5480,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -5511,7 +5511,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -5542,7 +5542,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -5620,7 +5620,7 @@ export declare const ApiContracts: {
         };
         getProducts: {
             query: import("zod").ZodObject<{
-                product_type: import("zod").ZodOptional<import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
+                product_type: import("zod").ZodOptional<import("zod").ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
                 institution_id: import("zod").ZodOptional<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
                 credit_score_requirement: import("zod").ZodOptional<import("zod").ZodEnum<["excellent", "good", "fair", "poor"]>>;
                 is_spotlight: import("zod").ZodOptional<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, boolean, string>, import("zod").ZodBoolean>>;
@@ -5631,7 +5631,7 @@ export declare const ApiContracts: {
                 limit: number;
                 offset: number;
                 search?: string | undefined;
-                product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
+                product_type?: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
                 institution_id?: number | undefined;
                 credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
                 is_spotlight?: boolean | undefined;
@@ -5639,7 +5639,7 @@ export declare const ApiContracts: {
                 limit?: string | undefined;
                 search?: string | undefined;
                 offset?: string | undefined;
-                product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
+                product_type?: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
                 institution_id?: string | undefined;
                 credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
                 is_spotlight?: string | undefined;
@@ -5655,7 +5655,7 @@ export declare const ApiContracts: {
                         id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         name: import("zod").ZodString;
-                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        product_type: import("zod").ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
                         institution_id: import("zod").ZodNumber;
                         institution_name: import("zod").ZodString;
                         interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -5698,7 +5698,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -5726,7 +5726,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -5770,7 +5770,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -5806,7 +5806,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -5850,11 +5850,11 @@ export declare const ApiContracts: {
         };
         getProductsByType: {
             pathParams: import("zod").ZodObject<{
-                type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                type: import("zod").ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
             }, "strip", import("zod").ZodTypeAny, {
-                type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
             }, {
-                type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
             }>;
             query: import("zod").ZodObject<{
                 limit: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
@@ -5877,7 +5877,7 @@ export declare const ApiContracts: {
                         id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         name: import("zod").ZodString;
-                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        product_type: import("zod").ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
                         institution_id: import("zod").ZodNumber;
                         institution_name: import("zod").ZodString;
                         interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -5920,7 +5920,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -5948,7 +5948,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -5992,7 +5992,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -6028,7 +6028,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -6112,7 +6112,7 @@ export declare const ApiContracts: {
                         id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         name: import("zod").ZodString;
-                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        product_type: import("zod").ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
                         institution_id: import("zod").ZodNumber;
                         institution_name: import("zod").ZodString;
                         interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -6155,7 +6155,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -6183,7 +6183,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -6227,7 +6227,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -6263,7 +6263,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -6327,7 +6327,7 @@ export declare const ApiContracts: {
                         id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         name: import("zod").ZodString;
-                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        product_type: import("zod").ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
                         institution_id: import("zod").ZodNumber;
                         institution_name: import("zod").ZodString;
                         interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -6370,7 +6370,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -6398,7 +6398,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -6442,7 +6442,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -6478,7 +6478,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -6542,7 +6542,7 @@ export declare const ApiContracts: {
                         id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         name: import("zod").ZodString;
-                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        product_type: import("zod").ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
                         institution_id: import("zod").ZodNumber;
                         institution_name: import("zod").ZodString;
                         interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -6585,7 +6585,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -6613,7 +6613,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -6657,7 +6657,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -6693,7 +6693,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -6764,7 +6764,7 @@ export declare const ApiContracts: {
                         id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         name: import("zod").ZodString;
-                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        product_type: import("zod").ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
                         institution_id: import("zod").ZodNumber;
                         institution_name: import("zod").ZodString;
                         interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -6807,7 +6807,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -6835,7 +6835,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -6879,7 +6879,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -6915,7 +6915,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -6992,7 +6992,7 @@ export declare const ApiContracts: {
                         id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         name: import("zod").ZodString;
-                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        product_type: import("zod").ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
                         institution_id: import("zod").ZodNumber;
                         institution_name: import("zod").ZodString;
                         interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -7035,7 +7035,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -7063,7 +7063,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -7107,7 +7107,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -7143,7 +7143,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -7279,7 +7279,7 @@ export declare const ApiContracts: {
                         id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         name: import("zod").ZodString;
-                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        product_type: import("zod").ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
                         institution_id: import("zod").ZodNumber;
                         institution_name: import("zod").ZodString;
                         interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -7322,7 +7322,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -7350,7 +7350,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -7381,7 +7381,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -7412,7 +7412,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -7475,7 +7475,7 @@ export declare const ApiContracts: {
             method: "PUT";
             body: import("zod").ZodObject<{
                 name: import("zod").ZodOptional<import("zod").ZodString>;
-                product_type: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>>;
+                product_type: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>>;
                 institution_id: import("zod").ZodOptional<import("zod").ZodNumber>;
                 interest_rate: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodNumber>>;
                 annual_fee: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodNumber>>;
@@ -7493,7 +7493,7 @@ export declare const ApiContracts: {
                 is_active?: boolean | undefined;
                 name?: string | undefined;
                 currency?: string | undefined;
-                product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
+                product_type?: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
                 institution_id?: number | undefined;
                 interest_rate?: number | undefined;
                 annual_fee?: number | undefined;
@@ -7509,7 +7509,7 @@ export declare const ApiContracts: {
                 is_active?: boolean | undefined;
                 name?: string | undefined;
                 currency?: string | undefined;
-                product_type?: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
+                product_type?: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
                 institution_id?: number | undefined;
                 interest_rate?: number | undefined;
                 annual_fee?: number | undefined;
@@ -7530,7 +7530,7 @@ export declare const ApiContracts: {
                         id: import("zod").ZodNumber;
                         uuid: import("zod").ZodString;
                         name: import("zod").ZodString;
-                        product_type: import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+                        product_type: import("zod").ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
                         institution_id: import("zod").ZodNumber;
                         institution_name: import("zod").ZodString;
                         interest_rate: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -7573,7 +7573,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -7601,7 +7601,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -7632,7 +7632,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -7663,7 +7663,7 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string | null;
                         deleted_at: string | null;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         institution_name: string;
                         interest_rate: number | null;
@@ -7874,6 +7874,8 @@ export declare const ApiContracts: {
                             product_kind: import("zod").ZodEnum<["debit", "credit"]>;
                             product_label: import("zod").ZodString;
                             lastFour: import("zod").ZodString;
+                            card_brand: import("zod").ZodNullable<import("zod").ZodEnum<["visa", "mastercard", "amex"]>>;
+                            linked_account_id: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                             balance: import("zod").ZodObject<{
                                 current: import("zod").ZodNumber;
                                 available: import("zod").ZodNumber;
@@ -7950,6 +7952,7 @@ export declare const ApiContracts: {
                             product_kind: "debit" | "credit";
                             product_label: string;
                             lastFour: string;
+                            card_brand: "visa" | "mastercard" | "amex" | null;
                             balance: {
                                 limit: number | null;
                                 current: number;
@@ -7957,6 +7960,7 @@ export declare const ApiContracts: {
                             };
                             percentage_change: string;
                             income: number;
+                            linked_account_id?: string | null | undefined;
                         }, {
                             type: string;
                             id: string;
@@ -7980,6 +7984,7 @@ export declare const ApiContracts: {
                             product_kind: "debit" | "credit";
                             product_label: string;
                             lastFour: string;
+                            card_brand: "visa" | "mastercard" | "amex" | null;
                             balance: {
                                 limit: number | null;
                                 current: number;
@@ -7987,6 +7992,7 @@ export declare const ApiContracts: {
                             };
                             percentage_change: string;
                             income: number;
+                            linked_account_id?: string | null | undefined;
                         }>, "many">;
                     }, "strip", import("zod").ZodTypeAny, {
                         products: {
@@ -8012,6 +8018,7 @@ export declare const ApiContracts: {
                             product_kind: "debit" | "credit";
                             product_label: string;
                             lastFour: string;
+                            card_brand: "visa" | "mastercard" | "amex" | null;
                             balance: {
                                 limit: number | null;
                                 current: number;
@@ -8019,6 +8026,7 @@ export declare const ApiContracts: {
                             };
                             percentage_change: string;
                             income: number;
+                            linked_account_id?: string | null | undefined;
                         }[];
                         summary?: {
                             active_count: number;
@@ -8053,6 +8061,7 @@ export declare const ApiContracts: {
                             product_kind: "debit" | "credit";
                             product_label: string;
                             lastFour: string;
+                            card_brand: "visa" | "mastercard" | "amex" | null;
                             balance: {
                                 limit: number | null;
                                 current: number;
@@ -8060,6 +8069,7 @@ export declare const ApiContracts: {
                             };
                             percentage_change: string;
                             income: number;
+                            linked_account_id?: string | null | undefined;
                         }[];
                         summary?: {
                             active_count: number;
@@ -8097,6 +8107,7 @@ export declare const ApiContracts: {
                             product_kind: "debit" | "credit";
                             product_label: string;
                             lastFour: string;
+                            card_brand: "visa" | "mastercard" | "amex" | null;
                             balance: {
                                 limit: number | null;
                                 current: number;
@@ -8104,6 +8115,7 @@ export declare const ApiContracts: {
                             };
                             percentage_change: string;
                             income: number;
+                            linked_account_id?: string | null | undefined;
                         }[];
                         summary?: {
                             active_count: number;
@@ -8141,6 +8153,7 @@ export declare const ApiContracts: {
                             product_kind: "debit" | "credit";
                             product_label: string;
                             lastFour: string;
+                            card_brand: "visa" | "mastercard" | "amex" | null;
                             balance: {
                                 limit: number | null;
                                 current: number;
@@ -8148,6 +8161,7 @@ export declare const ApiContracts: {
                             };
                             percentage_change: string;
                             income: number;
+                            linked_account_id?: string | null | undefined;
                         }[];
                         summary?: {
                             active_count: number;
@@ -8206,15 +8220,18 @@ export declare const ApiContracts: {
             query: import("zod").ZodObject<{
                 limit: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
                 offset: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
+                currency: import("zod").ZodOptional<import("zod").ZodEnum<["DOP", "USD", "EUR"]>>;
             }, "strip", import("zod").ZodTypeAny, {
                 limit: number;
                 offset: number;
+                currency?: "DOP" | "USD" | "EUR" | undefined;
             }, {
                 limit?: string | undefined;
+                currency?: "DOP" | "USD" | "EUR" | undefined;
                 offset?: string | undefined;
             }>;
             summary: "Get my product transactions";
-            description: "Returns product transactions for the authenticated user";
+            description: "Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR.";
             method: "GET";
             path: "/api/products/my-transactions";
             responses: {
@@ -8232,19 +8249,23 @@ export declare const ApiContracts: {
                         source_financial_email_event_id: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodNumber>>;
                         institution_name: import("zod").ZodNullable<import("zod").ZodString>;
                         institution_logo: import("zod").ZodNullable<import("zod").ZodString>;
-                        product_type: import("zod").ZodNullable<import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
+                        product_type: import("zod").ZodNullable<import("zod").ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
                         product_kind: import("zod").ZodNullable<import("zod").ZodEnum<["debit", "credit"]>>;
                         product_label: import("zod").ZodNullable<import("zod").ZodString>;
                         account_last4: import("zod").ZodNullable<import("zod").ZodString>;
+                        card_brand: import("zod").ZodNullable<import("zod").ZodEnum<["visa", "mastercard", "amex"]>>;
+                        linked_account_last4: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        linked_account_label: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                     }, "strip", import("zod").ZodTypeAny, {
                         description: string | null;
                         uuid: string;
                         currency: string;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
                         institution_name: string | null;
                         institution_logo: string | null;
                         product_kind: "debit" | "credit" | null;
                         product_label: string | null;
+                        card_brand: "visa" | "mastercard" | "amex" | null;
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit";
@@ -8252,15 +8273,18 @@ export declare const ApiContracts: {
                         transaction_occurred_at?: string | null | undefined;
                         user_product_uuid?: string | null | undefined;
                         source_financial_email_event_id?: number | null | undefined;
+                        linked_account_last4?: string | null | undefined;
+                        linked_account_label?: string | null | undefined;
                     }, {
                         description: string | null;
                         uuid: string;
                         currency: string;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
                         institution_name: string | null;
                         institution_logo: string | null;
                         product_kind: "debit" | "credit" | null;
                         product_label: string | null;
+                        card_brand: "visa" | "mastercard" | "amex" | null;
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit";
@@ -8268,6 +8292,8 @@ export declare const ApiContracts: {
                         transaction_occurred_at?: string | null | undefined;
                         user_product_uuid?: string | null | undefined;
                         source_financial_email_event_id?: number | null | undefined;
+                        linked_account_last4?: string | null | undefined;
+                        linked_account_label?: string | null | undefined;
                     }>, "many">;
                     pagination: import("zod").ZodObject<{
                         total: import("zod").ZodNumber;
@@ -8288,11 +8314,12 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         currency: string;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
                         institution_name: string | null;
                         institution_logo: string | null;
                         product_kind: "debit" | "credit" | null;
                         product_label: string | null;
+                        card_brand: "visa" | "mastercard" | "amex" | null;
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit";
@@ -8300,6 +8327,8 @@ export declare const ApiContracts: {
                         transaction_occurred_at?: string | null | undefined;
                         user_product_uuid?: string | null | undefined;
                         source_financial_email_event_id?: number | null | undefined;
+                        linked_account_last4?: string | null | undefined;
+                        linked_account_label?: string | null | undefined;
                     }[];
                     pagination: {
                         limit: number;
@@ -8312,11 +8341,12 @@ export declare const ApiContracts: {
                         description: string | null;
                         uuid: string;
                         currency: string;
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
                         institution_name: string | null;
                         institution_logo: string | null;
                         product_kind: "debit" | "credit" | null;
                         product_label: string | null;
+                        card_brand: "visa" | "mastercard" | "amex" | null;
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit";
@@ -8324,6 +8354,8 @@ export declare const ApiContracts: {
                         transaction_occurred_at?: string | null | undefined;
                         user_product_uuid?: string | null | undefined;
                         source_financial_email_event_id?: number | null | undefined;
+                        linked_account_last4?: string | null | undefined;
+                        linked_account_label?: string | null | undefined;
                     }[];
                     pagination: {
                         limit: number;
@@ -13139,6 +13171,28 @@ export declare const ApiContracts: {
                             debts: number;
                             netBalance: number;
                         }>;
+                        currencySummaries: import("zod").ZodArray<import("zod").ZodObject<{
+                            currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                            available: import("zod").ZodNumber;
+                            income: import("zod").ZodNumber;
+                            expenses: import("zod").ZodNumber;
+                            debts: import("zod").ZodNumber;
+                            netBalance: import("zod").ZodNumber;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            currency: "DOP" | "USD" | "EUR";
+                            available: number;
+                            income: number;
+                            expenses: number;
+                            debts: number;
+                            netBalance: number;
+                        }, {
+                            currency: "DOP" | "USD" | "EUR";
+                            available: number;
+                            income: number;
+                            expenses: number;
+                            debts: number;
+                            netBalance: number;
+                        }>, "many">;
                         budgets: import("zod").ZodObject<{
                             overview: import("zod").ZodObject<{
                                 total: import("zod").ZodNumber;
@@ -13371,6 +13425,7 @@ export declare const ApiContracts: {
                             id: import("zod").ZodString;
                             description: import("zod").ZodString;
                             amount: import("zod").ZodNumber;
+                            currency: import("zod").ZodString;
                             type: import("zod").ZodEnum<["income", "expense"]>;
                             date: import("zod").ZodDate;
                             status: import("zod").ZodString;
@@ -13380,6 +13435,7 @@ export declare const ApiContracts: {
                             id: string;
                             date: Date;
                             description: string;
+                            currency: string;
                             amount: number;
                         }, {
                             type: "income" | "expense";
@@ -13387,6 +13443,7 @@ export declare const ApiContracts: {
                             id: string;
                             date: Date;
                             description: string;
+                            currency: string;
                             amount: number;
                         }>, "many">;
                         upcomingEvents: import("zod").ZodArray<import("zod").ZodObject<{
@@ -13466,6 +13523,14 @@ export declare const ApiContracts: {
                             debts: number;
                             netBalance: number;
                         };
+                        currencySummaries: {
+                            currency: "DOP" | "USD" | "EUR";
+                            available: number;
+                            income: number;
+                            expenses: number;
+                            debts: number;
+                            netBalance: number;
+                        }[];
                         savingGoals: {
                             id: number;
                             name: string;
@@ -13506,6 +13571,7 @@ export declare const ApiContracts: {
                             id: string;
                             date: Date;
                             description: string;
+                            currency: string;
                             amount: number;
                         }[];
                         upcomingEvents: {
@@ -13557,6 +13623,14 @@ export declare const ApiContracts: {
                             debts: number;
                             netBalance: number;
                         };
+                        currencySummaries: {
+                            currency: "DOP" | "USD" | "EUR";
+                            available: number;
+                            income: number;
+                            expenses: number;
+                            debts: number;
+                            netBalance: number;
+                        }[];
                         savingGoals: {
                             id: number;
                             name: string;
@@ -13597,6 +13671,7 @@ export declare const ApiContracts: {
                             id: string;
                             date: Date;
                             description: string;
+                            currency: string;
                             amount: number;
                         }[];
                         upcomingEvents: {
@@ -13652,6 +13727,14 @@ export declare const ApiContracts: {
                             debts: number;
                             netBalance: number;
                         };
+                        currencySummaries: {
+                            currency: "DOP" | "USD" | "EUR";
+                            available: number;
+                            income: number;
+                            expenses: number;
+                            debts: number;
+                            netBalance: number;
+                        }[];
                         savingGoals: {
                             id: number;
                             name: string;
@@ -13692,6 +13775,7 @@ export declare const ApiContracts: {
                             id: string;
                             date: Date;
                             description: string;
+                            currency: string;
                             amount: number;
                         }[];
                         upcomingEvents: {
@@ -13747,6 +13831,14 @@ export declare const ApiContracts: {
                             debts: number;
                             netBalance: number;
                         };
+                        currencySummaries: {
+                            currency: "DOP" | "USD" | "EUR";
+                            available: number;
+                            income: number;
+                            expenses: number;
+                            debts: number;
+                            netBalance: number;
+                        }[];
                         savingGoals: {
                             id: number;
                             name: string;
@@ -13787,6 +13879,7 @@ export declare const ApiContracts: {
                             id: string;
                             date: Date;
                             description: string;
+                            currency: string;
                             amount: number;
                         }[];
                         upcomingEvents: {
@@ -14020,6 +14113,28 @@ export declare const ApiContracts: {
                             debts: number;
                             netBalance: number;
                         }>;
+                        currencySummaries: import("zod").ZodArray<import("zod").ZodObject<{
+                            currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                            available: import("zod").ZodNumber;
+                            income: import("zod").ZodNumber;
+                            expenses: import("zod").ZodNumber;
+                            debts: import("zod").ZodNumber;
+                            netBalance: import("zod").ZodNumber;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            currency: "DOP" | "USD" | "EUR";
+                            available: number;
+                            income: number;
+                            expenses: number;
+                            debts: number;
+                            netBalance: number;
+                        }, {
+                            currency: "DOP" | "USD" | "EUR";
+                            available: number;
+                            income: number;
+                            expenses: number;
+                            debts: number;
+                            netBalance: number;
+                        }>, "many">;
                         budgets: import("zod").ZodObject<{
                             overview: import("zod").ZodObject<{
                                 total: import("zod").ZodNumber;
@@ -14252,6 +14367,7 @@ export declare const ApiContracts: {
                             id: import("zod").ZodString;
                             description: import("zod").ZodString;
                             amount: import("zod").ZodNumber;
+                            currency: import("zod").ZodString;
                             type: import("zod").ZodEnum<["income", "expense"]>;
                             date: import("zod").ZodDate;
                             status: import("zod").ZodString;
@@ -14261,6 +14377,7 @@ export declare const ApiContracts: {
                             id: string;
                             date: Date;
                             description: string;
+                            currency: string;
                             amount: number;
                         }, {
                             type: "income" | "expense";
@@ -14268,6 +14385,7 @@ export declare const ApiContracts: {
                             id: string;
                             date: Date;
                             description: string;
+                            currency: string;
                             amount: number;
                         }>, "many">;
                         upcomingEvents: import("zod").ZodArray<import("zod").ZodObject<{
@@ -14347,6 +14465,14 @@ export declare const ApiContracts: {
                             debts: number;
                             netBalance: number;
                         };
+                        currencySummaries: {
+                            currency: "DOP" | "USD" | "EUR";
+                            available: number;
+                            income: number;
+                            expenses: number;
+                            debts: number;
+                            netBalance: number;
+                        }[];
                         savingGoals: {
                             id: number;
                             name: string;
@@ -14387,6 +14513,7 @@ export declare const ApiContracts: {
                             id: string;
                             date: Date;
                             description: string;
+                            currency: string;
                             amount: number;
                         }[];
                         upcomingEvents: {
@@ -14438,6 +14565,14 @@ export declare const ApiContracts: {
                             debts: number;
                             netBalance: number;
                         };
+                        currencySummaries: {
+                            currency: "DOP" | "USD" | "EUR";
+                            available: number;
+                            income: number;
+                            expenses: number;
+                            debts: number;
+                            netBalance: number;
+                        }[];
                         savingGoals: {
                             id: number;
                             name: string;
@@ -14478,6 +14613,7 @@ export declare const ApiContracts: {
                             id: string;
                             date: Date;
                             description: string;
+                            currency: string;
                             amount: number;
                         }[];
                         upcomingEvents: {
@@ -14533,6 +14669,14 @@ export declare const ApiContracts: {
                             debts: number;
                             netBalance: number;
                         };
+                        currencySummaries: {
+                            currency: "DOP" | "USD" | "EUR";
+                            available: number;
+                            income: number;
+                            expenses: number;
+                            debts: number;
+                            netBalance: number;
+                        }[];
                         savingGoals: {
                             id: number;
                             name: string;
@@ -14573,6 +14717,7 @@ export declare const ApiContracts: {
                             id: string;
                             date: Date;
                             description: string;
+                            currency: string;
                             amount: number;
                         }[];
                         upcomingEvents: {
@@ -14628,6 +14773,14 @@ export declare const ApiContracts: {
                             debts: number;
                             netBalance: number;
                         };
+                        currencySummaries: {
+                            currency: "DOP" | "USD" | "EUR";
+                            available: number;
+                            income: number;
+                            expenses: number;
+                            debts: number;
+                            netBalance: number;
+                        }[];
                         savingGoals: {
                             id: number;
                             name: string;
@@ -14668,6 +14821,7 @@ export declare const ApiContracts: {
                             id: string;
                             date: Date;
                             description: string;
+                            currency: string;
                             amount: number;
                         }[];
                         upcomingEvents: {
@@ -15915,8 +16069,15 @@ export declare const ApiContracts: {
     };
     Reports: {
         getReports: {
+            query: import("zod").ZodObject<{
+                currency: import("zod").ZodOptional<import("zod").ZodEnum<["DOP", "USD", "EUR"]>>;
+            }, "strip", import("zod").ZodTypeAny, {
+                currency?: "DOP" | "USD" | "EUR" | undefined;
+            }, {
+                currency?: "DOP" | "USD" | "EUR" | undefined;
+            }>;
             summary: "Get full financial reports";
-            description: "Returns financial summary, monthly trend, and expense distribution";
+            description: "Returns financial summary, monthly trend, and expense distribution. Optional currency limits totals to DOP, USD, or EUR.";
             method: "GET";
             path: "/api/reports";
             responses: {
@@ -16872,6 +17033,7 @@ export declare const ApiContracts: {
                         institution_logo: import("zod").ZodNullable<import("zod").ZodString>;
                         product_type: import("zod").ZodString;
                         account_last4: import("zod").ZodString;
+                        card_brand: import("zod").ZodNullable<import("zod").ZodEnum<["visa", "mastercard", "amex"]>>;
                         event_count: import("zod").ZodNumber;
                         latest_at: import("zod").ZodNullable<import("zod").ZodString>;
                     }, "strip", import("zod").ZodTypeAny, {
@@ -16879,6 +17041,7 @@ export declare const ApiContracts: {
                         institution_id: number | null;
                         institution_name: string | null;
                         institution_logo: string | null;
+                        card_brand: "visa" | "mastercard" | "amex" | null;
                         account_last4: string;
                         event_count: number;
                         latest_at: string | null;
@@ -16887,6 +17050,7 @@ export declare const ApiContracts: {
                         institution_id: number | null;
                         institution_name: string | null;
                         institution_logo: string | null;
+                        card_brand: "visa" | "mastercard" | "amex" | null;
                         account_last4: string;
                         event_count: number;
                         latest_at: string | null;
@@ -16897,6 +17061,7 @@ export declare const ApiContracts: {
                         institution_id: number | null;
                         institution_name: string | null;
                         institution_logo: string | null;
+                        card_brand: "visa" | "mastercard" | "amex" | null;
                         account_last4: string;
                         event_count: number;
                         latest_at: string | null;
@@ -16907,6 +17072,7 @@ export declare const ApiContracts: {
                         institution_id: number | null;
                         institution_name: string | null;
                         institution_logo: string | null;
+                        card_brand: "visa" | "mastercard" | "amex" | null;
                         account_last4: string;
                         event_count: number;
                         latest_at: string | null;
@@ -16948,25 +17114,47 @@ export declare const ApiContracts: {
                 accounts: import("zod").ZodArray<import("zod").ZodObject<{
                     institution_id: import("zod").ZodNumber;
                     institution_name: import("zod").ZodString;
-                    product_type: import("zod").ZodEffects<import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
+                    product_type: import("zod").ZodEffects<import("zod").ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
                     account_last4: import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, string, string>, import("zod").ZodString>;
+                    linked_account: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodObject<{
+                        product_type: import("zod").ZodEnum<["savings_account", "checking_account"]>;
+                        account_last4: import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, string, string>, import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        product_type: "savings_account" | "checking_account";
+                        account_last4: string;
+                    }, {
+                        product_type: "savings_account" | "checking_account";
+                        account_last4: string;
+                    }>>>;
                 }, "strip", import("zod").ZodTypeAny, {
-                    product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                    product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                     institution_id: number;
                     institution_name: string;
                     account_last4: string;
+                    linked_account?: {
+                        product_type: "savings_account" | "checking_account";
+                        account_last4: string;
+                    } | null | undefined;
                 }, {
                     institution_id: number;
                     institution_name: string;
                     account_last4: string;
                     product_type?: unknown;
+                    linked_account?: {
+                        product_type: "savings_account" | "checking_account";
+                        account_last4: string;
+                    } | null | undefined;
                 }>, "many">;
             }, "strip", import("zod").ZodTypeAny, {
                 accounts: {
-                    product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                    product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                     institution_id: number;
                     institution_name: string;
                     account_last4: string;
+                    linked_account?: {
+                        product_type: "savings_account" | "checking_account";
+                        account_last4: string;
+                    } | null | undefined;
                 }[];
             }, {
                 accounts: {
@@ -16974,6 +17162,10 @@ export declare const ApiContracts: {
                     institution_name: string;
                     account_last4: string;
                     product_type?: unknown;
+                    linked_account?: {
+                        product_type: "savings_account" | "checking_account";
+                        account_last4: string;
+                    } | null | undefined;
                 }[];
             }>;
             path: "/api/email-ingestion/link-accounts";
@@ -16987,10 +17179,10 @@ export declare const ApiContracts: {
                     product_uuids: import("zod").ZodArray<import("zod").ZodString, "many">;
                     failed_accounts: import("zod").ZodArray<import("zod").ZodObject<{
                         institution_id: import("zod").ZodNumber;
-                        product_type: import("zod").ZodEffects<import("zod").ZodEnum<["credit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
+                        product_type: import("zod").ZodEffects<import("zod").ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
                         account_last4: import("zod").ZodString;
                     }, "strip", import("zod").ZodTypeAny, {
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         account_last4: string;
                     }, {
@@ -17006,7 +17198,7 @@ export declare const ApiContracts: {
                     backfill_pending: boolean;
                     product_uuids: string[];
                     failed_accounts: {
-                        product_type: "insurance" | "credit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
+                        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
                         institution_id: number;
                         account_last4: string;
                     }[];
