@@ -563,13 +563,16 @@ export declare const ConvertFinancialEmailEventResponseSchema: z.ZodObject<{
     transaction_uuid: string;
     event_uuid: string;
 }>;
+export declare const ProductLineSchema: z.ZodEnum<["gold", "classic", "platinum", "premia", "infinite", "signature", "negocios", "corporate", "black"]>;
 export declare const DiscoveredAccountSchema: z.ZodObject<{
     institution_id: z.ZodNullable<z.ZodNumber>;
     institution_name: z.ZodNullable<z.ZodString>;
     institution_logo: z.ZodNullable<z.ZodString>;
     product_type: z.ZodString;
+    product_label: z.ZodString;
     account_last4: z.ZodString;
     card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
+    product_line: z.ZodNullable<z.ZodEnum<["gold", "classic", "platinum", "premia", "infinite", "signature", "negocios", "corporate", "black"]>>;
     event_count: z.ZodNumber;
     latest_at: z.ZodNullable<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
@@ -577,8 +580,10 @@ export declare const DiscoveredAccountSchema: z.ZodObject<{
     institution_id: number | null;
     institution_name: string | null;
     institution_logo: string | null;
+    product_label: string;
     card_brand: "visa" | "mastercard" | "amex" | null;
     account_last4: string;
+    product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null;
     event_count: number;
     latest_at: string | null;
 }, {
@@ -586,8 +591,10 @@ export declare const DiscoveredAccountSchema: z.ZodObject<{
     institution_id: number | null;
     institution_name: string | null;
     institution_logo: string | null;
+    product_label: string;
     card_brand: "visa" | "mastercard" | "amex" | null;
     account_last4: string;
+    product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null;
     event_count: number;
     latest_at: string | null;
 }>;
@@ -597,8 +604,10 @@ export declare const ListDiscoveredAccountsResponseSchema: z.ZodObject<{
         institution_name: z.ZodNullable<z.ZodString>;
         institution_logo: z.ZodNullable<z.ZodString>;
         product_type: z.ZodString;
+        product_label: z.ZodString;
         account_last4: z.ZodString;
         card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
+        product_line: z.ZodNullable<z.ZodEnum<["gold", "classic", "platinum", "premia", "infinite", "signature", "negocios", "corporate", "black"]>>;
         event_count: z.ZodNumber;
         latest_at: z.ZodNullable<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
@@ -606,8 +615,10 @@ export declare const ListDiscoveredAccountsResponseSchema: z.ZodObject<{
         institution_id: number | null;
         institution_name: string | null;
         institution_logo: string | null;
+        product_label: string;
         card_brand: "visa" | "mastercard" | "amex" | null;
         account_last4: string;
+        product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null;
         event_count: number;
         latest_at: string | null;
     }, {
@@ -615,8 +626,10 @@ export declare const ListDiscoveredAccountsResponseSchema: z.ZodObject<{
         institution_id: number | null;
         institution_name: string | null;
         institution_logo: string | null;
+        product_label: string;
         card_brand: "visa" | "mastercard" | "amex" | null;
         account_last4: string;
+        product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null;
         event_count: number;
         latest_at: string | null;
     }>, "many">;
@@ -626,8 +639,10 @@ export declare const ListDiscoveredAccountsResponseSchema: z.ZodObject<{
         institution_id: number | null;
         institution_name: string | null;
         institution_logo: string | null;
+        product_label: string;
         card_brand: "visa" | "mastercard" | "amex" | null;
         account_last4: string;
+        product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null;
         event_count: number;
         latest_at: string | null;
     }[];
@@ -637,8 +652,10 @@ export declare const ListDiscoveredAccountsResponseSchema: z.ZodObject<{
         institution_id: number | null;
         institution_name: string | null;
         institution_logo: string | null;
+        product_label: string;
         card_brand: "visa" | "mastercard" | "amex" | null;
         account_last4: string;
+        product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null;
         event_count: number;
         latest_at: string | null;
     }[];
@@ -658,6 +675,8 @@ export declare const LinkAccountItemSchema: z.ZodObject<{
     institution_name: z.ZodString;
     product_type: z.ZodEffects<z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
     account_last4: z.ZodPipeline<z.ZodEffects<z.ZodString, string, string>, z.ZodString>;
+    card_brand: z.ZodOptional<z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>>;
+    product_line: z.ZodOptional<z.ZodNullable<z.ZodEnum<["gold", "classic", "platinum", "premia", "infinite", "signature", "negocios", "corporate", "black"]>>>;
     linked_account: z.ZodOptional<z.ZodNullable<z.ZodObject<{
         product_type: z.ZodEnum<["savings_account", "checking_account"]>;
         account_last4: z.ZodPipeline<z.ZodEffects<z.ZodString, string, string>, z.ZodString>;
@@ -673,6 +692,8 @@ export declare const LinkAccountItemSchema: z.ZodObject<{
     institution_id: number;
     institution_name: string;
     account_last4: string;
+    card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
+    product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null | undefined;
     linked_account?: {
         product_type: "savings_account" | "checking_account";
         account_last4: string;
@@ -682,6 +703,8 @@ export declare const LinkAccountItemSchema: z.ZodObject<{
     institution_name: string;
     account_last4: string;
     product_type?: unknown;
+    card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
+    product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null | undefined;
     linked_account?: {
         product_type: "savings_account" | "checking_account";
         account_last4: string;
@@ -693,6 +716,8 @@ export declare const LinkAccountsBodySchema: z.ZodObject<{
         institution_name: z.ZodString;
         product_type: z.ZodEffects<z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
         account_last4: z.ZodPipeline<z.ZodEffects<z.ZodString, string, string>, z.ZodString>;
+        card_brand: z.ZodOptional<z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>>;
+        product_line: z.ZodOptional<z.ZodNullable<z.ZodEnum<["gold", "classic", "platinum", "premia", "infinite", "signature", "negocios", "corporate", "black"]>>>;
         linked_account: z.ZodOptional<z.ZodNullable<z.ZodObject<{
             product_type: z.ZodEnum<["savings_account", "checking_account"]>;
             account_last4: z.ZodPipeline<z.ZodEffects<z.ZodString, string, string>, z.ZodString>;
@@ -708,6 +733,8 @@ export declare const LinkAccountsBodySchema: z.ZodObject<{
         institution_id: number;
         institution_name: string;
         account_last4: string;
+        card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
+        product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null | undefined;
         linked_account?: {
             product_type: "savings_account" | "checking_account";
             account_last4: string;
@@ -717,6 +744,8 @@ export declare const LinkAccountsBodySchema: z.ZodObject<{
         institution_name: string;
         account_last4: string;
         product_type?: unknown;
+        card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
+        product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null | undefined;
         linked_account?: {
             product_type: "savings_account" | "checking_account";
             account_last4: string;
@@ -728,6 +757,8 @@ export declare const LinkAccountsBodySchema: z.ZodObject<{
         institution_id: number;
         institution_name: string;
         account_last4: string;
+        card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
+        product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null | undefined;
         linked_account?: {
             product_type: "savings_account" | "checking_account";
             account_last4: string;
@@ -739,6 +770,8 @@ export declare const LinkAccountsBodySchema: z.ZodObject<{
         institution_name: string;
         account_last4: string;
         product_type?: unknown;
+        card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
+        product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null | undefined;
         linked_account?: {
             product_type: "savings_account" | "checking_account";
             account_last4: string;

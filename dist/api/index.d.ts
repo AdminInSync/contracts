@@ -17038,8 +17038,10 @@ export declare const ApiContracts: {
                         institution_name: import("zod").ZodNullable<import("zod").ZodString>;
                         institution_logo: import("zod").ZodNullable<import("zod").ZodString>;
                         product_type: import("zod").ZodString;
+                        product_label: import("zod").ZodString;
                         account_last4: import("zod").ZodString;
                         card_brand: import("zod").ZodNullable<import("zod").ZodEnum<["visa", "mastercard", "amex"]>>;
+                        product_line: import("zod").ZodNullable<import("zod").ZodEnum<["gold", "classic", "platinum", "premia", "infinite", "signature", "negocios", "corporate", "black"]>>;
                         event_count: import("zod").ZodNumber;
                         latest_at: import("zod").ZodNullable<import("zod").ZodString>;
                     }, "strip", import("zod").ZodTypeAny, {
@@ -17047,8 +17049,10 @@ export declare const ApiContracts: {
                         institution_id: number | null;
                         institution_name: string | null;
                         institution_logo: string | null;
+                        product_label: string;
                         card_brand: "visa" | "mastercard" | "amex" | null;
                         account_last4: string;
+                        product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null;
                         event_count: number;
                         latest_at: string | null;
                     }, {
@@ -17056,8 +17060,10 @@ export declare const ApiContracts: {
                         institution_id: number | null;
                         institution_name: string | null;
                         institution_logo: string | null;
+                        product_label: string;
                         card_brand: "visa" | "mastercard" | "amex" | null;
                         account_last4: string;
+                        product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null;
                         event_count: number;
                         latest_at: string | null;
                     }>, "many">;
@@ -17067,8 +17073,10 @@ export declare const ApiContracts: {
                         institution_id: number | null;
                         institution_name: string | null;
                         institution_logo: string | null;
+                        product_label: string;
                         card_brand: "visa" | "mastercard" | "amex" | null;
                         account_last4: string;
+                        product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null;
                         event_count: number;
                         latest_at: string | null;
                     }[];
@@ -17078,8 +17086,10 @@ export declare const ApiContracts: {
                         institution_id: number | null;
                         institution_name: string | null;
                         institution_logo: string | null;
+                        product_label: string;
                         card_brand: "visa" | "mastercard" | "amex" | null;
                         account_last4: string;
+                        product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null;
                         event_count: number;
                         latest_at: string | null;
                     }[];
@@ -17122,6 +17132,8 @@ export declare const ApiContracts: {
                     institution_name: import("zod").ZodString;
                     product_type: import("zod").ZodEffects<import("zod").ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
                     account_last4: import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, string, string>, import("zod").ZodString>;
+                    card_brand: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodEnum<["visa", "mastercard", "amex"]>>>;
+                    product_line: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodEnum<["gold", "classic", "platinum", "premia", "infinite", "signature", "negocios", "corporate", "black"]>>>;
                     linked_account: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodObject<{
                         product_type: import("zod").ZodEnum<["savings_account", "checking_account"]>;
                         account_last4: import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, string, string>, import("zod").ZodString>;
@@ -17137,6 +17149,8 @@ export declare const ApiContracts: {
                     institution_id: number;
                     institution_name: string;
                     account_last4: string;
+                    card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
+                    product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null | undefined;
                     linked_account?: {
                         product_type: "savings_account" | "checking_account";
                         account_last4: string;
@@ -17146,6 +17160,8 @@ export declare const ApiContracts: {
                     institution_name: string;
                     account_last4: string;
                     product_type?: unknown;
+                    card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
+                    product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null | undefined;
                     linked_account?: {
                         product_type: "savings_account" | "checking_account";
                         account_last4: string;
@@ -17157,6 +17173,8 @@ export declare const ApiContracts: {
                     institution_id: number;
                     institution_name: string;
                     account_last4: string;
+                    card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
+                    product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null | undefined;
                     linked_account?: {
                         product_type: "savings_account" | "checking_account";
                         account_last4: string;
@@ -17168,6 +17186,8 @@ export declare const ApiContracts: {
                     institution_name: string;
                     account_last4: string;
                     product_type?: unknown;
+                    card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
+                    product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null | undefined;
                     linked_account?: {
                         product_type: "savings_account" | "checking_account";
                         account_last4: string;

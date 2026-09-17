@@ -100,13 +100,26 @@ export const RejectFinancialEmailEventResponseSchema = z.object({
     success: z.literal(true),
 });
 export const ConvertFinancialEmailEventResponseSchema = ApproveFinancialEmailEventResponseSchema;
+export const ProductLineSchema = z.enum([
+    'gold',
+    'classic',
+    'platinum',
+    'premia',
+    'infinite',
+    'signature',
+    'negocios',
+    'corporate',
+    'black',
+]);
 export const DiscoveredAccountSchema = z.object({
     institution_id: z.number().nullable(),
     institution_name: z.string().nullable(),
     institution_logo: z.string().nullable(),
     product_type: z.string(),
+    product_label: z.string(),
     account_last4: z.string().length(4),
     card_brand: CardBrandSchema.nullable(),
+    product_line: ProductLineSchema.nullable(),
     event_count: z.number(),
     latest_at: z.string().datetime().nullable(),
 });
@@ -138,6 +151,8 @@ export const LinkAccountItemSchema = z.object({
         .string()
         .transform((s) => s.replace(/\D/g, '').slice(-4))
         .pipe(z.string().length(4)),
+    card_brand: CardBrandSchema.nullable().optional(),
+    product_line: ProductLineSchema.nullable().optional(),
     linked_account: LinkedAccountRefSchema.nullable().optional(),
 });
 export const LinkAccountsBodySchema = z.object({
