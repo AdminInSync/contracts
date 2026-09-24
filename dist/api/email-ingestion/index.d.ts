@@ -776,7 +776,7 @@ export declare const EmailIngestionContracts: {
                     product_label: z.ZodString;
                     account_last4: z.ZodString;
                     card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
-                    product_line: z.ZodNullable<z.ZodEnum<["gold", "classic", "platinum", "premia", "infinite", "signature", "negocios", "corporate", "black"]>>;
+                    product_line: z.ZodNullable<z.ZodEnum<["gold", "classic", "platinum", "premia", "infinite", "signature", "negocios", "corporate", "black", "gnial"]>>;
                     event_count: z.ZodNumber;
                     latest_at: z.ZodNullable<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
@@ -787,7 +787,7 @@ export declare const EmailIngestionContracts: {
                     product_label: string;
                     card_brand: "visa" | "mastercard" | "amex" | null;
                     account_last4: string;
-                    product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null;
+                    product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null;
                     event_count: number;
                     latest_at: string | null;
                 }, {
@@ -798,7 +798,7 @@ export declare const EmailIngestionContracts: {
                     product_label: string;
                     card_brand: "visa" | "mastercard" | "amex" | null;
                     account_last4: string;
-                    product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null;
+                    product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null;
                     event_count: number;
                     latest_at: string | null;
                 }>, "many">;
@@ -811,7 +811,7 @@ export declare const EmailIngestionContracts: {
                     product_label: string;
                     card_brand: "visa" | "mastercard" | "amex" | null;
                     account_last4: string;
-                    product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null;
+                    product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null;
                     event_count: number;
                     latest_at: string | null;
                 }[];
@@ -824,7 +824,7 @@ export declare const EmailIngestionContracts: {
                     product_label: string;
                     card_brand: "visa" | "mastercard" | "amex" | null;
                     account_last4: string;
-                    product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null;
+                    product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null;
                     event_count: number;
                     latest_at: string | null;
                 }[];
@@ -868,7 +868,7 @@ export declare const EmailIngestionContracts: {
                 product_type: z.ZodEffects<z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
                 account_last4: z.ZodPipeline<z.ZodEffects<z.ZodString, string, string>, z.ZodString>;
                 card_brand: z.ZodOptional<z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>>;
-                product_line: z.ZodOptional<z.ZodNullable<z.ZodEnum<["gold", "classic", "platinum", "premia", "infinite", "signature", "negocios", "corporate", "black"]>>>;
+                product_line: z.ZodOptional<z.ZodNullable<z.ZodEnum<["gold", "classic", "platinum", "premia", "infinite", "signature", "negocios", "corporate", "black", "gnial"]>>>;
                 linked_account: z.ZodOptional<z.ZodNullable<z.ZodObject<{
                     product_type: z.ZodEnum<["savings_account", "checking_account"]>;
                     account_last4: z.ZodPipeline<z.ZodEffects<z.ZodString, string, string>, z.ZodString>;
@@ -885,7 +885,7 @@ export declare const EmailIngestionContracts: {
                 institution_name: string;
                 account_last4: string;
                 card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
-                product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null | undefined;
+                product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null | undefined;
                 linked_account?: {
                     product_type: "savings_account" | "checking_account";
                     account_last4: string;
@@ -896,7 +896,7 @@ export declare const EmailIngestionContracts: {
                 account_last4: string;
                 product_type?: unknown;
                 card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
-                product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null | undefined;
+                product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null | undefined;
                 linked_account?: {
                     product_type: "savings_account" | "checking_account";
                     account_last4: string;
@@ -909,7 +909,7 @@ export declare const EmailIngestionContracts: {
                 institution_name: string;
                 account_last4: string;
                 card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
-                product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null | undefined;
+                product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null | undefined;
                 linked_account?: {
                     product_type: "savings_account" | "checking_account";
                     account_last4: string;
@@ -922,7 +922,7 @@ export declare const EmailIngestionContracts: {
                 account_last4: string;
                 product_type?: unknown;
                 card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
-                product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null | undefined;
+                product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null | undefined;
                 linked_account?: {
                     product_type: "savings_account" | "checking_account";
                     account_last4: string;

@@ -8416,8 +8416,8 @@ export declare const apiContract: {
                     notification_settings: import("zod").ZodOptional<import("zod").ZodAny>;
                     notes: import("zod").ZodOptional<import("zod").ZodString>;
                 }, "strip", import("zod").ZodTypeAny, {
-                    currency: string;
                     title: string;
+                    currency: string;
                     due_date: string;
                     description?: string | undefined;
                     notes?: string | undefined;
@@ -8431,8 +8431,8 @@ export declare const apiContract: {
                     recurrence_pattern?: string | undefined;
                     notification_settings?: any;
                 }, {
-                    currency: string;
                     title: string;
+                    currency: string;
                     due_date: string;
                     description?: string | undefined;
                     notes?: string | undefined;
@@ -8475,6 +8475,7 @@ export declare const apiContract: {
                         }, "strip", import("zod").ZodTypeAny, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -8486,7 +8487,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -8497,6 +8497,7 @@ export declare const apiContract: {
                         }, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -8508,7 +8509,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -8522,6 +8522,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -8533,7 +8534,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -8547,6 +8547,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -8558,7 +8559,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -8674,6 +8674,7 @@ export declare const apiContract: {
                         }, "strip", import("zod").ZodTypeAny, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -8685,7 +8686,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -8696,6 +8696,7 @@ export declare const apiContract: {
                         }, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -8707,7 +8708,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -8734,6 +8734,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -8745,7 +8746,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -8764,6 +8764,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -8775,7 +8776,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -8852,6 +8852,7 @@ export declare const apiContract: {
                         }, "strip", import("zod").ZodTypeAny, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -8863,7 +8864,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -8874,6 +8874,7 @@ export declare const apiContract: {
                         }, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -8885,7 +8886,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -8912,6 +8912,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -8923,7 +8924,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -8942,6 +8942,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -8953,7 +8954,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -9037,6 +9037,7 @@ export declare const apiContract: {
                         }, "strip", import("zod").ZodTypeAny, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -9048,7 +9049,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -9059,6 +9059,7 @@ export declare const apiContract: {
                         }, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -9070,7 +9071,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -9097,6 +9097,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -9108,7 +9109,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -9127,6 +9127,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -9138,7 +9139,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -9215,6 +9215,7 @@ export declare const apiContract: {
                         }, "strip", import("zod").ZodTypeAny, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -9226,7 +9227,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -9237,6 +9237,7 @@ export declare const apiContract: {
                         }, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -9248,7 +9249,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -9275,6 +9275,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -9286,7 +9287,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -9305,6 +9305,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -9316,7 +9317,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -9386,15 +9386,15 @@ export declare const apiContract: {
                             sent_at: import("zod").ZodString;
                             payment_reminder_id: import("zod").ZodNumber;
                         }, "strip", import("zod").ZodTypeAny, {
-                            uuid: string;
                             title: string;
+                            uuid: string;
                             due_date: string;
                             phase: "overdue" | "early" | "due";
                             sent_at: string;
                             payment_reminder_id: number;
                         }, {
-                            uuid: string;
                             title: string;
+                            uuid: string;
                             due_date: string;
                             phase: "overdue" | "early" | "due";
                             sent_at: string;
@@ -9416,8 +9416,8 @@ export declare const apiContract: {
                     }, "strip", import("zod").ZodTypeAny, {
                         message: string;
                         data: {
-                            uuid: string;
                             title: string;
+                            uuid: string;
                             due_date: string;
                             phase: "overdue" | "early" | "due";
                             sent_at: string;
@@ -9431,8 +9431,8 @@ export declare const apiContract: {
                     }, {
                         message: string;
                         data: {
-                            uuid: string;
                             title: string;
+                            uuid: string;
                             due_date: string;
                             phase: "overdue" | "early" | "due";
                             sent_at: string;
@@ -9523,6 +9523,7 @@ export declare const apiContract: {
                         }, "strip", import("zod").ZodTypeAny, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -9534,7 +9535,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -9545,6 +9545,7 @@ export declare const apiContract: {
                         }, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -9556,7 +9557,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -9583,6 +9583,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -9594,7 +9595,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -9613,6 +9613,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -9624,7 +9625,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -9731,6 +9731,7 @@ export declare const apiContract: {
                         }, "strip", import("zod").ZodTypeAny, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -9742,7 +9743,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -9753,6 +9753,7 @@ export declare const apiContract: {
                         }, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -9764,7 +9765,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -9791,6 +9791,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -9802,7 +9803,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -9821,6 +9821,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -9832,7 +9833,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -9929,6 +9929,7 @@ export declare const apiContract: {
                         }, "strip", import("zod").ZodTypeAny, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -9940,7 +9941,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -9951,6 +9951,7 @@ export declare const apiContract: {
                         }, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -9962,7 +9963,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -9976,6 +9976,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -9987,7 +9988,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -10001,6 +10001,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -10012,7 +10013,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -10092,12 +10092,12 @@ export declare const apiContract: {
                     notes: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodString>>;
                 }, "strip", import("zod").ZodTypeAny, {
                     description?: string | undefined;
+                    title?: string | undefined;
                     notes?: string | undefined;
                     currency?: string | undefined;
                     priority?: "low" | "medium" | "high" | "urgent" | undefined;
                     amount?: number | undefined;
                     user_connection_id?: number | undefined;
-                    title?: string | undefined;
                     reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
                     due_date?: string | undefined;
                     reminder_date?: string | undefined;
@@ -10107,12 +10107,12 @@ export declare const apiContract: {
                     notification_settings?: any;
                 }, {
                     description?: string | undefined;
+                    title?: string | undefined;
                     notes?: string | undefined;
                     currency?: string | undefined;
                     priority?: "low" | "medium" | "high" | "urgent" | undefined;
                     amount?: number | undefined;
                     user_connection_id?: number | undefined;
-                    title?: string | undefined;
                     reminder_type?: "custom" | "credit_card" | "loan" | "bill" | "subscription" | undefined;
                     due_date?: string | undefined;
                     reminder_date?: string | undefined;
@@ -10150,6 +10150,7 @@ export declare const apiContract: {
                         }, "strip", import("zod").ZodTypeAny, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -10161,7 +10162,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -10172,6 +10172,7 @@ export declare const apiContract: {
                         }, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -10183,7 +10184,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -10197,6 +10197,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -10208,7 +10209,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -10222,6 +10222,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -10233,7 +10234,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -10401,6 +10401,7 @@ export declare const apiContract: {
                         }, "strip", import("zod").ZodTypeAny, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -10412,7 +10413,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -10423,6 +10423,7 @@ export declare const apiContract: {
                         }, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -10434,7 +10435,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -10448,6 +10448,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -10459,7 +10460,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -10473,6 +10473,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -10484,7 +10485,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -10577,6 +10577,7 @@ export declare const apiContract: {
                         }, "strip", import("zod").ZodTypeAny, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -10588,7 +10589,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -10599,6 +10599,7 @@ export declare const apiContract: {
                         }, {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -10610,7 +10611,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -10624,6 +10624,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -10635,7 +10636,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -10649,6 +10649,7 @@ export declare const apiContract: {
                         data: {
                             id: number;
                             description: string | null;
+                            title: string;
                             uuid: string;
                             user_uid: string;
                             created_at: string;
@@ -10660,7 +10661,6 @@ export declare const apiContract: {
                             amount: number | null;
                             series_id: number;
                             user_connection_id: number | null;
-                            title: string;
                             reminder_type: "custom" | "credit_card" | "loan" | "bill" | "subscription";
                             due_date: string;
                             reminder_date: string | null;
@@ -17042,7 +17042,7 @@ export declare const apiContract: {
                             product_label: import("zod").ZodString;
                             account_last4: import("zod").ZodString;
                             card_brand: import("zod").ZodNullable<import("zod").ZodEnum<["visa", "mastercard", "amex"]>>;
-                            product_line: import("zod").ZodNullable<import("zod").ZodEnum<["gold", "classic", "platinum", "premia", "infinite", "signature", "negocios", "corporate", "black"]>>;
+                            product_line: import("zod").ZodNullable<import("zod").ZodEnum<["gold", "classic", "platinum", "premia", "infinite", "signature", "negocios", "corporate", "black", "gnial"]>>;
                             event_count: import("zod").ZodNumber;
                             latest_at: import("zod").ZodNullable<import("zod").ZodString>;
                         }, "strip", import("zod").ZodTypeAny, {
@@ -17053,7 +17053,7 @@ export declare const apiContract: {
                             product_label: string;
                             card_brand: "visa" | "mastercard" | "amex" | null;
                             account_last4: string;
-                            product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null;
+                            product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null;
                             event_count: number;
                             latest_at: string | null;
                         }, {
@@ -17064,7 +17064,7 @@ export declare const apiContract: {
                             product_label: string;
                             card_brand: "visa" | "mastercard" | "amex" | null;
                             account_last4: string;
-                            product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null;
+                            product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null;
                             event_count: number;
                             latest_at: string | null;
                         }>, "many">;
@@ -17077,7 +17077,7 @@ export declare const apiContract: {
                             product_label: string;
                             card_brand: "visa" | "mastercard" | "amex" | null;
                             account_last4: string;
-                            product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null;
+                            product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null;
                             event_count: number;
                             latest_at: string | null;
                         }[];
@@ -17090,7 +17090,7 @@ export declare const apiContract: {
                             product_label: string;
                             card_brand: "visa" | "mastercard" | "amex" | null;
                             account_last4: string;
-                            product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null;
+                            product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null;
                             event_count: number;
                             latest_at: string | null;
                         }[];
@@ -17134,7 +17134,7 @@ export declare const apiContract: {
                         product_type: import("zod").ZodEffects<import("zod").ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
                         account_last4: import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, string, string>, import("zod").ZodString>;
                         card_brand: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodEnum<["visa", "mastercard", "amex"]>>>;
-                        product_line: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodEnum<["gold", "classic", "platinum", "premia", "infinite", "signature", "negocios", "corporate", "black"]>>>;
+                        product_line: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodEnum<["gold", "classic", "platinum", "premia", "infinite", "signature", "negocios", "corporate", "black", "gnial"]>>>;
                         linked_account: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodObject<{
                             product_type: import("zod").ZodEnum<["savings_account", "checking_account"]>;
                             account_last4: import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, string, string>, import("zod").ZodString>;
@@ -17151,7 +17151,7 @@ export declare const apiContract: {
                         institution_name: string;
                         account_last4: string;
                         card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
-                        product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null | undefined;
+                        product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null | undefined;
                         linked_account?: {
                             product_type: "savings_account" | "checking_account";
                             account_last4: string;
@@ -17162,7 +17162,7 @@ export declare const apiContract: {
                         account_last4: string;
                         product_type?: unknown;
                         card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
-                        product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null | undefined;
+                        product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null | undefined;
                         linked_account?: {
                             product_type: "savings_account" | "checking_account";
                             account_last4: string;
@@ -17175,7 +17175,7 @@ export declare const apiContract: {
                         institution_name: string;
                         account_last4: string;
                         card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
-                        product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null | undefined;
+                        product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null | undefined;
                         linked_account?: {
                             product_type: "savings_account" | "checking_account";
                             account_last4: string;
@@ -17188,7 +17188,7 @@ export declare const apiContract: {
                         account_last4: string;
                         product_type?: unknown;
                         card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
-                        product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | null | undefined;
+                        product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null | undefined;
                         linked_account?: {
                             product_type: "savings_account" | "checking_account";
                             account_last4: string;

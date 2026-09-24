@@ -110,6 +110,7 @@ export const ProductLineSchema = z.enum([
     'negocios',
     'corporate',
     'black',
+    'gnial',
 ]);
 export const DiscoveredAccountSchema = z.object({
     institution_id: z.number().nullable(),
