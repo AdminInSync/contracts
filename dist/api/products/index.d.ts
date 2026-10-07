@@ -2860,17 +2860,20 @@ export declare const ProductsContracts: {
             limit: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
             offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
             currency: z.ZodOptional<z.ZodEnum<["DOP", "USD", "EUR"]>>;
+            from: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
             limit: number;
             offset: number;
             currency?: "DOP" | "USD" | "EUR" | undefined;
+            from?: string | undefined;
         }, {
             limit?: string | undefined;
             currency?: "DOP" | "USD" | "EUR" | undefined;
             offset?: string | undefined;
+            from?: string | undefined;
         }>;
         summary: "Get my product transactions";
-        description: "Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR.";
+        description: "Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from (YYYY-MM-DD) limits results to that date onward.";
         method: "GET";
         path: "/products/my-transactions";
         responses: {
@@ -2947,6 +2950,16 @@ export declare const ProductsContracts: {
                     total: number;
                     offset: number;
                 }>;
+                summary: z.ZodObject<{
+                    income: z.ZodNumber;
+                    expenses: z.ZodNumber;
+                }, "strip", z.ZodTypeAny, {
+                    income: number;
+                    expenses: number;
+                }, {
+                    income: number;
+                    expenses: number;
+                }>;
             }, "strip", z.ZodTypeAny, {
                 message: string;
                 data: {
@@ -2974,6 +2987,10 @@ export declare const ProductsContracts: {
                     total: number;
                     offset: number;
                 };
+                summary: {
+                    income: number;
+                    expenses: number;
+                };
             }, {
                 message: string;
                 data: {
@@ -3000,6 +3017,10 @@ export declare const ProductsContracts: {
                     limit: number;
                     total: number;
                     offset: number;
+                };
+                summary: {
+                    income: number;
+                    expenses: number;
                 };
             }>;
             401: z.ZodObject<{

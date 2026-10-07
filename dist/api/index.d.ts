@@ -8221,17 +8221,20 @@ export declare const ApiContracts: {
                 limit: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
                 offset: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
                 currency: import("zod").ZodOptional<import("zod").ZodEnum<["DOP", "USD", "EUR"]>>;
+                from: import("zod").ZodOptional<import("zod").ZodString>;
             }, "strip", import("zod").ZodTypeAny, {
                 limit: number;
                 offset: number;
                 currency?: "DOP" | "USD" | "EUR" | undefined;
+                from?: string | undefined;
             }, {
                 limit?: string | undefined;
                 currency?: "DOP" | "USD" | "EUR" | undefined;
                 offset?: string | undefined;
+                from?: string | undefined;
             }>;
             summary: "Get my product transactions";
-            description: "Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR.";
+            description: "Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from (YYYY-MM-DD) limits results to that date onward.";
             method: "GET";
             path: "/api/products/my-transactions";
             responses: {
@@ -8308,6 +8311,16 @@ export declare const ApiContracts: {
                         total: number;
                         offset: number;
                     }>;
+                    summary: import("zod").ZodObject<{
+                        income: import("zod").ZodNumber;
+                        expenses: import("zod").ZodNumber;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        income: number;
+                        expenses: number;
+                    }, {
+                        income: number;
+                        expenses: number;
+                    }>;
                 }, "strip", import("zod").ZodTypeAny, {
                     message: string;
                     data: {
@@ -8335,6 +8348,10 @@ export declare const ApiContracts: {
                         total: number;
                         offset: number;
                     };
+                    summary: {
+                        income: number;
+                        expenses: number;
+                    };
                 }, {
                     message: string;
                     data: {
@@ -8361,6 +8378,10 @@ export declare const ApiContracts: {
                         limit: number;
                         total: number;
                         offset: number;
+                    };
+                    summary: {
+                        income: number;
+                        expenses: number;
                     };
                 }>;
                 401: import("zod").ZodObject<{
@@ -13481,6 +13502,41 @@ export declare const ApiContracts: {
                             percentage: number;
                             category: string;
                         }>, "many">;
+                        expenseDistributionByCurrency: import("zod").ZodArray<import("zod").ZodObject<{
+                            currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                            items: import("zod").ZodArray<import("zod").ZodObject<{
+                                category: import("zod").ZodString;
+                                percentage: import("zod").ZodNumber;
+                                amount: import("zod").ZodNumber;
+                                color: import("zod").ZodString;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }, {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }>, "many">;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            items: {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }[];
+                            currency: "DOP" | "USD" | "EUR";
+                        }, {
+                            items: {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }[];
+                            currency: "DOP" | "USD" | "EUR";
+                        }>, "many">;
                         recommendations: import("zod").ZodArray<import("zod").ZodString, "many">;
                         syncStatus: import("zod").ZodObject<{
                             lastSync: import("zod").ZodNullable<import("zod").ZodDate>;
@@ -13587,6 +13643,15 @@ export declare const ApiContracts: {
                             percentage: number;
                             category: string;
                         }[];
+                        expenseDistributionByCurrency: {
+                            items: {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }[];
+                            currency: "DOP" | "USD" | "EUR";
+                        }[];
                         recommendations: string[];
                         syncStatus: {
                             lastSync: Date | null;
@@ -13686,6 +13751,15 @@ export declare const ApiContracts: {
                             amount: number;
                             percentage: number;
                             category: string;
+                        }[];
+                        expenseDistributionByCurrency: {
+                            items: {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }[];
+                            currency: "DOP" | "USD" | "EUR";
                         }[];
                         recommendations: string[];
                         syncStatus: {
@@ -13791,6 +13865,15 @@ export declare const ApiContracts: {
                             percentage: number;
                             category: string;
                         }[];
+                        expenseDistributionByCurrency: {
+                            items: {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }[];
+                            currency: "DOP" | "USD" | "EUR";
+                        }[];
                         recommendations: string[];
                         syncStatus: {
                             lastSync: Date | null;
@@ -13894,6 +13977,15 @@ export declare const ApiContracts: {
                             amount: number;
                             percentage: number;
                             category: string;
+                        }[];
+                        expenseDistributionByCurrency: {
+                            items: {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }[];
+                            currency: "DOP" | "USD" | "EUR";
                         }[];
                         recommendations: string[];
                         syncStatus: {
@@ -14423,6 +14515,41 @@ export declare const ApiContracts: {
                             percentage: number;
                             category: string;
                         }>, "many">;
+                        expenseDistributionByCurrency: import("zod").ZodArray<import("zod").ZodObject<{
+                            currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                            items: import("zod").ZodArray<import("zod").ZodObject<{
+                                category: import("zod").ZodString;
+                                percentage: import("zod").ZodNumber;
+                                amount: import("zod").ZodNumber;
+                                color: import("zod").ZodString;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }, {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }>, "many">;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            items: {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }[];
+                            currency: "DOP" | "USD" | "EUR";
+                        }, {
+                            items: {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }[];
+                            currency: "DOP" | "USD" | "EUR";
+                        }>, "many">;
                         recommendations: import("zod").ZodArray<import("zod").ZodString, "many">;
                         syncStatus: import("zod").ZodObject<{
                             lastSync: import("zod").ZodNullable<import("zod").ZodDate>;
@@ -14529,6 +14656,15 @@ export declare const ApiContracts: {
                             percentage: number;
                             category: string;
                         }[];
+                        expenseDistributionByCurrency: {
+                            items: {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }[];
+                            currency: "DOP" | "USD" | "EUR";
+                        }[];
                         recommendations: string[];
                         syncStatus: {
                             lastSync: Date | null;
@@ -14628,6 +14764,15 @@ export declare const ApiContracts: {
                             amount: number;
                             percentage: number;
                             category: string;
+                        }[];
+                        expenseDistributionByCurrency: {
+                            items: {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }[];
+                            currency: "DOP" | "USD" | "EUR";
                         }[];
                         recommendations: string[];
                         syncStatus: {
@@ -14733,6 +14878,15 @@ export declare const ApiContracts: {
                             percentage: number;
                             category: string;
                         }[];
+                        expenseDistributionByCurrency: {
+                            items: {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }[];
+                            currency: "DOP" | "USD" | "EUR";
+                        }[];
                         recommendations: string[];
                         syncStatus: {
                             lastSync: Date | null;
@@ -14836,6 +14990,15 @@ export declare const ApiContracts: {
                             amount: number;
                             percentage: number;
                             category: string;
+                        }[];
+                        expenseDistributionByCurrency: {
+                            items: {
+                                color: string;
+                                amount: number;
+                                percentage: number;
+                                category: string;
+                            }[];
+                            currency: "DOP" | "USD" | "EUR";
                         }[];
                         recommendations: string[];
                         syncStatus: {
@@ -16107,13 +16270,13 @@ export declare const ApiContracts: {
                             period: import("zod").ZodString;
                         }, "strip", import("zod").ZodTypeAny, {
                             income: number[];
-                            period: string;
                             expenses: number[];
+                            period: string;
                             months: string[];
                         }, {
                             income: number[];
-                            period: string;
                             expenses: number[];
+                            period: string;
                             months: string[];
                         }>;
                         expenseDistribution: import("zod").ZodArray<import("zod").ZodObject<{
@@ -16147,8 +16310,8 @@ export declare const ApiContracts: {
                         }[];
                         monthlyTrend: {
                             income: number[];
-                            period: string;
                             expenses: number[];
+                            period: string;
                             months: string[];
                         };
                     }, {
@@ -16166,8 +16329,8 @@ export declare const ApiContracts: {
                         }[];
                         monthlyTrend: {
                             income: number[];
-                            period: string;
                             expenses: number[];
+                            period: string;
                             months: string[];
                         };
                     }>;
@@ -16189,8 +16352,8 @@ export declare const ApiContracts: {
                         }[];
                         monthlyTrend: {
                             income: number[];
-                            period: string;
                             expenses: number[];
+                            period: string;
                             months: string[];
                         };
                     };
@@ -16212,8 +16375,8 @@ export declare const ApiContracts: {
                         }[];
                         monthlyTrend: {
                             income: number[];
-                            period: string;
                             expenses: number[];
+                            period: string;
                             months: string[];
                         };
                     };

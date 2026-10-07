@@ -1479,6 +1479,16 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         total: number;
         offset: number;
     }>;
+    summary: z.ZodObject<{
+        income: z.ZodNumber;
+        expenses: z.ZodNumber;
+    }, "strip", z.ZodTypeAny, {
+        income: number;
+        expenses: number;
+    }, {
+        income: number;
+        expenses: number;
+    }>;
 }, "strip", z.ZodTypeAny, {
     message: string;
     data: {
@@ -1506,6 +1516,10 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         total: number;
         offset: number;
     };
+    summary: {
+        income: number;
+        expenses: number;
+    };
 }, {
     message: string;
     data: {
@@ -1532,5 +1546,9 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         limit: number;
         total: number;
         offset: number;
+    };
+    summary: {
+        income: number;
+        expenses: number;
     };
 }>;

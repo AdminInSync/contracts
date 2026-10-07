@@ -345,6 +345,41 @@ export declare const DashboardContracts: {
                         percentage: number;
                         category: string;
                     }>, "many">;
+                    expenseDistributionByCurrency: z.ZodArray<z.ZodObject<{
+                        currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
+                        items: z.ZodArray<z.ZodObject<{
+                            category: z.ZodString;
+                            percentage: z.ZodNumber;
+                            amount: z.ZodNumber;
+                            color: z.ZodString;
+                        }, "strip", z.ZodTypeAny, {
+                            color: string;
+                            amount: number;
+                            percentage: number;
+                            category: string;
+                        }, {
+                            color: string;
+                            amount: number;
+                            percentage: number;
+                            category: string;
+                        }>, "many">;
+                    }, "strip", z.ZodTypeAny, {
+                        items: {
+                            color: string;
+                            amount: number;
+                            percentage: number;
+                            category: string;
+                        }[];
+                        currency: "DOP" | "USD" | "EUR";
+                    }, {
+                        items: {
+                            color: string;
+                            amount: number;
+                            percentage: number;
+                            category: string;
+                        }[];
+                        currency: "DOP" | "USD" | "EUR";
+                    }>, "many">;
                     recommendations: z.ZodArray<z.ZodString, "many">;
                     syncStatus: z.ZodObject<{
                         lastSync: z.ZodNullable<z.ZodDate>;
@@ -451,6 +486,15 @@ export declare const DashboardContracts: {
                         percentage: number;
                         category: string;
                     }[];
+                    expenseDistributionByCurrency: {
+                        items: {
+                            color: string;
+                            amount: number;
+                            percentage: number;
+                            category: string;
+                        }[];
+                        currency: "DOP" | "USD" | "EUR";
+                    }[];
                     recommendations: string[];
                     syncStatus: {
                         lastSync: Date | null;
@@ -550,6 +594,15 @@ export declare const DashboardContracts: {
                         amount: number;
                         percentage: number;
                         category: string;
+                    }[];
+                    expenseDistributionByCurrency: {
+                        items: {
+                            color: string;
+                            amount: number;
+                            percentage: number;
+                            category: string;
+                        }[];
+                        currency: "DOP" | "USD" | "EUR";
                     }[];
                     recommendations: string[];
                     syncStatus: {
@@ -655,6 +708,15 @@ export declare const DashboardContracts: {
                         percentage: number;
                         category: string;
                     }[];
+                    expenseDistributionByCurrency: {
+                        items: {
+                            color: string;
+                            amount: number;
+                            percentage: number;
+                            category: string;
+                        }[];
+                        currency: "DOP" | "USD" | "EUR";
+                    }[];
                     recommendations: string[];
                     syncStatus: {
                         lastSync: Date | null;
@@ -758,6 +820,15 @@ export declare const DashboardContracts: {
                         amount: number;
                         percentage: number;
                         category: string;
+                    }[];
+                    expenseDistributionByCurrency: {
+                        items: {
+                            color: string;
+                            amount: number;
+                            percentage: number;
+                            category: string;
+                        }[];
+                        currency: "DOP" | "USD" | "EUR";
                     }[];
                     recommendations: string[];
                     syncStatus: {
@@ -1285,6 +1356,41 @@ export declare const DashboardContracts: {
                         percentage: number;
                         category: string;
                     }>, "many">;
+                    expenseDistributionByCurrency: z.ZodArray<z.ZodObject<{
+                        currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
+                        items: z.ZodArray<z.ZodObject<{
+                            category: z.ZodString;
+                            percentage: z.ZodNumber;
+                            amount: z.ZodNumber;
+                            color: z.ZodString;
+                        }, "strip", z.ZodTypeAny, {
+                            color: string;
+                            amount: number;
+                            percentage: number;
+                            category: string;
+                        }, {
+                            color: string;
+                            amount: number;
+                            percentage: number;
+                            category: string;
+                        }>, "many">;
+                    }, "strip", z.ZodTypeAny, {
+                        items: {
+                            color: string;
+                            amount: number;
+                            percentage: number;
+                            category: string;
+                        }[];
+                        currency: "DOP" | "USD" | "EUR";
+                    }, {
+                        items: {
+                            color: string;
+                            amount: number;
+                            percentage: number;
+                            category: string;
+                        }[];
+                        currency: "DOP" | "USD" | "EUR";
+                    }>, "many">;
                     recommendations: z.ZodArray<z.ZodString, "many">;
                     syncStatus: z.ZodObject<{
                         lastSync: z.ZodNullable<z.ZodDate>;
@@ -1391,6 +1497,15 @@ export declare const DashboardContracts: {
                         percentage: number;
                         category: string;
                     }[];
+                    expenseDistributionByCurrency: {
+                        items: {
+                            color: string;
+                            amount: number;
+                            percentage: number;
+                            category: string;
+                        }[];
+                        currency: "DOP" | "USD" | "EUR";
+                    }[];
                     recommendations: string[];
                     syncStatus: {
                         lastSync: Date | null;
@@ -1490,6 +1605,15 @@ export declare const DashboardContracts: {
                         amount: number;
                         percentage: number;
                         category: string;
+                    }[];
+                    expenseDistributionByCurrency: {
+                        items: {
+                            color: string;
+                            amount: number;
+                            percentage: number;
+                            category: string;
+                        }[];
+                        currency: "DOP" | "USD" | "EUR";
                     }[];
                     recommendations: string[];
                     syncStatus: {
@@ -1595,6 +1719,15 @@ export declare const DashboardContracts: {
                         percentage: number;
                         category: string;
                     }[];
+                    expenseDistributionByCurrency: {
+                        items: {
+                            color: string;
+                            amount: number;
+                            percentage: number;
+                            category: string;
+                        }[];
+                        currency: "DOP" | "USD" | "EUR";
+                    }[];
                     recommendations: string[];
                     syncStatus: {
                         lastSync: Date | null;
@@ -1698,6 +1831,15 @@ export declare const DashboardContracts: {
                         amount: number;
                         percentage: number;
                         category: string;
+                    }[];
+                    expenseDistributionByCurrency: {
+                        items: {
+                            color: string;
+                            amount: number;
+                            percentage: number;
+                            category: string;
+                        }[];
+                        currency: "DOP" | "USD" | "EUR";
                     }[];
                     recommendations: string[];
                     syncStatus: {

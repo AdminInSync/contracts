@@ -137,13 +137,13 @@ export declare const ReportsContracts: {
                         period: z.ZodString;
                     }, "strip", z.ZodTypeAny, {
                         income: number[];
-                        period: string;
                         expenses: number[];
+                        period: string;
                         months: string[];
                     }, {
                         income: number[];
-                        period: string;
                         expenses: number[];
+                        period: string;
                         months: string[];
                     }>;
                     expenseDistribution: z.ZodArray<z.ZodObject<{
@@ -177,8 +177,8 @@ export declare const ReportsContracts: {
                     }[];
                     monthlyTrend: {
                         income: number[];
-                        period: string;
                         expenses: number[];
+                        period: string;
                         months: string[];
                     };
                 }, {
@@ -196,8 +196,8 @@ export declare const ReportsContracts: {
                     }[];
                     monthlyTrend: {
                         income: number[];
-                        period: string;
                         expenses: number[];
+                        period: string;
                         months: string[];
                     };
                 }>;
@@ -219,8 +219,8 @@ export declare const ReportsContracts: {
                     }[];
                     monthlyTrend: {
                         income: number[];
-                        period: string;
                         expenses: number[];
+                        period: string;
                         months: string[];
                     };
                 };
@@ -242,8 +242,8 @@ export declare const ReportsContracts: {
                     }[];
                     monthlyTrend: {
                         income: number[];
-                        period: string;
                         expenses: number[];
+                        period: string;
                         months: string[];
                     };
                 };

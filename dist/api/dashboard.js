@@ -102,6 +102,10 @@ const ExpenseDistributionSchema = z.object({
     amount: z.number(),
     color: z.string()
 });
+const ExpenseDistributionByCurrencySchema = z.object({
+    currency: z.enum(['DOP', 'USD', 'EUR']),
+    items: z.array(ExpenseDistributionSchema)
+});
 const SyncStatusSchema = z.object({
     lastSync: z.date().nullable(),
     needsSync: z.boolean()
@@ -116,6 +120,7 @@ const DashboardDataSchema = z.object({
     recentMovements: z.array(RecentMovementSchema),
     upcomingEvents: z.array(UpcomingEventSchema),
     expenseDistribution: z.array(ExpenseDistributionSchema),
+    expenseDistributionByCurrency: z.array(ExpenseDistributionByCurrencySchema),
     recommendations: z.array(z.string()),
     syncStatus: SyncStatusSchema
 });

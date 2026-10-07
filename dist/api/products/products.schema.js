@@ -159,4 +159,8 @@ export const ProductTransactionsListResponseSchema = z.object({
         limit: z.number(),
         offset: z.number(),
     }),
+    summary: z.object({
+        income: z.number(),
+        expenses: z.number(),
+    }),
 });
