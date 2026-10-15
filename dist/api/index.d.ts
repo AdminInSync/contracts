@@ -8222,19 +8222,22 @@ export declare const ApiContracts: {
                 offset: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
                 currency: import("zod").ZodOptional<import("zod").ZodEnum<["DOP", "USD", "EUR"]>>;
                 from: import("zod").ZodOptional<import("zod").ZodString>;
+                search: import("zod").ZodOptional<import("zod").ZodString>;
             }, "strip", import("zod").ZodTypeAny, {
                 limit: number;
                 offset: number;
+                search?: string | undefined;
                 currency?: "DOP" | "USD" | "EUR" | undefined;
                 from?: string | undefined;
             }, {
                 limit?: string | undefined;
+                search?: string | undefined;
                 currency?: "DOP" | "USD" | "EUR" | undefined;
                 offset?: string | undefined;
                 from?: string | undefined;
             }>;
             summary: "Get my product transactions";
-            description: "Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from (YYYY-MM-DD) limits results to that date onward.";
+            description: "Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from (YYYY-MM-DD) limits results to that date onward. Optional search matches description, institution, product, card brand, or last 4.";
             method: "GET";
             path: "/api/products/my-transactions";
             responses: {

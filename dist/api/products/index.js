@@ -236,8 +236,9 @@ export const ProductsContracts = c.router({
             offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
             currency: z.enum(['DOP', 'USD', 'EUR']).optional(),
             from: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+            search: z.string().trim().max(100).optional(),
         }),
         summary: 'Get my product transactions',
-        description: 'Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from (YYYY-MM-DD) limits results to that date onward.',
+        description: 'Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from (YYYY-MM-DD) limits results to that date onward. Optional search matches description, institution, product, card brand, or last 4.',
     },
 });
