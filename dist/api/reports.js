@@ -1,19 +1,22 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
 const c = initContract();
-// Esquemas para el resumen financiero
 const FinancialSummarySchema = z.object({
-    income: z.number(),
     expenses: z.number(),
-    netSavings: z.number(),
-    savingsRate: z.number()
+    totalBudget: z.number(),
+    budgetSpent: z.number(),
 });
-// Esquemas para tendencia mensual
 const MonthlyTrendSchema = z.object({
     months: z.array(z.string()),
-    income: z.array(z.number()),
     expenses: z.array(z.number()),
     period: z.string()
+});
+const ExpenseInsightSchema = z.object({
+    type: z.enum(['positive', 'warning', 'info']),
+    title: z.string(),
+    description: z.string(),
+    percentageChange: z.number(),
+    category: z.string().nullable(),
 });
 // Esquemas para distribución de gastos
 const ExpenseDistributionSchema = z.object({
@@ -29,7 +32,7 @@ const PaymentHistorySchema = z.object({
     period: z.string()
 });
 // Esquemas para análisis de gastos
-const ExpenseInsightSchema = z.object({
+const ExpenseAnalysisInsightSchema = z.object({
     type: z.string(),
     title: z.string(),
     description: z.string(),
@@ -37,12 +40,14 @@ const ExpenseInsightSchema = z.object({
     color: z.string()
 });
 const ExpenseAnalysisSchema = z.object({
-    insights: z.array(ExpenseInsightSchema)
+    insights: z.array(ExpenseAnalysisInsightSchema)
 });
 const ReportsResponseSchema = z.object({
+    currency: z.enum(['DOP', 'USD', 'EUR']),
     summary: FinancialSummarySchema,
     monthlyTrend: MonthlyTrendSchema,
-    expenseDistribution: z.array(ExpenseDistributionSchema)
+    expenseDistribution: z.array(ExpenseDistributionSchema),
+    expenseInsights: z.array(ExpenseInsightSchema),
 });
 export const PaymentHistoryResponseSchema = z.object({
     success: z.boolean(),
@@ -83,6 +88,6 @@ export const ReportsContracts = c.router({
             })
         },
         summary: 'Get full financial reports',
-        description: 'Returns financial summary, monthly trend, and expense distribution. Optional currency limits totals to DOP, USD, or EUR.'
+        description: 'Returns financial summary, monthly trend, and expense distribution. Totals default to DOP; the optional currency selects DOP, USD, or EUR.'
     }
 });

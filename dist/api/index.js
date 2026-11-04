@@ -20,6 +20,14 @@ import { AdminAuthContracts } from './admin-auth';
 import { AdminWaitlistContracts } from './admin-waitlist';
 import { AdminClientsContracts } from './admin-clients';
 import { AdminDashboardContracts } from './admin-dashboard';
+import { TransactionsContracts } from './transactions';
+import { SharedSavingsContracts } from './shared-savings';
+import { SharedExpenseContracts } from './shared-expenses';
+import { AppFeedbackContracts } from './app-feedback';
+import { BetaTesterContracts } from './beta-testers';
+import { RegistrationContracts } from './registration';
+import { UserPreferencesContracts } from './user-preferences';
+import { SavingGoalRemindersContracts } from './saving-goal-reminders';
 const c = initContract();
 export const ApiContracts = c.router({
     AdminAuth: AdminAuthContracts,
@@ -35,6 +43,14 @@ export const ApiContracts = c.router({
     SavingGoals: SavingGoalsContracts,
     Institutions: InstitutionsContracts,
     Products: ProductsContracts,
+    Transactions: TransactionsContracts,
+    SharedSavings: SharedSavingsContracts,
+    SharedExpenses: SharedExpenseContracts,
+    AppFeedback: AppFeedbackContracts,
+    BetaTesters: BetaTesterContracts,
+    Registration: RegistrationContracts,
+    UserPreferences: UserPreferencesContracts,
+    SavingGoalReminders: SavingGoalRemindersContracts,
     PaymentReminders: PaymentRemindersContracts,
     BankConnections: BankConnectionContracts,
     Budgets: BudgetsContracts,

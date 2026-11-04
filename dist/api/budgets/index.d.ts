@@ -14,10 +14,12 @@ export declare const BudgetsContracts: {
             is_active: z.ZodOptional<z.ZodBoolean>;
             notes: z.ZodString;
             settings: z.ZodOptional<z.ZodAny>;
+            category: z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>;
         }, "strip", z.ZodTypeAny, {
             notes: string;
             name: string;
             currency: string;
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
             start_date: string;
             end_date: string;
             total_amount: number;
@@ -27,6 +29,7 @@ export declare const BudgetsContracts: {
         }, {
             notes: string;
             name: string;
+            category: string;
             start_date: string;
             end_date: string;
             total_amount: number;
@@ -38,6 +41,7 @@ export declare const BudgetsContracts: {
             notes: string;
             name: string;
             currency: string;
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
             start_date: string;
             end_date: string;
             total_amount: number;
@@ -47,6 +51,7 @@ export declare const BudgetsContracts: {
         }, {
             notes: string;
             name: string;
+            category: string;
             start_date: string;
             end_date: string;
             total_amount: number;
@@ -73,10 +78,19 @@ export declare const BudgetsContracts: {
                     is_active: z.ZodBoolean;
                     notes: z.ZodNullable<z.ZodString>;
                     settings: z.ZodNullable<z.ZodAny>;
+                    category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                    needs_category: z.ZodBoolean;
+                    spent: z.ZodNullable<z.ZodNumber>;
+                    remaining: z.ZodNullable<z.ZodNumber>;
+                    percent: z.ZodNullable<z.ZodNumber>;
+                    status: z.ZodNullable<z.ZodEnum<["ok", "near_limit", "exceeded"]>>;
+                    period_active: z.ZodNullable<z.ZodBoolean>;
+                    counted_expense_types: z.ZodArray<z.ZodEnum<["manual", "voice"]>, "many">;
                     created_at: z.ZodString;
                     updated_at: z.ZodString;
                     deleted_at: z.ZodNullable<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -87,13 +101,21 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 }, {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -104,16 +126,24 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 }>;
             }, "strip", z.ZodTypeAny, {
                 message: string;
                 data: {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -124,16 +154,24 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 };
             }, {
                 message: string;
                 data: {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -144,11 +182,18 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 };
             }>;
@@ -231,10 +276,19 @@ export declare const BudgetsContracts: {
                     is_active: z.ZodBoolean;
                     notes: z.ZodNullable<z.ZodString>;
                     settings: z.ZodNullable<z.ZodAny>;
+                    category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                    needs_category: z.ZodBoolean;
+                    spent: z.ZodNullable<z.ZodNumber>;
+                    remaining: z.ZodNullable<z.ZodNumber>;
+                    percent: z.ZodNullable<z.ZodNumber>;
+                    status: z.ZodNullable<z.ZodEnum<["ok", "near_limit", "exceeded"]>>;
+                    period_active: z.ZodNullable<z.ZodBoolean>;
+                    counted_expense_types: z.ZodArray<z.ZodEnum<["manual", "voice"]>, "many">;
                     created_at: z.ZodString;
                     updated_at: z.ZodString;
                     deleted_at: z.ZodNullable<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -245,13 +299,21 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 }, {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -262,11 +324,18 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 }>, "many">;
                 pagination: z.ZodOptional<z.ZodObject<{
@@ -285,6 +354,7 @@ export declare const BudgetsContracts: {
             }, "strip", z.ZodTypeAny, {
                 message: string;
                 data: {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -295,11 +365,18 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 }[];
                 pagination?: {
@@ -310,6 +387,7 @@ export declare const BudgetsContracts: {
             }, {
                 message: string;
                 data: {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -320,11 +398,18 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 }[];
                 pagination?: {
@@ -390,10 +475,19 @@ export declare const BudgetsContracts: {
                     is_active: z.ZodBoolean;
                     notes: z.ZodNullable<z.ZodString>;
                     settings: z.ZodNullable<z.ZodAny>;
+                    category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                    needs_category: z.ZodBoolean;
+                    spent: z.ZodNullable<z.ZodNumber>;
+                    remaining: z.ZodNullable<z.ZodNumber>;
+                    percent: z.ZodNullable<z.ZodNumber>;
+                    status: z.ZodNullable<z.ZodEnum<["ok", "near_limit", "exceeded"]>>;
+                    period_active: z.ZodNullable<z.ZodBoolean>;
+                    counted_expense_types: z.ZodArray<z.ZodEnum<["manual", "voice"]>, "many">;
                     created_at: z.ZodString;
                     updated_at: z.ZodString;
                     deleted_at: z.ZodNullable<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -404,13 +498,21 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 }, {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -421,16 +523,24 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 }>;
             }, "strip", z.ZodTypeAny, {
                 message: string;
                 data: {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -441,16 +551,24 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 };
             }, {
                 message: string;
                 data: {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -461,11 +579,18 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 };
             }>;
@@ -531,11 +656,13 @@ export declare const BudgetsContracts: {
             is_active: z.ZodOptional<z.ZodOptional<z.ZodBoolean>>;
             notes: z.ZodOptional<z.ZodString>;
             settings: z.ZodOptional<z.ZodOptional<z.ZodAny>>;
+            category: z.ZodOptional<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>>;
         }, "strip", z.ZodTypeAny, {
             is_active?: boolean | undefined;
             notes?: string | undefined;
             name?: string | undefined;
             currency?: string | undefined;
+            category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
             budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
             start_date?: string | undefined;
             end_date?: string | undefined;
@@ -546,6 +673,7 @@ export declare const BudgetsContracts: {
             notes?: string | undefined;
             name?: string | undefined;
             currency?: string | undefined;
+            category?: string | undefined;
             budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
             start_date?: string | undefined;
             end_date?: string | undefined;
@@ -570,10 +698,19 @@ export declare const BudgetsContracts: {
                     is_active: z.ZodBoolean;
                     notes: z.ZodNullable<z.ZodString>;
                     settings: z.ZodNullable<z.ZodAny>;
+                    category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                    needs_category: z.ZodBoolean;
+                    spent: z.ZodNullable<z.ZodNumber>;
+                    remaining: z.ZodNullable<z.ZodNumber>;
+                    percent: z.ZodNullable<z.ZodNumber>;
+                    status: z.ZodNullable<z.ZodEnum<["ok", "near_limit", "exceeded"]>>;
+                    period_active: z.ZodNullable<z.ZodBoolean>;
+                    counted_expense_types: z.ZodArray<z.ZodEnum<["manual", "voice"]>, "many">;
                     created_at: z.ZodString;
                     updated_at: z.ZodString;
                     deleted_at: z.ZodNullable<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -584,13 +721,21 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 }, {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -601,16 +746,24 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 }>;
             }, "strip", z.ZodTypeAny, {
                 message: string;
                 data: {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -621,16 +774,24 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 };
             }, {
                 message: string;
                 data: {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -641,11 +802,18 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 };
             }>;
@@ -796,10 +964,19 @@ export declare const BudgetsContracts: {
                     is_active: z.ZodBoolean;
                     notes: z.ZodNullable<z.ZodString>;
                     settings: z.ZodNullable<z.ZodAny>;
+                    category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                    needs_category: z.ZodBoolean;
+                    spent: z.ZodNullable<z.ZodNumber>;
+                    remaining: z.ZodNullable<z.ZodNumber>;
+                    percent: z.ZodNullable<z.ZodNumber>;
+                    status: z.ZodNullable<z.ZodEnum<["ok", "near_limit", "exceeded"]>>;
+                    period_active: z.ZodNullable<z.ZodBoolean>;
+                    counted_expense_types: z.ZodArray<z.ZodEnum<["manual", "voice"]>, "many">;
                     created_at: z.ZodString;
                     updated_at: z.ZodString;
                     deleted_at: z.ZodNullable<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -810,13 +987,21 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 }, {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -827,11 +1012,18 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 }>, "many">;
                 pagination: z.ZodOptional<z.ZodObject<{
@@ -850,6 +1042,7 @@ export declare const BudgetsContracts: {
             }, "strip", z.ZodTypeAny, {
                 message: string;
                 data: {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -860,11 +1053,18 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 }[];
                 pagination?: {
@@ -875,6 +1075,7 @@ export declare const BudgetsContracts: {
             }, {
                 message: string;
                 data: {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -885,11 +1086,18 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 }[];
                 pagination?: {
@@ -965,10 +1173,19 @@ export declare const BudgetsContracts: {
                     is_active: z.ZodBoolean;
                     notes: z.ZodNullable<z.ZodString>;
                     settings: z.ZodNullable<z.ZodAny>;
+                    category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                    needs_category: z.ZodBoolean;
+                    spent: z.ZodNullable<z.ZodNumber>;
+                    remaining: z.ZodNullable<z.ZodNumber>;
+                    percent: z.ZodNullable<z.ZodNumber>;
+                    status: z.ZodNullable<z.ZodEnum<["ok", "near_limit", "exceeded"]>>;
+                    period_active: z.ZodNullable<z.ZodBoolean>;
+                    counted_expense_types: z.ZodArray<z.ZodEnum<["manual", "voice"]>, "many">;
                     created_at: z.ZodString;
                     updated_at: z.ZodString;
                     deleted_at: z.ZodNullable<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -979,13 +1196,21 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 }, {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -996,11 +1221,18 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 }>, "many">;
                 pagination: z.ZodOptional<z.ZodObject<{
@@ -1019,6 +1251,7 @@ export declare const BudgetsContracts: {
             }, "strip", z.ZodTypeAny, {
                 message: string;
                 data: {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -1029,11 +1262,18 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 }[];
                 pagination?: {
@@ -1044,6 +1284,7 @@ export declare const BudgetsContracts: {
             }, {
                 message: string;
                 data: {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -1054,11 +1295,18 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 }[];
                 pagination?: {
@@ -1116,8 +1364,9 @@ export declare const BudgetsContracts: {
         }, {
             id: string;
         }>;
-        summary: "Update budget used amount";
-        description: "Updates the used amount for a specific budget";
+        summary: "Update budget used amount (deprecated)";
+        description: "Deprecated: spent is computed live from manual and voice expenses. Still writes the stored used_amount for old clients.";
+        deprecated: true;
         method: "PATCH";
         body: z.ZodObject<{
             used_amount: z.ZodNumber;
@@ -1144,10 +1393,19 @@ export declare const BudgetsContracts: {
                     is_active: z.ZodBoolean;
                     notes: z.ZodNullable<z.ZodString>;
                     settings: z.ZodNullable<z.ZodAny>;
+                    category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                    needs_category: z.ZodBoolean;
+                    spent: z.ZodNullable<z.ZodNumber>;
+                    remaining: z.ZodNullable<z.ZodNumber>;
+                    percent: z.ZodNullable<z.ZodNumber>;
+                    status: z.ZodNullable<z.ZodEnum<["ok", "near_limit", "exceeded"]>>;
+                    period_active: z.ZodNullable<z.ZodBoolean>;
+                    counted_expense_types: z.ZodArray<z.ZodEnum<["manual", "voice"]>, "many">;
                     created_at: z.ZodString;
                     updated_at: z.ZodString;
                     deleted_at: z.ZodNullable<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -1158,13 +1416,21 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 }, {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -1175,16 +1441,24 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 }>;
             }, "strip", z.ZodTypeAny, {
                 message: string;
                 data: {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -1195,16 +1469,24 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 };
             }, {
                 message: string;
                 data: {
+                    status: "ok" | "near_limit" | "exceeded" | null;
                     id: number;
                     is_active: boolean;
                     uuid: string;
@@ -1215,11 +1497,227 @@ export declare const BudgetsContracts: {
                     name: string;
                     currency: string;
                     deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                     budget_period: "monthly" | "quarterly" | "yearly";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
+                    settings?: any;
+                };
+            }>;
+            400: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            404: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+    };
+    updateBudgetCategory: {
+        pathParams: z.ZodObject<{
+            id: z.ZodEffects<z.ZodString, number, string>;
+        }, "strip", z.ZodTypeAny, {
+            id: number;
+        }, {
+            id: string;
+        }>;
+        summary: "Change budget category";
+        description: "Sets the expense category the budget counts. Spent is recomputed on read.";
+        method: "PATCH";
+        body: z.ZodObject<{
+            category: z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>;
+        }, "strict", z.ZodTypeAny, {
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+        }, {
+            category: string;
+        }>;
+        path: "/budgets/:id/category";
+        responses: {
+            200: z.ZodObject<{
+                message: z.ZodString;
+                data: z.ZodObject<{
+                    id: z.ZodNumber;
+                    uuid: z.ZodString;
+                    user_uid: z.ZodString;
+                    name: z.ZodString;
+                    budget_period: z.ZodEnum<["monthly", "quarterly", "yearly"]>;
+                    start_date: z.ZodString;
+                    end_date: z.ZodString;
+                    total_amount: z.ZodNumber;
+                    used_amount: z.ZodNumber;
+                    currency: z.ZodString;
+                    is_active: z.ZodBoolean;
+                    notes: z.ZodNullable<z.ZodString>;
+                    settings: z.ZodNullable<z.ZodAny>;
+                    category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                    needs_category: z.ZodBoolean;
+                    spent: z.ZodNullable<z.ZodNumber>;
+                    remaining: z.ZodNullable<z.ZodNumber>;
+                    percent: z.ZodNullable<z.ZodNumber>;
+                    status: z.ZodNullable<z.ZodEnum<["ok", "near_limit", "exceeded"]>>;
+                    period_active: z.ZodNullable<z.ZodBoolean>;
+                    counted_expense_types: z.ZodArray<z.ZodEnum<["manual", "voice"]>, "many">;
+                    created_at: z.ZodString;
+                    updated_at: z.ZodString;
+                    deleted_at: z.ZodNullable<z.ZodString>;
+                }, "strip", z.ZodTypeAny, {
+                    status: "ok" | "near_limit" | "exceeded" | null;
+                    id: number;
+                    is_active: boolean;
+                    uuid: string;
+                    user_uid: string;
+                    created_at: string;
+                    notes: string | null;
+                    updated_at: string;
+                    name: string;
+                    currency: string;
+                    deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                    budget_period: "monthly" | "quarterly" | "yearly";
+                    start_date: string;
+                    end_date: string;
+                    total_amount: number;
+                    used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
+                    settings?: any;
+                }, {
+                    status: "ok" | "near_limit" | "exceeded" | null;
+                    id: number;
+                    is_active: boolean;
+                    uuid: string;
+                    user_uid: string;
+                    created_at: string;
+                    notes: string | null;
+                    updated_at: string;
+                    name: string;
+                    currency: string;
+                    deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                    budget_period: "monthly" | "quarterly" | "yearly";
+                    start_date: string;
+                    end_date: string;
+                    total_amount: number;
+                    used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
+                    settings?: any;
+                }>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                data: {
+                    status: "ok" | "near_limit" | "exceeded" | null;
+                    id: number;
+                    is_active: boolean;
+                    uuid: string;
+                    user_uid: string;
+                    created_at: string;
+                    notes: string | null;
+                    updated_at: string;
+                    name: string;
+                    currency: string;
+                    deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                    budget_period: "monthly" | "quarterly" | "yearly";
+                    start_date: string;
+                    end_date: string;
+                    total_amount: number;
+                    used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
+                    settings?: any;
+                };
+            }, {
+                message: string;
+                data: {
+                    status: "ok" | "near_limit" | "exceeded" | null;
+                    id: number;
+                    is_active: boolean;
+                    uuid: string;
+                    user_uid: string;
+                    created_at: string;
+                    notes: string | null;
+                    updated_at: string;
+                    name: string;
+                    currency: string;
+                    deleted_at: string | null;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                    budget_period: "monthly" | "quarterly" | "yearly";
+                    start_date: string;
+                    end_date: string;
+                    total_amount: number;
+                    used_amount: number;
+                    needs_category: boolean;
+                    spent: number | null;
+                    remaining: number | null;
+                    percent: number | null;
+                    period_active: boolean | null;
+                    counted_expense_types: ("manual" | "voice")[];
                     settings?: any;
                 };
             }>;

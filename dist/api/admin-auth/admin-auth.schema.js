@@ -4,6 +4,7 @@ extendZodWithOpenApi(z);
 export const LoginBodySchema = z.object({
     email: z.string().email(),
     password: z.string().min(1),
+    totp_code: z.string().min(1).max(64).optional(),
 });
 export const AdminResponseSchema = z.object({
     id: z.string().uuid(),
@@ -26,5 +27,25 @@ export const MeResponseSchema = z.object({
     }),
 });
 export const LogoutResponseSchema = z.object({
+    message: z.string(),
+});
+export const TotpSetupBodySchema = z.object({
+    email: z.string().email(),
+    password: z.string().min(1),
+});
+export const TotpSetupResponseSchema = z.object({
+    message: z.string(),
+    data: z.object({
+        otpauth_url: z.string(),
+        secret: z.string(),
+        recovery_codes: z.array(z.string()),
+    }),
+});
+export const TotpConfirmBodySchema = z.object({
+    email: z.string().email(),
+    password: z.string().min(1),
+    code: z.string().regex(/^\d{6}$/),
+});
+export const TotpConfirmResponseSchema = z.object({
     message: z.string(),
 });

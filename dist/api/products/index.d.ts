@@ -2485,7 +2485,6 @@ export declare const ProductsContracts: {
                         initial_debt: z.ZodOptional<z.ZodNumber>;
                         monthly_payment: z.ZodOptional<z.ZodNumber>;
                         total_balance: z.ZodOptional<z.ZodNumber>;
-                        total_income: z.ZodOptional<z.ZodNumber>;
                         monthly_change: z.ZodOptional<z.ZodNumber>;
                         active_count: z.ZodNumber;
                     }, "strip", z.ZodTypeAny, {
@@ -2494,7 +2493,6 @@ export declare const ProductsContracts: {
                         pending_balance?: number | undefined;
                         initial_debt?: number | undefined;
                         total_balance?: number | undefined;
-                        total_income?: number | undefined;
                         monthly_change?: number | undefined;
                     }, {
                         active_count: number;
@@ -2502,7 +2500,6 @@ export declare const ProductsContracts: {
                         pending_balance?: number | undefined;
                         initial_debt?: number | undefined;
                         total_balance?: number | undefined;
-                        total_income?: number | undefined;
                         monthly_change?: number | undefined;
                     }>>;
                     products: z.ZodArray<z.ZodObject<{
@@ -2568,7 +2565,6 @@ export declare const ProductsContracts: {
                         }>;
                         percentage_change: z.ZodString;
                         currency: z.ZodString;
-                        income: z.ZodNumber;
                     }, "strip", z.ZodTypeAny, {
                         type: string;
                         id: string;
@@ -2599,7 +2595,6 @@ export declare const ProductsContracts: {
                             available: number;
                         };
                         percentage_change: string;
-                        income: number;
                         linked_account_id?: string | null | undefined;
                     }, {
                         type: string;
@@ -2631,7 +2626,6 @@ export declare const ProductsContracts: {
                             available: number;
                         };
                         percentage_change: string;
-                        income: number;
                         linked_account_id?: string | null | undefined;
                     }>, "many">;
                 }, "strip", z.ZodTypeAny, {
@@ -2665,7 +2659,6 @@ export declare const ProductsContracts: {
                             available: number;
                         };
                         percentage_change: string;
-                        income: number;
                         linked_account_id?: string | null | undefined;
                     }[];
                     summary?: {
@@ -2674,7 +2667,6 @@ export declare const ProductsContracts: {
                         pending_balance?: number | undefined;
                         initial_debt?: number | undefined;
                         total_balance?: number | undefined;
-                        total_income?: number | undefined;
                         monthly_change?: number | undefined;
                     } | undefined;
                 }, {
@@ -2708,7 +2700,6 @@ export declare const ProductsContracts: {
                             available: number;
                         };
                         percentage_change: string;
-                        income: number;
                         linked_account_id?: string | null | undefined;
                     }[];
                     summary?: {
@@ -2717,7 +2708,6 @@ export declare const ProductsContracts: {
                         pending_balance?: number | undefined;
                         initial_debt?: number | undefined;
                         total_balance?: number | undefined;
-                        total_income?: number | undefined;
                         monthly_change?: number | undefined;
                     } | undefined;
                 }>;
@@ -2754,7 +2744,6 @@ export declare const ProductsContracts: {
                             available: number;
                         };
                         percentage_change: string;
-                        income: number;
                         linked_account_id?: string | null | undefined;
                     }[];
                     summary?: {
@@ -2763,7 +2752,6 @@ export declare const ProductsContracts: {
                         pending_balance?: number | undefined;
                         initial_debt?: number | undefined;
                         total_balance?: number | undefined;
-                        total_income?: number | undefined;
                         monthly_change?: number | undefined;
                     } | undefined;
                 };
@@ -2800,7 +2788,6 @@ export declare const ProductsContracts: {
                             available: number;
                         };
                         percentage_change: string;
-                        income: number;
                         linked_account_id?: string | null | undefined;
                     }[];
                     summary?: {
@@ -2809,7 +2796,6 @@ export declare const ProductsContracts: {
                         pending_balance?: number | undefined;
                         initial_debt?: number | undefined;
                         total_balance?: number | undefined;
-                        total_income?: number | undefined;
                         monthly_change?: number | undefined;
                     } | undefined;
                 };
@@ -2862,13 +2848,16 @@ export declare const ProductsContracts: {
             currency: z.ZodOptional<z.ZodEnum<["DOP", "USD", "EUR"]>>;
             from: z.ZodOptional<z.ZodString>;
             search: z.ZodOptional<z.ZodString>;
+            type: z.ZodDefault<z.ZodEnum<["debit", "credit", "payment"]>>;
         }, "strip", z.ZodTypeAny, {
+            type: "debit" | "credit" | "payment";
             limit: number;
             offset: number;
             search?: string | undefined;
             currency?: "DOP" | "USD" | "EUR" | undefined;
             from?: string | undefined;
         }, {
+            type?: "debit" | "credit" | "payment" | undefined;
             limit?: string | undefined;
             search?: string | undefined;
             currency?: "DOP" | "USD" | "EUR" | undefined;
@@ -2884,22 +2873,21 @@ export declare const ProductsContracts: {
                 message: z.ZodString;
                 data: z.ZodArray<z.ZodObject<{
                     uuid: z.ZodString;
+                    product_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     amount: z.ZodNumber;
                     currency: z.ZodString;
                     transaction_date: z.ZodString;
                     transaction_occurred_at: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     description: z.ZodNullable<z.ZodString>;
-                    transaction_type: z.ZodEnum<["credit", "debit"]>;
-                    user_product_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
-                    source_financial_email_event_id: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+                    transaction_type: z.ZodEnum<["debit", "credit", "payment"]>;
+                    category: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+                    is_manual: z.ZodOptional<z.ZodBoolean>;
                     institution_name: z.ZodNullable<z.ZodString>;
                     institution_logo: z.ZodNullable<z.ZodString>;
                     product_type: z.ZodNullable<z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
                     product_kind: z.ZodNullable<z.ZodEnum<["debit", "credit"]>>;
                     product_label: z.ZodNullable<z.ZodString>;
-                    account_last4: z.ZodNullable<z.ZodString>;
                     card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
-                    linked_account_last4: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     linked_account_label: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                 }, "strip", z.ZodTypeAny, {
                     description: string | null;
@@ -2913,12 +2901,11 @@ export declare const ProductsContracts: {
                     card_brand: "visa" | "mastercard" | "amex" | null;
                     amount: number;
                     transaction_date: string;
-                    transaction_type: "debit" | "credit";
-                    account_last4: string | null;
+                    transaction_type: "debit" | "credit" | "payment";
+                    product_uuid?: string | null | undefined;
                     transaction_occurred_at?: string | null | undefined;
-                    user_product_uuid?: string | null | undefined;
-                    source_financial_email_event_id?: number | null | undefined;
-                    linked_account_last4?: string | null | undefined;
+                    category?: string | null | undefined;
+                    is_manual?: boolean | undefined;
                     linked_account_label?: string | null | undefined;
                 }, {
                     description: string | null;
@@ -2932,12 +2919,11 @@ export declare const ProductsContracts: {
                     card_brand: "visa" | "mastercard" | "amex" | null;
                     amount: number;
                     transaction_date: string;
-                    transaction_type: "debit" | "credit";
-                    account_last4: string | null;
+                    transaction_type: "debit" | "credit" | "payment";
+                    product_uuid?: string | null | undefined;
                     transaction_occurred_at?: string | null | undefined;
-                    user_product_uuid?: string | null | undefined;
-                    source_financial_email_event_id?: number | null | undefined;
-                    linked_account_last4?: string | null | undefined;
+                    category?: string | null | undefined;
+                    is_manual?: boolean | undefined;
                     linked_account_label?: string | null | undefined;
                 }>, "many">;
                 pagination: z.ZodObject<{
@@ -2977,12 +2963,11 @@ export declare const ProductsContracts: {
                     card_brand: "visa" | "mastercard" | "amex" | null;
                     amount: number;
                     transaction_date: string;
-                    transaction_type: "debit" | "credit";
-                    account_last4: string | null;
+                    transaction_type: "debit" | "credit" | "payment";
+                    product_uuid?: string | null | undefined;
                     transaction_occurred_at?: string | null | undefined;
-                    user_product_uuid?: string | null | undefined;
-                    source_financial_email_event_id?: number | null | undefined;
-                    linked_account_last4?: string | null | undefined;
+                    category?: string | null | undefined;
+                    is_manual?: boolean | undefined;
                     linked_account_label?: string | null | undefined;
                 }[];
                 pagination: {
@@ -3008,12 +2993,11 @@ export declare const ProductsContracts: {
                     card_brand: "visa" | "mastercard" | "amex" | null;
                     amount: number;
                     transaction_date: string;
-                    transaction_type: "debit" | "credit";
-                    account_last4: string | null;
+                    transaction_type: "debit" | "credit" | "payment";
+                    product_uuid?: string | null | undefined;
                     transaction_occurred_at?: string | null | undefined;
-                    user_product_uuid?: string | null | undefined;
-                    source_financial_email_event_id?: number | null | undefined;
-                    linked_account_last4?: string | null | undefined;
+                    category?: string | null | undefined;
+                    is_manual?: boolean | undefined;
                     linked_account_label?: string | null | undefined;
                 }[];
                 pagination: {

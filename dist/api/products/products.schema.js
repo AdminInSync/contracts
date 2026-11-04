@@ -112,14 +112,12 @@ export const ConnectedProductSchema = z.object({
     metadata: ConnectedProductMetadataSchema,
     percentage_change: z.string(),
     currency: z.string(),
-    income: z.number(),
 });
 export const ConnectedProductsSummarySchema = z.object({
     pending_balance: z.number().optional(),
     initial_debt: z.number().optional(),
     monthly_payment: z.number().optional(),
     total_balance: z.number().optional(),
-    total_income: z.number().optional(),
     monthly_change: z.number().optional(),
     active_count: z.number(),
 });
@@ -133,22 +131,21 @@ export const ConnectedProductsResponseSchema = z.object({
 });
 export const ProductTransactionItemSchema = z.object({
     uuid: z.string().uuid(),
+    product_uuid: z.string().uuid().nullable().optional(),
     amount: z.number(),
     currency: z.string(),
     transaction_date: z.string(),
     transaction_occurred_at: z.string().datetime().nullable().optional(),
     description: z.string().nullable(),
-    transaction_type: z.enum(['credit', 'debit']),
-    user_product_uuid: z.string().uuid().nullable().optional(),
-    source_financial_email_event_id: z.number().nullable().optional(),
+    transaction_type: z.enum(['debit', 'credit', 'payment']),
+    category: z.string().nullable().optional(),
+    is_manual: z.boolean().optional(),
     institution_name: z.string().nullable(),
     institution_logo: z.string().nullable(),
     product_type: ProductTypeSchema.nullable(),
     product_kind: ProductKindSchema.nullable(),
     product_label: z.string().nullable(),
-    account_last4: z.string().nullable(),
     card_brand: CardBrandSchema.nullable(),
-    linked_account_last4: z.string().nullable().optional(),
     linked_account_label: z.string().nullable().optional(),
 });
 export const ProductTransactionsListResponseSchema = z.object({

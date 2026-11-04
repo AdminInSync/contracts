@@ -2,17 +2,20 @@ import { z } from 'zod';
 export declare const AdminAuthContracts: {
     login: {
         summary: "Admin login";
-        description: "Authenticate an admin user with email and password.";
+        description: "Authenticate an admin with email, password, and a TOTP or one-time recovery code. A correct password without a second factor does not return a token.";
         method: "POST";
         body: z.ZodObject<{
             email: z.ZodString;
             password: z.ZodString;
+            totp_code: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
             email: string;
             password: string;
+            totp_code?: string | undefined;
         }, {
             email: string;
             password: string;
+            totp_code?: string | undefined;
         }>;
         path: "/admin/auth/login";
         responses: {
@@ -97,6 +100,227 @@ export declare const AdminAuthContracts: {
                 statusCode?: number | undefined;
             }>;
             401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            429: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+        strictStatusCodes: true;
+    };
+    setupTotp: {
+        summary: "Start admin TOTP enrollment";
+        description: "Verify the admin password and return a TOTP secret, otpauth URL, and one-time recovery codes. Does not return a JWT. Confirm with a code before login will succeed.";
+        method: "POST";
+        body: z.ZodObject<{
+            email: z.ZodString;
+            password: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            email: string;
+            password: string;
+        }, {
+            email: string;
+            password: string;
+        }>;
+        path: "/admin/auth/totp/setup";
+        responses: {
+            200: z.ZodObject<{
+                message: z.ZodString;
+                data: z.ZodObject<{
+                    otpauth_url: z.ZodString;
+                    secret: z.ZodString;
+                    recovery_codes: z.ZodArray<z.ZodString, "many">;
+                }, "strip", z.ZodTypeAny, {
+                    otpauth_url: string;
+                    secret: string;
+                    recovery_codes: string[];
+                }, {
+                    otpauth_url: string;
+                    secret: string;
+                    recovery_codes: string[];
+                }>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                data: {
+                    otpauth_url: string;
+                    secret: string;
+                    recovery_codes: string[];
+                };
+            }, {
+                message: string;
+                data: {
+                    otpauth_url: string;
+                    secret: string;
+                    recovery_codes: string[];
+                };
+            }>;
+            400: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            409: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            429: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+        strictStatusCodes: true;
+    };
+    confirmTotp: {
+        summary: "Confirm admin TOTP enrollment";
+        description: "Verify the admin password and a 6-digit authenticator code, then enable TOTP. Does not return a JWT.";
+        method: "POST";
+        body: z.ZodObject<{
+            email: z.ZodString;
+            password: z.ZodString;
+            code: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            code: string;
+            email: string;
+            password: string;
+        }, {
+            code: string;
+            email: string;
+            password: string;
+        }>;
+        path: "/admin/auth/totp/confirm";
+        responses: {
+            200: z.ZodObject<{
+                message: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+            }, {
+                message: string;
+            }>;
+            400: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            409: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            429: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
@@ -224,7 +448,7 @@ export declare const AdminAuthContracts: {
     };
     logout: {
         summary: "Admin logout";
-        description: "Logout the current admin user (stateless).";
+        description: "Revoke the current admin JWT until it expires.";
         method: "POST";
         body: z.ZodObject<{}, "strip", z.ZodTypeAny, {}, {}>;
         path: "/admin/auth/logout";

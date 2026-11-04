@@ -2,12 +2,15 @@ import { z } from 'zod';
 export declare const LoginBodySchema: z.ZodObject<{
     email: z.ZodString;
     password: z.ZodString;
+    totp_code: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
     email: string;
     password: string;
+    totp_code?: string | undefined;
 }, {
     email: string;
     password: string;
+    totp_code?: string | undefined;
 }>;
 export declare const AdminResponseSchema: z.ZodObject<{
     id: z.ZodString;
@@ -158,6 +161,66 @@ export declare const MeResponseSchema: z.ZodObject<{
     };
 }>;
 export declare const LogoutResponseSchema: z.ZodObject<{
+    message: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    message: string;
+}, {
+    message: string;
+}>;
+export declare const TotpSetupBodySchema: z.ZodObject<{
+    email: z.ZodString;
+    password: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    email: string;
+    password: string;
+}, {
+    email: string;
+    password: string;
+}>;
+export declare const TotpSetupResponseSchema: z.ZodObject<{
+    message: z.ZodString;
+    data: z.ZodObject<{
+        otpauth_url: z.ZodString;
+        secret: z.ZodString;
+        recovery_codes: z.ZodArray<z.ZodString, "many">;
+    }, "strip", z.ZodTypeAny, {
+        otpauth_url: string;
+        secret: string;
+        recovery_codes: string[];
+    }, {
+        otpauth_url: string;
+        secret: string;
+        recovery_codes: string[];
+    }>;
+}, "strip", z.ZodTypeAny, {
+    message: string;
+    data: {
+        otpauth_url: string;
+        secret: string;
+        recovery_codes: string[];
+    };
+}, {
+    message: string;
+    data: {
+        otpauth_url: string;
+        secret: string;
+        recovery_codes: string[];
+    };
+}>;
+export declare const TotpConfirmBodySchema: z.ZodObject<{
+    email: z.ZodString;
+    password: z.ZodString;
+    code: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    code: string;
+    email: string;
+    password: string;
+}, {
+    code: string;
+    email: string;
+    password: string;
+}>;
+export declare const TotpConfirmResponseSchema: z.ZodObject<{
     message: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     message: string;

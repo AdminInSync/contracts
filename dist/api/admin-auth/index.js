@@ -1,7 +1,7 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
-import { LoginBodySchema, LoginResponseSchema, LogoutResponseSchema, MeResponseSchema, } from './admin-auth.schema';
+import { LoginBodySchema, LoginResponseSchema, LogoutResponseSchema, MeResponseSchema, TotpConfirmBodySchema, TotpConfirmResponseSchema, TotpSetupBodySchema, TotpSetupResponseSchema, } from './admin-auth.schema';
 const c = initContract();
 export const AdminAuthContracts = c.router({
     login: {
@@ -12,10 +12,41 @@ export const AdminAuthContracts = c.router({
             200: LoginResponseSchema,
             400: ErrorResSchema,
             401: ErrorResSchema,
+            429: ErrorResSchema,
             500: ErrorResSchema,
         },
         summary: 'Admin login',
-        description: 'Authenticate an admin user with email and password.',
+        description: 'Authenticate an admin with email, password, and a TOTP or one-time recovery code. A correct password without a second factor does not return a token.',
+    },
+    setupTotp: {
+        method: 'POST',
+        path: '/totp/setup',
+        body: TotpSetupBodySchema,
+        responses: {
+            200: TotpSetupResponseSchema,
+            400: ErrorResSchema,
+            401: ErrorResSchema,
+            409: ErrorResSchema,
+            429: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        summary: 'Start admin TOTP enrollment',
+        description: 'Verify the admin password and return a TOTP secret, otpauth URL, and one-time recovery codes. Does not return a JWT. Confirm with a code before login will succeed.',
+    },
+    confirmTotp: {
+        method: 'POST',
+        path: '/totp/confirm',
+        body: TotpConfirmBodySchema,
+        responses: {
+            200: TotpConfirmResponseSchema,
+            400: ErrorResSchema,
+            401: ErrorResSchema,
+            409: ErrorResSchema,
+            429: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        summary: 'Confirm admin TOTP enrollment',
+        description: 'Verify the admin password and a 6-digit authenticator code, then enable TOTP. Does not return a JWT.',
     },
     getMe: {
         method: 'GET',
@@ -38,7 +69,7 @@ export const AdminAuthContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'Admin logout',
-        description: 'Logout the current admin user (stateless).',
+        description: 'Revoke the current admin JWT until it expires.',
     },
 }, {
     strictStatusCodes: true,

@@ -1,6 +1,6 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
-import { CreateBudgetSchema, UpdateBudgetSchema, UpdateBudgetUsedAmountSchema, GetBudgetsQuerySchema, BudgetResponseSchema, BudgetsListResponseSchema } from './budgets.schema';
+import { CreateBudgetSchema, UpdateBudgetSchema, UpdateBudgetUsedAmountSchema, UpdateBudgetCategorySchema, GetBudgetsQuerySchema, BudgetResponseSchema, BudgetsListResponseSchema } from './budgets.schema';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
 const c = initContract();
 export const BudgetsContracts = c.router({
@@ -134,7 +134,26 @@ export const BudgetsContracts = c.router({
             id: z.string().regex(/^\d+$/, 'ID must be a valid number').transform((val) => parseInt(val, 10)),
         }),
         body: UpdateBudgetUsedAmountSchema,
-        summary: 'Update budget used amount',
-        description: 'Updates the used amount for a specific budget',
+        summary: 'Update budget used amount (deprecated)',
+        description: 'Deprecated: spent is computed live from manual and voice expenses. Still writes the stored used_amount for old clients.',
+        deprecated: true,
+    },
+    // Change the category a budget tracks
+    updateBudgetCategory: {
+        method: 'PATCH',
+        path: '/budgets/:id/category',
+        responses: {
+            200: BudgetResponseSchema,
+            400: ErrorResSchema,
+            401: ErrorResSchema,
+            404: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        pathParams: z.object({
+            id: z.string().regex(/^\d+$/, 'ID must be a valid number').transform((val) => parseInt(val, 10)),
+        }),
+        body: UpdateBudgetCategorySchema,
+        summary: 'Change budget category',
+        description: 'Sets the expense category the budget counts. Spent is recomputed on read.',
     },
 });

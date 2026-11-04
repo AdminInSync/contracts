@@ -1,5 +1,18 @@
 import { z } from 'zod';
 export declare const BudgetPeriodSchema: z.ZodEnum<["monthly", "quarterly", "yearly"]>;
+/** Closed expense category catalog (same labels as voice/manual expenses). */
+export declare const BUDGET_CATEGORIES: readonly ["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"];
+/**
+ * Lowercase, no accents, trimmed: how budget and expense categories are compared.
+ * Written in plain ES5 on purpose: its source is embedded as-is in the CouchDB
+ * `_design/budgets` view (no String.prototype.normalize there), so backend and
+ * index always normalize the same way.
+ */
+export declare function normalizeBudgetCategory(value: unknown): string;
+/** Accepts any casing/accents of a catalog label and returns the canonical label. */
+export declare const BudgetCategorySchema: z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>;
+export declare const BudgetStatusSchema: z.ZodEnum<["ok", "near_limit", "exceeded"]>;
+export declare const CountedExpenseTypeSchema: z.ZodEnum<["manual", "voice"]>;
 export declare const BudgetSchema: z.ZodObject<{
     id: z.ZodNumber;
     uuid: z.ZodString;
@@ -9,15 +22,25 @@ export declare const BudgetSchema: z.ZodObject<{
     start_date: z.ZodString;
     end_date: z.ZodString;
     total_amount: z.ZodNumber;
+    /** @deprecated Stored value kept for old clients; use `spent`. */
     used_amount: z.ZodNumber;
     currency: z.ZodString;
     is_active: z.ZodBoolean;
     notes: z.ZodNullable<z.ZodString>;
     settings: z.ZodNullable<z.ZodAny>;
+    category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+    needs_category: z.ZodBoolean;
+    spent: z.ZodNullable<z.ZodNumber>;
+    remaining: z.ZodNullable<z.ZodNumber>;
+    percent: z.ZodNullable<z.ZodNumber>;
+    status: z.ZodNullable<z.ZodEnum<["ok", "near_limit", "exceeded"]>>;
+    period_active: z.ZodNullable<z.ZodBoolean>;
+    counted_expense_types: z.ZodArray<z.ZodEnum<["manual", "voice"]>, "many">;
     created_at: z.ZodString;
     updated_at: z.ZodString;
     deleted_at: z.ZodNullable<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
+    status: "ok" | "near_limit" | "exceeded" | null;
     id: number;
     is_active: boolean;
     uuid: string;
@@ -28,13 +51,21 @@ export declare const BudgetSchema: z.ZodObject<{
     name: string;
     currency: string;
     deleted_at: string | null;
+    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
     budget_period: "monthly" | "quarterly" | "yearly";
     start_date: string;
     end_date: string;
     total_amount: number;
     used_amount: number;
+    needs_category: boolean;
+    spent: number | null;
+    remaining: number | null;
+    percent: number | null;
+    period_active: boolean | null;
+    counted_expense_types: ("manual" | "voice")[];
     settings?: any;
 }, {
+    status: "ok" | "near_limit" | "exceeded" | null;
     id: number;
     is_active: boolean;
     uuid: string;
@@ -45,11 +76,18 @@ export declare const BudgetSchema: z.ZodObject<{
     name: string;
     currency: string;
     deleted_at: string | null;
+    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
     budget_period: "monthly" | "quarterly" | "yearly";
     start_date: string;
     end_date: string;
     total_amount: number;
     used_amount: number;
+    needs_category: boolean;
+    spent: number | null;
+    remaining: number | null;
+    percent: number | null;
+    period_active: boolean | null;
+    counted_expense_types: ("manual" | "voice")[];
     settings?: any;
 }>;
 export declare const CreateBudgetSchema: z.ZodEffects<z.ZodObject<{
@@ -62,10 +100,12 @@ export declare const CreateBudgetSchema: z.ZodEffects<z.ZodObject<{
     is_active: z.ZodOptional<z.ZodBoolean>;
     notes: z.ZodString;
     settings: z.ZodOptional<z.ZodAny>;
+    category: z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>;
 }, "strip", z.ZodTypeAny, {
     notes: string;
     name: string;
     currency: string;
+    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
     start_date: string;
     end_date: string;
     total_amount: number;
@@ -75,6 +115,7 @@ export declare const CreateBudgetSchema: z.ZodEffects<z.ZodObject<{
 }, {
     notes: string;
     name: string;
+    category: string;
     start_date: string;
     end_date: string;
     total_amount: number;
@@ -86,6 +127,7 @@ export declare const CreateBudgetSchema: z.ZodEffects<z.ZodObject<{
     notes: string;
     name: string;
     currency: string;
+    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
     start_date: string;
     end_date: string;
     total_amount: number;
@@ -95,6 +137,7 @@ export declare const CreateBudgetSchema: z.ZodEffects<z.ZodObject<{
 }, {
     notes: string;
     name: string;
+    category: string;
     start_date: string;
     end_date: string;
     total_amount: number;
@@ -113,11 +156,13 @@ export declare const UpdateBudgetSchema: z.ZodObject<{
     is_active: z.ZodOptional<z.ZodOptional<z.ZodBoolean>>;
     notes: z.ZodOptional<z.ZodString>;
     settings: z.ZodOptional<z.ZodOptional<z.ZodAny>>;
+    category: z.ZodOptional<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>>;
 }, "strip", z.ZodTypeAny, {
     is_active?: boolean | undefined;
     notes?: string | undefined;
     name?: string | undefined;
     currency?: string | undefined;
+    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
     budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
     start_date?: string | undefined;
     end_date?: string | undefined;
@@ -128,11 +173,19 @@ export declare const UpdateBudgetSchema: z.ZodObject<{
     notes?: string | undefined;
     name?: string | undefined;
     currency?: string | undefined;
+    category?: string | undefined;
     budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
     start_date?: string | undefined;
     end_date?: string | undefined;
     total_amount?: number | undefined;
     settings?: any;
+}>;
+export declare const UpdateBudgetCategorySchema: z.ZodObject<{
+    category: z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>;
+}, "strict", z.ZodTypeAny, {
+    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+}, {
+    category: string;
 }>;
 export declare const UpdateBudgetUsedAmountSchema: z.ZodObject<{
     used_amount: z.ZodNumber;
@@ -168,15 +221,25 @@ export declare const BudgetResponseSchema: z.ZodObject<{
         start_date: z.ZodString;
         end_date: z.ZodString;
         total_amount: z.ZodNumber;
+        /** @deprecated Stored value kept for old clients; use `spent`. */
         used_amount: z.ZodNumber;
         currency: z.ZodString;
         is_active: z.ZodBoolean;
         notes: z.ZodNullable<z.ZodString>;
         settings: z.ZodNullable<z.ZodAny>;
+        category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+        needs_category: z.ZodBoolean;
+        spent: z.ZodNullable<z.ZodNumber>;
+        remaining: z.ZodNullable<z.ZodNumber>;
+        percent: z.ZodNullable<z.ZodNumber>;
+        status: z.ZodNullable<z.ZodEnum<["ok", "near_limit", "exceeded"]>>;
+        period_active: z.ZodNullable<z.ZodBoolean>;
+        counted_expense_types: z.ZodArray<z.ZodEnum<["manual", "voice"]>, "many">;
         created_at: z.ZodString;
         updated_at: z.ZodString;
         deleted_at: z.ZodNullable<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
+        status: "ok" | "near_limit" | "exceeded" | null;
         id: number;
         is_active: boolean;
         uuid: string;
@@ -187,13 +250,21 @@ export declare const BudgetResponseSchema: z.ZodObject<{
         name: string;
         currency: string;
         deleted_at: string | null;
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
         budget_period: "monthly" | "quarterly" | "yearly";
         start_date: string;
         end_date: string;
         total_amount: number;
         used_amount: number;
+        needs_category: boolean;
+        spent: number | null;
+        remaining: number | null;
+        percent: number | null;
+        period_active: boolean | null;
+        counted_expense_types: ("manual" | "voice")[];
         settings?: any;
     }, {
+        status: "ok" | "near_limit" | "exceeded" | null;
         id: number;
         is_active: boolean;
         uuid: string;
@@ -204,16 +275,24 @@ export declare const BudgetResponseSchema: z.ZodObject<{
         name: string;
         currency: string;
         deleted_at: string | null;
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
         budget_period: "monthly" | "quarterly" | "yearly";
         start_date: string;
         end_date: string;
         total_amount: number;
         used_amount: number;
+        needs_category: boolean;
+        spent: number | null;
+        remaining: number | null;
+        percent: number | null;
+        period_active: boolean | null;
+        counted_expense_types: ("manual" | "voice")[];
         settings?: any;
     }>;
 }, "strip", z.ZodTypeAny, {
     message: string;
     data: {
+        status: "ok" | "near_limit" | "exceeded" | null;
         id: number;
         is_active: boolean;
         uuid: string;
@@ -224,16 +303,24 @@ export declare const BudgetResponseSchema: z.ZodObject<{
         name: string;
         currency: string;
         deleted_at: string | null;
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
         budget_period: "monthly" | "quarterly" | "yearly";
         start_date: string;
         end_date: string;
         total_amount: number;
         used_amount: number;
+        needs_category: boolean;
+        spent: number | null;
+        remaining: number | null;
+        percent: number | null;
+        period_active: boolean | null;
+        counted_expense_types: ("manual" | "voice")[];
         settings?: any;
     };
 }, {
     message: string;
     data: {
+        status: "ok" | "near_limit" | "exceeded" | null;
         id: number;
         is_active: boolean;
         uuid: string;
@@ -244,11 +331,18 @@ export declare const BudgetResponseSchema: z.ZodObject<{
         name: string;
         currency: string;
         deleted_at: string | null;
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
         budget_period: "monthly" | "quarterly" | "yearly";
         start_date: string;
         end_date: string;
         total_amount: number;
         used_amount: number;
+        needs_category: boolean;
+        spent: number | null;
+        remaining: number | null;
+        percent: number | null;
+        period_active: boolean | null;
+        counted_expense_types: ("manual" | "voice")[];
         settings?: any;
     };
 }>;
@@ -263,15 +357,25 @@ export declare const BudgetsListResponseSchema: z.ZodObject<{
         start_date: z.ZodString;
         end_date: z.ZodString;
         total_amount: z.ZodNumber;
+        /** @deprecated Stored value kept for old clients; use `spent`. */
         used_amount: z.ZodNumber;
         currency: z.ZodString;
         is_active: z.ZodBoolean;
         notes: z.ZodNullable<z.ZodString>;
         settings: z.ZodNullable<z.ZodAny>;
+        category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+        needs_category: z.ZodBoolean;
+        spent: z.ZodNullable<z.ZodNumber>;
+        remaining: z.ZodNullable<z.ZodNumber>;
+        percent: z.ZodNullable<z.ZodNumber>;
+        status: z.ZodNullable<z.ZodEnum<["ok", "near_limit", "exceeded"]>>;
+        period_active: z.ZodNullable<z.ZodBoolean>;
+        counted_expense_types: z.ZodArray<z.ZodEnum<["manual", "voice"]>, "many">;
         created_at: z.ZodString;
         updated_at: z.ZodString;
         deleted_at: z.ZodNullable<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
+        status: "ok" | "near_limit" | "exceeded" | null;
         id: number;
         is_active: boolean;
         uuid: string;
@@ -282,13 +386,21 @@ export declare const BudgetsListResponseSchema: z.ZodObject<{
         name: string;
         currency: string;
         deleted_at: string | null;
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
         budget_period: "monthly" | "quarterly" | "yearly";
         start_date: string;
         end_date: string;
         total_amount: number;
         used_amount: number;
+        needs_category: boolean;
+        spent: number | null;
+        remaining: number | null;
+        percent: number | null;
+        period_active: boolean | null;
+        counted_expense_types: ("manual" | "voice")[];
         settings?: any;
     }, {
+        status: "ok" | "near_limit" | "exceeded" | null;
         id: number;
         is_active: boolean;
         uuid: string;
@@ -299,11 +411,18 @@ export declare const BudgetsListResponseSchema: z.ZodObject<{
         name: string;
         currency: string;
         deleted_at: string | null;
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
         budget_period: "monthly" | "quarterly" | "yearly";
         start_date: string;
         end_date: string;
         total_amount: number;
         used_amount: number;
+        needs_category: boolean;
+        spent: number | null;
+        remaining: number | null;
+        percent: number | null;
+        period_active: boolean | null;
+        counted_expense_types: ("manual" | "voice")[];
         settings?: any;
     }>, "many">;
     pagination: z.ZodOptional<z.ZodObject<{
@@ -322,6 +441,7 @@ export declare const BudgetsListResponseSchema: z.ZodObject<{
 }, "strip", z.ZodTypeAny, {
     message: string;
     data: {
+        status: "ok" | "near_limit" | "exceeded" | null;
         id: number;
         is_active: boolean;
         uuid: string;
@@ -332,11 +452,18 @@ export declare const BudgetsListResponseSchema: z.ZodObject<{
         name: string;
         currency: string;
         deleted_at: string | null;
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
         budget_period: "monthly" | "quarterly" | "yearly";
         start_date: string;
         end_date: string;
         total_amount: number;
         used_amount: number;
+        needs_category: boolean;
+        spent: number | null;
+        remaining: number | null;
+        percent: number | null;
+        period_active: boolean | null;
+        counted_expense_types: ("manual" | "voice")[];
         settings?: any;
     }[];
     pagination?: {
@@ -347,6 +474,7 @@ export declare const BudgetsListResponseSchema: z.ZodObject<{
 }, {
     message: string;
     data: {
+        status: "ok" | "near_limit" | "exceeded" | null;
         id: number;
         is_active: boolean;
         uuid: string;
@@ -357,11 +485,18 @@ export declare const BudgetsListResponseSchema: z.ZodObject<{
         name: string;
         currency: string;
         deleted_at: string | null;
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
         budget_period: "monthly" | "quarterly" | "yearly";
         start_date: string;
         end_date: string;
         total_amount: number;
         used_amount: number;
+        needs_category: boolean;
+        spent: number | null;
+        remaining: number | null;
+        percent: number | null;
+        period_active: boolean | null;
+        counted_expense_types: ("manual" | "voice")[];
         settings?: any;
     }[];
     pagination?: {

@@ -2,17 +2,10 @@ import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
 const c = initContract();
 // Schemas for dashboard data types
-const BalanceSchema = z.object({
-    available: z.number(),
-    currency: z.string()
-});
 const MonthlySummarySchema = z.object({
-    income: z.number(),
     expenses: z.number(),
-    debts: z.number(),
-    netBalance: z.number()
 });
-const BudgetItemSchema = z.object({
+export const BudgetItemSchema = z.object({
     id: z.number(),
     uuid: z.string().uuid(),
     name: z.string(),
@@ -20,11 +13,19 @@ const BudgetItemSchema = z.object({
     start_date: z.date(),
     end_date: z.date(),
     total_amount: z.number(),
+    /** @deprecated Stored value kept for old clients; use `spent`. */
     used_amount: z.number(),
     currency: z.string(),
     is_active: z.boolean(),
     notes: z.string().nullable(),
-    settings: z.any().nullable()
+    settings: z.any().nullable(),
+    // Live usage, same as /budgets responses.
+    spent: z.number().nullable(),
+    remaining: z.number().nullable(),
+    percent: z.number().nullable(),
+    status: z.enum(['ok', 'near_limit', 'exceeded']).nullable(),
+    needs_category: z.boolean(),
+    period_active: z.boolean().nullable()
 });
 const BudgetOverviewSchema = z.object({
     total: z.number(),
@@ -77,24 +78,20 @@ const RecentMovementSchema = z.object({
     description: z.string(),
     amount: z.number(),
     currency: z.string(),
-    type: z.enum(['income', 'expense']),
+    type: z.literal('expense'),
     date: z.date(),
     status: z.string()
 });
 const CurrencySummarySchema = z.object({
     currency: z.enum(['DOP', 'USD', 'EUR']),
-    available: z.number(),
-    income: z.number(),
     expenses: z.number(),
-    debts: z.number(),
-    netBalance: z.number()
 });
 const UpcomingEventSchema = z.object({
     id: z.string(),
     description: z.string(),
     date: z.date(),
     amount: z.number(),
-    type: z.enum(['income', 'expense'])
+    type: z.literal('expense')
 });
 const ExpenseDistributionSchema = z.object({
     category: z.string(),
@@ -111,7 +108,6 @@ const SyncStatusSchema = z.object({
     needsSync: z.boolean()
 });
 const DashboardDataSchema = z.object({
-    balance: BalanceSchema,
     monthlySummary: MonthlySummarySchema,
     currencySummaries: z.array(CurrencySummarySchema),
     budgets: BudgetSummarySchema,
@@ -125,7 +121,6 @@ const DashboardDataSchema = z.object({
     syncStatus: SyncStatusSchema
 });
 const DashboardSummarySchema = z.object({
-    balance: BalanceSchema,
     monthlySummary: MonthlySummarySchema,
     syncStatus: SyncStatusSchema
 });
@@ -159,7 +154,7 @@ export const DashboardContracts = c.router({
             500: ErrorResponseSchema
         },
         summary: 'Get full dashboard data',
-        description: 'Returns all data for the full user dashboard, including balance, budgets, saving goals, financial indicators, recent activity, and more.'
+        description: 'Returns expense summaries, budgets, saving goals, financial indicators, recent expense activity, and expense insights.'
     },
     /**
      * Get dashboard summary (lightweight)
@@ -174,7 +169,7 @@ export const DashboardContracts = c.router({
             500: ErrorResponseSchema
         },
         summary: 'Get dashboard summary',
-        description: 'Returns essential dashboard data for fast loading: balance, monthly summary, and sync status.'
+        description: 'Returns the monthly expense summary and email sync status.'
     },
     /**
      * Refresh dashboard data

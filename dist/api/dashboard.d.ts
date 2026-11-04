@@ -1,61 +1,89 @@
 import { z } from 'zod';
+export declare const BudgetItemSchema: z.ZodObject<{
+    id: z.ZodNumber;
+    uuid: z.ZodString;
+    name: z.ZodString;
+    budget_period: z.ZodEnum<["monthly", "quarterly", "yearly"]>;
+    start_date: z.ZodDate;
+    end_date: z.ZodDate;
+    total_amount: z.ZodNumber;
+    /** @deprecated Stored value kept for old clients; use `spent`. */
+    used_amount: z.ZodNumber;
+    currency: z.ZodString;
+    is_active: z.ZodBoolean;
+    notes: z.ZodNullable<z.ZodString>;
+    settings: z.ZodNullable<z.ZodAny>;
+    spent: z.ZodNullable<z.ZodNumber>;
+    remaining: z.ZodNullable<z.ZodNumber>;
+    percent: z.ZodNullable<z.ZodNumber>;
+    status: z.ZodNullable<z.ZodEnum<["ok", "near_limit", "exceeded"]>>;
+    needs_category: z.ZodBoolean;
+    period_active: z.ZodNullable<z.ZodBoolean>;
+}, "strip", z.ZodTypeAny, {
+    status: "ok" | "near_limit" | "exceeded" | null;
+    id: number;
+    is_active: boolean;
+    uuid: string;
+    notes: string | null;
+    name: string;
+    currency: string;
+    budget_period: "monthly" | "quarterly" | "yearly";
+    start_date: Date;
+    end_date: Date;
+    total_amount: number;
+    used_amount: number;
+    needs_category: boolean;
+    spent: number | null;
+    remaining: number | null;
+    percent: number | null;
+    period_active: boolean | null;
+    settings?: any;
+}, {
+    status: "ok" | "near_limit" | "exceeded" | null;
+    id: number;
+    is_active: boolean;
+    uuid: string;
+    notes: string | null;
+    name: string;
+    currency: string;
+    budget_period: "monthly" | "quarterly" | "yearly";
+    start_date: Date;
+    end_date: Date;
+    total_amount: number;
+    used_amount: number;
+    needs_category: boolean;
+    spent: number | null;
+    remaining: number | null;
+    percent: number | null;
+    period_active: boolean | null;
+    settings?: any;
+}>;
 export declare const DashboardContracts: {
     getDashboard: {
         summary: "Get full dashboard data";
-        description: "Returns all data for the full user dashboard, including balance, budgets, saving goals, financial indicators, recent activity, and more.";
+        description: "Returns expense summaries, budgets, saving goals, financial indicators, recent expense activity, and expense insights.";
         method: "GET";
         path: "/dashboard";
         responses: {
             200: z.ZodObject<{
                 success: z.ZodLiteral<true>;
                 data: z.ZodObject<{
-                    balance: z.ZodObject<{
-                        available: z.ZodNumber;
-                        currency: z.ZodString;
-                    }, "strip", z.ZodTypeAny, {
-                        currency: string;
-                        available: number;
-                    }, {
-                        currency: string;
-                        available: number;
-                    }>;
                     monthlySummary: z.ZodObject<{
-                        income: z.ZodNumber;
                         expenses: z.ZodNumber;
-                        debts: z.ZodNumber;
-                        netBalance: z.ZodNumber;
                     }, "strip", z.ZodTypeAny, {
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     }, {
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     }>;
                     currencySummaries: z.ZodArray<z.ZodObject<{
                         currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
-                        available: z.ZodNumber;
-                        income: z.ZodNumber;
                         expenses: z.ZodNumber;
-                        debts: z.ZodNumber;
-                        netBalance: z.ZodNumber;
                     }, "strip", z.ZodTypeAny, {
                         currency: "DOP" | "USD" | "EUR";
-                        available: number;
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     }, {
                         currency: "DOP" | "USD" | "EUR";
-                        available: number;
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     }>, "many">;
                     budgets: z.ZodObject<{
                         overview: z.ZodObject<{
@@ -76,12 +104,20 @@ export declare const DashboardContracts: {
                             start_date: z.ZodDate;
                             end_date: z.ZodDate;
                             total_amount: z.ZodNumber;
+                            /** @deprecated Stored value kept for old clients; use `spent`. */
                             used_amount: z.ZodNumber;
                             currency: z.ZodString;
                             is_active: z.ZodBoolean;
                             notes: z.ZodNullable<z.ZodString>;
                             settings: z.ZodNullable<z.ZodAny>;
+                            spent: z.ZodNullable<z.ZodNumber>;
+                            remaining: z.ZodNullable<z.ZodNumber>;
+                            percent: z.ZodNullable<z.ZodNumber>;
+                            status: z.ZodNullable<z.ZodEnum<["ok", "near_limit", "exceeded"]>>;
+                            needs_category: z.ZodBoolean;
+                            period_active: z.ZodNullable<z.ZodBoolean>;
                         }, "strip", z.ZodTypeAny, {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -93,8 +129,14 @@ export declare const DashboardContracts: {
                             end_date: Date;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
                             settings?: any;
                         }, {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -106,6 +148,11 @@ export declare const DashboardContracts: {
                             end_date: Date;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
                             settings?: any;
                         }>, "many">;
                     }, "strip", z.ZodTypeAny, {
@@ -114,6 +161,7 @@ export declare const DashboardContracts: {
                             totalUsed: number;
                         };
                         budgets: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -125,6 +173,11 @@ export declare const DashboardContracts: {
                             end_date: Date;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
                             settings?: any;
                         }[];
                     }, {
@@ -133,6 +186,7 @@ export declare const DashboardContracts: {
                             totalUsed: number;
                         };
                         budgets: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -144,6 +198,11 @@ export declare const DashboardContracts: {
                             end_date: Date;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
                             settings?: any;
                         }[];
                     }>;
@@ -195,14 +254,14 @@ export declare const DashboardContracts: {
                         }, "strip", z.ZodTypeAny, {
                             status: "on_track" | "warning" | "over_budget" | "no_budget";
                             total: number;
-                            used: number;
                             remaining: number;
+                            used: number;
                             percentage: number;
                         }, {
                             status: "on_track" | "warning" | "over_budget" | "no_budget";
                             total: number;
-                            used: number;
                             remaining: number;
+                            used: number;
                             percentage: number;
                         }>;
                         expenseProjection: z.ZodObject<{
@@ -226,13 +285,13 @@ export declare const DashboardContracts: {
                         }, "strip", z.ZodTypeAny, {
                             status: "available" | "empty";
                             amount: number;
-                            percentage: number;
                             category: string | null;
+                            percentage: number;
                         }, {
                             status: "available" | "empty";
                             amount: number;
-                            percentage: number;
                             category: string | null;
+                            percentage: number;
                         }>;
                     }, "strip", z.ZodTypeAny, {
                         monthlyExpenses: {
@@ -244,8 +303,8 @@ export declare const DashboardContracts: {
                         budgetUsage: {
                             status: "on_track" | "warning" | "over_budget" | "no_budget";
                             total: number;
-                            used: number;
                             remaining: number;
+                            used: number;
                             percentage: number;
                         };
                         expenseProjection: {
@@ -256,8 +315,8 @@ export declare const DashboardContracts: {
                         topCategory: {
                             status: "available" | "empty";
                             amount: number;
-                            percentage: number;
                             category: string | null;
+                            percentage: number;
                         };
                     }, {
                         monthlyExpenses: {
@@ -269,8 +328,8 @@ export declare const DashboardContracts: {
                         budgetUsage: {
                             status: "on_track" | "warning" | "over_budget" | "no_budget";
                             total: number;
-                            used: number;
                             remaining: number;
+                            used: number;
                             percentage: number;
                         };
                         expenseProjection: {
@@ -281,8 +340,8 @@ export declare const DashboardContracts: {
                         topCategory: {
                             status: "available" | "empty";
                             amount: number;
-                            percentage: number;
                             category: string | null;
+                            percentage: number;
                         };
                     }>;
                     recentMovements: z.ZodArray<z.ZodObject<{
@@ -290,11 +349,11 @@ export declare const DashboardContracts: {
                         description: z.ZodString;
                         amount: z.ZodNumber;
                         currency: z.ZodString;
-                        type: z.ZodEnum<["income", "expense"]>;
+                        type: z.ZodLiteral<"expense">;
                         date: z.ZodDate;
                         status: z.ZodString;
                     }, "strip", z.ZodTypeAny, {
-                        type: "income" | "expense";
+                        type: "expense";
                         status: string;
                         id: string;
                         date: Date;
@@ -302,7 +361,7 @@ export declare const DashboardContracts: {
                         currency: string;
                         amount: number;
                     }, {
-                        type: "income" | "expense";
+                        type: "expense";
                         status: string;
                         id: string;
                         date: Date;
@@ -315,15 +374,15 @@ export declare const DashboardContracts: {
                         description: z.ZodString;
                         date: z.ZodDate;
                         amount: z.ZodNumber;
-                        type: z.ZodEnum<["income", "expense"]>;
+                        type: z.ZodLiteral<"expense">;
                     }, "strip", z.ZodTypeAny, {
-                        type: "income" | "expense";
+                        type: "expense";
                         id: string;
                         date: Date;
                         description: string;
                         amount: number;
                     }, {
-                        type: "income" | "expense";
+                        type: "expense";
                         id: string;
                         date: Date;
                         description: string;
@@ -337,13 +396,13 @@ export declare const DashboardContracts: {
                     }, "strip", z.ZodTypeAny, {
                         color: string;
                         amount: number;
-                        percentage: number;
                         category: string;
+                        percentage: number;
                     }, {
                         color: string;
                         amount: number;
-                        percentage: number;
                         category: string;
+                        percentage: number;
                     }>, "many">;
                     expenseDistributionByCurrency: z.ZodArray<z.ZodObject<{
                         currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
@@ -355,28 +414,28 @@ export declare const DashboardContracts: {
                         }, "strip", z.ZodTypeAny, {
                             color: string;
                             amount: number;
-                            percentage: number;
                             category: string;
+                            percentage: number;
                         }, {
                             color: string;
                             amount: number;
-                            percentage: number;
                             category: string;
+                            percentage: number;
                         }>, "many">;
                     }, "strip", z.ZodTypeAny, {
                         items: {
                             color: string;
                             amount: number;
-                            percentage: number;
                             category: string;
+                            percentage: number;
                         }[];
                         currency: "DOP" | "USD" | "EUR";
                     }, {
                         items: {
                             color: string;
                             amount: number;
-                            percentage: number;
                             category: string;
+                            percentage: number;
                         }[];
                         currency: "DOP" | "USD" | "EUR";
                     }>, "many">;
@@ -392,16 +451,13 @@ export declare const DashboardContracts: {
                         needsSync: boolean;
                     }>;
                 }, "strip", z.ZodTypeAny, {
-                    balance: {
-                        currency: string;
-                        available: number;
-                    };
                     budgets: {
                         overview: {
                             total: number;
                             totalUsed: number;
                         };
                         budgets: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -413,22 +469,20 @@ export declare const DashboardContracts: {
                             end_date: Date;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
                             settings?: any;
                         }[];
                     };
                     monthlySummary: {
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     };
                     currencySummaries: {
                         currency: "DOP" | "USD" | "EUR";
-                        available: number;
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     }[];
                     savingGoals: {
                         id: number;
@@ -448,8 +502,8 @@ export declare const DashboardContracts: {
                         budgetUsage: {
                             status: "on_track" | "warning" | "over_budget" | "no_budget";
                             total: number;
-                            used: number;
                             remaining: number;
+                            used: number;
                             percentage: number;
                         };
                         expenseProjection: {
@@ -460,12 +514,12 @@ export declare const DashboardContracts: {
                         topCategory: {
                             status: "available" | "empty";
                             amount: number;
-                            percentage: number;
                             category: string | null;
+                            percentage: number;
                         };
                     };
                     recentMovements: {
-                        type: "income" | "expense";
+                        type: "expense";
                         status: string;
                         id: string;
                         date: Date;
@@ -474,7 +528,7 @@ export declare const DashboardContracts: {
                         amount: number;
                     }[];
                     upcomingEvents: {
-                        type: "income" | "expense";
+                        type: "expense";
                         id: string;
                         date: Date;
                         description: string;
@@ -483,15 +537,15 @@ export declare const DashboardContracts: {
                     expenseDistribution: {
                         color: string;
                         amount: number;
-                        percentage: number;
                         category: string;
+                        percentage: number;
                     }[];
                     expenseDistributionByCurrency: {
                         items: {
                             color: string;
                             amount: number;
-                            percentage: number;
                             category: string;
+                            percentage: number;
                         }[];
                         currency: "DOP" | "USD" | "EUR";
                     }[];
@@ -501,16 +555,13 @@ export declare const DashboardContracts: {
                         needsSync: boolean;
                     };
                 }, {
-                    balance: {
-                        currency: string;
-                        available: number;
-                    };
                     budgets: {
                         overview: {
                             total: number;
                             totalUsed: number;
                         };
                         budgets: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -522,22 +573,20 @@ export declare const DashboardContracts: {
                             end_date: Date;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
                             settings?: any;
                         }[];
                     };
                     monthlySummary: {
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     };
                     currencySummaries: {
                         currency: "DOP" | "USD" | "EUR";
-                        available: number;
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     }[];
                     savingGoals: {
                         id: number;
@@ -557,8 +606,8 @@ export declare const DashboardContracts: {
                         budgetUsage: {
                             status: "on_track" | "warning" | "over_budget" | "no_budget";
                             total: number;
-                            used: number;
                             remaining: number;
+                            used: number;
                             percentage: number;
                         };
                         expenseProjection: {
@@ -569,12 +618,12 @@ export declare const DashboardContracts: {
                         topCategory: {
                             status: "available" | "empty";
                             amount: number;
-                            percentage: number;
                             category: string | null;
+                            percentage: number;
                         };
                     };
                     recentMovements: {
-                        type: "income" | "expense";
+                        type: "expense";
                         status: string;
                         id: string;
                         date: Date;
@@ -583,7 +632,7 @@ export declare const DashboardContracts: {
                         amount: number;
                     }[];
                     upcomingEvents: {
-                        type: "income" | "expense";
+                        type: "expense";
                         id: string;
                         date: Date;
                         description: string;
@@ -592,15 +641,15 @@ export declare const DashboardContracts: {
                     expenseDistribution: {
                         color: string;
                         amount: number;
-                        percentage: number;
                         category: string;
+                        percentage: number;
                     }[];
                     expenseDistributionByCurrency: {
                         items: {
                             color: string;
                             amount: number;
-                            percentage: number;
                             category: string;
+                            percentage: number;
                         }[];
                         currency: "DOP" | "USD" | "EUR";
                     }[];
@@ -614,16 +663,13 @@ export declare const DashboardContracts: {
             }, "strip", z.ZodTypeAny, {
                 message: string;
                 data: {
-                    balance: {
-                        currency: string;
-                        available: number;
-                    };
                     budgets: {
                         overview: {
                             total: number;
                             totalUsed: number;
                         };
                         budgets: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -635,22 +681,20 @@ export declare const DashboardContracts: {
                             end_date: Date;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
                             settings?: any;
                         }[];
                     };
                     monthlySummary: {
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     };
                     currencySummaries: {
                         currency: "DOP" | "USD" | "EUR";
-                        available: number;
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     }[];
                     savingGoals: {
                         id: number;
@@ -670,8 +714,8 @@ export declare const DashboardContracts: {
                         budgetUsage: {
                             status: "on_track" | "warning" | "over_budget" | "no_budget";
                             total: number;
-                            used: number;
                             remaining: number;
+                            used: number;
                             percentage: number;
                         };
                         expenseProjection: {
@@ -682,12 +726,12 @@ export declare const DashboardContracts: {
                         topCategory: {
                             status: "available" | "empty";
                             amount: number;
-                            percentage: number;
                             category: string | null;
+                            percentage: number;
                         };
                     };
                     recentMovements: {
-                        type: "income" | "expense";
+                        type: "expense";
                         status: string;
                         id: string;
                         date: Date;
@@ -696,7 +740,7 @@ export declare const DashboardContracts: {
                         amount: number;
                     }[];
                     upcomingEvents: {
-                        type: "income" | "expense";
+                        type: "expense";
                         id: string;
                         date: Date;
                         description: string;
@@ -705,15 +749,15 @@ export declare const DashboardContracts: {
                     expenseDistribution: {
                         color: string;
                         amount: number;
-                        percentage: number;
                         category: string;
+                        percentage: number;
                     }[];
                     expenseDistributionByCurrency: {
                         items: {
                             color: string;
                             amount: number;
-                            percentage: number;
                             category: string;
+                            percentage: number;
                         }[];
                         currency: "DOP" | "USD" | "EUR";
                     }[];
@@ -727,16 +771,13 @@ export declare const DashboardContracts: {
             }, {
                 message: string;
                 data: {
-                    balance: {
-                        currency: string;
-                        available: number;
-                    };
                     budgets: {
                         overview: {
                             total: number;
                             totalUsed: number;
                         };
                         budgets: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -748,22 +789,20 @@ export declare const DashboardContracts: {
                             end_date: Date;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
                             settings?: any;
                         }[];
                     };
                     monthlySummary: {
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     };
                     currencySummaries: {
                         currency: "DOP" | "USD" | "EUR";
-                        available: number;
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     }[];
                     savingGoals: {
                         id: number;
@@ -783,8 +822,8 @@ export declare const DashboardContracts: {
                         budgetUsage: {
                             status: "on_track" | "warning" | "over_budget" | "no_budget";
                             total: number;
-                            used: number;
                             remaining: number;
+                            used: number;
                             percentage: number;
                         };
                         expenseProjection: {
@@ -795,12 +834,12 @@ export declare const DashboardContracts: {
                         topCategory: {
                             status: "available" | "empty";
                             amount: number;
-                            percentage: number;
                             category: string | null;
+                            percentage: number;
                         };
                     };
                     recentMovements: {
-                        type: "income" | "expense";
+                        type: "expense";
                         status: string;
                         id: string;
                         date: Date;
@@ -809,7 +848,7 @@ export declare const DashboardContracts: {
                         amount: number;
                     }[];
                     upcomingEvents: {
-                        type: "income" | "expense";
+                        type: "expense";
                         id: string;
                         date: Date;
                         description: string;
@@ -818,15 +857,15 @@ export declare const DashboardContracts: {
                     expenseDistribution: {
                         color: string;
                         amount: number;
-                        percentage: number;
                         category: string;
+                        percentage: number;
                     }[];
                     expenseDistributionByCurrency: {
                         items: {
                             color: string;
                             amount: number;
-                            percentage: number;
                             category: string;
+                            percentage: number;
                         }[];
                         currency: "DOP" | "USD" | "EUR";
                     }[];
@@ -868,38 +907,19 @@ export declare const DashboardContracts: {
     };
     getDashboardSummary: {
         summary: "Get dashboard summary";
-        description: "Returns essential dashboard data for fast loading: balance, monthly summary, and sync status.";
+        description: "Returns the monthly expense summary and email sync status.";
         method: "GET";
         path: "/dashboard/summary";
         responses: {
             200: z.ZodObject<{
                 success: z.ZodLiteral<true>;
                 data: z.ZodObject<{
-                    balance: z.ZodObject<{
-                        available: z.ZodNumber;
-                        currency: z.ZodString;
-                    }, "strip", z.ZodTypeAny, {
-                        currency: string;
-                        available: number;
-                    }, {
-                        currency: string;
-                        available: number;
-                    }>;
                     monthlySummary: z.ZodObject<{
-                        income: z.ZodNumber;
                         expenses: z.ZodNumber;
-                        debts: z.ZodNumber;
-                        netBalance: z.ZodNumber;
                     }, "strip", z.ZodTypeAny, {
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     }, {
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     }>;
                     syncStatus: z.ZodObject<{
                         lastSync: z.ZodNullable<z.ZodDate>;
@@ -912,30 +932,16 @@ export declare const DashboardContracts: {
                         needsSync: boolean;
                     }>;
                 }, "strip", z.ZodTypeAny, {
-                    balance: {
-                        currency: string;
-                        available: number;
-                    };
                     monthlySummary: {
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     };
                     syncStatus: {
                         lastSync: Date | null;
                         needsSync: boolean;
                     };
                 }, {
-                    balance: {
-                        currency: string;
-                        available: number;
-                    };
                     monthlySummary: {
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     };
                     syncStatus: {
                         lastSync: Date | null;
@@ -946,15 +952,8 @@ export declare const DashboardContracts: {
             }, "strip", z.ZodTypeAny, {
                 message: string;
                 data: {
-                    balance: {
-                        currency: string;
-                        available: number;
-                    };
                     monthlySummary: {
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     };
                     syncStatus: {
                         lastSync: Date | null;
@@ -965,15 +964,8 @@ export declare const DashboardContracts: {
             }, {
                 message: string;
                 data: {
-                    balance: {
-                        currency: string;
-                        available: number;
-                    };
                     monthlySummary: {
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     };
                     syncStatus: {
                         lastSync: Date | null;
@@ -1020,53 +1012,22 @@ export declare const DashboardContracts: {
             200: z.ZodObject<{
                 success: z.ZodLiteral<true>;
                 data: z.ZodObject<{
-                    balance: z.ZodObject<{
-                        available: z.ZodNumber;
-                        currency: z.ZodString;
-                    }, "strip", z.ZodTypeAny, {
-                        currency: string;
-                        available: number;
-                    }, {
-                        currency: string;
-                        available: number;
-                    }>;
                     monthlySummary: z.ZodObject<{
-                        income: z.ZodNumber;
                         expenses: z.ZodNumber;
-                        debts: z.ZodNumber;
-                        netBalance: z.ZodNumber;
                     }, "strip", z.ZodTypeAny, {
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     }, {
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     }>;
                     currencySummaries: z.ZodArray<z.ZodObject<{
                         currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
-                        available: z.ZodNumber;
-                        income: z.ZodNumber;
                         expenses: z.ZodNumber;
-                        debts: z.ZodNumber;
-                        netBalance: z.ZodNumber;
                     }, "strip", z.ZodTypeAny, {
                         currency: "DOP" | "USD" | "EUR";
-                        available: number;
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     }, {
                         currency: "DOP" | "USD" | "EUR";
-                        available: number;
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     }>, "many">;
                     budgets: z.ZodObject<{
                         overview: z.ZodObject<{
@@ -1087,12 +1048,20 @@ export declare const DashboardContracts: {
                             start_date: z.ZodDate;
                             end_date: z.ZodDate;
                             total_amount: z.ZodNumber;
+                            /** @deprecated Stored value kept for old clients; use `spent`. */
                             used_amount: z.ZodNumber;
                             currency: z.ZodString;
                             is_active: z.ZodBoolean;
                             notes: z.ZodNullable<z.ZodString>;
                             settings: z.ZodNullable<z.ZodAny>;
+                            spent: z.ZodNullable<z.ZodNumber>;
+                            remaining: z.ZodNullable<z.ZodNumber>;
+                            percent: z.ZodNullable<z.ZodNumber>;
+                            status: z.ZodNullable<z.ZodEnum<["ok", "near_limit", "exceeded"]>>;
+                            needs_category: z.ZodBoolean;
+                            period_active: z.ZodNullable<z.ZodBoolean>;
                         }, "strip", z.ZodTypeAny, {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -1104,8 +1073,14 @@ export declare const DashboardContracts: {
                             end_date: Date;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
                             settings?: any;
                         }, {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -1117,6 +1092,11 @@ export declare const DashboardContracts: {
                             end_date: Date;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
                             settings?: any;
                         }>, "many">;
                     }, "strip", z.ZodTypeAny, {
@@ -1125,6 +1105,7 @@ export declare const DashboardContracts: {
                             totalUsed: number;
                         };
                         budgets: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -1136,6 +1117,11 @@ export declare const DashboardContracts: {
                             end_date: Date;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
                             settings?: any;
                         }[];
                     }, {
@@ -1144,6 +1130,7 @@ export declare const DashboardContracts: {
                             totalUsed: number;
                         };
                         budgets: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -1155,6 +1142,11 @@ export declare const DashboardContracts: {
                             end_date: Date;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
                             settings?: any;
                         }[];
                     }>;
@@ -1206,14 +1198,14 @@ export declare const DashboardContracts: {
                         }, "strip", z.ZodTypeAny, {
                             status: "on_track" | "warning" | "over_budget" | "no_budget";
                             total: number;
-                            used: number;
                             remaining: number;
+                            used: number;
                             percentage: number;
                         }, {
                             status: "on_track" | "warning" | "over_budget" | "no_budget";
                             total: number;
-                            used: number;
                             remaining: number;
+                            used: number;
                             percentage: number;
                         }>;
                         expenseProjection: z.ZodObject<{
@@ -1237,13 +1229,13 @@ export declare const DashboardContracts: {
                         }, "strip", z.ZodTypeAny, {
                             status: "available" | "empty";
                             amount: number;
-                            percentage: number;
                             category: string | null;
+                            percentage: number;
                         }, {
                             status: "available" | "empty";
                             amount: number;
-                            percentage: number;
                             category: string | null;
+                            percentage: number;
                         }>;
                     }, "strip", z.ZodTypeAny, {
                         monthlyExpenses: {
@@ -1255,8 +1247,8 @@ export declare const DashboardContracts: {
                         budgetUsage: {
                             status: "on_track" | "warning" | "over_budget" | "no_budget";
                             total: number;
-                            used: number;
                             remaining: number;
+                            used: number;
                             percentage: number;
                         };
                         expenseProjection: {
@@ -1267,8 +1259,8 @@ export declare const DashboardContracts: {
                         topCategory: {
                             status: "available" | "empty";
                             amount: number;
-                            percentage: number;
                             category: string | null;
+                            percentage: number;
                         };
                     }, {
                         monthlyExpenses: {
@@ -1280,8 +1272,8 @@ export declare const DashboardContracts: {
                         budgetUsage: {
                             status: "on_track" | "warning" | "over_budget" | "no_budget";
                             total: number;
-                            used: number;
                             remaining: number;
+                            used: number;
                             percentage: number;
                         };
                         expenseProjection: {
@@ -1292,8 +1284,8 @@ export declare const DashboardContracts: {
                         topCategory: {
                             status: "available" | "empty";
                             amount: number;
-                            percentage: number;
                             category: string | null;
+                            percentage: number;
                         };
                     }>;
                     recentMovements: z.ZodArray<z.ZodObject<{
@@ -1301,11 +1293,11 @@ export declare const DashboardContracts: {
                         description: z.ZodString;
                         amount: z.ZodNumber;
                         currency: z.ZodString;
-                        type: z.ZodEnum<["income", "expense"]>;
+                        type: z.ZodLiteral<"expense">;
                         date: z.ZodDate;
                         status: z.ZodString;
                     }, "strip", z.ZodTypeAny, {
-                        type: "income" | "expense";
+                        type: "expense";
                         status: string;
                         id: string;
                         date: Date;
@@ -1313,7 +1305,7 @@ export declare const DashboardContracts: {
                         currency: string;
                         amount: number;
                     }, {
-                        type: "income" | "expense";
+                        type: "expense";
                         status: string;
                         id: string;
                         date: Date;
@@ -1326,15 +1318,15 @@ export declare const DashboardContracts: {
                         description: z.ZodString;
                         date: z.ZodDate;
                         amount: z.ZodNumber;
-                        type: z.ZodEnum<["income", "expense"]>;
+                        type: z.ZodLiteral<"expense">;
                     }, "strip", z.ZodTypeAny, {
-                        type: "income" | "expense";
+                        type: "expense";
                         id: string;
                         date: Date;
                         description: string;
                         amount: number;
                     }, {
-                        type: "income" | "expense";
+                        type: "expense";
                         id: string;
                         date: Date;
                         description: string;
@@ -1348,13 +1340,13 @@ export declare const DashboardContracts: {
                     }, "strip", z.ZodTypeAny, {
                         color: string;
                         amount: number;
-                        percentage: number;
                         category: string;
+                        percentage: number;
                     }, {
                         color: string;
                         amount: number;
-                        percentage: number;
                         category: string;
+                        percentage: number;
                     }>, "many">;
                     expenseDistributionByCurrency: z.ZodArray<z.ZodObject<{
                         currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
@@ -1366,28 +1358,28 @@ export declare const DashboardContracts: {
                         }, "strip", z.ZodTypeAny, {
                             color: string;
                             amount: number;
-                            percentage: number;
                             category: string;
+                            percentage: number;
                         }, {
                             color: string;
                             amount: number;
-                            percentage: number;
                             category: string;
+                            percentage: number;
                         }>, "many">;
                     }, "strip", z.ZodTypeAny, {
                         items: {
                             color: string;
                             amount: number;
-                            percentage: number;
                             category: string;
+                            percentage: number;
                         }[];
                         currency: "DOP" | "USD" | "EUR";
                     }, {
                         items: {
                             color: string;
                             amount: number;
-                            percentage: number;
                             category: string;
+                            percentage: number;
                         }[];
                         currency: "DOP" | "USD" | "EUR";
                     }>, "many">;
@@ -1403,16 +1395,13 @@ export declare const DashboardContracts: {
                         needsSync: boolean;
                     }>;
                 }, "strip", z.ZodTypeAny, {
-                    balance: {
-                        currency: string;
-                        available: number;
-                    };
                     budgets: {
                         overview: {
                             total: number;
                             totalUsed: number;
                         };
                         budgets: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -1424,22 +1413,20 @@ export declare const DashboardContracts: {
                             end_date: Date;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
                             settings?: any;
                         }[];
                     };
                     monthlySummary: {
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     };
                     currencySummaries: {
                         currency: "DOP" | "USD" | "EUR";
-                        available: number;
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     }[];
                     savingGoals: {
                         id: number;
@@ -1459,8 +1446,8 @@ export declare const DashboardContracts: {
                         budgetUsage: {
                             status: "on_track" | "warning" | "over_budget" | "no_budget";
                             total: number;
-                            used: number;
                             remaining: number;
+                            used: number;
                             percentage: number;
                         };
                         expenseProjection: {
@@ -1471,12 +1458,12 @@ export declare const DashboardContracts: {
                         topCategory: {
                             status: "available" | "empty";
                             amount: number;
-                            percentage: number;
                             category: string | null;
+                            percentage: number;
                         };
                     };
                     recentMovements: {
-                        type: "income" | "expense";
+                        type: "expense";
                         status: string;
                         id: string;
                         date: Date;
@@ -1485,7 +1472,7 @@ export declare const DashboardContracts: {
                         amount: number;
                     }[];
                     upcomingEvents: {
-                        type: "income" | "expense";
+                        type: "expense";
                         id: string;
                         date: Date;
                         description: string;
@@ -1494,15 +1481,15 @@ export declare const DashboardContracts: {
                     expenseDistribution: {
                         color: string;
                         amount: number;
-                        percentage: number;
                         category: string;
+                        percentage: number;
                     }[];
                     expenseDistributionByCurrency: {
                         items: {
                             color: string;
                             amount: number;
-                            percentage: number;
                             category: string;
+                            percentage: number;
                         }[];
                         currency: "DOP" | "USD" | "EUR";
                     }[];
@@ -1512,16 +1499,13 @@ export declare const DashboardContracts: {
                         needsSync: boolean;
                     };
                 }, {
-                    balance: {
-                        currency: string;
-                        available: number;
-                    };
                     budgets: {
                         overview: {
                             total: number;
                             totalUsed: number;
                         };
                         budgets: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -1533,22 +1517,20 @@ export declare const DashboardContracts: {
                             end_date: Date;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
                             settings?: any;
                         }[];
                     };
                     monthlySummary: {
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     };
                     currencySummaries: {
                         currency: "DOP" | "USD" | "EUR";
-                        available: number;
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     }[];
                     savingGoals: {
                         id: number;
@@ -1568,8 +1550,8 @@ export declare const DashboardContracts: {
                         budgetUsage: {
                             status: "on_track" | "warning" | "over_budget" | "no_budget";
                             total: number;
-                            used: number;
                             remaining: number;
+                            used: number;
                             percentage: number;
                         };
                         expenseProjection: {
@@ -1580,12 +1562,12 @@ export declare const DashboardContracts: {
                         topCategory: {
                             status: "available" | "empty";
                             amount: number;
-                            percentage: number;
                             category: string | null;
+                            percentage: number;
                         };
                     };
                     recentMovements: {
-                        type: "income" | "expense";
+                        type: "expense";
                         status: string;
                         id: string;
                         date: Date;
@@ -1594,7 +1576,7 @@ export declare const DashboardContracts: {
                         amount: number;
                     }[];
                     upcomingEvents: {
-                        type: "income" | "expense";
+                        type: "expense";
                         id: string;
                         date: Date;
                         description: string;
@@ -1603,15 +1585,15 @@ export declare const DashboardContracts: {
                     expenseDistribution: {
                         color: string;
                         amount: number;
-                        percentage: number;
                         category: string;
+                        percentage: number;
                     }[];
                     expenseDistributionByCurrency: {
                         items: {
                             color: string;
                             amount: number;
-                            percentage: number;
                             category: string;
+                            percentage: number;
                         }[];
                         currency: "DOP" | "USD" | "EUR";
                     }[];
@@ -1625,16 +1607,13 @@ export declare const DashboardContracts: {
             }, "strip", z.ZodTypeAny, {
                 message: string;
                 data: {
-                    balance: {
-                        currency: string;
-                        available: number;
-                    };
                     budgets: {
                         overview: {
                             total: number;
                             totalUsed: number;
                         };
                         budgets: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -1646,22 +1625,20 @@ export declare const DashboardContracts: {
                             end_date: Date;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
                             settings?: any;
                         }[];
                     };
                     monthlySummary: {
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     };
                     currencySummaries: {
                         currency: "DOP" | "USD" | "EUR";
-                        available: number;
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     }[];
                     savingGoals: {
                         id: number;
@@ -1681,8 +1658,8 @@ export declare const DashboardContracts: {
                         budgetUsage: {
                             status: "on_track" | "warning" | "over_budget" | "no_budget";
                             total: number;
-                            used: number;
                             remaining: number;
+                            used: number;
                             percentage: number;
                         };
                         expenseProjection: {
@@ -1693,12 +1670,12 @@ export declare const DashboardContracts: {
                         topCategory: {
                             status: "available" | "empty";
                             amount: number;
-                            percentage: number;
                             category: string | null;
+                            percentage: number;
                         };
                     };
                     recentMovements: {
-                        type: "income" | "expense";
+                        type: "expense";
                         status: string;
                         id: string;
                         date: Date;
@@ -1707,7 +1684,7 @@ export declare const DashboardContracts: {
                         amount: number;
                     }[];
                     upcomingEvents: {
-                        type: "income" | "expense";
+                        type: "expense";
                         id: string;
                         date: Date;
                         description: string;
@@ -1716,15 +1693,15 @@ export declare const DashboardContracts: {
                     expenseDistribution: {
                         color: string;
                         amount: number;
-                        percentage: number;
                         category: string;
+                        percentage: number;
                     }[];
                     expenseDistributionByCurrency: {
                         items: {
                             color: string;
                             amount: number;
-                            percentage: number;
                             category: string;
+                            percentage: number;
                         }[];
                         currency: "DOP" | "USD" | "EUR";
                     }[];
@@ -1738,16 +1715,13 @@ export declare const DashboardContracts: {
             }, {
                 message: string;
                 data: {
-                    balance: {
-                        currency: string;
-                        available: number;
-                    };
                     budgets: {
                         overview: {
                             total: number;
                             totalUsed: number;
                         };
                         budgets: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -1759,22 +1733,20 @@ export declare const DashboardContracts: {
                             end_date: Date;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
                             settings?: any;
                         }[];
                     };
                     monthlySummary: {
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     };
                     currencySummaries: {
                         currency: "DOP" | "USD" | "EUR";
-                        available: number;
-                        income: number;
                         expenses: number;
-                        debts: number;
-                        netBalance: number;
                     }[];
                     savingGoals: {
                         id: number;
@@ -1794,8 +1766,8 @@ export declare const DashboardContracts: {
                         budgetUsage: {
                             status: "on_track" | "warning" | "over_budget" | "no_budget";
                             total: number;
-                            used: number;
                             remaining: number;
+                            used: number;
                             percentage: number;
                         };
                         expenseProjection: {
@@ -1806,12 +1778,12 @@ export declare const DashboardContracts: {
                         topCategory: {
                             status: "available" | "empty";
                             amount: number;
-                            percentage: number;
                             category: string | null;
+                            percentage: number;
                         };
                     };
                     recentMovements: {
-                        type: "income" | "expense";
+                        type: "expense";
                         status: string;
                         id: string;
                         date: Date;
@@ -1820,7 +1792,7 @@ export declare const DashboardContracts: {
                         amount: number;
                     }[];
                     upcomingEvents: {
-                        type: "income" | "expense";
+                        type: "expense";
                         id: string;
                         date: Date;
                         description: string;
@@ -1829,15 +1801,15 @@ export declare const DashboardContracts: {
                     expenseDistribution: {
                         color: string;
                         amount: number;
-                        percentage: number;
                         category: string;
+                        percentage: number;
                     }[];
                     expenseDistributionByCurrency: {
                         items: {
                             color: string;
                             amount: number;
-                            percentage: number;
                             category: string;
+                            percentage: number;
                         }[];
                         currency: "DOP" | "USD" | "EUR";
                     }[];

@@ -4,17 +4,20 @@ export declare const apiContract: {
             login: {
                 strictStatusCodes: true;
                 summary: "Admin login";
-                description: "Authenticate an admin user with email and password.";
+                description: "Authenticate an admin with email, password, and a TOTP or one-time recovery code. A correct password without a second factor does not return a token.";
                 method: "POST";
                 body: import("zod").ZodObject<{
                     email: import("zod").ZodString;
                     password: import("zod").ZodString;
+                    totp_code: import("zod").ZodOptional<import("zod").ZodString>;
                 }, "strip", import("zod").ZodTypeAny, {
                     email: string;
                     password: string;
+                    totp_code?: string | undefined;
                 }, {
                     email: string;
                     password: string;
+                    totp_code?: string | undefined;
                 }>;
                 path: "/api/admin/auth/login";
                 responses: {
@@ -99,6 +102,227 @@ export declare const apiContract: {
                         statusCode?: number | undefined;
                     }>;
                     401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    429: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            setupTotp: {
+                strictStatusCodes: true;
+                summary: "Start admin TOTP enrollment";
+                description: "Verify the admin password and return a TOTP secret, otpauth URL, and one-time recovery codes. Does not return a JWT. Confirm with a code before login will succeed.";
+                method: "POST";
+                body: import("zod").ZodObject<{
+                    email: import("zod").ZodString;
+                    password: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    email: string;
+                    password: string;
+                }, {
+                    email: string;
+                    password: string;
+                }>;
+                path: "/api/admin/auth/totp/setup";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        data: import("zod").ZodObject<{
+                            otpauth_url: import("zod").ZodString;
+                            secret: import("zod").ZodString;
+                            recovery_codes: import("zod").ZodArray<import("zod").ZodString, "many">;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            otpauth_url: string;
+                            secret: string;
+                            recovery_codes: string[];
+                        }, {
+                            otpauth_url: string;
+                            secret: string;
+                            recovery_codes: string[];
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            otpauth_url: string;
+                            secret: string;
+                            recovery_codes: string[];
+                        };
+                    }, {
+                        message: string;
+                        data: {
+                            otpauth_url: string;
+                            secret: string;
+                            recovery_codes: string[];
+                        };
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    409: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    429: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            confirmTotp: {
+                strictStatusCodes: true;
+                summary: "Confirm admin TOTP enrollment";
+                description: "Verify the admin password and a 6-digit authenticator code, then enable TOTP. Does not return a JWT.";
+                method: "POST";
+                body: import("zod").ZodObject<{
+                    email: import("zod").ZodString;
+                    password: import("zod").ZodString;
+                    code: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    code: string;
+                    email: string;
+                    password: string;
+                }, {
+                    code: string;
+                    email: string;
+                    password: string;
+                }>;
+                path: "/api/admin/auth/totp/confirm";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                    }, {
+                        message: string;
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    409: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    429: import("zod").ZodObject<{
                         message: import("zod").ZodString;
                         error: import("zod").ZodOptional<import("zod").ZodString>;
                         statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
@@ -226,7 +450,7 @@ export declare const apiContract: {
             logout: {
                 strictStatusCodes: true;
                 summary: "Admin logout";
-                description: "Logout the current admin user (stateless).";
+                description: "Revoke the current admin JWT until it expires.";
                 method: "POST";
                 body: import("zod").ZodObject<{}, "strip", import("zod").ZodTypeAny, {}, {}>;
                 path: "/api/admin/auth/logout";
@@ -7847,7 +8071,6 @@ export declare const apiContract: {
                                 initial_debt: import("zod").ZodOptional<import("zod").ZodNumber>;
                                 monthly_payment: import("zod").ZodOptional<import("zod").ZodNumber>;
                                 total_balance: import("zod").ZodOptional<import("zod").ZodNumber>;
-                                total_income: import("zod").ZodOptional<import("zod").ZodNumber>;
                                 monthly_change: import("zod").ZodOptional<import("zod").ZodNumber>;
                                 active_count: import("zod").ZodNumber;
                             }, "strip", import("zod").ZodTypeAny, {
@@ -7856,7 +8079,6 @@ export declare const apiContract: {
                                 pending_balance?: number | undefined;
                                 initial_debt?: number | undefined;
                                 total_balance?: number | undefined;
-                                total_income?: number | undefined;
                                 monthly_change?: number | undefined;
                             }, {
                                 active_count: number;
@@ -7864,7 +8086,6 @@ export declare const apiContract: {
                                 pending_balance?: number | undefined;
                                 initial_debt?: number | undefined;
                                 total_balance?: number | undefined;
-                                total_income?: number | undefined;
                                 monthly_change?: number | undefined;
                             }>>;
                             products: import("zod").ZodArray<import("zod").ZodObject<{
@@ -7930,7 +8151,6 @@ export declare const apiContract: {
                                 }>;
                                 percentage_change: import("zod").ZodString;
                                 currency: import("zod").ZodString;
-                                income: import("zod").ZodNumber;
                             }, "strip", import("zod").ZodTypeAny, {
                                 type: string;
                                 id: string;
@@ -7961,7 +8181,6 @@ export declare const apiContract: {
                                     available: number;
                                 };
                                 percentage_change: string;
-                                income: number;
                                 linked_account_id?: string | null | undefined;
                             }, {
                                 type: string;
@@ -7993,7 +8212,6 @@ export declare const apiContract: {
                                     available: number;
                                 };
                                 percentage_change: string;
-                                income: number;
                                 linked_account_id?: string | null | undefined;
                             }>, "many">;
                         }, "strip", import("zod").ZodTypeAny, {
@@ -8027,7 +8245,6 @@ export declare const apiContract: {
                                     available: number;
                                 };
                                 percentage_change: string;
-                                income: number;
                                 linked_account_id?: string | null | undefined;
                             }[];
                             summary?: {
@@ -8036,7 +8253,6 @@ export declare const apiContract: {
                                 pending_balance?: number | undefined;
                                 initial_debt?: number | undefined;
                                 total_balance?: number | undefined;
-                                total_income?: number | undefined;
                                 monthly_change?: number | undefined;
                             } | undefined;
                         }, {
@@ -8070,7 +8286,6 @@ export declare const apiContract: {
                                     available: number;
                                 };
                                 percentage_change: string;
-                                income: number;
                                 linked_account_id?: string | null | undefined;
                             }[];
                             summary?: {
@@ -8079,7 +8294,6 @@ export declare const apiContract: {
                                 pending_balance?: number | undefined;
                                 initial_debt?: number | undefined;
                                 total_balance?: number | undefined;
-                                total_income?: number | undefined;
                                 monthly_change?: number | undefined;
                             } | undefined;
                         }>;
@@ -8116,7 +8330,6 @@ export declare const apiContract: {
                                     available: number;
                                 };
                                 percentage_change: string;
-                                income: number;
                                 linked_account_id?: string | null | undefined;
                             }[];
                             summary?: {
@@ -8125,7 +8338,6 @@ export declare const apiContract: {
                                 pending_balance?: number | undefined;
                                 initial_debt?: number | undefined;
                                 total_balance?: number | undefined;
-                                total_income?: number | undefined;
                                 monthly_change?: number | undefined;
                             } | undefined;
                         };
@@ -8162,7 +8374,6 @@ export declare const apiContract: {
                                     available: number;
                                 };
                                 percentage_change: string;
-                                income: number;
                                 linked_account_id?: string | null | undefined;
                             }[];
                             summary?: {
@@ -8171,7 +8382,6 @@ export declare const apiContract: {
                                 pending_balance?: number | undefined;
                                 initial_debt?: number | undefined;
                                 total_balance?: number | undefined;
-                                total_income?: number | undefined;
                                 monthly_change?: number | undefined;
                             } | undefined;
                         };
@@ -8225,13 +8435,16 @@ export declare const apiContract: {
                     currency: import("zod").ZodOptional<import("zod").ZodEnum<["DOP", "USD", "EUR"]>>;
                     from: import("zod").ZodOptional<import("zod").ZodString>;
                     search: import("zod").ZodOptional<import("zod").ZodString>;
+                    type: import("zod").ZodDefault<import("zod").ZodEnum<["debit", "credit", "payment"]>>;
                 }, "strip", import("zod").ZodTypeAny, {
+                    type: "debit" | "credit" | "payment";
                     limit: number;
                     offset: number;
                     search?: string | undefined;
                     currency?: "DOP" | "USD" | "EUR" | undefined;
                     from?: string | undefined;
                 }, {
+                    type?: "debit" | "credit" | "payment" | undefined;
                     limit?: string | undefined;
                     search?: string | undefined;
                     currency?: "DOP" | "USD" | "EUR" | undefined;
@@ -8247,22 +8460,21 @@ export declare const apiContract: {
                         message: import("zod").ZodString;
                         data: import("zod").ZodArray<import("zod").ZodObject<{
                             uuid: import("zod").ZodString;
+                            product_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                             amount: import("zod").ZodNumber;
                             currency: import("zod").ZodString;
                             transaction_date: import("zod").ZodString;
                             transaction_occurred_at: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                             description: import("zod").ZodNullable<import("zod").ZodString>;
-                            transaction_type: import("zod").ZodEnum<["credit", "debit"]>;
-                            user_product_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
-                            source_financial_email_event_id: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodNumber>>;
+                            transaction_type: import("zod").ZodEnum<["debit", "credit", "payment"]>;
+                            category: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                            is_manual: import("zod").ZodOptional<import("zod").ZodBoolean>;
                             institution_name: import("zod").ZodNullable<import("zod").ZodString>;
                             institution_logo: import("zod").ZodNullable<import("zod").ZodString>;
                             product_type: import("zod").ZodNullable<import("zod").ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
                             product_kind: import("zod").ZodNullable<import("zod").ZodEnum<["debit", "credit"]>>;
                             product_label: import("zod").ZodNullable<import("zod").ZodString>;
-                            account_last4: import("zod").ZodNullable<import("zod").ZodString>;
                             card_brand: import("zod").ZodNullable<import("zod").ZodEnum<["visa", "mastercard", "amex"]>>;
-                            linked_account_last4: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                             linked_account_label: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                         }, "strip", import("zod").ZodTypeAny, {
                             description: string | null;
@@ -8276,12 +8488,11 @@ export declare const apiContract: {
                             card_brand: "visa" | "mastercard" | "amex" | null;
                             amount: number;
                             transaction_date: string;
-                            transaction_type: "debit" | "credit";
-                            account_last4: string | null;
+                            transaction_type: "debit" | "credit" | "payment";
+                            product_uuid?: string | null | undefined;
                             transaction_occurred_at?: string | null | undefined;
-                            user_product_uuid?: string | null | undefined;
-                            source_financial_email_event_id?: number | null | undefined;
-                            linked_account_last4?: string | null | undefined;
+                            category?: string | null | undefined;
+                            is_manual?: boolean | undefined;
                             linked_account_label?: string | null | undefined;
                         }, {
                             description: string | null;
@@ -8295,12 +8506,11 @@ export declare const apiContract: {
                             card_brand: "visa" | "mastercard" | "amex" | null;
                             amount: number;
                             transaction_date: string;
-                            transaction_type: "debit" | "credit";
-                            account_last4: string | null;
+                            transaction_type: "debit" | "credit" | "payment";
+                            product_uuid?: string | null | undefined;
                             transaction_occurred_at?: string | null | undefined;
-                            user_product_uuid?: string | null | undefined;
-                            source_financial_email_event_id?: number | null | undefined;
-                            linked_account_last4?: string | null | undefined;
+                            category?: string | null | undefined;
+                            is_manual?: boolean | undefined;
                             linked_account_label?: string | null | undefined;
                         }>, "many">;
                         pagination: import("zod").ZodObject<{
@@ -8340,12 +8550,11 @@ export declare const apiContract: {
                             card_brand: "visa" | "mastercard" | "amex" | null;
                             amount: number;
                             transaction_date: string;
-                            transaction_type: "debit" | "credit";
-                            account_last4: string | null;
+                            transaction_type: "debit" | "credit" | "payment";
+                            product_uuid?: string | null | undefined;
                             transaction_occurred_at?: string | null | undefined;
-                            user_product_uuid?: string | null | undefined;
-                            source_financial_email_event_id?: number | null | undefined;
-                            linked_account_last4?: string | null | undefined;
+                            category?: string | null | undefined;
+                            is_manual?: boolean | undefined;
                             linked_account_label?: string | null | undefined;
                         }[];
                         pagination: {
@@ -8371,12 +8580,11 @@ export declare const apiContract: {
                             card_brand: "visa" | "mastercard" | "amex" | null;
                             amount: number;
                             transaction_date: string;
-                            transaction_type: "debit" | "credit";
-                            account_last4: string | null;
+                            transaction_type: "debit" | "credit" | "payment";
+                            product_uuid?: string | null | undefined;
                             transaction_occurred_at?: string | null | undefined;
-                            user_product_uuid?: string | null | undefined;
-                            source_financial_email_event_id?: number | null | undefined;
-                            linked_account_last4?: string | null | undefined;
+                            category?: string | null | undefined;
+                            is_manual?: boolean | undefined;
                             linked_account_label?: string | null | undefined;
                         }[];
                         pagination: {
@@ -8401,6 +8609,3594 @@ export declare const apiContract: {
                         message: string;
                         error?: string | undefined;
                         statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+        };
+        Transactions: {
+            parseManualTransactionVoice: {
+                strictStatusCodes: true;
+                summary: "Parse an on-device voice transcript into an expense draft";
+                description: "Accepts transcript text only, does not store it, and returns a draft for user confirmation.";
+                method: "POST";
+                body: import("zod").ZodObject<{
+                    transcript: import("zod").ZodString;
+                }, "strict", import("zod").ZodTypeAny, {
+                    transcript: string;
+                }, {
+                    transcript: string;
+                }>;
+                path: "/api/transactions/manual/voice-draft";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        data: import("zod").ZodEffects<import("zod").ZodObject<{
+                            transaction_type: import("zod").ZodEnum<["debit", "credit", "payment"]>;
+                            amount: import("zod").ZodNumber;
+                            currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                            transaction_date: import("zod").ZodString;
+                            category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, import("zod").ZodLiteral<"Pago de crédito">]>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            currency: "DOP" | "USD" | "EUR";
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        }, {
+                            currency: "DOP" | "USD" | "EUR";
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        }>, {
+                            currency: "DOP" | "USD" | "EUR";
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        }, {
+                            currency: "DOP" | "USD" | "EUR";
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            currency: "DOP" | "USD" | "EUR";
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        };
+                    }, {
+                        message: string;
+                        data: {
+                            currency: "DOP" | "USD" | "EUR";
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        };
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            listManualTransactions: {
+                strictStatusCodes: true;
+                query: import("zod").ZodObject<{
+                    limit: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
+                    offset: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    limit: number;
+                    offset: number;
+                }, {
+                    limit?: string | undefined;
+                    offset?: string | undefined;
+                }>;
+                summary: "List manually recorded transactions";
+                description: "Returns the authenticated user’s manually recorded expenses and income.";
+                method: "GET";
+                path: "/api/transactions/manual";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        data: import("zod").ZodArray<import("zod").ZodEffects<import("zod").ZodObject<{
+                            uuid: import("zod").ZodString;
+                            amount: import("zod").ZodNumber;
+                            currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                            transaction_date: import("zod").ZodString;
+                            transaction_type: import("zod").ZodEnum<["debit", "credit", "payment"]>;
+                            category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, import("zod").ZodLiteral<"Pago de crédito">]>;
+                            description: import("zod").ZodEnum<["Gasto manual", "Ingreso manual", "Pago manual"]>;
+                            is_manual: import("zod").ZodLiteral<true>;
+                            payment_method: import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
+                            product_uuid: import("zod").ZodNullable<import("zod").ZodString>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            description: "Gasto manual" | "Ingreso manual" | "Pago manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            product_uuid: string | null;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        }, {
+                            description: "Gasto manual" | "Ingreso manual" | "Pago manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            product_uuid: string | null;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        }>, {
+                            description: "Gasto manual" | "Ingreso manual" | "Pago manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            product_uuid: string | null;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        }, {
+                            description: "Gasto manual" | "Ingreso manual" | "Pago manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            product_uuid: string | null;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        }>, "many">;
+                        pagination: import("zod").ZodObject<{
+                            total: import("zod").ZodNumber;
+                            limit: import("zod").ZodNumber;
+                            offset: import("zod").ZodNumber;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            limit: number;
+                            total: number;
+                            offset: number;
+                        }, {
+                            limit: number;
+                            total: number;
+                            offset: number;
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            description: "Gasto manual" | "Ingreso manual" | "Pago manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            product_uuid: string | null;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        }[];
+                        pagination: {
+                            limit: number;
+                            total: number;
+                            offset: number;
+                        };
+                    }, {
+                        message: string;
+                        data: {
+                            description: "Gasto manual" | "Ingreso manual" | "Pago manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            product_uuid: string | null;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        }[];
+                        pagination: {
+                            limit: number;
+                            total: number;
+                            offset: number;
+                        };
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            createManualTransaction: {
+                strictStatusCodes: true;
+                summary: "Record a manual transaction";
+                description: "Creates an expense or income without free-text merchant or counterparty details.";
+                method: "POST";
+                body: import("zod").ZodEffects<import("zod").ZodObject<{
+                    amount: import("zod").ZodNumber;
+                    currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                    transaction_date: import("zod").ZodString;
+                    transaction_type: import("zod").ZodDefault<import("zod").ZodEnum<["debit", "credit", "payment"]>>;
+                    category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, import("zod").ZodLiteral<"Pago de crédito">]>;
+                    payment_method: import("zod").ZodOptional<import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>>;
+                    product_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                }, "strict", import("zod").ZodTypeAny, {
+                    currency: "DOP" | "USD" | "EUR";
+                    amount: number;
+                    transaction_date: string;
+                    transaction_type: "debit" | "credit" | "payment";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    product_uuid?: string | null | undefined;
+                    payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                }, {
+                    currency: "DOP" | "USD" | "EUR";
+                    amount: number;
+                    transaction_date: string;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    product_uuid?: string | null | undefined;
+                    transaction_type?: "debit" | "credit" | "payment" | undefined;
+                    payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                }>, {
+                    currency: "DOP" | "USD" | "EUR";
+                    amount: number;
+                    transaction_date: string;
+                    transaction_type: "debit" | "credit" | "payment";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    product_uuid?: string | null | undefined;
+                    payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                }, {
+                    currency: "DOP" | "USD" | "EUR";
+                    amount: number;
+                    transaction_date: string;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    product_uuid?: string | null | undefined;
+                    transaction_type?: "debit" | "credit" | "payment" | undefined;
+                    payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                }>;
+                path: "/api/transactions/manual";
+                responses: {
+                    201: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        data: import("zod").ZodEffects<import("zod").ZodObject<{
+                            uuid: import("zod").ZodString;
+                            amount: import("zod").ZodNumber;
+                            currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                            transaction_date: import("zod").ZodString;
+                            transaction_type: import("zod").ZodEnum<["debit", "credit", "payment"]>;
+                            category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, import("zod").ZodLiteral<"Pago de crédito">]>;
+                            description: import("zod").ZodEnum<["Gasto manual", "Ingreso manual", "Pago manual"]>;
+                            is_manual: import("zod").ZodLiteral<true>;
+                            payment_method: import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
+                            product_uuid: import("zod").ZodNullable<import("zod").ZodString>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            description: "Gasto manual" | "Ingreso manual" | "Pago manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            product_uuid: string | null;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        }, {
+                            description: "Gasto manual" | "Ingreso manual" | "Pago manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            product_uuid: string | null;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        }>, {
+                            description: "Gasto manual" | "Ingreso manual" | "Pago manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            product_uuid: string | null;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        }, {
+                            description: "Gasto manual" | "Ingreso manual" | "Pago manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            product_uuid: string | null;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            description: "Gasto manual" | "Ingreso manual" | "Pago manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            product_uuid: string | null;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        };
+                    }, {
+                        message: string;
+                        data: {
+                            description: "Gasto manual" | "Ingreso manual" | "Pago manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            product_uuid: string | null;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        };
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            updateManualTransaction: {
+                strictStatusCodes: true;
+                pathParams: import("zod").ZodObject<{
+                    uuid: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    uuid: string;
+                }, {
+                    uuid: string;
+                }>;
+                summary: "Correct a manual transaction";
+                description: "Corrects a manual entry owned by the authenticated user, including its transaction type.";
+                method: "PATCH";
+                body: import("zod").ZodEffects<import("zod").ZodEffects<import("zod").ZodObject<{
+                    amount: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    currency: import("zod").ZodOptional<import("zod").ZodEnum<["DOP", "USD", "EUR"]>>;
+                    transaction_date: import("zod").ZodOptional<import("zod").ZodString>;
+                    transaction_type: import("zod").ZodOptional<import("zod").ZodEnum<["debit", "credit", "payment"]>>;
+                    category: import("zod").ZodOptional<import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, import("zod").ZodLiteral<"Pago de crédito">]>>;
+                    payment_method: import("zod").ZodOptional<import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>>;
+                    product_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                }, "strict", import("zod").ZodTypeAny, {
+                    currency?: "DOP" | "USD" | "EUR" | undefined;
+                    product_uuid?: string | null | undefined;
+                    amount?: number | undefined;
+                    transaction_date?: string | undefined;
+                    transaction_type?: "debit" | "credit" | "payment" | undefined;
+                    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
+                    payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                }, {
+                    currency?: "DOP" | "USD" | "EUR" | undefined;
+                    product_uuid?: string | null | undefined;
+                    amount?: number | undefined;
+                    transaction_date?: string | undefined;
+                    transaction_type?: "debit" | "credit" | "payment" | undefined;
+                    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
+                    payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                }>, {
+                    currency?: "DOP" | "USD" | "EUR" | undefined;
+                    product_uuid?: string | null | undefined;
+                    amount?: number | undefined;
+                    transaction_date?: string | undefined;
+                    transaction_type?: "debit" | "credit" | "payment" | undefined;
+                    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
+                    payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                }, {
+                    currency?: "DOP" | "USD" | "EUR" | undefined;
+                    product_uuid?: string | null | undefined;
+                    amount?: number | undefined;
+                    transaction_date?: string | undefined;
+                    transaction_type?: "debit" | "credit" | "payment" | undefined;
+                    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
+                    payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                }>, {
+                    currency?: "DOP" | "USD" | "EUR" | undefined;
+                    product_uuid?: string | null | undefined;
+                    amount?: number | undefined;
+                    transaction_date?: string | undefined;
+                    transaction_type?: "debit" | "credit" | "payment" | undefined;
+                    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
+                    payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                }, {
+                    currency?: "DOP" | "USD" | "EUR" | undefined;
+                    product_uuid?: string | null | undefined;
+                    amount?: number | undefined;
+                    transaction_date?: string | undefined;
+                    transaction_type?: "debit" | "credit" | "payment" | undefined;
+                    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
+                    payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                }>;
+                path: "/api/transactions/manual/:uuid";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        data: import("zod").ZodEffects<import("zod").ZodObject<{
+                            uuid: import("zod").ZodString;
+                            amount: import("zod").ZodNumber;
+                            currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                            transaction_date: import("zod").ZodString;
+                            transaction_type: import("zod").ZodEnum<["debit", "credit", "payment"]>;
+                            category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, import("zod").ZodLiteral<"Pago de crédito">]>;
+                            description: import("zod").ZodEnum<["Gasto manual", "Ingreso manual", "Pago manual"]>;
+                            is_manual: import("zod").ZodLiteral<true>;
+                            payment_method: import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
+                            product_uuid: import("zod").ZodNullable<import("zod").ZodString>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            description: "Gasto manual" | "Ingreso manual" | "Pago manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            product_uuid: string | null;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        }, {
+                            description: "Gasto manual" | "Ingreso manual" | "Pago manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            product_uuid: string | null;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        }>, {
+                            description: "Gasto manual" | "Ingreso manual" | "Pago manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            product_uuid: string | null;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        }, {
+                            description: "Gasto manual" | "Ingreso manual" | "Pago manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            product_uuid: string | null;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            description: "Gasto manual" | "Ingreso manual" | "Pago manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            product_uuid: string | null;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        };
+                    }, {
+                        message: string;
+                        data: {
+                            description: "Gasto manual" | "Ingreso manual" | "Pago manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            product_uuid: string | null;
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit" | "payment";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        };
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            deleteManualTransaction: {
+                strictStatusCodes: true;
+                pathParams: import("zod").ZodObject<{
+                    uuid: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    uuid: string;
+                }, {
+                    uuid: string;
+                }>;
+                summary: "Delete a manual transaction";
+                description: "Soft-deletes a manual entry owned by the authenticated user.";
+                method: "DELETE";
+                path: "/api/transactions/manual/:uuid";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                    }, {
+                        message: string;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+        };
+        SharedSavings: {
+            list: {
+                strictStatusCodes: true;
+                summary: "List shared savings goals for the authenticated user";
+                method: "GET";
+                path: "/api/shared-savings";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        data: import("zod").ZodArray<import("zod").ZodObject<{
+                            uuid: import("zod").ZodString;
+                            name: import("zod").ZodString;
+                            purpose: import("zod").ZodString;
+                            target_amount: import("zod").ZodNumber;
+                            current_amount: import("zod").ZodNumber;
+                            currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                            target_date: import("zod").ZodString;
+                            invite_code: import("zod").ZodString;
+                            is_owner: import("zod").ZodBoolean;
+                            leaderboard: import("zod").ZodArray<import("zod").ZodObject<{
+                                rank: import("zod").ZodNumber;
+                                display_name: import("zod").ZodString;
+                                contributed_amount: import("zod").ZodNumber;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }, {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }>, "many">;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            uuid: string;
+                            name: string;
+                            target_amount: number;
+                            current_amount: number;
+                            currency: "DOP" | "USD" | "EUR";
+                            target_date: string;
+                            purpose: string;
+                            invite_code: string;
+                            is_owner: boolean;
+                            leaderboard: {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }[];
+                        }, {
+                            uuid: string;
+                            name: string;
+                            target_amount: number;
+                            current_amount: number;
+                            currency: "DOP" | "USD" | "EUR";
+                            target_date: string;
+                            purpose: string;
+                            invite_code: string;
+                            is_owner: boolean;
+                            leaderboard: {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }[];
+                        }>, "many">;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            uuid: string;
+                            name: string;
+                            target_amount: number;
+                            current_amount: number;
+                            currency: "DOP" | "USD" | "EUR";
+                            target_date: string;
+                            purpose: string;
+                            invite_code: string;
+                            is_owner: boolean;
+                            leaderboard: {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }[];
+                        }[];
+                    }, {
+                        message: string;
+                        data: {
+                            uuid: string;
+                            name: string;
+                            target_amount: number;
+                            current_amount: number;
+                            currency: "DOP" | "USD" | "EUR";
+                            target_date: string;
+                            purpose: string;
+                            invite_code: string;
+                            is_owner: boolean;
+                            leaderboard: {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }[];
+                        }[];
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            create: {
+                strictStatusCodes: true;
+                summary: "Create a shared savings goal";
+                method: "POST";
+                body: import("zod").ZodObject<{
+                    name: import("zod").ZodString;
+                    purpose: import("zod").ZodString;
+                    target_amount: import("zod").ZodNumber;
+                    currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                    target_date: import("zod").ZodString;
+                    display_name: import("zod").ZodString;
+                }, "strict", import("zod").ZodTypeAny, {
+                    display_name: string;
+                    name: string;
+                    target_amount: number;
+                    currency: "DOP" | "USD" | "EUR";
+                    target_date: string;
+                    purpose: string;
+                }, {
+                    display_name: string;
+                    name: string;
+                    target_amount: number;
+                    currency: "DOP" | "USD" | "EUR";
+                    target_date: string;
+                    purpose: string;
+                }>;
+                path: "/api/shared-savings";
+                responses: {
+                    201: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        data: import("zod").ZodObject<{
+                            uuid: import("zod").ZodString;
+                            name: import("zod").ZodString;
+                            purpose: import("zod").ZodString;
+                            target_amount: import("zod").ZodNumber;
+                            current_amount: import("zod").ZodNumber;
+                            currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                            target_date: import("zod").ZodString;
+                            invite_code: import("zod").ZodString;
+                            is_owner: import("zod").ZodBoolean;
+                            leaderboard: import("zod").ZodArray<import("zod").ZodObject<{
+                                rank: import("zod").ZodNumber;
+                                display_name: import("zod").ZodString;
+                                contributed_amount: import("zod").ZodNumber;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }, {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }>, "many">;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            uuid: string;
+                            name: string;
+                            target_amount: number;
+                            current_amount: number;
+                            currency: "DOP" | "USD" | "EUR";
+                            target_date: string;
+                            purpose: string;
+                            invite_code: string;
+                            is_owner: boolean;
+                            leaderboard: {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }[];
+                        }, {
+                            uuid: string;
+                            name: string;
+                            target_amount: number;
+                            current_amount: number;
+                            currency: "DOP" | "USD" | "EUR";
+                            target_date: string;
+                            purpose: string;
+                            invite_code: string;
+                            is_owner: boolean;
+                            leaderboard: {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }[];
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            uuid: string;
+                            name: string;
+                            target_amount: number;
+                            current_amount: number;
+                            currency: "DOP" | "USD" | "EUR";
+                            target_date: string;
+                            purpose: string;
+                            invite_code: string;
+                            is_owner: boolean;
+                            leaderboard: {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }[];
+                        };
+                    }, {
+                        message: string;
+                        data: {
+                            uuid: string;
+                            name: string;
+                            target_amount: number;
+                            current_amount: number;
+                            currency: "DOP" | "USD" | "EUR";
+                            target_date: string;
+                            purpose: string;
+                            invite_code: string;
+                            is_owner: boolean;
+                            leaderboard: {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }[];
+                        };
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            join: {
+                strictStatusCodes: true;
+                summary: "Join a shared savings goal with an invite code";
+                method: "POST";
+                body: import("zod").ZodObject<{
+                    invite_code: import("zod").ZodString;
+                    display_name: import("zod").ZodString;
+                }, "strict", import("zod").ZodTypeAny, {
+                    display_name: string;
+                    invite_code: string;
+                }, {
+                    display_name: string;
+                    invite_code: string;
+                }>;
+                path: "/api/shared-savings/join";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        data: import("zod").ZodObject<{
+                            uuid: import("zod").ZodString;
+                            name: import("zod").ZodString;
+                            purpose: import("zod").ZodString;
+                            target_amount: import("zod").ZodNumber;
+                            current_amount: import("zod").ZodNumber;
+                            currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                            target_date: import("zod").ZodString;
+                            invite_code: import("zod").ZodString;
+                            is_owner: import("zod").ZodBoolean;
+                            leaderboard: import("zod").ZodArray<import("zod").ZodObject<{
+                                rank: import("zod").ZodNumber;
+                                display_name: import("zod").ZodString;
+                                contributed_amount: import("zod").ZodNumber;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }, {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }>, "many">;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            uuid: string;
+                            name: string;
+                            target_amount: number;
+                            current_amount: number;
+                            currency: "DOP" | "USD" | "EUR";
+                            target_date: string;
+                            purpose: string;
+                            invite_code: string;
+                            is_owner: boolean;
+                            leaderboard: {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }[];
+                        }, {
+                            uuid: string;
+                            name: string;
+                            target_amount: number;
+                            current_amount: number;
+                            currency: "DOP" | "USD" | "EUR";
+                            target_date: string;
+                            purpose: string;
+                            invite_code: string;
+                            is_owner: boolean;
+                            leaderboard: {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }[];
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            uuid: string;
+                            name: string;
+                            target_amount: number;
+                            current_amount: number;
+                            currency: "DOP" | "USD" | "EUR";
+                            target_date: string;
+                            purpose: string;
+                            invite_code: string;
+                            is_owner: boolean;
+                            leaderboard: {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }[];
+                        };
+                    }, {
+                        message: string;
+                        data: {
+                            uuid: string;
+                            name: string;
+                            target_amount: number;
+                            current_amount: number;
+                            currency: "DOP" | "USD" | "EUR";
+                            target_date: string;
+                            purpose: string;
+                            invite_code: string;
+                            is_owner: boolean;
+                            leaderboard: {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }[];
+                        };
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            contribute: {
+                strictStatusCodes: true;
+                pathParams: import("zod").ZodObject<{
+                    uuid: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    uuid: string;
+                }, {
+                    uuid: string;
+                }>;
+                summary: "Add a contribution to a shared savings goal";
+                method: "POST";
+                body: import("zod").ZodObject<{
+                    amount: import("zod").ZodNumber;
+                }, "strict", import("zod").ZodTypeAny, {
+                    amount: number;
+                }, {
+                    amount: number;
+                }>;
+                path: "/api/shared-savings/:uuid/contributions";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        data: import("zod").ZodObject<{
+                            uuid: import("zod").ZodString;
+                            name: import("zod").ZodString;
+                            purpose: import("zod").ZodString;
+                            target_amount: import("zod").ZodNumber;
+                            current_amount: import("zod").ZodNumber;
+                            currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                            target_date: import("zod").ZodString;
+                            invite_code: import("zod").ZodString;
+                            is_owner: import("zod").ZodBoolean;
+                            leaderboard: import("zod").ZodArray<import("zod").ZodObject<{
+                                rank: import("zod").ZodNumber;
+                                display_name: import("zod").ZodString;
+                                contributed_amount: import("zod").ZodNumber;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }, {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }>, "many">;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            uuid: string;
+                            name: string;
+                            target_amount: number;
+                            current_amount: number;
+                            currency: "DOP" | "USD" | "EUR";
+                            target_date: string;
+                            purpose: string;
+                            invite_code: string;
+                            is_owner: boolean;
+                            leaderboard: {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }[];
+                        }, {
+                            uuid: string;
+                            name: string;
+                            target_amount: number;
+                            current_amount: number;
+                            currency: "DOP" | "USD" | "EUR";
+                            target_date: string;
+                            purpose: string;
+                            invite_code: string;
+                            is_owner: boolean;
+                            leaderboard: {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }[];
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            uuid: string;
+                            name: string;
+                            target_amount: number;
+                            current_amount: number;
+                            currency: "DOP" | "USD" | "EUR";
+                            target_date: string;
+                            purpose: string;
+                            invite_code: string;
+                            is_owner: boolean;
+                            leaderboard: {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }[];
+                        };
+                    }, {
+                        message: string;
+                        data: {
+                            uuid: string;
+                            name: string;
+                            target_amount: number;
+                            current_amount: number;
+                            currency: "DOP" | "USD" | "EUR";
+                            target_date: string;
+                            purpose: string;
+                            invite_code: string;
+                            is_owner: boolean;
+                            leaderboard: {
+                                display_name: string;
+                                rank: number;
+                                contributed_amount: number;
+                            }[];
+                        };
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+        };
+        SharedExpenses: {
+            listGroups: {
+                strictStatusCodes: true;
+                summary: "List shared expense groups for the authenticated user";
+                method: "GET";
+                path: "/api/shared-expenses/groups";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        data: import("zod").ZodArray<import("zod").ZodObject<{
+                            uuid: import("zod").ZodString;
+                            name: import("zod").ZodString;
+                            currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                            invite_code: import("zod").ZodNullable<import("zod").ZodString>;
+                            invite_link: import("zod").ZodNullable<import("zod").ZodString>;
+                            invite_expires_at: import("zod").ZodNullable<import("zod").ZodString>;
+                            is_owner: import("zod").ZodBoolean;
+                            members: import("zod").ZodArray<import("zod").ZodObject<{
+                                display_name: import("zod").ZodString;
+                                is_owner: import("zod").ZodBoolean;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                display_name: string;
+                                is_owner: boolean;
+                            }, {
+                                display_name: string;
+                                is_owner: boolean;
+                            }>, "many">;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            uuid: string;
+                            name: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            invite_code: string | null;
+                            is_owner: boolean;
+                            invite_link: string | null;
+                            invite_expires_at: string | null;
+                            members: {
+                                display_name: string;
+                                is_owner: boolean;
+                            }[];
+                        }, {
+                            uuid: string;
+                            name: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            invite_code: string | null;
+                            is_owner: boolean;
+                            invite_link: string | null;
+                            invite_expires_at: string | null;
+                            members: {
+                                display_name: string;
+                                is_owner: boolean;
+                            }[];
+                        }>, "many">;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            uuid: string;
+                            name: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            invite_code: string | null;
+                            is_owner: boolean;
+                            invite_link: string | null;
+                            invite_expires_at: string | null;
+                            members: {
+                                display_name: string;
+                                is_owner: boolean;
+                            }[];
+                        }[];
+                    }, {
+                        message: string;
+                        data: {
+                            uuid: string;
+                            name: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            invite_code: string | null;
+                            is_owner: boolean;
+                            invite_link: string | null;
+                            invite_expires_at: string | null;
+                            members: {
+                                display_name: string;
+                                is_owner: boolean;
+                            }[];
+                        }[];
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            createGroup: {
+                strictStatusCodes: true;
+                summary: "Create a shared expense group and invite link";
+                method: "POST";
+                body: import("zod").ZodObject<{
+                    name: import("zod").ZodString;
+                    currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                    display_name: import("zod").ZodString;
+                }, "strict", import("zod").ZodTypeAny, {
+                    display_name: string;
+                    name: string;
+                    currency: "DOP" | "USD" | "EUR";
+                }, {
+                    display_name: string;
+                    name: string;
+                    currency: "DOP" | "USD" | "EUR";
+                }>;
+                path: "/api/shared-expenses/groups";
+                responses: {
+                    201: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        data: import("zod").ZodObject<{
+                            uuid: import("zod").ZodString;
+                            name: import("zod").ZodString;
+                            currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                            invite_code: import("zod").ZodNullable<import("zod").ZodString>;
+                            invite_link: import("zod").ZodNullable<import("zod").ZodString>;
+                            invite_expires_at: import("zod").ZodNullable<import("zod").ZodString>;
+                            is_owner: import("zod").ZodBoolean;
+                            members: import("zod").ZodArray<import("zod").ZodObject<{
+                                display_name: import("zod").ZodString;
+                                is_owner: import("zod").ZodBoolean;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                display_name: string;
+                                is_owner: boolean;
+                            }, {
+                                display_name: string;
+                                is_owner: boolean;
+                            }>, "many">;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            uuid: string;
+                            name: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            invite_code: string | null;
+                            is_owner: boolean;
+                            invite_link: string | null;
+                            invite_expires_at: string | null;
+                            members: {
+                                display_name: string;
+                                is_owner: boolean;
+                            }[];
+                        }, {
+                            uuid: string;
+                            name: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            invite_code: string | null;
+                            is_owner: boolean;
+                            invite_link: string | null;
+                            invite_expires_at: string | null;
+                            members: {
+                                display_name: string;
+                                is_owner: boolean;
+                            }[];
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            uuid: string;
+                            name: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            invite_code: string | null;
+                            is_owner: boolean;
+                            invite_link: string | null;
+                            invite_expires_at: string | null;
+                            members: {
+                                display_name: string;
+                                is_owner: boolean;
+                            }[];
+                        };
+                    }, {
+                        message: string;
+                        data: {
+                            uuid: string;
+                            name: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            invite_code: string | null;
+                            is_owner: boolean;
+                            invite_link: string | null;
+                            invite_expires_at: string | null;
+                            members: {
+                                display_name: string;
+                                is_owner: boolean;
+                            }[];
+                        };
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            getGroup: {
+                strictStatusCodes: true;
+                pathParams: import("zod").ZodObject<{
+                    uuid: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    uuid: string;
+                }, {
+                    uuid: string;
+                }>;
+                summary: "Get shared expense group and totals";
+                method: "GET";
+                path: "/api/shared-expenses/groups/:uuid";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        data: import("zod").ZodObject<{
+                            group: import("zod").ZodObject<{
+                                uuid: import("zod").ZodString;
+                                name: import("zod").ZodString;
+                                currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                                invite_code: import("zod").ZodNullable<import("zod").ZodString>;
+                                invite_link: import("zod").ZodNullable<import("zod").ZodString>;
+                                invite_expires_at: import("zod").ZodNullable<import("zod").ZodString>;
+                                is_owner: import("zod").ZodBoolean;
+                                members: import("zod").ZodArray<import("zod").ZodObject<{
+                                    display_name: import("zod").ZodString;
+                                    is_owner: import("zod").ZodBoolean;
+                                }, "strip", import("zod").ZodTypeAny, {
+                                    display_name: string;
+                                    is_owner: boolean;
+                                }, {
+                                    display_name: string;
+                                    is_owner: boolean;
+                                }>, "many">;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                uuid: string;
+                                name: string;
+                                currency: "DOP" | "USD" | "EUR";
+                                invite_code: string | null;
+                                is_owner: boolean;
+                                invite_link: string | null;
+                                invite_expires_at: string | null;
+                                members: {
+                                    display_name: string;
+                                    is_owner: boolean;
+                                }[];
+                            }, {
+                                uuid: string;
+                                name: string;
+                                currency: "DOP" | "USD" | "EUR";
+                                invite_code: string | null;
+                                is_owner: boolean;
+                                invite_link: string | null;
+                                invite_expires_at: string | null;
+                                members: {
+                                    display_name: string;
+                                    is_owner: boolean;
+                                }[];
+                            }>;
+                            summary: import("zod").ZodObject<{
+                                currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                                expense_total: import("zod").ZodNumber;
+                                income_total: import("zod").ZodNumber;
+                                net_total: import("zod").ZodNumber;
+                                expense_distribution: import("zod").ZodArray<import("zod").ZodObject<{
+                                    category: import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>;
+                                    amount: import("zod").ZodNumber;
+                                }, "strip", import("zod").ZodTypeAny, {
+                                    amount: number;
+                                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                }, {
+                                    amount: number;
+                                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                }>, "many">;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                currency: "DOP" | "USD" | "EUR";
+                                expense_total: number;
+                                income_total: number;
+                                net_total: number;
+                                expense_distribution: {
+                                    amount: number;
+                                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                }[];
+                            }, {
+                                currency: "DOP" | "USD" | "EUR";
+                                expense_total: number;
+                                income_total: number;
+                                net_total: number;
+                                expense_distribution: {
+                                    amount: number;
+                                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                }[];
+                            }>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            summary: {
+                                currency: "DOP" | "USD" | "EUR";
+                                expense_total: number;
+                                income_total: number;
+                                net_total: number;
+                                expense_distribution: {
+                                    amount: number;
+                                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                }[];
+                            };
+                            group: {
+                                uuid: string;
+                                name: string;
+                                currency: "DOP" | "USD" | "EUR";
+                                invite_code: string | null;
+                                is_owner: boolean;
+                                invite_link: string | null;
+                                invite_expires_at: string | null;
+                                members: {
+                                    display_name: string;
+                                    is_owner: boolean;
+                                }[];
+                            };
+                        }, {
+                            summary: {
+                                currency: "DOP" | "USD" | "EUR";
+                                expense_total: number;
+                                income_total: number;
+                                net_total: number;
+                                expense_distribution: {
+                                    amount: number;
+                                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                }[];
+                            };
+                            group: {
+                                uuid: string;
+                                name: string;
+                                currency: "DOP" | "USD" | "EUR";
+                                invite_code: string | null;
+                                is_owner: boolean;
+                                invite_link: string | null;
+                                invite_expires_at: string | null;
+                                members: {
+                                    display_name: string;
+                                    is_owner: boolean;
+                                }[];
+                            };
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            summary: {
+                                currency: "DOP" | "USD" | "EUR";
+                                expense_total: number;
+                                income_total: number;
+                                net_total: number;
+                                expense_distribution: {
+                                    amount: number;
+                                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                }[];
+                            };
+                            group: {
+                                uuid: string;
+                                name: string;
+                                currency: "DOP" | "USD" | "EUR";
+                                invite_code: string | null;
+                                is_owner: boolean;
+                                invite_link: string | null;
+                                invite_expires_at: string | null;
+                                members: {
+                                    display_name: string;
+                                    is_owner: boolean;
+                                }[];
+                            };
+                        };
+                    }, {
+                        message: string;
+                        data: {
+                            summary: {
+                                currency: "DOP" | "USD" | "EUR";
+                                expense_total: number;
+                                income_total: number;
+                                net_total: number;
+                                expense_distribution: {
+                                    amount: number;
+                                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                }[];
+                            };
+                            group: {
+                                uuid: string;
+                                name: string;
+                                currency: "DOP" | "USD" | "EUR";
+                                invite_code: string | null;
+                                is_owner: boolean;
+                                invite_link: string | null;
+                                invite_expires_at: string | null;
+                                members: {
+                                    display_name: string;
+                                    is_owner: boolean;
+                                }[];
+                            };
+                        };
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            renewInvite: {
+                strictStatusCodes: true;
+                pathParams: import("zod").ZodObject<{
+                    uuid: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    uuid: string;
+                }, {
+                    uuid: string;
+                }>;
+                summary: "Replace an expired shared expense invitation";
+                method: "POST";
+                body: import("zod").ZodObject<{}, "strip", import("zod").ZodTypeAny, {}, {}>;
+                path: "/api/shared-expenses/groups/:uuid/invite";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        data: import("zod").ZodObject<{
+                            uuid: import("zod").ZodString;
+                            name: import("zod").ZodString;
+                            currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                            invite_code: import("zod").ZodNullable<import("zod").ZodString>;
+                            invite_link: import("zod").ZodNullable<import("zod").ZodString>;
+                            invite_expires_at: import("zod").ZodNullable<import("zod").ZodString>;
+                            is_owner: import("zod").ZodBoolean;
+                            members: import("zod").ZodArray<import("zod").ZodObject<{
+                                display_name: import("zod").ZodString;
+                                is_owner: import("zod").ZodBoolean;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                display_name: string;
+                                is_owner: boolean;
+                            }, {
+                                display_name: string;
+                                is_owner: boolean;
+                            }>, "many">;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            uuid: string;
+                            name: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            invite_code: string | null;
+                            is_owner: boolean;
+                            invite_link: string | null;
+                            invite_expires_at: string | null;
+                            members: {
+                                display_name: string;
+                                is_owner: boolean;
+                            }[];
+                        }, {
+                            uuid: string;
+                            name: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            invite_code: string | null;
+                            is_owner: boolean;
+                            invite_link: string | null;
+                            invite_expires_at: string | null;
+                            members: {
+                                display_name: string;
+                                is_owner: boolean;
+                            }[];
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            uuid: string;
+                            name: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            invite_code: string | null;
+                            is_owner: boolean;
+                            invite_link: string | null;
+                            invite_expires_at: string | null;
+                            members: {
+                                display_name: string;
+                                is_owner: boolean;
+                            }[];
+                        };
+                    }, {
+                        message: string;
+                        data: {
+                            uuid: string;
+                            name: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            invite_code: string | null;
+                            is_owner: boolean;
+                            invite_link: string | null;
+                            invite_expires_at: string | null;
+                            members: {
+                                display_name: string;
+                                is_owner: boolean;
+                            }[];
+                        };
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            joinGroup: {
+                strictStatusCodes: true;
+                summary: "Join a shared expense group with an invite code";
+                method: "POST";
+                body: import("zod").ZodObject<{
+                    invite_code: import("zod").ZodString;
+                    display_name: import("zod").ZodString;
+                }, "strict", import("zod").ZodTypeAny, {
+                    display_name: string;
+                    invite_code: string;
+                }, {
+                    display_name: string;
+                    invite_code: string;
+                }>;
+                path: "/api/shared-expenses/join";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        data: import("zod").ZodObject<{
+                            group: import("zod").ZodObject<{
+                                uuid: import("zod").ZodString;
+                                name: import("zod").ZodString;
+                                currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                                invite_code: import("zod").ZodNullable<import("zod").ZodString>;
+                                invite_link: import("zod").ZodNullable<import("zod").ZodString>;
+                                invite_expires_at: import("zod").ZodNullable<import("zod").ZodString>;
+                                is_owner: import("zod").ZodBoolean;
+                                members: import("zod").ZodArray<import("zod").ZodObject<{
+                                    display_name: import("zod").ZodString;
+                                    is_owner: import("zod").ZodBoolean;
+                                }, "strip", import("zod").ZodTypeAny, {
+                                    display_name: string;
+                                    is_owner: boolean;
+                                }, {
+                                    display_name: string;
+                                    is_owner: boolean;
+                                }>, "many">;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                uuid: string;
+                                name: string;
+                                currency: "DOP" | "USD" | "EUR";
+                                invite_code: string | null;
+                                is_owner: boolean;
+                                invite_link: string | null;
+                                invite_expires_at: string | null;
+                                members: {
+                                    display_name: string;
+                                    is_owner: boolean;
+                                }[];
+                            }, {
+                                uuid: string;
+                                name: string;
+                                currency: "DOP" | "USD" | "EUR";
+                                invite_code: string | null;
+                                is_owner: boolean;
+                                invite_link: string | null;
+                                invite_expires_at: string | null;
+                                members: {
+                                    display_name: string;
+                                    is_owner: boolean;
+                                }[];
+                            }>;
+                            summary: import("zod").ZodObject<{
+                                currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                                expense_total: import("zod").ZodNumber;
+                                income_total: import("zod").ZodNumber;
+                                net_total: import("zod").ZodNumber;
+                                expense_distribution: import("zod").ZodArray<import("zod").ZodObject<{
+                                    category: import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>;
+                                    amount: import("zod").ZodNumber;
+                                }, "strip", import("zod").ZodTypeAny, {
+                                    amount: number;
+                                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                }, {
+                                    amount: number;
+                                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                }>, "many">;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                currency: "DOP" | "USD" | "EUR";
+                                expense_total: number;
+                                income_total: number;
+                                net_total: number;
+                                expense_distribution: {
+                                    amount: number;
+                                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                }[];
+                            }, {
+                                currency: "DOP" | "USD" | "EUR";
+                                expense_total: number;
+                                income_total: number;
+                                net_total: number;
+                                expense_distribution: {
+                                    amount: number;
+                                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                }[];
+                            }>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            summary: {
+                                currency: "DOP" | "USD" | "EUR";
+                                expense_total: number;
+                                income_total: number;
+                                net_total: number;
+                                expense_distribution: {
+                                    amount: number;
+                                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                }[];
+                            };
+                            group: {
+                                uuid: string;
+                                name: string;
+                                currency: "DOP" | "USD" | "EUR";
+                                invite_code: string | null;
+                                is_owner: boolean;
+                                invite_link: string | null;
+                                invite_expires_at: string | null;
+                                members: {
+                                    display_name: string;
+                                    is_owner: boolean;
+                                }[];
+                            };
+                        }, {
+                            summary: {
+                                currency: "DOP" | "USD" | "EUR";
+                                expense_total: number;
+                                income_total: number;
+                                net_total: number;
+                                expense_distribution: {
+                                    amount: number;
+                                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                }[];
+                            };
+                            group: {
+                                uuid: string;
+                                name: string;
+                                currency: "DOP" | "USD" | "EUR";
+                                invite_code: string | null;
+                                is_owner: boolean;
+                                invite_link: string | null;
+                                invite_expires_at: string | null;
+                                members: {
+                                    display_name: string;
+                                    is_owner: boolean;
+                                }[];
+                            };
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            summary: {
+                                currency: "DOP" | "USD" | "EUR";
+                                expense_total: number;
+                                income_total: number;
+                                net_total: number;
+                                expense_distribution: {
+                                    amount: number;
+                                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                }[];
+                            };
+                            group: {
+                                uuid: string;
+                                name: string;
+                                currency: "DOP" | "USD" | "EUR";
+                                invite_code: string | null;
+                                is_owner: boolean;
+                                invite_link: string | null;
+                                invite_expires_at: string | null;
+                                members: {
+                                    display_name: string;
+                                    is_owner: boolean;
+                                }[];
+                            };
+                        };
+                    }, {
+                        message: string;
+                        data: {
+                            summary: {
+                                currency: "DOP" | "USD" | "EUR";
+                                expense_total: number;
+                                income_total: number;
+                                net_total: number;
+                                expense_distribution: {
+                                    amount: number;
+                                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                }[];
+                            };
+                            group: {
+                                uuid: string;
+                                name: string;
+                                currency: "DOP" | "USD" | "EUR";
+                                invite_code: string | null;
+                                is_owner: boolean;
+                                invite_link: string | null;
+                                invite_expires_at: string | null;
+                                members: {
+                                    display_name: string;
+                                    is_owner: boolean;
+                                }[];
+                            };
+                        };
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            listTransactions: {
+                strictStatusCodes: true;
+                pathParams: import("zod").ZodObject<{
+                    uuid: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    uuid: string;
+                }, {
+                    uuid: string;
+                }>;
+                query: import("zod").ZodEffects<import("zod").ZodObject<{
+                    limit: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
+                    offset: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
+                    from: import("zod").ZodOptional<import("zod").ZodString>;
+                    to: import("zod").ZodOptional<import("zod").ZodString>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    limit: number;
+                    offset: number;
+                    from?: string | undefined;
+                    to?: string | undefined;
+                }, {
+                    limit?: string | undefined;
+                    offset?: string | undefined;
+                    from?: string | undefined;
+                    to?: string | undefined;
+                }>, {
+                    limit: number;
+                    offset: number;
+                    from?: string | undefined;
+                    to?: string | undefined;
+                }, {
+                    limit?: string | undefined;
+                    offset?: string | undefined;
+                    from?: string | undefined;
+                    to?: string | undefined;
+                }>;
+                summary: "List group expenses and income with totals";
+                method: "GET";
+                path: "/api/shared-expenses/groups/:uuid/transactions";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        data: import("zod").ZodArray<import("zod").ZodObject<{
+                            uuid: import("zod").ZodString;
+                            amount: import("zod").ZodNumber;
+                            currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                            transaction_date: import("zod").ZodString;
+                            transaction_type: import("zod").ZodEnum<["debit", "credit"]>;
+                            category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
+                            description: import("zod").ZodEnum<["Gasto manual", "Ingreso manual"]>;
+                            is_manual: import("zod").ZodLiteral<true>;
+                            payment_method: import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
+                            is_author: import("zod").ZodBoolean;
+                            created_by_name: import("zod").ZodString;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            description: "Gasto manual" | "Ingreso manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                            is_author: boolean;
+                            created_by_name: string;
+                        }, {
+                            description: "Gasto manual" | "Ingreso manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                            is_author: boolean;
+                            created_by_name: string;
+                        }>, "many">;
+                        pagination: import("zod").ZodObject<{
+                            total: import("zod").ZodNumber;
+                            limit: import("zod").ZodNumber;
+                            offset: import("zod").ZodNumber;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            limit: number;
+                            total: number;
+                            offset: number;
+                        }, {
+                            limit: number;
+                            total: number;
+                            offset: number;
+                        }>;
+                        summary: import("zod").ZodObject<{
+                            currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                            expense_total: import("zod").ZodNumber;
+                            income_total: import("zod").ZodNumber;
+                            net_total: import("zod").ZodNumber;
+                            expense_distribution: import("zod").ZodArray<import("zod").ZodObject<{
+                                category: import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>;
+                                amount: import("zod").ZodNumber;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                amount: number;
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                            }, {
+                                amount: number;
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                            }>, "many">;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            currency: "DOP" | "USD" | "EUR";
+                            expense_total: number;
+                            income_total: number;
+                            net_total: number;
+                            expense_distribution: {
+                                amount: number;
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                            }[];
+                        }, {
+                            currency: "DOP" | "USD" | "EUR";
+                            expense_total: number;
+                            income_total: number;
+                            net_total: number;
+                            expense_distribution: {
+                                amount: number;
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                            }[];
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            description: "Gasto manual" | "Ingreso manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                            is_author: boolean;
+                            created_by_name: string;
+                        }[];
+                        pagination: {
+                            limit: number;
+                            total: number;
+                            offset: number;
+                        };
+                        summary: {
+                            currency: "DOP" | "USD" | "EUR";
+                            expense_total: number;
+                            income_total: number;
+                            net_total: number;
+                            expense_distribution: {
+                                amount: number;
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                            }[];
+                        };
+                    }, {
+                        message: string;
+                        data: {
+                            description: "Gasto manual" | "Ingreso manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                            is_author: boolean;
+                            created_by_name: string;
+                        }[];
+                        pagination: {
+                            limit: number;
+                            total: number;
+                            offset: number;
+                        };
+                        summary: {
+                            currency: "DOP" | "USD" | "EUR";
+                            expense_total: number;
+                            income_total: number;
+                            net_total: number;
+                            expense_distribution: {
+                                amount: number;
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                            }[];
+                        };
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            createTransaction: {
+                strictStatusCodes: true;
+                pathParams: import("zod").ZodObject<{
+                    uuid: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    uuid: string;
+                }, {
+                    uuid: string;
+                }>;
+                summary: "Record a shared expense or income";
+                method: "POST";
+                body: import("zod").ZodEffects<import("zod").ZodObject<{
+                    amount: import("zod").ZodNumber;
+                    transaction_date: import("zod").ZodString;
+                    transaction_type: import("zod").ZodDefault<import("zod").ZodEnum<["debit", "credit"]>>;
+                    category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
+                    payment_method: import("zod").ZodOptional<import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>>;
+                }, "strict", import("zod").ZodTypeAny, {
+                    amount: number;
+                    transaction_date: string;
+                    transaction_type: "debit" | "credit";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                    payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                }, {
+                    amount: number;
+                    transaction_date: string;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                    transaction_type?: "debit" | "credit" | undefined;
+                    payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                }>, {
+                    amount: number;
+                    transaction_date: string;
+                    transaction_type: "debit" | "credit";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                    payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                }, {
+                    amount: number;
+                    transaction_date: string;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                    transaction_type?: "debit" | "credit" | undefined;
+                    payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                }>;
+                path: "/api/shared-expenses/groups/:uuid/transactions";
+                responses: {
+                    201: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        data: import("zod").ZodObject<{
+                            uuid: import("zod").ZodString;
+                            amount: import("zod").ZodNumber;
+                            currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                            transaction_date: import("zod").ZodString;
+                            transaction_type: import("zod").ZodEnum<["debit", "credit"]>;
+                            category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
+                            description: import("zod").ZodEnum<["Gasto manual", "Ingreso manual"]>;
+                            is_manual: import("zod").ZodLiteral<true>;
+                            payment_method: import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
+                            is_author: import("zod").ZodBoolean;
+                            created_by_name: import("zod").ZodString;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            description: "Gasto manual" | "Ingreso manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                            is_author: boolean;
+                            created_by_name: string;
+                        }, {
+                            description: "Gasto manual" | "Ingreso manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                            is_author: boolean;
+                            created_by_name: string;
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            description: "Gasto manual" | "Ingreso manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                            is_author: boolean;
+                            created_by_name: string;
+                        };
+                    }, {
+                        message: string;
+                        data: {
+                            description: "Gasto manual" | "Ingreso manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                            is_author: boolean;
+                            created_by_name: string;
+                        };
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            updateTransaction: {
+                strictStatusCodes: true;
+                pathParams: import("zod").ZodObject<{
+                    uuid: import("zod").ZodString;
+                    transactionUuid: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    uuid: string;
+                    transactionUuid: string;
+                }, {
+                    uuid: string;
+                    transactionUuid: string;
+                }>;
+                summary: "Correct a shared transaction created by the authenticated user";
+                method: "PATCH";
+                body: import("zod").ZodEffects<import("zod").ZodEffects<import("zod").ZodObject<{
+                    amount: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    transaction_date: import("zod").ZodOptional<import("zod").ZodString>;
+                    transaction_type: import("zod").ZodOptional<import("zod").ZodEnum<["debit", "credit"]>>;
+                    category: import("zod").ZodOptional<import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>>;
+                    payment_method: import("zod").ZodOptional<import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>>;
+                }, "strict", import("zod").ZodTypeAny, {
+                    amount?: number | undefined;
+                    transaction_date?: string | undefined;
+                    transaction_type?: "debit" | "credit" | undefined;
+                    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
+                    payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                }, {
+                    amount?: number | undefined;
+                    transaction_date?: string | undefined;
+                    transaction_type?: "debit" | "credit" | undefined;
+                    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
+                    payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                }>, {
+                    amount?: number | undefined;
+                    transaction_date?: string | undefined;
+                    transaction_type?: "debit" | "credit" | undefined;
+                    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
+                    payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                }, {
+                    amount?: number | undefined;
+                    transaction_date?: string | undefined;
+                    transaction_type?: "debit" | "credit" | undefined;
+                    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
+                    payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                }>, {
+                    amount?: number | undefined;
+                    transaction_date?: string | undefined;
+                    transaction_type?: "debit" | "credit" | undefined;
+                    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
+                    payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                }, {
+                    amount?: number | undefined;
+                    transaction_date?: string | undefined;
+                    transaction_type?: "debit" | "credit" | undefined;
+                    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
+                    payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                }>;
+                path: "/api/shared-expenses/groups/:uuid/transactions/:transactionUuid";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        data: import("zod").ZodObject<{
+                            uuid: import("zod").ZodString;
+                            amount: import("zod").ZodNumber;
+                            currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
+                            transaction_date: import("zod").ZodString;
+                            transaction_type: import("zod").ZodEnum<["debit", "credit"]>;
+                            category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
+                            description: import("zod").ZodEnum<["Gasto manual", "Ingreso manual"]>;
+                            is_manual: import("zod").ZodLiteral<true>;
+                            payment_method: import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
+                            is_author: import("zod").ZodBoolean;
+                            created_by_name: import("zod").ZodString;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            description: "Gasto manual" | "Ingreso manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                            is_author: boolean;
+                            created_by_name: string;
+                        }, {
+                            description: "Gasto manual" | "Ingreso manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                            is_author: boolean;
+                            created_by_name: string;
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            description: "Gasto manual" | "Ingreso manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                            is_author: boolean;
+                            created_by_name: string;
+                        };
+                    }, {
+                        message: string;
+                        data: {
+                            description: "Gasto manual" | "Ingreso manual";
+                            uuid: string;
+                            currency: "DOP" | "USD" | "EUR";
+                            amount: number;
+                            transaction_date: string;
+                            transaction_type: "debit" | "credit";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                            is_manual: true;
+                            payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                            is_author: boolean;
+                            created_by_name: string;
+                        };
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            deleteTransaction: {
+                strictStatusCodes: true;
+                pathParams: import("zod").ZodObject<{
+                    uuid: import("zod").ZodString;
+                    transactionUuid: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    uuid: string;
+                    transactionUuid: string;
+                }, {
+                    uuid: string;
+                    transactionUuid: string;
+                }>;
+                summary: "Delete a shared transaction created by the authenticated user";
+                method: "DELETE";
+                path: "/api/shared-expenses/groups/:uuid/transactions/:transactionUuid";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                    }, {
+                        message: string;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+        };
+        AppFeedback: {
+            create: {
+                strictStatusCodes: true;
+                summary: "Submit feedback about the InSync app";
+                description: "Stores user-submitted app feedback. The message body is not written to application logs.";
+                method: "POST";
+                body: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                }, "strict", import("zod").ZodTypeAny, {
+                    message: string;
+                }, {
+                    message: string;
+                }>;
+                path: "/api/app-feedback";
+                responses: {
+                    201: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        data: import("zod").ZodObject<{
+                            uuid: import("zod").ZodString;
+                            created_at: import("zod").ZodString;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            uuid: string;
+                            created_at: string;
+                        }, {
+                            uuid: string;
+                            created_at: string;
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            uuid: string;
+                            created_at: string;
+                        };
+                    }, {
+                        message: string;
+                        data: {
+                            uuid: string;
+                            created_at: string;
+                        };
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+        };
+        BetaTesters: {
+            register: {
+                strictStatusCodes: true;
+                summary: "Register for the InSync beta test group";
+                description: "Stores a beta tester registration and updates it when the bank email already exists.";
+                method: "POST";
+                body: import("zod").ZodEffects<import("zod").ZodObject<{
+                    full_name: import("zod").ZodString;
+                    bank_email: import("zod").ZodString;
+                    operating_system: import("zod").ZodEnum<["android", "ios", "both"]>;
+                    interests: import("zod").ZodArray<import("zod").ZodEnum<["expense_categories", "automatic_expense_tracking", "budgets_and_alerts", "savings_goals", "debts_loans_and_credit_cards", "payment_reminders", "financial_reports_and_charts", "multiple_accounts_and_banks", "other"]>, "many">;
+                    other_interest: import("zod").ZodOptional<import("zod").ZodString>;
+                    consent_accepted: import("zod").ZodLiteral<true>;
+                }, "strict", import("zod").ZodTypeAny, {
+                    full_name: string;
+                    bank_email: string;
+                    operating_system: "android" | "ios" | "both";
+                    interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
+                    consent_accepted: true;
+                    other_interest?: string | undefined;
+                }, {
+                    full_name: string;
+                    bank_email: string;
+                    operating_system: "android" | "ios" | "both";
+                    interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
+                    consent_accepted: true;
+                    other_interest?: string | undefined;
+                }>, {
+                    full_name: string;
+                    bank_email: string;
+                    operating_system: "android" | "ios" | "both";
+                    interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
+                    consent_accepted: true;
+                    other_interest?: string | undefined;
+                }, {
+                    full_name: string;
+                    bank_email: string;
+                    operating_system: "android" | "ios" | "both";
+                    interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
+                    consent_accepted: true;
+                    other_interest?: string | undefined;
+                }>;
+                path: "/api/beta-testers/register";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                    }, {
+                        message: string;
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+        };
+        Registration: {
+            start: {
+                strictStatusCodes: true;
+                summary: "Start or resume the step-by-step registration";
+                description: "Upserts the registration of the token user. The email is taken from the token.";
+                method: "POST";
+                body: import("zod").ZodObject<{
+                    first_name: import("zod").ZodString;
+                    last_name: import("zod").ZodString;
+                    email: import("zod").ZodOptional<import("zod").ZodUnknown>;
+                }, "strict", import("zod").ZodTypeAny, {
+                    first_name: string;
+                    last_name: string;
+                    email?: unknown;
+                }, {
+                    first_name: string;
+                    last_name: string;
+                    email?: unknown;
+                }>;
+                path: "/api/registration";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        status: import("zod").ZodEnum<["in_progress", "completed", "abandoned"]>;
+                        current_step: import("zod").ZodEnum<["document", "pin", "done"]>;
+                        email: import("zod").ZodNullable<import("zod").ZodString>;
+                        first_name: import("zod").ZodNullable<import("zod").ZodString>;
+                        last_name: import("zod").ZodNullable<import("zod").ZodString>;
+                        last_step_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        completed_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        status: "completed" | "in_progress" | "abandoned";
+                        email: string | null;
+                        first_name: string | null;
+                        last_name: string | null;
+                        current_step: "document" | "pin" | "done";
+                        last_step_at: string | null;
+                        completed_at: string | null;
+                    }, {
+                        status: "completed" | "in_progress" | "abandoned";
+                        email: string | null;
+                        first_name: string | null;
+                        last_name: string | null;
+                        current_step: "document" | "pin" | "done";
+                        last_step_at: string | null;
+                        completed_at: string | null;
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            submitStep: {
+                strictStatusCodes: true;
+                summary: "Complete one registration step";
+                method: "PATCH";
+                body: import("zod").ZodDiscriminatedUnion<"step", [import("zod").ZodObject<{
+                    step: import("zod").ZodLiteral<"document">;
+                    info_type: import("zod").ZodEnum<[import("./enums").DocumentType.NATIONAL_ID, import("./enums").DocumentType.PASSPORT]>;
+                    document_number: import("zod").ZodOptional<import("zod").ZodString>;
+                    document_url: import("zod").ZodOptional<import("zod").ZodString>;
+                }, "strict", import("zod").ZodTypeAny, {
+                    info_type: import("./enums").DocumentType.PASSPORT | import("./enums").DocumentType.NATIONAL_ID;
+                    step: "document";
+                    document_number?: string | undefined;
+                    document_url?: string | undefined;
+                }, {
+                    info_type: import("./enums").DocumentType.PASSPORT | import("./enums").DocumentType.NATIONAL_ID;
+                    step: "document";
+                    document_number?: string | undefined;
+                    document_url?: string | undefined;
+                }>, import("zod").ZodObject<{
+                    step: import("zod").ZodLiteral<"pin">;
+                }, "strict", import("zod").ZodTypeAny, {
+                    step: "pin";
+                }, {
+                    step: "pin";
+                }>]>;
+                path: "/api/registration/step";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        status: import("zod").ZodEnum<["in_progress", "completed", "abandoned"]>;
+                        current_step: import("zod").ZodEnum<["document", "pin", "done"]>;
+                        email: import("zod").ZodNullable<import("zod").ZodString>;
+                        first_name: import("zod").ZodNullable<import("zod").ZodString>;
+                        last_name: import("zod").ZodNullable<import("zod").ZodString>;
+                        last_step_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        completed_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        status: "completed" | "in_progress" | "abandoned";
+                        email: string | null;
+                        first_name: string | null;
+                        last_name: string | null;
+                        current_step: "document" | "pin" | "done";
+                        last_step_at: string | null;
+                        completed_at: string | null;
+                    }, {
+                        status: "completed" | "in_progress" | "abandoned";
+                        email: string | null;
+                        first_name: string | null;
+                        last_name: string | null;
+                        current_step: "document" | "pin" | "done";
+                        last_step_at: string | null;
+                        completed_at: string | null;
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        code: import("zod").ZodString;
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        code: string;
+                    }, {
+                        message: string;
+                        code: string;
+                    }>;
+                    409: import("zod").ZodObject<{
+                        code: import("zod").ZodString;
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        code: string;
+                    }, {
+                        message: string;
+                        code: string;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            get: {
+                strictStatusCodes: true;
+                summary: "Get the registration state of the token user";
+                method: "GET";
+                path: "/api/registration";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        status: import("zod").ZodEnum<["in_progress", "completed", "abandoned"]>;
+                        current_step: import("zod").ZodEnum<["document", "pin", "done"]>;
+                        email: import("zod").ZodNullable<import("zod").ZodString>;
+                        first_name: import("zod").ZodNullable<import("zod").ZodString>;
+                        last_name: import("zod").ZodNullable<import("zod").ZodString>;
+                        last_step_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        completed_at: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        status: "completed" | "in_progress" | "abandoned";
+                        email: string | null;
+                        first_name: string | null;
+                        last_name: string | null;
+                        current_step: "document" | "pin" | "done";
+                        last_step_at: string | null;
+                        completed_at: string | null;
+                    }, {
+                        status: "completed" | "in_progress" | "abandoned";
+                        email: string | null;
+                        first_name: string | null;
+                        last_name: string | null;
+                        current_step: "document" | "pin" | "done";
+                        last_step_at: string | null;
+                        completed_at: string | null;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        code: import("zod").ZodString;
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        code: string;
+                    }, {
+                        message: string;
+                        code: string;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+        };
+        UserPreferences: {
+            upsert: {
+                strictStatusCodes: true;
+                summary: "Save the token user preferences (IANA timezone)";
+                method: "PUT";
+                body: import("zod").ZodObject<{
+                    timezone: import("zod").ZodString;
+                }, "strict", import("zod").ZodTypeAny, {
+                    timezone: string;
+                }, {
+                    timezone: string;
+                }>;
+                path: "/api/user-preferences";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        timezone: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        timezone: string;
+                    }, {
+                        timezone: string;
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+        };
+        SavingGoalReminders: {
+            get: {
+                strictStatusCodes: true;
+                pathParams: import("zod").ZodEffects<import("zod").ZodObject<{
+                    goal_type: import("zod").ZodEnum<["personal", "shared"]>;
+                    goal_id: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    goal_type: "personal" | "shared";
+                    goal_id: string;
+                }, {
+                    goal_type: "personal" | "shared";
+                    goal_id: string;
+                }>, {
+                    goal_type: "personal" | "shared";
+                    goal_id: string;
+                }, {
+                    goal_type: "personal" | "shared";
+                    goal_id: string;
+                }>;
+                summary: "Get the token user's reminder for a goal (no row = off)";
+                method: "GET";
+                path: "/api/saving-goals/:goal_type/:goal_id/reminder";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        goal_type: import("zod").ZodEnum<["personal", "shared"]>;
+                        goal_id: import("zod").ZodString;
+                        enabled: import("zod").ZodBoolean;
+                        frequency: import("zod").ZodNullable<import("zod").ZodEnum<["weekly", "biweekly", "monthly"]>>;
+                        weekday: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        month_days: import("zod").ZodNullable<import("zod").ZodArray<import("zod").ZodNumber, "many">>;
+                        next_fire_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        goal_inactive: import("zod").ZodBoolean;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        goal_type: "personal" | "shared";
+                        goal_id: string;
+                        enabled: boolean;
+                        frequency: "monthly" | "weekly" | "biweekly" | null;
+                        weekday: number | null;
+                        month_days: number[] | null;
+                        next_fire_at: string | null;
+                        goal_inactive: boolean;
+                    }, {
+                        goal_type: "personal" | "shared";
+                        goal_id: string;
+                        enabled: boolean;
+                        frequency: "monthly" | "weekly" | "biweekly" | null;
+                        weekday: number | null;
+                        month_days: number[] | null;
+                        next_fire_at: string | null;
+                        goal_inactive: boolean;
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        code: import("zod").ZodString;
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        code: string;
+                    }, {
+                        message: string;
+                        code: string;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            put: {
+                strictStatusCodes: true;
+                pathParams: import("zod").ZodEffects<import("zod").ZodObject<{
+                    goal_type: import("zod").ZodEnum<["personal", "shared"]>;
+                    goal_id: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    goal_type: "personal" | "shared";
+                    goal_id: string;
+                }, {
+                    goal_type: "personal" | "shared";
+                    goal_id: string;
+                }>, {
+                    goal_type: "personal" | "shared";
+                    goal_id: string;
+                }, {
+                    goal_type: "personal" | "shared";
+                    goal_id: string;
+                }>;
+                summary: "Create, change or turn off the token user's reminder for a goal";
+                method: "PUT";
+                body: import("zod").ZodUnion<[import("zod").ZodDiscriminatedUnion<"frequency", [import("zod").ZodObject<{
+                    enabled: import("zod").ZodBoolean;
+                    frequency: import("zod").ZodLiteral<"weekly">;
+                    weekday: import("zod").ZodNumber;
+                }, "strict", import("zod").ZodTypeAny, {
+                    enabled: boolean;
+                    frequency: "weekly";
+                    weekday: number;
+                }, {
+                    enabled: boolean;
+                    frequency: "weekly";
+                    weekday: number;
+                }>, import("zod").ZodObject<{
+                    enabled: import("zod").ZodBoolean;
+                    frequency: import("zod").ZodLiteral<"monthly">;
+                    month_days: import("zod").ZodTuple<[import("zod").ZodNumber], null>;
+                }, "strict", import("zod").ZodTypeAny, {
+                    enabled: boolean;
+                    frequency: "monthly";
+                    month_days: [number];
+                }, {
+                    enabled: boolean;
+                    frequency: "monthly";
+                    month_days: [number];
+                }>, import("zod").ZodObject<{
+                    enabled: import("zod").ZodBoolean;
+                    frequency: import("zod").ZodLiteral<"biweekly">;
+                    month_days: import("zod").ZodEffects<import("zod").ZodTuple<[import("zod").ZodNumber, import("zod").ZodNumber], null>, [number, number], [number, number]>;
+                }, "strict", import("zod").ZodTypeAny, {
+                    enabled: boolean;
+                    frequency: "biweekly";
+                    month_days: [number, number];
+                }, {
+                    enabled: boolean;
+                    frequency: "biweekly";
+                    month_days: [number, number];
+                }>]>, import("zod").ZodObject<{
+                    enabled: import("zod").ZodLiteral<false>;
+                }, "strict", import("zod").ZodTypeAny, {
+                    enabled: false;
+                }, {
+                    enabled: false;
+                }>]>;
+                path: "/api/saving-goals/:goal_type/:goal_id/reminder";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        goal_type: import("zod").ZodEnum<["personal", "shared"]>;
+                        goal_id: import("zod").ZodString;
+                        enabled: import("zod").ZodBoolean;
+                        frequency: import("zod").ZodNullable<import("zod").ZodEnum<["weekly", "biweekly", "monthly"]>>;
+                        weekday: import("zod").ZodNullable<import("zod").ZodNumber>;
+                        month_days: import("zod").ZodNullable<import("zod").ZodArray<import("zod").ZodNumber, "many">>;
+                        next_fire_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        goal_inactive: import("zod").ZodBoolean;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        goal_type: "personal" | "shared";
+                        goal_id: string;
+                        enabled: boolean;
+                        frequency: "monthly" | "weekly" | "biweekly" | null;
+                        weekday: number | null;
+                        month_days: number[] | null;
+                        next_fire_at: string | null;
+                        goal_inactive: boolean;
+                    }, {
+                        goal_type: "personal" | "shared";
+                        goal_id: string;
+                        enabled: boolean;
+                        frequency: "monthly" | "weekly" | "biweekly" | null;
+                        weekday: number | null;
+                        month_days: number[] | null;
+                        next_fire_at: string | null;
+                        goal_inactive: boolean;
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        code: import("zod").ZodString;
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        code: string;
+                    }, {
+                        message: string;
+                        code: string;
+                    }>;
+                    409: import("zod").ZodObject<{
+                        code: import("zod").ZodString;
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        code: string;
+                    }, {
+                        message: string;
+                        code: string;
                     }>;
                     500: import("zod").ZodObject<{
                         message: import("zod").ZodString;
@@ -11889,10 +15685,12 @@ export declare const apiContract: {
                     is_active: import("zod").ZodOptional<import("zod").ZodBoolean>;
                     notes: import("zod").ZodString;
                     settings: import("zod").ZodOptional<import("zod").ZodAny>;
+                    category: import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>;
                 }, "strip", import("zod").ZodTypeAny, {
                     notes: string;
                     name: string;
                     currency: string;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
@@ -11902,6 +15700,7 @@ export declare const apiContract: {
                 }, {
                     notes: string;
                     name: string;
+                    category: string;
                     start_date: string;
                     end_date: string;
                     total_amount: number;
@@ -11913,6 +15712,7 @@ export declare const apiContract: {
                     notes: string;
                     name: string;
                     currency: string;
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
@@ -11922,6 +15722,7 @@ export declare const apiContract: {
                 }, {
                     notes: string;
                     name: string;
+                    category: string;
                     start_date: string;
                     end_date: string;
                     total_amount: number;
@@ -11948,10 +15749,19 @@ export declare const apiContract: {
                             is_active: import("zod").ZodBoolean;
                             notes: import("zod").ZodNullable<import("zod").ZodString>;
                             settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                            category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                            needs_category: import("zod").ZodBoolean;
+                            spent: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            percent: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            status: import("zod").ZodNullable<import("zod").ZodEnum<["ok", "near_limit", "exceeded"]>>;
+                            period_active: import("zod").ZodNullable<import("zod").ZodBoolean>;
+                            counted_expense_types: import("zod").ZodArray<import("zod").ZodEnum<["manual", "voice"]>, "many">;
                             created_at: import("zod").ZodString;
                             updated_at: import("zod").ZodString;
                             deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
                         }, "strip", import("zod").ZodTypeAny, {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -11962,13 +15772,21 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         }, {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -11979,16 +15797,24 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         }>;
                     }, "strip", import("zod").ZodTypeAny, {
                         message: string;
                         data: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -11999,16 +15825,24 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         };
                     }, {
                         message: string;
                         data: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12019,11 +15853,18 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         };
                     }>;
@@ -12107,10 +15948,19 @@ export declare const apiContract: {
                             is_active: import("zod").ZodBoolean;
                             notes: import("zod").ZodNullable<import("zod").ZodString>;
                             settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                            category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                            needs_category: import("zod").ZodBoolean;
+                            spent: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            percent: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            status: import("zod").ZodNullable<import("zod").ZodEnum<["ok", "near_limit", "exceeded"]>>;
+                            period_active: import("zod").ZodNullable<import("zod").ZodBoolean>;
+                            counted_expense_types: import("zod").ZodArray<import("zod").ZodEnum<["manual", "voice"]>, "many">;
                             created_at: import("zod").ZodString;
                             updated_at: import("zod").ZodString;
                             deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
                         }, "strip", import("zod").ZodTypeAny, {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12121,13 +15971,21 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         }, {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12138,11 +15996,18 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         }>, "many">;
                         pagination: import("zod").ZodOptional<import("zod").ZodObject<{
@@ -12161,6 +16026,7 @@ export declare const apiContract: {
                     }, "strip", import("zod").ZodTypeAny, {
                         message: string;
                         data: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12171,11 +16037,18 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         }[];
                         pagination?: {
@@ -12186,6 +16059,7 @@ export declare const apiContract: {
                     }, {
                         message: string;
                         data: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12196,11 +16070,18 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         }[];
                         pagination?: {
@@ -12267,10 +16148,19 @@ export declare const apiContract: {
                             is_active: import("zod").ZodBoolean;
                             notes: import("zod").ZodNullable<import("zod").ZodString>;
                             settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                            category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                            needs_category: import("zod").ZodBoolean;
+                            spent: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            percent: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            status: import("zod").ZodNullable<import("zod").ZodEnum<["ok", "near_limit", "exceeded"]>>;
+                            period_active: import("zod").ZodNullable<import("zod").ZodBoolean>;
+                            counted_expense_types: import("zod").ZodArray<import("zod").ZodEnum<["manual", "voice"]>, "many">;
                             created_at: import("zod").ZodString;
                             updated_at: import("zod").ZodString;
                             deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
                         }, "strip", import("zod").ZodTypeAny, {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12281,13 +16171,21 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         }, {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12298,16 +16196,24 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         }>;
                     }, "strip", import("zod").ZodTypeAny, {
                         message: string;
                         data: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12318,16 +16224,24 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         };
                     }, {
                         message: string;
                         data: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12338,11 +16252,18 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         };
                     }>;
@@ -12409,11 +16330,13 @@ export declare const apiContract: {
                     is_active: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodBoolean>>;
                     notes: import("zod").ZodOptional<import("zod").ZodString>;
                     settings: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodAny>>;
+                    category: import("zod").ZodOptional<import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>>;
                 }, "strip", import("zod").ZodTypeAny, {
                     is_active?: boolean | undefined;
                     notes?: string | undefined;
                     name?: string | undefined;
                     currency?: string | undefined;
+                    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
                     budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
                     start_date?: string | undefined;
                     end_date?: string | undefined;
@@ -12424,6 +16347,7 @@ export declare const apiContract: {
                     notes?: string | undefined;
                     name?: string | undefined;
                     currency?: string | undefined;
+                    category?: string | undefined;
                     budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
                     start_date?: string | undefined;
                     end_date?: string | undefined;
@@ -12448,10 +16372,19 @@ export declare const apiContract: {
                             is_active: import("zod").ZodBoolean;
                             notes: import("zod").ZodNullable<import("zod").ZodString>;
                             settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                            category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                            needs_category: import("zod").ZodBoolean;
+                            spent: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            percent: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            status: import("zod").ZodNullable<import("zod").ZodEnum<["ok", "near_limit", "exceeded"]>>;
+                            period_active: import("zod").ZodNullable<import("zod").ZodBoolean>;
+                            counted_expense_types: import("zod").ZodArray<import("zod").ZodEnum<["manual", "voice"]>, "many">;
                             created_at: import("zod").ZodString;
                             updated_at: import("zod").ZodString;
                             deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
                         }, "strip", import("zod").ZodTypeAny, {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12462,13 +16395,21 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         }, {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12479,16 +16420,24 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         }>;
                     }, "strip", import("zod").ZodTypeAny, {
                         message: string;
                         data: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12499,16 +16448,24 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         };
                     }, {
                         message: string;
                         data: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12519,11 +16476,18 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         };
                     }>;
@@ -12676,10 +16640,19 @@ export declare const apiContract: {
                             is_active: import("zod").ZodBoolean;
                             notes: import("zod").ZodNullable<import("zod").ZodString>;
                             settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                            category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                            needs_category: import("zod").ZodBoolean;
+                            spent: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            percent: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            status: import("zod").ZodNullable<import("zod").ZodEnum<["ok", "near_limit", "exceeded"]>>;
+                            period_active: import("zod").ZodNullable<import("zod").ZodBoolean>;
+                            counted_expense_types: import("zod").ZodArray<import("zod").ZodEnum<["manual", "voice"]>, "many">;
                             created_at: import("zod").ZodString;
                             updated_at: import("zod").ZodString;
                             deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
                         }, "strip", import("zod").ZodTypeAny, {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12690,13 +16663,21 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         }, {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12707,11 +16688,18 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         }>, "many">;
                         pagination: import("zod").ZodOptional<import("zod").ZodObject<{
@@ -12730,6 +16718,7 @@ export declare const apiContract: {
                     }, "strip", import("zod").ZodTypeAny, {
                         message: string;
                         data: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12740,11 +16729,18 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         }[];
                         pagination?: {
@@ -12755,6 +16751,7 @@ export declare const apiContract: {
                     }, {
                         message: string;
                         data: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12765,11 +16762,18 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         }[];
                         pagination?: {
@@ -12846,10 +16850,19 @@ export declare const apiContract: {
                             is_active: import("zod").ZodBoolean;
                             notes: import("zod").ZodNullable<import("zod").ZodString>;
                             settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                            category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                            needs_category: import("zod").ZodBoolean;
+                            spent: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            percent: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            status: import("zod").ZodNullable<import("zod").ZodEnum<["ok", "near_limit", "exceeded"]>>;
+                            period_active: import("zod").ZodNullable<import("zod").ZodBoolean>;
+                            counted_expense_types: import("zod").ZodArray<import("zod").ZodEnum<["manual", "voice"]>, "many">;
                             created_at: import("zod").ZodString;
                             updated_at: import("zod").ZodString;
                             deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
                         }, "strip", import("zod").ZodTypeAny, {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12860,13 +16873,21 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         }, {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12877,11 +16898,18 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         }>, "many">;
                         pagination: import("zod").ZodOptional<import("zod").ZodObject<{
@@ -12900,6 +16928,7 @@ export declare const apiContract: {
                     }, "strip", import("zod").ZodTypeAny, {
                         message: string;
                         data: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12910,11 +16939,18 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         }[];
                         pagination?: {
@@ -12925,6 +16961,7 @@ export declare const apiContract: {
                     }, {
                         message: string;
                         data: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -12935,11 +16972,18 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         }[];
                         pagination?: {
@@ -12998,8 +17042,9 @@ export declare const apiContract: {
                 }, {
                     id: string;
                 }>;
-                summary: "Update budget used amount";
-                description: "Updates the used amount for a specific budget";
+                summary: "Update budget used amount (deprecated)";
+                description: "Deprecated: spent is computed live from manual and voice expenses. Still writes the stored used_amount for old clients.";
+                deprecated: true;
                 method: "PATCH";
                 body: import("zod").ZodObject<{
                     used_amount: import("zod").ZodNumber;
@@ -13026,10 +17071,19 @@ export declare const apiContract: {
                             is_active: import("zod").ZodBoolean;
                             notes: import("zod").ZodNullable<import("zod").ZodString>;
                             settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                            category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                            needs_category: import("zod").ZodBoolean;
+                            spent: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            percent: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            status: import("zod").ZodNullable<import("zod").ZodEnum<["ok", "near_limit", "exceeded"]>>;
+                            period_active: import("zod").ZodNullable<import("zod").ZodBoolean>;
+                            counted_expense_types: import("zod").ZodArray<import("zod").ZodEnum<["manual", "voice"]>, "many">;
                             created_at: import("zod").ZodString;
                             updated_at: import("zod").ZodString;
                             deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
                         }, "strip", import("zod").ZodTypeAny, {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -13040,13 +17094,21 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         }, {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -13057,16 +17119,24 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         }>;
                     }, "strip", import("zod").ZodTypeAny, {
                         message: string;
                         data: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -13077,16 +17147,24 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         };
                     }, {
                         message: string;
                         data: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
                             id: number;
                             is_active: boolean;
                             uuid: string;
@@ -13097,11 +17175,228 @@ export declare const apiContract: {
                             name: string;
                             currency: string;
                             deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
                             budget_period: "monthly" | "quarterly" | "yearly";
                             start_date: string;
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
+                            settings?: any;
+                        };
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            updateBudgetCategory: {
+                strictStatusCodes: true;
+                pathParams: import("zod").ZodObject<{
+                    id: import("zod").ZodEffects<import("zod").ZodString, number, string>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    id: number;
+                }, {
+                    id: string;
+                }>;
+                summary: "Change budget category";
+                description: "Sets the expense category the budget counts. Spent is recomputed on read.";
+                method: "PATCH";
+                body: import("zod").ZodObject<{
+                    category: import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>;
+                }, "strict", import("zod").ZodTypeAny, {
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                }, {
+                    category: string;
+                }>;
+                path: "/api/budgets/:id/category";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        data: import("zod").ZodObject<{
+                            id: import("zod").ZodNumber;
+                            uuid: import("zod").ZodString;
+                            user_uid: import("zod").ZodString;
+                            name: import("zod").ZodString;
+                            budget_period: import("zod").ZodEnum<["monthly", "quarterly", "yearly"]>;
+                            start_date: import("zod").ZodString;
+                            end_date: import("zod").ZodString;
+                            total_amount: import("zod").ZodNumber;
+                            used_amount: import("zod").ZodNumber;
+                            currency: import("zod").ZodString;
+                            is_active: import("zod").ZodBoolean;
+                            notes: import("zod").ZodNullable<import("zod").ZodString>;
+                            settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                            category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                            needs_category: import("zod").ZodBoolean;
+                            spent: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            percent: import("zod").ZodNullable<import("zod").ZodNumber>;
+                            status: import("zod").ZodNullable<import("zod").ZodEnum<["ok", "near_limit", "exceeded"]>>;
+                            period_active: import("zod").ZodNullable<import("zod").ZodBoolean>;
+                            counted_expense_types: import("zod").ZodArray<import("zod").ZodEnum<["manual", "voice"]>, "many">;
+                            created_at: import("zod").ZodString;
+                            updated_at: import("zod").ZodString;
+                            deleted_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            status: "ok" | "near_limit" | "exceeded" | null;
+                            id: number;
+                            is_active: boolean;
+                            uuid: string;
+                            user_uid: string;
+                            created_at: string;
+                            notes: string | null;
+                            updated_at: string;
+                            name: string;
+                            currency: string;
+                            deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                            budget_period: "monthly" | "quarterly" | "yearly";
+                            start_date: string;
+                            end_date: string;
+                            total_amount: number;
+                            used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
+                            settings?: any;
+                        }, {
+                            status: "ok" | "near_limit" | "exceeded" | null;
+                            id: number;
+                            is_active: boolean;
+                            uuid: string;
+                            user_uid: string;
+                            created_at: string;
+                            notes: string | null;
+                            updated_at: string;
+                            name: string;
+                            currency: string;
+                            deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                            budget_period: "monthly" | "quarterly" | "yearly";
+                            start_date: string;
+                            end_date: string;
+                            total_amount: number;
+                            used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
+                            settings?: any;
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        data: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
+                            id: number;
+                            is_active: boolean;
+                            uuid: string;
+                            user_uid: string;
+                            created_at: string;
+                            notes: string | null;
+                            updated_at: string;
+                            name: string;
+                            currency: string;
+                            deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                            budget_period: "monthly" | "quarterly" | "yearly";
+                            start_date: string;
+                            end_date: string;
+                            total_amount: number;
+                            used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
+                            settings?: any;
+                        };
+                    }, {
+                        message: string;
+                        data: {
+                            status: "ok" | "near_limit" | "exceeded" | null;
+                            id: number;
+                            is_active: boolean;
+                            uuid: string;
+                            user_uid: string;
+                            created_at: string;
+                            notes: string | null;
+                            updated_at: string;
+                            name: string;
+                            currency: string;
+                            deleted_at: string | null;
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                            budget_period: "monthly" | "quarterly" | "yearly";
+                            start_date: string;
+                            end_date: string;
+                            total_amount: number;
+                            used_amount: number;
+                            needs_category: boolean;
+                            spent: number | null;
+                            remaining: number | null;
+                            percent: number | null;
+                            period_active: boolean | null;
+                            counted_expense_types: ("manual" | "voice")[];
                             settings?: any;
                         };
                     }>;
@@ -13164,60 +17459,29 @@ export declare const apiContract: {
             getDashboard: {
                 strictStatusCodes: true;
                 summary: "Get full dashboard data";
-                description: "Returns all data for the full user dashboard, including balance, budgets, saving goals, financial indicators, recent activity, and more.";
+                description: "Returns expense summaries, budgets, saving goals, financial indicators, recent expense activity, and expense insights.";
                 method: "GET";
                 path: "/api/dashboard";
                 responses: {
                     200: import("zod").ZodObject<{
                         success: import("zod").ZodLiteral<true>;
                         data: import("zod").ZodObject<{
-                            balance: import("zod").ZodObject<{
-                                available: import("zod").ZodNumber;
-                                currency: import("zod").ZodString;
-                            }, "strip", import("zod").ZodTypeAny, {
-                                currency: string;
-                                available: number;
-                            }, {
-                                currency: string;
-                                available: number;
-                            }>;
                             monthlySummary: import("zod").ZodObject<{
-                                income: import("zod").ZodNumber;
                                 expenses: import("zod").ZodNumber;
-                                debts: import("zod").ZodNumber;
-                                netBalance: import("zod").ZodNumber;
                             }, "strip", import("zod").ZodTypeAny, {
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             }, {
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             }>;
                             currencySummaries: import("zod").ZodArray<import("zod").ZodObject<{
                                 currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
-                                available: import("zod").ZodNumber;
-                                income: import("zod").ZodNumber;
                                 expenses: import("zod").ZodNumber;
-                                debts: import("zod").ZodNumber;
-                                netBalance: import("zod").ZodNumber;
                             }, "strip", import("zod").ZodTypeAny, {
                                 currency: "DOP" | "USD" | "EUR";
-                                available: number;
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             }, {
                                 currency: "DOP" | "USD" | "EUR";
-                                available: number;
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             }>, "many">;
                             budgets: import("zod").ZodObject<{
                                 overview: import("zod").ZodObject<{
@@ -13243,7 +17507,14 @@ export declare const apiContract: {
                                     is_active: import("zod").ZodBoolean;
                                     notes: import("zod").ZodNullable<import("zod").ZodString>;
                                     settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                                    spent: import("zod").ZodNullable<import("zod").ZodNumber>;
+                                    remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
+                                    percent: import("zod").ZodNullable<import("zod").ZodNumber>;
+                                    status: import("zod").ZodNullable<import("zod").ZodEnum<["ok", "near_limit", "exceeded"]>>;
+                                    needs_category: import("zod").ZodBoolean;
+                                    period_active: import("zod").ZodNullable<import("zod").ZodBoolean>;
                                 }, "strip", import("zod").ZodTypeAny, {
+                                    status: "ok" | "near_limit" | "exceeded" | null;
                                     id: number;
                                     is_active: boolean;
                                     uuid: string;
@@ -13255,8 +17526,14 @@ export declare const apiContract: {
                                     end_date: Date;
                                     total_amount: number;
                                     used_amount: number;
+                                    needs_category: boolean;
+                                    spent: number | null;
+                                    remaining: number | null;
+                                    percent: number | null;
+                                    period_active: boolean | null;
                                     settings?: any;
                                 }, {
+                                    status: "ok" | "near_limit" | "exceeded" | null;
                                     id: number;
                                     is_active: boolean;
                                     uuid: string;
@@ -13268,6 +17545,11 @@ export declare const apiContract: {
                                     end_date: Date;
                                     total_amount: number;
                                     used_amount: number;
+                                    needs_category: boolean;
+                                    spent: number | null;
+                                    remaining: number | null;
+                                    percent: number | null;
+                                    period_active: boolean | null;
                                     settings?: any;
                                 }>, "many">;
                             }, "strip", import("zod").ZodTypeAny, {
@@ -13276,6 +17558,7 @@ export declare const apiContract: {
                                     totalUsed: number;
                                 };
                                 budgets: {
+                                    status: "ok" | "near_limit" | "exceeded" | null;
                                     id: number;
                                     is_active: boolean;
                                     uuid: string;
@@ -13287,6 +17570,11 @@ export declare const apiContract: {
                                     end_date: Date;
                                     total_amount: number;
                                     used_amount: number;
+                                    needs_category: boolean;
+                                    spent: number | null;
+                                    remaining: number | null;
+                                    percent: number | null;
+                                    period_active: boolean | null;
                                     settings?: any;
                                 }[];
                             }, {
@@ -13295,6 +17583,7 @@ export declare const apiContract: {
                                     totalUsed: number;
                                 };
                                 budgets: {
+                                    status: "ok" | "near_limit" | "exceeded" | null;
                                     id: number;
                                     is_active: boolean;
                                     uuid: string;
@@ -13306,6 +17595,11 @@ export declare const apiContract: {
                                     end_date: Date;
                                     total_amount: number;
                                     used_amount: number;
+                                    needs_category: boolean;
+                                    spent: number | null;
+                                    remaining: number | null;
+                                    percent: number | null;
+                                    period_active: boolean | null;
                                     settings?: any;
                                 }[];
                             }>;
@@ -13357,14 +17651,14 @@ export declare const apiContract: {
                                 }, "strip", import("zod").ZodTypeAny, {
                                     status: "on_track" | "warning" | "over_budget" | "no_budget";
                                     total: number;
-                                    used: number;
                                     remaining: number;
+                                    used: number;
                                     percentage: number;
                                 }, {
                                     status: "on_track" | "warning" | "over_budget" | "no_budget";
                                     total: number;
-                                    used: number;
                                     remaining: number;
+                                    used: number;
                                     percentage: number;
                                 }>;
                                 expenseProjection: import("zod").ZodObject<{
@@ -13388,13 +17682,13 @@ export declare const apiContract: {
                                 }, "strip", import("zod").ZodTypeAny, {
                                     status: "available" | "empty";
                                     amount: number;
-                                    percentage: number;
                                     category: string | null;
+                                    percentage: number;
                                 }, {
                                     status: "available" | "empty";
                                     amount: number;
-                                    percentage: number;
                                     category: string | null;
+                                    percentage: number;
                                 }>;
                             }, "strip", import("zod").ZodTypeAny, {
                                 monthlyExpenses: {
@@ -13406,8 +17700,8 @@ export declare const apiContract: {
                                 budgetUsage: {
                                     status: "on_track" | "warning" | "over_budget" | "no_budget";
                                     total: number;
-                                    used: number;
                                     remaining: number;
+                                    used: number;
                                     percentage: number;
                                 };
                                 expenseProjection: {
@@ -13418,8 +17712,8 @@ export declare const apiContract: {
                                 topCategory: {
                                     status: "available" | "empty";
                                     amount: number;
-                                    percentage: number;
                                     category: string | null;
+                                    percentage: number;
                                 };
                             }, {
                                 monthlyExpenses: {
@@ -13431,8 +17725,8 @@ export declare const apiContract: {
                                 budgetUsage: {
                                     status: "on_track" | "warning" | "over_budget" | "no_budget";
                                     total: number;
-                                    used: number;
                                     remaining: number;
+                                    used: number;
                                     percentage: number;
                                 };
                                 expenseProjection: {
@@ -13443,8 +17737,8 @@ export declare const apiContract: {
                                 topCategory: {
                                     status: "available" | "empty";
                                     amount: number;
-                                    percentage: number;
                                     category: string | null;
+                                    percentage: number;
                                 };
                             }>;
                             recentMovements: import("zod").ZodArray<import("zod").ZodObject<{
@@ -13452,11 +17746,11 @@ export declare const apiContract: {
                                 description: import("zod").ZodString;
                                 amount: import("zod").ZodNumber;
                                 currency: import("zod").ZodString;
-                                type: import("zod").ZodEnum<["income", "expense"]>;
+                                type: import("zod").ZodLiteral<"expense">;
                                 date: import("zod").ZodDate;
                                 status: import("zod").ZodString;
                             }, "strip", import("zod").ZodTypeAny, {
-                                type: "income" | "expense";
+                                type: "expense";
                                 status: string;
                                 id: string;
                                 date: Date;
@@ -13464,7 +17758,7 @@ export declare const apiContract: {
                                 currency: string;
                                 amount: number;
                             }, {
-                                type: "income" | "expense";
+                                type: "expense";
                                 status: string;
                                 id: string;
                                 date: Date;
@@ -13477,15 +17771,15 @@ export declare const apiContract: {
                                 description: import("zod").ZodString;
                                 date: import("zod").ZodDate;
                                 amount: import("zod").ZodNumber;
-                                type: import("zod").ZodEnum<["income", "expense"]>;
+                                type: import("zod").ZodLiteral<"expense">;
                             }, "strip", import("zod").ZodTypeAny, {
-                                type: "income" | "expense";
+                                type: "expense";
                                 id: string;
                                 date: Date;
                                 description: string;
                                 amount: number;
                             }, {
-                                type: "income" | "expense";
+                                type: "expense";
                                 id: string;
                                 date: Date;
                                 description: string;
@@ -13499,13 +17793,13 @@ export declare const apiContract: {
                             }, "strip", import("zod").ZodTypeAny, {
                                 color: string;
                                 amount: number;
-                                percentage: number;
                                 category: string;
+                                percentage: number;
                             }, {
                                 color: string;
                                 amount: number;
-                                percentage: number;
                                 category: string;
+                                percentage: number;
                             }>, "many">;
                             expenseDistributionByCurrency: import("zod").ZodArray<import("zod").ZodObject<{
                                 currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
@@ -13517,28 +17811,28 @@ export declare const apiContract: {
                                 }, "strip", import("zod").ZodTypeAny, {
                                     color: string;
                                     amount: number;
-                                    percentage: number;
                                     category: string;
+                                    percentage: number;
                                 }, {
                                     color: string;
                                     amount: number;
-                                    percentage: number;
                                     category: string;
+                                    percentage: number;
                                 }>, "many">;
                             }, "strip", import("zod").ZodTypeAny, {
                                 items: {
                                     color: string;
                                     amount: number;
-                                    percentage: number;
                                     category: string;
+                                    percentage: number;
                                 }[];
                                 currency: "DOP" | "USD" | "EUR";
                             }, {
                                 items: {
                                     color: string;
                                     amount: number;
-                                    percentage: number;
                                     category: string;
+                                    percentage: number;
                                 }[];
                                 currency: "DOP" | "USD" | "EUR";
                             }>, "many">;
@@ -13554,16 +17848,13 @@ export declare const apiContract: {
                                 needsSync: boolean;
                             }>;
                         }, "strip", import("zod").ZodTypeAny, {
-                            balance: {
-                                currency: string;
-                                available: number;
-                            };
                             budgets: {
                                 overview: {
                                     total: number;
                                     totalUsed: number;
                                 };
                                 budgets: {
+                                    status: "ok" | "near_limit" | "exceeded" | null;
                                     id: number;
                                     is_active: boolean;
                                     uuid: string;
@@ -13575,22 +17866,20 @@ export declare const apiContract: {
                                     end_date: Date;
                                     total_amount: number;
                                     used_amount: number;
+                                    needs_category: boolean;
+                                    spent: number | null;
+                                    remaining: number | null;
+                                    percent: number | null;
+                                    period_active: boolean | null;
                                     settings?: any;
                                 }[];
                             };
                             monthlySummary: {
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             };
                             currencySummaries: {
                                 currency: "DOP" | "USD" | "EUR";
-                                available: number;
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             }[];
                             savingGoals: {
                                 id: number;
@@ -13610,8 +17899,8 @@ export declare const apiContract: {
                                 budgetUsage: {
                                     status: "on_track" | "warning" | "over_budget" | "no_budget";
                                     total: number;
-                                    used: number;
                                     remaining: number;
+                                    used: number;
                                     percentage: number;
                                 };
                                 expenseProjection: {
@@ -13622,12 +17911,12 @@ export declare const apiContract: {
                                 topCategory: {
                                     status: "available" | "empty";
                                     amount: number;
-                                    percentage: number;
                                     category: string | null;
+                                    percentage: number;
                                 };
                             };
                             recentMovements: {
-                                type: "income" | "expense";
+                                type: "expense";
                                 status: string;
                                 id: string;
                                 date: Date;
@@ -13636,7 +17925,7 @@ export declare const apiContract: {
                                 amount: number;
                             }[];
                             upcomingEvents: {
-                                type: "income" | "expense";
+                                type: "expense";
                                 id: string;
                                 date: Date;
                                 description: string;
@@ -13645,15 +17934,15 @@ export declare const apiContract: {
                             expenseDistribution: {
                                 color: string;
                                 amount: number;
-                                percentage: number;
                                 category: string;
+                                percentage: number;
                             }[];
                             expenseDistributionByCurrency: {
                                 items: {
                                     color: string;
                                     amount: number;
-                                    percentage: number;
                                     category: string;
+                                    percentage: number;
                                 }[];
                                 currency: "DOP" | "USD" | "EUR";
                             }[];
@@ -13663,16 +17952,13 @@ export declare const apiContract: {
                                 needsSync: boolean;
                             };
                         }, {
-                            balance: {
-                                currency: string;
-                                available: number;
-                            };
                             budgets: {
                                 overview: {
                                     total: number;
                                     totalUsed: number;
                                 };
                                 budgets: {
+                                    status: "ok" | "near_limit" | "exceeded" | null;
                                     id: number;
                                     is_active: boolean;
                                     uuid: string;
@@ -13684,22 +17970,20 @@ export declare const apiContract: {
                                     end_date: Date;
                                     total_amount: number;
                                     used_amount: number;
+                                    needs_category: boolean;
+                                    spent: number | null;
+                                    remaining: number | null;
+                                    percent: number | null;
+                                    period_active: boolean | null;
                                     settings?: any;
                                 }[];
                             };
                             monthlySummary: {
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             };
                             currencySummaries: {
                                 currency: "DOP" | "USD" | "EUR";
-                                available: number;
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             }[];
                             savingGoals: {
                                 id: number;
@@ -13719,8 +18003,8 @@ export declare const apiContract: {
                                 budgetUsage: {
                                     status: "on_track" | "warning" | "over_budget" | "no_budget";
                                     total: number;
-                                    used: number;
                                     remaining: number;
+                                    used: number;
                                     percentage: number;
                                 };
                                 expenseProjection: {
@@ -13731,12 +18015,12 @@ export declare const apiContract: {
                                 topCategory: {
                                     status: "available" | "empty";
                                     amount: number;
-                                    percentage: number;
                                     category: string | null;
+                                    percentage: number;
                                 };
                             };
                             recentMovements: {
-                                type: "income" | "expense";
+                                type: "expense";
                                 status: string;
                                 id: string;
                                 date: Date;
@@ -13745,7 +18029,7 @@ export declare const apiContract: {
                                 amount: number;
                             }[];
                             upcomingEvents: {
-                                type: "income" | "expense";
+                                type: "expense";
                                 id: string;
                                 date: Date;
                                 description: string;
@@ -13754,15 +18038,15 @@ export declare const apiContract: {
                             expenseDistribution: {
                                 color: string;
                                 amount: number;
-                                percentage: number;
                                 category: string;
+                                percentage: number;
                             }[];
                             expenseDistributionByCurrency: {
                                 items: {
                                     color: string;
                                     amount: number;
-                                    percentage: number;
                                     category: string;
+                                    percentage: number;
                                 }[];
                                 currency: "DOP" | "USD" | "EUR";
                             }[];
@@ -13776,16 +18060,13 @@ export declare const apiContract: {
                     }, "strip", import("zod").ZodTypeAny, {
                         message: string;
                         data: {
-                            balance: {
-                                currency: string;
-                                available: number;
-                            };
                             budgets: {
                                 overview: {
                                     total: number;
                                     totalUsed: number;
                                 };
                                 budgets: {
+                                    status: "ok" | "near_limit" | "exceeded" | null;
                                     id: number;
                                     is_active: boolean;
                                     uuid: string;
@@ -13797,22 +18078,20 @@ export declare const apiContract: {
                                     end_date: Date;
                                     total_amount: number;
                                     used_amount: number;
+                                    needs_category: boolean;
+                                    spent: number | null;
+                                    remaining: number | null;
+                                    percent: number | null;
+                                    period_active: boolean | null;
                                     settings?: any;
                                 }[];
                             };
                             monthlySummary: {
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             };
                             currencySummaries: {
                                 currency: "DOP" | "USD" | "EUR";
-                                available: number;
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             }[];
                             savingGoals: {
                                 id: number;
@@ -13832,8 +18111,8 @@ export declare const apiContract: {
                                 budgetUsage: {
                                     status: "on_track" | "warning" | "over_budget" | "no_budget";
                                     total: number;
-                                    used: number;
                                     remaining: number;
+                                    used: number;
                                     percentage: number;
                                 };
                                 expenseProjection: {
@@ -13844,12 +18123,12 @@ export declare const apiContract: {
                                 topCategory: {
                                     status: "available" | "empty";
                                     amount: number;
-                                    percentage: number;
                                     category: string | null;
+                                    percentage: number;
                                 };
                             };
                             recentMovements: {
-                                type: "income" | "expense";
+                                type: "expense";
                                 status: string;
                                 id: string;
                                 date: Date;
@@ -13858,7 +18137,7 @@ export declare const apiContract: {
                                 amount: number;
                             }[];
                             upcomingEvents: {
-                                type: "income" | "expense";
+                                type: "expense";
                                 id: string;
                                 date: Date;
                                 description: string;
@@ -13867,15 +18146,15 @@ export declare const apiContract: {
                             expenseDistribution: {
                                 color: string;
                                 amount: number;
-                                percentage: number;
                                 category: string;
+                                percentage: number;
                             }[];
                             expenseDistributionByCurrency: {
                                 items: {
                                     color: string;
                                     amount: number;
-                                    percentage: number;
                                     category: string;
+                                    percentage: number;
                                 }[];
                                 currency: "DOP" | "USD" | "EUR";
                             }[];
@@ -13889,16 +18168,13 @@ export declare const apiContract: {
                     }, {
                         message: string;
                         data: {
-                            balance: {
-                                currency: string;
-                                available: number;
-                            };
                             budgets: {
                                 overview: {
                                     total: number;
                                     totalUsed: number;
                                 };
                                 budgets: {
+                                    status: "ok" | "near_limit" | "exceeded" | null;
                                     id: number;
                                     is_active: boolean;
                                     uuid: string;
@@ -13910,22 +18186,20 @@ export declare const apiContract: {
                                     end_date: Date;
                                     total_amount: number;
                                     used_amount: number;
+                                    needs_category: boolean;
+                                    spent: number | null;
+                                    remaining: number | null;
+                                    percent: number | null;
+                                    period_active: boolean | null;
                                     settings?: any;
                                 }[];
                             };
                             monthlySummary: {
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             };
                             currencySummaries: {
                                 currency: "DOP" | "USD" | "EUR";
-                                available: number;
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             }[];
                             savingGoals: {
                                 id: number;
@@ -13945,8 +18219,8 @@ export declare const apiContract: {
                                 budgetUsage: {
                                     status: "on_track" | "warning" | "over_budget" | "no_budget";
                                     total: number;
-                                    used: number;
                                     remaining: number;
+                                    used: number;
                                     percentage: number;
                                 };
                                 expenseProjection: {
@@ -13957,12 +18231,12 @@ export declare const apiContract: {
                                 topCategory: {
                                     status: "available" | "empty";
                                     amount: number;
-                                    percentage: number;
                                     category: string | null;
+                                    percentage: number;
                                 };
                             };
                             recentMovements: {
-                                type: "income" | "expense";
+                                type: "expense";
                                 status: string;
                                 id: string;
                                 date: Date;
@@ -13971,7 +18245,7 @@ export declare const apiContract: {
                                 amount: number;
                             }[];
                             upcomingEvents: {
-                                type: "income" | "expense";
+                                type: "expense";
                                 id: string;
                                 date: Date;
                                 description: string;
@@ -13980,15 +18254,15 @@ export declare const apiContract: {
                             expenseDistribution: {
                                 color: string;
                                 amount: number;
-                                percentage: number;
                                 category: string;
+                                percentage: number;
                             }[];
                             expenseDistributionByCurrency: {
                                 items: {
                                     color: string;
                                     amount: number;
-                                    percentage: number;
                                     category: string;
+                                    percentage: number;
                                 }[];
                                 currency: "DOP" | "USD" | "EUR";
                             }[];
@@ -14031,38 +18305,19 @@ export declare const apiContract: {
             getDashboardSummary: {
                 strictStatusCodes: true;
                 summary: "Get dashboard summary";
-                description: "Returns essential dashboard data for fast loading: balance, monthly summary, and sync status.";
+                description: "Returns the monthly expense summary and email sync status.";
                 method: "GET";
                 path: "/api/dashboard/summary";
                 responses: {
                     200: import("zod").ZodObject<{
                         success: import("zod").ZodLiteral<true>;
                         data: import("zod").ZodObject<{
-                            balance: import("zod").ZodObject<{
-                                available: import("zod").ZodNumber;
-                                currency: import("zod").ZodString;
-                            }, "strip", import("zod").ZodTypeAny, {
-                                currency: string;
-                                available: number;
-                            }, {
-                                currency: string;
-                                available: number;
-                            }>;
                             monthlySummary: import("zod").ZodObject<{
-                                income: import("zod").ZodNumber;
                                 expenses: import("zod").ZodNumber;
-                                debts: import("zod").ZodNumber;
-                                netBalance: import("zod").ZodNumber;
                             }, "strip", import("zod").ZodTypeAny, {
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             }, {
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             }>;
                             syncStatus: import("zod").ZodObject<{
                                 lastSync: import("zod").ZodNullable<import("zod").ZodDate>;
@@ -14075,30 +18330,16 @@ export declare const apiContract: {
                                 needsSync: boolean;
                             }>;
                         }, "strip", import("zod").ZodTypeAny, {
-                            balance: {
-                                currency: string;
-                                available: number;
-                            };
                             monthlySummary: {
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             };
                             syncStatus: {
                                 lastSync: Date | null;
                                 needsSync: boolean;
                             };
                         }, {
-                            balance: {
-                                currency: string;
-                                available: number;
-                            };
                             monthlySummary: {
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             };
                             syncStatus: {
                                 lastSync: Date | null;
@@ -14109,15 +18350,8 @@ export declare const apiContract: {
                     }, "strip", import("zod").ZodTypeAny, {
                         message: string;
                         data: {
-                            balance: {
-                                currency: string;
-                                available: number;
-                            };
                             monthlySummary: {
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             };
                             syncStatus: {
                                 lastSync: Date | null;
@@ -14128,15 +18362,8 @@ export declare const apiContract: {
                     }, {
                         message: string;
                         data: {
-                            balance: {
-                                currency: string;
-                                available: number;
-                            };
                             monthlySummary: {
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             };
                             syncStatus: {
                                 lastSync: Date | null;
@@ -14184,53 +18411,22 @@ export declare const apiContract: {
                     200: import("zod").ZodObject<{
                         success: import("zod").ZodLiteral<true>;
                         data: import("zod").ZodObject<{
-                            balance: import("zod").ZodObject<{
-                                available: import("zod").ZodNumber;
-                                currency: import("zod").ZodString;
-                            }, "strip", import("zod").ZodTypeAny, {
-                                currency: string;
-                                available: number;
-                            }, {
-                                currency: string;
-                                available: number;
-                            }>;
                             monthlySummary: import("zod").ZodObject<{
-                                income: import("zod").ZodNumber;
                                 expenses: import("zod").ZodNumber;
-                                debts: import("zod").ZodNumber;
-                                netBalance: import("zod").ZodNumber;
                             }, "strip", import("zod").ZodTypeAny, {
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             }, {
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             }>;
                             currencySummaries: import("zod").ZodArray<import("zod").ZodObject<{
                                 currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
-                                available: import("zod").ZodNumber;
-                                income: import("zod").ZodNumber;
                                 expenses: import("zod").ZodNumber;
-                                debts: import("zod").ZodNumber;
-                                netBalance: import("zod").ZodNumber;
                             }, "strip", import("zod").ZodTypeAny, {
                                 currency: "DOP" | "USD" | "EUR";
-                                available: number;
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             }, {
                                 currency: "DOP" | "USD" | "EUR";
-                                available: number;
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             }>, "many">;
                             budgets: import("zod").ZodObject<{
                                 overview: import("zod").ZodObject<{
@@ -14256,7 +18452,14 @@ export declare const apiContract: {
                                     is_active: import("zod").ZodBoolean;
                                     notes: import("zod").ZodNullable<import("zod").ZodString>;
                                     settings: import("zod").ZodNullable<import("zod").ZodAny>;
+                                    spent: import("zod").ZodNullable<import("zod").ZodNumber>;
+                                    remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
+                                    percent: import("zod").ZodNullable<import("zod").ZodNumber>;
+                                    status: import("zod").ZodNullable<import("zod").ZodEnum<["ok", "near_limit", "exceeded"]>>;
+                                    needs_category: import("zod").ZodBoolean;
+                                    period_active: import("zod").ZodNullable<import("zod").ZodBoolean>;
                                 }, "strip", import("zod").ZodTypeAny, {
+                                    status: "ok" | "near_limit" | "exceeded" | null;
                                     id: number;
                                     is_active: boolean;
                                     uuid: string;
@@ -14268,8 +18471,14 @@ export declare const apiContract: {
                                     end_date: Date;
                                     total_amount: number;
                                     used_amount: number;
+                                    needs_category: boolean;
+                                    spent: number | null;
+                                    remaining: number | null;
+                                    percent: number | null;
+                                    period_active: boolean | null;
                                     settings?: any;
                                 }, {
+                                    status: "ok" | "near_limit" | "exceeded" | null;
                                     id: number;
                                     is_active: boolean;
                                     uuid: string;
@@ -14281,6 +18490,11 @@ export declare const apiContract: {
                                     end_date: Date;
                                     total_amount: number;
                                     used_amount: number;
+                                    needs_category: boolean;
+                                    spent: number | null;
+                                    remaining: number | null;
+                                    percent: number | null;
+                                    period_active: boolean | null;
                                     settings?: any;
                                 }>, "many">;
                             }, "strip", import("zod").ZodTypeAny, {
@@ -14289,6 +18503,7 @@ export declare const apiContract: {
                                     totalUsed: number;
                                 };
                                 budgets: {
+                                    status: "ok" | "near_limit" | "exceeded" | null;
                                     id: number;
                                     is_active: boolean;
                                     uuid: string;
@@ -14300,6 +18515,11 @@ export declare const apiContract: {
                                     end_date: Date;
                                     total_amount: number;
                                     used_amount: number;
+                                    needs_category: boolean;
+                                    spent: number | null;
+                                    remaining: number | null;
+                                    percent: number | null;
+                                    period_active: boolean | null;
                                     settings?: any;
                                 }[];
                             }, {
@@ -14308,6 +18528,7 @@ export declare const apiContract: {
                                     totalUsed: number;
                                 };
                                 budgets: {
+                                    status: "ok" | "near_limit" | "exceeded" | null;
                                     id: number;
                                     is_active: boolean;
                                     uuid: string;
@@ -14319,6 +18540,11 @@ export declare const apiContract: {
                                     end_date: Date;
                                     total_amount: number;
                                     used_amount: number;
+                                    needs_category: boolean;
+                                    spent: number | null;
+                                    remaining: number | null;
+                                    percent: number | null;
+                                    period_active: boolean | null;
                                     settings?: any;
                                 }[];
                             }>;
@@ -14370,14 +18596,14 @@ export declare const apiContract: {
                                 }, "strip", import("zod").ZodTypeAny, {
                                     status: "on_track" | "warning" | "over_budget" | "no_budget";
                                     total: number;
-                                    used: number;
                                     remaining: number;
+                                    used: number;
                                     percentage: number;
                                 }, {
                                     status: "on_track" | "warning" | "over_budget" | "no_budget";
                                     total: number;
-                                    used: number;
                                     remaining: number;
+                                    used: number;
                                     percentage: number;
                                 }>;
                                 expenseProjection: import("zod").ZodObject<{
@@ -14401,13 +18627,13 @@ export declare const apiContract: {
                                 }, "strip", import("zod").ZodTypeAny, {
                                     status: "available" | "empty";
                                     amount: number;
-                                    percentage: number;
                                     category: string | null;
+                                    percentage: number;
                                 }, {
                                     status: "available" | "empty";
                                     amount: number;
-                                    percentage: number;
                                     category: string | null;
+                                    percentage: number;
                                 }>;
                             }, "strip", import("zod").ZodTypeAny, {
                                 monthlyExpenses: {
@@ -14419,8 +18645,8 @@ export declare const apiContract: {
                                 budgetUsage: {
                                     status: "on_track" | "warning" | "over_budget" | "no_budget";
                                     total: number;
-                                    used: number;
                                     remaining: number;
+                                    used: number;
                                     percentage: number;
                                 };
                                 expenseProjection: {
@@ -14431,8 +18657,8 @@ export declare const apiContract: {
                                 topCategory: {
                                     status: "available" | "empty";
                                     amount: number;
-                                    percentage: number;
                                     category: string | null;
+                                    percentage: number;
                                 };
                             }, {
                                 monthlyExpenses: {
@@ -14444,8 +18670,8 @@ export declare const apiContract: {
                                 budgetUsage: {
                                     status: "on_track" | "warning" | "over_budget" | "no_budget";
                                     total: number;
-                                    used: number;
                                     remaining: number;
+                                    used: number;
                                     percentage: number;
                                 };
                                 expenseProjection: {
@@ -14456,8 +18682,8 @@ export declare const apiContract: {
                                 topCategory: {
                                     status: "available" | "empty";
                                     amount: number;
-                                    percentage: number;
                                     category: string | null;
+                                    percentage: number;
                                 };
                             }>;
                             recentMovements: import("zod").ZodArray<import("zod").ZodObject<{
@@ -14465,11 +18691,11 @@ export declare const apiContract: {
                                 description: import("zod").ZodString;
                                 amount: import("zod").ZodNumber;
                                 currency: import("zod").ZodString;
-                                type: import("zod").ZodEnum<["income", "expense"]>;
+                                type: import("zod").ZodLiteral<"expense">;
                                 date: import("zod").ZodDate;
                                 status: import("zod").ZodString;
                             }, "strip", import("zod").ZodTypeAny, {
-                                type: "income" | "expense";
+                                type: "expense";
                                 status: string;
                                 id: string;
                                 date: Date;
@@ -14477,7 +18703,7 @@ export declare const apiContract: {
                                 currency: string;
                                 amount: number;
                             }, {
-                                type: "income" | "expense";
+                                type: "expense";
                                 status: string;
                                 id: string;
                                 date: Date;
@@ -14490,15 +18716,15 @@ export declare const apiContract: {
                                 description: import("zod").ZodString;
                                 date: import("zod").ZodDate;
                                 amount: import("zod").ZodNumber;
-                                type: import("zod").ZodEnum<["income", "expense"]>;
+                                type: import("zod").ZodLiteral<"expense">;
                             }, "strip", import("zod").ZodTypeAny, {
-                                type: "income" | "expense";
+                                type: "expense";
                                 id: string;
                                 date: Date;
                                 description: string;
                                 amount: number;
                             }, {
-                                type: "income" | "expense";
+                                type: "expense";
                                 id: string;
                                 date: Date;
                                 description: string;
@@ -14512,13 +18738,13 @@ export declare const apiContract: {
                             }, "strip", import("zod").ZodTypeAny, {
                                 color: string;
                                 amount: number;
-                                percentage: number;
                                 category: string;
+                                percentage: number;
                             }, {
                                 color: string;
                                 amount: number;
-                                percentage: number;
                                 category: string;
+                                percentage: number;
                             }>, "many">;
                             expenseDistributionByCurrency: import("zod").ZodArray<import("zod").ZodObject<{
                                 currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
@@ -14530,28 +18756,28 @@ export declare const apiContract: {
                                 }, "strip", import("zod").ZodTypeAny, {
                                     color: string;
                                     amount: number;
-                                    percentage: number;
                                     category: string;
+                                    percentage: number;
                                 }, {
                                     color: string;
                                     amount: number;
-                                    percentage: number;
                                     category: string;
+                                    percentage: number;
                                 }>, "many">;
                             }, "strip", import("zod").ZodTypeAny, {
                                 items: {
                                     color: string;
                                     amount: number;
-                                    percentage: number;
                                     category: string;
+                                    percentage: number;
                                 }[];
                                 currency: "DOP" | "USD" | "EUR";
                             }, {
                                 items: {
                                     color: string;
                                     amount: number;
-                                    percentage: number;
                                     category: string;
+                                    percentage: number;
                                 }[];
                                 currency: "DOP" | "USD" | "EUR";
                             }>, "many">;
@@ -14567,16 +18793,13 @@ export declare const apiContract: {
                                 needsSync: boolean;
                             }>;
                         }, "strip", import("zod").ZodTypeAny, {
-                            balance: {
-                                currency: string;
-                                available: number;
-                            };
                             budgets: {
                                 overview: {
                                     total: number;
                                     totalUsed: number;
                                 };
                                 budgets: {
+                                    status: "ok" | "near_limit" | "exceeded" | null;
                                     id: number;
                                     is_active: boolean;
                                     uuid: string;
@@ -14588,22 +18811,20 @@ export declare const apiContract: {
                                     end_date: Date;
                                     total_amount: number;
                                     used_amount: number;
+                                    needs_category: boolean;
+                                    spent: number | null;
+                                    remaining: number | null;
+                                    percent: number | null;
+                                    period_active: boolean | null;
                                     settings?: any;
                                 }[];
                             };
                             monthlySummary: {
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             };
                             currencySummaries: {
                                 currency: "DOP" | "USD" | "EUR";
-                                available: number;
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             }[];
                             savingGoals: {
                                 id: number;
@@ -14623,8 +18844,8 @@ export declare const apiContract: {
                                 budgetUsage: {
                                     status: "on_track" | "warning" | "over_budget" | "no_budget";
                                     total: number;
-                                    used: number;
                                     remaining: number;
+                                    used: number;
                                     percentage: number;
                                 };
                                 expenseProjection: {
@@ -14635,12 +18856,12 @@ export declare const apiContract: {
                                 topCategory: {
                                     status: "available" | "empty";
                                     amount: number;
-                                    percentage: number;
                                     category: string | null;
+                                    percentage: number;
                                 };
                             };
                             recentMovements: {
-                                type: "income" | "expense";
+                                type: "expense";
                                 status: string;
                                 id: string;
                                 date: Date;
@@ -14649,7 +18870,7 @@ export declare const apiContract: {
                                 amount: number;
                             }[];
                             upcomingEvents: {
-                                type: "income" | "expense";
+                                type: "expense";
                                 id: string;
                                 date: Date;
                                 description: string;
@@ -14658,15 +18879,15 @@ export declare const apiContract: {
                             expenseDistribution: {
                                 color: string;
                                 amount: number;
-                                percentage: number;
                                 category: string;
+                                percentage: number;
                             }[];
                             expenseDistributionByCurrency: {
                                 items: {
                                     color: string;
                                     amount: number;
-                                    percentage: number;
                                     category: string;
+                                    percentage: number;
                                 }[];
                                 currency: "DOP" | "USD" | "EUR";
                             }[];
@@ -14676,16 +18897,13 @@ export declare const apiContract: {
                                 needsSync: boolean;
                             };
                         }, {
-                            balance: {
-                                currency: string;
-                                available: number;
-                            };
                             budgets: {
                                 overview: {
                                     total: number;
                                     totalUsed: number;
                                 };
                                 budgets: {
+                                    status: "ok" | "near_limit" | "exceeded" | null;
                                     id: number;
                                     is_active: boolean;
                                     uuid: string;
@@ -14697,22 +18915,20 @@ export declare const apiContract: {
                                     end_date: Date;
                                     total_amount: number;
                                     used_amount: number;
+                                    needs_category: boolean;
+                                    spent: number | null;
+                                    remaining: number | null;
+                                    percent: number | null;
+                                    period_active: boolean | null;
                                     settings?: any;
                                 }[];
                             };
                             monthlySummary: {
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             };
                             currencySummaries: {
                                 currency: "DOP" | "USD" | "EUR";
-                                available: number;
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             }[];
                             savingGoals: {
                                 id: number;
@@ -14732,8 +18948,8 @@ export declare const apiContract: {
                                 budgetUsage: {
                                     status: "on_track" | "warning" | "over_budget" | "no_budget";
                                     total: number;
-                                    used: number;
                                     remaining: number;
+                                    used: number;
                                     percentage: number;
                                 };
                                 expenseProjection: {
@@ -14744,12 +18960,12 @@ export declare const apiContract: {
                                 topCategory: {
                                     status: "available" | "empty";
                                     amount: number;
-                                    percentage: number;
                                     category: string | null;
+                                    percentage: number;
                                 };
                             };
                             recentMovements: {
-                                type: "income" | "expense";
+                                type: "expense";
                                 status: string;
                                 id: string;
                                 date: Date;
@@ -14758,7 +18974,7 @@ export declare const apiContract: {
                                 amount: number;
                             }[];
                             upcomingEvents: {
-                                type: "income" | "expense";
+                                type: "expense";
                                 id: string;
                                 date: Date;
                                 description: string;
@@ -14767,15 +18983,15 @@ export declare const apiContract: {
                             expenseDistribution: {
                                 color: string;
                                 amount: number;
-                                percentage: number;
                                 category: string;
+                                percentage: number;
                             }[];
                             expenseDistributionByCurrency: {
                                 items: {
                                     color: string;
                                     amount: number;
-                                    percentage: number;
                                     category: string;
+                                    percentage: number;
                                 }[];
                                 currency: "DOP" | "USD" | "EUR";
                             }[];
@@ -14789,16 +19005,13 @@ export declare const apiContract: {
                     }, "strip", import("zod").ZodTypeAny, {
                         message: string;
                         data: {
-                            balance: {
-                                currency: string;
-                                available: number;
-                            };
                             budgets: {
                                 overview: {
                                     total: number;
                                     totalUsed: number;
                                 };
                                 budgets: {
+                                    status: "ok" | "near_limit" | "exceeded" | null;
                                     id: number;
                                     is_active: boolean;
                                     uuid: string;
@@ -14810,22 +19023,20 @@ export declare const apiContract: {
                                     end_date: Date;
                                     total_amount: number;
                                     used_amount: number;
+                                    needs_category: boolean;
+                                    spent: number | null;
+                                    remaining: number | null;
+                                    percent: number | null;
+                                    period_active: boolean | null;
                                     settings?: any;
                                 }[];
                             };
                             monthlySummary: {
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             };
                             currencySummaries: {
                                 currency: "DOP" | "USD" | "EUR";
-                                available: number;
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             }[];
                             savingGoals: {
                                 id: number;
@@ -14845,8 +19056,8 @@ export declare const apiContract: {
                                 budgetUsage: {
                                     status: "on_track" | "warning" | "over_budget" | "no_budget";
                                     total: number;
-                                    used: number;
                                     remaining: number;
+                                    used: number;
                                     percentage: number;
                                 };
                                 expenseProjection: {
@@ -14857,12 +19068,12 @@ export declare const apiContract: {
                                 topCategory: {
                                     status: "available" | "empty";
                                     amount: number;
-                                    percentage: number;
                                     category: string | null;
+                                    percentage: number;
                                 };
                             };
                             recentMovements: {
-                                type: "income" | "expense";
+                                type: "expense";
                                 status: string;
                                 id: string;
                                 date: Date;
@@ -14871,7 +19082,7 @@ export declare const apiContract: {
                                 amount: number;
                             }[];
                             upcomingEvents: {
-                                type: "income" | "expense";
+                                type: "expense";
                                 id: string;
                                 date: Date;
                                 description: string;
@@ -14880,15 +19091,15 @@ export declare const apiContract: {
                             expenseDistribution: {
                                 color: string;
                                 amount: number;
-                                percentage: number;
                                 category: string;
+                                percentage: number;
                             }[];
                             expenseDistributionByCurrency: {
                                 items: {
                                     color: string;
                                     amount: number;
-                                    percentage: number;
                                     category: string;
+                                    percentage: number;
                                 }[];
                                 currency: "DOP" | "USD" | "EUR";
                             }[];
@@ -14902,16 +19113,13 @@ export declare const apiContract: {
                     }, {
                         message: string;
                         data: {
-                            balance: {
-                                currency: string;
-                                available: number;
-                            };
                             budgets: {
                                 overview: {
                                     total: number;
                                     totalUsed: number;
                                 };
                                 budgets: {
+                                    status: "ok" | "near_limit" | "exceeded" | null;
                                     id: number;
                                     is_active: boolean;
                                     uuid: string;
@@ -14923,22 +19131,20 @@ export declare const apiContract: {
                                     end_date: Date;
                                     total_amount: number;
                                     used_amount: number;
+                                    needs_category: boolean;
+                                    spent: number | null;
+                                    remaining: number | null;
+                                    percent: number | null;
+                                    period_active: boolean | null;
                                     settings?: any;
                                 }[];
                             };
                             monthlySummary: {
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             };
                             currencySummaries: {
                                 currency: "DOP" | "USD" | "EUR";
-                                available: number;
-                                income: number;
                                 expenses: number;
-                                debts: number;
-                                netBalance: number;
                             }[];
                             savingGoals: {
                                 id: number;
@@ -14958,8 +19164,8 @@ export declare const apiContract: {
                                 budgetUsage: {
                                     status: "on_track" | "warning" | "over_budget" | "no_budget";
                                     total: number;
-                                    used: number;
                                     remaining: number;
+                                    used: number;
                                     percentage: number;
                                 };
                                 expenseProjection: {
@@ -14970,12 +19176,12 @@ export declare const apiContract: {
                                 topCategory: {
                                     status: "available" | "empty";
                                     amount: number;
-                                    percentage: number;
                                     category: string | null;
+                                    percentage: number;
                                 };
                             };
                             recentMovements: {
-                                type: "income" | "expense";
+                                type: "expense";
                                 status: string;
                                 id: string;
                                 date: Date;
@@ -14984,7 +19190,7 @@ export declare const apiContract: {
                                 amount: number;
                             }[];
                             upcomingEvents: {
-                                type: "income" | "expense";
+                                type: "expense";
                                 id: string;
                                 date: Date;
                                 description: string;
@@ -14993,15 +19199,15 @@ export declare const apiContract: {
                             expenseDistribution: {
                                 color: string;
                                 amount: number;
-                                percentage: number;
                                 category: string;
+                                percentage: number;
                             }[];
                             expenseDistributionByCurrency: {
                                 items: {
                                     color: string;
                                     amount: number;
-                                    percentage: number;
                                     category: string;
+                                    percentage: number;
                                 }[];
                                 currency: "DOP" | "USD" | "EUR";
                             }[];
@@ -15686,8 +19892,15 @@ export declare const apiContract: {
         FinancialTrends: {
             getFinancialTrends: {
                 strictStatusCodes: true;
+                query: import("zod").ZodObject<{
+                    currency: import("zod").ZodOptional<import("zod").ZodEnum<["DOP", "USD", "EUR"]>>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    currency?: "DOP" | "USD" | "EUR" | undefined;
+                }, {
+                    currency?: "DOP" | "USD" | "EUR" | undefined;
+                }>;
                 summary: "Get financial trends data";
-                description: "Returns all data needed for the financial trends screen, including monthly comparisons, category growth, end-of-month projections, and saving goals.";
+                description: "Returns expense-only data for the selected currency, including month-over-month comparisons, category growth, and end-of-month spending projections.";
                 method: "GET";
                 path: "/api/financial-trends";
                 responses: {
@@ -15695,24 +19908,15 @@ export declare const apiContract: {
                         success: import("zod").ZodLiteral<true>;
                         data: import("zod").ZodObject<{
                             monthlyComparison: import("zod").ZodObject<{
-                                savingsVsPreviousMonth: import("zod").ZodNullable<import("zod").ZodNumber>;
                                 expensesVsPreviousMonth: import("zod").ZodNullable<import("zod").ZodNumber>;
-                                currentSavings: import("zod").ZodNumber;
-                                previousSavings: import("zod").ZodNumber;
                                 currentExpenses: import("zod").ZodNumber;
                                 previousExpenses: import("zod").ZodNumber;
                             }, "strip", import("zod").ZodTypeAny, {
-                                savingsVsPreviousMonth: number | null;
                                 expensesVsPreviousMonth: number | null;
-                                currentSavings: number;
-                                previousSavings: number;
                                 currentExpenses: number;
                                 previousExpenses: number;
                             }, {
-                                savingsVsPreviousMonth: number | null;
                                 expensesVsPreviousMonth: number | null;
-                                currentSavings: number;
-                                previousSavings: number;
                                 currentExpenses: number;
                                 previousExpenses: number;
                             }>;
@@ -15736,43 +19940,15 @@ export declare const apiContract: {
                                 trend: "down" | "up" | "neutral";
                             }>, "many">;
                             monthEndProjection: import("zod").ZodObject<{
-                                projectedBalance: import("zod").ZodNumber;
-                                estimatedSavings: import("zod").ZodNumber;
-                                balanceTrend: import("zod").ZodEnum<["up", "down", "neutral"]>;
-                                savingsTrend: import("zod").ZodEnum<["up", "down", "neutral"]>;
+                                projectedExpenses: import("zod").ZodNumber;
+                                trend: import("zod").ZodEnum<["up", "down", "neutral"]>;
                             }, "strip", import("zod").ZodTypeAny, {
-                                projectedBalance: number;
-                                estimatedSavings: number;
-                                balanceTrend: "down" | "up" | "neutral";
-                                savingsTrend: "down" | "up" | "neutral";
+                                trend: "down" | "up" | "neutral";
+                                projectedExpenses: number;
                             }, {
-                                projectedBalance: number;
-                                estimatedSavings: number;
-                                balanceTrend: "down" | "up" | "neutral";
-                                savingsTrend: "down" | "up" | "neutral";
+                                trend: "down" | "up" | "neutral";
+                                projectedExpenses: number;
                             }>;
-                            savingGoals: import("zod").ZodArray<import("zod").ZodObject<{
-                                id: import("zod").ZodNumber;
-                                name: import("zod").ZodString;
-                                currentAmount: import("zod").ZodNumber;
-                                targetAmount: import("zod").ZodNumber;
-                                progress: import("zod").ZodNumber;
-                                color: import("zod").ZodOptional<import("zod").ZodString>;
-                            }, "strip", import("zod").ZodTypeAny, {
-                                id: number;
-                                name: string;
-                                progress: number;
-                                currentAmount: number;
-                                targetAmount: number;
-                                color?: string | undefined;
-                            }, {
-                                id: number;
-                                name: string;
-                                progress: number;
-                                currentAmount: number;
-                                targetAmount: number;
-                                color?: string | undefined;
-                            }>, "many">;
                             syncStatus: import("zod").ZodObject<{
                                 lastSync: import("zod").ZodNullable<import("zod").ZodDate>;
                                 needsSync: import("zod").ZodBoolean;
@@ -15784,23 +19960,12 @@ export declare const apiContract: {
                                 needsSync: boolean;
                             }>;
                         }, "strip", import("zod").ZodTypeAny, {
-                            savingGoals: {
-                                id: number;
-                                name: string;
-                                progress: number;
-                                currentAmount: number;
-                                targetAmount: number;
-                                color?: string | undefined;
-                            }[];
                             syncStatus: {
                                 lastSync: Date | null;
                                 needsSync: boolean;
                             };
                             monthlyComparison: {
-                                savingsVsPreviousMonth: number | null;
                                 expensesVsPreviousMonth: number | null;
-                                currentSavings: number;
-                                previousSavings: number;
                                 currentExpenses: number;
                                 previousExpenses: number;
                             };
@@ -15812,29 +19977,16 @@ export declare const apiContract: {
                                 trend: "down" | "up" | "neutral";
                             }[];
                             monthEndProjection: {
-                                projectedBalance: number;
-                                estimatedSavings: number;
-                                balanceTrend: "down" | "up" | "neutral";
-                                savingsTrend: "down" | "up" | "neutral";
+                                trend: "down" | "up" | "neutral";
+                                projectedExpenses: number;
                             };
                         }, {
-                            savingGoals: {
-                                id: number;
-                                name: string;
-                                progress: number;
-                                currentAmount: number;
-                                targetAmount: number;
-                                color?: string | undefined;
-                            }[];
                             syncStatus: {
                                 lastSync: Date | null;
                                 needsSync: boolean;
                             };
                             monthlyComparison: {
-                                savingsVsPreviousMonth: number | null;
                                 expensesVsPreviousMonth: number | null;
-                                currentSavings: number;
-                                previousSavings: number;
                                 currentExpenses: number;
                                 previousExpenses: number;
                             };
@@ -15846,33 +19998,20 @@ export declare const apiContract: {
                                 trend: "down" | "up" | "neutral";
                             }[];
                             monthEndProjection: {
-                                projectedBalance: number;
-                                estimatedSavings: number;
-                                balanceTrend: "down" | "up" | "neutral";
-                                savingsTrend: "down" | "up" | "neutral";
+                                trend: "down" | "up" | "neutral";
+                                projectedExpenses: number;
                             };
                         }>;
                         message: import("zod").ZodString;
                     }, "strip", import("zod").ZodTypeAny, {
                         message: string;
                         data: {
-                            savingGoals: {
-                                id: number;
-                                name: string;
-                                progress: number;
-                                currentAmount: number;
-                                targetAmount: number;
-                                color?: string | undefined;
-                            }[];
                             syncStatus: {
                                 lastSync: Date | null;
                                 needsSync: boolean;
                             };
                             monthlyComparison: {
-                                savingsVsPreviousMonth: number | null;
                                 expensesVsPreviousMonth: number | null;
-                                currentSavings: number;
-                                previousSavings: number;
                                 currentExpenses: number;
                                 previousExpenses: number;
                             };
@@ -15884,33 +20023,20 @@ export declare const apiContract: {
                                 trend: "down" | "up" | "neutral";
                             }[];
                             monthEndProjection: {
-                                projectedBalance: number;
-                                estimatedSavings: number;
-                                balanceTrend: "down" | "up" | "neutral";
-                                savingsTrend: "down" | "up" | "neutral";
+                                trend: "down" | "up" | "neutral";
+                                projectedExpenses: number;
                             };
                         };
                         success: true;
                     }, {
                         message: string;
                         data: {
-                            savingGoals: {
-                                id: number;
-                                name: string;
-                                progress: number;
-                                currentAmount: number;
-                                targetAmount: number;
-                                color?: string | undefined;
-                            }[];
                             syncStatus: {
                                 lastSync: Date | null;
                                 needsSync: boolean;
                             };
                             monthlyComparison: {
-                                savingsVsPreviousMonth: number | null;
                                 expensesVsPreviousMonth: number | null;
-                                currentSavings: number;
-                                previousSavings: number;
                                 currentExpenses: number;
                                 previousExpenses: number;
                             };
@@ -15922,10 +20048,8 @@ export declare const apiContract: {
                                 trend: "down" | "up" | "neutral";
                             }[];
                             monthEndProjection: {
-                                projectedBalance: number;
-                                estimatedSavings: number;
-                                balanceTrend: "down" | "up" | "neutral";
-                                savingsTrend: "down" | "up" | "neutral";
+                                trend: "down" | "up" | "neutral";
+                                projectedExpenses: number;
                             };
                         };
                         success: true;
@@ -15961,7 +20085,7 @@ export declare const apiContract: {
             refreshFinancialTrends: {
                 strictStatusCodes: true;
                 summary: "Refresh financial trends data";
-                description: "Forces bank data synchronization and regenerates financial trends with up-to-date information.";
+                description: "Regenerates expense comparisons, category growth, and spending projections from recorded expenses.";
                 method: "POST";
                 body: import("zod").ZodObject<{}, "strip", import("zod").ZodTypeAny, {}, {}>;
                 path: "/api/financial-trends/refresh";
@@ -15970,24 +20094,15 @@ export declare const apiContract: {
                         success: import("zod").ZodLiteral<true>;
                         data: import("zod").ZodObject<{
                             monthlyComparison: import("zod").ZodObject<{
-                                savingsVsPreviousMonth: import("zod").ZodNullable<import("zod").ZodNumber>;
                                 expensesVsPreviousMonth: import("zod").ZodNullable<import("zod").ZodNumber>;
-                                currentSavings: import("zod").ZodNumber;
-                                previousSavings: import("zod").ZodNumber;
                                 currentExpenses: import("zod").ZodNumber;
                                 previousExpenses: import("zod").ZodNumber;
                             }, "strip", import("zod").ZodTypeAny, {
-                                savingsVsPreviousMonth: number | null;
                                 expensesVsPreviousMonth: number | null;
-                                currentSavings: number;
-                                previousSavings: number;
                                 currentExpenses: number;
                                 previousExpenses: number;
                             }, {
-                                savingsVsPreviousMonth: number | null;
                                 expensesVsPreviousMonth: number | null;
-                                currentSavings: number;
-                                previousSavings: number;
                                 currentExpenses: number;
                                 previousExpenses: number;
                             }>;
@@ -16011,43 +20126,15 @@ export declare const apiContract: {
                                 trend: "down" | "up" | "neutral";
                             }>, "many">;
                             monthEndProjection: import("zod").ZodObject<{
-                                projectedBalance: import("zod").ZodNumber;
-                                estimatedSavings: import("zod").ZodNumber;
-                                balanceTrend: import("zod").ZodEnum<["up", "down", "neutral"]>;
-                                savingsTrend: import("zod").ZodEnum<["up", "down", "neutral"]>;
+                                projectedExpenses: import("zod").ZodNumber;
+                                trend: import("zod").ZodEnum<["up", "down", "neutral"]>;
                             }, "strip", import("zod").ZodTypeAny, {
-                                projectedBalance: number;
-                                estimatedSavings: number;
-                                balanceTrend: "down" | "up" | "neutral";
-                                savingsTrend: "down" | "up" | "neutral";
+                                trend: "down" | "up" | "neutral";
+                                projectedExpenses: number;
                             }, {
-                                projectedBalance: number;
-                                estimatedSavings: number;
-                                balanceTrend: "down" | "up" | "neutral";
-                                savingsTrend: "down" | "up" | "neutral";
+                                trend: "down" | "up" | "neutral";
+                                projectedExpenses: number;
                             }>;
-                            savingGoals: import("zod").ZodArray<import("zod").ZodObject<{
-                                id: import("zod").ZodNumber;
-                                name: import("zod").ZodString;
-                                currentAmount: import("zod").ZodNumber;
-                                targetAmount: import("zod").ZodNumber;
-                                progress: import("zod").ZodNumber;
-                                color: import("zod").ZodOptional<import("zod").ZodString>;
-                            }, "strip", import("zod").ZodTypeAny, {
-                                id: number;
-                                name: string;
-                                progress: number;
-                                currentAmount: number;
-                                targetAmount: number;
-                                color?: string | undefined;
-                            }, {
-                                id: number;
-                                name: string;
-                                progress: number;
-                                currentAmount: number;
-                                targetAmount: number;
-                                color?: string | undefined;
-                            }>, "many">;
                             syncStatus: import("zod").ZodObject<{
                                 lastSync: import("zod").ZodNullable<import("zod").ZodDate>;
                                 needsSync: import("zod").ZodBoolean;
@@ -16059,23 +20146,12 @@ export declare const apiContract: {
                                 needsSync: boolean;
                             }>;
                         }, "strip", import("zod").ZodTypeAny, {
-                            savingGoals: {
-                                id: number;
-                                name: string;
-                                progress: number;
-                                currentAmount: number;
-                                targetAmount: number;
-                                color?: string | undefined;
-                            }[];
                             syncStatus: {
                                 lastSync: Date | null;
                                 needsSync: boolean;
                             };
                             monthlyComparison: {
-                                savingsVsPreviousMonth: number | null;
                                 expensesVsPreviousMonth: number | null;
-                                currentSavings: number;
-                                previousSavings: number;
                                 currentExpenses: number;
                                 previousExpenses: number;
                             };
@@ -16087,29 +20163,16 @@ export declare const apiContract: {
                                 trend: "down" | "up" | "neutral";
                             }[];
                             monthEndProjection: {
-                                projectedBalance: number;
-                                estimatedSavings: number;
-                                balanceTrend: "down" | "up" | "neutral";
-                                savingsTrend: "down" | "up" | "neutral";
+                                trend: "down" | "up" | "neutral";
+                                projectedExpenses: number;
                             };
                         }, {
-                            savingGoals: {
-                                id: number;
-                                name: string;
-                                progress: number;
-                                currentAmount: number;
-                                targetAmount: number;
-                                color?: string | undefined;
-                            }[];
                             syncStatus: {
                                 lastSync: Date | null;
                                 needsSync: boolean;
                             };
                             monthlyComparison: {
-                                savingsVsPreviousMonth: number | null;
                                 expensesVsPreviousMonth: number | null;
-                                currentSavings: number;
-                                previousSavings: number;
                                 currentExpenses: number;
                                 previousExpenses: number;
                             };
@@ -16121,33 +20184,20 @@ export declare const apiContract: {
                                 trend: "down" | "up" | "neutral";
                             }[];
                             monthEndProjection: {
-                                projectedBalance: number;
-                                estimatedSavings: number;
-                                balanceTrend: "down" | "up" | "neutral";
-                                savingsTrend: "down" | "up" | "neutral";
+                                trend: "down" | "up" | "neutral";
+                                projectedExpenses: number;
                             };
                         }>;
                         message: import("zod").ZodString;
                     }, "strip", import("zod").ZodTypeAny, {
                         message: string;
                         data: {
-                            savingGoals: {
-                                id: number;
-                                name: string;
-                                progress: number;
-                                currentAmount: number;
-                                targetAmount: number;
-                                color?: string | undefined;
-                            }[];
                             syncStatus: {
                                 lastSync: Date | null;
                                 needsSync: boolean;
                             };
                             monthlyComparison: {
-                                savingsVsPreviousMonth: number | null;
                                 expensesVsPreviousMonth: number | null;
-                                currentSavings: number;
-                                previousSavings: number;
                                 currentExpenses: number;
                                 previousExpenses: number;
                             };
@@ -16159,33 +20209,20 @@ export declare const apiContract: {
                                 trend: "down" | "up" | "neutral";
                             }[];
                             monthEndProjection: {
-                                projectedBalance: number;
-                                estimatedSavings: number;
-                                balanceTrend: "down" | "up" | "neutral";
-                                savingsTrend: "down" | "up" | "neutral";
+                                trend: "down" | "up" | "neutral";
+                                projectedExpenses: number;
                             };
                         };
                         success: true;
                     }, {
                         message: string;
                         data: {
-                            savingGoals: {
-                                id: number;
-                                name: string;
-                                progress: number;
-                                currentAmount: number;
-                                targetAmount: number;
-                                color?: string | undefined;
-                            }[];
                             syncStatus: {
                                 lastSync: Date | null;
                                 needsSync: boolean;
                             };
                             monthlyComparison: {
-                                savingsVsPreviousMonth: number | null;
                                 expensesVsPreviousMonth: number | null;
-                                currentSavings: number;
-                                previousSavings: number;
                                 currentExpenses: number;
                                 previousExpenses: number;
                             };
@@ -16197,10 +20234,8 @@ export declare const apiContract: {
                                 trend: "down" | "up" | "neutral";
                             }[];
                             monthEndProjection: {
-                                projectedBalance: number;
-                                estimatedSavings: number;
-                                balanceTrend: "down" | "up" | "neutral";
-                                savingsTrend: "down" | "up" | "neutral";
+                                trend: "down" | "up" | "neutral";
+                                projectedExpenses: number;
                             };
                         };
                         success: true;
@@ -16245,41 +20280,36 @@ export declare const apiContract: {
                     currency?: "DOP" | "USD" | "EUR" | undefined;
                 }>;
                 summary: "Get full financial reports";
-                description: "Returns financial summary, monthly trend, and expense distribution. Optional currency limits totals to DOP, USD, or EUR.";
+                description: "Returns financial summary, monthly trend, and expense distribution. Totals default to DOP; the optional currency selects DOP, USD, or EUR.";
                 method: "GET";
                 path: "/api/reports";
                 responses: {
                     200: import("zod").ZodObject<{
                         success: import("zod").ZodBoolean;
                         data: import("zod").ZodObject<{
+                            currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
                             summary: import("zod").ZodObject<{
-                                income: import("zod").ZodNumber;
                                 expenses: import("zod").ZodNumber;
-                                netSavings: import("zod").ZodNumber;
-                                savingsRate: import("zod").ZodNumber;
+                                totalBudget: import("zod").ZodNumber;
+                                budgetSpent: import("zod").ZodNumber;
                             }, "strip", import("zod").ZodTypeAny, {
-                                income: number;
                                 expenses: number;
-                                netSavings: number;
-                                savingsRate: number;
+                                totalBudget: number;
+                                budgetSpent: number;
                             }, {
-                                income: number;
                                 expenses: number;
-                                netSavings: number;
-                                savingsRate: number;
+                                totalBudget: number;
+                                budgetSpent: number;
                             }>;
                             monthlyTrend: import("zod").ZodObject<{
                                 months: import("zod").ZodArray<import("zod").ZodString, "many">;
-                                income: import("zod").ZodArray<import("zod").ZodNumber, "many">;
                                 expenses: import("zod").ZodArray<import("zod").ZodNumber, "many">;
                                 period: import("zod").ZodString;
                             }, "strip", import("zod").ZodTypeAny, {
-                                income: number[];
                                 expenses: number[];
                                 period: string;
                                 months: string[];
                             }, {
-                                income: number[];
                                 expenses: number[];
                                 period: string;
                                 months: string[];
@@ -16300,13 +20330,32 @@ export declare const apiContract: {
                                 amount: number;
                                 percentage: number;
                             }>, "many">;
+                            expenseInsights: import("zod").ZodArray<import("zod").ZodObject<{
+                                type: import("zod").ZodEnum<["positive", "warning", "info"]>;
+                                title: import("zod").ZodString;
+                                description: import("zod").ZodString;
+                                percentageChange: import("zod").ZodNumber;
+                                category: import("zod").ZodNullable<import("zod").ZodString>;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                type: "warning" | "positive" | "info";
+                                description: string;
+                                title: string;
+                                category: string | null;
+                                percentageChange: number;
+                            }, {
+                                type: "warning" | "positive" | "info";
+                                description: string;
+                                title: string;
+                                category: string | null;
+                                percentageChange: number;
+                            }>, "many">;
                         }, "strip", import("zod").ZodTypeAny, {
                             summary: {
-                                income: number;
                                 expenses: number;
-                                netSavings: number;
-                                savingsRate: number;
+                                totalBudget: number;
+                                budgetSpent: number;
                             };
+                            currency: "DOP" | "USD" | "EUR";
                             expenseDistribution: {
                                 name: string;
                                 color: string;
@@ -16314,18 +20363,24 @@ export declare const apiContract: {
                                 percentage: number;
                             }[];
                             monthlyTrend: {
-                                income: number[];
                                 expenses: number[];
                                 period: string;
                                 months: string[];
                             };
+                            expenseInsights: {
+                                type: "warning" | "positive" | "info";
+                                description: string;
+                                title: string;
+                                category: string | null;
+                                percentageChange: number;
+                            }[];
                         }, {
                             summary: {
-                                income: number;
                                 expenses: number;
-                                netSavings: number;
-                                savingsRate: number;
+                                totalBudget: number;
+                                budgetSpent: number;
                             };
+                            currency: "DOP" | "USD" | "EUR";
                             expenseDistribution: {
                                 name: string;
                                 color: string;
@@ -16333,22 +20388,28 @@ export declare const apiContract: {
                                 percentage: number;
                             }[];
                             monthlyTrend: {
-                                income: number[];
                                 expenses: number[];
                                 period: string;
                                 months: string[];
                             };
+                            expenseInsights: {
+                                type: "warning" | "positive" | "info";
+                                description: string;
+                                title: string;
+                                category: string | null;
+                                percentageChange: number;
+                            }[];
                         }>;
                         message: import("zod").ZodString;
                     }, "strip", import("zod").ZodTypeAny, {
                         message: string;
                         data: {
                             summary: {
-                                income: number;
                                 expenses: number;
-                                netSavings: number;
-                                savingsRate: number;
+                                totalBudget: number;
+                                budgetSpent: number;
                             };
+                            currency: "DOP" | "USD" | "EUR";
                             expenseDistribution: {
                                 name: string;
                                 color: string;
@@ -16356,22 +20417,28 @@ export declare const apiContract: {
                                 percentage: number;
                             }[];
                             monthlyTrend: {
-                                income: number[];
                                 expenses: number[];
                                 period: string;
                                 months: string[];
                             };
+                            expenseInsights: {
+                                type: "warning" | "positive" | "info";
+                                description: string;
+                                title: string;
+                                category: string | null;
+                                percentageChange: number;
+                            }[];
                         };
                         success: boolean;
                     }, {
                         message: string;
                         data: {
                             summary: {
-                                income: number;
                                 expenses: number;
-                                netSavings: number;
-                                savingsRate: number;
+                                totalBudget: number;
+                                budgetSpent: number;
                             };
+                            currency: "DOP" | "USD" | "EUR";
                             expenseDistribution: {
                                 name: string;
                                 color: string;
@@ -16379,11 +20446,17 @@ export declare const apiContract: {
                                 percentage: number;
                             }[];
                             monthlyTrend: {
-                                income: number[];
                                 expenses: number[];
                                 period: string;
                                 months: string[];
                             };
+                            expenseInsights: {
+                                type: "warning" | "positive" | "info";
+                                description: string;
+                                title: string;
+                                category: string | null;
+                                percentageChange: number;
+                            }[];
                         };
                         success: boolean;
                     }>;

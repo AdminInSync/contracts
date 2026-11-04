@@ -3,10 +3,7 @@ import { z } from 'zod';
 const c = initContract();
 // Schemas for financial trends data types
 const MonthlyComparisonSchema = z.object({
-    savingsVsPreviousMonth: z.number().nullable(),
     expensesVsPreviousMonth: z.number().nullable(),
-    currentSavings: z.number(),
-    previousSavings: z.number(),
     currentExpenses: z.number(),
     previousExpenses: z.number(),
 });
@@ -18,18 +15,8 @@ const CategoryGrowthItemSchema = z.object({
     trend: z.enum(['up', 'down', 'neutral']),
 });
 const MonthEndProjectionSchema = z.object({
-    projectedBalance: z.number(),
-    estimatedSavings: z.number(),
-    balanceTrend: z.enum(['up', 'down', 'neutral']),
-    savingsTrend: z.enum(['up', 'down', 'neutral'])
-});
-const SavingGoalTrendSchema = z.object({
-    id: z.number(),
-    name: z.string(),
-    currentAmount: z.number(),
-    targetAmount: z.number(),
-    progress: z.number(),
-    color: z.string().optional()
+    projectedExpenses: z.number(),
+    trend: z.enum(['up', 'down', 'neutral'])
 });
 const SyncStatusSchema = z.object({
     lastSync: z.date().nullable(),
@@ -39,7 +26,6 @@ const FinancialTrendsDataSchema = z.object({
     monthlyComparison: MonthlyComparisonSchema,
     categoryGrowth: z.array(CategoryGrowthItemSchema),
     monthEndProjection: MonthEndProjectionSchema,
-    savingGoals: z.array(SavingGoalTrendSchema),
     syncStatus: SyncStatusSchema
 });
 // Response schemas
@@ -61,13 +47,16 @@ export const FinancialTrendsContracts = c.router({
     getFinancialTrends: {
         method: 'GET',
         path: '/financial-trends',
+        query: z.object({
+            currency: z.enum(['DOP', 'USD', 'EUR']).optional(),
+        }),
         responses: {
             200: SuccessResponseSchema,
             401: ErrorResponseSchema,
             500: ErrorResponseSchema
         },
         summary: 'Get financial trends data',
-        description: 'Returns all data needed for the financial trends screen, including monthly comparisons, category growth, end-of-month projections, and saving goals.'
+        description: 'Returns expense-only data for the selected currency, including month-over-month comparisons, category growth, and end-of-month spending projections.'
     },
     /**
      * Refresh financial trends data
@@ -83,6 +72,6 @@ export const FinancialTrendsContracts = c.router({
             500: ErrorResponseSchema
         },
         summary: 'Refresh financial trends data',
-        description: 'Forces bank data synchronization and regenerates financial trends with up-to-date information.'
+        description: 'Regenerates expense comparisons, category growth, and spending projections from recorded expenses.'
     }
 });

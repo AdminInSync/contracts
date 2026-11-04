@@ -107,41 +107,36 @@ export declare const ReportsContracts: {
             currency?: "DOP" | "USD" | "EUR" | undefined;
         }>;
         summary: "Get full financial reports";
-        description: "Returns financial summary, monthly trend, and expense distribution. Optional currency limits totals to DOP, USD, or EUR.";
+        description: "Returns financial summary, monthly trend, and expense distribution. Totals default to DOP; the optional currency selects DOP, USD, or EUR.";
         method: "GET";
         path: "/reports";
         responses: {
             200: z.ZodObject<{
                 success: z.ZodBoolean;
                 data: z.ZodObject<{
+                    currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
                     summary: z.ZodObject<{
-                        income: z.ZodNumber;
                         expenses: z.ZodNumber;
-                        netSavings: z.ZodNumber;
-                        savingsRate: z.ZodNumber;
+                        totalBudget: z.ZodNumber;
+                        budgetSpent: z.ZodNumber;
                     }, "strip", z.ZodTypeAny, {
-                        income: number;
                         expenses: number;
-                        netSavings: number;
-                        savingsRate: number;
+                        totalBudget: number;
+                        budgetSpent: number;
                     }, {
-                        income: number;
                         expenses: number;
-                        netSavings: number;
-                        savingsRate: number;
+                        totalBudget: number;
+                        budgetSpent: number;
                     }>;
                     monthlyTrend: z.ZodObject<{
                         months: z.ZodArray<z.ZodString, "many">;
-                        income: z.ZodArray<z.ZodNumber, "many">;
                         expenses: z.ZodArray<z.ZodNumber, "many">;
                         period: z.ZodString;
                     }, "strip", z.ZodTypeAny, {
-                        income: number[];
                         expenses: number[];
                         period: string;
                         months: string[];
                     }, {
-                        income: number[];
                         expenses: number[];
                         period: string;
                         months: string[];
@@ -162,13 +157,32 @@ export declare const ReportsContracts: {
                         amount: number;
                         percentage: number;
                     }>, "many">;
+                    expenseInsights: z.ZodArray<z.ZodObject<{
+                        type: z.ZodEnum<["positive", "warning", "info"]>;
+                        title: z.ZodString;
+                        description: z.ZodString;
+                        percentageChange: z.ZodNumber;
+                        category: z.ZodNullable<z.ZodString>;
+                    }, "strip", z.ZodTypeAny, {
+                        type: "warning" | "positive" | "info";
+                        description: string;
+                        title: string;
+                        category: string | null;
+                        percentageChange: number;
+                    }, {
+                        type: "warning" | "positive" | "info";
+                        description: string;
+                        title: string;
+                        category: string | null;
+                        percentageChange: number;
+                    }>, "many">;
                 }, "strip", z.ZodTypeAny, {
                     summary: {
-                        income: number;
                         expenses: number;
-                        netSavings: number;
-                        savingsRate: number;
+                        totalBudget: number;
+                        budgetSpent: number;
                     };
+                    currency: "DOP" | "USD" | "EUR";
                     expenseDistribution: {
                         name: string;
                         color: string;
@@ -176,18 +190,24 @@ export declare const ReportsContracts: {
                         percentage: number;
                     }[];
                     monthlyTrend: {
-                        income: number[];
                         expenses: number[];
                         period: string;
                         months: string[];
                     };
+                    expenseInsights: {
+                        type: "warning" | "positive" | "info";
+                        description: string;
+                        title: string;
+                        category: string | null;
+                        percentageChange: number;
+                    }[];
                 }, {
                     summary: {
-                        income: number;
                         expenses: number;
-                        netSavings: number;
-                        savingsRate: number;
+                        totalBudget: number;
+                        budgetSpent: number;
                     };
+                    currency: "DOP" | "USD" | "EUR";
                     expenseDistribution: {
                         name: string;
                         color: string;
@@ -195,22 +215,28 @@ export declare const ReportsContracts: {
                         percentage: number;
                     }[];
                     monthlyTrend: {
-                        income: number[];
                         expenses: number[];
                         period: string;
                         months: string[];
                     };
+                    expenseInsights: {
+                        type: "warning" | "positive" | "info";
+                        description: string;
+                        title: string;
+                        category: string | null;
+                        percentageChange: number;
+                    }[];
                 }>;
                 message: z.ZodString;
             }, "strip", z.ZodTypeAny, {
                 message: string;
                 data: {
                     summary: {
-                        income: number;
                         expenses: number;
-                        netSavings: number;
-                        savingsRate: number;
+                        totalBudget: number;
+                        budgetSpent: number;
                     };
+                    currency: "DOP" | "USD" | "EUR";
                     expenseDistribution: {
                         name: string;
                         color: string;
@@ -218,22 +244,28 @@ export declare const ReportsContracts: {
                         percentage: number;
                     }[];
                     monthlyTrend: {
-                        income: number[];
                         expenses: number[];
                         period: string;
                         months: string[];
                     };
+                    expenseInsights: {
+                        type: "warning" | "positive" | "info";
+                        description: string;
+                        title: string;
+                        category: string | null;
+                        percentageChange: number;
+                    }[];
                 };
                 success: boolean;
             }, {
                 message: string;
                 data: {
                     summary: {
-                        income: number;
                         expenses: number;
-                        netSavings: number;
-                        savingsRate: number;
+                        totalBudget: number;
+                        budgetSpent: number;
                     };
+                    currency: "DOP" | "USD" | "EUR";
                     expenseDistribution: {
                         name: string;
                         color: string;
@@ -241,11 +273,17 @@ export declare const ReportsContracts: {
                         percentage: number;
                     }[];
                     monthlyTrend: {
-                        income: number[];
                         expenses: number[];
                         period: string;
                         months: string[];
                     };
+                    expenseInsights: {
+                        type: "warning" | "positive" | "info";
+                        description: string;
+                        title: string;
+                        category: string | null;
+                        percentageChange: number;
+                    }[];
                 };
                 success: boolean;
             }>;
