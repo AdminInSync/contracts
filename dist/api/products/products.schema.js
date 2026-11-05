@@ -106,6 +106,7 @@ export const ConnectedProductSchema = z.object({
     product_kind: ProductKindSchema,
     product_label: z.string(),
     lastFour: z.string(),
+    is_manual: z.boolean(),
     card_brand: CardBrandSchema.nullable(),
     linked_account_id: z.string().uuid().nullable().optional(),
     balance: ConnectedProductBalanceSchema,

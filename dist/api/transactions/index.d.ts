@@ -139,45 +139,45 @@ export declare const TransactionsContracts: {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
                     currency: "DOP" | "USD" | "EUR";
+                    is_manual: true;
                     product_uuid: string | null;
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
                     category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
-                    is_manual: true;
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                 }, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
                     currency: "DOP" | "USD" | "EUR";
+                    is_manual: true;
                     product_uuid: string | null;
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
                     category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
-                    is_manual: true;
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                 }>, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
                     currency: "DOP" | "USD" | "EUR";
+                    is_manual: true;
                     product_uuid: string | null;
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
                     category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
-                    is_manual: true;
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                 }, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
                     currency: "DOP" | "USD" | "EUR";
+                    is_manual: true;
                     product_uuid: string | null;
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
                     category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
-                    is_manual: true;
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                 }>, "many">;
                 pagination: z.ZodObject<{
@@ -199,12 +199,12 @@ export declare const TransactionsContracts: {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
                     currency: "DOP" | "USD" | "EUR";
+                    is_manual: true;
                     product_uuid: string | null;
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
                     category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
-                    is_manual: true;
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                 }[];
                 pagination: {
@@ -218,12 +218,12 @@ export declare const TransactionsContracts: {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
                     currency: "DOP" | "USD" | "EUR";
+                    is_manual: true;
                     product_uuid: string | null;
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
                     category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
-                    is_manual: true;
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                 }[];
                 pagination: {
@@ -324,45 +324,45 @@ export declare const TransactionsContracts: {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
                     currency: "DOP" | "USD" | "EUR";
+                    is_manual: true;
                     product_uuid: string | null;
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
                     category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
-                    is_manual: true;
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                 }, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
                     currency: "DOP" | "USD" | "EUR";
+                    is_manual: true;
                     product_uuid: string | null;
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
                     category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
-                    is_manual: true;
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                 }>, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
                     currency: "DOP" | "USD" | "EUR";
+                    is_manual: true;
                     product_uuid: string | null;
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
                     category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
-                    is_manual: true;
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                 }, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
                     currency: "DOP" | "USD" | "EUR";
+                    is_manual: true;
                     product_uuid: string | null;
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
                     category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
-                    is_manual: true;
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                 }>;
             }, "strip", z.ZodTypeAny, {
@@ -371,12 +371,12 @@ export declare const TransactionsContracts: {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
                     currency: "DOP" | "USD" | "EUR";
+                    is_manual: true;
                     product_uuid: string | null;
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
                     category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
-                    is_manual: true;
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                 };
             }, {
@@ -385,12 +385,12 @@ export declare const TransactionsContracts: {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
                     currency: "DOP" | "USD" | "EUR";
+                    is_manual: true;
                     product_uuid: string | null;
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
                     category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
-                    is_manual: true;
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                 };
             }>;
@@ -535,45 +535,45 @@ export declare const TransactionsContracts: {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
                     currency: "DOP" | "USD" | "EUR";
+                    is_manual: true;
                     product_uuid: string | null;
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
                     category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
-                    is_manual: true;
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                 }, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
                     currency: "DOP" | "USD" | "EUR";
+                    is_manual: true;
                     product_uuid: string | null;
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
                     category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
-                    is_manual: true;
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                 }>, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
                     currency: "DOP" | "USD" | "EUR";
+                    is_manual: true;
                     product_uuid: string | null;
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
                     category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
-                    is_manual: true;
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                 }, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
                     currency: "DOP" | "USD" | "EUR";
+                    is_manual: true;
                     product_uuid: string | null;
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
                     category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
-                    is_manual: true;
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                 }>;
             }, "strip", z.ZodTypeAny, {
@@ -582,12 +582,12 @@ export declare const TransactionsContracts: {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
                     currency: "DOP" | "USD" | "EUR";
+                    is_manual: true;
                     product_uuid: string | null;
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
                     category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
-                    is_manual: true;
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                 };
             }, {
@@ -596,12 +596,12 @@ export declare const TransactionsContracts: {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
                     currency: "DOP" | "USD" | "EUR";
+                    is_manual: true;
                     product_uuid: string | null;
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
                     category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
-                    is_manual: true;
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                 };
             }>;

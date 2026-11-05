@@ -624,6 +624,7 @@ export declare const ConnectedProductSchema: z.ZodObject<{
     product_kind: z.ZodEnum<["debit", "credit"]>;
     product_label: z.ZodString;
     lastFour: z.ZodString;
+    is_manual: z.ZodBoolean;
     card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
     linked_account_id: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     balance: z.ZodObject<{
@@ -701,6 +702,7 @@ export declare const ConnectedProductSchema: z.ZodObject<{
     product_kind: "debit" | "credit";
     product_label: string;
     lastFour: string;
+    is_manual: boolean;
     card_brand: "visa" | "mastercard" | "amex" | null;
     balance: {
         limit: number | null;
@@ -732,6 +734,7 @@ export declare const ConnectedProductSchema: z.ZodObject<{
     product_kind: "debit" | "credit";
     product_label: string;
     lastFour: string;
+    is_manual: boolean;
     card_brand: "visa" | "mastercard" | "amex" | null;
     balance: {
         limit: number | null;
@@ -795,6 +798,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         product_kind: z.ZodEnum<["debit", "credit"]>;
         product_label: z.ZodString;
         lastFour: z.ZodString;
+        is_manual: z.ZodBoolean;
         card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
         linked_account_id: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         balance: z.ZodObject<{
@@ -872,6 +876,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         product_kind: "debit" | "credit";
         product_label: string;
         lastFour: string;
+        is_manual: boolean;
         card_brand: "visa" | "mastercard" | "amex" | null;
         balance: {
             limit: number | null;
@@ -903,6 +908,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         product_kind: "debit" | "credit";
         product_label: string;
         lastFour: string;
+        is_manual: boolean;
         card_brand: "visa" | "mastercard" | "amex" | null;
         balance: {
             limit: number | null;
@@ -936,6 +942,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         product_kind: "debit" | "credit";
         product_label: string;
         lastFour: string;
+        is_manual: boolean;
         card_brand: "visa" | "mastercard" | "amex" | null;
         balance: {
             limit: number | null;
@@ -977,6 +984,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         product_kind: "debit" | "credit";
         product_label: string;
         lastFour: string;
+        is_manual: boolean;
         card_brand: "visa" | "mastercard" | "amex" | null;
         balance: {
             limit: number | null;
@@ -1029,6 +1037,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: z.ZodEnum<["debit", "credit"]>;
             product_label: z.ZodString;
             lastFour: z.ZodString;
+            is_manual: z.ZodBoolean;
             card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
             linked_account_id: z.ZodOptional<z.ZodNullable<z.ZodString>>;
             balance: z.ZodObject<{
@@ -1106,6 +1115,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: "debit" | "credit";
             product_label: string;
             lastFour: string;
+            is_manual: boolean;
             card_brand: "visa" | "mastercard" | "amex" | null;
             balance: {
                 limit: number | null;
@@ -1137,6 +1147,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: "debit" | "credit";
             product_label: string;
             lastFour: string;
+            is_manual: boolean;
             card_brand: "visa" | "mastercard" | "amex" | null;
             balance: {
                 limit: number | null;
@@ -1170,6 +1181,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: "debit" | "credit";
             product_label: string;
             lastFour: string;
+            is_manual: boolean;
             card_brand: "visa" | "mastercard" | "amex" | null;
             balance: {
                 limit: number | null;
@@ -1211,6 +1223,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: "debit" | "credit";
             product_label: string;
             lastFour: string;
+            is_manual: boolean;
             card_brand: "visa" | "mastercard" | "amex" | null;
             balance: {
                 limit: number | null;
@@ -1255,6 +1268,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: "debit" | "credit";
             product_label: string;
             lastFour: string;
+            is_manual: boolean;
             card_brand: "visa" | "mastercard" | "amex" | null;
             balance: {
                 limit: number | null;
@@ -1299,6 +1313,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: "debit" | "credit";
             product_label: string;
             lastFour: string;
+            is_manual: boolean;
             card_brand: "visa" | "mastercard" | "amex" | null;
             balance: {
                 limit: number | null;
@@ -1349,10 +1364,10 @@ export declare const ProductTransactionItemSchema: z.ZodObject<{
     amount: number;
     transaction_date: string;
     transaction_type: "debit" | "credit" | "payment";
+    is_manual?: boolean | undefined;
     product_uuid?: string | null | undefined;
     transaction_occurred_at?: string | null | undefined;
     category?: string | null | undefined;
-    is_manual?: boolean | undefined;
     linked_account_label?: string | null | undefined;
 }, {
     description: string | null;
@@ -1367,10 +1382,10 @@ export declare const ProductTransactionItemSchema: z.ZodObject<{
     amount: number;
     transaction_date: string;
     transaction_type: "debit" | "credit" | "payment";
+    is_manual?: boolean | undefined;
     product_uuid?: string | null | undefined;
     transaction_occurred_at?: string | null | undefined;
     category?: string | null | undefined;
-    is_manual?: boolean | undefined;
     linked_account_label?: string | null | undefined;
 }>;
 export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
@@ -1406,10 +1421,10 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         amount: number;
         transaction_date: string;
         transaction_type: "debit" | "credit" | "payment";
+        is_manual?: boolean | undefined;
         product_uuid?: string | null | undefined;
         transaction_occurred_at?: string | null | undefined;
         category?: string | null | undefined;
-        is_manual?: boolean | undefined;
         linked_account_label?: string | null | undefined;
     }, {
         description: string | null;
@@ -1424,10 +1439,10 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         amount: number;
         transaction_date: string;
         transaction_type: "debit" | "credit" | "payment";
+        is_manual?: boolean | undefined;
         product_uuid?: string | null | undefined;
         transaction_occurred_at?: string | null | undefined;
         category?: string | null | undefined;
-        is_manual?: boolean | undefined;
         linked_account_label?: string | null | undefined;
     }>, "many">;
     pagination: z.ZodObject<{
@@ -1468,10 +1483,10 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         amount: number;
         transaction_date: string;
         transaction_type: "debit" | "credit" | "payment";
+        is_manual?: boolean | undefined;
         product_uuid?: string | null | undefined;
         transaction_occurred_at?: string | null | undefined;
         category?: string | null | undefined;
-        is_manual?: boolean | undefined;
         linked_account_label?: string | null | undefined;
     }[];
     pagination: {
@@ -1498,10 +1513,10 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         amount: number;
         transaction_date: string;
         transaction_type: "debit" | "credit" | "payment";
+        is_manual?: boolean | undefined;
         product_uuid?: string | null | undefined;
         transaction_occurred_at?: string | null | undefined;
         category?: string | null | undefined;
-        is_manual?: boolean | undefined;
         linked_account_label?: string | null | undefined;
     }[];
     pagination: {
