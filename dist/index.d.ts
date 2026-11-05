@@ -8719,6 +8719,19 @@ export declare const apiContract: {
                         error?: string | undefined;
                         statusCode?: number | undefined;
                     }>;
+                    403: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
                 };
             };
             listManualTransactions: {
@@ -9025,6 +9038,19 @@ export declare const apiContract: {
                         statusCode?: number | undefined;
                     }>;
                     401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    403: import("zod").ZodObject<{
                         message: import("zod").ZodString;
                         error: import("zod").ZodOptional<import("zod").ZodString>;
                         statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
@@ -20546,6 +20572,19 @@ export declare const apiContract: {
                         error?: string | undefined;
                         statusCode?: number | undefined;
                     }>;
+                    403: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
                     500: import("zod").ZodObject<{
                         message: import("zod").ZodString;
                         error: import("zod").ZodOptional<import("zod").ZodString>;
@@ -20632,6 +20671,19 @@ export declare const apiContract: {
                         statusCode?: number | undefined;
                     }>;
                     401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    403: import("zod").ZodObject<{
                         message: import("zod").ZodString;
                         error: import("zod").ZodOptional<import("zod").ZodString>;
                         statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
@@ -20772,6 +20824,19 @@ export declare const apiContract: {
                         error?: string | undefined;
                         statusCode?: number | undefined;
                     }>;
+                    403: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
                     500: import("zod").ZodObject<{
                         message: import("zod").ZodString;
                         error: import("zod").ZodOptional<import("zod").ZodString>;
@@ -20821,6 +20886,19 @@ export declare const apiContract: {
                         statusCode?: number | undefined;
                     }>;
                     404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    403: import("zod").ZodObject<{
                         message: import("zod").ZodString;
                         error: import("zod").ZodOptional<import("zod").ZodString>;
                         statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
@@ -20905,6 +20983,19 @@ export declare const apiContract: {
                         statusCode?: number | undefined;
                     }>;
                     404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    403: import("zod").ZodObject<{
                         message: import("zod").ZodString;
                         error: import("zod").ZodOptional<import("zod").ZodString>;
                         statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
@@ -21092,6 +21183,19 @@ export declare const apiContract: {
                         error?: string | undefined;
                         statusCode?: number | undefined;
                     }>;
+                    403: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
                     500: import("zod").ZodObject<{
                         message: import("zod").ZodString;
                         error: import("zod").ZodOptional<import("zod").ZodString>;
@@ -21251,6 +21355,19 @@ export declare const apiContract: {
                         error?: string | undefined;
                         statusCode?: number | undefined;
                     }>;
+                    403: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
                     500: import("zod").ZodObject<{
                         message: import("zod").ZodString;
                         error: import("zod").ZodOptional<import("zod").ZodString>;
@@ -21335,6 +21452,19 @@ export declare const apiContract: {
                         }[];
                     }>;
                     401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    403: import("zod").ZodObject<{
                         message: import("zod").ZodString;
                         error: import("zod").ZodOptional<import("zod").ZodString>;
                         statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
@@ -21507,6 +21637,19 @@ export declare const apiContract: {
                         error?: string | undefined;
                         statusCode?: number | undefined;
                     }>;
+                    403: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
                     500: import("zod").ZodObject<{
                         message: import("zod").ZodString;
                         error: import("zod").ZodOptional<import("zod").ZodString>;
@@ -21562,6 +21705,19 @@ export declare const apiContract: {
                         statusCode?: number | undefined;
                     }>;
                     401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    403: import("zod").ZodObject<{
                         message: import("zod").ZodString;
                         error: import("zod").ZodOptional<import("zod").ZodString>;
                         statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
@@ -21642,6 +21798,19 @@ export declare const apiContract: {
                         statusCode?: number | undefined;
                     }>;
                     401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    403: import("zod").ZodObject<{
                         message: import("zod").ZodString;
                         error: import("zod").ZodOptional<import("zod").ZodString>;
                         statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
@@ -21735,7 +21904,64 @@ export declare const apiContract: {
                         error?: string | undefined;
                         statusCode?: number | undefined;
                     }>;
+                    403: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
                     404: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+        };
+        FeatureFlags: {
+            getTrackingMode: {
+                strictStatusCodes: true;
+                summary: "Get the authenticated account tracking mode";
+                description: "Returns whether email synchronization is enabled for the authenticated account.";
+                method: "GET";
+                path: "/api/profile/tracking-mode";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        emailSync: import("zod").ZodBoolean;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        emailSync: boolean;
+                    }, {
+                        emailSync: boolean;
+                    }>;
+                    401: import("zod").ZodObject<{
                         message: import("zod").ZodString;
                         error: import("zod").ZodOptional<import("zod").ZodString>;
                         statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;

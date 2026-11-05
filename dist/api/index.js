@@ -28,6 +28,7 @@ import { BetaTesterContracts } from './beta-testers';
 import { RegistrationContracts } from './registration';
 import { UserPreferencesContracts } from './user-preferences';
 import { SavingGoalRemindersContracts } from './saving-goal-reminders';
+import { FeatureFlagsContracts } from './feature-flags';
 const c = initContract();
 export const ApiContracts = c.router({
     AdminAuth: AdminAuthContracts,
@@ -59,6 +60,7 @@ export const ApiContracts = c.router({
     FinancialTrends: FinancialTrendsContracts,
     Reports: ReportsContracts,
     EmailIngestion: EmailIngestionContracts,
+    FeatureFlags: FeatureFlagsContracts,
 }, {
     strictStatusCodes: true,
     pathPrefix: '/api'
