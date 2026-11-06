@@ -90,6 +90,7 @@ export const ConnectedProductMetadataSchema = z.object({
     remaining_payments: z.number().nullable(),
     progress: z.number().nullable(),
     annual_rate: z.string().nullable(),
+    investment_contract_months: z.number().int().min(1).max(120).nullable(),
     risk_level: z.string().nullable(),
     interest_payment: z.string().nullable(),
     initial_value: z.number().nullable(),

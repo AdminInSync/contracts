@@ -27,7 +27,7 @@ export const TransactionsContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'List manually recorded transactions',
-        description: 'Returns the authenticated user’s manually recorded expenses and income.',
+        description: 'Returns the authenticated user’s manually recorded expenses and income. Email-enabled accounts see income entries only.',
     },
     createManualTransaction: {
         method: 'POST',
@@ -41,7 +41,7 @@ export const TransactionsContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'Record a manual transaction',
-        description: 'Creates an expense or income without free-text merchant or counterparty details.',
+        description: 'Creates an expense or income without free-text merchant or counterparty details. Email-enabled accounts may create income entries only.',
     },
     updateManualTransaction: {
         method: 'PATCH',
@@ -52,11 +52,12 @@ export const TransactionsContracts = c.router({
             200: ManualTransactionResponseSchema,
             400: ErrorResSchema,
             401: ErrorResSchema,
+            403: ErrorResSchema,
             404: ErrorResSchema,
             500: ErrorResSchema,
         },
         summary: 'Correct a manual transaction',
-        description: 'Corrects a manual entry owned by the authenticated user, including its transaction type.',
+        description: 'Corrects a manual entry owned by the authenticated user, including its transaction type. Email-enabled accounts may update income entries only.',
     },
     deleteManualTransaction: {
         method: 'DELETE',

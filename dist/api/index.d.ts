@@ -8119,6 +8119,7 @@ export declare const ApiContracts: {
                                 remaining_payments: import("zod").ZodNullable<import("zod").ZodNumber>;
                                 progress: import("zod").ZodNullable<import("zod").ZodNumber>;
                                 annual_rate: import("zod").ZodNullable<import("zod").ZodString>;
+                                investment_contract_months: import("zod").ZodNullable<import("zod").ZodNumber>;
                                 risk_level: import("zod").ZodNullable<import("zod").ZodString>;
                                 interest_payment: import("zod").ZodNullable<import("zod").ZodString>;
                                 initial_value: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -8131,6 +8132,7 @@ export declare const ApiContracts: {
                                 remaining_payments: number | null;
                                 progress: number | null;
                                 annual_rate: string | null;
+                                investment_contract_months: number | null;
                                 risk_level: string | null;
                                 interest_payment: string | null;
                                 initial_value: number | null;
@@ -8143,6 +8145,7 @@ export declare const ApiContracts: {
                                 remaining_payments: number | null;
                                 progress: number | null;
                                 annual_rate: string | null;
+                                investment_contract_months: number | null;
                                 risk_level: string | null;
                                 interest_payment: string | null;
                                 initial_value: number | null;
@@ -8161,6 +8164,7 @@ export declare const ApiContracts: {
                                 remaining_payments: number | null;
                                 progress: number | null;
                                 annual_rate: string | null;
+                                investment_contract_months: number | null;
                                 risk_level: string | null;
                                 interest_payment: string | null;
                                 initial_value: number | null;
@@ -8193,6 +8197,7 @@ export declare const ApiContracts: {
                                 remaining_payments: number | null;
                                 progress: number | null;
                                 annual_rate: string | null;
+                                investment_contract_months: number | null;
                                 risk_level: string | null;
                                 interest_payment: string | null;
                                 initial_value: number | null;
@@ -8227,6 +8232,7 @@ export declare const ApiContracts: {
                                 remaining_payments: number | null;
                                 progress: number | null;
                                 annual_rate: string | null;
+                                investment_contract_months: number | null;
                                 risk_level: string | null;
                                 interest_payment: string | null;
                                 initial_value: number | null;
@@ -8269,6 +8275,7 @@ export declare const ApiContracts: {
                                 remaining_payments: number | null;
                                 progress: number | null;
                                 annual_rate: string | null;
+                                investment_contract_months: number | null;
                                 risk_level: string | null;
                                 interest_payment: string | null;
                                 initial_value: number | null;
@@ -8314,6 +8321,7 @@ export declare const ApiContracts: {
                                 remaining_payments: number | null;
                                 progress: number | null;
                                 annual_rate: string | null;
+                                investment_contract_months: number | null;
                                 risk_level: string | null;
                                 interest_payment: string | null;
                                 initial_value: number | null;
@@ -8359,6 +8367,7 @@ export declare const ApiContracts: {
                                 remaining_payments: number | null;
                                 progress: number | null;
                                 annual_rate: string | null;
+                                investment_contract_months: number | null;
                                 risk_level: string | null;
                                 interest_payment: string | null;
                                 initial_value: number | null;
@@ -8752,7 +8761,7 @@ export declare const ApiContracts: {
                 offset?: string | undefined;
             }>;
             summary: "List manually recorded transactions";
-            description: "Returns the authenticated user’s manually recorded expenses and income.";
+            description: "Returns the authenticated user’s manually recorded expenses and income. Email-enabled accounts see income entries only.";
             method: "GET";
             path: "/api/transactions/manual";
             responses: {
@@ -8897,7 +8906,7 @@ export declare const ApiContracts: {
         };
         createManualTransaction: {
             summary: "Record a manual transaction";
-            description: "Creates an expense or income without free-text merchant or counterparty details.";
+            description: "Creates an expense or income without free-text merchant or counterparty details. Email-enabled accounts may create income entries only.";
             method: "POST";
             body: import("zod").ZodEffects<import("zod").ZodObject<{
                 amount: import("zod").ZodNumber;
@@ -9093,7 +9102,7 @@ export declare const ApiContracts: {
                 uuid: string;
             }>;
             summary: "Correct a manual transaction";
-            description: "Corrects a manual entry owned by the authenticated user, including its transaction type.";
+            description: "Corrects a manual entry owned by the authenticated user, including its transaction type. Email-enabled accounts may update income entries only.";
             method: "PATCH";
             body: import("zod").ZodEffects<import("zod").ZodEffects<import("zod").ZodObject<{
                 amount: import("zod").ZodOptional<import("zod").ZodNumber>;
@@ -9255,6 +9264,19 @@ export declare const ApiContracts: {
                     statusCode?: number | undefined;
                 }>;
                 401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                403: import("zod").ZodObject<{
                     message: import("zod").ZodString;
                     error: import("zod").ZodOptional<import("zod").ZodString>;
                     statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;

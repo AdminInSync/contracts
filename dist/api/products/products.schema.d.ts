@@ -584,6 +584,7 @@ export declare const ConnectedProductMetadataSchema: z.ZodObject<{
     remaining_payments: z.ZodNullable<z.ZodNumber>;
     progress: z.ZodNullable<z.ZodNumber>;
     annual_rate: z.ZodNullable<z.ZodString>;
+    investment_contract_months: z.ZodNullable<z.ZodNumber>;
     risk_level: z.ZodNullable<z.ZodString>;
     interest_payment: z.ZodNullable<z.ZodString>;
     initial_value: z.ZodNullable<z.ZodNumber>;
@@ -596,6 +597,7 @@ export declare const ConnectedProductMetadataSchema: z.ZodObject<{
     remaining_payments: number | null;
     progress: number | null;
     annual_rate: string | null;
+    investment_contract_months: number | null;
     risk_level: string | null;
     interest_payment: string | null;
     initial_value: number | null;
@@ -608,6 +610,7 @@ export declare const ConnectedProductMetadataSchema: z.ZodObject<{
     remaining_payments: number | null;
     progress: number | null;
     annual_rate: string | null;
+    investment_contract_months: number | null;
     risk_level: string | null;
     interest_payment: string | null;
     initial_value: number | null;
@@ -648,6 +651,7 @@ export declare const ConnectedProductSchema: z.ZodObject<{
         remaining_payments: z.ZodNullable<z.ZodNumber>;
         progress: z.ZodNullable<z.ZodNumber>;
         annual_rate: z.ZodNullable<z.ZodString>;
+        investment_contract_months: z.ZodNullable<z.ZodNumber>;
         risk_level: z.ZodNullable<z.ZodString>;
         interest_payment: z.ZodNullable<z.ZodString>;
         initial_value: z.ZodNullable<z.ZodNumber>;
@@ -660,6 +664,7 @@ export declare const ConnectedProductSchema: z.ZodObject<{
         remaining_payments: number | null;
         progress: number | null;
         annual_rate: string | null;
+        investment_contract_months: number | null;
         risk_level: string | null;
         interest_payment: string | null;
         initial_value: number | null;
@@ -672,6 +677,7 @@ export declare const ConnectedProductSchema: z.ZodObject<{
         remaining_payments: number | null;
         progress: number | null;
         annual_rate: string | null;
+        investment_contract_months: number | null;
         risk_level: string | null;
         interest_payment: string | null;
         initial_value: number | null;
@@ -690,6 +696,7 @@ export declare const ConnectedProductSchema: z.ZodObject<{
         remaining_payments: number | null;
         progress: number | null;
         annual_rate: string | null;
+        investment_contract_months: number | null;
         risk_level: string | null;
         interest_payment: string | null;
         initial_value: number | null;
@@ -722,6 +729,7 @@ export declare const ConnectedProductSchema: z.ZodObject<{
         remaining_payments: number | null;
         progress: number | null;
         annual_rate: string | null;
+        investment_contract_months: number | null;
         risk_level: string | null;
         interest_payment: string | null;
         initial_value: number | null;
@@ -822,6 +830,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
             remaining_payments: z.ZodNullable<z.ZodNumber>;
             progress: z.ZodNullable<z.ZodNumber>;
             annual_rate: z.ZodNullable<z.ZodString>;
+            investment_contract_months: z.ZodNullable<z.ZodNumber>;
             risk_level: z.ZodNullable<z.ZodString>;
             interest_payment: z.ZodNullable<z.ZodString>;
             initial_value: z.ZodNullable<z.ZodNumber>;
@@ -834,6 +843,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
             remaining_payments: number | null;
             progress: number | null;
             annual_rate: string | null;
+            investment_contract_months: number | null;
             risk_level: string | null;
             interest_payment: string | null;
             initial_value: number | null;
@@ -846,6 +856,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
             remaining_payments: number | null;
             progress: number | null;
             annual_rate: string | null;
+            investment_contract_months: number | null;
             risk_level: string | null;
             interest_payment: string | null;
             initial_value: number | null;
@@ -864,6 +875,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
             remaining_payments: number | null;
             progress: number | null;
             annual_rate: string | null;
+            investment_contract_months: number | null;
             risk_level: string | null;
             interest_payment: string | null;
             initial_value: number | null;
@@ -896,6 +908,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
             remaining_payments: number | null;
             progress: number | null;
             annual_rate: string | null;
+            investment_contract_months: number | null;
             risk_level: string | null;
             interest_payment: string | null;
             initial_value: number | null;
@@ -930,6 +943,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
             remaining_payments: number | null;
             progress: number | null;
             annual_rate: string | null;
+            investment_contract_months: number | null;
             risk_level: string | null;
             interest_payment: string | null;
             initial_value: number | null;
@@ -972,6 +986,7 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
             remaining_payments: number | null;
             progress: number | null;
             annual_rate: string | null;
+            investment_contract_months: number | null;
             risk_level: string | null;
             interest_payment: string | null;
             initial_value: number | null;
@@ -1061,6 +1076,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 remaining_payments: z.ZodNullable<z.ZodNumber>;
                 progress: z.ZodNullable<z.ZodNumber>;
                 annual_rate: z.ZodNullable<z.ZodString>;
+                investment_contract_months: z.ZodNullable<z.ZodNumber>;
                 risk_level: z.ZodNullable<z.ZodString>;
                 interest_payment: z.ZodNullable<z.ZodString>;
                 initial_value: z.ZodNullable<z.ZodNumber>;
@@ -1073,6 +1089,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 remaining_payments: number | null;
                 progress: number | null;
                 annual_rate: string | null;
+                investment_contract_months: number | null;
                 risk_level: string | null;
                 interest_payment: string | null;
                 initial_value: number | null;
@@ -1085,6 +1102,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 remaining_payments: number | null;
                 progress: number | null;
                 annual_rate: string | null;
+                investment_contract_months: number | null;
                 risk_level: string | null;
                 interest_payment: string | null;
                 initial_value: number | null;
@@ -1103,6 +1121,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 remaining_payments: number | null;
                 progress: number | null;
                 annual_rate: string | null;
+                investment_contract_months: number | null;
                 risk_level: string | null;
                 interest_payment: string | null;
                 initial_value: number | null;
@@ -1135,6 +1154,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 remaining_payments: number | null;
                 progress: number | null;
                 annual_rate: string | null;
+                investment_contract_months: number | null;
                 risk_level: string | null;
                 interest_payment: string | null;
                 initial_value: number | null;
@@ -1169,6 +1189,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 remaining_payments: number | null;
                 progress: number | null;
                 annual_rate: string | null;
+                investment_contract_months: number | null;
                 risk_level: string | null;
                 interest_payment: string | null;
                 initial_value: number | null;
@@ -1211,6 +1232,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 remaining_payments: number | null;
                 progress: number | null;
                 annual_rate: string | null;
+                investment_contract_months: number | null;
                 risk_level: string | null;
                 interest_payment: string | null;
                 initial_value: number | null;
@@ -1256,6 +1278,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 remaining_payments: number | null;
                 progress: number | null;
                 annual_rate: string | null;
+                investment_contract_months: number | null;
                 risk_level: string | null;
                 interest_payment: string | null;
                 initial_value: number | null;
@@ -1301,6 +1324,7 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 remaining_payments: number | null;
                 progress: number | null;
                 annual_rate: string | null;
+                investment_contract_months: number | null;
                 risk_level: string | null;
                 interest_payment: string | null;
                 initial_value: number | null;

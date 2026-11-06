@@ -118,7 +118,7 @@ export declare const TransactionsContracts: {
             offset?: string | undefined;
         }>;
         summary: "List manually recorded transactions";
-        description: "Returns the authenticated user’s manually recorded expenses and income.";
+        description: "Returns the authenticated user’s manually recorded expenses and income. Email-enabled accounts see income entries only.";
         method: "GET";
         path: "/transactions/manual";
         responses: {
@@ -262,7 +262,7 @@ export declare const TransactionsContracts: {
     };
     createManualTransaction: {
         summary: "Record a manual transaction";
-        description: "Creates an expense or income without free-text merchant or counterparty details.";
+        description: "Creates an expense or income without free-text merchant or counterparty details. Email-enabled accounts may create income entries only.";
         method: "POST";
         body: z.ZodEffects<z.ZodObject<{
             amount: z.ZodNumber;
@@ -457,7 +457,7 @@ export declare const TransactionsContracts: {
             uuid: string;
         }>;
         summary: "Correct a manual transaction";
-        description: "Corrects a manual entry owned by the authenticated user, including its transaction type.";
+        description: "Corrects a manual entry owned by the authenticated user, including its transaction type. Email-enabled accounts may update income entries only.";
         method: "PATCH";
         body: z.ZodEffects<z.ZodEffects<z.ZodObject<{
             amount: z.ZodOptional<z.ZodNumber>;
@@ -619,6 +619,19 @@ export declare const TransactionsContracts: {
                 statusCode?: number | undefined;
             }>;
             401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            403: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
