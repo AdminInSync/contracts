@@ -20,6 +20,7 @@ import { AdminAuthContracts } from './admin-auth';
 import { AdminWaitlistContracts } from './admin-waitlist';
 import { AdminClientsContracts } from './admin-clients';
 import { AdminDashboardContracts } from './admin-dashboard';
+import { AdminBetaTestersContracts } from './admin-beta-testers';
 import { TransactionsContracts } from './transactions';
 import { SharedSavingsContracts } from './shared-savings';
 import { SharedExpenseContracts } from './shared-expenses';
@@ -35,6 +36,7 @@ export const ApiContracts = c.router({
     AdminWaitlist: AdminWaitlistContracts,
     AdminClients: AdminClientsContracts,
     AdminDashboard: AdminDashboardContracts,
+    AdminBetaTesters: AdminBetaTestersContracts,
     Auth: AuthContracts,
     Kyc: KycContracts,
     UserInfo: UserInfoContracts,
