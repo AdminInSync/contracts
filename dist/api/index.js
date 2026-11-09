@@ -21,6 +21,8 @@ import { AdminWaitlistContracts } from './admin-waitlist';
 import { AdminClientsContracts } from './admin-clients';
 import { AdminDashboardContracts } from './admin-dashboard';
 import { AdminBetaTestersContracts } from './admin-beta-testers';
+import { AdminAppFeedbackContracts } from './admin-app-feedback';
+import { AdminUsersContracts } from './admin-users';
 import { TransactionsContracts } from './transactions';
 import { SharedSavingsContracts } from './shared-savings';
 import { SharedExpenseContracts } from './shared-expenses';
@@ -37,6 +39,8 @@ export const ApiContracts = c.router({
     AdminClients: AdminClientsContracts,
     AdminDashboard: AdminDashboardContracts,
     AdminBetaTesters: AdminBetaTestersContracts,
+    AdminAppFeedback: AdminAppFeedbackContracts,
+    AdminUsers: AdminUsersContracts,
     Auth: AuthContracts,
     Kyc: KycContracts,
     UserInfo: UserInfoContracts,

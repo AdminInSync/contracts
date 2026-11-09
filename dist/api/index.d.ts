@@ -1554,6 +1554,433 @@ export declare const ApiContracts: {
             };
         };
     };
+    AdminAppFeedback: {
+        list: {
+            strictStatusCodes: true;
+            query: import("zod").ZodObject<{
+                status: import("zod").ZodOptional<import("zod").ZodUnion<[import("zod").ZodEnum<["new", "reviewed", "resolved"]>, import("zod").ZodLiteral<"all">]>>;
+            }, "strip", import("zod").ZodTypeAny, {
+                status?: "all" | "new" | "reviewed" | "resolved" | undefined;
+            }, {
+                status?: "all" | "new" | "reviewed" | "resolved" | undefined;
+            }>;
+            summary: "List app feedback";
+            description: "Returns user-submitted app feedback for the admin panel.";
+            method: "GET";
+            path: "/api/admin/app-feedback/";
+            responses: {
+                200: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodString;
+                        message: import("zod").ZodString;
+                        status: import("zod").ZodEnum<["new", "reviewed", "resolved"]>;
+                        user_uid: import("zod").ZodString;
+                        user_name: import("zod").ZodString;
+                        user_email: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        status: "new" | "reviewed" | "resolved";
+                        id: string;
+                        user_uid: string;
+                        created_at: string;
+                        user_name: string;
+                        user_email: string | null;
+                    }, {
+                        message: string;
+                        status: "new" | "reviewed" | "resolved";
+                        id: string;
+                        user_uid: string;
+                        created_at: string;
+                        user_name: string;
+                        user_email: string | null;
+                    }>, "many">;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        message: string;
+                        status: "new" | "reviewed" | "resolved";
+                        id: string;
+                        user_uid: string;
+                        created_at: string;
+                        user_name: string;
+                        user_email: string | null;
+                    }[];
+                }, {
+                    message: string;
+                    data: {
+                        message: string;
+                        status: "new" | "reviewed" | "resolved";
+                        id: string;
+                        user_uid: string;
+                        created_at: string;
+                        user_name: string;
+                        user_email: string | null;
+                    }[];
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+        updateStatus: {
+            strictStatusCodes: true;
+            pathParams: import("zod").ZodObject<{
+                id: import("zod").ZodString;
+            }, "strip", import("zod").ZodTypeAny, {
+                id: string;
+            }, {
+                id: string;
+            }>;
+            summary: "Update feedback status";
+            description: "Sets an app feedback entry to new, reviewed, or resolved.";
+            method: "PATCH";
+            body: import("zod").ZodObject<{
+                status: import("zod").ZodEnum<["new", "reviewed", "resolved"]>;
+            }, "strip", import("zod").ZodTypeAny, {
+                status: "new" | "reviewed" | "resolved";
+            }, {
+                status: "new" | "reviewed" | "resolved";
+            }>;
+            path: "/api/admin/app-feedback/:id/status";
+            responses: {
+                200: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        id: import("zod").ZodString;
+                        message: import("zod").ZodString;
+                        status: import("zod").ZodEnum<["new", "reviewed", "resolved"]>;
+                        user_uid: import("zod").ZodString;
+                        user_name: import("zod").ZodString;
+                        user_email: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        status: "new" | "reviewed" | "resolved";
+                        id: string;
+                        user_uid: string;
+                        created_at: string;
+                        user_name: string;
+                        user_email: string | null;
+                    }, {
+                        message: string;
+                        status: "new" | "reviewed" | "resolved";
+                        id: string;
+                        user_uid: string;
+                        created_at: string;
+                        user_name: string;
+                        user_email: string | null;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        message: string;
+                        status: "new" | "reviewed" | "resolved";
+                        id: string;
+                        user_uid: string;
+                        created_at: string;
+                        user_name: string;
+                        user_email: string | null;
+                    };
+                }, {
+                    message: string;
+                    data: {
+                        message: string;
+                        status: "new" | "reviewed" | "resolved";
+                        id: string;
+                        user_uid: string;
+                        created_at: string;
+                        user_name: string;
+                        user_email: string | null;
+                    };
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+    };
+    AdminUsers: {
+        list: {
+            strictStatusCodes: true;
+            summary: "List admin users";
+            description: "Returns administrators who can access the control panel.";
+            method: "GET";
+            path: "/api/admin/users/";
+            responses: {
+                200: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodArray<import("zod").ZodObject<{
+                        id: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        email: import("zod").ZodString;
+                        totp_enabled: import("zod").ZodBoolean;
+                        is_active: import("zod").ZodBoolean;
+                        last_login_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: string;
+                        email: string;
+                        is_active: boolean;
+                        created_at: string;
+                        name: string;
+                        last_login_at: string | null;
+                        totp_enabled: boolean;
+                    }, {
+                        id: string;
+                        email: string;
+                        is_active: boolean;
+                        created_at: string;
+                        name: string;
+                        last_login_at: string | null;
+                        totp_enabled: boolean;
+                    }>, "many">;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: string;
+                        email: string;
+                        is_active: boolean;
+                        created_at: string;
+                        name: string;
+                        last_login_at: string | null;
+                        totp_enabled: boolean;
+                    }[];
+                }, {
+                    message: string;
+                    data: {
+                        id: string;
+                        email: string;
+                        is_active: boolean;
+                        created_at: string;
+                        name: string;
+                        last_login_at: string | null;
+                        totp_enabled: boolean;
+                    }[];
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+        invite: {
+            strictStatusCodes: true;
+            summary: "Invite an admin";
+            description: "Creates an administrator with a temporary password and emails login instructions.";
+            method: "POST";
+            body: import("zod").ZodObject<{
+                name: import("zod").ZodString;
+                email: import("zod").ZodString;
+            }, "strip", import("zod").ZodTypeAny, {
+                email: string;
+                name: string;
+            }, {
+                email: string;
+                name: string;
+            }>;
+            path: "/api/admin/users/invite";
+            responses: {
+                201: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        id: import("zod").ZodString;
+                        name: import("zod").ZodString;
+                        email: import("zod").ZodString;
+                        totp_enabled: import("zod").ZodBoolean;
+                        is_active: import("zod").ZodBoolean;
+                        last_login_at: import("zod").ZodNullable<import("zod").ZodString>;
+                        created_at: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        id: string;
+                        email: string;
+                        is_active: boolean;
+                        created_at: string;
+                        name: string;
+                        last_login_at: string | null;
+                        totp_enabled: boolean;
+                    }, {
+                        id: string;
+                        email: string;
+                        is_active: boolean;
+                        created_at: string;
+                        name: string;
+                        last_login_at: string | null;
+                        totp_enabled: boolean;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        id: string;
+                        email: string;
+                        is_active: boolean;
+                        created_at: string;
+                        name: string;
+                        last_login_at: string | null;
+                        totp_enabled: boolean;
+                    };
+                }, {
+                    message: string;
+                    data: {
+                        id: string;
+                        email: string;
+                        is_active: boolean;
+                        created_at: string;
+                        name: string;
+                        last_login_at: string | null;
+                        totp_enabled: boolean;
+                    };
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                409: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                503: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+    };
     Auth: {
         me: {
             strictStatusCodes: true;
