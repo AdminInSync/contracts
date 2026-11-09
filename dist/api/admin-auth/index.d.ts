@@ -364,34 +364,50 @@ export declare const AdminAuthContracts: {
                         email: z.ZodString;
                         role: z.ZodEnum<["superadmin"]>;
                         is_active: z.ZodBoolean;
+                    } & {
+                        totp_enabled: z.ZodBoolean;
+                        last_login_at: z.ZodNullable<z.ZodString>;
+                        created_at: z.ZodString;
                     }, "strip", z.ZodTypeAny, {
                         id: string;
                         email: string;
                         is_active: boolean;
+                        created_at: string;
                         name: string;
                         role: "superadmin";
+                        totp_enabled: boolean;
+                        last_login_at: string | null;
                     }, {
                         id: string;
                         email: string;
                         is_active: boolean;
+                        created_at: string;
                         name: string;
                         role: "superadmin";
+                        totp_enabled: boolean;
+                        last_login_at: string | null;
                     }>;
                 }, "strip", z.ZodTypeAny, {
                     admin: {
                         id: string;
                         email: string;
                         is_active: boolean;
+                        created_at: string;
                         name: string;
                         role: "superadmin";
+                        totp_enabled: boolean;
+                        last_login_at: string | null;
                     };
                 }, {
                     admin: {
                         id: string;
                         email: string;
                         is_active: boolean;
+                        created_at: string;
                         name: string;
                         role: "superadmin";
+                        totp_enabled: boolean;
+                        last_login_at: string | null;
                     };
                 }>;
             }, "strip", z.ZodTypeAny, {
@@ -401,8 +417,11 @@ export declare const AdminAuthContracts: {
                         id: string;
                         email: string;
                         is_active: boolean;
+                        created_at: string;
                         name: string;
                         role: "superadmin";
+                        totp_enabled: boolean;
+                        last_login_at: string | null;
                     };
                 };
             }, {
@@ -412,10 +431,223 @@ export declare const AdminAuthContracts: {
                         id: string;
                         email: string;
                         is_active: boolean;
+                        created_at: string;
                         name: string;
                         role: "superadmin";
+                        totp_enabled: boolean;
+                        last_login_at: string | null;
                     };
                 };
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+        strictStatusCodes: true;
+    };
+    updateMe: {
+        summary: "Update current admin profile";
+        description: "Update the display name of the authenticated administrator.";
+        method: "PATCH";
+        body: z.ZodObject<{
+            name: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            name: string;
+        }, {
+            name: string;
+        }>;
+        path: "/admin/auth/me";
+        responses: {
+            200: z.ZodObject<{
+                message: z.ZodString;
+                data: z.ZodObject<{
+                    admin: z.ZodObject<{
+                        id: z.ZodString;
+                        name: z.ZodString;
+                        email: z.ZodString;
+                        role: z.ZodEnum<["superadmin"]>;
+                        is_active: z.ZodBoolean;
+                    } & {
+                        totp_enabled: z.ZodBoolean;
+                        last_login_at: z.ZodNullable<z.ZodString>;
+                        created_at: z.ZodString;
+                    }, "strip", z.ZodTypeAny, {
+                        id: string;
+                        email: string;
+                        is_active: boolean;
+                        created_at: string;
+                        name: string;
+                        role: "superadmin";
+                        totp_enabled: boolean;
+                        last_login_at: string | null;
+                    }, {
+                        id: string;
+                        email: string;
+                        is_active: boolean;
+                        created_at: string;
+                        name: string;
+                        role: "superadmin";
+                        totp_enabled: boolean;
+                        last_login_at: string | null;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    admin: {
+                        id: string;
+                        email: string;
+                        is_active: boolean;
+                        created_at: string;
+                        name: string;
+                        role: "superadmin";
+                        totp_enabled: boolean;
+                        last_login_at: string | null;
+                    };
+                }, {
+                    admin: {
+                        id: string;
+                        email: string;
+                        is_active: boolean;
+                        created_at: string;
+                        name: string;
+                        role: "superadmin";
+                        totp_enabled: boolean;
+                        last_login_at: string | null;
+                    };
+                }>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                data: {
+                    admin: {
+                        id: string;
+                        email: string;
+                        is_active: boolean;
+                        created_at: string;
+                        name: string;
+                        role: "superadmin";
+                        totp_enabled: boolean;
+                        last_login_at: string | null;
+                    };
+                };
+            }, {
+                message: string;
+                data: {
+                    admin: {
+                        id: string;
+                        email: string;
+                        is_active: boolean;
+                        created_at: string;
+                        name: string;
+                        role: "superadmin";
+                        totp_enabled: boolean;
+                        last_login_at: string | null;
+                    };
+                };
+            }>;
+            400: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+        strictStatusCodes: true;
+    };
+    changePassword: {
+        summary: "Change admin password";
+        description: "Change the authenticated administrator password after verifying the current one.";
+        method: "POST";
+        body: z.ZodEffects<z.ZodObject<{
+            current_password: z.ZodString;
+            new_password: z.ZodString;
+        }, "strict", z.ZodTypeAny, {
+            current_password: string;
+            new_password: string;
+        }, {
+            current_password: string;
+            new_password: string;
+        }>, {
+            current_password: string;
+            new_password: string;
+        }, {
+            current_password: string;
+            new_password: string;
+        }>;
+        path: "/admin/auth/password";
+        responses: {
+            200: z.ZodObject<{
+                message: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+            }, {
+                message: string;
+            }>;
+            400: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
             }>;
             401: z.ZodObject<{
                 message: z.ZodString;

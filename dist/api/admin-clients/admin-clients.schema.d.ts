@@ -27,9 +27,9 @@ export declare const ClientListItemSchema: z.ZodObject<{
     created_at: string;
     last_name: string;
     name: string;
+    last_login_at: string | null;
     kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
     phone: string | null;
-    last_login_at: string | null;
     product_count: number;
 }, {
     id: string;
@@ -39,9 +39,9 @@ export declare const ClientListItemSchema: z.ZodObject<{
     created_at: string;
     last_name: string;
     name: string;
+    last_login_at: string | null;
     kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
     phone: string | null;
-    last_login_at: string | null;
     product_count: number;
 }>;
 export declare const ClientDeviceSchema: z.ZodObject<{
@@ -208,9 +208,9 @@ export declare const ClientDetailSchema: z.ZodObject<{
         institution_name: string | null;
         account_last4: string;
     }[];
+    last_login_at: string | null;
     kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
     phone: string | null;
-    last_login_at: string | null;
     product_count: number;
     document_type: DocumentType | null;
     document_status: DocumentStatus | null;
@@ -247,9 +247,9 @@ export declare const ClientDetailSchema: z.ZodObject<{
         institution_name: string | null;
         account_last4: string;
     }[];
+    last_login_at: string | null;
     kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
     phone: string | null;
-    last_login_at: string | null;
     product_count: number;
     document_type: DocumentType | null;
     document_status: DocumentStatus | null;
@@ -293,9 +293,9 @@ export declare const ClientListResponseSchema: z.ZodObject<{
         created_at: string;
         last_name: string;
         name: string;
+        last_login_at: string | null;
         kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
         phone: string | null;
-        last_login_at: string | null;
         product_count: number;
     }, {
         id: string;
@@ -305,9 +305,9 @@ export declare const ClientListResponseSchema: z.ZodObject<{
         created_at: string;
         last_name: string;
         name: string;
+        last_login_at: string | null;
         kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
         phone: string | null;
-        last_login_at: string | null;
         product_count: number;
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
@@ -320,9 +320,9 @@ export declare const ClientListResponseSchema: z.ZodObject<{
         created_at: string;
         last_name: string;
         name: string;
+        last_login_at: string | null;
         kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
         phone: string | null;
-        last_login_at: string | null;
         product_count: number;
     }[];
 }, {
@@ -335,9 +335,9 @@ export declare const ClientListResponseSchema: z.ZodObject<{
         created_at: string;
         last_name: string;
         name: string;
+        last_login_at: string | null;
         kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
         phone: string | null;
-        last_login_at: string | null;
         product_count: number;
     }[];
 }>;
@@ -441,9 +441,9 @@ export declare const ClientDetailResponseSchema: z.ZodObject<{
             institution_name: string | null;
             account_last4: string;
         }[];
+        last_login_at: string | null;
         kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
         phone: string | null;
-        last_login_at: string | null;
         product_count: number;
         document_type: DocumentType | null;
         document_status: DocumentStatus | null;
@@ -480,9 +480,9 @@ export declare const ClientDetailResponseSchema: z.ZodObject<{
             institution_name: string | null;
             account_last4: string;
         }[];
+        last_login_at: string | null;
         kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
         phone: string | null;
-        last_login_at: string | null;
         product_count: number;
         document_type: DocumentType | null;
         document_status: DocumentStatus | null;
@@ -522,9 +522,9 @@ export declare const ClientDetailResponseSchema: z.ZodObject<{
             institution_name: string | null;
             account_last4: string;
         }[];
+        last_login_at: string | null;
         kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
         phone: string | null;
-        last_login_at: string | null;
         product_count: number;
         document_type: DocumentType | null;
         document_status: DocumentStatus | null;
@@ -564,9 +564,9 @@ export declare const ClientDetailResponseSchema: z.ZodObject<{
             institution_name: string | null;
             account_last4: string;
         }[];
+        last_login_at: string | null;
         kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
         phone: string | null;
-        last_login_at: string | null;
         product_count: number;
         document_type: DocumentType | null;
         document_status: DocumentStatus | null;

@@ -1,7 +1,7 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
-import { LoginBodySchema, LoginResponseSchema, LogoutResponseSchema, MeResponseSchema, TotpConfirmBodySchema, TotpConfirmResponseSchema, TotpSetupBodySchema, TotpSetupResponseSchema, } from './admin-auth.schema';
+import { ChangePasswordBodySchema, ChangePasswordResponseSchema, LoginBodySchema, LoginResponseSchema, LogoutResponseSchema, MeResponseSchema, TotpConfirmBodySchema, TotpConfirmResponseSchema, TotpSetupBodySchema, TotpSetupResponseSchema, UpdateMeBodySchema, } from './admin-auth.schema';
 const c = initContract();
 export const AdminAuthContracts = c.router({
     login: {
@@ -58,6 +58,32 @@ export const AdminAuthContracts = c.router({
         },
         summary: 'Get current admin',
         description: 'Get the currently authenticated admin user.',
+    },
+    updateMe: {
+        method: 'PATCH',
+        path: '/me',
+        body: UpdateMeBodySchema,
+        responses: {
+            200: MeResponseSchema,
+            400: ErrorResSchema,
+            401: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        summary: 'Update current admin profile',
+        description: 'Update the display name of the authenticated administrator.',
+    },
+    changePassword: {
+        method: 'POST',
+        path: '/password',
+        body: ChangePasswordBodySchema,
+        responses: {
+            200: ChangePasswordResponseSchema,
+            400: ErrorResSchema,
+            401: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        summary: 'Change admin password',
+        description: 'Change the authenticated administrator password after verifying the current one.',
     },
     logout: {
         method: 'POST',

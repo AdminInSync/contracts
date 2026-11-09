@@ -21,16 +21,16 @@ export declare const AdminUsersContracts: {
                     is_active: boolean;
                     created_at: string;
                     name: string;
-                    last_login_at: string | null;
                     totp_enabled: boolean;
+                    last_login_at: string | null;
                 }, {
                     id: string;
                     email: string;
                     is_active: boolean;
                     created_at: string;
                     name: string;
-                    last_login_at: string | null;
                     totp_enabled: boolean;
+                    last_login_at: string | null;
                 }>, "many">;
             }, "strip", import("zod").ZodTypeAny, {
                 message: string;
@@ -40,8 +40,8 @@ export declare const AdminUsersContracts: {
                     is_active: boolean;
                     created_at: string;
                     name: string;
-                    last_login_at: string | null;
                     totp_enabled: boolean;
+                    last_login_at: string | null;
                 }[];
             }, {
                 message: string;
@@ -51,8 +51,8 @@ export declare const AdminUsersContracts: {
                     is_active: boolean;
                     created_at: string;
                     name: string;
-                    last_login_at: string | null;
                     totp_enabled: boolean;
+                    last_login_at: string | null;
                 }[];
             }>;
             401: import("zod").ZodObject<{
@@ -116,16 +116,16 @@ export declare const AdminUsersContracts: {
                     is_active: boolean;
                     created_at: string;
                     name: string;
-                    last_login_at: string | null;
                     totp_enabled: boolean;
+                    last_login_at: string | null;
                 }, {
                     id: string;
                     email: string;
                     is_active: boolean;
                     created_at: string;
                     name: string;
-                    last_login_at: string | null;
                     totp_enabled: boolean;
+                    last_login_at: string | null;
                 }>;
             }, "strip", import("zod").ZodTypeAny, {
                 message: string;
@@ -135,8 +135,8 @@ export declare const AdminUsersContracts: {
                     is_active: boolean;
                     created_at: string;
                     name: string;
-                    last_login_at: string | null;
                     totp_enabled: boolean;
+                    last_login_at: string | null;
                 };
             }, {
                 message: string;
@@ -146,8 +146,8 @@ export declare const AdminUsersContracts: {
                     is_active: boolean;
                     created_at: string;
                     name: string;
-                    last_login_at: string | null;
                     totp_enabled: boolean;
+                    last_login_at: string | null;
                 };
             }>;
             400: import("zod").ZodObject<{

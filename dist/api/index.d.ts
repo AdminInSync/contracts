@@ -365,34 +365,50 @@ export declare const ApiContracts: {
                             email: import("zod").ZodString;
                             role: import("zod").ZodEnum<["superadmin"]>;
                             is_active: import("zod").ZodBoolean;
+                        } & {
+                            totp_enabled: import("zod").ZodBoolean;
+                            last_login_at: import("zod").ZodNullable<import("zod").ZodString>;
+                            created_at: import("zod").ZodString;
                         }, "strip", import("zod").ZodTypeAny, {
                             id: string;
                             email: string;
                             is_active: boolean;
+                            created_at: string;
                             name: string;
                             role: "superadmin";
+                            totp_enabled: boolean;
+                            last_login_at: string | null;
                         }, {
                             id: string;
                             email: string;
                             is_active: boolean;
+                            created_at: string;
                             name: string;
                             role: "superadmin";
+                            totp_enabled: boolean;
+                            last_login_at: string | null;
                         }>;
                     }, "strip", import("zod").ZodTypeAny, {
                         admin: {
                             id: string;
                             email: string;
                             is_active: boolean;
+                            created_at: string;
                             name: string;
                             role: "superadmin";
+                            totp_enabled: boolean;
+                            last_login_at: string | null;
                         };
                     }, {
                         admin: {
                             id: string;
                             email: string;
                             is_active: boolean;
+                            created_at: string;
                             name: string;
                             role: "superadmin";
+                            totp_enabled: boolean;
+                            last_login_at: string | null;
                         };
                     }>;
                 }, "strip", import("zod").ZodTypeAny, {
@@ -402,8 +418,11 @@ export declare const ApiContracts: {
                             id: string;
                             email: string;
                             is_active: boolean;
+                            created_at: string;
                             name: string;
                             role: "superadmin";
+                            totp_enabled: boolean;
+                            last_login_at: string | null;
                         };
                     };
                 }, {
@@ -413,10 +432,223 @@ export declare const ApiContracts: {
                             id: string;
                             email: string;
                             is_active: boolean;
+                            created_at: string;
                             name: string;
                             role: "superadmin";
+                            totp_enabled: boolean;
+                            last_login_at: string | null;
                         };
                     };
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+        updateMe: {
+            strictStatusCodes: true;
+            summary: "Update current admin profile";
+            description: "Update the display name of the authenticated administrator.";
+            method: "PATCH";
+            body: import("zod").ZodObject<{
+                name: import("zod").ZodString;
+            }, "strip", import("zod").ZodTypeAny, {
+                name: string;
+            }, {
+                name: string;
+            }>;
+            path: "/api/admin/auth/me";
+            responses: {
+                200: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        admin: import("zod").ZodObject<{
+                            id: import("zod").ZodString;
+                            name: import("zod").ZodString;
+                            email: import("zod").ZodString;
+                            role: import("zod").ZodEnum<["superadmin"]>;
+                            is_active: import("zod").ZodBoolean;
+                        } & {
+                            totp_enabled: import("zod").ZodBoolean;
+                            last_login_at: import("zod").ZodNullable<import("zod").ZodString>;
+                            created_at: import("zod").ZodString;
+                        }, "strip", import("zod").ZodTypeAny, {
+                            id: string;
+                            email: string;
+                            is_active: boolean;
+                            created_at: string;
+                            name: string;
+                            role: "superadmin";
+                            totp_enabled: boolean;
+                            last_login_at: string | null;
+                        }, {
+                            id: string;
+                            email: string;
+                            is_active: boolean;
+                            created_at: string;
+                            name: string;
+                            role: "superadmin";
+                            totp_enabled: boolean;
+                            last_login_at: string | null;
+                        }>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        admin: {
+                            id: string;
+                            email: string;
+                            is_active: boolean;
+                            created_at: string;
+                            name: string;
+                            role: "superadmin";
+                            totp_enabled: boolean;
+                            last_login_at: string | null;
+                        };
+                    }, {
+                        admin: {
+                            id: string;
+                            email: string;
+                            is_active: boolean;
+                            created_at: string;
+                            name: string;
+                            role: "superadmin";
+                            totp_enabled: boolean;
+                            last_login_at: string | null;
+                        };
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        admin: {
+                            id: string;
+                            email: string;
+                            is_active: boolean;
+                            created_at: string;
+                            name: string;
+                            role: "superadmin";
+                            totp_enabled: boolean;
+                            last_login_at: string | null;
+                        };
+                    };
+                }, {
+                    message: string;
+                    data: {
+                        admin: {
+                            id: string;
+                            email: string;
+                            is_active: boolean;
+                            created_at: string;
+                            name: string;
+                            role: "superadmin";
+                            totp_enabled: boolean;
+                            last_login_at: string | null;
+                        };
+                    };
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+        };
+        changePassword: {
+            strictStatusCodes: true;
+            summary: "Change admin password";
+            description: "Change the authenticated administrator password after verifying the current one.";
+            method: "POST";
+            body: import("zod").ZodEffects<import("zod").ZodObject<{
+                current_password: import("zod").ZodString;
+                new_password: import("zod").ZodString;
+            }, "strict", import("zod").ZodTypeAny, {
+                current_password: string;
+                new_password: string;
+            }, {
+                current_password: string;
+                new_password: string;
+            }>, {
+                current_password: string;
+                new_password: string;
+            }, {
+                current_password: string;
+                new_password: string;
+            }>;
+            path: "/api/admin/auth/password";
+            responses: {
+                200: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                }, {
+                    message: string;
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
                 }>;
                 401: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -702,9 +934,9 @@ export declare const ApiContracts: {
                         created_at: string;
                         last_name: string;
                         name: string;
+                        last_login_at: string | null;
                         kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
                         phone: string | null;
-                        last_login_at: string | null;
                         product_count: number;
                     }, {
                         id: string;
@@ -714,9 +946,9 @@ export declare const ApiContracts: {
                         created_at: string;
                         last_name: string;
                         name: string;
+                        last_login_at: string | null;
                         kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
                         phone: string | null;
-                        last_login_at: string | null;
                         product_count: number;
                     }>, "many">;
                 }, "strip", import("zod").ZodTypeAny, {
@@ -729,9 +961,9 @@ export declare const ApiContracts: {
                         created_at: string;
                         last_name: string;
                         name: string;
+                        last_login_at: string | null;
                         kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
                         phone: string | null;
-                        last_login_at: string | null;
                         product_count: number;
                     }[];
                 }, {
@@ -744,9 +976,9 @@ export declare const ApiContracts: {
                         created_at: string;
                         last_name: string;
                         name: string;
+                        last_login_at: string | null;
                         kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
                         phone: string | null;
-                        last_login_at: string | null;
                         product_count: number;
                     }[];
                 }>;
@@ -892,9 +1124,9 @@ export declare const ApiContracts: {
                             institution_name: string | null;
                             account_last4: string;
                         }[];
+                        last_login_at: string | null;
                         kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
                         phone: string | null;
-                        last_login_at: string | null;
                         product_count: number;
                         document_type: import("..").DocumentType | null;
                         document_status: import("..").DocumentStatus | null;
@@ -931,9 +1163,9 @@ export declare const ApiContracts: {
                             institution_name: string | null;
                             account_last4: string;
                         }[];
+                        last_login_at: string | null;
                         kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
                         phone: string | null;
-                        last_login_at: string | null;
                         product_count: number;
                         document_type: import("..").DocumentType | null;
                         document_status: import("..").DocumentStatus | null;
@@ -973,9 +1205,9 @@ export declare const ApiContracts: {
                             institution_name: string | null;
                             account_last4: string;
                         }[];
+                        last_login_at: string | null;
                         kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
                         phone: string | null;
-                        last_login_at: string | null;
                         product_count: number;
                         document_type: import("..").DocumentType | null;
                         document_status: import("..").DocumentStatus | null;
@@ -1015,9 +1247,9 @@ export declare const ApiContracts: {
                             institution_name: string | null;
                             account_last4: string;
                         }[];
+                        last_login_at: string | null;
                         kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
                         phone: string | null;
-                        last_login_at: string | null;
                         product_count: number;
                         document_type: import("..").DocumentType | null;
                         document_status: import("..").DocumentStatus | null;
@@ -1784,16 +2016,16 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         created_at: string;
                         name: string;
-                        last_login_at: string | null;
                         totp_enabled: boolean;
+                        last_login_at: string | null;
                     }, {
                         id: string;
                         email: string;
                         is_active: boolean;
                         created_at: string;
                         name: string;
-                        last_login_at: string | null;
                         totp_enabled: boolean;
+                        last_login_at: string | null;
                     }>, "many">;
                 }, "strip", import("zod").ZodTypeAny, {
                     message: string;
@@ -1803,8 +2035,8 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         created_at: string;
                         name: string;
-                        last_login_at: string | null;
                         totp_enabled: boolean;
+                        last_login_at: string | null;
                     }[];
                 }, {
                     message: string;
@@ -1814,8 +2046,8 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         created_at: string;
                         name: string;
-                        last_login_at: string | null;
                         totp_enabled: boolean;
+                        last_login_at: string | null;
                     }[];
                 }>;
                 401: import("zod").ZodObject<{
@@ -1879,16 +2111,16 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         created_at: string;
                         name: string;
-                        last_login_at: string | null;
                         totp_enabled: boolean;
+                        last_login_at: string | null;
                     }, {
                         id: string;
                         email: string;
                         is_active: boolean;
                         created_at: string;
                         name: string;
-                        last_login_at: string | null;
                         totp_enabled: boolean;
+                        last_login_at: string | null;
                     }>;
                 }, "strip", import("zod").ZodTypeAny, {
                     message: string;
@@ -1898,8 +2130,8 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         created_at: string;
                         name: string;
-                        last_login_at: string | null;
                         totp_enabled: boolean;
+                        last_login_at: string | null;
                     };
                 }, {
                     message: string;
@@ -1909,8 +2141,8 @@ export declare const ApiContracts: {
                         is_active: boolean;
                         created_at: string;
                         name: string;
-                        last_login_at: string | null;
                         totp_enabled: boolean;
+                        last_login_at: string | null;
                     };
                 }>;
                 400: import("zod").ZodObject<{

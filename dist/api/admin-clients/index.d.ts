@@ -35,9 +35,9 @@ export declare const AdminClientsContracts: {
                     created_at: string;
                     last_name: string;
                     name: string;
+                    last_login_at: string | null;
                     kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
                     phone: string | null;
-                    last_login_at: string | null;
                     product_count: number;
                 }, {
                     id: string;
@@ -47,9 +47,9 @@ export declare const AdminClientsContracts: {
                     created_at: string;
                     last_name: string;
                     name: string;
+                    last_login_at: string | null;
                     kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
                     phone: string | null;
-                    last_login_at: string | null;
                     product_count: number;
                 }>, "many">;
             }, "strip", z.ZodTypeAny, {
@@ -62,9 +62,9 @@ export declare const AdminClientsContracts: {
                     created_at: string;
                     last_name: string;
                     name: string;
+                    last_login_at: string | null;
                     kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
                     phone: string | null;
-                    last_login_at: string | null;
                     product_count: number;
                 }[];
             }, {
@@ -77,9 +77,9 @@ export declare const AdminClientsContracts: {
                     created_at: string;
                     last_name: string;
                     name: string;
+                    last_login_at: string | null;
                     kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
                     phone: string | null;
-                    last_login_at: string | null;
                     product_count: number;
                 }[];
             }>;
@@ -225,9 +225,9 @@ export declare const AdminClientsContracts: {
                         institution_name: string | null;
                         account_last4: string;
                     }[];
+                    last_login_at: string | null;
                     kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
                     phone: string | null;
-                    last_login_at: string | null;
                     product_count: number;
                     document_type: import("../..").DocumentType | null;
                     document_status: import("../..").DocumentStatus | null;
@@ -264,9 +264,9 @@ export declare const AdminClientsContracts: {
                         institution_name: string | null;
                         account_last4: string;
                     }[];
+                    last_login_at: string | null;
                     kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
                     phone: string | null;
-                    last_login_at: string | null;
                     product_count: number;
                     document_type: import("../..").DocumentType | null;
                     document_status: import("../..").DocumentStatus | null;
@@ -306,9 +306,9 @@ export declare const AdminClientsContracts: {
                         institution_name: string | null;
                         account_last4: string;
                     }[];
+                    last_login_at: string | null;
                     kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
                     phone: string | null;
-                    last_login_at: string | null;
                     product_count: number;
                     document_type: import("../..").DocumentType | null;
                     document_status: import("../..").DocumentStatus | null;
@@ -348,9 +348,9 @@ export declare const AdminClientsContracts: {
                         institution_name: string | null;
                         account_last4: string;
                     }[];
+                    last_login_at: string | null;
                     kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
                     phone: string | null;
-                    last_login_at: string | null;
                     product_count: number;
                     document_type: import("../..").DocumentType | null;
                     document_status: import("../..").DocumentStatus | null;

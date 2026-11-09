@@ -20,11 +20,34 @@ export const LoginResponseSchema = z.object({
         admin: AdminResponseSchema,
     }),
 });
+export const AdminProfileSchema = AdminResponseSchema.extend({
+    totp_enabled: z.boolean(),
+    last_login_at: z.string().datetime().nullable(),
+    created_at: z.string().datetime(),
+});
 export const MeResponseSchema = z.object({
     message: z.string(),
     data: z.object({
-        admin: AdminResponseSchema,
+        admin: AdminProfileSchema,
     }),
+});
+export const UpdateMeBodySchema = z.object({
+    name: z.string().trim().min(2).max(200),
+});
+export const ChangePasswordBodySchema = z.object({
+    current_password: z.string().min(1),
+    new_password: z.string().min(10).max(200),
+}).strict().superRefine((data, context) => {
+    if (data.current_password === data.new_password) {
+        context.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: ['new_password'],
+            message: 'New password must be different from the current password',
+        });
+    }
+});
+export const ChangePasswordResponseSchema = z.object({
+    message: z.string(),
 });
 export const LogoutResponseSchema = z.object({
     message: z.string(),
