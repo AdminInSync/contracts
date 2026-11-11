@@ -4,7 +4,7 @@ export declare const BudgetsContracts: {
         summary: "Create a new budget";
         description: "Creates a new budget for the authenticated user";
         method: "POST";
-        body: z.ZodEffects<z.ZodObject<{
+        body: z.ZodEffects<z.ZodEffects<z.ZodObject<{
             name: z.ZodString;
             budget_period: z.ZodOptional<z.ZodEnum<["monthly", "quarterly", "yearly"]>>;
             start_date: z.ZodString;
@@ -14,51 +14,80 @@ export declare const BudgetsContracts: {
             is_active: z.ZodOptional<z.ZodBoolean>;
             notes: z.ZodString;
             settings: z.ZodOptional<z.ZodAny>;
-            category: z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>;
+            category: z.ZodOptional<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>>;
+            categories: z.ZodOptional<z.ZodArray<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>, "many">>;
         }, "strip", z.ZodTypeAny, {
             notes: string;
             name: string;
             currency: string;
-            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
             start_date: string;
             end_date: string;
             total_amount: number;
             is_active?: boolean | undefined;
+            category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
             budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
             settings?: any;
+            categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
         }, {
             notes: string;
             name: string;
-            category: string;
             start_date: string;
             end_date: string;
             total_amount: number;
             is_active?: boolean | undefined;
             currency?: string | undefined;
+            category?: string | undefined;
             budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
             settings?: any;
+            categories?: string[] | undefined;
         }>, {
             notes: string;
             name: string;
             currency: string;
-            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
             start_date: string;
             end_date: string;
             total_amount: number;
             is_active?: boolean | undefined;
+            category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
             budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
             settings?: any;
+            categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
         }, {
             notes: string;
             name: string;
-            category: string;
             start_date: string;
             end_date: string;
             total_amount: number;
             is_active?: boolean | undefined;
             currency?: string | undefined;
+            category?: string | undefined;
             budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
             settings?: any;
+            categories?: string[] | undefined;
+        }>, {
+            notes: string;
+            name: string;
+            currency: string;
+            start_date: string;
+            end_date: string;
+            total_amount: number;
+            is_active?: boolean | undefined;
+            category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
+            budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
+            settings?: any;
+            categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
+        }, {
+            notes: string;
+            name: string;
+            start_date: string;
+            end_date: string;
+            total_amount: number;
+            is_active?: boolean | undefined;
+            currency?: string | undefined;
+            category?: string | undefined;
+            budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
+            settings?: any;
+            categories?: string[] | undefined;
         }>;
         path: "/budgets";
         responses: {
@@ -79,6 +108,7 @@ export declare const BudgetsContracts: {
                     notes: z.ZodNullable<z.ZodString>;
                     settings: z.ZodNullable<z.ZodAny>;
                     category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                    categories: z.ZodArray<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
                     needs_category: z.ZodBoolean;
                     spent: z.ZodNullable<z.ZodNumber>;
                     remaining: z.ZodNullable<z.ZodNumber>;
@@ -107,6 +137,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -132,6 +163,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -160,6 +192,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -188,6 +221,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -277,6 +311,7 @@ export declare const BudgetsContracts: {
                     notes: z.ZodNullable<z.ZodString>;
                     settings: z.ZodNullable<z.ZodAny>;
                     category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                    categories: z.ZodArray<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
                     needs_category: z.ZodBoolean;
                     spent: z.ZodNullable<z.ZodNumber>;
                     remaining: z.ZodNullable<z.ZodNumber>;
@@ -305,6 +340,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -330,6 +366,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -371,6 +408,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -404,6 +442,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -476,6 +515,7 @@ export declare const BudgetsContracts: {
                     notes: z.ZodNullable<z.ZodString>;
                     settings: z.ZodNullable<z.ZodAny>;
                     category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                    categories: z.ZodArray<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
                     needs_category: z.ZodBoolean;
                     spent: z.ZodNullable<z.ZodNumber>;
                     remaining: z.ZodNullable<z.ZodNumber>;
@@ -504,6 +544,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -529,6 +570,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -557,6 +599,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -585,6 +628,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -656,7 +700,8 @@ export declare const BudgetsContracts: {
             is_active: z.ZodOptional<z.ZodOptional<z.ZodBoolean>>;
             notes: z.ZodOptional<z.ZodString>;
             settings: z.ZodOptional<z.ZodOptional<z.ZodAny>>;
-            category: z.ZodOptional<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>>;
+            category: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>>>;
+            categories: z.ZodOptional<z.ZodOptional<z.ZodArray<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>, "many">>>;
         }, "strip", z.ZodTypeAny, {
             is_active?: boolean | undefined;
             notes?: string | undefined;
@@ -668,6 +713,7 @@ export declare const BudgetsContracts: {
             end_date?: string | undefined;
             total_amount?: number | undefined;
             settings?: any;
+            categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
         }, {
             is_active?: boolean | undefined;
             notes?: string | undefined;
@@ -679,6 +725,7 @@ export declare const BudgetsContracts: {
             end_date?: string | undefined;
             total_amount?: number | undefined;
             settings?: any;
+            categories?: string[] | undefined;
         }>;
         path: "/budgets/:id";
         responses: {
@@ -699,6 +746,7 @@ export declare const BudgetsContracts: {
                     notes: z.ZodNullable<z.ZodString>;
                     settings: z.ZodNullable<z.ZodAny>;
                     category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                    categories: z.ZodArray<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
                     needs_category: z.ZodBoolean;
                     spent: z.ZodNullable<z.ZodNumber>;
                     remaining: z.ZodNullable<z.ZodNumber>;
@@ -727,6 +775,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -752,6 +801,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -780,6 +830,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -808,6 +859,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -965,6 +1017,7 @@ export declare const BudgetsContracts: {
                     notes: z.ZodNullable<z.ZodString>;
                     settings: z.ZodNullable<z.ZodAny>;
                     category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                    categories: z.ZodArray<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
                     needs_category: z.ZodBoolean;
                     spent: z.ZodNullable<z.ZodNumber>;
                     remaining: z.ZodNullable<z.ZodNumber>;
@@ -993,6 +1046,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -1018,6 +1072,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -1059,6 +1114,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -1092,6 +1148,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -1174,6 +1231,7 @@ export declare const BudgetsContracts: {
                     notes: z.ZodNullable<z.ZodString>;
                     settings: z.ZodNullable<z.ZodAny>;
                     category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                    categories: z.ZodArray<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
                     needs_category: z.ZodBoolean;
                     spent: z.ZodNullable<z.ZodNumber>;
                     remaining: z.ZodNullable<z.ZodNumber>;
@@ -1202,6 +1260,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -1227,6 +1286,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -1268,6 +1328,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -1301,6 +1362,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -1394,6 +1456,7 @@ export declare const BudgetsContracts: {
                     notes: z.ZodNullable<z.ZodString>;
                     settings: z.ZodNullable<z.ZodAny>;
                     category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                    categories: z.ZodArray<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
                     needs_category: z.ZodBoolean;
                     spent: z.ZodNullable<z.ZodNumber>;
                     remaining: z.ZodNullable<z.ZodNumber>;
@@ -1422,6 +1485,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -1447,6 +1511,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -1475,6 +1540,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -1503,6 +1569,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -1577,12 +1644,21 @@ export declare const BudgetsContracts: {
         summary: "Change budget category";
         description: "Sets the expense category the budget counts. Spent is recomputed on read.";
         method: "PATCH";
-        body: z.ZodObject<{
-            category: z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>;
+        body: z.ZodEffects<z.ZodObject<{
+            category: z.ZodOptional<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>>;
+            categories: z.ZodOptional<z.ZodArray<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>, "many">>;
         }, "strict", z.ZodTypeAny, {
-            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+            category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
+            categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
         }, {
-            category: string;
+            category?: string | undefined;
+            categories?: string[] | undefined;
+        }>, {
+            category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
+            categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
+        }, {
+            category?: string | undefined;
+            categories?: string[] | undefined;
         }>;
         path: "/budgets/:id/category";
         responses: {
@@ -1603,6 +1679,7 @@ export declare const BudgetsContracts: {
                     notes: z.ZodNullable<z.ZodString>;
                     settings: z.ZodNullable<z.ZodAny>;
                     category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                    categories: z.ZodArray<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
                     needs_category: z.ZodBoolean;
                     spent: z.ZodNullable<z.ZodNumber>;
                     remaining: z.ZodNullable<z.ZodNumber>;
@@ -1631,6 +1708,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -1656,6 +1734,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -1684,6 +1763,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;
@@ -1712,6 +1792,7 @@ export declare const BudgetsContracts: {
                     end_date: string;
                     total_amount: number;
                     used_amount: number;
+                    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                     needs_category: boolean;
                     spent: number | null;
                     remaining: number | null;

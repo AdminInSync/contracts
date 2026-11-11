@@ -9335,24 +9335,30 @@ export declare const apiContract: {
                     currency: import("zod").ZodOptional<import("zod").ZodEnum<["DOP", "USD", "EUR"]>>;
                     from: import("zod").ZodOptional<import("zod").ZodString>;
                     search: import("zod").ZodOptional<import("zod").ZodString>;
-                    type: import("zod").ZodDefault<import("zod").ZodEnum<["debit", "credit", "payment"]>>;
+                    type: import("zod").ZodOptional<import("zod").ZodEnum<["debit", "credit", "payment"]>>;
+                    product_uuid: import("zod").ZodOptional<import("zod").ZodString>;
+                    statement_upload_uuid: import("zod").ZodOptional<import("zod").ZodString>;
                 }, "strip", import("zod").ZodTypeAny, {
-                    type: "debit" | "credit" | "payment";
                     limit: number;
                     offset: number;
+                    type?: "debit" | "credit" | "payment" | undefined;
                     search?: string | undefined;
                     currency?: "DOP" | "USD" | "EUR" | undefined;
+                    product_uuid?: string | undefined;
                     from?: string | undefined;
+                    statement_upload_uuid?: string | undefined;
                 }, {
                     type?: "debit" | "credit" | "payment" | undefined;
                     limit?: string | undefined;
                     search?: string | undefined;
                     currency?: "DOP" | "USD" | "EUR" | undefined;
                     offset?: string | undefined;
+                    product_uuid?: string | undefined;
                     from?: string | undefined;
+                    statement_upload_uuid?: string | undefined;
                 }>;
                 summary: "Get my product transactions";
-                description: "Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from (YYYY-MM-DD) limits results to that date onward. Optional search matches description, institution, product, card brand, or last 4.";
+                description: "Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from (YYYY-MM-DD) limits results to that date onward. Optional search matches description, institution, product, card brand, or last 4. Optional product_uuid limits results to one connected product. Optional statement_upload_uuid limits results to one accepted statement upload.";
                 method: "GET";
                 path: "/api/products/my-transactions";
                 responses: {
@@ -16614,7 +16620,7 @@ export declare const apiContract: {
                 summary: "Create a new budget";
                 description: "Creates a new budget for the authenticated user";
                 method: "POST";
-                body: import("zod").ZodEffects<import("zod").ZodObject<{
+                body: import("zod").ZodEffects<import("zod").ZodEffects<import("zod").ZodObject<{
                     name: import("zod").ZodString;
                     budget_period: import("zod").ZodOptional<import("zod").ZodEnum<["monthly", "quarterly", "yearly"]>>;
                     start_date: import("zod").ZodString;
@@ -16624,51 +16630,80 @@ export declare const apiContract: {
                     is_active: import("zod").ZodOptional<import("zod").ZodBoolean>;
                     notes: import("zod").ZodString;
                     settings: import("zod").ZodOptional<import("zod").ZodAny>;
-                    category: import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>;
+                    category: import("zod").ZodOptional<import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>>;
+                    categories: import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>, "many">>;
                 }, "strip", import("zod").ZodTypeAny, {
                     notes: string;
                     name: string;
                     currency: string;
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     is_active?: boolean | undefined;
+                    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
                     budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
                     settings?: any;
+                    categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
                 }, {
                     notes: string;
                     name: string;
-                    category: string;
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     is_active?: boolean | undefined;
                     currency?: string | undefined;
+                    category?: string | undefined;
                     budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
                     settings?: any;
+                    categories?: string[] | undefined;
                 }>, {
                     notes: string;
                     name: string;
                     currency: string;
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     is_active?: boolean | undefined;
+                    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
                     budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
                     settings?: any;
+                    categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
                 }, {
                     notes: string;
                     name: string;
-                    category: string;
                     start_date: string;
                     end_date: string;
                     total_amount: number;
                     is_active?: boolean | undefined;
                     currency?: string | undefined;
+                    category?: string | undefined;
                     budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
                     settings?: any;
+                    categories?: string[] | undefined;
+                }>, {
+                    notes: string;
+                    name: string;
+                    currency: string;
+                    start_date: string;
+                    end_date: string;
+                    total_amount: number;
+                    is_active?: boolean | undefined;
+                    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
+                    budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
+                    settings?: any;
+                    categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
+                }, {
+                    notes: string;
+                    name: string;
+                    start_date: string;
+                    end_date: string;
+                    total_amount: number;
+                    is_active?: boolean | undefined;
+                    currency?: string | undefined;
+                    category?: string | undefined;
+                    budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
+                    settings?: any;
+                    categories?: string[] | undefined;
                 }>;
                 path: "/api/budgets";
                 responses: {
@@ -16689,6 +16724,7 @@ export declare const apiContract: {
                             notes: import("zod").ZodNullable<import("zod").ZodString>;
                             settings: import("zod").ZodNullable<import("zod").ZodAny>;
                             category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                            categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
                             needs_category: import("zod").ZodBoolean;
                             spent: import("zod").ZodNullable<import("zod").ZodNumber>;
                             remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -16717,6 +16753,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -16742,6 +16779,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -16770,6 +16808,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -16798,6 +16837,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -16888,6 +16928,7 @@ export declare const apiContract: {
                             notes: import("zod").ZodNullable<import("zod").ZodString>;
                             settings: import("zod").ZodNullable<import("zod").ZodAny>;
                             category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                            categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
                             needs_category: import("zod").ZodBoolean;
                             spent: import("zod").ZodNullable<import("zod").ZodNumber>;
                             remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -16916,6 +16957,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -16941,6 +16983,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -16982,6 +17025,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -17015,6 +17059,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -17088,6 +17133,7 @@ export declare const apiContract: {
                             notes: import("zod").ZodNullable<import("zod").ZodString>;
                             settings: import("zod").ZodNullable<import("zod").ZodAny>;
                             category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                            categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
                             needs_category: import("zod").ZodBoolean;
                             spent: import("zod").ZodNullable<import("zod").ZodNumber>;
                             remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -17116,6 +17162,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -17141,6 +17188,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -17169,6 +17217,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -17197,6 +17246,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -17269,7 +17319,8 @@ export declare const apiContract: {
                     is_active: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodBoolean>>;
                     notes: import("zod").ZodOptional<import("zod").ZodString>;
                     settings: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodAny>>;
-                    category: import("zod").ZodOptional<import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>>;
+                    category: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>>>;
+                    categories: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>, "many">>>;
                 }, "strip", import("zod").ZodTypeAny, {
                     is_active?: boolean | undefined;
                     notes?: string | undefined;
@@ -17281,6 +17332,7 @@ export declare const apiContract: {
                     end_date?: string | undefined;
                     total_amount?: number | undefined;
                     settings?: any;
+                    categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
                 }, {
                     is_active?: boolean | undefined;
                     notes?: string | undefined;
@@ -17292,6 +17344,7 @@ export declare const apiContract: {
                     end_date?: string | undefined;
                     total_amount?: number | undefined;
                     settings?: any;
+                    categories?: string[] | undefined;
                 }>;
                 path: "/api/budgets/:id";
                 responses: {
@@ -17312,6 +17365,7 @@ export declare const apiContract: {
                             notes: import("zod").ZodNullable<import("zod").ZodString>;
                             settings: import("zod").ZodNullable<import("zod").ZodAny>;
                             category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                            categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
                             needs_category: import("zod").ZodBoolean;
                             spent: import("zod").ZodNullable<import("zod").ZodNumber>;
                             remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -17340,6 +17394,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -17365,6 +17420,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -17393,6 +17449,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -17421,6 +17478,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -17580,6 +17638,7 @@ export declare const apiContract: {
                             notes: import("zod").ZodNullable<import("zod").ZodString>;
                             settings: import("zod").ZodNullable<import("zod").ZodAny>;
                             category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                            categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
                             needs_category: import("zod").ZodBoolean;
                             spent: import("zod").ZodNullable<import("zod").ZodNumber>;
                             remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -17608,6 +17667,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -17633,6 +17693,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -17674,6 +17735,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -17707,6 +17769,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -17790,6 +17853,7 @@ export declare const apiContract: {
                             notes: import("zod").ZodNullable<import("zod").ZodString>;
                             settings: import("zod").ZodNullable<import("zod").ZodAny>;
                             category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                            categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
                             needs_category: import("zod").ZodBoolean;
                             spent: import("zod").ZodNullable<import("zod").ZodNumber>;
                             remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -17818,6 +17882,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -17843,6 +17908,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -17884,6 +17950,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -17917,6 +17984,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -18011,6 +18079,7 @@ export declare const apiContract: {
                             notes: import("zod").ZodNullable<import("zod").ZodString>;
                             settings: import("zod").ZodNullable<import("zod").ZodAny>;
                             category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                            categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
                             needs_category: import("zod").ZodBoolean;
                             spent: import("zod").ZodNullable<import("zod").ZodNumber>;
                             remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -18039,6 +18108,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -18064,6 +18134,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -18092,6 +18163,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -18120,6 +18192,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -18195,12 +18268,21 @@ export declare const apiContract: {
                 summary: "Change budget category";
                 description: "Sets the expense category the budget counts. Spent is recomputed on read.";
                 method: "PATCH";
-                body: import("zod").ZodObject<{
-                    category: import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>;
+                body: import("zod").ZodEffects<import("zod").ZodObject<{
+                    category: import("zod").ZodOptional<import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>>;
+                    categories: import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>, "many">>;
                 }, "strict", import("zod").ZodTypeAny, {
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
+                    categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
                 }, {
-                    category: string;
+                    category?: string | undefined;
+                    categories?: string[] | undefined;
+                }>, {
+                    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
+                    categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
+                }, {
+                    category?: string | undefined;
+                    categories?: string[] | undefined;
                 }>;
                 path: "/api/budgets/:id/category";
                 responses: {
@@ -18221,6 +18303,7 @@ export declare const apiContract: {
                             notes: import("zod").ZodNullable<import("zod").ZodString>;
                             settings: import("zod").ZodNullable<import("zod").ZodAny>;
                             category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
+                            categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
                             needs_category: import("zod").ZodBoolean;
                             spent: import("zod").ZodNullable<import("zod").ZodNumber>;
                             remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -18249,6 +18332,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -18274,6 +18358,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -18302,6 +18387,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;
@@ -18330,6 +18416,7 @@ export declare const apiContract: {
                             end_date: string;
                             total_amount: number;
                             used_amount: number;
+                            categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
                             needs_category: boolean;
                             spent: number | null;
                             remaining: number | null;

@@ -56,6 +56,7 @@ export const BudgetSchema = z.object({
     notes: z.string().nullable(),
     settings: z.any().nullable(),
     category: z.enum(BUDGET_CATEGORIES).nullable(),
+    categories: z.array(z.enum(BUDGET_CATEGORIES)),
     needs_category: z.boolean(),
     spent: z.number().nullable(),
     remaining: z.number().nullable(),
@@ -78,9 +79,14 @@ const BaseBudgetSchema = z.object({
     is_active: z.boolean().optional(),
     notes: z.string().min(1).max(255),
     settings: z.any().optional(),
-    category: BudgetCategorySchema,
+    category: BudgetCategorySchema.optional(),
+    categories: z.array(BudgetCategorySchema).min(1).optional(),
 });
-export const CreateBudgetSchema = BaseBudgetSchema.refine((data) => {
+export const CreateBudgetSchema = BaseBudgetSchema.superRefine((data, ctx) => {
+    if (!data.category && !(data.categories && data.categories.length > 0)) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Selecciona al menos una categoría', path: ['categories'] });
+    }
+}).refine((data) => {
     const start = new Date(data.start_date);
     const end = new Date(data.end_date);
     return end > start;
@@ -90,8 +96,13 @@ export const CreateBudgetSchema = BaseBudgetSchema.refine((data) => {
 });
 export const UpdateBudgetSchema = BaseBudgetSchema.partial();
 export const UpdateBudgetCategorySchema = z.object({
-    category: BudgetCategorySchema,
-}).strict();
+    category: BudgetCategorySchema.optional(),
+    categories: z.array(BudgetCategorySchema).min(1).optional(),
+}).strict().superRefine((data, ctx) => {
+    if (!data.category && !(data.categories && data.categories.length > 0)) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Selecciona al menos una categoría', path: ['categories'] });
+    }
+});
 export const UpdateBudgetUsedAmountSchema = z.object({
     used_amount: z.number().min(0),
 });

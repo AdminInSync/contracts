@@ -2864,24 +2864,30 @@ export declare const ProductsContracts: {
             currency: z.ZodOptional<z.ZodEnum<["DOP", "USD", "EUR"]>>;
             from: z.ZodOptional<z.ZodString>;
             search: z.ZodOptional<z.ZodString>;
-            type: z.ZodDefault<z.ZodEnum<["debit", "credit", "payment"]>>;
+            type: z.ZodOptional<z.ZodEnum<["debit", "credit", "payment"]>>;
+            product_uuid: z.ZodOptional<z.ZodString>;
+            statement_upload_uuid: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "debit" | "credit" | "payment";
             limit: number;
             offset: number;
+            type?: "debit" | "credit" | "payment" | undefined;
             search?: string | undefined;
             currency?: "DOP" | "USD" | "EUR" | undefined;
+            product_uuid?: string | undefined;
             from?: string | undefined;
+            statement_upload_uuid?: string | undefined;
         }, {
             type?: "debit" | "credit" | "payment" | undefined;
             limit?: string | undefined;
             search?: string | undefined;
             currency?: "DOP" | "USD" | "EUR" | undefined;
             offset?: string | undefined;
+            product_uuid?: string | undefined;
             from?: string | undefined;
+            statement_upload_uuid?: string | undefined;
         }>;
         summary: "Get my product transactions";
-        description: "Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from (YYYY-MM-DD) limits results to that date onward. Optional search matches description, institution, product, card brand, or last 4.";
+        description: "Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from (YYYY-MM-DD) limits results to that date onward. Optional search matches description, institution, product, card brand, or last 4. Optional product_uuid limits results to one connected product. Optional statement_upload_uuid limits results to one accepted statement upload.";
         method: "GET";
         path: "/products/my-transactions";
         responses: {

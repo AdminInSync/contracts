@@ -237,9 +237,11 @@ export const ProductsContracts = c.router({
             currency: z.enum(['DOP', 'USD', 'EUR']).optional(),
             from: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
             search: z.string().trim().max(100).optional(),
-            type: z.enum(['debit', 'credit', 'payment']).default('debit'),
+            type: z.enum(['debit', 'credit', 'payment']).optional(),
+            product_uuid: z.string().uuid().optional(),
+            statement_upload_uuid: z.string().uuid().optional(),
         }),
         summary: 'Get my product transactions',
-        description: 'Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from (YYYY-MM-DD) limits results to that date onward. Optional search matches description, institution, product, card brand, or last 4.',
+        description: 'Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from (YYYY-MM-DD) limits results to that date onward. Optional search matches description, institution, product, card brand, or last 4. Optional product_uuid limits results to one connected product. Optional statement_upload_uuid limits results to one accepted statement upload.',
     },
 });
