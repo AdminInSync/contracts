@@ -10280,14 +10280,14 @@ export declare const ApiContracts: {
                 budget_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                 group_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                 goal_income_allocation: import("zod").ZodOptional<import("zod").ZodObject<{
-                    goal_id: import("zod").ZodNumber;
+                    goal_id: import("zod").ZodPipeline<import("zod").ZodUnion<[import("zod").ZodNumber, import("zod").ZodEffects<import("zod").ZodString, number, string>]>, import("zod").ZodNumber>;
                     amount: import("zod").ZodNumber;
                 }, "strip", import("zod").ZodTypeAny, {
                     amount: number;
                     goal_id: number;
                 }, {
                     amount: number;
-                    goal_id: number;
+                    goal_id: string | number;
                 }>>;
             }, "strict", import("zod").ZodTypeAny, {
                 currency: "DOP" | "USD" | "EUR";
@@ -10315,7 +10315,7 @@ export declare const ApiContracts: {
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
                 goal_income_allocation?: {
                     amount: number;
-                    goal_id: number;
+                    goal_id: string | number;
                 } | undefined;
             }>, {
                 currency: "DOP" | "USD" | "EUR";
@@ -10343,7 +10343,7 @@ export declare const ApiContracts: {
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
                 goal_income_allocation?: {
                     amount: number;
-                    goal_id: number;
+                    goal_id: string | number;
                 } | undefined;
             }>, {
                 currency: "DOP" | "USD" | "EUR";
@@ -10371,7 +10371,7 @@ export declare const ApiContracts: {
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
                 goal_income_allocation?: {
                     amount: number;
-                    goal_id: number;
+                    goal_id: string | number;
                 } | undefined;
             }>;
             path: "/api/transactions/manual";

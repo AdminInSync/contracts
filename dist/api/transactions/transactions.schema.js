@@ -19,7 +19,7 @@ export const CreateManualTransactionSchema = z.object({
     budget_uuid: z.string().uuid().nullable().optional(),
     group_uuid: z.string().uuid().nullable().optional(),
     goal_income_allocation: z.object({
-        goal_id: z.number().int().positive(),
+        goal_id: z.union([z.number(), z.string().regex(/^[1-9]\d*$/).transform(Number)]).pipe(z.number().int().positive().safe()),
         amount: z.number().positive().max(999999999999.99),
     }).optional(),
 }).strict().refine((value) => value.transaction_type === 'payment'

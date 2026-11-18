@@ -403,14 +403,14 @@ export declare const TransactionsContracts: {
             budget_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
             group_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
             goal_income_allocation: z.ZodOptional<z.ZodObject<{
-                goal_id: z.ZodNumber;
+                goal_id: z.ZodPipeline<z.ZodUnion<[z.ZodNumber, z.ZodEffects<z.ZodString, number, string>]>, z.ZodNumber>;
                 amount: z.ZodNumber;
             }, "strip", z.ZodTypeAny, {
                 amount: number;
                 goal_id: number;
             }, {
                 amount: number;
-                goal_id: number;
+                goal_id: string | number;
             }>>;
         }, "strict", z.ZodTypeAny, {
             currency: "DOP" | "USD" | "EUR";
@@ -438,7 +438,7 @@ export declare const TransactionsContracts: {
             payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             goal_income_allocation?: {
                 amount: number;
-                goal_id: number;
+                goal_id: string | number;
             } | undefined;
         }>, {
             currency: "DOP" | "USD" | "EUR";
@@ -466,7 +466,7 @@ export declare const TransactionsContracts: {
             payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             goal_income_allocation?: {
                 amount: number;
-                goal_id: number;
+                goal_id: string | number;
             } | undefined;
         }>, {
             currency: "DOP" | "USD" | "EUR";
@@ -494,7 +494,7 @@ export declare const TransactionsContracts: {
             payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             goal_income_allocation?: {
                 amount: number;
-                goal_id: number;
+                goal_id: string | number;
             } | undefined;
         }>;
         path: "/transactions/manual";
