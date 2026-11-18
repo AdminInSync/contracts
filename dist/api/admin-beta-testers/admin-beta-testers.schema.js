@@ -1,7 +1,11 @@
 import { z } from 'zod';
 import { extendZodWithOpenApi } from '@anatine/zod-openapi';
+import { QueryBooleanSchema } from '../../common/schemas/common.schema';
 import { BetaTesterInterestSchema, BetaTesterOperatingSystemSchema } from '../beta-testers/beta-testers.schema';
 extendZodWithOpenApi(z);
+export const GetBetaTestersQuerySchema = z.object({
+    has_app_account: QueryBooleanSchema,
+});
 export const AdminBetaTesterEntrySchema = z.object({
     id: z.string().uuid(),
     full_name: z.string(),
@@ -9,6 +13,7 @@ export const AdminBetaTesterEntrySchema = z.object({
     operating_system: BetaTesterOperatingSystemSchema,
     interests: z.array(BetaTesterInterestSchema),
     other_interest: z.string().nullable(),
+    has_app_account: z.boolean(),
     created_at: z.string().datetime(),
     download_email_sent_at: z.string().datetime().nullable(),
 });

@@ -98,6 +98,10 @@ export const ConnectedProductMetadataSchema = z.object({
 });
 export const ProductKindSchema = z.enum(['debit', 'credit']);
 export const CardBrandSchema = z.enum(['visa', 'mastercard', 'amex']);
+export const ExpenseDestinationSchema = z.object({
+    budget_uuid: z.string().uuid().nullable(),
+    group_uuid: z.string().uuid().nullable(),
+});
 export const ConnectedProductSchema = z.object({
     id: z.string(),
     type: z.string(),
@@ -107,6 +111,7 @@ export const ConnectedProductSchema = z.object({
     product_kind: ProductKindSchema,
     product_label: z.string(),
     lastFour: z.string(),
+    expense_destination: ExpenseDestinationSchema,
     is_manual: z.boolean(),
     card_brand: CardBrandSchema.nullable(),
     linked_account_id: z.string().uuid().nullable().optional(),
@@ -141,6 +146,7 @@ export const ProductTransactionItemSchema = z.object({
     description: z.string().nullable(),
     transaction_type: z.enum(['debit', 'credit', 'payment']),
     category: z.string().nullable().optional(),
+    can_edit_category: z.boolean().optional(),
     is_manual: z.boolean().optional(),
     institution_name: z.string().nullable(),
     institution_logo: z.string().nullable(),
@@ -149,7 +155,14 @@ export const ProductTransactionItemSchema = z.object({
     product_label: z.string().nullable(),
     card_brand: CardBrandSchema.nullable(),
     linked_account_label: z.string().nullable().optional(),
+    budget_uuid: z.string().uuid().nullable().optional(),
+    group_uuid: z.string().uuid().nullable().optional(),
+    destination_pending: z.string().nullable().optional(),
+    budget_pending: z.string().nullable().optional(),
+    group_pending: z.string().nullable().optional(),
 });
+export const SetExpenseDestinationSchema = ExpenseDestinationSchema.strict();
+export const ExpenseDestinationResponseSchema = z.object({ message: z.string(), data: ExpenseDestinationSchema });
 export const ProductTransactionsListResponseSchema = z.object({
     message: z.string(),
     data: z.array(ProductTransactionItemSchema),

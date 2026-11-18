@@ -1,4 +1,8 @@
 import { z } from 'zod';
+/**
+ * Query-string booleans. Do not use z.coerce.boolean() here: Boolean("false") is true.
+ */
+export declare const QueryBooleanSchema: z.ZodEffects<z.ZodOptional<z.ZodBoolean>, boolean | undefined, unknown>;
 export declare const ErrorResSchema: z.ZodObject<{
     message: z.ZodString;
     error: z.ZodOptional<z.ZodString>;

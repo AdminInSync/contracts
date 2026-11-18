@@ -1,15 +1,7 @@
 import { z } from 'zod';
 import { INCOME_CATEGORY_LABELS } from '../../common/income-categories';
-export const ExpenseCategorySchema = z.enum([
-    'Alimentos',
-    'Transporte',
-    'Hogar',
-    'Servicios',
-    'Educación',
-    'Salud',
-    'Entretenimiento',
-    'Otros',
-]);
+import { BUDGET_CATEGORIES } from '../budgets/budgets.schema';
+export const ExpenseCategorySchema = z.enum(BUDGET_CATEGORIES);
 export const IncomeCategorySchema = z.enum(INCOME_CATEGORY_LABELS);
 export const ManualTransactionTypeSchema = z.enum(['debit', 'credit', 'payment']);
 export const ManualTransactionCategorySchema = z.union([ExpenseCategorySchema, IncomeCategorySchema, z.literal('Pago de crédito')]);
@@ -24,11 +16,21 @@ export const CreateManualTransactionSchema = z.object({
     category: ManualTransactionCategorySchema,
     payment_method: ManualPaymentMethodSchema.optional(),
     product_uuid: z.string().uuid().nullable().optional(),
+    budget_uuid: z.string().uuid().nullable().optional(),
+    group_uuid: z.string().uuid().nullable().optional(),
+    goal_income_allocation: z.object({
+        goal_id: z.number().int().positive(),
+        amount: z.number().positive().max(999999999999.99),
+    }).optional(),
 }).strict().refine((value) => value.transaction_type === 'payment'
     ? value.category === 'Pago de crédito'
     : value.transaction_type === 'debit'
         ? ExpenseCategorySchema.safeParse(value.category).success
-        : IncomeCategorySchema.safeParse(value.category).success, { message: 'Category does not match transaction type', path: ['category'] });
+        : IncomeCategorySchema.safeParse(value.category).success, { message: 'Category does not match transaction type', path: ['category'] })
+    .refine((value) => !value.goal_income_allocation || value.transaction_type === 'credit', {
+    message: 'Savings goal allocations are available for income only',
+    path: ['goal_income_allocation'],
+});
 export const UpdateManualTransactionSchema = z.object({
     amount: z.number().positive().max(9999999999999.99).optional(),
     currency: CurrencySchema.optional(),
@@ -63,6 +65,11 @@ export const ManualTransactionItemSchema = z.object({
     is_manual: z.literal(true),
     payment_method: ManualPaymentMethodSchema,
     product_uuid: z.string().uuid().nullable(),
+    budget_uuid: z.string().uuid().nullable().optional(),
+    group_uuid: z.string().uuid().nullable().optional(),
+    destination_pending: z.string().nullable().optional(),
+    budget_pending: z.string().nullable().optional(),
+    group_pending: z.string().nullable().optional(),
 }).refine((value) => value.transaction_type === 'payment'
     ? value.category === 'Pago de crédito' && value.description === 'Pago manual'
     : value.transaction_type === 'debit'

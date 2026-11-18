@@ -1,5 +1,98 @@
 import { z } from 'zod';
 export declare const TransactionsContracts: {
+    updateEmailExpenseCategory: {
+        pathParams: z.ZodObject<{
+            uuid: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            uuid: string;
+        }, {
+            uuid: string;
+        }>;
+        summary: "Change the category of a personal email expense";
+        method: "PATCH";
+        body: z.ZodObject<{
+            category: z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>;
+        }, "strict", z.ZodTypeAny, {
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
+        }, {
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
+        }>;
+        path: "/transactions/email/:uuid/category";
+        responses: {
+            200: z.ZodObject<{
+                category: z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>;
+            }, "strip", z.ZodTypeAny, {
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
+            }, {
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
+            }>;
+            400: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            404: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            409: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+    };
     parseManualTransactionVoice: {
         summary: "Parse an on-device voice transcript into an expense draft";
         description: "Accepts transcript text only, does not store it, and returns a draft for user confirmation.";
@@ -20,31 +113,31 @@ export declare const TransactionsContracts: {
                     amount: z.ZodNumber;
                     currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
                     transaction_date: z.ZodString;
-                    category: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, z.ZodLiteral<"Pago de crédito">]>;
+                    category: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, z.ZodLiteral<"Pago de crédito">]>;
                 }, "strip", z.ZodTypeAny, {
                     currency: "DOP" | "USD" | "EUR";
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                 }, {
                     currency: "DOP" | "USD" | "EUR";
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                 }>, {
                     currency: "DOP" | "USD" | "EUR";
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                 }, {
                     currency: "DOP" | "USD" | "EUR";
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                 }>;
             }, "strip", z.ZodTypeAny, {
                 message: string;
@@ -53,7 +146,7 @@ export declare const TransactionsContracts: {
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                 };
             }, {
                 message: string;
@@ -62,7 +155,7 @@ export declare const TransactionsContracts: {
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                 };
             }>;
             400: z.ZodObject<{
@@ -130,11 +223,16 @@ export declare const TransactionsContracts: {
                     currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
                     transaction_date: z.ZodString;
                     transaction_type: z.ZodEnum<["debit", "credit", "payment"]>;
-                    category: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, z.ZodLiteral<"Pago de crédito">]>;
+                    category: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, z.ZodLiteral<"Pago de crédito">]>;
                     description: z.ZodEnum<["Gasto manual", "Ingreso manual", "Pago manual"]>;
                     is_manual: z.ZodLiteral<true>;
                     payment_method: z.ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
                     product_uuid: z.ZodNullable<z.ZodString>;
+                    budget_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+                    group_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+                    destination_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+                    budget_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+                    group_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                 }, "strip", z.ZodTypeAny, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
@@ -144,8 +242,13 @@ export declare const TransactionsContracts: {
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                    budget_uuid?: string | null | undefined;
+                    group_uuid?: string | null | undefined;
+                    destination_pending?: string | null | undefined;
+                    budget_pending?: string | null | undefined;
+                    group_pending?: string | null | undefined;
                 }, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
@@ -155,8 +258,13 @@ export declare const TransactionsContracts: {
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                    budget_uuid?: string | null | undefined;
+                    group_uuid?: string | null | undefined;
+                    destination_pending?: string | null | undefined;
+                    budget_pending?: string | null | undefined;
+                    group_pending?: string | null | undefined;
                 }>, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
@@ -166,8 +274,13 @@ export declare const TransactionsContracts: {
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                    budget_uuid?: string | null | undefined;
+                    group_uuid?: string | null | undefined;
+                    destination_pending?: string | null | undefined;
+                    budget_pending?: string | null | undefined;
+                    group_pending?: string | null | undefined;
                 }, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
@@ -177,8 +290,13 @@ export declare const TransactionsContracts: {
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                    budget_uuid?: string | null | undefined;
+                    group_uuid?: string | null | undefined;
+                    destination_pending?: string | null | undefined;
+                    budget_pending?: string | null | undefined;
+                    group_pending?: string | null | undefined;
                 }>, "many">;
                 pagination: z.ZodObject<{
                     total: z.ZodNumber;
@@ -204,8 +322,13 @@ export declare const TransactionsContracts: {
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                    budget_uuid?: string | null | undefined;
+                    group_uuid?: string | null | undefined;
+                    destination_pending?: string | null | undefined;
+                    budget_pending?: string | null | undefined;
+                    group_pending?: string | null | undefined;
                 }[];
                 pagination: {
                     limit: number;
@@ -223,8 +346,13 @@ export declare const TransactionsContracts: {
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                    budget_uuid?: string | null | undefined;
+                    group_uuid?: string | null | undefined;
+                    destination_pending?: string | null | undefined;
+                    budget_pending?: string | null | undefined;
+                    group_pending?: string | null | undefined;
                 }[];
                 pagination: {
                     limit: number;
@@ -264,46 +392,110 @@ export declare const TransactionsContracts: {
         summary: "Record a manual transaction";
         description: "Creates an expense or income without free-text merchant or counterparty details. Email-enabled accounts may create income entries only.";
         method: "POST";
-        body: z.ZodEffects<z.ZodObject<{
+        body: z.ZodEffects<z.ZodEffects<z.ZodObject<{
             amount: z.ZodNumber;
             currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
             transaction_date: z.ZodString;
             transaction_type: z.ZodDefault<z.ZodEnum<["debit", "credit", "payment"]>>;
-            category: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, z.ZodLiteral<"Pago de crédito">]>;
+            category: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, z.ZodLiteral<"Pago de crédito">]>;
             payment_method: z.ZodOptional<z.ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>>;
             product_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+            budget_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+            group_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+            goal_income_allocation: z.ZodOptional<z.ZodObject<{
+                goal_id: z.ZodNumber;
+                amount: z.ZodNumber;
+            }, "strip", z.ZodTypeAny, {
+                amount: number;
+                goal_id: number;
+            }, {
+                amount: number;
+                goal_id: number;
+            }>>;
         }, "strict", z.ZodTypeAny, {
             currency: "DOP" | "USD" | "EUR";
             amount: number;
             transaction_date: string;
             transaction_type: "debit" | "credit" | "payment";
-            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+            budget_uuid?: string | null | undefined;
+            group_uuid?: string | null | undefined;
             product_uuid?: string | null | undefined;
             payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+            goal_income_allocation?: {
+                amount: number;
+                goal_id: number;
+            } | undefined;
         }, {
             currency: "DOP" | "USD" | "EUR";
             amount: number;
             transaction_date: string;
-            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+            budget_uuid?: string | null | undefined;
+            group_uuid?: string | null | undefined;
             product_uuid?: string | null | undefined;
             transaction_type?: "debit" | "credit" | "payment" | undefined;
             payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+            goal_income_allocation?: {
+                amount: number;
+                goal_id: number;
+            } | undefined;
         }>, {
             currency: "DOP" | "USD" | "EUR";
             amount: number;
             transaction_date: string;
             transaction_type: "debit" | "credit" | "payment";
-            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+            budget_uuid?: string | null | undefined;
+            group_uuid?: string | null | undefined;
             product_uuid?: string | null | undefined;
             payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+            goal_income_allocation?: {
+                amount: number;
+                goal_id: number;
+            } | undefined;
         }, {
             currency: "DOP" | "USD" | "EUR";
             amount: number;
             transaction_date: string;
-            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+            budget_uuid?: string | null | undefined;
+            group_uuid?: string | null | undefined;
             product_uuid?: string | null | undefined;
             transaction_type?: "debit" | "credit" | "payment" | undefined;
             payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+            goal_income_allocation?: {
+                amount: number;
+                goal_id: number;
+            } | undefined;
+        }>, {
+            currency: "DOP" | "USD" | "EUR";
+            amount: number;
+            transaction_date: string;
+            transaction_type: "debit" | "credit" | "payment";
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+            budget_uuid?: string | null | undefined;
+            group_uuid?: string | null | undefined;
+            product_uuid?: string | null | undefined;
+            payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+            goal_income_allocation?: {
+                amount: number;
+                goal_id: number;
+            } | undefined;
+        }, {
+            currency: "DOP" | "USD" | "EUR";
+            amount: number;
+            transaction_date: string;
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+            budget_uuid?: string | null | undefined;
+            group_uuid?: string | null | undefined;
+            product_uuid?: string | null | undefined;
+            transaction_type?: "debit" | "credit" | "payment" | undefined;
+            payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+            goal_income_allocation?: {
+                amount: number;
+                goal_id: number;
+            } | undefined;
         }>;
         path: "/transactions/manual";
         responses: {
@@ -315,11 +507,16 @@ export declare const TransactionsContracts: {
                     currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
                     transaction_date: z.ZodString;
                     transaction_type: z.ZodEnum<["debit", "credit", "payment"]>;
-                    category: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, z.ZodLiteral<"Pago de crédito">]>;
+                    category: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, z.ZodLiteral<"Pago de crédito">]>;
                     description: z.ZodEnum<["Gasto manual", "Ingreso manual", "Pago manual"]>;
                     is_manual: z.ZodLiteral<true>;
                     payment_method: z.ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
                     product_uuid: z.ZodNullable<z.ZodString>;
+                    budget_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+                    group_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+                    destination_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+                    budget_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+                    group_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                 }, "strip", z.ZodTypeAny, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
@@ -329,8 +526,13 @@ export declare const TransactionsContracts: {
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                    budget_uuid?: string | null | undefined;
+                    group_uuid?: string | null | undefined;
+                    destination_pending?: string | null | undefined;
+                    budget_pending?: string | null | undefined;
+                    group_pending?: string | null | undefined;
                 }, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
@@ -340,8 +542,13 @@ export declare const TransactionsContracts: {
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                    budget_uuid?: string | null | undefined;
+                    group_uuid?: string | null | undefined;
+                    destination_pending?: string | null | undefined;
+                    budget_pending?: string | null | undefined;
+                    group_pending?: string | null | undefined;
                 }>, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
@@ -351,8 +558,13 @@ export declare const TransactionsContracts: {
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                    budget_uuid?: string | null | undefined;
+                    group_uuid?: string | null | undefined;
+                    destination_pending?: string | null | undefined;
+                    budget_pending?: string | null | undefined;
+                    group_pending?: string | null | undefined;
                 }, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
@@ -362,8 +574,13 @@ export declare const TransactionsContracts: {
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                    budget_uuid?: string | null | undefined;
+                    group_uuid?: string | null | undefined;
+                    destination_pending?: string | null | undefined;
+                    budget_pending?: string | null | undefined;
+                    group_pending?: string | null | undefined;
                 }>;
             }, "strip", z.ZodTypeAny, {
                 message: string;
@@ -376,8 +593,13 @@ export declare const TransactionsContracts: {
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                    budget_uuid?: string | null | undefined;
+                    group_uuid?: string | null | undefined;
+                    destination_pending?: string | null | undefined;
+                    budget_pending?: string | null | undefined;
+                    group_pending?: string | null | undefined;
                 };
             }, {
                 message: string;
@@ -390,8 +612,13 @@ export declare const TransactionsContracts: {
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                    budget_uuid?: string | null | undefined;
+                    group_uuid?: string | null | undefined;
+                    destination_pending?: string | null | undefined;
+                    budget_pending?: string | null | undefined;
+                    group_pending?: string | null | undefined;
                 };
             }>;
             400: z.ZodObject<{
@@ -421,6 +648,32 @@ export declare const TransactionsContracts: {
                 statusCode?: number | undefined;
             }>;
             403: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            404: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            409: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
@@ -464,7 +717,7 @@ export declare const TransactionsContracts: {
             currency: z.ZodOptional<z.ZodEnum<["DOP", "USD", "EUR"]>>;
             transaction_date: z.ZodOptional<z.ZodString>;
             transaction_type: z.ZodOptional<z.ZodEnum<["debit", "credit", "payment"]>>;
-            category: z.ZodOptional<z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, z.ZodLiteral<"Pago de crédito">]>>;
+            category: z.ZodOptional<z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, z.ZodLiteral<"Pago de crédito">]>>;
             payment_method: z.ZodOptional<z.ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>>;
             product_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         }, "strict", z.ZodTypeAny, {
@@ -473,7 +726,7 @@ export declare const TransactionsContracts: {
             amount?: number | undefined;
             transaction_date?: string | undefined;
             transaction_type?: "debit" | "credit" | "payment" | undefined;
-            category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
+            category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
             payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
         }, {
             currency?: "DOP" | "USD" | "EUR" | undefined;
@@ -481,7 +734,7 @@ export declare const TransactionsContracts: {
             amount?: number | undefined;
             transaction_date?: string | undefined;
             transaction_type?: "debit" | "credit" | "payment" | undefined;
-            category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
+            category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
             payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
         }>, {
             currency?: "DOP" | "USD" | "EUR" | undefined;
@@ -489,7 +742,7 @@ export declare const TransactionsContracts: {
             amount?: number | undefined;
             transaction_date?: string | undefined;
             transaction_type?: "debit" | "credit" | "payment" | undefined;
-            category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
+            category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
             payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
         }, {
             currency?: "DOP" | "USD" | "EUR" | undefined;
@@ -497,7 +750,7 @@ export declare const TransactionsContracts: {
             amount?: number | undefined;
             transaction_date?: string | undefined;
             transaction_type?: "debit" | "credit" | "payment" | undefined;
-            category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
+            category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
             payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
         }>, {
             currency?: "DOP" | "USD" | "EUR" | undefined;
@@ -505,7 +758,7 @@ export declare const TransactionsContracts: {
             amount?: number | undefined;
             transaction_date?: string | undefined;
             transaction_type?: "debit" | "credit" | "payment" | undefined;
-            category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
+            category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
             payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
         }, {
             currency?: "DOP" | "USD" | "EUR" | undefined;
@@ -513,7 +766,7 @@ export declare const TransactionsContracts: {
             amount?: number | undefined;
             transaction_date?: string | undefined;
             transaction_type?: "debit" | "credit" | "payment" | undefined;
-            category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
+            category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
             payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
         }>;
         path: "/transactions/manual/:uuid";
@@ -526,11 +779,16 @@ export declare const TransactionsContracts: {
                     currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
                     transaction_date: z.ZodString;
                     transaction_type: z.ZodEnum<["debit", "credit", "payment"]>;
-                    category: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, z.ZodLiteral<"Pago de crédito">]>;
+                    category: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, z.ZodLiteral<"Pago de crédito">]>;
                     description: z.ZodEnum<["Gasto manual", "Ingreso manual", "Pago manual"]>;
                     is_manual: z.ZodLiteral<true>;
                     payment_method: z.ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
                     product_uuid: z.ZodNullable<z.ZodString>;
+                    budget_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+                    group_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+                    destination_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+                    budget_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+                    group_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                 }, "strip", z.ZodTypeAny, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
@@ -540,8 +798,13 @@ export declare const TransactionsContracts: {
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                    budget_uuid?: string | null | undefined;
+                    group_uuid?: string | null | undefined;
+                    destination_pending?: string | null | undefined;
+                    budget_pending?: string | null | undefined;
+                    group_pending?: string | null | undefined;
                 }, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
@@ -551,8 +814,13 @@ export declare const TransactionsContracts: {
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                    budget_uuid?: string | null | undefined;
+                    group_uuid?: string | null | undefined;
+                    destination_pending?: string | null | undefined;
+                    budget_pending?: string | null | undefined;
+                    group_pending?: string | null | undefined;
                 }>, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
@@ -562,8 +830,13 @@ export declare const TransactionsContracts: {
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                    budget_uuid?: string | null | undefined;
+                    group_uuid?: string | null | undefined;
+                    destination_pending?: string | null | undefined;
+                    budget_pending?: string | null | undefined;
+                    group_pending?: string | null | undefined;
                 }, {
                     description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                     uuid: string;
@@ -573,8 +846,13 @@ export declare const TransactionsContracts: {
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                    budget_uuid?: string | null | undefined;
+                    group_uuid?: string | null | undefined;
+                    destination_pending?: string | null | undefined;
+                    budget_pending?: string | null | undefined;
+                    group_pending?: string | null | undefined;
                 }>;
             }, "strip", z.ZodTypeAny, {
                 message: string;
@@ -587,8 +865,13 @@ export declare const TransactionsContracts: {
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                    budget_uuid?: string | null | undefined;
+                    group_uuid?: string | null | undefined;
+                    destination_pending?: string | null | undefined;
+                    budget_pending?: string | null | undefined;
+                    group_pending?: string | null | undefined;
                 };
             }, {
                 message: string;
@@ -601,8 +884,13 @@ export declare const TransactionsContracts: {
                     amount: number;
                     transaction_date: string;
                     transaction_type: "debit" | "credit" | "payment";
-                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                    budget_uuid?: string | null | undefined;
+                    group_uuid?: string | null | undefined;
+                    destination_pending?: string | null | undefined;
+                    budget_pending?: string | null | undefined;
+                    group_pending?: string | null | undefined;
                 };
             }>;
             400: z.ZodObject<{
@@ -632,6 +920,19 @@ export declare const TransactionsContracts: {
                 statusCode?: number | undefined;
             }>;
             403: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            409: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;

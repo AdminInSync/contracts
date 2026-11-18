@@ -618,6 +618,16 @@ export declare const ConnectedProductMetadataSchema: z.ZodObject<{
 }>;
 export declare const ProductKindSchema: z.ZodEnum<["debit", "credit"]>;
 export declare const CardBrandSchema: z.ZodEnum<["visa", "mastercard", "amex"]>;
+export declare const ExpenseDestinationSchema: z.ZodObject<{
+    budget_uuid: z.ZodNullable<z.ZodString>;
+    group_uuid: z.ZodNullable<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+    budget_uuid: string | null;
+    group_uuid: string | null;
+}, {
+    budget_uuid: string | null;
+    group_uuid: string | null;
+}>;
 export declare const ConnectedProductSchema: z.ZodObject<{
     id: z.ZodString;
     type: z.ZodString;
@@ -627,6 +637,16 @@ export declare const ConnectedProductSchema: z.ZodObject<{
     product_kind: z.ZodEnum<["debit", "credit"]>;
     product_label: z.ZodString;
     lastFour: z.ZodString;
+    expense_destination: z.ZodObject<{
+        budget_uuid: z.ZodNullable<z.ZodString>;
+        group_uuid: z.ZodNullable<z.ZodString>;
+    }, "strip", z.ZodTypeAny, {
+        budget_uuid: string | null;
+        group_uuid: string | null;
+    }, {
+        budget_uuid: string | null;
+        group_uuid: string | null;
+    }>;
     is_manual: z.ZodBoolean;
     card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
     linked_account_id: z.ZodOptional<z.ZodNullable<z.ZodString>>;
@@ -709,6 +729,10 @@ export declare const ConnectedProductSchema: z.ZodObject<{
     product_kind: "debit" | "credit";
     product_label: string;
     lastFour: string;
+    expense_destination: {
+        budget_uuid: string | null;
+        group_uuid: string | null;
+    };
     is_manual: boolean;
     card_brand: "visa" | "mastercard" | "amex" | null;
     balance: {
@@ -742,6 +766,10 @@ export declare const ConnectedProductSchema: z.ZodObject<{
     product_kind: "debit" | "credit";
     product_label: string;
     lastFour: string;
+    expense_destination: {
+        budget_uuid: string | null;
+        group_uuid: string | null;
+    };
     is_manual: boolean;
     card_brand: "visa" | "mastercard" | "amex" | null;
     balance: {
@@ -806,6 +834,16 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         product_kind: z.ZodEnum<["debit", "credit"]>;
         product_label: z.ZodString;
         lastFour: z.ZodString;
+        expense_destination: z.ZodObject<{
+            budget_uuid: z.ZodNullable<z.ZodString>;
+            group_uuid: z.ZodNullable<z.ZodString>;
+        }, "strip", z.ZodTypeAny, {
+            budget_uuid: string | null;
+            group_uuid: string | null;
+        }, {
+            budget_uuid: string | null;
+            group_uuid: string | null;
+        }>;
         is_manual: z.ZodBoolean;
         card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
         linked_account_id: z.ZodOptional<z.ZodNullable<z.ZodString>>;
@@ -888,6 +926,10 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         product_kind: "debit" | "credit";
         product_label: string;
         lastFour: string;
+        expense_destination: {
+            budget_uuid: string | null;
+            group_uuid: string | null;
+        };
         is_manual: boolean;
         card_brand: "visa" | "mastercard" | "amex" | null;
         balance: {
@@ -921,6 +963,10 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         product_kind: "debit" | "credit";
         product_label: string;
         lastFour: string;
+        expense_destination: {
+            budget_uuid: string | null;
+            group_uuid: string | null;
+        };
         is_manual: boolean;
         card_brand: "visa" | "mastercard" | "amex" | null;
         balance: {
@@ -956,6 +1002,10 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         product_kind: "debit" | "credit";
         product_label: string;
         lastFour: string;
+        expense_destination: {
+            budget_uuid: string | null;
+            group_uuid: string | null;
+        };
         is_manual: boolean;
         card_brand: "visa" | "mastercard" | "amex" | null;
         balance: {
@@ -999,6 +1049,10 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         product_kind: "debit" | "credit";
         product_label: string;
         lastFour: string;
+        expense_destination: {
+            budget_uuid: string | null;
+            group_uuid: string | null;
+        };
         is_manual: boolean;
         card_brand: "visa" | "mastercard" | "amex" | null;
         balance: {
@@ -1052,6 +1106,16 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: z.ZodEnum<["debit", "credit"]>;
             product_label: z.ZodString;
             lastFour: z.ZodString;
+            expense_destination: z.ZodObject<{
+                budget_uuid: z.ZodNullable<z.ZodString>;
+                group_uuid: z.ZodNullable<z.ZodString>;
+            }, "strip", z.ZodTypeAny, {
+                budget_uuid: string | null;
+                group_uuid: string | null;
+            }, {
+                budget_uuid: string | null;
+                group_uuid: string | null;
+            }>;
             is_manual: z.ZodBoolean;
             card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
             linked_account_id: z.ZodOptional<z.ZodNullable<z.ZodString>>;
@@ -1134,6 +1198,10 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: "debit" | "credit";
             product_label: string;
             lastFour: string;
+            expense_destination: {
+                budget_uuid: string | null;
+                group_uuid: string | null;
+            };
             is_manual: boolean;
             card_brand: "visa" | "mastercard" | "amex" | null;
             balance: {
@@ -1167,6 +1235,10 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: "debit" | "credit";
             product_label: string;
             lastFour: string;
+            expense_destination: {
+                budget_uuid: string | null;
+                group_uuid: string | null;
+            };
             is_manual: boolean;
             card_brand: "visa" | "mastercard" | "amex" | null;
             balance: {
@@ -1202,6 +1274,10 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: "debit" | "credit";
             product_label: string;
             lastFour: string;
+            expense_destination: {
+                budget_uuid: string | null;
+                group_uuid: string | null;
+            };
             is_manual: boolean;
             card_brand: "visa" | "mastercard" | "amex" | null;
             balance: {
@@ -1245,6 +1321,10 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: "debit" | "credit";
             product_label: string;
             lastFour: string;
+            expense_destination: {
+                budget_uuid: string | null;
+                group_uuid: string | null;
+            };
             is_manual: boolean;
             card_brand: "visa" | "mastercard" | "amex" | null;
             balance: {
@@ -1291,6 +1371,10 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: "debit" | "credit";
             product_label: string;
             lastFour: string;
+            expense_destination: {
+                budget_uuid: string | null;
+                group_uuid: string | null;
+            };
             is_manual: boolean;
             card_brand: "visa" | "mastercard" | "amex" | null;
             balance: {
@@ -1337,6 +1421,10 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             product_kind: "debit" | "credit";
             product_label: string;
             lastFour: string;
+            expense_destination: {
+                budget_uuid: string | null;
+                group_uuid: string | null;
+            };
             is_manual: boolean;
             card_brand: "visa" | "mastercard" | "amex" | null;
             balance: {
@@ -1367,6 +1455,7 @@ export declare const ProductTransactionItemSchema: z.ZodObject<{
     description: z.ZodNullable<z.ZodString>;
     transaction_type: z.ZodEnum<["debit", "credit", "payment"]>;
     category: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    can_edit_category: z.ZodOptional<z.ZodBoolean>;
     is_manual: z.ZodOptional<z.ZodBoolean>;
     institution_name: z.ZodNullable<z.ZodString>;
     institution_logo: z.ZodNullable<z.ZodString>;
@@ -1375,6 +1464,11 @@ export declare const ProductTransactionItemSchema: z.ZodObject<{
     product_label: z.ZodNullable<z.ZodString>;
     card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
     linked_account_label: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    budget_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    group_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    destination_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    budget_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    group_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
 }, "strip", z.ZodTypeAny, {
     description: string | null;
     uuid: string;
@@ -1388,11 +1482,17 @@ export declare const ProductTransactionItemSchema: z.ZodObject<{
     amount: number;
     transaction_date: string;
     transaction_type: "debit" | "credit" | "payment";
+    budget_uuid?: string | null | undefined;
+    group_uuid?: string | null | undefined;
     is_manual?: boolean | undefined;
     product_uuid?: string | null | undefined;
     transaction_occurred_at?: string | null | undefined;
     category?: string | null | undefined;
+    can_edit_category?: boolean | undefined;
     linked_account_label?: string | null | undefined;
+    destination_pending?: string | null | undefined;
+    budget_pending?: string | null | undefined;
+    group_pending?: string | null | undefined;
 }, {
     description: string | null;
     uuid: string;
@@ -1406,11 +1506,52 @@ export declare const ProductTransactionItemSchema: z.ZodObject<{
     amount: number;
     transaction_date: string;
     transaction_type: "debit" | "credit" | "payment";
+    budget_uuid?: string | null | undefined;
+    group_uuid?: string | null | undefined;
     is_manual?: boolean | undefined;
     product_uuid?: string | null | undefined;
     transaction_occurred_at?: string | null | undefined;
     category?: string | null | undefined;
+    can_edit_category?: boolean | undefined;
     linked_account_label?: string | null | undefined;
+    destination_pending?: string | null | undefined;
+    budget_pending?: string | null | undefined;
+    group_pending?: string | null | undefined;
+}>;
+export declare const SetExpenseDestinationSchema: z.ZodObject<{
+    budget_uuid: z.ZodNullable<z.ZodString>;
+    group_uuid: z.ZodNullable<z.ZodString>;
+}, "strict", z.ZodTypeAny, {
+    budget_uuid: string | null;
+    group_uuid: string | null;
+}, {
+    budget_uuid: string | null;
+    group_uuid: string | null;
+}>;
+export declare const ExpenseDestinationResponseSchema: z.ZodObject<{
+    message: z.ZodString;
+    data: z.ZodObject<{
+        budget_uuid: z.ZodNullable<z.ZodString>;
+        group_uuid: z.ZodNullable<z.ZodString>;
+    }, "strip", z.ZodTypeAny, {
+        budget_uuid: string | null;
+        group_uuid: string | null;
+    }, {
+        budget_uuid: string | null;
+        group_uuid: string | null;
+    }>;
+}, "strip", z.ZodTypeAny, {
+    message: string;
+    data: {
+        budget_uuid: string | null;
+        group_uuid: string | null;
+    };
+}, {
+    message: string;
+    data: {
+        budget_uuid: string | null;
+        group_uuid: string | null;
+    };
 }>;
 export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
     message: z.ZodString;
@@ -1424,6 +1565,7 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         description: z.ZodNullable<z.ZodString>;
         transaction_type: z.ZodEnum<["debit", "credit", "payment"]>;
         category: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+        can_edit_category: z.ZodOptional<z.ZodBoolean>;
         is_manual: z.ZodOptional<z.ZodBoolean>;
         institution_name: z.ZodNullable<z.ZodString>;
         institution_logo: z.ZodNullable<z.ZodString>;
@@ -1432,6 +1574,11 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         product_label: z.ZodNullable<z.ZodString>;
         card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
         linked_account_label: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+        budget_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+        group_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+        destination_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+        budget_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+        group_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     }, "strip", z.ZodTypeAny, {
         description: string | null;
         uuid: string;
@@ -1445,11 +1592,17 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         amount: number;
         transaction_date: string;
         transaction_type: "debit" | "credit" | "payment";
+        budget_uuid?: string | null | undefined;
+        group_uuid?: string | null | undefined;
         is_manual?: boolean | undefined;
         product_uuid?: string | null | undefined;
         transaction_occurred_at?: string | null | undefined;
         category?: string | null | undefined;
+        can_edit_category?: boolean | undefined;
         linked_account_label?: string | null | undefined;
+        destination_pending?: string | null | undefined;
+        budget_pending?: string | null | undefined;
+        group_pending?: string | null | undefined;
     }, {
         description: string | null;
         uuid: string;
@@ -1463,11 +1616,17 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         amount: number;
         transaction_date: string;
         transaction_type: "debit" | "credit" | "payment";
+        budget_uuid?: string | null | undefined;
+        group_uuid?: string | null | undefined;
         is_manual?: boolean | undefined;
         product_uuid?: string | null | undefined;
         transaction_occurred_at?: string | null | undefined;
         category?: string | null | undefined;
+        can_edit_category?: boolean | undefined;
         linked_account_label?: string | null | undefined;
+        destination_pending?: string | null | undefined;
+        budget_pending?: string | null | undefined;
+        group_pending?: string | null | undefined;
     }>, "many">;
     pagination: z.ZodObject<{
         total: z.ZodNumber;
@@ -1507,11 +1666,17 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         amount: number;
         transaction_date: string;
         transaction_type: "debit" | "credit" | "payment";
+        budget_uuid?: string | null | undefined;
+        group_uuid?: string | null | undefined;
         is_manual?: boolean | undefined;
         product_uuid?: string | null | undefined;
         transaction_occurred_at?: string | null | undefined;
         category?: string | null | undefined;
+        can_edit_category?: boolean | undefined;
         linked_account_label?: string | null | undefined;
+        destination_pending?: string | null | undefined;
+        budget_pending?: string | null | undefined;
+        group_pending?: string | null | undefined;
     }[];
     pagination: {
         limit: number;
@@ -1537,11 +1702,17 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         amount: number;
         transaction_date: string;
         transaction_type: "debit" | "credit" | "payment";
+        budget_uuid?: string | null | undefined;
+        group_uuid?: string | null | undefined;
         is_manual?: boolean | undefined;
         product_uuid?: string | null | undefined;
         transaction_occurred_at?: string | null | undefined;
         category?: string | null | undefined;
+        can_edit_category?: boolean | undefined;
         linked_account_label?: string | null | undefined;
+        destination_pending?: string | null | undefined;
+        budget_pending?: string | null | undefined;
+        group_pending?: string | null | undefined;
     }[];
     pagination: {
         limit: number;

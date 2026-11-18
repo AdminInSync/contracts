@@ -1,6 +1,6 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
-import { CreateProductSchema, UpdateProductSchema, GetProductsQuerySchema, ProductResponseSchema, ProductsListResponseSchema, ConnectedProductTypeSchema, ConnectedProductsResponseSchema, ProductTransactionsListResponseSchema } from './products.schema';
+import { CreateProductSchema, UpdateProductSchema, GetProductsQuerySchema, ProductResponseSchema, ProductsListResponseSchema, ConnectedProductTypeSchema, ConnectedProductsResponseSchema, ProductTransactionsListResponseSchema, SetExpenseDestinationSchema, ExpenseDestinationResponseSchema, } from './products.schema';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
 const c = initContract();
 export const ProductsContracts = c.router({
@@ -223,6 +223,38 @@ export const ProductsContracts = c.router({
         summary: 'Get my connected products by type',
         description: 'Returns products from bank connections filtered by type. Optional from/to (YYYY-MM-DD) limit debit spend totals.',
     },
+    setMyProductExpenseDestination: {
+        method: 'PATCH',
+        path: '/products/my-products/:productUuid/expense-destination',
+        responses: {
+            200: ExpenseDestinationResponseSchema,
+            400: ErrorResSchema,
+            401: ErrorResSchema,
+            404: ErrorResSchema,
+            409: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        pathParams: z.object({ productUuid: z.string().uuid() }),
+        body: SetExpenseDestinationSchema,
+        summary: 'Set expense destinations for a connected product',
+        description: 'Sets optional budget and shared group destinations for future imported expenses from this connected product.',
+    },
+    setMyTransactionExpenseDestination: {
+        method: 'PATCH',
+        path: '/products/my-transactions/:transactionUuid/expense-destination',
+        responses: {
+            200: ExpenseDestinationResponseSchema,
+            400: ErrorResSchema,
+            401: ErrorResSchema,
+            404: ErrorResSchema,
+            409: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        pathParams: z.object({ transactionUuid: z.string().uuid() }),
+        body: SetExpenseDestinationSchema,
+        summary: 'Set destinations for a personal expense',
+        description: 'Assigns or clears the budget and shared group for one personal expense.',
+    },
     getMyTransactions: {
         method: 'GET',
         path: '/products/my-transactions',
@@ -239,9 +271,11 @@ export const ProductsContracts = c.router({
             search: z.string().trim().max(100).optional(),
             type: z.enum(['debit', 'credit', 'payment']).optional(),
             product_uuid: z.string().uuid().optional(),
+            category: z.string().optional(),
+            assignment_candidates: z.string().transform((value) => value === 'true').pipe(z.boolean()).optional(),
             statement_upload_uuid: z.string().uuid().optional(),
         }),
         summary: 'Get my product transactions',
-        description: 'Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from (YYYY-MM-DD) limits results to that date onward. Optional search matches description, institution, product, card brand, or last 4. Optional product_uuid limits results to one connected product. Optional statement_upload_uuid limits results to one accepted statement upload.',
+        description: 'Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from (YYYY-MM-DD) limits results to that date onward. Optional search matches description, institution, product, card brand, or last 4. Optional product_uuid limits results to one connected product. assignment_candidates=true includes manual and imported personal expenses regardless of tracking mode for destination assignment. Optional statement_upload_uuid limits results to one accepted statement upload.',
     },
 });

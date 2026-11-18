@@ -1,7 +1,7 @@
 import { z } from 'zod';
 export declare const BudgetPeriodSchema: z.ZodEnum<["monthly", "quarterly", "yearly"]>;
 /** Closed expense category catalog (same labels as voice/manual expenses). */
-export declare const BUDGET_CATEGORIES: readonly ["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"];
+export declare const BUDGET_CATEGORIES: readonly ["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"];
 /**
  * Lowercase, no accents, trimmed: how budget and expense categories are compared.
  * Written in plain ES5 on purpose: its source is embedded as-is in the CouchDB
@@ -10,7 +10,7 @@ export declare const BUDGET_CATEGORIES: readonly ["Alimentos", "Transporte", "Ho
  */
 export declare function normalizeBudgetCategory(value: unknown): string;
 /** Accepts any casing/accents of a catalog label and returns the canonical label. */
-export declare const BudgetCategorySchema: z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>;
+export declare const BudgetCategorySchema: z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros", string>;
 export declare const BudgetStatusSchema: z.ZodEnum<["ok", "near_limit", "exceeded"]>;
 export declare const CountedExpenseTypeSchema: z.ZodEnum<["manual", "voice"]>;
 export declare const BudgetSchema: z.ZodObject<{
@@ -28,8 +28,8 @@ export declare const BudgetSchema: z.ZodObject<{
     is_active: z.ZodBoolean;
     notes: z.ZodNullable<z.ZodString>;
     settings: z.ZodNullable<z.ZodAny>;
-    category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
-    categories: z.ZodArray<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
+    category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>>;
+    categories: z.ZodArray<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, "many">;
     needs_category: z.ZodBoolean;
     spent: z.ZodNullable<z.ZodNumber>;
     remaining: z.ZodNullable<z.ZodNumber>;
@@ -52,13 +52,13 @@ export declare const BudgetSchema: z.ZodObject<{
     name: string;
     currency: string;
     deleted_at: string | null;
-    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
     budget_period: "monthly" | "quarterly" | "yearly";
     start_date: string;
     end_date: string;
     total_amount: number;
     used_amount: number;
-    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
     needs_category: boolean;
     spent: number | null;
     remaining: number | null;
@@ -78,13 +78,13 @@ export declare const BudgetSchema: z.ZodObject<{
     name: string;
     currency: string;
     deleted_at: string | null;
-    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
     budget_period: "monthly" | "quarterly" | "yearly";
     start_date: string;
     end_date: string;
     total_amount: number;
     used_amount: number;
-    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+    categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
     needs_category: boolean;
     spent: number | null;
     remaining: number | null;
@@ -103,8 +103,8 @@ export declare const CreateBudgetSchema: z.ZodEffects<z.ZodEffects<z.ZodObject<{
     is_active: z.ZodOptional<z.ZodBoolean>;
     notes: z.ZodString;
     settings: z.ZodOptional<z.ZodAny>;
-    category: z.ZodOptional<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>>;
-    categories: z.ZodOptional<z.ZodArray<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>, "many">>;
+    category: z.ZodOptional<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros", string>>;
+    categories: z.ZodOptional<z.ZodArray<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros", string>, "many">>;
 }, "strip", z.ZodTypeAny, {
     notes: string;
     name: string;
@@ -113,10 +113,10 @@ export declare const CreateBudgetSchema: z.ZodEffects<z.ZodEffects<z.ZodObject<{
     end_date: string;
     total_amount: number;
     is_active?: boolean | undefined;
-    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
+    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | undefined;
     budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
     settings?: any;
-    categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
+    categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[] | undefined;
 }, {
     notes: string;
     name: string;
@@ -137,10 +137,10 @@ export declare const CreateBudgetSchema: z.ZodEffects<z.ZodEffects<z.ZodObject<{
     end_date: string;
     total_amount: number;
     is_active?: boolean | undefined;
-    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
+    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | undefined;
     budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
     settings?: any;
-    categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
+    categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[] | undefined;
 }, {
     notes: string;
     name: string;
@@ -161,10 +161,10 @@ export declare const CreateBudgetSchema: z.ZodEffects<z.ZodEffects<z.ZodObject<{
     end_date: string;
     total_amount: number;
     is_active?: boolean | undefined;
-    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
+    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | undefined;
     budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
     settings?: any;
-    categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
+    categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[] | undefined;
 }, {
     notes: string;
     name: string;
@@ -188,20 +188,20 @@ export declare const UpdateBudgetSchema: z.ZodObject<{
     is_active: z.ZodOptional<z.ZodOptional<z.ZodBoolean>>;
     notes: z.ZodOptional<z.ZodString>;
     settings: z.ZodOptional<z.ZodOptional<z.ZodAny>>;
-    category: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>>>;
-    categories: z.ZodOptional<z.ZodOptional<z.ZodArray<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>, "many">>>;
+    category: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros", string>>>;
+    categories: z.ZodOptional<z.ZodOptional<z.ZodArray<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros", string>, "many">>>;
 }, "strip", z.ZodTypeAny, {
     is_active?: boolean | undefined;
     notes?: string | undefined;
     name?: string | undefined;
     currency?: string | undefined;
-    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
+    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | undefined;
     budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
     start_date?: string | undefined;
     end_date?: string | undefined;
     total_amount?: number | undefined;
     settings?: any;
-    categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
+    categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[] | undefined;
 }, {
     is_active?: boolean | undefined;
     notes?: string | undefined;
@@ -216,17 +216,17 @@ export declare const UpdateBudgetSchema: z.ZodObject<{
     categories?: string[] | undefined;
 }>;
 export declare const UpdateBudgetCategorySchema: z.ZodEffects<z.ZodObject<{
-    category: z.ZodOptional<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>>;
-    categories: z.ZodOptional<z.ZodArray<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>, "many">>;
+    category: z.ZodOptional<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros", string>>;
+    categories: z.ZodOptional<z.ZodArray<z.ZodEffects<z.ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros", string>, "many">>;
 }, "strict", z.ZodTypeAny, {
-    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
-    categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
+    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | undefined;
+    categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[] | undefined;
 }, {
     category?: string | undefined;
     categories?: string[] | undefined;
 }>, {
-    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
-    categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
+    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | undefined;
+    categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[] | undefined;
 }, {
     category?: string | undefined;
     categories?: string[] | undefined;
@@ -271,8 +271,8 @@ export declare const BudgetResponseSchema: z.ZodObject<{
         is_active: z.ZodBoolean;
         notes: z.ZodNullable<z.ZodString>;
         settings: z.ZodNullable<z.ZodAny>;
-        category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
-        categories: z.ZodArray<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
+        category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>>;
+        categories: z.ZodArray<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, "many">;
         needs_category: z.ZodBoolean;
         spent: z.ZodNullable<z.ZodNumber>;
         remaining: z.ZodNullable<z.ZodNumber>;
@@ -295,13 +295,13 @@ export declare const BudgetResponseSchema: z.ZodObject<{
         name: string;
         currency: string;
         deleted_at: string | null;
-        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
         budget_period: "monthly" | "quarterly" | "yearly";
         start_date: string;
         end_date: string;
         total_amount: number;
         used_amount: number;
-        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
         needs_category: boolean;
         spent: number | null;
         remaining: number | null;
@@ -321,13 +321,13 @@ export declare const BudgetResponseSchema: z.ZodObject<{
         name: string;
         currency: string;
         deleted_at: string | null;
-        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
         budget_period: "monthly" | "quarterly" | "yearly";
         start_date: string;
         end_date: string;
         total_amount: number;
         used_amount: number;
-        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
         needs_category: boolean;
         spent: number | null;
         remaining: number | null;
@@ -350,13 +350,13 @@ export declare const BudgetResponseSchema: z.ZodObject<{
         name: string;
         currency: string;
         deleted_at: string | null;
-        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
         budget_period: "monthly" | "quarterly" | "yearly";
         start_date: string;
         end_date: string;
         total_amount: number;
         used_amount: number;
-        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
         needs_category: boolean;
         spent: number | null;
         remaining: number | null;
@@ -379,13 +379,13 @@ export declare const BudgetResponseSchema: z.ZodObject<{
         name: string;
         currency: string;
         deleted_at: string | null;
-        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
         budget_period: "monthly" | "quarterly" | "yearly";
         start_date: string;
         end_date: string;
         total_amount: number;
         used_amount: number;
-        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
         needs_category: boolean;
         spent: number | null;
         remaining: number | null;
@@ -412,8 +412,8 @@ export declare const BudgetsListResponseSchema: z.ZodObject<{
         is_active: z.ZodBoolean;
         notes: z.ZodNullable<z.ZodString>;
         settings: z.ZodNullable<z.ZodAny>;
-        category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
-        categories: z.ZodArray<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
+        category: z.ZodNullable<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>>;
+        categories: z.ZodArray<z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, "many">;
         needs_category: z.ZodBoolean;
         spent: z.ZodNullable<z.ZodNumber>;
         remaining: z.ZodNullable<z.ZodNumber>;
@@ -436,13 +436,13 @@ export declare const BudgetsListResponseSchema: z.ZodObject<{
         name: string;
         currency: string;
         deleted_at: string | null;
-        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
         budget_period: "monthly" | "quarterly" | "yearly";
         start_date: string;
         end_date: string;
         total_amount: number;
         used_amount: number;
-        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
         needs_category: boolean;
         spent: number | null;
         remaining: number | null;
@@ -462,13 +462,13 @@ export declare const BudgetsListResponseSchema: z.ZodObject<{
         name: string;
         currency: string;
         deleted_at: string | null;
-        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
         budget_period: "monthly" | "quarterly" | "yearly";
         start_date: string;
         end_date: string;
         total_amount: number;
         used_amount: number;
-        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
         needs_category: boolean;
         spent: number | null;
         remaining: number | null;
@@ -504,13 +504,13 @@ export declare const BudgetsListResponseSchema: z.ZodObject<{
         name: string;
         currency: string;
         deleted_at: string | null;
-        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
         budget_period: "monthly" | "quarterly" | "yearly";
         start_date: string;
         end_date: string;
         total_amount: number;
         used_amount: number;
-        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
         needs_category: boolean;
         spent: number | null;
         remaining: number | null;
@@ -538,13 +538,13 @@ export declare const BudgetsListResponseSchema: z.ZodObject<{
         name: string;
         currency: string;
         deleted_at: string | null;
-        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
         budget_period: "monthly" | "quarterly" | "yearly";
         start_date: string;
         end_date: string;
         total_amount: number;
         used_amount: number;
-        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
         needs_category: boolean;
         spent: number | null;
         remaining: number | null;

@@ -29,7 +29,7 @@ export const AdminClientsContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'Get admin client detail',
-        description: 'Returns a single client with KYC, devices, preferences, and products.',
+        description: 'Returns a single client with activation phase, devices, preferences, and products.',
     },
 }, {
     strictStatusCodes: true,

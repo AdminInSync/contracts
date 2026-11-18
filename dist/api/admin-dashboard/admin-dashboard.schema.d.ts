@@ -1,4 +1,27 @@
 import { z } from 'zod';
+export declare const ActivationPhaseSchema: z.ZodEnum<["account_created", "registration_started", "document_submitted", "registration_completed", "email_connected", "product_linked"]>;
+export declare const ActivationFunnelSchema: z.ZodObject<{
+    account_created: z.ZodNumber;
+    registration_started: z.ZodNumber;
+    document_submitted: z.ZodNumber;
+    registration_completed: z.ZodNumber;
+    email_connected: z.ZodNumber;
+    product_linked: z.ZodNumber;
+}, "strip", z.ZodTypeAny, {
+    account_created: number;
+    registration_started: number;
+    document_submitted: number;
+    registration_completed: number;
+    email_connected: number;
+    product_linked: number;
+}, {
+    account_created: number;
+    registration_started: number;
+    document_submitted: number;
+    registration_completed: number;
+    email_connected: number;
+    product_linked: number;
+}>;
 export declare const ProductTypeCountSchema: z.ZodObject<{
     product_type: z.ZodString;
     count: z.ZodNumber;
@@ -24,7 +47,7 @@ export declare const DashboardRecentSignupSchema: z.ZodObject<{
     name: z.ZodString;
     last_name: z.ZodString;
     email: z.ZodUnion<[z.ZodString, z.ZodLiteral<"">]>;
-    kyc_status: z.ZodEnum<["none", "pending", "on_hold", "approved", "rejected"]>;
+    activation_phase: z.ZodEnum<["account_created", "registration_started", "document_submitted", "registration_completed", "email_connected", "product_linked"]>;
     product_count: z.ZodNumber;
     created_at: z.ZodString;
 }, "strip", z.ZodTypeAny, {
@@ -33,7 +56,7 @@ export declare const DashboardRecentSignupSchema: z.ZodObject<{
     created_at: string;
     last_name: string;
     name: string;
-    kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+    activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
     product_count: number;
 }, {
     id: string;
@@ -41,7 +64,7 @@ export declare const DashboardRecentSignupSchema: z.ZodObject<{
     created_at: string;
     last_name: string;
     name: string;
-    kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+    activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
     product_count: number;
 }>;
 export declare const DashboardStatsSchema: z.ZodObject<{
@@ -52,24 +75,27 @@ export declare const DashboardStatsSchema: z.ZodObject<{
     users_with_products: z.ZodNumber;
     total_products: z.ZodNumber;
     avg_products_per_user: z.ZodNumber;
-    kyc_funnel: z.ZodObject<{
-        none: z.ZodNumber;
-        pending: z.ZodNumber;
-        on_hold: z.ZodNumber;
-        approved: z.ZodNumber;
-        rejected: z.ZodNumber;
+    activation_funnel: z.ZodObject<{
+        account_created: z.ZodNumber;
+        registration_started: z.ZodNumber;
+        document_submitted: z.ZodNumber;
+        registration_completed: z.ZodNumber;
+        email_connected: z.ZodNumber;
+        product_linked: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
-        none: number;
-        pending: number;
-        on_hold: number;
-        approved: number;
-        rejected: number;
+        account_created: number;
+        registration_started: number;
+        document_submitted: number;
+        registration_completed: number;
+        email_connected: number;
+        product_linked: number;
     }, {
-        none: number;
-        pending: number;
-        on_hold: number;
-        approved: number;
-        rejected: number;
+        account_created: number;
+        registration_started: number;
+        document_submitted: number;
+        registration_completed: number;
+        email_connected: number;
+        product_linked: number;
     }>;
     clients_growth: z.ZodArray<z.ZodObject<{
         month: z.ZodString;
@@ -96,7 +122,7 @@ export declare const DashboardStatsSchema: z.ZodObject<{
         name: z.ZodString;
         last_name: z.ZodString;
         email: z.ZodUnion<[z.ZodString, z.ZodLiteral<"">]>;
-        kyc_status: z.ZodEnum<["none", "pending", "on_hold", "approved", "rejected"]>;
+        activation_phase: z.ZodEnum<["account_created", "registration_started", "document_submitted", "registration_completed", "email_connected", "product_linked"]>;
         product_count: z.ZodNumber;
         created_at: z.ZodString;
     }, "strip", z.ZodTypeAny, {
@@ -105,7 +131,7 @@ export declare const DashboardStatsSchema: z.ZodObject<{
         created_at: string;
         last_name: string;
         name: string;
-        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
         product_count: number;
     }, {
         id: string;
@@ -113,7 +139,7 @@ export declare const DashboardStatsSchema: z.ZodObject<{
         created_at: string;
         last_name: string;
         name: string;
-        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
         product_count: number;
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
@@ -124,12 +150,13 @@ export declare const DashboardStatsSchema: z.ZodObject<{
     users_with_products: number;
     total_products: number;
     avg_products_per_user: number;
-    kyc_funnel: {
-        none: number;
-        pending: number;
-        on_hold: number;
-        approved: number;
-        rejected: number;
+    activation_funnel: {
+        account_created: number;
+        registration_started: number;
+        document_submitted: number;
+        registration_completed: number;
+        email_connected: number;
+        product_linked: number;
     };
     clients_growth: {
         month: string;
@@ -145,7 +172,7 @@ export declare const DashboardStatsSchema: z.ZodObject<{
         created_at: string;
         last_name: string;
         name: string;
-        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
         product_count: number;
     }[];
 }, {
@@ -156,12 +183,13 @@ export declare const DashboardStatsSchema: z.ZodObject<{
     users_with_products: number;
     total_products: number;
     avg_products_per_user: number;
-    kyc_funnel: {
-        none: number;
-        pending: number;
-        on_hold: number;
-        approved: number;
-        rejected: number;
+    activation_funnel: {
+        account_created: number;
+        registration_started: number;
+        document_submitted: number;
+        registration_completed: number;
+        email_connected: number;
+        product_linked: number;
     };
     clients_growth: {
         month: string;
@@ -177,7 +205,7 @@ export declare const DashboardStatsSchema: z.ZodObject<{
         created_at: string;
         last_name: string;
         name: string;
-        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
         product_count: number;
     }[];
 }>;
@@ -191,24 +219,27 @@ export declare const DashboardStatsResponseSchema: z.ZodObject<{
         users_with_products: z.ZodNumber;
         total_products: z.ZodNumber;
         avg_products_per_user: z.ZodNumber;
-        kyc_funnel: z.ZodObject<{
-            none: z.ZodNumber;
-            pending: z.ZodNumber;
-            on_hold: z.ZodNumber;
-            approved: z.ZodNumber;
-            rejected: z.ZodNumber;
+        activation_funnel: z.ZodObject<{
+            account_created: z.ZodNumber;
+            registration_started: z.ZodNumber;
+            document_submitted: z.ZodNumber;
+            registration_completed: z.ZodNumber;
+            email_connected: z.ZodNumber;
+            product_linked: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
-            none: number;
-            pending: number;
-            on_hold: number;
-            approved: number;
-            rejected: number;
+            account_created: number;
+            registration_started: number;
+            document_submitted: number;
+            registration_completed: number;
+            email_connected: number;
+            product_linked: number;
         }, {
-            none: number;
-            pending: number;
-            on_hold: number;
-            approved: number;
-            rejected: number;
+            account_created: number;
+            registration_started: number;
+            document_submitted: number;
+            registration_completed: number;
+            email_connected: number;
+            product_linked: number;
         }>;
         clients_growth: z.ZodArray<z.ZodObject<{
             month: z.ZodString;
@@ -235,7 +266,7 @@ export declare const DashboardStatsResponseSchema: z.ZodObject<{
             name: z.ZodString;
             last_name: z.ZodString;
             email: z.ZodUnion<[z.ZodString, z.ZodLiteral<"">]>;
-            kyc_status: z.ZodEnum<["none", "pending", "on_hold", "approved", "rejected"]>;
+            activation_phase: z.ZodEnum<["account_created", "registration_started", "document_submitted", "registration_completed", "email_connected", "product_linked"]>;
             product_count: z.ZodNumber;
             created_at: z.ZodString;
         }, "strip", z.ZodTypeAny, {
@@ -244,7 +275,7 @@ export declare const DashboardStatsResponseSchema: z.ZodObject<{
             created_at: string;
             last_name: string;
             name: string;
-            kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+            activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
             product_count: number;
         }, {
             id: string;
@@ -252,7 +283,7 @@ export declare const DashboardStatsResponseSchema: z.ZodObject<{
             created_at: string;
             last_name: string;
             name: string;
-            kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+            activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
             product_count: number;
         }>, "many">;
     }, "strip", z.ZodTypeAny, {
@@ -263,12 +294,13 @@ export declare const DashboardStatsResponseSchema: z.ZodObject<{
         users_with_products: number;
         total_products: number;
         avg_products_per_user: number;
-        kyc_funnel: {
-            none: number;
-            pending: number;
-            on_hold: number;
-            approved: number;
-            rejected: number;
+        activation_funnel: {
+            account_created: number;
+            registration_started: number;
+            document_submitted: number;
+            registration_completed: number;
+            email_connected: number;
+            product_linked: number;
         };
         clients_growth: {
             month: string;
@@ -284,7 +316,7 @@ export declare const DashboardStatsResponseSchema: z.ZodObject<{
             created_at: string;
             last_name: string;
             name: string;
-            kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+            activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
             product_count: number;
         }[];
     }, {
@@ -295,12 +327,13 @@ export declare const DashboardStatsResponseSchema: z.ZodObject<{
         users_with_products: number;
         total_products: number;
         avg_products_per_user: number;
-        kyc_funnel: {
-            none: number;
-            pending: number;
-            on_hold: number;
-            approved: number;
-            rejected: number;
+        activation_funnel: {
+            account_created: number;
+            registration_started: number;
+            document_submitted: number;
+            registration_completed: number;
+            email_connected: number;
+            product_linked: number;
         };
         clients_growth: {
             month: string;
@@ -316,7 +349,7 @@ export declare const DashboardStatsResponseSchema: z.ZodObject<{
             created_at: string;
             last_name: string;
             name: string;
-            kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+            activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
             product_count: number;
         }[];
     }>;
@@ -330,12 +363,13 @@ export declare const DashboardStatsResponseSchema: z.ZodObject<{
         users_with_products: number;
         total_products: number;
         avg_products_per_user: number;
-        kyc_funnel: {
-            none: number;
-            pending: number;
-            on_hold: number;
-            approved: number;
-            rejected: number;
+        activation_funnel: {
+            account_created: number;
+            registration_started: number;
+            document_submitted: number;
+            registration_completed: number;
+            email_connected: number;
+            product_linked: number;
         };
         clients_growth: {
             month: string;
@@ -351,7 +385,7 @@ export declare const DashboardStatsResponseSchema: z.ZodObject<{
             created_at: string;
             last_name: string;
             name: string;
-            kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+            activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
             product_count: number;
         }[];
     };
@@ -365,12 +399,13 @@ export declare const DashboardStatsResponseSchema: z.ZodObject<{
         users_with_products: number;
         total_products: number;
         avg_products_per_user: number;
-        kyc_funnel: {
-            none: number;
-            pending: number;
-            on_hold: number;
-            approved: number;
-            rejected: number;
+        activation_funnel: {
+            account_created: number;
+            registration_started: number;
+            document_submitted: number;
+            registration_completed: number;
+            email_connected: number;
+            product_linked: number;
         };
         clients_growth: {
             month: string;
@@ -386,7 +421,7 @@ export declare const DashboardStatsResponseSchema: z.ZodObject<{
             created_at: string;
             last_name: string;
             name: string;
-            kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+            activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
             product_count: number;
         }[];
     };

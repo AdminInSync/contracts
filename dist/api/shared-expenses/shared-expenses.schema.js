@@ -36,11 +36,12 @@ export const SharedExpenseTransactionItemSchema = z.object({
     transaction_date: DateSchema,
     transaction_type: SharedExpenseTransactionTypeSchema,
     category: SharedExpenseCategorySchema,
-    description: z.enum(['Gasto manual', 'Ingreso manual']),
-    is_manual: z.literal(true),
+    description: z.string().max(500),
+    is_manual: z.boolean(),
     payment_method: ManualPaymentMethodSchema,
     is_author: z.boolean(),
     created_by_name: z.string(),
+    read_only: z.boolean(),
 });
 export const CreateSharedExpenseGroupSchema = z.object({
     name: z.string().trim().min(1).max(100),

@@ -1,4 +1,11 @@
 import { z } from 'zod';
+export declare const GetBetaTestersQuerySchema: z.ZodObject<{
+    has_app_account: z.ZodEffects<z.ZodOptional<z.ZodBoolean>, boolean | undefined, unknown>;
+}, "strip", z.ZodTypeAny, {
+    has_app_account?: boolean | undefined;
+}, {
+    has_app_account?: unknown;
+}>;
 export declare const AdminBetaTesterEntrySchema: z.ZodObject<{
     id: z.ZodString;
     full_name: z.ZodString;
@@ -6,6 +13,7 @@ export declare const AdminBetaTesterEntrySchema: z.ZodObject<{
     operating_system: z.ZodEnum<["android", "ios", "both"]>;
     interests: z.ZodArray<z.ZodEnum<["expense_categories", "automatic_expense_tracking", "budgets_and_alerts", "savings_goals", "debts_loans_and_credit_cards", "payment_reminders", "financial_reports_and_charts", "multiple_accounts_and_banks", "other"]>, "many">;
     other_interest: z.ZodNullable<z.ZodString>;
+    has_app_account: z.ZodBoolean;
     created_at: z.ZodString;
     download_email_sent_at: z.ZodNullable<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
@@ -16,6 +24,7 @@ export declare const AdminBetaTesterEntrySchema: z.ZodObject<{
     operating_system: "android" | "ios" | "both";
     interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
     other_interest: string | null;
+    has_app_account: boolean;
     download_email_sent_at: string | null;
 }, {
     id: string;
@@ -25,6 +34,7 @@ export declare const AdminBetaTesterEntrySchema: z.ZodObject<{
     operating_system: "android" | "ios" | "both";
     interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
     other_interest: string | null;
+    has_app_account: boolean;
     download_email_sent_at: string | null;
 }>;
 export declare const BetaTesterListResponseSchema: z.ZodObject<{
@@ -36,6 +46,7 @@ export declare const BetaTesterListResponseSchema: z.ZodObject<{
         operating_system: z.ZodEnum<["android", "ios", "both"]>;
         interests: z.ZodArray<z.ZodEnum<["expense_categories", "automatic_expense_tracking", "budgets_and_alerts", "savings_goals", "debts_loans_and_credit_cards", "payment_reminders", "financial_reports_and_charts", "multiple_accounts_and_banks", "other"]>, "many">;
         other_interest: z.ZodNullable<z.ZodString>;
+        has_app_account: z.ZodBoolean;
         created_at: z.ZodString;
         download_email_sent_at: z.ZodNullable<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
@@ -46,6 +57,7 @@ export declare const BetaTesterListResponseSchema: z.ZodObject<{
         operating_system: "android" | "ios" | "both";
         interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
         other_interest: string | null;
+        has_app_account: boolean;
         download_email_sent_at: string | null;
     }, {
         id: string;
@@ -55,6 +67,7 @@ export declare const BetaTesterListResponseSchema: z.ZodObject<{
         operating_system: "android" | "ios" | "both";
         interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
         other_interest: string | null;
+        has_app_account: boolean;
         download_email_sent_at: string | null;
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
@@ -67,6 +80,7 @@ export declare const BetaTesterListResponseSchema: z.ZodObject<{
         operating_system: "android" | "ios" | "both";
         interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
         other_interest: string | null;
+        has_app_account: boolean;
         download_email_sent_at: string | null;
     }[];
 }, {
@@ -79,6 +93,7 @@ export declare const BetaTesterListResponseSchema: z.ZodObject<{
         operating_system: "android" | "ios" | "both";
         interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
         other_interest: string | null;
+        has_app_account: boolean;
         download_email_sent_at: string | null;
     }[];
 }>;

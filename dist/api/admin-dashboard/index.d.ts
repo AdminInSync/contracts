@@ -15,24 +15,27 @@ export declare const AdminDashboardContracts: {
                     users_with_products: import("zod").ZodNumber;
                     total_products: import("zod").ZodNumber;
                     avg_products_per_user: import("zod").ZodNumber;
-                    kyc_funnel: import("zod").ZodObject<{
-                        none: import("zod").ZodNumber;
-                        pending: import("zod").ZodNumber;
-                        on_hold: import("zod").ZodNumber;
-                        approved: import("zod").ZodNumber;
-                        rejected: import("zod").ZodNumber;
+                    activation_funnel: import("zod").ZodObject<{
+                        account_created: import("zod").ZodNumber;
+                        registration_started: import("zod").ZodNumber;
+                        document_submitted: import("zod").ZodNumber;
+                        registration_completed: import("zod").ZodNumber;
+                        email_connected: import("zod").ZodNumber;
+                        product_linked: import("zod").ZodNumber;
                     }, "strip", import("zod").ZodTypeAny, {
-                        none: number;
-                        pending: number;
-                        on_hold: number;
-                        approved: number;
-                        rejected: number;
+                        account_created: number;
+                        registration_started: number;
+                        document_submitted: number;
+                        registration_completed: number;
+                        email_connected: number;
+                        product_linked: number;
                     }, {
-                        none: number;
-                        pending: number;
-                        on_hold: number;
-                        approved: number;
-                        rejected: number;
+                        account_created: number;
+                        registration_started: number;
+                        document_submitted: number;
+                        registration_completed: number;
+                        email_connected: number;
+                        product_linked: number;
                     }>;
                     clients_growth: import("zod").ZodArray<import("zod").ZodObject<{
                         month: import("zod").ZodString;
@@ -59,7 +62,7 @@ export declare const AdminDashboardContracts: {
                         name: import("zod").ZodString;
                         last_name: import("zod").ZodString;
                         email: import("zod").ZodUnion<[import("zod").ZodString, import("zod").ZodLiteral<"">]>;
-                        kyc_status: import("zod").ZodEnum<["none", "pending", "on_hold", "approved", "rejected"]>;
+                        activation_phase: import("zod").ZodEnum<["account_created", "registration_started", "document_submitted", "registration_completed", "email_connected", "product_linked"]>;
                         product_count: import("zod").ZodNumber;
                         created_at: import("zod").ZodString;
                     }, "strip", import("zod").ZodTypeAny, {
@@ -68,7 +71,7 @@ export declare const AdminDashboardContracts: {
                         created_at: string;
                         last_name: string;
                         name: string;
-                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
                         product_count: number;
                     }, {
                         id: string;
@@ -76,7 +79,7 @@ export declare const AdminDashboardContracts: {
                         created_at: string;
                         last_name: string;
                         name: string;
-                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
                         product_count: number;
                     }>, "many">;
                 }, "strip", import("zod").ZodTypeAny, {
@@ -87,12 +90,13 @@ export declare const AdminDashboardContracts: {
                     users_with_products: number;
                     total_products: number;
                     avg_products_per_user: number;
-                    kyc_funnel: {
-                        none: number;
-                        pending: number;
-                        on_hold: number;
-                        approved: number;
-                        rejected: number;
+                    activation_funnel: {
+                        account_created: number;
+                        registration_started: number;
+                        document_submitted: number;
+                        registration_completed: number;
+                        email_connected: number;
+                        product_linked: number;
                     };
                     clients_growth: {
                         month: string;
@@ -108,7 +112,7 @@ export declare const AdminDashboardContracts: {
                         created_at: string;
                         last_name: string;
                         name: string;
-                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
                         product_count: number;
                     }[];
                 }, {
@@ -119,12 +123,13 @@ export declare const AdminDashboardContracts: {
                     users_with_products: number;
                     total_products: number;
                     avg_products_per_user: number;
-                    kyc_funnel: {
-                        none: number;
-                        pending: number;
-                        on_hold: number;
-                        approved: number;
-                        rejected: number;
+                    activation_funnel: {
+                        account_created: number;
+                        registration_started: number;
+                        document_submitted: number;
+                        registration_completed: number;
+                        email_connected: number;
+                        product_linked: number;
                     };
                     clients_growth: {
                         month: string;
@@ -140,7 +145,7 @@ export declare const AdminDashboardContracts: {
                         created_at: string;
                         last_name: string;
                         name: string;
-                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
                         product_count: number;
                     }[];
                 }>;
@@ -154,12 +159,13 @@ export declare const AdminDashboardContracts: {
                     users_with_products: number;
                     total_products: number;
                     avg_products_per_user: number;
-                    kyc_funnel: {
-                        none: number;
-                        pending: number;
-                        on_hold: number;
-                        approved: number;
-                        rejected: number;
+                    activation_funnel: {
+                        account_created: number;
+                        registration_started: number;
+                        document_submitted: number;
+                        registration_completed: number;
+                        email_connected: number;
+                        product_linked: number;
                     };
                     clients_growth: {
                         month: string;
@@ -175,7 +181,7 @@ export declare const AdminDashboardContracts: {
                         created_at: string;
                         last_name: string;
                         name: string;
-                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
                         product_count: number;
                     }[];
                 };
@@ -189,12 +195,13 @@ export declare const AdminDashboardContracts: {
                     users_with_products: number;
                     total_products: number;
                     avg_products_per_user: number;
-                    kyc_funnel: {
-                        none: number;
-                        pending: number;
-                        on_hold: number;
-                        approved: number;
-                        rejected: number;
+                    activation_funnel: {
+                        account_created: number;
+                        registration_started: number;
+                        document_submitted: number;
+                        registration_completed: number;
+                        email_connected: number;
+                        product_linked: number;
                     };
                     clients_growth: {
                         month: string;
@@ -210,7 +217,7 @@ export declare const AdminDashboardContracts: {
                         created_at: string;
                         last_name: string;
                         name: string;
-                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
                         product_count: number;
                     }[];
                 };

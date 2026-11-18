@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { extendZodWithOpenApi } from '@anatine/zod-openapi';
+import { QueryBooleanSchema } from '../../common/schemas/common.schema';
 extendZodWithOpenApi(z);
 export const WaitlistEntrySchema = z.object({
     id: z.string().uuid(),
@@ -7,6 +8,7 @@ export const WaitlistEntrySchema = z.object({
     last_name: z.string(),
     email: z.string().email(),
     source: z.string().nullable(),
+    is_beta_tester: z.boolean(),
     created_at: z.string().datetime(),
 });
 export const WaitlistListResponseSchema = z.object({
@@ -27,4 +29,5 @@ export const WaitlistStatsResponseSchema = z.object({
 });
 export const GetWaitlistQuerySchema = z.object({
     source: z.string().optional(),
+    is_beta_tester: QueryBooleanSchema,
 });

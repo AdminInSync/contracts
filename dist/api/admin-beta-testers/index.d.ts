@@ -1,7 +1,14 @@
 export declare const AdminBetaTestersContracts: {
     list: {
+        query: import("zod").ZodObject<{
+            has_app_account: import("zod").ZodEffects<import("zod").ZodOptional<import("zod").ZodBoolean>, boolean | undefined, unknown>;
+        }, "strip", import("zod").ZodTypeAny, {
+            has_app_account?: boolean | undefined;
+        }, {
+            has_app_account?: unknown;
+        }>;
         summary: "List beta testers";
-        description: "Returns registered beta testers for the admin panel.";
+        description: "Returns beta waitlist entries for the admin panel, with whether each email already has an app account.";
         method: "GET";
         path: "/admin/beta-testers/";
         responses: {
@@ -14,6 +21,7 @@ export declare const AdminBetaTestersContracts: {
                     operating_system: import("zod").ZodEnum<["android", "ios", "both"]>;
                     interests: import("zod").ZodArray<import("zod").ZodEnum<["expense_categories", "automatic_expense_tracking", "budgets_and_alerts", "savings_goals", "debts_loans_and_credit_cards", "payment_reminders", "financial_reports_and_charts", "multiple_accounts_and_banks", "other"]>, "many">;
                     other_interest: import("zod").ZodNullable<import("zod").ZodString>;
+                    has_app_account: import("zod").ZodBoolean;
                     created_at: import("zod").ZodString;
                     download_email_sent_at: import("zod").ZodNullable<import("zod").ZodString>;
                 }, "strip", import("zod").ZodTypeAny, {
@@ -24,6 +32,7 @@ export declare const AdminBetaTestersContracts: {
                     operating_system: "android" | "ios" | "both";
                     interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
                     other_interest: string | null;
+                    has_app_account: boolean;
                     download_email_sent_at: string | null;
                 }, {
                     id: string;
@@ -33,6 +42,7 @@ export declare const AdminBetaTestersContracts: {
                     operating_system: "android" | "ios" | "both";
                     interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
                     other_interest: string | null;
+                    has_app_account: boolean;
                     download_email_sent_at: string | null;
                 }>, "many">;
             }, "strip", import("zod").ZodTypeAny, {
@@ -45,6 +55,7 @@ export declare const AdminBetaTestersContracts: {
                     operating_system: "android" | "ios" | "both";
                     interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
                     other_interest: string | null;
+                    has_app_account: boolean;
                     download_email_sent_at: string | null;
                 }[];
             }, {
@@ -57,6 +68,7 @@ export declare const AdminBetaTestersContracts: {
                     operating_system: "android" | "ios" | "both";
                     interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
                     other_interest: string | null;
+                    has_app_account: boolean;
                     download_email_sent_at: string | null;
                 }[];
             }>;

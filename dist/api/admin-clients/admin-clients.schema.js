@@ -1,10 +1,12 @@
 import { z } from 'zod';
 import { extendZodWithOpenApi } from '@anatine/zod-openapi';
-import { KycStatusSchema } from '../kyc/kyc.schema';
 import { DocumentStatus, DocumentType } from '../../enums';
+import { QueryBooleanSchema } from '../../common/schemas/common.schema';
+import { ActivationPhaseSchema } from '../admin-dashboard/admin-dashboard.schema';
 extendZodWithOpenApi(z);
 export const GetClientsQuerySchema = z.object({
-    kyc_status: KycStatusSchema.optional(),
+    activation_phase: ActivationPhaseSchema.optional(),
+    is_beta_tester: QueryBooleanSchema,
 });
 export const ClientListItemSchema = z.object({
     id: z.string(),
@@ -13,7 +15,8 @@ export const ClientListItemSchema = z.object({
     email: z.string().email(),
     email_verified: z.boolean(),
     phone: z.string().nullable(),
-    kyc_status: KycStatusSchema,
+    activation_phase: ActivationPhaseSchema,
+    is_beta_tester: z.boolean(),
     is_active: z.boolean(),
     created_at: z.string().datetime(),
     last_login_at: z.string().datetime().nullable(),

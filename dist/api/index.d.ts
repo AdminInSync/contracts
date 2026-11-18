@@ -727,10 +727,13 @@ export declare const ApiContracts: {
             strictStatusCodes: true;
             query: import("zod").ZodObject<{
                 source: import("zod").ZodOptional<import("zod").ZodString>;
+                is_beta_tester: import("zod").ZodEffects<import("zod").ZodOptional<import("zod").ZodBoolean>, boolean | undefined, unknown>;
             }, "strip", import("zod").ZodTypeAny, {
                 source?: string | undefined;
+                is_beta_tester?: boolean | undefined;
             }, {
                 source?: string | undefined;
+                is_beta_tester?: unknown;
             }>;
             summary: "List waitlist entries";
             description: "Returns newsletter subscriptions for the admin waitlist view.";
@@ -745,6 +748,7 @@ export declare const ApiContracts: {
                         last_name: import("zod").ZodString;
                         email: import("zod").ZodString;
                         source: import("zod").ZodNullable<import("zod").ZodString>;
+                        is_beta_tester: import("zod").ZodBoolean;
                         created_at: import("zod").ZodString;
                     }, "strip", import("zod").ZodTypeAny, {
                         id: string;
@@ -753,6 +757,7 @@ export declare const ApiContracts: {
                         first_name: string;
                         last_name: string;
                         source: string | null;
+                        is_beta_tester: boolean;
                     }, {
                         id: string;
                         email: string;
@@ -760,6 +765,7 @@ export declare const ApiContracts: {
                         first_name: string;
                         last_name: string;
                         source: string | null;
+                        is_beta_tester: boolean;
                     }>, "many">;
                 }, "strip", import("zod").ZodTypeAny, {
                     message: string;
@@ -770,6 +776,7 @@ export declare const ApiContracts: {
                         first_name: string;
                         last_name: string;
                         source: string | null;
+                        is_beta_tester: boolean;
                     }[];
                 }, {
                     message: string;
@@ -780,6 +787,7 @@ export declare const ApiContracts: {
                         first_name: string;
                         last_name: string;
                         source: string | null;
+                        is_beta_tester: boolean;
                     }[];
                 }>;
                 401: import("zod").ZodObject<{
@@ -901,11 +909,14 @@ export declare const ApiContracts: {
         listClients: {
             strictStatusCodes: true;
             query: import("zod").ZodObject<{
-                kyc_status: import("zod").ZodOptional<import("zod").ZodEnum<["none", "pending", "on_hold", "approved", "rejected"]>>;
+                activation_phase: import("zod").ZodOptional<import("zod").ZodEnum<["account_created", "registration_started", "document_submitted", "registration_completed", "email_connected", "product_linked"]>>;
+                is_beta_tester: import("zod").ZodEffects<import("zod").ZodOptional<import("zod").ZodBoolean>, boolean | undefined, unknown>;
             }, "strip", import("zod").ZodTypeAny, {
-                kyc_status?: "none" | "pending" | "on_hold" | "approved" | "rejected" | undefined;
+                is_beta_tester?: boolean | undefined;
+                activation_phase?: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked" | undefined;
             }, {
-                kyc_status?: "none" | "pending" | "on_hold" | "approved" | "rejected" | undefined;
+                is_beta_tester?: unknown;
+                activation_phase?: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked" | undefined;
             }>;
             summary: "List admin clients";
             description: "Returns clients sourced from user_info enriched with Firebase identity data.";
@@ -921,7 +932,8 @@ export declare const ApiContracts: {
                         email: import("zod").ZodString;
                         email_verified: import("zod").ZodBoolean;
                         phone: import("zod").ZodNullable<import("zod").ZodString>;
-                        kyc_status: import("zod").ZodEnum<["none", "pending", "on_hold", "approved", "rejected"]>;
+                        activation_phase: import("zod").ZodEnum<["account_created", "registration_started", "document_submitted", "registration_completed", "email_connected", "product_linked"]>;
+                        is_beta_tester: import("zod").ZodBoolean;
                         is_active: import("zod").ZodBoolean;
                         created_at: import("zod").ZodString;
                         last_login_at: import("zod").ZodNullable<import("zod").ZodString>;
@@ -935,9 +947,10 @@ export declare const ApiContracts: {
                         last_name: string;
                         name: string;
                         last_login_at: string | null;
-                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-                        phone: string | null;
+                        is_beta_tester: boolean;
+                        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
                         product_count: number;
+                        phone: string | null;
                     }, {
                         id: string;
                         email: string;
@@ -947,9 +960,10 @@ export declare const ApiContracts: {
                         last_name: string;
                         name: string;
                         last_login_at: string | null;
-                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-                        phone: string | null;
+                        is_beta_tester: boolean;
+                        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
                         product_count: number;
+                        phone: string | null;
                     }>, "many">;
                 }, "strip", import("zod").ZodTypeAny, {
                     message: string;
@@ -962,9 +976,10 @@ export declare const ApiContracts: {
                         last_name: string;
                         name: string;
                         last_login_at: string | null;
-                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-                        phone: string | null;
+                        is_beta_tester: boolean;
+                        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
                         product_count: number;
+                        phone: string | null;
                     }[];
                 }, {
                     message: string;
@@ -977,9 +992,10 @@ export declare const ApiContracts: {
                         last_name: string;
                         name: string;
                         last_login_at: string | null;
-                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-                        phone: string | null;
+                        is_beta_tester: boolean;
+                        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
                         product_count: number;
+                        phone: string | null;
                     }[];
                 }>;
                 401: import("zod").ZodObject<{
@@ -1020,7 +1036,7 @@ export declare const ApiContracts: {
                 uid: string;
             }>;
             summary: "Get admin client detail";
-            description: "Returns a single client with KYC, devices, preferences, and products.";
+            description: "Returns a single client with activation phase, devices, preferences, and products.";
             method: "GET";
             path: "/api/admin/clients/:uid";
             responses: {
@@ -1033,7 +1049,8 @@ export declare const ApiContracts: {
                         email: import("zod").ZodString;
                         email_verified: import("zod").ZodBoolean;
                         phone: import("zod").ZodNullable<import("zod").ZodString>;
-                        kyc_status: import("zod").ZodEnum<["none", "pending", "on_hold", "approved", "rejected"]>;
+                        activation_phase: import("zod").ZodEnum<["account_created", "registration_started", "document_submitted", "registration_completed", "email_connected", "product_linked"]>;
+                        is_beta_tester: import("zod").ZodBoolean;
                         is_active: import("zod").ZodBoolean;
                         created_at: import("zod").ZodString;
                         last_login_at: import("zod").ZodNullable<import("zod").ZodString>;
@@ -1125,9 +1142,10 @@ export declare const ApiContracts: {
                             account_last4: string;
                         }[];
                         last_login_at: string | null;
-                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-                        phone: string | null;
+                        is_beta_tester: boolean;
+                        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
                         product_count: number;
+                        phone: string | null;
                         document_type: import("..").DocumentType | null;
                         document_status: import("..").DocumentStatus | null;
                         devices: {
@@ -1164,9 +1182,10 @@ export declare const ApiContracts: {
                             account_last4: string;
                         }[];
                         last_login_at: string | null;
-                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-                        phone: string | null;
+                        is_beta_tester: boolean;
+                        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
                         product_count: number;
+                        phone: string | null;
                         document_type: import("..").DocumentType | null;
                         document_status: import("..").DocumentStatus | null;
                         devices: {
@@ -1206,9 +1225,10 @@ export declare const ApiContracts: {
                             account_last4: string;
                         }[];
                         last_login_at: string | null;
-                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-                        phone: string | null;
+                        is_beta_tester: boolean;
+                        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
                         product_count: number;
+                        phone: string | null;
                         document_type: import("..").DocumentType | null;
                         document_status: import("..").DocumentStatus | null;
                         devices: {
@@ -1248,9 +1268,10 @@ export declare const ApiContracts: {
                             account_last4: string;
                         }[];
                         last_login_at: string | null;
-                        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-                        phone: string | null;
+                        is_beta_tester: boolean;
+                        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
                         product_count: number;
+                        phone: string | null;
                         document_type: import("..").DocumentType | null;
                         document_status: import("..").DocumentStatus | null;
                         devices: {
@@ -1332,24 +1353,27 @@ export declare const ApiContracts: {
                         users_with_products: import("zod").ZodNumber;
                         total_products: import("zod").ZodNumber;
                         avg_products_per_user: import("zod").ZodNumber;
-                        kyc_funnel: import("zod").ZodObject<{
-                            none: import("zod").ZodNumber;
-                            pending: import("zod").ZodNumber;
-                            on_hold: import("zod").ZodNumber;
-                            approved: import("zod").ZodNumber;
-                            rejected: import("zod").ZodNumber;
+                        activation_funnel: import("zod").ZodObject<{
+                            account_created: import("zod").ZodNumber;
+                            registration_started: import("zod").ZodNumber;
+                            document_submitted: import("zod").ZodNumber;
+                            registration_completed: import("zod").ZodNumber;
+                            email_connected: import("zod").ZodNumber;
+                            product_linked: import("zod").ZodNumber;
                         }, "strip", import("zod").ZodTypeAny, {
-                            none: number;
-                            pending: number;
-                            on_hold: number;
-                            approved: number;
-                            rejected: number;
+                            account_created: number;
+                            registration_started: number;
+                            document_submitted: number;
+                            registration_completed: number;
+                            email_connected: number;
+                            product_linked: number;
                         }, {
-                            none: number;
-                            pending: number;
-                            on_hold: number;
-                            approved: number;
-                            rejected: number;
+                            account_created: number;
+                            registration_started: number;
+                            document_submitted: number;
+                            registration_completed: number;
+                            email_connected: number;
+                            product_linked: number;
                         }>;
                         clients_growth: import("zod").ZodArray<import("zod").ZodObject<{
                             month: import("zod").ZodString;
@@ -1376,7 +1400,7 @@ export declare const ApiContracts: {
                             name: import("zod").ZodString;
                             last_name: import("zod").ZodString;
                             email: import("zod").ZodUnion<[import("zod").ZodString, import("zod").ZodLiteral<"">]>;
-                            kyc_status: import("zod").ZodEnum<["none", "pending", "on_hold", "approved", "rejected"]>;
+                            activation_phase: import("zod").ZodEnum<["account_created", "registration_started", "document_submitted", "registration_completed", "email_connected", "product_linked"]>;
                             product_count: import("zod").ZodNumber;
                             created_at: import("zod").ZodString;
                         }, "strip", import("zod").ZodTypeAny, {
@@ -1385,7 +1409,7 @@ export declare const ApiContracts: {
                             created_at: string;
                             last_name: string;
                             name: string;
-                            kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                            activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
                             product_count: number;
                         }, {
                             id: string;
@@ -1393,7 +1417,7 @@ export declare const ApiContracts: {
                             created_at: string;
                             last_name: string;
                             name: string;
-                            kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                            activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
                             product_count: number;
                         }>, "many">;
                     }, "strip", import("zod").ZodTypeAny, {
@@ -1404,12 +1428,13 @@ export declare const ApiContracts: {
                         users_with_products: number;
                         total_products: number;
                         avg_products_per_user: number;
-                        kyc_funnel: {
-                            none: number;
-                            pending: number;
-                            on_hold: number;
-                            approved: number;
-                            rejected: number;
+                        activation_funnel: {
+                            account_created: number;
+                            registration_started: number;
+                            document_submitted: number;
+                            registration_completed: number;
+                            email_connected: number;
+                            product_linked: number;
                         };
                         clients_growth: {
                             month: string;
@@ -1425,7 +1450,7 @@ export declare const ApiContracts: {
                             created_at: string;
                             last_name: string;
                             name: string;
-                            kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                            activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
                             product_count: number;
                         }[];
                     }, {
@@ -1436,12 +1461,13 @@ export declare const ApiContracts: {
                         users_with_products: number;
                         total_products: number;
                         avg_products_per_user: number;
-                        kyc_funnel: {
-                            none: number;
-                            pending: number;
-                            on_hold: number;
-                            approved: number;
-                            rejected: number;
+                        activation_funnel: {
+                            account_created: number;
+                            registration_started: number;
+                            document_submitted: number;
+                            registration_completed: number;
+                            email_connected: number;
+                            product_linked: number;
                         };
                         clients_growth: {
                             month: string;
@@ -1457,7 +1483,7 @@ export declare const ApiContracts: {
                             created_at: string;
                             last_name: string;
                             name: string;
-                            kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                            activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
                             product_count: number;
                         }[];
                     }>;
@@ -1471,12 +1497,13 @@ export declare const ApiContracts: {
                         users_with_products: number;
                         total_products: number;
                         avg_products_per_user: number;
-                        kyc_funnel: {
-                            none: number;
-                            pending: number;
-                            on_hold: number;
-                            approved: number;
-                            rejected: number;
+                        activation_funnel: {
+                            account_created: number;
+                            registration_started: number;
+                            document_submitted: number;
+                            registration_completed: number;
+                            email_connected: number;
+                            product_linked: number;
                         };
                         clients_growth: {
                             month: string;
@@ -1492,7 +1519,7 @@ export declare const ApiContracts: {
                             created_at: string;
                             last_name: string;
                             name: string;
-                            kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                            activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
                             product_count: number;
                         }[];
                     };
@@ -1506,12 +1533,13 @@ export declare const ApiContracts: {
                         users_with_products: number;
                         total_products: number;
                         avg_products_per_user: number;
-                        kyc_funnel: {
-                            none: number;
-                            pending: number;
-                            on_hold: number;
-                            approved: number;
-                            rejected: number;
+                        activation_funnel: {
+                            account_created: number;
+                            registration_started: number;
+                            document_submitted: number;
+                            registration_completed: number;
+                            email_connected: number;
+                            product_linked: number;
                         };
                         clients_growth: {
                             month: string;
@@ -1527,7 +1555,7 @@ export declare const ApiContracts: {
                             created_at: string;
                             last_name: string;
                             name: string;
-                            kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
+                            activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
                             product_count: number;
                         }[];
                     };
@@ -1564,8 +1592,15 @@ export declare const ApiContracts: {
     AdminBetaTesters: {
         list: {
             strictStatusCodes: true;
+            query: import("zod").ZodObject<{
+                has_app_account: import("zod").ZodEffects<import("zod").ZodOptional<import("zod").ZodBoolean>, boolean | undefined, unknown>;
+            }, "strip", import("zod").ZodTypeAny, {
+                has_app_account?: boolean | undefined;
+            }, {
+                has_app_account?: unknown;
+            }>;
             summary: "List beta testers";
-            description: "Returns registered beta testers for the admin panel.";
+            description: "Returns beta waitlist entries for the admin panel, with whether each email already has an app account.";
             method: "GET";
             path: "/api/admin/beta-testers/";
             responses: {
@@ -1578,6 +1613,7 @@ export declare const ApiContracts: {
                         operating_system: import("zod").ZodEnum<["android", "ios", "both"]>;
                         interests: import("zod").ZodArray<import("zod").ZodEnum<["expense_categories", "automatic_expense_tracking", "budgets_and_alerts", "savings_goals", "debts_loans_and_credit_cards", "payment_reminders", "financial_reports_and_charts", "multiple_accounts_and_banks", "other"]>, "many">;
                         other_interest: import("zod").ZodNullable<import("zod").ZodString>;
+                        has_app_account: import("zod").ZodBoolean;
                         created_at: import("zod").ZodString;
                         download_email_sent_at: import("zod").ZodNullable<import("zod").ZodString>;
                     }, "strip", import("zod").ZodTypeAny, {
@@ -1588,6 +1624,7 @@ export declare const ApiContracts: {
                         operating_system: "android" | "ios" | "both";
                         interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
                         other_interest: string | null;
+                        has_app_account: boolean;
                         download_email_sent_at: string | null;
                     }, {
                         id: string;
@@ -1597,6 +1634,7 @@ export declare const ApiContracts: {
                         operating_system: "android" | "ios" | "both";
                         interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
                         other_interest: string | null;
+                        has_app_account: boolean;
                         download_email_sent_at: string | null;
                     }>, "many">;
                 }, "strip", import("zod").ZodTypeAny, {
@@ -1609,6 +1647,7 @@ export declare const ApiContracts: {
                         operating_system: "android" | "ios" | "both";
                         interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
                         other_interest: string | null;
+                        has_app_account: boolean;
                         download_email_sent_at: string | null;
                     }[];
                 }, {
@@ -1621,6 +1660,7 @@ export declare const ApiContracts: {
                         operating_system: "android" | "ios" | "both";
                         interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
                         other_interest: string | null;
+                        has_app_account: boolean;
                         download_email_sent_at: string | null;
                     }[];
                 }>;
@@ -8979,6 +9019,16 @@ export declare const ApiContracts: {
                             product_kind: import("zod").ZodEnum<["debit", "credit"]>;
                             product_label: import("zod").ZodString;
                             lastFour: import("zod").ZodString;
+                            expense_destination: import("zod").ZodObject<{
+                                budget_uuid: import("zod").ZodNullable<import("zod").ZodString>;
+                                group_uuid: import("zod").ZodNullable<import("zod").ZodString>;
+                            }, "strip", import("zod").ZodTypeAny, {
+                                budget_uuid: string | null;
+                                group_uuid: string | null;
+                            }, {
+                                budget_uuid: string | null;
+                                group_uuid: string | null;
+                            }>;
                             is_manual: import("zod").ZodBoolean;
                             card_brand: import("zod").ZodNullable<import("zod").ZodEnum<["visa", "mastercard", "amex"]>>;
                             linked_account_id: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
@@ -9061,6 +9111,10 @@ export declare const ApiContracts: {
                             product_kind: "debit" | "credit";
                             product_label: string;
                             lastFour: string;
+                            expense_destination: {
+                                budget_uuid: string | null;
+                                group_uuid: string | null;
+                            };
                             is_manual: boolean;
                             card_brand: "visa" | "mastercard" | "amex" | null;
                             balance: {
@@ -9094,6 +9148,10 @@ export declare const ApiContracts: {
                             product_kind: "debit" | "credit";
                             product_label: string;
                             lastFour: string;
+                            expense_destination: {
+                                budget_uuid: string | null;
+                                group_uuid: string | null;
+                            };
                             is_manual: boolean;
                             card_brand: "visa" | "mastercard" | "amex" | null;
                             balance: {
@@ -9129,6 +9187,10 @@ export declare const ApiContracts: {
                             product_kind: "debit" | "credit";
                             product_label: string;
                             lastFour: string;
+                            expense_destination: {
+                                budget_uuid: string | null;
+                                group_uuid: string | null;
+                            };
                             is_manual: boolean;
                             card_brand: "visa" | "mastercard" | "amex" | null;
                             balance: {
@@ -9172,6 +9234,10 @@ export declare const ApiContracts: {
                             product_kind: "debit" | "credit";
                             product_label: string;
                             lastFour: string;
+                            expense_destination: {
+                                budget_uuid: string | null;
+                                group_uuid: string | null;
+                            };
                             is_manual: boolean;
                             card_brand: "visa" | "mastercard" | "amex" | null;
                             balance: {
@@ -9218,6 +9284,10 @@ export declare const ApiContracts: {
                             product_kind: "debit" | "credit";
                             product_label: string;
                             lastFour: string;
+                            expense_destination: {
+                                budget_uuid: string | null;
+                                group_uuid: string | null;
+                            };
                             is_manual: boolean;
                             card_brand: "visa" | "mastercard" | "amex" | null;
                             balance: {
@@ -9264,6 +9334,10 @@ export declare const ApiContracts: {
                             product_kind: "debit" | "credit";
                             product_label: string;
                             lastFour: string;
+                            expense_destination: {
+                                budget_uuid: string | null;
+                                group_uuid: string | null;
+                            };
                             is_manual: boolean;
                             card_brand: "visa" | "mastercard" | "amex" | null;
                             balance: {
@@ -9326,6 +9400,238 @@ export declare const ApiContracts: {
             };
             strictStatusCodes: true;
         };
+        setMyProductExpenseDestination: {
+            pathParams: import("zod").ZodObject<{
+                productUuid: import("zod").ZodString;
+            }, "strip", import("zod").ZodTypeAny, {
+                productUuid: string;
+            }, {
+                productUuid: string;
+            }>;
+            summary: "Set expense destinations for a connected product";
+            description: "Sets optional budget and shared group destinations for future imported expenses from this connected product.";
+            method: "PATCH";
+            body: import("zod").ZodObject<{
+                budget_uuid: import("zod").ZodNullable<import("zod").ZodString>;
+                group_uuid: import("zod").ZodNullable<import("zod").ZodString>;
+            }, "strict", import("zod").ZodTypeAny, {
+                budget_uuid: string | null;
+                group_uuid: string | null;
+            }, {
+                budget_uuid: string | null;
+                group_uuid: string | null;
+            }>;
+            path: "/api/products/my-products/:productUuid/expense-destination";
+            responses: {
+                200: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        budget_uuid: import("zod").ZodNullable<import("zod").ZodString>;
+                        group_uuid: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        budget_uuid: string | null;
+                        group_uuid: string | null;
+                    }, {
+                        budget_uuid: string | null;
+                        group_uuid: string | null;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        budget_uuid: string | null;
+                        group_uuid: string | null;
+                    };
+                }, {
+                    message: string;
+                    data: {
+                        budget_uuid: string | null;
+                        group_uuid: string | null;
+                    };
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                409: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        setMyTransactionExpenseDestination: {
+            pathParams: import("zod").ZodObject<{
+                transactionUuid: import("zod").ZodString;
+            }, "strip", import("zod").ZodTypeAny, {
+                transactionUuid: string;
+            }, {
+                transactionUuid: string;
+            }>;
+            summary: "Set destinations for a personal expense";
+            description: "Assigns or clears the budget and shared group for one personal expense.";
+            method: "PATCH";
+            body: import("zod").ZodObject<{
+                budget_uuid: import("zod").ZodNullable<import("zod").ZodString>;
+                group_uuid: import("zod").ZodNullable<import("zod").ZodString>;
+            }, "strict", import("zod").ZodTypeAny, {
+                budget_uuid: string | null;
+                group_uuid: string | null;
+            }, {
+                budget_uuid: string | null;
+                group_uuid: string | null;
+            }>;
+            path: "/api/products/my-transactions/:transactionUuid/expense-destination";
+            responses: {
+                200: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    data: import("zod").ZodObject<{
+                        budget_uuid: import("zod").ZodNullable<import("zod").ZodString>;
+                        group_uuid: import("zod").ZodNullable<import("zod").ZodString>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        budget_uuid: string | null;
+                        group_uuid: string | null;
+                    }, {
+                        budget_uuid: string | null;
+                        group_uuid: string | null;
+                    }>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    data: {
+                        budget_uuid: string | null;
+                        group_uuid: string | null;
+                    };
+                }, {
+                    message: string;
+                    data: {
+                        budget_uuid: string | null;
+                        group_uuid: string | null;
+                    };
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                409: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
         getMyTransactions: {
             query: import("zod").ZodObject<{
                 limit: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
@@ -9335,6 +9641,8 @@ export declare const ApiContracts: {
                 search: import("zod").ZodOptional<import("zod").ZodString>;
                 type: import("zod").ZodOptional<import("zod").ZodEnum<["debit", "credit", "payment"]>>;
                 product_uuid: import("zod").ZodOptional<import("zod").ZodString>;
+                category: import("zod").ZodOptional<import("zod").ZodString>;
+                assignment_candidates: import("zod").ZodOptional<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, boolean, string>, import("zod").ZodBoolean>>;
                 statement_upload_uuid: import("zod").ZodOptional<import("zod").ZodString>;
             }, "strip", import("zod").ZodTypeAny, {
                 limit: number;
@@ -9343,7 +9651,9 @@ export declare const ApiContracts: {
                 search?: string | undefined;
                 currency?: "DOP" | "USD" | "EUR" | undefined;
                 product_uuid?: string | undefined;
+                category?: string | undefined;
                 from?: string | undefined;
+                assignment_candidates?: boolean | undefined;
                 statement_upload_uuid?: string | undefined;
             }, {
                 type?: "debit" | "credit" | "payment" | undefined;
@@ -9352,11 +9662,13 @@ export declare const ApiContracts: {
                 currency?: "DOP" | "USD" | "EUR" | undefined;
                 offset?: string | undefined;
                 product_uuid?: string | undefined;
+                category?: string | undefined;
                 from?: string | undefined;
+                assignment_candidates?: string | undefined;
                 statement_upload_uuid?: string | undefined;
             }>;
             summary: "Get my product transactions";
-            description: "Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from (YYYY-MM-DD) limits results to that date onward. Optional search matches description, institution, product, card brand, or last 4. Optional product_uuid limits results to one connected product. Optional statement_upload_uuid limits results to one accepted statement upload.";
+            description: "Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from (YYYY-MM-DD) limits results to that date onward. Optional search matches description, institution, product, card brand, or last 4. Optional product_uuid limits results to one connected product. assignment_candidates=true includes manual and imported personal expenses regardless of tracking mode for destination assignment. Optional statement_upload_uuid limits results to one accepted statement upload.";
             method: "GET";
             path: "/api/products/my-transactions";
             responses: {
@@ -9372,6 +9684,7 @@ export declare const ApiContracts: {
                         description: import("zod").ZodNullable<import("zod").ZodString>;
                         transaction_type: import("zod").ZodEnum<["debit", "credit", "payment"]>;
                         category: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        can_edit_category: import("zod").ZodOptional<import("zod").ZodBoolean>;
                         is_manual: import("zod").ZodOptional<import("zod").ZodBoolean>;
                         institution_name: import("zod").ZodNullable<import("zod").ZodString>;
                         institution_logo: import("zod").ZodNullable<import("zod").ZodString>;
@@ -9380,6 +9693,11 @@ export declare const ApiContracts: {
                         product_label: import("zod").ZodNullable<import("zod").ZodString>;
                         card_brand: import("zod").ZodNullable<import("zod").ZodEnum<["visa", "mastercard", "amex"]>>;
                         linked_account_label: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        budget_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        group_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        destination_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        budget_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        group_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                     }, "strip", import("zod").ZodTypeAny, {
                         description: string | null;
                         uuid: string;
@@ -9393,11 +9711,17 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
                         is_manual?: boolean | undefined;
                         product_uuid?: string | null | undefined;
                         transaction_occurred_at?: string | null | undefined;
                         category?: string | null | undefined;
+                        can_edit_category?: boolean | undefined;
                         linked_account_label?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     }, {
                         description: string | null;
                         uuid: string;
@@ -9411,11 +9735,17 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
                         is_manual?: boolean | undefined;
                         product_uuid?: string | null | undefined;
                         transaction_occurred_at?: string | null | undefined;
                         category?: string | null | undefined;
+                        can_edit_category?: boolean | undefined;
                         linked_account_label?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     }>, "many">;
                     pagination: import("zod").ZodObject<{
                         total: import("zod").ZodNumber;
@@ -9455,11 +9785,17 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
                         is_manual?: boolean | undefined;
                         product_uuid?: string | null | undefined;
                         transaction_occurred_at?: string | null | undefined;
                         category?: string | null | undefined;
+                        can_edit_category?: boolean | undefined;
                         linked_account_label?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     }[];
                     pagination: {
                         limit: number;
@@ -9485,11 +9821,17 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
                         is_manual?: boolean | undefined;
                         product_uuid?: string | null | undefined;
                         transaction_occurred_at?: string | null | undefined;
                         category?: string | null | undefined;
+                        can_edit_category?: boolean | undefined;
                         linked_account_label?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     }[];
                     pagination: {
                         limit: number;
@@ -9532,6 +9874,100 @@ export declare const ApiContracts: {
         };
     };
     Transactions: {
+        updateEmailExpenseCategory: {
+            pathParams: import("zod").ZodObject<{
+                uuid: import("zod").ZodString;
+            }, "strip", import("zod").ZodTypeAny, {
+                uuid: string;
+            }, {
+                uuid: string;
+            }>;
+            summary: "Change the category of a personal email expense";
+            method: "PATCH";
+            body: import("zod").ZodObject<{
+                category: import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>;
+            }, "strict", import("zod").ZodTypeAny, {
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
+            }, {
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
+            }>;
+            path: "/api/transactions/email/:uuid/category";
+            responses: {
+                200: import("zod").ZodObject<{
+                    category: import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
+                }, {
+                    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
+                }>;
+                400: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                401: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                409: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                500: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
         parseManualTransactionVoice: {
             summary: "Parse an on-device voice transcript into an expense draft";
             description: "Accepts transcript text only, does not store it, and returns a draft for user confirmation.";
@@ -9552,31 +9988,31 @@ export declare const ApiContracts: {
                         amount: import("zod").ZodNumber;
                         currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
                         transaction_date: import("zod").ZodString;
-                        category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, import("zod").ZodLiteral<"Pago de crédito">]>;
+                        category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, import("zod").ZodLiteral<"Pago de crédito">]>;
                     }, "strip", import("zod").ZodTypeAny, {
                         currency: "DOP" | "USD" | "EUR";
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     }, {
                         currency: "DOP" | "USD" | "EUR";
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     }>, {
                         currency: "DOP" | "USD" | "EUR";
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     }, {
                         currency: "DOP" | "USD" | "EUR";
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     }>;
                 }, "strip", import("zod").ZodTypeAny, {
                     message: string;
@@ -9585,7 +10021,7 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     };
                 }, {
                     message: string;
@@ -9594,7 +10030,7 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                     };
                 }>;
                 400: import("zod").ZodObject<{
@@ -9663,11 +10099,16 @@ export declare const ApiContracts: {
                         currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
                         transaction_date: import("zod").ZodString;
                         transaction_type: import("zod").ZodEnum<["debit", "credit", "payment"]>;
-                        category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, import("zod").ZodLiteral<"Pago de crédito">]>;
+                        category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, import("zod").ZodLiteral<"Pago de crédito">]>;
                         description: import("zod").ZodEnum<["Gasto manual", "Ingreso manual", "Pago manual"]>;
                         is_manual: import("zod").ZodLiteral<true>;
                         payment_method: import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
                         product_uuid: import("zod").ZodNullable<import("zod").ZodString>;
+                        budget_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        group_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        destination_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        budget_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        group_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                     }, "strip", import("zod").ZodTypeAny, {
                         description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                         uuid: string;
@@ -9677,8 +10118,13 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     }, {
                         description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                         uuid: string;
@@ -9688,8 +10134,13 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     }>, {
                         description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                         uuid: string;
@@ -9699,8 +10150,13 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     }, {
                         description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                         uuid: string;
@@ -9710,8 +10166,13 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     }>, "many">;
                     pagination: import("zod").ZodObject<{
                         total: import("zod").ZodNumber;
@@ -9737,8 +10198,13 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     }[];
                     pagination: {
                         limit: number;
@@ -9756,8 +10222,13 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     }[];
                     pagination: {
                         limit: number;
@@ -9798,46 +10269,110 @@ export declare const ApiContracts: {
             summary: "Record a manual transaction";
             description: "Creates an expense or income without free-text merchant or counterparty details. Email-enabled accounts may create income entries only.";
             method: "POST";
-            body: import("zod").ZodEffects<import("zod").ZodObject<{
+            body: import("zod").ZodEffects<import("zod").ZodEffects<import("zod").ZodObject<{
                 amount: import("zod").ZodNumber;
                 currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
                 transaction_date: import("zod").ZodString;
                 transaction_type: import("zod").ZodDefault<import("zod").ZodEnum<["debit", "credit", "payment"]>>;
-                category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, import("zod").ZodLiteral<"Pago de crédito">]>;
+                category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, import("zod").ZodLiteral<"Pago de crédito">]>;
                 payment_method: import("zod").ZodOptional<import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>>;
                 product_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                budget_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                group_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                goal_income_allocation: import("zod").ZodOptional<import("zod").ZodObject<{
+                    goal_id: import("zod").ZodNumber;
+                    amount: import("zod").ZodNumber;
+                }, "strip", import("zod").ZodTypeAny, {
+                    amount: number;
+                    goal_id: number;
+                }, {
+                    amount: number;
+                    goal_id: number;
+                }>>;
             }, "strict", import("zod").ZodTypeAny, {
                 currency: "DOP" | "USD" | "EUR";
                 amount: number;
                 transaction_date: string;
                 transaction_type: "debit" | "credit" | "payment";
-                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                budget_uuid?: string | null | undefined;
+                group_uuid?: string | null | undefined;
                 product_uuid?: string | null | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                goal_income_allocation?: {
+                    amount: number;
+                    goal_id: number;
+                } | undefined;
             }, {
                 currency: "DOP" | "USD" | "EUR";
                 amount: number;
                 transaction_date: string;
-                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                budget_uuid?: string | null | undefined;
+                group_uuid?: string | null | undefined;
                 product_uuid?: string | null | undefined;
                 transaction_type?: "debit" | "credit" | "payment" | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                goal_income_allocation?: {
+                    amount: number;
+                    goal_id: number;
+                } | undefined;
             }>, {
                 currency: "DOP" | "USD" | "EUR";
                 amount: number;
                 transaction_date: string;
                 transaction_type: "debit" | "credit" | "payment";
-                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                budget_uuid?: string | null | undefined;
+                group_uuid?: string | null | undefined;
                 product_uuid?: string | null | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                goal_income_allocation?: {
+                    amount: number;
+                    goal_id: number;
+                } | undefined;
             }, {
                 currency: "DOP" | "USD" | "EUR";
                 amount: number;
                 transaction_date: string;
-                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                budget_uuid?: string | null | undefined;
+                group_uuid?: string | null | undefined;
                 product_uuid?: string | null | undefined;
                 transaction_type?: "debit" | "credit" | "payment" | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                goal_income_allocation?: {
+                    amount: number;
+                    goal_id: number;
+                } | undefined;
+            }>, {
+                currency: "DOP" | "USD" | "EUR";
+                amount: number;
+                transaction_date: string;
+                transaction_type: "debit" | "credit" | "payment";
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                budget_uuid?: string | null | undefined;
+                group_uuid?: string | null | undefined;
+                product_uuid?: string | null | undefined;
+                payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                goal_income_allocation?: {
+                    amount: number;
+                    goal_id: number;
+                } | undefined;
+            }, {
+                currency: "DOP" | "USD" | "EUR";
+                amount: number;
+                transaction_date: string;
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                budget_uuid?: string | null | undefined;
+                group_uuid?: string | null | undefined;
+                product_uuid?: string | null | undefined;
+                transaction_type?: "debit" | "credit" | "payment" | undefined;
+                payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
+                goal_income_allocation?: {
+                    amount: number;
+                    goal_id: number;
+                } | undefined;
             }>;
             path: "/api/transactions/manual";
             responses: {
@@ -9849,11 +10384,16 @@ export declare const ApiContracts: {
                         currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
                         transaction_date: import("zod").ZodString;
                         transaction_type: import("zod").ZodEnum<["debit", "credit", "payment"]>;
-                        category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, import("zod").ZodLiteral<"Pago de crédito">]>;
+                        category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, import("zod").ZodLiteral<"Pago de crédito">]>;
                         description: import("zod").ZodEnum<["Gasto manual", "Ingreso manual", "Pago manual"]>;
                         is_manual: import("zod").ZodLiteral<true>;
                         payment_method: import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
                         product_uuid: import("zod").ZodNullable<import("zod").ZodString>;
+                        budget_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        group_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        destination_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        budget_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        group_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                     }, "strip", import("zod").ZodTypeAny, {
                         description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                         uuid: string;
@@ -9863,8 +10403,13 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     }, {
                         description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                         uuid: string;
@@ -9874,8 +10419,13 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     }>, {
                         description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                         uuid: string;
@@ -9885,8 +10435,13 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     }, {
                         description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                         uuid: string;
@@ -9896,8 +10451,13 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     }>;
                 }, "strip", import("zod").ZodTypeAny, {
                     message: string;
@@ -9910,8 +10470,13 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     };
                 }, {
                     message: string;
@@ -9924,8 +10489,13 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     };
                 }>;
                 400: import("zod").ZodObject<{
@@ -9955,6 +10525,32 @@ export declare const ApiContracts: {
                     statusCode?: number | undefined;
                 }>;
                 403: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                404: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                409: import("zod").ZodObject<{
                     message: import("zod").ZodString;
                     error: import("zod").ZodOptional<import("zod").ZodString>;
                     statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
@@ -9999,7 +10595,7 @@ export declare const ApiContracts: {
                 currency: import("zod").ZodOptional<import("zod").ZodEnum<["DOP", "USD", "EUR"]>>;
                 transaction_date: import("zod").ZodOptional<import("zod").ZodString>;
                 transaction_type: import("zod").ZodOptional<import("zod").ZodEnum<["debit", "credit", "payment"]>>;
-                category: import("zod").ZodOptional<import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, import("zod").ZodLiteral<"Pago de crédito">]>>;
+                category: import("zod").ZodOptional<import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, import("zod").ZodLiteral<"Pago de crédito">]>>;
                 payment_method: import("zod").ZodOptional<import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>>;
                 product_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
             }, "strict", import("zod").ZodTypeAny, {
@@ -10008,7 +10604,7 @@ export declare const ApiContracts: {
                 amount?: number | undefined;
                 transaction_date?: string | undefined;
                 transaction_type?: "debit" | "credit" | "payment" | undefined;
-                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
+                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             }, {
                 currency?: "DOP" | "USD" | "EUR" | undefined;
@@ -10016,7 +10612,7 @@ export declare const ApiContracts: {
                 amount?: number | undefined;
                 transaction_date?: string | undefined;
                 transaction_type?: "debit" | "credit" | "payment" | undefined;
-                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
+                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             }>, {
                 currency?: "DOP" | "USD" | "EUR" | undefined;
@@ -10024,7 +10620,7 @@ export declare const ApiContracts: {
                 amount?: number | undefined;
                 transaction_date?: string | undefined;
                 transaction_type?: "debit" | "credit" | "payment" | undefined;
-                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
+                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             }, {
                 currency?: "DOP" | "USD" | "EUR" | undefined;
@@ -10032,7 +10628,7 @@ export declare const ApiContracts: {
                 amount?: number | undefined;
                 transaction_date?: string | undefined;
                 transaction_type?: "debit" | "credit" | "payment" | undefined;
-                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
+                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             }>, {
                 currency?: "DOP" | "USD" | "EUR" | undefined;
@@ -10040,7 +10636,7 @@ export declare const ApiContracts: {
                 amount?: number | undefined;
                 transaction_date?: string | undefined;
                 transaction_type?: "debit" | "credit" | "payment" | undefined;
-                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
+                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             }, {
                 currency?: "DOP" | "USD" | "EUR" | undefined;
@@ -10048,7 +10644,7 @@ export declare const ApiContracts: {
                 amount?: number | undefined;
                 transaction_date?: string | undefined;
                 transaction_type?: "debit" | "credit" | "payment" | undefined;
-                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
+                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito" | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             }>;
             path: "/api/transactions/manual/:uuid";
@@ -10061,11 +10657,16 @@ export declare const ApiContracts: {
                         currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
                         transaction_date: import("zod").ZodString;
                         transaction_type: import("zod").ZodEnum<["debit", "credit", "payment"]>;
-                        category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, import("zod").ZodLiteral<"Pago de crédito">]>;
+                        category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, import("zod").ZodLiteral<"Pago de crédito">]>;
                         description: import("zod").ZodEnum<["Gasto manual", "Ingreso manual", "Pago manual"]>;
                         is_manual: import("zod").ZodLiteral<true>;
                         payment_method: import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
                         product_uuid: import("zod").ZodNullable<import("zod").ZodString>;
+                        budget_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        group_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        destination_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        budget_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        group_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                     }, "strip", import("zod").ZodTypeAny, {
                         description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                         uuid: string;
@@ -10075,8 +10676,13 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     }, {
                         description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                         uuid: string;
@@ -10086,8 +10692,13 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     }>, {
                         description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                         uuid: string;
@@ -10097,8 +10708,13 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     }, {
                         description: "Gasto manual" | "Ingreso manual" | "Pago manual";
                         uuid: string;
@@ -10108,8 +10724,13 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     }>;
                 }, "strip", import("zod").ZodTypeAny, {
                     message: string;
@@ -10122,8 +10743,13 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     };
                 }, {
                     message: string;
@@ -10136,8 +10762,13 @@ export declare const ApiContracts: {
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit" | "payment";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | "Pago de crédito";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
+                        budget_uuid?: string | null | undefined;
+                        group_uuid?: string | null | undefined;
+                        destination_pending?: string | null | undefined;
+                        budget_pending?: string | null | undefined;
+                        group_pending?: string | null | undefined;
                     };
                 }>;
                 400: import("zod").ZodObject<{
@@ -10167,6 +10798,19 @@ export declare const ApiContracts: {
                     statusCode?: number | undefined;
                 }>;
                 403: import("zod").ZodObject<{
+                    message: import("zod").ZodString;
+                    error: import("zod").ZodOptional<import("zod").ZodString>;
+                    statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                }, "strip", import("zod").ZodTypeAny, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }, {
+                    message: string;
+                    error?: string | undefined;
+                    statusCode?: number | undefined;
+                }>;
+                409: import("zod").ZodObject<{
                     message: import("zod").ZodString;
                     error: import("zod").ZodOptional<import("zod").ZodString>;
                     statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
@@ -11190,14 +11834,14 @@ export declare const ApiContracts: {
                             income_total: import("zod").ZodNumber;
                             net_total: import("zod").ZodNumber;
                             expense_distribution: import("zod").ZodArray<import("zod").ZodObject<{
-                                category: import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>;
+                                category: import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>;
                                 amount: import("zod").ZodNumber;
                             }, "strip", import("zod").ZodTypeAny, {
                                 amount: number;
-                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                             }, {
                                 amount: number;
-                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                             }>, "many">;
                         }, "strip", import("zod").ZodTypeAny, {
                             currency: "DOP" | "USD" | "EUR";
@@ -11206,7 +11850,7 @@ export declare const ApiContracts: {
                             net_total: number;
                             expense_distribution: {
                                 amount: number;
-                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                             }[];
                         }, {
                             currency: "DOP" | "USD" | "EUR";
@@ -11215,7 +11859,7 @@ export declare const ApiContracts: {
                             net_total: number;
                             expense_distribution: {
                                 amount: number;
-                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                             }[];
                         }>;
                     }, "strip", import("zod").ZodTypeAny, {
@@ -11226,7 +11870,7 @@ export declare const ApiContracts: {
                             net_total: number;
                             expense_distribution: {
                                 amount: number;
-                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                             }[];
                         };
                         group: {
@@ -11250,7 +11894,7 @@ export declare const ApiContracts: {
                             net_total: number;
                             expense_distribution: {
                                 amount: number;
-                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                             }[];
                         };
                         group: {
@@ -11277,7 +11921,7 @@ export declare const ApiContracts: {
                             net_total: number;
                             expense_distribution: {
                                 amount: number;
-                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                             }[];
                         };
                         group: {
@@ -11304,7 +11948,7 @@ export declare const ApiContracts: {
                             net_total: number;
                             expense_distribution: {
                                 amount: number;
-                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                             }[];
                         };
                         group: {
@@ -11562,14 +12206,14 @@ export declare const ApiContracts: {
                             income_total: import("zod").ZodNumber;
                             net_total: import("zod").ZodNumber;
                             expense_distribution: import("zod").ZodArray<import("zod").ZodObject<{
-                                category: import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>;
+                                category: import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>;
                                 amount: import("zod").ZodNumber;
                             }, "strip", import("zod").ZodTypeAny, {
                                 amount: number;
-                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                             }, {
                                 amount: number;
-                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                             }>, "many">;
                         }, "strip", import("zod").ZodTypeAny, {
                             currency: "DOP" | "USD" | "EUR";
@@ -11578,7 +12222,7 @@ export declare const ApiContracts: {
                             net_total: number;
                             expense_distribution: {
                                 amount: number;
-                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                             }[];
                         }, {
                             currency: "DOP" | "USD" | "EUR";
@@ -11587,7 +12231,7 @@ export declare const ApiContracts: {
                             net_total: number;
                             expense_distribution: {
                                 amount: number;
-                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                             }[];
                         }>;
                     }, "strip", import("zod").ZodTypeAny, {
@@ -11598,7 +12242,7 @@ export declare const ApiContracts: {
                             net_total: number;
                             expense_distribution: {
                                 amount: number;
-                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                             }[];
                         };
                         group: {
@@ -11622,7 +12266,7 @@ export declare const ApiContracts: {
                             net_total: number;
                             expense_distribution: {
                                 amount: number;
-                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                             }[];
                         };
                         group: {
@@ -11649,7 +12293,7 @@ export declare const ApiContracts: {
                             net_total: number;
                             expense_distribution: {
                                 amount: number;
-                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                             }[];
                         };
                         group: {
@@ -11676,7 +12320,7 @@ export declare const ApiContracts: {
                             net_total: number;
                             expense_distribution: {
                                 amount: number;
-                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                             }[];
                         };
                         group: {
@@ -11795,36 +12439,39 @@ export declare const ApiContracts: {
                         currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
                         transaction_date: import("zod").ZodString;
                         transaction_type: import("zod").ZodEnum<["debit", "credit"]>;
-                        category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
-                        description: import("zod").ZodEnum<["Gasto manual", "Ingreso manual"]>;
-                        is_manual: import("zod").ZodLiteral<true>;
+                        category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
+                        description: import("zod").ZodString;
+                        is_manual: import("zod").ZodBoolean;
                         payment_method: import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
                         is_author: import("zod").ZodBoolean;
                         created_by_name: import("zod").ZodString;
+                        read_only: import("zod").ZodBoolean;
                     }, "strip", import("zod").ZodTypeAny, {
-                        description: "Gasto manual" | "Ingreso manual";
+                        description: string;
                         uuid: string;
                         currency: "DOP" | "USD" | "EUR";
-                        is_manual: true;
+                        is_manual: boolean;
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         is_author: boolean;
                         created_by_name: string;
+                        read_only: boolean;
                     }, {
-                        description: "Gasto manual" | "Ingreso manual";
+                        description: string;
                         uuid: string;
                         currency: "DOP" | "USD" | "EUR";
-                        is_manual: true;
+                        is_manual: boolean;
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         is_author: boolean;
                         created_by_name: string;
+                        read_only: boolean;
                     }>, "many">;
                     pagination: import("zod").ZodObject<{
                         total: import("zod").ZodNumber;
@@ -11845,14 +12492,14 @@ export declare const ApiContracts: {
                         income_total: import("zod").ZodNumber;
                         net_total: import("zod").ZodNumber;
                         expense_distribution: import("zod").ZodArray<import("zod").ZodObject<{
-                            category: import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>;
+                            category: import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>;
                             amount: import("zod").ZodNumber;
                         }, "strip", import("zod").ZodTypeAny, {
                             amount: number;
-                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                         }, {
                             amount: number;
-                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                         }>, "many">;
                     }, "strip", import("zod").ZodTypeAny, {
                         currency: "DOP" | "USD" | "EUR";
@@ -11861,7 +12508,7 @@ export declare const ApiContracts: {
                         net_total: number;
                         expense_distribution: {
                             amount: number;
-                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                         }[];
                     }, {
                         currency: "DOP" | "USD" | "EUR";
@@ -11870,23 +12517,24 @@ export declare const ApiContracts: {
                         net_total: number;
                         expense_distribution: {
                             amount: number;
-                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                         }[];
                     }>;
                 }, "strip", import("zod").ZodTypeAny, {
                     message: string;
                     data: {
-                        description: "Gasto manual" | "Ingreso manual";
+                        description: string;
                         uuid: string;
                         currency: "DOP" | "USD" | "EUR";
-                        is_manual: true;
+                        is_manual: boolean;
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         is_author: boolean;
                         created_by_name: string;
+                        read_only: boolean;
                     }[];
                     pagination: {
                         limit: number;
@@ -11900,23 +12548,24 @@ export declare const ApiContracts: {
                         net_total: number;
                         expense_distribution: {
                             amount: number;
-                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                         }[];
                     };
                 }, {
                     message: string;
                     data: {
-                        description: "Gasto manual" | "Ingreso manual";
+                        description: string;
                         uuid: string;
                         currency: "DOP" | "USD" | "EUR";
-                        is_manual: true;
+                        is_manual: boolean;
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         is_author: boolean;
                         created_by_name: string;
+                        read_only: boolean;
                     }[];
                     pagination: {
                         limit: number;
@@ -11930,7 +12579,7 @@ export declare const ApiContracts: {
                         net_total: number;
                         expense_distribution: {
                             amount: number;
-                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
                         }[];
                     };
                 }>;
@@ -12003,30 +12652,30 @@ export declare const ApiContracts: {
                 amount: import("zod").ZodNumber;
                 transaction_date: import("zod").ZodString;
                 transaction_type: import("zod").ZodDefault<import("zod").ZodEnum<["debit", "credit"]>>;
-                category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
+                category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
                 payment_method: import("zod").ZodOptional<import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>>;
             }, "strict", import("zod").ZodTypeAny, {
                 amount: number;
                 transaction_date: string;
                 transaction_type: "debit" | "credit";
-                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             }, {
                 amount: number;
                 transaction_date: string;
-                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
                 transaction_type?: "debit" | "credit" | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             }>, {
                 amount: number;
                 transaction_date: string;
                 transaction_type: "debit" | "credit";
-                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             }, {
                 amount: number;
                 transaction_date: string;
-                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
                 transaction_type?: "debit" | "credit" | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             }>;
@@ -12040,66 +12689,71 @@ export declare const ApiContracts: {
                         currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
                         transaction_date: import("zod").ZodString;
                         transaction_type: import("zod").ZodEnum<["debit", "credit"]>;
-                        category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
-                        description: import("zod").ZodEnum<["Gasto manual", "Ingreso manual"]>;
-                        is_manual: import("zod").ZodLiteral<true>;
+                        category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
+                        description: import("zod").ZodString;
+                        is_manual: import("zod").ZodBoolean;
                         payment_method: import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
                         is_author: import("zod").ZodBoolean;
                         created_by_name: import("zod").ZodString;
+                        read_only: import("zod").ZodBoolean;
                     }, "strip", import("zod").ZodTypeAny, {
-                        description: "Gasto manual" | "Ingreso manual";
+                        description: string;
                         uuid: string;
                         currency: "DOP" | "USD" | "EUR";
-                        is_manual: true;
+                        is_manual: boolean;
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         is_author: boolean;
                         created_by_name: string;
+                        read_only: boolean;
                     }, {
-                        description: "Gasto manual" | "Ingreso manual";
+                        description: string;
                         uuid: string;
                         currency: "DOP" | "USD" | "EUR";
-                        is_manual: true;
+                        is_manual: boolean;
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         is_author: boolean;
                         created_by_name: string;
+                        read_only: boolean;
                     }>;
                 }, "strip", import("zod").ZodTypeAny, {
                     message: string;
                     data: {
-                        description: "Gasto manual" | "Ingreso manual";
+                        description: string;
                         uuid: string;
                         currency: "DOP" | "USD" | "EUR";
-                        is_manual: true;
+                        is_manual: boolean;
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         is_author: boolean;
                         created_by_name: string;
+                        read_only: boolean;
                     };
                 }, {
                     message: string;
                     data: {
-                        description: "Gasto manual" | "Ingreso manual";
+                        description: string;
                         uuid: string;
                         currency: "DOP" | "USD" | "EUR";
-                        is_manual: true;
+                        is_manual: boolean;
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         is_author: boolean;
                         created_by_name: string;
+                        read_only: boolean;
                     };
                 }>;
                 400: import("zod").ZodObject<{
@@ -12174,43 +12828,43 @@ export declare const ApiContracts: {
                 amount: import("zod").ZodOptional<import("zod").ZodNumber>;
                 transaction_date: import("zod").ZodOptional<import("zod").ZodString>;
                 transaction_type: import("zod").ZodOptional<import("zod").ZodEnum<["debit", "credit"]>>;
-                category: import("zod").ZodOptional<import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>>;
+                category: import("zod").ZodOptional<import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>>;
                 payment_method: import("zod").ZodOptional<import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>>;
             }, "strict", import("zod").ZodTypeAny, {
                 amount?: number | undefined;
                 transaction_date?: string | undefined;
                 transaction_type?: "debit" | "credit" | undefined;
-                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
+                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             }, {
                 amount?: number | undefined;
                 transaction_date?: string | undefined;
                 transaction_type?: "debit" | "credit" | undefined;
-                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
+                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             }>, {
                 amount?: number | undefined;
                 transaction_date?: string | undefined;
                 transaction_type?: "debit" | "credit" | undefined;
-                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
+                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             }, {
                 amount?: number | undefined;
                 transaction_date?: string | undefined;
                 transaction_type?: "debit" | "credit" | undefined;
-                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
+                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             }>, {
                 amount?: number | undefined;
                 transaction_date?: string | undefined;
                 transaction_type?: "debit" | "credit" | undefined;
-                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
+                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             }, {
                 amount?: number | undefined;
                 transaction_date?: string | undefined;
                 transaction_type?: "debit" | "credit" | undefined;
-                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
+                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             }>;
             path: "/api/shared-expenses/groups/:uuid/transactions/:transactionUuid";
@@ -12223,66 +12877,71 @@ export declare const ApiContracts: {
                         currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
                         transaction_date: import("zod").ZodString;
                         transaction_type: import("zod").ZodEnum<["debit", "credit"]>;
-                        category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
-                        description: import("zod").ZodEnum<["Gasto manual", "Ingreso manual"]>;
-                        is_manual: import("zod").ZodLiteral<true>;
+                        category: import("zod").ZodUnion<[import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, import("zod").ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
+                        description: import("zod").ZodString;
+                        is_manual: import("zod").ZodBoolean;
                         payment_method: import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
                         is_author: import("zod").ZodBoolean;
                         created_by_name: import("zod").ZodString;
+                        read_only: import("zod").ZodBoolean;
                     }, "strip", import("zod").ZodTypeAny, {
-                        description: "Gasto manual" | "Ingreso manual";
+                        description: string;
                         uuid: string;
                         currency: "DOP" | "USD" | "EUR";
-                        is_manual: true;
+                        is_manual: boolean;
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         is_author: boolean;
                         created_by_name: string;
+                        read_only: boolean;
                     }, {
-                        description: "Gasto manual" | "Ingreso manual";
+                        description: string;
                         uuid: string;
                         currency: "DOP" | "USD" | "EUR";
-                        is_manual: true;
+                        is_manual: boolean;
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         is_author: boolean;
                         created_by_name: string;
+                        read_only: boolean;
                     }>;
                 }, "strip", import("zod").ZodTypeAny, {
                     message: string;
                     data: {
-                        description: "Gasto manual" | "Ingreso manual";
+                        description: string;
                         uuid: string;
                         currency: "DOP" | "USD" | "EUR";
-                        is_manual: true;
+                        is_manual: boolean;
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         is_author: boolean;
                         created_by_name: string;
+                        read_only: boolean;
                     };
                 }, {
                     message: string;
                     data: {
-                        description: "Gasto manual" | "Ingreso manual";
+                        description: string;
                         uuid: string;
                         currency: "DOP" | "USD" | "EUR";
-                        is_manual: true;
+                        is_manual: boolean;
                         amount: number;
                         transaction_date: string;
                         transaction_type: "debit" | "credit";
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         is_author: boolean;
                         created_by_name: string;
+                        read_only: boolean;
                     };
                 }>;
                 400: import("zod").ZodObject<{
@@ -12737,21 +13396,21 @@ export declare const ApiContracts: {
                     code: import("zod").ZodString;
                     message: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
-                    message: string;
                     code: string;
+                    message: string;
                 }, {
-                    message: string;
                     code: string;
+                    message: string;
                 }>;
                 409: import("zod").ZodObject<{
                     code: import("zod").ZodString;
                     message: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
-                    message: string;
                     code: string;
+                    message: string;
                 }, {
-                    message: string;
                     code: string;
+                    message: string;
                 }>;
                 500: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -12816,11 +13475,11 @@ export declare const ApiContracts: {
                     code: import("zod").ZodString;
                     message: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
-                    message: string;
                     code: string;
+                    message: string;
                 }, {
-                    message: string;
                     code: string;
+                    message: string;
                 }>;
                 500: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -12908,17 +13567,17 @@ export declare const ApiContracts: {
                 goal_type: import("zod").ZodEnum<["personal", "shared"]>;
                 goal_id: import("zod").ZodString;
             }, "strip", import("zod").ZodTypeAny, {
-                goal_type: "personal" | "shared";
                 goal_id: string;
+                goal_type: "personal" | "shared";
             }, {
-                goal_type: "personal" | "shared";
                 goal_id: string;
+                goal_type: "personal" | "shared";
             }>, {
-                goal_type: "personal" | "shared";
                 goal_id: string;
+                goal_type: "personal" | "shared";
             }, {
-                goal_type: "personal" | "shared";
                 goal_id: string;
+                goal_type: "personal" | "shared";
             }>;
             summary: "Get the token user's reminder for a goal (no row = off)";
             method: "GET";
@@ -12934,8 +13593,8 @@ export declare const ApiContracts: {
                     next_fire_at: import("zod").ZodNullable<import("zod").ZodString>;
                     goal_inactive: import("zod").ZodBoolean;
                 }, "strip", import("zod").ZodTypeAny, {
-                    goal_type: "personal" | "shared";
                     goal_id: string;
+                    goal_type: "personal" | "shared";
                     enabled: boolean;
                     frequency: "monthly" | "weekly" | "biweekly" | null;
                     weekday: number | null;
@@ -12943,8 +13602,8 @@ export declare const ApiContracts: {
                     next_fire_at: string | null;
                     goal_inactive: boolean;
                 }, {
-                    goal_type: "personal" | "shared";
                     goal_id: string;
+                    goal_type: "personal" | "shared";
                     enabled: boolean;
                     frequency: "monthly" | "weekly" | "biweekly" | null;
                     weekday: number | null;
@@ -12982,11 +13641,11 @@ export declare const ApiContracts: {
                     code: import("zod").ZodString;
                     message: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
-                    message: string;
                     code: string;
+                    message: string;
                 }, {
-                    message: string;
                     code: string;
+                    message: string;
                 }>;
                 500: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -13009,17 +13668,17 @@ export declare const ApiContracts: {
                 goal_type: import("zod").ZodEnum<["personal", "shared"]>;
                 goal_id: import("zod").ZodString;
             }, "strip", import("zod").ZodTypeAny, {
-                goal_type: "personal" | "shared";
                 goal_id: string;
+                goal_type: "personal" | "shared";
             }, {
-                goal_type: "personal" | "shared";
                 goal_id: string;
+                goal_type: "personal" | "shared";
             }>, {
-                goal_type: "personal" | "shared";
                 goal_id: string;
+                goal_type: "personal" | "shared";
             }, {
-                goal_type: "personal" | "shared";
                 goal_id: string;
+                goal_type: "personal" | "shared";
             }>;
             summary: "Create, change or turn off the token user's reminder for a goal";
             method: "PUT";
@@ -13078,8 +13737,8 @@ export declare const ApiContracts: {
                     next_fire_at: import("zod").ZodNullable<import("zod").ZodString>;
                     goal_inactive: import("zod").ZodBoolean;
                 }, "strip", import("zod").ZodTypeAny, {
-                    goal_type: "personal" | "shared";
                     goal_id: string;
+                    goal_type: "personal" | "shared";
                     enabled: boolean;
                     frequency: "monthly" | "weekly" | "biweekly" | null;
                     weekday: number | null;
@@ -13087,8 +13746,8 @@ export declare const ApiContracts: {
                     next_fire_at: string | null;
                     goal_inactive: boolean;
                 }, {
-                    goal_type: "personal" | "shared";
                     goal_id: string;
+                    goal_type: "personal" | "shared";
                     enabled: boolean;
                     frequency: "monthly" | "weekly" | "biweekly" | null;
                     weekday: number | null;
@@ -13126,21 +13785,21 @@ export declare const ApiContracts: {
                     code: import("zod").ZodString;
                     message: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
-                    message: string;
                     code: string;
+                    message: string;
                 }, {
-                    message: string;
                     code: string;
+                    message: string;
                 }>;
                 409: import("zod").ZodObject<{
                     code: import("zod").ZodString;
                     message: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
-                    message: string;
                     code: string;
+                    message: string;
                 }, {
-                    message: string;
                     code: string;
+                    message: string;
                 }>;
                 500: import("zod").ZodObject<{
                     message: import("zod").ZodString;
@@ -16628,8 +17287,8 @@ export declare const ApiContracts: {
                 is_active: import("zod").ZodOptional<import("zod").ZodBoolean>;
                 notes: import("zod").ZodString;
                 settings: import("zod").ZodOptional<import("zod").ZodAny>;
-                category: import("zod").ZodOptional<import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>>;
-                categories: import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>, "many">>;
+                category: import("zod").ZodOptional<import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros", string>>;
+                categories: import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros", string>, "many">>;
             }, "strip", import("zod").ZodTypeAny, {
                 notes: string;
                 name: string;
@@ -16638,10 +17297,10 @@ export declare const ApiContracts: {
                 end_date: string;
                 total_amount: number;
                 is_active?: boolean | undefined;
-                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
+                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | undefined;
                 budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
                 settings?: any;
-                categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
+                categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[] | undefined;
             }, {
                 notes: string;
                 name: string;
@@ -16662,10 +17321,10 @@ export declare const ApiContracts: {
                 end_date: string;
                 total_amount: number;
                 is_active?: boolean | undefined;
-                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
+                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | undefined;
                 budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
                 settings?: any;
-                categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
+                categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[] | undefined;
             }, {
                 notes: string;
                 name: string;
@@ -16686,10 +17345,10 @@ export declare const ApiContracts: {
                 end_date: string;
                 total_amount: number;
                 is_active?: boolean | undefined;
-                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
+                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | undefined;
                 budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
                 settings?: any;
-                categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
+                categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[] | undefined;
             }, {
                 notes: string;
                 name: string;
@@ -16721,8 +17380,8 @@ export declare const ApiContracts: {
                         is_active: import("zod").ZodBoolean;
                         notes: import("zod").ZodNullable<import("zod").ZodString>;
                         settings: import("zod").ZodNullable<import("zod").ZodAny>;
-                        category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
-                        categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
+                        category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>>;
+                        categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, "many">;
                         needs_category: import("zod").ZodBoolean;
                         spent: import("zod").ZodNullable<import("zod").ZodNumber>;
                         remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -16745,13 +17404,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -16771,13 +17430,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -16800,13 +17459,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -16829,13 +17488,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -16925,8 +17584,8 @@ export declare const ApiContracts: {
                         is_active: import("zod").ZodBoolean;
                         notes: import("zod").ZodNullable<import("zod").ZodString>;
                         settings: import("zod").ZodNullable<import("zod").ZodAny>;
-                        category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
-                        categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
+                        category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>>;
+                        categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, "many">;
                         needs_category: import("zod").ZodBoolean;
                         spent: import("zod").ZodNullable<import("zod").ZodNumber>;
                         remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -16949,13 +17608,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -16975,13 +17634,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -17017,13 +17676,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -17051,13 +17710,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -17130,8 +17789,8 @@ export declare const ApiContracts: {
                         is_active: import("zod").ZodBoolean;
                         notes: import("zod").ZodNullable<import("zod").ZodString>;
                         settings: import("zod").ZodNullable<import("zod").ZodAny>;
-                        category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
-                        categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
+                        category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>>;
+                        categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, "many">;
                         needs_category: import("zod").ZodBoolean;
                         spent: import("zod").ZodNullable<import("zod").ZodNumber>;
                         remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -17154,13 +17813,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -17180,13 +17839,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -17209,13 +17868,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -17238,13 +17897,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -17317,20 +17976,20 @@ export declare const ApiContracts: {
                 is_active: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodBoolean>>;
                 notes: import("zod").ZodOptional<import("zod").ZodString>;
                 settings: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodAny>>;
-                category: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>>>;
-                categories: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>, "many">>>;
+                category: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros", string>>>;
+                categories: import("zod").ZodOptional<import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros", string>, "many">>>;
             }, "strip", import("zod").ZodTypeAny, {
                 is_active?: boolean | undefined;
                 notes?: string | undefined;
                 name?: string | undefined;
                 currency?: string | undefined;
-                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
+                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | undefined;
                 budget_period?: "monthly" | "quarterly" | "yearly" | undefined;
                 start_date?: string | undefined;
                 end_date?: string | undefined;
                 total_amount?: number | undefined;
                 settings?: any;
-                categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
+                categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[] | undefined;
             }, {
                 is_active?: boolean | undefined;
                 notes?: string | undefined;
@@ -17362,8 +18021,8 @@ export declare const ApiContracts: {
                         is_active: import("zod").ZodBoolean;
                         notes: import("zod").ZodNullable<import("zod").ZodString>;
                         settings: import("zod").ZodNullable<import("zod").ZodAny>;
-                        category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
-                        categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
+                        category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>>;
+                        categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, "many">;
                         needs_category: import("zod").ZodBoolean;
                         spent: import("zod").ZodNullable<import("zod").ZodNumber>;
                         remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -17386,13 +18045,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -17412,13 +18071,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -17441,13 +18100,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -17470,13 +18129,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -17635,8 +18294,8 @@ export declare const ApiContracts: {
                         is_active: import("zod").ZodBoolean;
                         notes: import("zod").ZodNullable<import("zod").ZodString>;
                         settings: import("zod").ZodNullable<import("zod").ZodAny>;
-                        category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
-                        categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
+                        category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>>;
+                        categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, "many">;
                         needs_category: import("zod").ZodBoolean;
                         spent: import("zod").ZodNullable<import("zod").ZodNumber>;
                         remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -17659,13 +18318,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -17685,13 +18344,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -17727,13 +18386,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -17761,13 +18420,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -17850,8 +18509,8 @@ export declare const ApiContracts: {
                         is_active: import("zod").ZodBoolean;
                         notes: import("zod").ZodNullable<import("zod").ZodString>;
                         settings: import("zod").ZodNullable<import("zod").ZodAny>;
-                        category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
-                        categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
+                        category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>>;
+                        categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, "many">;
                         needs_category: import("zod").ZodBoolean;
                         spent: import("zod").ZodNullable<import("zod").ZodNumber>;
                         remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -17874,13 +18533,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -17900,13 +18559,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -17942,13 +18601,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -17976,13 +18635,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -18076,8 +18735,8 @@ export declare const ApiContracts: {
                         is_active: import("zod").ZodBoolean;
                         notes: import("zod").ZodNullable<import("zod").ZodString>;
                         settings: import("zod").ZodNullable<import("zod").ZodAny>;
-                        category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
-                        categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
+                        category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>>;
+                        categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, "many">;
                         needs_category: import("zod").ZodBoolean;
                         spent: import("zod").ZodNullable<import("zod").ZodNumber>;
                         remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -18100,13 +18759,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -18126,13 +18785,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -18155,13 +18814,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -18184,13 +18843,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -18267,17 +18926,17 @@ export declare const ApiContracts: {
             description: "Sets the expense category the budget counts. Spent is recomputed on read.";
             method: "PATCH";
             body: import("zod").ZodEffects<import("zod").ZodObject<{
-                category: import("zod").ZodOptional<import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>>;
-                categories: import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros", string>, "many">>;
+                category: import("zod").ZodOptional<import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros", string>>;
+                categories: import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodEffects<import("zod").ZodString, "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros", string>, "many">>;
             }, "strict", import("zod").ZodTypeAny, {
-                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
-                categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
+                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | undefined;
+                categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[] | undefined;
             }, {
                 category?: string | undefined;
                 categories?: string[] | undefined;
             }>, {
-                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | undefined;
-                categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[] | undefined;
+                category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | undefined;
+                categories?: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[] | undefined;
             }, {
                 category?: string | undefined;
                 categories?: string[] | undefined;
@@ -18300,8 +18959,8 @@ export declare const ApiContracts: {
                         is_active: import("zod").ZodBoolean;
                         notes: import("zod").ZodNullable<import("zod").ZodString>;
                         settings: import("zod").ZodNullable<import("zod").ZodAny>;
-                        category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>>;
-                        categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, "many">;
+                        category: import("zod").ZodNullable<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>>;
+                        categories: import("zod").ZodArray<import("zod").ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, "many">;
                         needs_category: import("zod").ZodBoolean;
                         spent: import("zod").ZodNullable<import("zod").ZodNumber>;
                         remaining: import("zod").ZodNullable<import("zod").ZodNumber>;
@@ -18324,13 +18983,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -18350,13 +19009,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -18379,13 +19038,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -18408,13 +19067,13 @@ export declare const ApiContracts: {
                         name: string;
                         currency: string;
                         deleted_at: string | null;
-                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | null;
+                        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | null;
                         budget_period: "monthly" | "quarterly" | "yearly";
                         start_date: string;
                         end_date: string;
                         total_amount: number;
                         used_amount: number;
-                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros")[];
+                        categories: ("Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros")[];
                         needs_category: boolean;
                         spent: number | null;
                         remaining: number | null;
@@ -21607,12 +22266,12 @@ export declare const ApiContracts: {
                 error: import("zod").ZodOptional<import("zod").ZodString>;
             }, "strip", import("zod").ZodTypeAny, {
                 state: string;
-                error?: string | undefined;
                 code?: string | undefined;
+                error?: string | undefined;
             }, {
                 state: string;
-                error?: string | undefined;
                 code?: string | undefined;
+                error?: string | undefined;
             }>;
             summary: "Gmail OAuth callback";
             method: "GET";
@@ -21719,14 +22378,14 @@ export declare const ApiContracts: {
                 error_description: import("zod").ZodOptional<import("zod").ZodString>;
                 error_uri: import("zod").ZodOptional<import("zod").ZodString>;
             }, "strip", import("zod").ZodTypeAny, {
-                error?: string | undefined;
                 code?: string | undefined;
+                error?: string | undefined;
                 state?: string | undefined;
                 error_description?: string | undefined;
                 error_uri?: string | undefined;
             }, {
-                error?: string | undefined;
                 code?: string | undefined;
+                error?: string | undefined;
                 state?: string | undefined;
                 error_description?: string | undefined;
                 error_uri?: string | undefined;

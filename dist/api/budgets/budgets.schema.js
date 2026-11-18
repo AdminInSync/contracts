@@ -7,9 +7,13 @@ export const BUDGET_CATEGORIES = [
     'Transporte',
     'Hogar',
     'Servicios',
-    'Educación',
+    'Suscripciones',
+    'Compras',
+    'Cuidado personal',
     'Salud',
+    'Educación',
     'Entretenimiento',
+    'Viajes',
     'Otros',
 ];
 /**

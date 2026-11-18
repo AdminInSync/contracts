@@ -167,21 +167,21 @@ export declare const RegistrationContracts: {
                 code: import("zod").ZodString;
                 message: import("zod").ZodString;
             }, "strip", import("zod").ZodTypeAny, {
-                message: string;
                 code: string;
+                message: string;
             }, {
-                message: string;
                 code: string;
+                message: string;
             }>;
             409: import("zod").ZodObject<{
                 code: import("zod").ZodString;
                 message: import("zod").ZodString;
             }, "strip", import("zod").ZodTypeAny, {
-                message: string;
                 code: string;
+                message: string;
             }, {
-                message: string;
                 code: string;
+                message: string;
             }>;
             500: import("zod").ZodObject<{
                 message: import("zod").ZodString;
@@ -246,11 +246,11 @@ export declare const RegistrationContracts: {
                 code: import("zod").ZodString;
                 message: import("zod").ZodString;
             }, "strip", import("zod").ZodTypeAny, {
-                message: string;
                 code: string;
+                message: string;
             }, {
-                message: string;
                 code: string;
+                message: string;
             }>;
             500: import("zod").ZodObject<{
                 message: import("zod").ZodString;

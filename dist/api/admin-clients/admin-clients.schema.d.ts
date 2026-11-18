@@ -1,11 +1,14 @@
 import { z } from 'zod';
 import { DocumentStatus, DocumentType } from '../../enums';
 export declare const GetClientsQuerySchema: z.ZodObject<{
-    kyc_status: z.ZodOptional<z.ZodEnum<["none", "pending", "on_hold", "approved", "rejected"]>>;
+    activation_phase: z.ZodOptional<z.ZodEnum<["account_created", "registration_started", "document_submitted", "registration_completed", "email_connected", "product_linked"]>>;
+    is_beta_tester: z.ZodEffects<z.ZodOptional<z.ZodBoolean>, boolean | undefined, unknown>;
 }, "strip", z.ZodTypeAny, {
-    kyc_status?: "none" | "pending" | "on_hold" | "approved" | "rejected" | undefined;
+    is_beta_tester?: boolean | undefined;
+    activation_phase?: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked" | undefined;
 }, {
-    kyc_status?: "none" | "pending" | "on_hold" | "approved" | "rejected" | undefined;
+    is_beta_tester?: unknown;
+    activation_phase?: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked" | undefined;
 }>;
 export declare const ClientListItemSchema: z.ZodObject<{
     id: z.ZodString;
@@ -14,7 +17,8 @@ export declare const ClientListItemSchema: z.ZodObject<{
     email: z.ZodString;
     email_verified: z.ZodBoolean;
     phone: z.ZodNullable<z.ZodString>;
-    kyc_status: z.ZodEnum<["none", "pending", "on_hold", "approved", "rejected"]>;
+    activation_phase: z.ZodEnum<["account_created", "registration_started", "document_submitted", "registration_completed", "email_connected", "product_linked"]>;
+    is_beta_tester: z.ZodBoolean;
     is_active: z.ZodBoolean;
     created_at: z.ZodString;
     last_login_at: z.ZodNullable<z.ZodString>;
@@ -28,9 +32,10 @@ export declare const ClientListItemSchema: z.ZodObject<{
     last_name: string;
     name: string;
     last_login_at: string | null;
-    kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-    phone: string | null;
+    is_beta_tester: boolean;
+    activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
     product_count: number;
+    phone: string | null;
 }, {
     id: string;
     email: string;
@@ -40,9 +45,10 @@ export declare const ClientListItemSchema: z.ZodObject<{
     last_name: string;
     name: string;
     last_login_at: string | null;
-    kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-    phone: string | null;
+    is_beta_tester: boolean;
+    activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
     product_count: number;
+    phone: string | null;
 }>;
 export declare const ClientDeviceSchema: z.ZodObject<{
     id: z.ZodString;
@@ -117,7 +123,8 @@ export declare const ClientDetailSchema: z.ZodObject<{
     email: z.ZodString;
     email_verified: z.ZodBoolean;
     phone: z.ZodNullable<z.ZodString>;
-    kyc_status: z.ZodEnum<["none", "pending", "on_hold", "approved", "rejected"]>;
+    activation_phase: z.ZodEnum<["account_created", "registration_started", "document_submitted", "registration_completed", "email_connected", "product_linked"]>;
+    is_beta_tester: z.ZodBoolean;
     is_active: z.ZodBoolean;
     created_at: z.ZodString;
     last_login_at: z.ZodNullable<z.ZodString>;
@@ -209,9 +216,10 @@ export declare const ClientDetailSchema: z.ZodObject<{
         account_last4: string;
     }[];
     last_login_at: string | null;
-    kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-    phone: string | null;
+    is_beta_tester: boolean;
+    activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
     product_count: number;
+    phone: string | null;
     document_type: DocumentType | null;
     document_status: DocumentStatus | null;
     devices: {
@@ -248,9 +256,10 @@ export declare const ClientDetailSchema: z.ZodObject<{
         account_last4: string;
     }[];
     last_login_at: string | null;
-    kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-    phone: string | null;
+    is_beta_tester: boolean;
+    activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
     product_count: number;
+    phone: string | null;
     document_type: DocumentType | null;
     document_status: DocumentStatus | null;
     devices: {
@@ -280,7 +289,8 @@ export declare const ClientListResponseSchema: z.ZodObject<{
         email: z.ZodString;
         email_verified: z.ZodBoolean;
         phone: z.ZodNullable<z.ZodString>;
-        kyc_status: z.ZodEnum<["none", "pending", "on_hold", "approved", "rejected"]>;
+        activation_phase: z.ZodEnum<["account_created", "registration_started", "document_submitted", "registration_completed", "email_connected", "product_linked"]>;
+        is_beta_tester: z.ZodBoolean;
         is_active: z.ZodBoolean;
         created_at: z.ZodString;
         last_login_at: z.ZodNullable<z.ZodString>;
@@ -294,9 +304,10 @@ export declare const ClientListResponseSchema: z.ZodObject<{
         last_name: string;
         name: string;
         last_login_at: string | null;
-        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-        phone: string | null;
+        is_beta_tester: boolean;
+        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
         product_count: number;
+        phone: string | null;
     }, {
         id: string;
         email: string;
@@ -306,9 +317,10 @@ export declare const ClientListResponseSchema: z.ZodObject<{
         last_name: string;
         name: string;
         last_login_at: string | null;
-        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-        phone: string | null;
+        is_beta_tester: boolean;
+        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
         product_count: number;
+        phone: string | null;
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
     message: string;
@@ -321,9 +333,10 @@ export declare const ClientListResponseSchema: z.ZodObject<{
         last_name: string;
         name: string;
         last_login_at: string | null;
-        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-        phone: string | null;
+        is_beta_tester: boolean;
+        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
         product_count: number;
+        phone: string | null;
     }[];
 }, {
     message: string;
@@ -336,9 +349,10 @@ export declare const ClientListResponseSchema: z.ZodObject<{
         last_name: string;
         name: string;
         last_login_at: string | null;
-        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-        phone: string | null;
+        is_beta_tester: boolean;
+        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
         product_count: number;
+        phone: string | null;
     }[];
 }>;
 export declare const ClientDetailResponseSchema: z.ZodObject<{
@@ -350,7 +364,8 @@ export declare const ClientDetailResponseSchema: z.ZodObject<{
         email: z.ZodString;
         email_verified: z.ZodBoolean;
         phone: z.ZodNullable<z.ZodString>;
-        kyc_status: z.ZodEnum<["none", "pending", "on_hold", "approved", "rejected"]>;
+        activation_phase: z.ZodEnum<["account_created", "registration_started", "document_submitted", "registration_completed", "email_connected", "product_linked"]>;
+        is_beta_tester: z.ZodBoolean;
         is_active: z.ZodBoolean;
         created_at: z.ZodString;
         last_login_at: z.ZodNullable<z.ZodString>;
@@ -442,9 +457,10 @@ export declare const ClientDetailResponseSchema: z.ZodObject<{
             account_last4: string;
         }[];
         last_login_at: string | null;
-        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-        phone: string | null;
+        is_beta_tester: boolean;
+        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
         product_count: number;
+        phone: string | null;
         document_type: DocumentType | null;
         document_status: DocumentStatus | null;
         devices: {
@@ -481,9 +497,10 @@ export declare const ClientDetailResponseSchema: z.ZodObject<{
             account_last4: string;
         }[];
         last_login_at: string | null;
-        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-        phone: string | null;
+        is_beta_tester: boolean;
+        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
         product_count: number;
+        phone: string | null;
         document_type: DocumentType | null;
         document_status: DocumentStatus | null;
         devices: {
@@ -523,9 +540,10 @@ export declare const ClientDetailResponseSchema: z.ZodObject<{
             account_last4: string;
         }[];
         last_login_at: string | null;
-        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-        phone: string | null;
+        is_beta_tester: boolean;
+        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
         product_count: number;
+        phone: string | null;
         document_type: DocumentType | null;
         document_status: DocumentStatus | null;
         devices: {
@@ -565,9 +583,10 @@ export declare const ClientDetailResponseSchema: z.ZodObject<{
             account_last4: string;
         }[];
         last_login_at: string | null;
-        kyc_status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-        phone: string | null;
+        is_beta_tester: boolean;
+        activation_phase: "account_created" | "registration_started" | "document_submitted" | "registration_completed" | "email_connected" | "product_linked";
         product_count: number;
+        phone: string | null;
         document_type: DocumentType | null;
         document_status: DocumentStatus | null;
         devices: {

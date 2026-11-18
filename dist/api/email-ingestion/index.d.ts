@@ -77,12 +77,12 @@ export declare const EmailIngestionContracts: {
             error: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
             state: string;
-            error?: string | undefined;
             code?: string | undefined;
+            error?: string | undefined;
         }, {
             state: string;
-            error?: string | undefined;
             code?: string | undefined;
+            error?: string | undefined;
         }>;
         summary: "Gmail OAuth callback";
         method: "GET";
@@ -189,14 +189,14 @@ export declare const EmailIngestionContracts: {
             error_description: z.ZodOptional<z.ZodString>;
             error_uri: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            error?: string | undefined;
             code?: string | undefined;
+            error?: string | undefined;
             state?: string | undefined;
             error_description?: string | undefined;
             error_uri?: string | undefined;
         }, {
-            error?: string | undefined;
             code?: string | undefined;
+            error?: string | undefined;
             state?: string | undefined;
             error_description?: string | undefined;
             error_uri?: string | undefined;

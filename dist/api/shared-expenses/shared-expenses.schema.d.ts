@@ -1,6 +1,6 @@
 import { z } from 'zod';
 export declare const SharedExpenseCurrencySchema: z.ZodEnum<["DOP", "USD", "EUR"]>;
-export declare const SharedExpenseCategorySchema: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
+export declare const SharedExpenseCategorySchema: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
 export declare const SharedExpenseGroupMemberSchema: z.ZodObject<{
     display_name: z.ZodString;
     is_owner: z.ZodBoolean;
@@ -60,14 +60,14 @@ export declare const SharedExpenseSummarySchema: z.ZodObject<{
     income_total: z.ZodNumber;
     net_total: z.ZodNumber;
     expense_distribution: z.ZodArray<z.ZodObject<{
-        category: z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>;
+        category: z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>;
         amount: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
         amount: number;
-        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
     }, {
         amount: number;
-        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
     currency: "DOP" | "USD" | "EUR";
@@ -76,7 +76,7 @@ export declare const SharedExpenseSummarySchema: z.ZodObject<{
     net_total: number;
     expense_distribution: {
         amount: number;
-        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
     }[];
 }, {
     currency: "DOP" | "USD" | "EUR";
@@ -85,7 +85,7 @@ export declare const SharedExpenseSummarySchema: z.ZodObject<{
     net_total: number;
     expense_distribution: {
         amount: number;
-        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
     }[];
 }>;
 export declare const SharedExpenseGroupDetailSchema: z.ZodObject<{
@@ -138,14 +138,14 @@ export declare const SharedExpenseGroupDetailSchema: z.ZodObject<{
         income_total: z.ZodNumber;
         net_total: z.ZodNumber;
         expense_distribution: z.ZodArray<z.ZodObject<{
-            category: z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>;
+            category: z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>;
             amount: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
             amount: number;
-            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
         }, {
             amount: number;
-            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
         }>, "many">;
     }, "strip", z.ZodTypeAny, {
         currency: "DOP" | "USD" | "EUR";
@@ -154,7 +154,7 @@ export declare const SharedExpenseGroupDetailSchema: z.ZodObject<{
         net_total: number;
         expense_distribution: {
             amount: number;
-            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
         }[];
     }, {
         currency: "DOP" | "USD" | "EUR";
@@ -163,7 +163,7 @@ export declare const SharedExpenseGroupDetailSchema: z.ZodObject<{
         net_total: number;
         expense_distribution: {
             amount: number;
-            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
         }[];
     }>;
 }, "strip", z.ZodTypeAny, {
@@ -174,7 +174,7 @@ export declare const SharedExpenseGroupDetailSchema: z.ZodObject<{
         net_total: number;
         expense_distribution: {
             amount: number;
-            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
         }[];
     };
     group: {
@@ -198,7 +198,7 @@ export declare const SharedExpenseGroupDetailSchema: z.ZodObject<{
         net_total: number;
         expense_distribution: {
             amount: number;
-            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
         }[];
     };
     group: {
@@ -221,36 +221,39 @@ export declare const SharedExpenseTransactionItemSchema: z.ZodObject<{
     currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
     transaction_date: z.ZodString;
     transaction_type: z.ZodEnum<["debit", "credit"]>;
-    category: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
-    description: z.ZodEnum<["Gasto manual", "Ingreso manual"]>;
-    is_manual: z.ZodLiteral<true>;
+    category: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
+    description: z.ZodString;
+    is_manual: z.ZodBoolean;
     payment_method: z.ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
     is_author: z.ZodBoolean;
     created_by_name: z.ZodString;
+    read_only: z.ZodBoolean;
 }, "strip", z.ZodTypeAny, {
-    description: "Gasto manual" | "Ingreso manual";
+    description: string;
     uuid: string;
     currency: "DOP" | "USD" | "EUR";
-    is_manual: true;
+    is_manual: boolean;
     amount: number;
     transaction_date: string;
     transaction_type: "debit" | "credit";
-    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
     is_author: boolean;
     created_by_name: string;
+    read_only: boolean;
 }, {
-    description: "Gasto manual" | "Ingreso manual";
+    description: string;
     uuid: string;
     currency: "DOP" | "USD" | "EUR";
-    is_manual: true;
+    is_manual: boolean;
     amount: number;
     transaction_date: string;
     transaction_type: "debit" | "credit";
-    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
     is_author: boolean;
     created_by_name: string;
+    read_only: boolean;
 }>;
 export declare const CreateSharedExpenseGroupSchema: z.ZodObject<{
     name: z.ZodString;
@@ -279,30 +282,30 @@ export declare const CreateSharedExpenseTransactionSchema: z.ZodEffects<z.ZodObj
     amount: z.ZodNumber;
     transaction_date: z.ZodString;
     transaction_type: z.ZodDefault<z.ZodEnum<["debit", "credit"]>>;
-    category: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
+    category: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
     payment_method: z.ZodOptional<z.ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>>;
 }, "strict", z.ZodTypeAny, {
     amount: number;
     transaction_date: string;
     transaction_type: "debit" | "credit";
-    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
     payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
 }, {
     amount: number;
     transaction_date: string;
-    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
     transaction_type?: "debit" | "credit" | undefined;
     payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
 }>, {
     amount: number;
     transaction_date: string;
     transaction_type: "debit" | "credit";
-    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
     payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
 }, {
     amount: number;
     transaction_date: string;
-    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+    category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
     transaction_type?: "debit" | "credit" | undefined;
     payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
 }>;
@@ -310,43 +313,43 @@ export declare const UpdateSharedExpenseTransactionSchema: z.ZodEffects<z.ZodEff
     amount: z.ZodOptional<z.ZodNumber>;
     transaction_date: z.ZodOptional<z.ZodString>;
     transaction_type: z.ZodOptional<z.ZodEnum<["debit", "credit"]>>;
-    category: z.ZodOptional<z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>>;
+    category: z.ZodOptional<z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>>;
     payment_method: z.ZodOptional<z.ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>>;
 }, "strict", z.ZodTypeAny, {
     amount?: number | undefined;
     transaction_date?: string | undefined;
     transaction_type?: "debit" | "credit" | undefined;
-    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
+    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
     payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
 }, {
     amount?: number | undefined;
     transaction_date?: string | undefined;
     transaction_type?: "debit" | "credit" | undefined;
-    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
+    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
     payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
 }>, {
     amount?: number | undefined;
     transaction_date?: string | undefined;
     transaction_type?: "debit" | "credit" | undefined;
-    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
+    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
     payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
 }, {
     amount?: number | undefined;
     transaction_date?: string | undefined;
     transaction_type?: "debit" | "credit" | undefined;
-    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
+    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
     payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
 }>, {
     amount?: number | undefined;
     transaction_date?: string | undefined;
     transaction_type?: "debit" | "credit" | undefined;
-    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
+    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
     payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
 }, {
     amount?: number | undefined;
     transaction_date?: string | undefined;
     transaction_type?: "debit" | "credit" | undefined;
-    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
+    category?: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos" | undefined;
     payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
 }>;
 export declare const SharedExpenseTransactionsQuerySchema: z.ZodEffects<z.ZodObject<{
@@ -579,14 +582,14 @@ export declare const SharedExpenseGroupDetailResponseSchema: z.ZodObject<{
             income_total: z.ZodNumber;
             net_total: z.ZodNumber;
             expense_distribution: z.ZodArray<z.ZodObject<{
-                category: z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>;
+                category: z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>;
                 amount: z.ZodNumber;
             }, "strip", z.ZodTypeAny, {
                 amount: number;
-                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
             }, {
                 amount: number;
-                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
             }>, "many">;
         }, "strip", z.ZodTypeAny, {
             currency: "DOP" | "USD" | "EUR";
@@ -595,7 +598,7 @@ export declare const SharedExpenseGroupDetailResponseSchema: z.ZodObject<{
             net_total: number;
             expense_distribution: {
                 amount: number;
-                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
             }[];
         }, {
             currency: "DOP" | "USD" | "EUR";
@@ -604,7 +607,7 @@ export declare const SharedExpenseGroupDetailResponseSchema: z.ZodObject<{
             net_total: number;
             expense_distribution: {
                 amount: number;
-                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
             }[];
         }>;
     }, "strip", z.ZodTypeAny, {
@@ -615,7 +618,7 @@ export declare const SharedExpenseGroupDetailResponseSchema: z.ZodObject<{
             net_total: number;
             expense_distribution: {
                 amount: number;
-                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
             }[];
         };
         group: {
@@ -639,7 +642,7 @@ export declare const SharedExpenseGroupDetailResponseSchema: z.ZodObject<{
             net_total: number;
             expense_distribution: {
                 amount: number;
-                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
             }[];
         };
         group: {
@@ -666,7 +669,7 @@ export declare const SharedExpenseGroupDetailResponseSchema: z.ZodObject<{
             net_total: number;
             expense_distribution: {
                 amount: number;
-                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
             }[];
         };
         group: {
@@ -693,7 +696,7 @@ export declare const SharedExpenseGroupDetailResponseSchema: z.ZodObject<{
             net_total: number;
             expense_distribution: {
                 amount: number;
-                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+                category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
             }[];
         };
         group: {
@@ -719,36 +722,39 @@ export declare const SharedExpenseTransactionsResponseSchema: z.ZodObject<{
         currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
         transaction_date: z.ZodString;
         transaction_type: z.ZodEnum<["debit", "credit"]>;
-        category: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
-        description: z.ZodEnum<["Gasto manual", "Ingreso manual"]>;
-        is_manual: z.ZodLiteral<true>;
+        category: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
+        description: z.ZodString;
+        is_manual: z.ZodBoolean;
         payment_method: z.ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
         is_author: z.ZodBoolean;
         created_by_name: z.ZodString;
+        read_only: z.ZodBoolean;
     }, "strip", z.ZodTypeAny, {
-        description: "Gasto manual" | "Ingreso manual";
+        description: string;
         uuid: string;
         currency: "DOP" | "USD" | "EUR";
-        is_manual: true;
+        is_manual: boolean;
         amount: number;
         transaction_date: string;
         transaction_type: "debit" | "credit";
-        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
         is_author: boolean;
         created_by_name: string;
+        read_only: boolean;
     }, {
-        description: "Gasto manual" | "Ingreso manual";
+        description: string;
         uuid: string;
         currency: "DOP" | "USD" | "EUR";
-        is_manual: true;
+        is_manual: boolean;
         amount: number;
         transaction_date: string;
         transaction_type: "debit" | "credit";
-        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
         is_author: boolean;
         created_by_name: string;
+        read_only: boolean;
     }>, "many">;
     pagination: z.ZodObject<{
         total: z.ZodNumber;
@@ -769,14 +775,14 @@ export declare const SharedExpenseTransactionsResponseSchema: z.ZodObject<{
         income_total: z.ZodNumber;
         net_total: z.ZodNumber;
         expense_distribution: z.ZodArray<z.ZodObject<{
-            category: z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>;
+            category: z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>;
             amount: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
             amount: number;
-            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
         }, {
             amount: number;
-            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
         }>, "many">;
     }, "strip", z.ZodTypeAny, {
         currency: "DOP" | "USD" | "EUR";
@@ -785,7 +791,7 @@ export declare const SharedExpenseTransactionsResponseSchema: z.ZodObject<{
         net_total: number;
         expense_distribution: {
             amount: number;
-            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
         }[];
     }, {
         currency: "DOP" | "USD" | "EUR";
@@ -794,23 +800,24 @@ export declare const SharedExpenseTransactionsResponseSchema: z.ZodObject<{
         net_total: number;
         expense_distribution: {
             amount: number;
-            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
         }[];
     }>;
 }, "strip", z.ZodTypeAny, {
     message: string;
     data: {
-        description: "Gasto manual" | "Ingreso manual";
+        description: string;
         uuid: string;
         currency: "DOP" | "USD" | "EUR";
-        is_manual: true;
+        is_manual: boolean;
         amount: number;
         transaction_date: string;
         transaction_type: "debit" | "credit";
-        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
         is_author: boolean;
         created_by_name: string;
+        read_only: boolean;
     }[];
     pagination: {
         limit: number;
@@ -824,23 +831,24 @@ export declare const SharedExpenseTransactionsResponseSchema: z.ZodObject<{
         net_total: number;
         expense_distribution: {
             amount: number;
-            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
         }[];
     };
 }, {
     message: string;
     data: {
-        description: "Gasto manual" | "Ingreso manual";
+        description: string;
         uuid: string;
         currency: "DOP" | "USD" | "EUR";
-        is_manual: true;
+        is_manual: boolean;
         amount: number;
         transaction_date: string;
         transaction_type: "debit" | "credit";
-        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
         is_author: boolean;
         created_by_name: string;
+        read_only: boolean;
     }[];
     pagination: {
         limit: number;
@@ -854,7 +862,7 @@ export declare const SharedExpenseTransactionsResponseSchema: z.ZodObject<{
         net_total: number;
         expense_distribution: {
             amount: number;
-            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros";
+            category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros";
         }[];
     };
 }>;
@@ -866,66 +874,71 @@ export declare const SharedExpenseTransactionResponseSchema: z.ZodObject<{
         currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
         transaction_date: z.ZodString;
         transaction_type: z.ZodEnum<["debit", "credit"]>;
-        category: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Educación", "Salud", "Entretenimiento", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
-        description: z.ZodEnum<["Gasto manual", "Ingreso manual"]>;
-        is_manual: z.ZodLiteral<true>;
+        category: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>]>;
+        description: z.ZodString;
+        is_manual: z.ZodBoolean;
         payment_method: z.ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
         is_author: z.ZodBoolean;
         created_by_name: z.ZodString;
+        read_only: z.ZodBoolean;
     }, "strip", z.ZodTypeAny, {
-        description: "Gasto manual" | "Ingreso manual";
+        description: string;
         uuid: string;
         currency: "DOP" | "USD" | "EUR";
-        is_manual: true;
+        is_manual: boolean;
         amount: number;
         transaction_date: string;
         transaction_type: "debit" | "credit";
-        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
         is_author: boolean;
         created_by_name: string;
+        read_only: boolean;
     }, {
-        description: "Gasto manual" | "Ingreso manual";
+        description: string;
         uuid: string;
         currency: "DOP" | "USD" | "EUR";
-        is_manual: true;
+        is_manual: boolean;
         amount: number;
         transaction_date: string;
         transaction_type: "debit" | "credit";
-        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
         is_author: boolean;
         created_by_name: string;
+        read_only: boolean;
     }>;
 }, "strip", z.ZodTypeAny, {
     message: string;
     data: {
-        description: "Gasto manual" | "Ingreso manual";
+        description: string;
         uuid: string;
         currency: "DOP" | "USD" | "EUR";
-        is_manual: true;
+        is_manual: boolean;
         amount: number;
         transaction_date: string;
         transaction_type: "debit" | "credit";
-        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
         is_author: boolean;
         created_by_name: string;
+        read_only: boolean;
     };
 }, {
     message: string;
     data: {
-        description: "Gasto manual" | "Ingreso manual";
+        description: string;
         uuid: string;
         currency: "DOP" | "USD" | "EUR";
-        is_manual: true;
+        is_manual: boolean;
         amount: number;
         transaction_date: string;
         transaction_type: "debit" | "credit";
-        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Educación" | "Salud" | "Entretenimiento" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
+        category: "Alimentos" | "Transporte" | "Hogar" | "Servicios" | "Suscripciones" | "Compras" | "Cuidado personal" | "Salud" | "Educación" | "Entretenimiento" | "Viajes" | "Otros" | "Salario" | "Trabajo independiente" | "Ventas" | "Inversiones" | "Otros ingresos";
         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
         is_author: boolean;
         created_by_name: string;
+        read_only: boolean;
     };
 }>;
 export declare const SharedExpenseTransactionDeletedResponseSchema: z.ZodObject<{

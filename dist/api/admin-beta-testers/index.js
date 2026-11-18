@@ -1,18 +1,19 @@
 import { initContract } from '@ts-rest/core';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
-import { BetaTesterListResponseSchema, SendDownloadEmailBodySchema, SendDownloadEmailResponseSchema, } from './admin-beta-testers.schema';
+import { BetaTesterListResponseSchema, GetBetaTestersQuerySchema, SendDownloadEmailBodySchema, SendDownloadEmailResponseSchema, } from './admin-beta-testers.schema';
 const c = initContract();
 export const AdminBetaTestersContracts = c.router({
     list: {
         method: 'GET',
         path: '/',
+        query: GetBetaTestersQuerySchema,
         responses: {
             200: BetaTesterListResponseSchema,
             401: ErrorResSchema,
             500: ErrorResSchema,
         },
         summary: 'List beta testers',
-        description: 'Returns registered beta testers for the admin panel.',
+        description: 'Returns beta waitlist entries for the admin panel, with whether each email already has an app account.',
     },
     sendDownloadEmail: {
         method: 'POST',

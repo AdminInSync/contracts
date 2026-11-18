@@ -2,10 +2,13 @@ export declare const AdminWaitlistContracts: {
     list: {
         query: import("zod").ZodObject<{
             source: import("zod").ZodOptional<import("zod").ZodString>;
+            is_beta_tester: import("zod").ZodEffects<import("zod").ZodOptional<import("zod").ZodBoolean>, boolean | undefined, unknown>;
         }, "strip", import("zod").ZodTypeAny, {
             source?: string | undefined;
+            is_beta_tester?: boolean | undefined;
         }, {
             source?: string | undefined;
+            is_beta_tester?: unknown;
         }>;
         summary: "List waitlist entries";
         description: "Returns newsletter subscriptions for the admin waitlist view.";
@@ -20,6 +23,7 @@ export declare const AdminWaitlistContracts: {
                     last_name: import("zod").ZodString;
                     email: import("zod").ZodString;
                     source: import("zod").ZodNullable<import("zod").ZodString>;
+                    is_beta_tester: import("zod").ZodBoolean;
                     created_at: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
                     id: string;
@@ -28,6 +32,7 @@ export declare const AdminWaitlistContracts: {
                     first_name: string;
                     last_name: string;
                     source: string | null;
+                    is_beta_tester: boolean;
                 }, {
                     id: string;
                     email: string;
@@ -35,6 +40,7 @@ export declare const AdminWaitlistContracts: {
                     first_name: string;
                     last_name: string;
                     source: string | null;
+                    is_beta_tester: boolean;
                 }>, "many">;
             }, "strip", import("zod").ZodTypeAny, {
                 message: string;
@@ -45,6 +51,7 @@ export declare const AdminWaitlistContracts: {
                     first_name: string;
                     last_name: string;
                     source: string | null;
+                    is_beta_tester: boolean;
                 }[];
             }, {
                 message: string;
@@ -55,6 +62,7 @@ export declare const AdminWaitlistContracts: {
                     first_name: string;
                     last_name: string;
                     source: string | null;
+                    is_beta_tester: boolean;
                 }[];
             }>;
             401: import("zod").ZodObject<{

@@ -4,17 +4,17 @@ export declare const SavingGoalRemindersContracts: {
             goal_type: import("zod").ZodEnum<["personal", "shared"]>;
             goal_id: import("zod").ZodString;
         }, "strip", import("zod").ZodTypeAny, {
-            goal_type: "personal" | "shared";
             goal_id: string;
+            goal_type: "personal" | "shared";
         }, {
-            goal_type: "personal" | "shared";
             goal_id: string;
+            goal_type: "personal" | "shared";
         }>, {
-            goal_type: "personal" | "shared";
             goal_id: string;
+            goal_type: "personal" | "shared";
         }, {
-            goal_type: "personal" | "shared";
             goal_id: string;
+            goal_type: "personal" | "shared";
         }>;
         summary: "Get the token user's reminder for a goal (no row = off)";
         method: "GET";
@@ -30,8 +30,8 @@ export declare const SavingGoalRemindersContracts: {
                 next_fire_at: import("zod").ZodNullable<import("zod").ZodString>;
                 goal_inactive: import("zod").ZodBoolean;
             }, "strip", import("zod").ZodTypeAny, {
-                goal_type: "personal" | "shared";
                 goal_id: string;
+                goal_type: "personal" | "shared";
                 enabled: boolean;
                 frequency: "monthly" | "weekly" | "biweekly" | null;
                 weekday: number | null;
@@ -39,8 +39,8 @@ export declare const SavingGoalRemindersContracts: {
                 next_fire_at: string | null;
                 goal_inactive: boolean;
             }, {
-                goal_type: "personal" | "shared";
                 goal_id: string;
+                goal_type: "personal" | "shared";
                 enabled: boolean;
                 frequency: "monthly" | "weekly" | "biweekly" | null;
                 weekday: number | null;
@@ -78,11 +78,11 @@ export declare const SavingGoalRemindersContracts: {
                 code: import("zod").ZodString;
                 message: import("zod").ZodString;
             }, "strip", import("zod").ZodTypeAny, {
-                message: string;
                 code: string;
+                message: string;
             }, {
-                message: string;
                 code: string;
+                message: string;
             }>;
             500: import("zod").ZodObject<{
                 message: import("zod").ZodString;
@@ -105,17 +105,17 @@ export declare const SavingGoalRemindersContracts: {
             goal_type: import("zod").ZodEnum<["personal", "shared"]>;
             goal_id: import("zod").ZodString;
         }, "strip", import("zod").ZodTypeAny, {
-            goal_type: "personal" | "shared";
             goal_id: string;
+            goal_type: "personal" | "shared";
         }, {
-            goal_type: "personal" | "shared";
             goal_id: string;
+            goal_type: "personal" | "shared";
         }>, {
-            goal_type: "personal" | "shared";
             goal_id: string;
+            goal_type: "personal" | "shared";
         }, {
-            goal_type: "personal" | "shared";
             goal_id: string;
+            goal_type: "personal" | "shared";
         }>;
         summary: "Create, change or turn off the token user's reminder for a goal";
         method: "PUT";
@@ -174,8 +174,8 @@ export declare const SavingGoalRemindersContracts: {
                 next_fire_at: import("zod").ZodNullable<import("zod").ZodString>;
                 goal_inactive: import("zod").ZodBoolean;
             }, "strip", import("zod").ZodTypeAny, {
-                goal_type: "personal" | "shared";
                 goal_id: string;
+                goal_type: "personal" | "shared";
                 enabled: boolean;
                 frequency: "monthly" | "weekly" | "biweekly" | null;
                 weekday: number | null;
@@ -183,8 +183,8 @@ export declare const SavingGoalRemindersContracts: {
                 next_fire_at: string | null;
                 goal_inactive: boolean;
             }, {
-                goal_type: "personal" | "shared";
                 goal_id: string;
+                goal_type: "personal" | "shared";
                 enabled: boolean;
                 frequency: "monthly" | "weekly" | "biweekly" | null;
                 weekday: number | null;
@@ -222,21 +222,21 @@ export declare const SavingGoalRemindersContracts: {
                 code: import("zod").ZodString;
                 message: import("zod").ZodString;
             }, "strip", import("zod").ZodTypeAny, {
-                message: string;
                 code: string;
+                message: string;
             }, {
-                message: string;
                 code: string;
+                message: string;
             }>;
             409: import("zod").ZodObject<{
                 code: import("zod").ZodString;
                 message: import("zod").ZodString;
             }, "strip", import("zod").ZodTypeAny, {
-                message: string;
                 code: string;
+                message: string;
             }, {
-                message: string;
                 code: string;
+                message: string;
             }>;
             500: import("zod").ZodObject<{
                 message: import("zod").ZodString;

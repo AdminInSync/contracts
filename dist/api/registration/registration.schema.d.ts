@@ -89,9 +89,9 @@ export declare const RegistrationErrorSchema: z.ZodObject<{
     code: z.ZodString;
     message: z.ZodString;
 }, "strip", z.ZodTypeAny, {
-    message: string;
     code: string;
+    message: string;
 }, {
-    message: string;
     code: string;
+    message: string;
 }>;

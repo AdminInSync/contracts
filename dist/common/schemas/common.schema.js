@@ -1,4 +1,25 @@
 import { z } from 'zod';
+/**
+ * Query-string booleans. Do not use z.coerce.boolean() here: Boolean("false") is true.
+ */
+export const QueryBooleanSchema = z.preprocess((value) => {
+    if (value === undefined || value === null || value === '') {
+        return undefined;
+    }
+    if (typeof value === 'boolean') {
+        return value;
+    }
+    if (typeof value === 'string') {
+        const normalized = value.trim().toLowerCase();
+        if (normalized === 'true' || normalized === '1') {
+            return true;
+        }
+        if (normalized === 'false' || normalized === '0') {
+            return false;
+        }
+    }
+    return value;
+}, z.boolean().optional());
 export const ErrorResSchema = z.object({
     message: z.string(),
     error: z.string().optional(),

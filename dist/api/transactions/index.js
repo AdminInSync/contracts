@@ -1,9 +1,24 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
-import { CreateManualTransactionSchema, ParseVoiceExpenseResponseSchema, ManualTransactionDeletedResponseSchema, ManualTransactionResponseSchema, ManualTransactionsListResponseSchema, ManualTransactionsQuerySchema, UpdateManualTransactionSchema, } from './transactions.schema';
+import { CreateManualTransactionSchema, ExpenseCategorySchema, ParseVoiceExpenseResponseSchema, ManualTransactionDeletedResponseSchema, ManualTransactionResponseSchema, ManualTransactionsListResponseSchema, ManualTransactionsQuerySchema, UpdateManualTransactionSchema, } from './transactions.schema';
 const c = initContract();
 export const TransactionsContracts = c.router({
+    updateEmailExpenseCategory: {
+        method: 'PATCH',
+        path: '/transactions/email/:uuid/category',
+        pathParams: z.object({ uuid: z.string().uuid() }),
+        body: z.object({ category: ExpenseCategorySchema }).strict(),
+        responses: {
+            200: z.object({ category: ExpenseCategorySchema }),
+            400: ErrorResSchema,
+            401: ErrorResSchema,
+            404: ErrorResSchema,
+            409: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        summary: 'Change the category of a personal email expense',
+    },
     parseManualTransactionVoice: {
         method: 'POST',
         path: '/transactions/manual/voice-draft',
@@ -38,6 +53,8 @@ export const TransactionsContracts = c.router({
             400: ErrorResSchema,
             401: ErrorResSchema,
             403: ErrorResSchema,
+            404: ErrorResSchema,
+            409: ErrorResSchema,
             500: ErrorResSchema,
         },
         summary: 'Record a manual transaction',
@@ -53,6 +70,7 @@ export const TransactionsContracts = c.router({
             400: ErrorResSchema,
             401: ErrorResSchema,
             403: ErrorResSchema,
+            409: ErrorResSchema,
             404: ErrorResSchema,
             500: ErrorResSchema,
         },

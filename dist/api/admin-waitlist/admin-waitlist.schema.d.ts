@@ -5,6 +5,7 @@ export declare const WaitlistEntrySchema: z.ZodObject<{
     last_name: z.ZodString;
     email: z.ZodString;
     source: z.ZodNullable<z.ZodString>;
+    is_beta_tester: z.ZodBoolean;
     created_at: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     id: string;
@@ -13,6 +14,7 @@ export declare const WaitlistEntrySchema: z.ZodObject<{
     first_name: string;
     last_name: string;
     source: string | null;
+    is_beta_tester: boolean;
 }, {
     id: string;
     email: string;
@@ -20,6 +22,7 @@ export declare const WaitlistEntrySchema: z.ZodObject<{
     first_name: string;
     last_name: string;
     source: string | null;
+    is_beta_tester: boolean;
 }>;
 export declare const WaitlistListResponseSchema: z.ZodObject<{
     message: z.ZodString;
@@ -29,6 +32,7 @@ export declare const WaitlistListResponseSchema: z.ZodObject<{
         last_name: z.ZodString;
         email: z.ZodString;
         source: z.ZodNullable<z.ZodString>;
+        is_beta_tester: z.ZodBoolean;
         created_at: z.ZodString;
     }, "strip", z.ZodTypeAny, {
         id: string;
@@ -37,6 +41,7 @@ export declare const WaitlistListResponseSchema: z.ZodObject<{
         first_name: string;
         last_name: string;
         source: string | null;
+        is_beta_tester: boolean;
     }, {
         id: string;
         email: string;
@@ -44,6 +49,7 @@ export declare const WaitlistListResponseSchema: z.ZodObject<{
         first_name: string;
         last_name: string;
         source: string | null;
+        is_beta_tester: boolean;
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
     message: string;
@@ -54,6 +60,7 @@ export declare const WaitlistListResponseSchema: z.ZodObject<{
         first_name: string;
         last_name: string;
         source: string | null;
+        is_beta_tester: boolean;
     }[];
 }, {
     message: string;
@@ -64,6 +71,7 @@ export declare const WaitlistListResponseSchema: z.ZodObject<{
         first_name: string;
         last_name: string;
         source: string | null;
+        is_beta_tester: boolean;
     }[];
 }>;
 export declare const WaitlistSourceCountSchema: z.ZodObject<{
@@ -129,9 +137,12 @@ export declare const WaitlistStatsResponseSchema: z.ZodObject<{
 }>;
 export declare const GetWaitlistQuerySchema: z.ZodObject<{
     source: z.ZodOptional<z.ZodString>;
+    is_beta_tester: z.ZodEffects<z.ZodOptional<z.ZodBoolean>, boolean | undefined, unknown>;
 }, "strip", z.ZodTypeAny, {
     source?: string | undefined;
+    is_beta_tester?: boolean | undefined;
 }, {
     source?: string | undefined;
+    is_beta_tester?: unknown;
 }>;
 export type WaitlistEntry = z.infer<typeof WaitlistEntrySchema>;
