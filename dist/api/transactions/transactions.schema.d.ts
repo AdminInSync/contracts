@@ -5,6 +5,7 @@ export declare const ManualTransactionTypeSchema: z.ZodEnum<["debit", "credit", 
 export declare const ManualTransactionCategorySchema: z.ZodUnion<[z.ZodEnum<["Alimentos", "Transporte", "Hogar", "Servicios", "Suscripciones", "Compras", "Cuidado personal", "Salud", "Educación", "Entretenimiento", "Viajes", "Otros"]>, z.ZodEnum<["Salario", "Trabajo independiente", "Ventas", "Inversiones", "Otros ingresos"]>, z.ZodLiteral<"Pago de crédito">]>;
 export declare const ManualPaymentMethodSchema: z.ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
 export declare const CreateManualTransactionSchema: z.ZodEffects<z.ZodEffects<z.ZodObject<{
+    request_id: z.ZodOptional<z.ZodString>;
     amount: z.ZodNumber;
     currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
     transaction_date: z.ZodString;
@@ -33,6 +34,7 @@ export declare const CreateManualTransactionSchema: z.ZodEffects<z.ZodEffects<z.
     budget_uuid?: string | null | undefined;
     group_uuid?: string | null | undefined;
     product_uuid?: string | null | undefined;
+    request_id?: string | undefined;
     payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
     goal_income_allocation?: {
         amount: number;
@@ -47,6 +49,7 @@ export declare const CreateManualTransactionSchema: z.ZodEffects<z.ZodEffects<z.
     group_uuid?: string | null | undefined;
     product_uuid?: string | null | undefined;
     transaction_type?: "debit" | "credit" | "payment" | undefined;
+    request_id?: string | undefined;
     payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
     goal_income_allocation?: {
         amount: number;
@@ -61,6 +64,7 @@ export declare const CreateManualTransactionSchema: z.ZodEffects<z.ZodEffects<z.
     budget_uuid?: string | null | undefined;
     group_uuid?: string | null | undefined;
     product_uuid?: string | null | undefined;
+    request_id?: string | undefined;
     payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
     goal_income_allocation?: {
         amount: number;
@@ -75,6 +79,7 @@ export declare const CreateManualTransactionSchema: z.ZodEffects<z.ZodEffects<z.
     group_uuid?: string | null | undefined;
     product_uuid?: string | null | undefined;
     transaction_type?: "debit" | "credit" | "payment" | undefined;
+    request_id?: string | undefined;
     payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
     goal_income_allocation?: {
         amount: number;
@@ -89,6 +94,7 @@ export declare const CreateManualTransactionSchema: z.ZodEffects<z.ZodEffects<z.
     budget_uuid?: string | null | undefined;
     group_uuid?: string | null | undefined;
     product_uuid?: string | null | undefined;
+    request_id?: string | undefined;
     payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
     goal_income_allocation?: {
         amount: number;
@@ -103,6 +109,7 @@ export declare const CreateManualTransactionSchema: z.ZodEffects<z.ZodEffects<z.
     group_uuid?: string | null | undefined;
     product_uuid?: string | null | undefined;
     transaction_type?: "debit" | "credit" | "payment" | undefined;
+    request_id?: string | undefined;
     payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
     goal_income_allocation?: {
         amount: number;

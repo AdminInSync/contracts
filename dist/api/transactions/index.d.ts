@@ -393,6 +393,7 @@ export declare const TransactionsContracts: {
         description: "Creates an expense or income without free-text merchant or counterparty details. Email-enabled accounts may create income entries only.";
         method: "POST";
         body: z.ZodEffects<z.ZodEffects<z.ZodObject<{
+            request_id: z.ZodOptional<z.ZodString>;
             amount: z.ZodNumber;
             currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
             transaction_date: z.ZodString;
@@ -421,6 +422,7 @@ export declare const TransactionsContracts: {
             budget_uuid?: string | null | undefined;
             group_uuid?: string | null | undefined;
             product_uuid?: string | null | undefined;
+            request_id?: string | undefined;
             payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             goal_income_allocation?: {
                 amount: number;
@@ -435,6 +437,7 @@ export declare const TransactionsContracts: {
             group_uuid?: string | null | undefined;
             product_uuid?: string | null | undefined;
             transaction_type?: "debit" | "credit" | "payment" | undefined;
+            request_id?: string | undefined;
             payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             goal_income_allocation?: {
                 amount: number;
@@ -449,6 +452,7 @@ export declare const TransactionsContracts: {
             budget_uuid?: string | null | undefined;
             group_uuid?: string | null | undefined;
             product_uuid?: string | null | undefined;
+            request_id?: string | undefined;
             payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             goal_income_allocation?: {
                 amount: number;
@@ -463,6 +467,7 @@ export declare const TransactionsContracts: {
             group_uuid?: string | null | undefined;
             product_uuid?: string | null | undefined;
             transaction_type?: "debit" | "credit" | "payment" | undefined;
+            request_id?: string | undefined;
             payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             goal_income_allocation?: {
                 amount: number;
@@ -477,6 +482,7 @@ export declare const TransactionsContracts: {
             budget_uuid?: string | null | undefined;
             group_uuid?: string | null | undefined;
             product_uuid?: string | null | undefined;
+            request_id?: string | undefined;
             payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             goal_income_allocation?: {
                 amount: number;
@@ -491,6 +497,7 @@ export declare const TransactionsContracts: {
             group_uuid?: string | null | undefined;
             product_uuid?: string | null | undefined;
             transaction_type?: "debit" | "credit" | "payment" | undefined;
+            request_id?: string | undefined;
             payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
             goal_income_allocation?: {
                 amount: number;

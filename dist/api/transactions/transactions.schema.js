@@ -9,6 +9,7 @@ const CurrencySchema = z.enum(['DOP', 'USD', 'EUR']);
 export const ManualPaymentMethodSchema = z.enum(['cash', 'card', 'apple_pay', 'google_pay', 'other']);
 const DateSchema = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Use YYYY-MM-DD');
 export const CreateManualTransactionSchema = z.object({
+    request_id: z.string().uuid().optional(),
     amount: z.number().positive().max(9999999999999.99),
     currency: CurrencySchema,
     transaction_date: DateSchema,

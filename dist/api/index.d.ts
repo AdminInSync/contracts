@@ -10270,6 +10270,7 @@ export declare const ApiContracts: {
             description: "Creates an expense or income without free-text merchant or counterparty details. Email-enabled accounts may create income entries only.";
             method: "POST";
             body: import("zod").ZodEffects<import("zod").ZodEffects<import("zod").ZodObject<{
+                request_id: import("zod").ZodOptional<import("zod").ZodString>;
                 amount: import("zod").ZodNumber;
                 currency: import("zod").ZodEnum<["DOP", "USD", "EUR"]>;
                 transaction_date: import("zod").ZodString;
@@ -10298,6 +10299,7 @@ export declare const ApiContracts: {
                 budget_uuid?: string | null | undefined;
                 group_uuid?: string | null | undefined;
                 product_uuid?: string | null | undefined;
+                request_id?: string | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
                 goal_income_allocation?: {
                     amount: number;
@@ -10312,6 +10314,7 @@ export declare const ApiContracts: {
                 group_uuid?: string | null | undefined;
                 product_uuid?: string | null | undefined;
                 transaction_type?: "debit" | "credit" | "payment" | undefined;
+                request_id?: string | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
                 goal_income_allocation?: {
                     amount: number;
@@ -10326,6 +10329,7 @@ export declare const ApiContracts: {
                 budget_uuid?: string | null | undefined;
                 group_uuid?: string | null | undefined;
                 product_uuid?: string | null | undefined;
+                request_id?: string | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
                 goal_income_allocation?: {
                     amount: number;
@@ -10340,6 +10344,7 @@ export declare const ApiContracts: {
                 group_uuid?: string | null | undefined;
                 product_uuid?: string | null | undefined;
                 transaction_type?: "debit" | "credit" | "payment" | undefined;
+                request_id?: string | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
                 goal_income_allocation?: {
                     amount: number;
@@ -10354,6 +10359,7 @@ export declare const ApiContracts: {
                 budget_uuid?: string | null | undefined;
                 group_uuid?: string | null | undefined;
                 product_uuid?: string | null | undefined;
+                request_id?: string | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
                 goal_income_allocation?: {
                     amount: number;
@@ -10368,6 +10374,7 @@ export declare const ApiContracts: {
                 group_uuid?: string | null | undefined;
                 product_uuid?: string | null | undefined;
                 transaction_type?: "debit" | "credit" | "payment" | undefined;
+                request_id?: string | undefined;
                 payment_method?: "other" | "cash" | "card" | "apple_pay" | "google_pay" | undefined;
                 goal_income_allocation?: {
                     amount: number;
