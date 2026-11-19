@@ -8983,7 +8983,7 @@ export declare const apiContract: {
                     to?: string | undefined;
                 }>;
                 summary: "Get my connected products by type";
-                description: "Returns products from bank connections filtered by type. Optional from/to (YYYY-MM-DD) limit debit spend totals.";
+                description: "Returns products from bank connections filtered by type. Optional from/to (YYYY-MM-DD) limit debit spend totals. Account products include optional bank_balance and period_spend values with separate currency fields; bank_balance is null when no balance has been reported or recorded.";
                 method: "GET";
                 path: "/api/products/my-products/connected/:type";
                 responses: {
@@ -9047,6 +9047,10 @@ export declare const apiContract: {
                                     current: number;
                                     available: number;
                                 }>;
+                                bank_balance: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodNumber>>;
+                                bank_balance_currency: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                                period_spend: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodNumber>>;
+                                period_spend_currency: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                                 metadata: import("zod").ZodObject<{
                                     utilization: import("zod").ZodNullable<import("zod").ZodNumber>;
                                     next_payment: import("zod").ZodNullable<import("zod").ZodString>;
@@ -9126,6 +9130,10 @@ export declare const apiContract: {
                                 };
                                 percentage_change: string;
                                 linked_account_id?: string | null | undefined;
+                                bank_balance?: number | null | undefined;
+                                bank_balance_currency?: string | null | undefined;
+                                period_spend?: number | null | undefined;
+                                period_spend_currency?: string | null | undefined;
                             }, {
                                 type: string;
                                 id: string;
@@ -9163,6 +9171,10 @@ export declare const apiContract: {
                                 };
                                 percentage_change: string;
                                 linked_account_id?: string | null | undefined;
+                                bank_balance?: number | null | undefined;
+                                bank_balance_currency?: string | null | undefined;
+                                period_spend?: number | null | undefined;
+                                period_spend_currency?: string | null | undefined;
                             }>, "many">;
                         }, "strip", import("zod").ZodTypeAny, {
                             products: {
@@ -9202,6 +9214,10 @@ export declare const apiContract: {
                                 };
                                 percentage_change: string;
                                 linked_account_id?: string | null | undefined;
+                                bank_balance?: number | null | undefined;
+                                bank_balance_currency?: string | null | undefined;
+                                period_spend?: number | null | undefined;
+                                period_spend_currency?: string | null | undefined;
                             }[];
                             summary?: {
                                 active_count: number;
@@ -9249,6 +9265,10 @@ export declare const apiContract: {
                                 };
                                 percentage_change: string;
                                 linked_account_id?: string | null | undefined;
+                                bank_balance?: number | null | undefined;
+                                bank_balance_currency?: string | null | undefined;
+                                period_spend?: number | null | undefined;
+                                period_spend_currency?: string | null | undefined;
                             }[];
                             summary?: {
                                 active_count: number;
@@ -9299,6 +9319,10 @@ export declare const apiContract: {
                                 };
                                 percentage_change: string;
                                 linked_account_id?: string | null | undefined;
+                                bank_balance?: number | null | undefined;
+                                bank_balance_currency?: string | null | undefined;
+                                period_spend?: number | null | undefined;
+                                period_spend_currency?: string | null | undefined;
                             }[];
                             summary?: {
                                 active_count: number;
@@ -9349,6 +9373,10 @@ export declare const apiContract: {
                                 };
                                 percentage_change: string;
                                 linked_account_id?: string | null | undefined;
+                                bank_balance?: number | null | undefined;
+                                bank_balance_currency?: string | null | undefined;
+                                period_spend?: number | null | undefined;
+                                period_spend_currency?: string | null | undefined;
                             }[];
                             summary?: {
                                 active_count: number;

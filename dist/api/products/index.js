@@ -221,7 +221,7 @@ export const ProductsContracts = c.router({
             to: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
         }),
         summary: 'Get my connected products by type',
-        description: 'Returns products from bank connections filtered by type. Optional from/to (YYYY-MM-DD) limit debit spend totals.',
+        description: 'Returns products from bank connections filtered by type. Optional from/to (YYYY-MM-DD) limit debit spend totals. Account products include optional bank_balance and period_spend values with separate currency fields; bank_balance is null when no balance has been reported or recorded.',
     },
     setMyProductExpenseDestination: {
         method: 'PATCH',

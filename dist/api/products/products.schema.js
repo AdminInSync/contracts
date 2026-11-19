@@ -116,6 +116,12 @@ export const ConnectedProductSchema = z.object({
     card_brand: CardBrandSchema.nullable(),
     linked_account_id: z.string().uuid().nullable().optional(),
     balance: ConnectedProductBalanceSchema,
+    /** Latest account balance reported or explicitly recorded; null means unknown. */
+    bank_balance: z.number().nullable().optional().describe('Latest known bank balance; null means no balance has been reported or recorded.'),
+    bank_balance_currency: z.string().nullable().optional().describe('Currency used for bank_balance.'),
+    /** Debit total in the requested date range and product currency. */
+    period_spend: z.number().nullable().optional().describe('Debit spend in the requested date range; null means it could not be calculated.'),
+    period_spend_currency: z.string().nullable().optional().describe('Currency used for period_spend.'),
     metadata: ConnectedProductMetadataSchema,
     percentage_change: z.string(),
     currency: z.string(),

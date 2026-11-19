@@ -2473,7 +2473,7 @@ export declare const ProductsContracts: {
             to?: string | undefined;
         }>;
         summary: "Get my connected products by type";
-        description: "Returns products from bank connections filtered by type. Optional from/to (YYYY-MM-DD) limit debit spend totals.";
+        description: "Returns products from bank connections filtered by type. Optional from/to (YYYY-MM-DD) limit debit spend totals. Account products include optional bank_balance and period_spend values with separate currency fields; bank_balance is null when no balance has been reported or recorded.";
         method: "GET";
         path: "/products/my-products/connected/:type";
         responses: {
@@ -2537,6 +2537,10 @@ export declare const ProductsContracts: {
                             current: number;
                             available: number;
                         }>;
+                        bank_balance: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+                        bank_balance_currency: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+                        period_spend: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+                        period_spend_currency: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                         metadata: z.ZodObject<{
                             utilization: z.ZodNullable<z.ZodNumber>;
                             next_payment: z.ZodNullable<z.ZodString>;
@@ -2616,6 +2620,10 @@ export declare const ProductsContracts: {
                         };
                         percentage_change: string;
                         linked_account_id?: string | null | undefined;
+                        bank_balance?: number | null | undefined;
+                        bank_balance_currency?: string | null | undefined;
+                        period_spend?: number | null | undefined;
+                        period_spend_currency?: string | null | undefined;
                     }, {
                         type: string;
                         id: string;
@@ -2653,6 +2661,10 @@ export declare const ProductsContracts: {
                         };
                         percentage_change: string;
                         linked_account_id?: string | null | undefined;
+                        bank_balance?: number | null | undefined;
+                        bank_balance_currency?: string | null | undefined;
+                        period_spend?: number | null | undefined;
+                        period_spend_currency?: string | null | undefined;
                     }>, "many">;
                 }, "strip", z.ZodTypeAny, {
                     products: {
@@ -2692,6 +2704,10 @@ export declare const ProductsContracts: {
                         };
                         percentage_change: string;
                         linked_account_id?: string | null | undefined;
+                        bank_balance?: number | null | undefined;
+                        bank_balance_currency?: string | null | undefined;
+                        period_spend?: number | null | undefined;
+                        period_spend_currency?: string | null | undefined;
                     }[];
                     summary?: {
                         active_count: number;
@@ -2739,6 +2755,10 @@ export declare const ProductsContracts: {
                         };
                         percentage_change: string;
                         linked_account_id?: string | null | undefined;
+                        bank_balance?: number | null | undefined;
+                        bank_balance_currency?: string | null | undefined;
+                        period_spend?: number | null | undefined;
+                        period_spend_currency?: string | null | undefined;
                     }[];
                     summary?: {
                         active_count: number;
@@ -2789,6 +2809,10 @@ export declare const ProductsContracts: {
                         };
                         percentage_change: string;
                         linked_account_id?: string | null | undefined;
+                        bank_balance?: number | null | undefined;
+                        bank_balance_currency?: string | null | undefined;
+                        period_spend?: number | null | undefined;
+                        period_spend_currency?: string | null | undefined;
                     }[];
                     summary?: {
                         active_count: number;
@@ -2839,6 +2863,10 @@ export declare const ProductsContracts: {
                         };
                         percentage_change: string;
                         linked_account_id?: string | null | undefined;
+                        bank_balance?: number | null | undefined;
+                        bank_balance_currency?: string | null | undefined;
+                        period_spend?: number | null | undefined;
+                        period_spend_currency?: string | null | undefined;
                     }[];
                     summary?: {
                         active_count: number;

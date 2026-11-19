@@ -663,6 +663,12 @@ export declare const ConnectedProductSchema: z.ZodObject<{
         current: number;
         available: number;
     }>;
+    /** Latest account balance reported or explicitly recorded; null means unknown. */
+    bank_balance: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+    bank_balance_currency: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    /** Debit total in the requested date range and product currency. */
+    period_spend: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+    period_spend_currency: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     metadata: z.ZodObject<{
         utilization: z.ZodNullable<z.ZodNumber>;
         next_payment: z.ZodNullable<z.ZodString>;
@@ -742,6 +748,10 @@ export declare const ConnectedProductSchema: z.ZodObject<{
     };
     percentage_change: string;
     linked_account_id?: string | null | undefined;
+    bank_balance?: number | null | undefined;
+    bank_balance_currency?: string | null | undefined;
+    period_spend?: number | null | undefined;
+    period_spend_currency?: string | null | undefined;
 }, {
     type: string;
     id: string;
@@ -779,6 +789,10 @@ export declare const ConnectedProductSchema: z.ZodObject<{
     };
     percentage_change: string;
     linked_account_id?: string | null | undefined;
+    bank_balance?: number | null | undefined;
+    bank_balance_currency?: string | null | undefined;
+    period_spend?: number | null | undefined;
+    period_spend_currency?: string | null | undefined;
 }>;
 export declare const ConnectedProductsSummarySchema: z.ZodObject<{
     pending_balance: z.ZodOptional<z.ZodNumber>;
@@ -860,6 +874,12 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
             current: number;
             available: number;
         }>;
+        /** Latest account balance reported or explicitly recorded; null means unknown. */
+        bank_balance: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+        bank_balance_currency: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+        /** Debit total in the requested date range and product currency. */
+        period_spend: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+        period_spend_currency: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         metadata: z.ZodObject<{
             utilization: z.ZodNullable<z.ZodNumber>;
             next_payment: z.ZodNullable<z.ZodString>;
@@ -939,6 +959,10 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         };
         percentage_change: string;
         linked_account_id?: string | null | undefined;
+        bank_balance?: number | null | undefined;
+        bank_balance_currency?: string | null | undefined;
+        period_spend?: number | null | undefined;
+        period_spend_currency?: string | null | undefined;
     }, {
         type: string;
         id: string;
@@ -976,6 +1000,10 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         };
         percentage_change: string;
         linked_account_id?: string | null | undefined;
+        bank_balance?: number | null | undefined;
+        bank_balance_currency?: string | null | undefined;
+        period_spend?: number | null | undefined;
+        period_spend_currency?: string | null | undefined;
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
     products: {
@@ -1015,6 +1043,10 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         };
         percentage_change: string;
         linked_account_id?: string | null | undefined;
+        bank_balance?: number | null | undefined;
+        bank_balance_currency?: string | null | undefined;
+        period_spend?: number | null | undefined;
+        period_spend_currency?: string | null | undefined;
     }[];
     summary?: {
         active_count: number;
@@ -1062,6 +1094,10 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         };
         percentage_change: string;
         linked_account_id?: string | null | undefined;
+        bank_balance?: number | null | undefined;
+        bank_balance_currency?: string | null | undefined;
+        period_spend?: number | null | undefined;
+        period_spend_currency?: string | null | undefined;
     }[];
     summary?: {
         active_count: number;
@@ -1132,6 +1168,12 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 current: number;
                 available: number;
             }>;
+            /** Latest account balance reported or explicitly recorded; null means unknown. */
+            bank_balance: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+            bank_balance_currency: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+            /** Debit total in the requested date range and product currency. */
+            period_spend: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+            period_spend_currency: z.ZodOptional<z.ZodNullable<z.ZodString>>;
             metadata: z.ZodObject<{
                 utilization: z.ZodNullable<z.ZodNumber>;
                 next_payment: z.ZodNullable<z.ZodString>;
@@ -1211,6 +1253,10 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             };
             percentage_change: string;
             linked_account_id?: string | null | undefined;
+            bank_balance?: number | null | undefined;
+            bank_balance_currency?: string | null | undefined;
+            period_spend?: number | null | undefined;
+            period_spend_currency?: string | null | undefined;
         }, {
             type: string;
             id: string;
@@ -1248,6 +1294,10 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             };
             percentage_change: string;
             linked_account_id?: string | null | undefined;
+            bank_balance?: number | null | undefined;
+            bank_balance_currency?: string | null | undefined;
+            period_spend?: number | null | undefined;
+            period_spend_currency?: string | null | undefined;
         }>, "many">;
     }, "strip", z.ZodTypeAny, {
         products: {
@@ -1287,6 +1337,10 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             };
             percentage_change: string;
             linked_account_id?: string | null | undefined;
+            bank_balance?: number | null | undefined;
+            bank_balance_currency?: string | null | undefined;
+            period_spend?: number | null | undefined;
+            period_spend_currency?: string | null | undefined;
         }[];
         summary?: {
             active_count: number;
@@ -1334,6 +1388,10 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             };
             percentage_change: string;
             linked_account_id?: string | null | undefined;
+            bank_balance?: number | null | undefined;
+            bank_balance_currency?: string | null | undefined;
+            period_spend?: number | null | undefined;
+            period_spend_currency?: string | null | undefined;
         }[];
         summary?: {
             active_count: number;
@@ -1384,6 +1442,10 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             };
             percentage_change: string;
             linked_account_id?: string | null | undefined;
+            bank_balance?: number | null | undefined;
+            bank_balance_currency?: string | null | undefined;
+            period_spend?: number | null | undefined;
+            period_spend_currency?: string | null | undefined;
         }[];
         summary?: {
             active_count: number;
@@ -1434,6 +1496,10 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             };
             percentage_change: string;
             linked_account_id?: string | null | undefined;
+            bank_balance?: number | null | undefined;
+            bank_balance_currency?: string | null | undefined;
+            period_spend?: number | null | undefined;
+            period_spend_currency?: string | null | undefined;
         }[];
         summary?: {
             active_count: number;
