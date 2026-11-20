@@ -153,6 +153,8 @@ export const ProductTransactionItemSchema = z.object({
     transaction_type: z.enum(['debit', 'credit', 'payment']),
     category: z.string().nullable().optional(),
     can_edit_category: z.boolean().optional(),
+    can_assign_to_budget: z.boolean().optional(),
+    is_imported: z.boolean().optional(),
     is_manual: z.boolean().optional(),
     institution_name: z.string().nullable(),
     institution_logo: z.string().nullable(),
@@ -163,12 +165,26 @@ export const ProductTransactionItemSchema = z.object({
     linked_account_label: z.string().nullable().optional(),
     budget_uuid: z.string().uuid().nullable().optional(),
     group_uuid: z.string().uuid().nullable().optional(),
+    excluded_budget_uuids: z.array(z.string().uuid()).optional(),
     destination_pending: z.string().nullable().optional(),
     budget_pending: z.string().nullable().optional(),
     group_pending: z.string().nullable().optional(),
 });
 export const SetExpenseDestinationSchema = ExpenseDestinationSchema.strict();
+export const SetTransactionExpenseDestinationSchema = ExpenseDestinationSchema.extend({
+    /** Budget to add to or remove from the transaction's category-based exclusions. */
+    excluded_budget_uuid: z.string().uuid().optional(),
+    /** Defaults to true when excluded_budget_uuid is provided. */
+    budget_excluded: z.boolean().optional(),
+}).strict().refine((value) => value.budget_excluded === undefined || value.excluded_budget_uuid !== undefined, {
+    message: 'An excluded budget is required when changing its exclusion state',
+    path: ['excluded_budget_uuid'],
+});
 export const ExpenseDestinationResponseSchema = z.object({ message: z.string(), data: ExpenseDestinationSchema });
+export const TransactionExpenseDestinationResponseSchema = z.object({
+    message: z.string(),
+    data: ExpenseDestinationSchema.extend({ excluded_budget_uuids: z.array(z.string().uuid()) }),
+});
 export const ProductTransactionsListResponseSchema = z.object({
     message: z.string(),
     data: z.array(ProductTransactionItemSchema),

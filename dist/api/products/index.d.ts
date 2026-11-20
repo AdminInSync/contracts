@@ -3043,17 +3043,34 @@ export declare const ProductsContracts: {
             transactionUuid: string;
         }>;
         summary: "Set destinations for a personal expense";
-        description: "Assigns or clears the budget and shared group for one personal expense.";
+        description: "Assigns an expense to a budget regardless of category, sets its shared group, or excludes it from one category-based budget without changing other budgets.";
         method: "PATCH";
-        body: z.ZodObject<{
+        body: z.ZodEffects<z.ZodObject<{
             budget_uuid: z.ZodNullable<z.ZodString>;
             group_uuid: z.ZodNullable<z.ZodString>;
+        } & {
+            excluded_budget_uuid: z.ZodOptional<z.ZodString>;
+            budget_excluded: z.ZodOptional<z.ZodBoolean>;
         }, "strict", z.ZodTypeAny, {
             budget_uuid: string | null;
             group_uuid: string | null;
+            excluded_budget_uuid?: string | undefined;
+            budget_excluded?: boolean | undefined;
         }, {
             budget_uuid: string | null;
             group_uuid: string | null;
+            excluded_budget_uuid?: string | undefined;
+            budget_excluded?: boolean | undefined;
+        }>, {
+            budget_uuid: string | null;
+            group_uuid: string | null;
+            excluded_budget_uuid?: string | undefined;
+            budget_excluded?: boolean | undefined;
+        }, {
+            budget_uuid: string | null;
+            group_uuid: string | null;
+            excluded_budget_uuid?: string | undefined;
+            budget_excluded?: boolean | undefined;
         }>;
         path: "/products/my-transactions/:transactionUuid/expense-destination";
         responses: {
@@ -3062,24 +3079,30 @@ export declare const ProductsContracts: {
                 data: z.ZodObject<{
                     budget_uuid: z.ZodNullable<z.ZodString>;
                     group_uuid: z.ZodNullable<z.ZodString>;
+                } & {
+                    excluded_budget_uuids: z.ZodArray<z.ZodString, "many">;
                 }, "strip", z.ZodTypeAny, {
                     budget_uuid: string | null;
                     group_uuid: string | null;
+                    excluded_budget_uuids: string[];
                 }, {
                     budget_uuid: string | null;
                     group_uuid: string | null;
+                    excluded_budget_uuids: string[];
                 }>;
             }, "strip", z.ZodTypeAny, {
                 message: string;
                 data: {
                     budget_uuid: string | null;
                     group_uuid: string | null;
+                    excluded_budget_uuids: string[];
                 };
             }, {
                 message: string;
                 data: {
                     budget_uuid: string | null;
                     group_uuid: string | null;
+                    excluded_budget_uuids: string[];
                 };
             }>;
             400: z.ZodObject<{
@@ -3155,6 +3178,7 @@ export declare const ProductsContracts: {
             offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
             currency: z.ZodOptional<z.ZodEnum<["DOP", "USD", "EUR"]>>;
             from: z.ZodOptional<z.ZodString>;
+            to: z.ZodOptional<z.ZodString>;
             search: z.ZodOptional<z.ZodString>;
             type: z.ZodOptional<z.ZodEnum<["debit", "credit", "payment"]>>;
             product_uuid: z.ZodOptional<z.ZodString>;
@@ -3170,6 +3194,7 @@ export declare const ProductsContracts: {
             product_uuid?: string | undefined;
             category?: string | undefined;
             from?: string | undefined;
+            to?: string | undefined;
             assignment_candidates?: boolean | undefined;
             statement_upload_uuid?: string | undefined;
         }, {
@@ -3181,11 +3206,12 @@ export declare const ProductsContracts: {
             product_uuid?: string | undefined;
             category?: string | undefined;
             from?: string | undefined;
+            to?: string | undefined;
             assignment_candidates?: string | undefined;
             statement_upload_uuid?: string | undefined;
         }>;
         summary: "Get my product transactions";
-        description: "Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from (YYYY-MM-DD) limits results to that date onward. Optional search matches description, institution, product, card brand, or last 4. Optional product_uuid limits results to one connected product. assignment_candidates=true includes manual and imported personal expenses regardless of tracking mode for destination assignment. Optional statement_upload_uuid limits results to one accepted statement upload.";
+        description: "Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from/to (YYYY-MM-DD) limit results to an inclusive date range. Optional search matches description, institution, product, card brand, or last 4. Optional product_uuid limits results to one connected product. assignment_candidates=true includes manual and imported personal expenses regardless of tracking mode for destination assignment. Optional statement_upload_uuid limits results to one accepted statement upload.";
         method: "GET";
         path: "/products/my-transactions";
         responses: {
@@ -3202,6 +3228,8 @@ export declare const ProductsContracts: {
                     transaction_type: z.ZodEnum<["debit", "credit", "payment"]>;
                     category: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     can_edit_category: z.ZodOptional<z.ZodBoolean>;
+                    can_assign_to_budget: z.ZodOptional<z.ZodBoolean>;
+                    is_imported: z.ZodOptional<z.ZodBoolean>;
                     is_manual: z.ZodOptional<z.ZodBoolean>;
                     institution_name: z.ZodNullable<z.ZodString>;
                     institution_logo: z.ZodNullable<z.ZodString>;
@@ -3212,6 +3240,7 @@ export declare const ProductsContracts: {
                     linked_account_label: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     budget_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     group_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+                    excluded_budget_uuids: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
                     destination_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     budget_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     group_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
@@ -3235,7 +3264,10 @@ export declare const ProductsContracts: {
                     transaction_occurred_at?: string | null | undefined;
                     category?: string | null | undefined;
                     can_edit_category?: boolean | undefined;
+                    can_assign_to_budget?: boolean | undefined;
+                    is_imported?: boolean | undefined;
                     linked_account_label?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
@@ -3259,7 +3291,10 @@ export declare const ProductsContracts: {
                     transaction_occurred_at?: string | null | undefined;
                     category?: string | null | undefined;
                     can_edit_category?: boolean | undefined;
+                    can_assign_to_budget?: boolean | undefined;
+                    is_imported?: boolean | undefined;
                     linked_account_label?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
@@ -3309,7 +3344,10 @@ export declare const ProductsContracts: {
                     transaction_occurred_at?: string | null | undefined;
                     category?: string | null | undefined;
                     can_edit_category?: boolean | undefined;
+                    can_assign_to_budget?: boolean | undefined;
+                    is_imported?: boolean | undefined;
                     linked_account_label?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
@@ -3345,7 +3383,10 @@ export declare const ProductsContracts: {
                     transaction_occurred_at?: string | null | undefined;
                     category?: string | null | undefined;
                     can_edit_category?: boolean | undefined;
+                    can_assign_to_budget?: boolean | undefined;
+                    is_imported?: boolean | undefined;
                     linked_account_label?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;

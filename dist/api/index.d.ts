@@ -9553,17 +9553,34 @@ export declare const ApiContracts: {
                 transactionUuid: string;
             }>;
             summary: "Set destinations for a personal expense";
-            description: "Assigns or clears the budget and shared group for one personal expense.";
+            description: "Assigns an expense to a budget regardless of category, sets its shared group, or excludes it from one category-based budget without changing other budgets.";
             method: "PATCH";
-            body: import("zod").ZodObject<{
+            body: import("zod").ZodEffects<import("zod").ZodObject<{
                 budget_uuid: import("zod").ZodNullable<import("zod").ZodString>;
                 group_uuid: import("zod").ZodNullable<import("zod").ZodString>;
+            } & {
+                excluded_budget_uuid: import("zod").ZodOptional<import("zod").ZodString>;
+                budget_excluded: import("zod").ZodOptional<import("zod").ZodBoolean>;
             }, "strict", import("zod").ZodTypeAny, {
                 budget_uuid: string | null;
                 group_uuid: string | null;
+                excluded_budget_uuid?: string | undefined;
+                budget_excluded?: boolean | undefined;
             }, {
                 budget_uuid: string | null;
                 group_uuid: string | null;
+                excluded_budget_uuid?: string | undefined;
+                budget_excluded?: boolean | undefined;
+            }>, {
+                budget_uuid: string | null;
+                group_uuid: string | null;
+                excluded_budget_uuid?: string | undefined;
+                budget_excluded?: boolean | undefined;
+            }, {
+                budget_uuid: string | null;
+                group_uuid: string | null;
+                excluded_budget_uuid?: string | undefined;
+                budget_excluded?: boolean | undefined;
             }>;
             path: "/api/products/my-transactions/:transactionUuid/expense-destination";
             responses: {
@@ -9572,24 +9589,30 @@ export declare const ApiContracts: {
                     data: import("zod").ZodObject<{
                         budget_uuid: import("zod").ZodNullable<import("zod").ZodString>;
                         group_uuid: import("zod").ZodNullable<import("zod").ZodString>;
+                    } & {
+                        excluded_budget_uuids: import("zod").ZodArray<import("zod").ZodString, "many">;
                     }, "strip", import("zod").ZodTypeAny, {
                         budget_uuid: string | null;
                         group_uuid: string | null;
+                        excluded_budget_uuids: string[];
                     }, {
                         budget_uuid: string | null;
                         group_uuid: string | null;
+                        excluded_budget_uuids: string[];
                     }>;
                 }, "strip", import("zod").ZodTypeAny, {
                     message: string;
                     data: {
                         budget_uuid: string | null;
                         group_uuid: string | null;
+                        excluded_budget_uuids: string[];
                     };
                 }, {
                     message: string;
                     data: {
                         budget_uuid: string | null;
                         group_uuid: string | null;
+                        excluded_budget_uuids: string[];
                     };
                 }>;
                 400: import("zod").ZodObject<{
@@ -9666,6 +9689,7 @@ export declare const ApiContracts: {
                 offset: import("zod").ZodDefault<import("zod").ZodPipeline<import("zod").ZodEffects<import("zod").ZodString, number, string>, import("zod").ZodNumber>>;
                 currency: import("zod").ZodOptional<import("zod").ZodEnum<["DOP", "USD", "EUR"]>>;
                 from: import("zod").ZodOptional<import("zod").ZodString>;
+                to: import("zod").ZodOptional<import("zod").ZodString>;
                 search: import("zod").ZodOptional<import("zod").ZodString>;
                 type: import("zod").ZodOptional<import("zod").ZodEnum<["debit", "credit", "payment"]>>;
                 product_uuid: import("zod").ZodOptional<import("zod").ZodString>;
@@ -9681,6 +9705,7 @@ export declare const ApiContracts: {
                 product_uuid?: string | undefined;
                 category?: string | undefined;
                 from?: string | undefined;
+                to?: string | undefined;
                 assignment_candidates?: boolean | undefined;
                 statement_upload_uuid?: string | undefined;
             }, {
@@ -9692,11 +9717,12 @@ export declare const ApiContracts: {
                 product_uuid?: string | undefined;
                 category?: string | undefined;
                 from?: string | undefined;
+                to?: string | undefined;
                 assignment_candidates?: string | undefined;
                 statement_upload_uuid?: string | undefined;
             }>;
             summary: "Get my product transactions";
-            description: "Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from (YYYY-MM-DD) limits results to that date onward. Optional search matches description, institution, product, card brand, or last 4. Optional product_uuid limits results to one connected product. assignment_candidates=true includes manual and imported personal expenses regardless of tracking mode for destination assignment. Optional statement_upload_uuid limits results to one accepted statement upload.";
+            description: "Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from/to (YYYY-MM-DD) limit results to an inclusive date range. Optional search matches description, institution, product, card brand, or last 4. Optional product_uuid limits results to one connected product. assignment_candidates=true includes manual and imported personal expenses regardless of tracking mode for destination assignment. Optional statement_upload_uuid limits results to one accepted statement upload.";
             method: "GET";
             path: "/api/products/my-transactions";
             responses: {
@@ -9713,6 +9739,8 @@ export declare const ApiContracts: {
                         transaction_type: import("zod").ZodEnum<["debit", "credit", "payment"]>;
                         category: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                         can_edit_category: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                        can_assign_to_budget: import("zod").ZodOptional<import("zod").ZodBoolean>;
+                        is_imported: import("zod").ZodOptional<import("zod").ZodBoolean>;
                         is_manual: import("zod").ZodOptional<import("zod").ZodBoolean>;
                         institution_name: import("zod").ZodNullable<import("zod").ZodString>;
                         institution_logo: import("zod").ZodNullable<import("zod").ZodString>;
@@ -9723,6 +9751,7 @@ export declare const ApiContracts: {
                         linked_account_label: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                         budget_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                         group_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        excluded_budget_uuids: import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodString, "many">>;
                         destination_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                         budget_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                         group_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
@@ -9746,7 +9775,10 @@ export declare const ApiContracts: {
                         transaction_occurred_at?: string | null | undefined;
                         category?: string | null | undefined;
                         can_edit_category?: boolean | undefined;
+                        can_assign_to_budget?: boolean | undefined;
+                        is_imported?: boolean | undefined;
                         linked_account_label?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -9770,7 +9802,10 @@ export declare const ApiContracts: {
                         transaction_occurred_at?: string | null | undefined;
                         category?: string | null | undefined;
                         can_edit_category?: boolean | undefined;
+                        can_assign_to_budget?: boolean | undefined;
+                        is_imported?: boolean | undefined;
                         linked_account_label?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -9820,7 +9855,10 @@ export declare const ApiContracts: {
                         transaction_occurred_at?: string | null | undefined;
                         category?: string | null | undefined;
                         can_edit_category?: boolean | undefined;
+                        can_assign_to_budget?: boolean | undefined;
+                        is_imported?: boolean | undefined;
                         linked_account_label?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -9856,7 +9894,10 @@ export declare const ApiContracts: {
                         transaction_occurred_at?: string | null | undefined;
                         category?: string | null | undefined;
                         can_edit_category?: boolean | undefined;
+                        can_assign_to_budget?: boolean | undefined;
+                        is_imported?: boolean | undefined;
                         linked_account_label?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -10133,6 +10174,7 @@ export declare const ApiContracts: {
                         payment_method: import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
                         product_uuid: import("zod").ZodNullable<import("zod").ZodString>;
                         budget_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        excluded_budget_uuids: import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodString, "many">>;
                         group_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                         destination_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                         budget_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
@@ -10150,6 +10192,7 @@ export declare const ApiContracts: {
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         budget_uuid?: string | null | undefined;
                         group_uuid?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -10166,6 +10209,7 @@ export declare const ApiContracts: {
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         budget_uuid?: string | null | undefined;
                         group_uuid?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -10182,6 +10226,7 @@ export declare const ApiContracts: {
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         budget_uuid?: string | null | undefined;
                         group_uuid?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -10198,6 +10243,7 @@ export declare const ApiContracts: {
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         budget_uuid?: string | null | undefined;
                         group_uuid?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -10230,6 +10276,7 @@ export declare const ApiContracts: {
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         budget_uuid?: string | null | undefined;
                         group_uuid?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -10254,6 +10301,7 @@ export declare const ApiContracts: {
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         budget_uuid?: string | null | undefined;
                         group_uuid?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -10425,6 +10473,7 @@ export declare const ApiContracts: {
                         payment_method: import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
                         product_uuid: import("zod").ZodNullable<import("zod").ZodString>;
                         budget_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        excluded_budget_uuids: import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodString, "many">>;
                         group_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                         destination_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                         budget_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
@@ -10442,6 +10491,7 @@ export declare const ApiContracts: {
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         budget_uuid?: string | null | undefined;
                         group_uuid?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -10458,6 +10508,7 @@ export declare const ApiContracts: {
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         budget_uuid?: string | null | undefined;
                         group_uuid?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -10474,6 +10525,7 @@ export declare const ApiContracts: {
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         budget_uuid?: string | null | undefined;
                         group_uuid?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -10490,6 +10542,7 @@ export declare const ApiContracts: {
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         budget_uuid?: string | null | undefined;
                         group_uuid?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -10509,6 +10562,7 @@ export declare const ApiContracts: {
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         budget_uuid?: string | null | undefined;
                         group_uuid?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -10528,6 +10582,7 @@ export declare const ApiContracts: {
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         budget_uuid?: string | null | undefined;
                         group_uuid?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -10698,6 +10753,7 @@ export declare const ApiContracts: {
                         payment_method: import("zod").ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
                         product_uuid: import("zod").ZodNullable<import("zod").ZodString>;
                         budget_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
+                        excluded_budget_uuids: import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodString, "many">>;
                         group_uuid: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                         destination_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
                         budget_pending: import("zod").ZodOptional<import("zod").ZodNullable<import("zod").ZodString>>;
@@ -10715,6 +10771,7 @@ export declare const ApiContracts: {
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         budget_uuid?: string | null | undefined;
                         group_uuid?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -10731,6 +10788,7 @@ export declare const ApiContracts: {
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         budget_uuid?: string | null | undefined;
                         group_uuid?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -10747,6 +10805,7 @@ export declare const ApiContracts: {
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         budget_uuid?: string | null | undefined;
                         group_uuid?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -10763,6 +10822,7 @@ export declare const ApiContracts: {
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         budget_uuid?: string | null | undefined;
                         group_uuid?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -10782,6 +10842,7 @@ export declare const ApiContracts: {
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         budget_uuid?: string | null | undefined;
                         group_uuid?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;
@@ -10801,6 +10862,7 @@ export declare const ApiContracts: {
                         payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                         budget_uuid?: string | null | undefined;
                         group_uuid?: string | null | undefined;
+                        excluded_budget_uuids?: string[] | undefined;
                         destination_pending?: string | null | undefined;
                         budget_pending?: string | null | undefined;
                         group_pending?: string | null | undefined;

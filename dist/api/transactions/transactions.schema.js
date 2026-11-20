@@ -67,6 +67,7 @@ export const ManualTransactionItemSchema = z.object({
     payment_method: ManualPaymentMethodSchema,
     product_uuid: z.string().uuid().nullable(),
     budget_uuid: z.string().uuid().nullable().optional(),
+    excluded_budget_uuids: z.array(z.string().uuid()).optional(),
     group_uuid: z.string().uuid().nullable().optional(),
     destination_pending: z.string().nullable().optional(),
     budget_pending: z.string().nullable().optional(),

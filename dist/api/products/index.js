@@ -1,6 +1,6 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
-import { CreateProductSchema, UpdateProductSchema, GetProductsQuerySchema, ProductResponseSchema, ProductsListResponseSchema, ConnectedProductTypeSchema, ConnectedProductsResponseSchema, ProductTransactionsListResponseSchema, SetExpenseDestinationSchema, ExpenseDestinationResponseSchema, } from './products.schema';
+import { CreateProductSchema, UpdateProductSchema, GetProductsQuerySchema, ProductResponseSchema, ProductsListResponseSchema, ConnectedProductTypeSchema, ConnectedProductsResponseSchema, ProductTransactionsListResponseSchema, SetExpenseDestinationSchema, SetTransactionExpenseDestinationSchema, ExpenseDestinationResponseSchema, TransactionExpenseDestinationResponseSchema, } from './products.schema';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
 const c = initContract();
 export const ProductsContracts = c.router({
@@ -243,7 +243,7 @@ export const ProductsContracts = c.router({
         method: 'PATCH',
         path: '/products/my-transactions/:transactionUuid/expense-destination',
         responses: {
-            200: ExpenseDestinationResponseSchema,
+            200: TransactionExpenseDestinationResponseSchema,
             400: ErrorResSchema,
             401: ErrorResSchema,
             404: ErrorResSchema,
@@ -251,9 +251,9 @@ export const ProductsContracts = c.router({
             500: ErrorResSchema,
         },
         pathParams: z.object({ transactionUuid: z.string().uuid() }),
-        body: SetExpenseDestinationSchema,
+        body: SetTransactionExpenseDestinationSchema,
         summary: 'Set destinations for a personal expense',
-        description: 'Assigns or clears the budget and shared group for one personal expense.',
+        description: 'Assigns an expense to a budget regardless of category, sets its shared group, or excludes it from one category-based budget without changing other budgets.',
     },
     getMyTransactions: {
         method: 'GET',
@@ -268,6 +268,7 @@ export const ProductsContracts = c.router({
             offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
             currency: z.enum(['DOP', 'USD', 'EUR']).optional(),
             from: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+            to: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
             search: z.string().trim().max(100).optional(),
             type: z.enum(['debit', 'credit', 'payment']).optional(),
             product_uuid: z.string().uuid().optional(),
@@ -276,6 +277,6 @@ export const ProductsContracts = c.router({
             statement_upload_uuid: z.string().uuid().optional(),
         }),
         summary: 'Get my product transactions',
-        description: 'Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from (YYYY-MM-DD) limits results to that date onward. Optional search matches description, institution, product, card brand, or last 4. Optional product_uuid limits results to one connected product. assignment_candidates=true includes manual and imported personal expenses regardless of tracking mode for destination assignment. Optional statement_upload_uuid limits results to one accepted statement upload.',
+        description: 'Returns product transactions for the authenticated user. Optional currency limits results to DOP, USD, or EUR. Optional from/to (YYYY-MM-DD) limit results to an inclusive date range. Optional search matches description, institution, product, card brand, or last 4. Optional product_uuid limits results to one connected product. assignment_candidates=true includes manual and imported personal expenses regardless of tracking mode for destination assignment. Optional statement_upload_uuid limits results to one accepted statement upload.',
     },
 });

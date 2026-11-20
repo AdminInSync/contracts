@@ -1522,6 +1522,8 @@ export declare const ProductTransactionItemSchema: z.ZodObject<{
     transaction_type: z.ZodEnum<["debit", "credit", "payment"]>;
     category: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     can_edit_category: z.ZodOptional<z.ZodBoolean>;
+    can_assign_to_budget: z.ZodOptional<z.ZodBoolean>;
+    is_imported: z.ZodOptional<z.ZodBoolean>;
     is_manual: z.ZodOptional<z.ZodBoolean>;
     institution_name: z.ZodNullable<z.ZodString>;
     institution_logo: z.ZodNullable<z.ZodString>;
@@ -1532,6 +1534,7 @@ export declare const ProductTransactionItemSchema: z.ZodObject<{
     linked_account_label: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     budget_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     group_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    excluded_budget_uuids: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     destination_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     budget_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     group_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
@@ -1555,7 +1558,10 @@ export declare const ProductTransactionItemSchema: z.ZodObject<{
     transaction_occurred_at?: string | null | undefined;
     category?: string | null | undefined;
     can_edit_category?: boolean | undefined;
+    can_assign_to_budget?: boolean | undefined;
+    is_imported?: boolean | undefined;
     linked_account_label?: string | null | undefined;
+    excluded_budget_uuids?: string[] | undefined;
     destination_pending?: string | null | undefined;
     budget_pending?: string | null | undefined;
     group_pending?: string | null | undefined;
@@ -1579,7 +1585,10 @@ export declare const ProductTransactionItemSchema: z.ZodObject<{
     transaction_occurred_at?: string | null | undefined;
     category?: string | null | undefined;
     can_edit_category?: boolean | undefined;
+    can_assign_to_budget?: boolean | undefined;
+    is_imported?: boolean | undefined;
     linked_account_label?: string | null | undefined;
+    excluded_budget_uuids?: string[] | undefined;
     destination_pending?: string | null | undefined;
     budget_pending?: string | null | undefined;
     group_pending?: string | null | undefined;
@@ -1593,6 +1602,35 @@ export declare const SetExpenseDestinationSchema: z.ZodObject<{
 }, {
     budget_uuid: string | null;
     group_uuid: string | null;
+}>;
+export declare const SetTransactionExpenseDestinationSchema: z.ZodEffects<z.ZodObject<{
+    budget_uuid: z.ZodNullable<z.ZodString>;
+    group_uuid: z.ZodNullable<z.ZodString>;
+} & {
+    /** Budget to add to or remove from the transaction's category-based exclusions. */
+    excluded_budget_uuid: z.ZodOptional<z.ZodString>;
+    /** Defaults to true when excluded_budget_uuid is provided. */
+    budget_excluded: z.ZodOptional<z.ZodBoolean>;
+}, "strict", z.ZodTypeAny, {
+    budget_uuid: string | null;
+    group_uuid: string | null;
+    excluded_budget_uuid?: string | undefined;
+    budget_excluded?: boolean | undefined;
+}, {
+    budget_uuid: string | null;
+    group_uuid: string | null;
+    excluded_budget_uuid?: string | undefined;
+    budget_excluded?: boolean | undefined;
+}>, {
+    budget_uuid: string | null;
+    group_uuid: string | null;
+    excluded_budget_uuid?: string | undefined;
+    budget_excluded?: boolean | undefined;
+}, {
+    budget_uuid: string | null;
+    group_uuid: string | null;
+    excluded_budget_uuid?: string | undefined;
+    budget_excluded?: boolean | undefined;
 }>;
 export declare const ExpenseDestinationResponseSchema: z.ZodObject<{
     message: z.ZodString;
@@ -1619,6 +1657,37 @@ export declare const ExpenseDestinationResponseSchema: z.ZodObject<{
         group_uuid: string | null;
     };
 }>;
+export declare const TransactionExpenseDestinationResponseSchema: z.ZodObject<{
+    message: z.ZodString;
+    data: z.ZodObject<{
+        budget_uuid: z.ZodNullable<z.ZodString>;
+        group_uuid: z.ZodNullable<z.ZodString>;
+    } & {
+        excluded_budget_uuids: z.ZodArray<z.ZodString, "many">;
+    }, "strip", z.ZodTypeAny, {
+        budget_uuid: string | null;
+        group_uuid: string | null;
+        excluded_budget_uuids: string[];
+    }, {
+        budget_uuid: string | null;
+        group_uuid: string | null;
+        excluded_budget_uuids: string[];
+    }>;
+}, "strip", z.ZodTypeAny, {
+    message: string;
+    data: {
+        budget_uuid: string | null;
+        group_uuid: string | null;
+        excluded_budget_uuids: string[];
+    };
+}, {
+    message: string;
+    data: {
+        budget_uuid: string | null;
+        group_uuid: string | null;
+        excluded_budget_uuids: string[];
+    };
+}>;
 export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
     message: z.ZodString;
     data: z.ZodArray<z.ZodObject<{
@@ -1632,6 +1701,8 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         transaction_type: z.ZodEnum<["debit", "credit", "payment"]>;
         category: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         can_edit_category: z.ZodOptional<z.ZodBoolean>;
+        can_assign_to_budget: z.ZodOptional<z.ZodBoolean>;
+        is_imported: z.ZodOptional<z.ZodBoolean>;
         is_manual: z.ZodOptional<z.ZodBoolean>;
         institution_name: z.ZodNullable<z.ZodString>;
         institution_logo: z.ZodNullable<z.ZodString>;
@@ -1642,6 +1713,7 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         linked_account_label: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         budget_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         group_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+        excluded_budget_uuids: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
         destination_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         budget_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         group_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
@@ -1665,7 +1737,10 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         transaction_occurred_at?: string | null | undefined;
         category?: string | null | undefined;
         can_edit_category?: boolean | undefined;
+        can_assign_to_budget?: boolean | undefined;
+        is_imported?: boolean | undefined;
         linked_account_label?: string | null | undefined;
+        excluded_budget_uuids?: string[] | undefined;
         destination_pending?: string | null | undefined;
         budget_pending?: string | null | undefined;
         group_pending?: string | null | undefined;
@@ -1689,7 +1764,10 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         transaction_occurred_at?: string | null | undefined;
         category?: string | null | undefined;
         can_edit_category?: boolean | undefined;
+        can_assign_to_budget?: boolean | undefined;
+        is_imported?: boolean | undefined;
         linked_account_label?: string | null | undefined;
+        excluded_budget_uuids?: string[] | undefined;
         destination_pending?: string | null | undefined;
         budget_pending?: string | null | undefined;
         group_pending?: string | null | undefined;
@@ -1739,7 +1817,10 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         transaction_occurred_at?: string | null | undefined;
         category?: string | null | undefined;
         can_edit_category?: boolean | undefined;
+        can_assign_to_budget?: boolean | undefined;
+        is_imported?: boolean | undefined;
         linked_account_label?: string | null | undefined;
+        excluded_budget_uuids?: string[] | undefined;
         destination_pending?: string | null | undefined;
         budget_pending?: string | null | undefined;
         group_pending?: string | null | undefined;
@@ -1775,7 +1856,10 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         transaction_occurred_at?: string | null | undefined;
         category?: string | null | undefined;
         can_edit_category?: boolean | undefined;
+        can_assign_to_budget?: boolean | undefined;
+        is_imported?: boolean | undefined;
         linked_account_label?: string | null | undefined;
+        excluded_budget_uuids?: string[] | undefined;
         destination_pending?: string | null | undefined;
         budget_pending?: string | null | undefined;
         group_pending?: string | null | undefined;

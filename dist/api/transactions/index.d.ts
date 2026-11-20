@@ -229,6 +229,7 @@ export declare const TransactionsContracts: {
                     payment_method: z.ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
                     product_uuid: z.ZodNullable<z.ZodString>;
                     budget_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+                    excluded_budget_uuids: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
                     group_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     destination_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     budget_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
@@ -246,6 +247,7 @@ export declare const TransactionsContracts: {
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                     budget_uuid?: string | null | undefined;
                     group_uuid?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
@@ -262,6 +264,7 @@ export declare const TransactionsContracts: {
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                     budget_uuid?: string | null | undefined;
                     group_uuid?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
@@ -278,6 +281,7 @@ export declare const TransactionsContracts: {
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                     budget_uuid?: string | null | undefined;
                     group_uuid?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
@@ -294,6 +298,7 @@ export declare const TransactionsContracts: {
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                     budget_uuid?: string | null | undefined;
                     group_uuid?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
@@ -326,6 +331,7 @@ export declare const TransactionsContracts: {
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                     budget_uuid?: string | null | undefined;
                     group_uuid?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
@@ -350,6 +356,7 @@ export declare const TransactionsContracts: {
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                     budget_uuid?: string | null | undefined;
                     group_uuid?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
@@ -520,6 +527,7 @@ export declare const TransactionsContracts: {
                     payment_method: z.ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
                     product_uuid: z.ZodNullable<z.ZodString>;
                     budget_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+                    excluded_budget_uuids: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
                     group_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     destination_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     budget_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
@@ -537,6 +545,7 @@ export declare const TransactionsContracts: {
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                     budget_uuid?: string | null | undefined;
                     group_uuid?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
@@ -553,6 +562,7 @@ export declare const TransactionsContracts: {
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                     budget_uuid?: string | null | undefined;
                     group_uuid?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
@@ -569,6 +579,7 @@ export declare const TransactionsContracts: {
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                     budget_uuid?: string | null | undefined;
                     group_uuid?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
@@ -585,6 +596,7 @@ export declare const TransactionsContracts: {
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                     budget_uuid?: string | null | undefined;
                     group_uuid?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
@@ -604,6 +616,7 @@ export declare const TransactionsContracts: {
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                     budget_uuid?: string | null | undefined;
                     group_uuid?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
@@ -623,6 +636,7 @@ export declare const TransactionsContracts: {
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                     budget_uuid?: string | null | undefined;
                     group_uuid?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
@@ -792,6 +806,7 @@ export declare const TransactionsContracts: {
                     payment_method: z.ZodEnum<["cash", "card", "apple_pay", "google_pay", "other"]>;
                     product_uuid: z.ZodNullable<z.ZodString>;
                     budget_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+                    excluded_budget_uuids: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
                     group_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     destination_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
                     budget_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
@@ -809,6 +824,7 @@ export declare const TransactionsContracts: {
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                     budget_uuid?: string | null | undefined;
                     group_uuid?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
@@ -825,6 +841,7 @@ export declare const TransactionsContracts: {
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                     budget_uuid?: string | null | undefined;
                     group_uuid?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
@@ -841,6 +858,7 @@ export declare const TransactionsContracts: {
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                     budget_uuid?: string | null | undefined;
                     group_uuid?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
@@ -857,6 +875,7 @@ export declare const TransactionsContracts: {
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                     budget_uuid?: string | null | undefined;
                     group_uuid?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
@@ -876,6 +895,7 @@ export declare const TransactionsContracts: {
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                     budget_uuid?: string | null | undefined;
                     group_uuid?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
@@ -895,6 +915,7 @@ export declare const TransactionsContracts: {
                     payment_method: "other" | "cash" | "card" | "apple_pay" | "google_pay";
                     budget_uuid?: string | null | undefined;
                     group_uuid?: string | null | undefined;
+                    excluded_budget_uuids?: string[] | undefined;
                     destination_pending?: string | null | undefined;
                     budget_pending?: string | null | undefined;
                     group_pending?: string | null | undefined;
