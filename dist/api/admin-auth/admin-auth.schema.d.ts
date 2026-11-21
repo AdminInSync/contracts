@@ -1,4 +1,21 @@
 import { z } from 'zod';
+export declare const ActivateAdminInvitationBodySchema: z.ZodObject<{
+    token: z.ZodString;
+    new_password: z.ZodString;
+}, "strict", z.ZodTypeAny, {
+    token: string;
+    new_password: string;
+}, {
+    token: string;
+    new_password: string;
+}>;
+export declare const ActivateAdminInvitationResponseSchema: z.ZodObject<{
+    message: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    message: string;
+}, {
+    message: string;
+}>;
 export declare const LoginBodySchema: z.ZodObject<{
     email: z.ZodString;
     password: z.ZodString;
@@ -222,17 +239,17 @@ export declare const ChangePasswordBodySchema: z.ZodEffects<z.ZodObject<{
     current_password: z.ZodString;
     new_password: z.ZodString;
 }, "strict", z.ZodTypeAny, {
-    current_password: string;
     new_password: string;
+    current_password: string;
 }, {
-    current_password: string;
     new_password: string;
+    current_password: string;
 }>, {
-    current_password: string;
     new_password: string;
+    current_password: string;
 }, {
-    current_password: string;
     new_password: string;
+    current_password: string;
 }>;
 export declare const ChangePasswordResponseSchema: z.ZodObject<{
     message: z.ZodString;
@@ -308,6 +325,7 @@ export declare const TotpConfirmResponseSchema: z.ZodObject<{
 }, {
     message: string;
 }>;
+export type ActivateAdminInvitationBody = z.infer<typeof ActivateAdminInvitationBodySchema>;
 export type LoginBody = z.infer<typeof LoginBodySchema>;
 export type AdminResponse = z.infer<typeof AdminResponseSchema>;
 export type AdminProfile = z.infer<typeof AdminProfileSchema>;

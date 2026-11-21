@@ -4,6 +4,7 @@ export declare const AdminUserEntrySchema: z.ZodObject<{
     name: z.ZodString;
     email: z.ZodString;
     totp_enabled: z.ZodBoolean;
+    invitation_pending: z.ZodBoolean;
     is_active: z.ZodBoolean;
     last_login_at: z.ZodNullable<z.ZodString>;
     created_at: z.ZodString;
@@ -15,6 +16,7 @@ export declare const AdminUserEntrySchema: z.ZodObject<{
     name: string;
     totp_enabled: boolean;
     last_login_at: string | null;
+    invitation_pending: boolean;
 }, {
     id: string;
     email: string;
@@ -23,6 +25,7 @@ export declare const AdminUserEntrySchema: z.ZodObject<{
     name: string;
     totp_enabled: boolean;
     last_login_at: string | null;
+    invitation_pending: boolean;
 }>;
 export declare const AdminUserListResponseSchema: z.ZodObject<{
     message: z.ZodString;
@@ -31,6 +34,7 @@ export declare const AdminUserListResponseSchema: z.ZodObject<{
         name: z.ZodString;
         email: z.ZodString;
         totp_enabled: z.ZodBoolean;
+        invitation_pending: z.ZodBoolean;
         is_active: z.ZodBoolean;
         last_login_at: z.ZodNullable<z.ZodString>;
         created_at: z.ZodString;
@@ -42,6 +46,7 @@ export declare const AdminUserListResponseSchema: z.ZodObject<{
         name: string;
         totp_enabled: boolean;
         last_login_at: string | null;
+        invitation_pending: boolean;
     }, {
         id: string;
         email: string;
@@ -50,6 +55,7 @@ export declare const AdminUserListResponseSchema: z.ZodObject<{
         name: string;
         totp_enabled: boolean;
         last_login_at: string | null;
+        invitation_pending: boolean;
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
     message: string;
@@ -61,6 +67,7 @@ export declare const AdminUserListResponseSchema: z.ZodObject<{
         name: string;
         totp_enabled: boolean;
         last_login_at: string | null;
+        invitation_pending: boolean;
     }[];
 }, {
     message: string;
@@ -72,6 +79,7 @@ export declare const AdminUserListResponseSchema: z.ZodObject<{
         name: string;
         totp_enabled: boolean;
         last_login_at: string | null;
+        invitation_pending: boolean;
     }[];
 }>;
 export declare const InviteAdminBodySchema: z.ZodObject<{
@@ -91,6 +99,7 @@ export declare const InviteAdminResponseSchema: z.ZodObject<{
         name: z.ZodString;
         email: z.ZodString;
         totp_enabled: z.ZodBoolean;
+        invitation_pending: z.ZodBoolean;
         is_active: z.ZodBoolean;
         last_login_at: z.ZodNullable<z.ZodString>;
         created_at: z.ZodString;
@@ -102,6 +111,7 @@ export declare const InviteAdminResponseSchema: z.ZodObject<{
         name: string;
         totp_enabled: boolean;
         last_login_at: string | null;
+        invitation_pending: boolean;
     }, {
         id: string;
         email: string;
@@ -110,6 +120,7 @@ export declare const InviteAdminResponseSchema: z.ZodObject<{
         name: string;
         totp_enabled: boolean;
         last_login_at: string | null;
+        invitation_pending: boolean;
     }>;
 }, "strip", z.ZodTypeAny, {
     message: string;
@@ -121,6 +132,7 @@ export declare const InviteAdminResponseSchema: z.ZodObject<{
         name: string;
         totp_enabled: boolean;
         last_login_at: string | null;
+        invitation_pending: boolean;
     };
 }, {
     message: string;
@@ -132,6 +144,7 @@ export declare const InviteAdminResponseSchema: z.ZodObject<{
         name: string;
         totp_enabled: boolean;
         last_login_at: string | null;
+        invitation_pending: boolean;
     };
 }>;
 export type AdminUserEntry = z.infer<typeof AdminUserEntrySchema>;

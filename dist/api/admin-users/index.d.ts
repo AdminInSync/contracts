@@ -12,6 +12,7 @@ export declare const AdminUsersContracts: {
                     name: import("zod").ZodString;
                     email: import("zod").ZodString;
                     totp_enabled: import("zod").ZodBoolean;
+                    invitation_pending: import("zod").ZodBoolean;
                     is_active: import("zod").ZodBoolean;
                     last_login_at: import("zod").ZodNullable<import("zod").ZodString>;
                     created_at: import("zod").ZodString;
@@ -23,6 +24,7 @@ export declare const AdminUsersContracts: {
                     name: string;
                     totp_enabled: boolean;
                     last_login_at: string | null;
+                    invitation_pending: boolean;
                 }, {
                     id: string;
                     email: string;
@@ -31,6 +33,7 @@ export declare const AdminUsersContracts: {
                     name: string;
                     totp_enabled: boolean;
                     last_login_at: string | null;
+                    invitation_pending: boolean;
                 }>, "many">;
             }, "strip", import("zod").ZodTypeAny, {
                 message: string;
@@ -42,6 +45,7 @@ export declare const AdminUsersContracts: {
                     name: string;
                     totp_enabled: boolean;
                     last_login_at: string | null;
+                    invitation_pending: boolean;
                 }[];
             }, {
                 message: string;
@@ -53,6 +57,7 @@ export declare const AdminUsersContracts: {
                     name: string;
                     totp_enabled: boolean;
                     last_login_at: string | null;
+                    invitation_pending: boolean;
                 }[];
             }>;
             401: import("zod").ZodObject<{
@@ -86,7 +91,7 @@ export declare const AdminUsersContracts: {
     };
     invite: {
         summary: "Invite an admin";
-        description: "Creates an administrator with a temporary password and emails login instructions.";
+        description: "Creates an administrator and emails a single-use activation link to choose a password.";
         method: "POST";
         body: import("zod").ZodObject<{
             name: import("zod").ZodString;
@@ -107,6 +112,7 @@ export declare const AdminUsersContracts: {
                     name: import("zod").ZodString;
                     email: import("zod").ZodString;
                     totp_enabled: import("zod").ZodBoolean;
+                    invitation_pending: import("zod").ZodBoolean;
                     is_active: import("zod").ZodBoolean;
                     last_login_at: import("zod").ZodNullable<import("zod").ZodString>;
                     created_at: import("zod").ZodString;
@@ -118,6 +124,7 @@ export declare const AdminUsersContracts: {
                     name: string;
                     totp_enabled: boolean;
                     last_login_at: string | null;
+                    invitation_pending: boolean;
                 }, {
                     id: string;
                     email: string;
@@ -126,6 +133,7 @@ export declare const AdminUsersContracts: {
                     name: string;
                     totp_enabled: boolean;
                     last_login_at: string | null;
+                    invitation_pending: boolean;
                 }>;
             }, "strip", import("zod").ZodTypeAny, {
                 message: string;
@@ -137,6 +145,7 @@ export declare const AdminUsersContracts: {
                     name: string;
                     totp_enabled: boolean;
                     last_login_at: string | null;
+                    invitation_pending: boolean;
                 };
             }, {
                 message: string;
@@ -148,6 +157,7 @@ export declare const AdminUsersContracts: {
                     name: string;
                     totp_enabled: boolean;
                     last_login_at: string | null;
+                    invitation_pending: boolean;
                 };
             }>;
             400: import("zod").ZodObject<{

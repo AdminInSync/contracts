@@ -1,5 +1,83 @@
 import { z } from 'zod';
 export declare const AdminAuthContracts: {
+    activateInvitation: {
+        summary: "Activate an administrator invitation";
+        description: "Set an administrator password using a single-use invitation token that expires after 30 minutes.";
+        method: "POST";
+        body: z.ZodObject<{
+            token: z.ZodString;
+            new_password: z.ZodString;
+        }, "strict", z.ZodTypeAny, {
+            token: string;
+            new_password: string;
+        }, {
+            token: string;
+            new_password: string;
+        }>;
+        path: "/admin/auth/activate";
+        responses: {
+            200: z.ZodObject<{
+                message: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+            }, {
+                message: string;
+            }>;
+            400: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            429: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+        strictStatusCodes: true;
+    };
     login: {
         summary: "Admin login";
         description: "Authenticate an admin with email, password, and a TOTP or one-time recovery code. A correct password without a second factor does not return a token.";
@@ -615,17 +693,17 @@ export declare const AdminAuthContracts: {
             current_password: z.ZodString;
             new_password: z.ZodString;
         }, "strict", z.ZodTypeAny, {
-            current_password: string;
             new_password: string;
+            current_password: string;
         }, {
-            current_password: string;
             new_password: string;
+            current_password: string;
         }>, {
-            current_password: string;
             new_password: string;
+            current_password: string;
         }, {
-            current_password: string;
             new_password: string;
+            current_password: string;
         }>;
         path: "/admin/auth/password";
         responses: {

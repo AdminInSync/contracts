@@ -1,6 +1,13 @@
 import { z } from 'zod';
 import { extendZodWithOpenApi } from '@anatine/zod-openapi';
 extendZodWithOpenApi(z);
+export const ActivateAdminInvitationBodySchema = z.object({
+    token: z.string().min(32).max(256),
+    new_password: z.string().min(10).max(200),
+}).strict();
+export const ActivateAdminInvitationResponseSchema = z.object({
+    message: z.string(),
+});
 export const LoginBodySchema = z.object({
     email: z.string().email(),
     password: z.string().min(1),

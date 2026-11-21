@@ -1,9 +1,23 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
-import { ChangePasswordBodySchema, ChangePasswordResponseSchema, LoginBodySchema, LoginResponseSchema, LogoutResponseSchema, MeResponseSchema, TotpConfirmBodySchema, TotpConfirmResponseSchema, TotpSetupBodySchema, TotpSetupResponseSchema, UpdateMeBodySchema, } from './admin-auth.schema';
+import { ActivateAdminInvitationBodySchema, ActivateAdminInvitationResponseSchema, ChangePasswordBodySchema, ChangePasswordResponseSchema, LoginBodySchema, LoginResponseSchema, LogoutResponseSchema, MeResponseSchema, TotpConfirmBodySchema, TotpConfirmResponseSchema, TotpSetupBodySchema, TotpSetupResponseSchema, UpdateMeBodySchema, } from './admin-auth.schema';
 const c = initContract();
 export const AdminAuthContracts = c.router({
+    activateInvitation: {
+        method: 'POST',
+        path: '/activate',
+        body: ActivateAdminInvitationBodySchema,
+        responses: {
+            200: ActivateAdminInvitationResponseSchema,
+            400: ErrorResSchema,
+            401: ErrorResSchema,
+            429: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        summary: 'Activate an administrator invitation',
+        description: 'Set an administrator password using a single-use invitation token that expires after 30 minutes.',
+    },
     login: {
         method: 'POST',
         path: '/login',

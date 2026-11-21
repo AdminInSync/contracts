@@ -13,6 +13,33 @@ export declare const OAuthStartResponseSchema: z.ZodObject<{
     authorizationUrl: string;
     state: string;
 }>;
+export declare const OAuthStartQuerySchema: z.ZodObject<{
+    code_challenge: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    code_challenge: string;
+}, {
+    code_challenge: string;
+}>;
+export declare const OAuthCompleteBodySchema: z.ZodObject<{
+    ticket: z.ZodString;
+    code_verifier: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    ticket: string;
+    code_verifier: string;
+}, {
+    ticket: string;
+    code_verifier: string;
+}>;
+export declare const OAuthCompleteResponseSchema: z.ZodObject<{
+    success: z.ZodLiteral<true>;
+    provider: z.ZodNativeEnum<typeof EmailProvider>;
+}, "strip", z.ZodTypeAny, {
+    success: true;
+    provider: EmailProvider;
+}, {
+    success: true;
+    provider: EmailProvider;
+}>;
 export declare const EmailConnectionListItemSchema: z.ZodObject<{
     uuid: z.ZodString;
     provider: z.ZodNativeEnum<typeof EmailProvider>;

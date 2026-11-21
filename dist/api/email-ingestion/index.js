@@ -1,12 +1,13 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
-import { OAuthStartResponseSchema, ListEmailConnectionsResponseSchema, DisconnectEmailConnectionResponseSchema, SyncEmailConnectionResponseSchema, ListFinancialEmailEventsResponseSchema, FinancialEmailEventStatusSchema, EmailSyncStatusResponseSchema, ListDiscoveredAccountsResponseSchema, LinkAccountsBodySchema, LinkAccountsResponseSchema, UnlinkAccountsBodySchema, UnlinkAccountsResponseSchema, ApproveFinancialEmailEventBodySchema, ApproveFinancialEmailEventResponseSchema, RejectFinancialEmailEventBodySchema, RejectFinancialEmailEventResponseSchema, } from './email-ingestion.schema';
+import { OAuthStartResponseSchema, OAuthStartQuerySchema, OAuthCompleteBodySchema, OAuthCompleteResponseSchema, ListEmailConnectionsResponseSchema, DisconnectEmailConnectionResponseSchema, SyncEmailConnectionResponseSchema, ListFinancialEmailEventsResponseSchema, FinancialEmailEventStatusSchema, EmailSyncStatusResponseSchema, ListDiscoveredAccountsResponseSchema, LinkAccountsBodySchema, LinkAccountsResponseSchema, UnlinkAccountsBodySchema, UnlinkAccountsResponseSchema, ApproveFinancialEmailEventBodySchema, ApproveFinancialEmailEventResponseSchema, RejectFinancialEmailEventBodySchema, RejectFinancialEmailEventResponseSchema, } from './email-ingestion.schema';
 const c = initContract();
 export const EmailIngestionContracts = c.router({
     gmailOAuthStart: {
         method: 'GET',
         path: '/gmail/oauth/start',
+        query: OAuthStartQuerySchema,
         responses: {
             200: OAuthStartResponseSchema,
             400: ErrorResSchema,
@@ -33,6 +34,7 @@ export const EmailIngestionContracts = c.router({
     outlookOAuthStart: {
         method: 'GET',
         path: '/outlook/oauth/start',
+        query: OAuthStartQuerySchema,
         responses: {
             200: OAuthStartResponseSchema,
             400: ErrorResSchema,
@@ -41,6 +43,20 @@ export const EmailIngestionContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'Start Outlook OAuth',
+    },
+    oauthComplete: {
+        method: 'POST',
+        path: '/oauth/complete',
+        body: OAuthCompleteBodySchema,
+        responses: {
+            200: OAuthCompleteResponseSchema,
+            400: ErrorResSchema,
+            401: ErrorResSchema,
+            403: ErrorResSchema,
+            409: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        summary: 'Complete a client-bound OAuth callback',
     },
     outlookOAuthCallback: {
         method: 'GET',

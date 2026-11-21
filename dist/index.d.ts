@@ -1,6 +1,84 @@
 export declare const apiContract: {
     Api: {
         AdminAuth: {
+            activateInvitation: {
+                strictStatusCodes: true;
+                summary: "Activate an administrator invitation";
+                description: "Set an administrator password using a single-use invitation token that expires after 30 minutes.";
+                method: "POST";
+                body: import("zod").ZodObject<{
+                    token: import("zod").ZodString;
+                    new_password: import("zod").ZodString;
+                }, "strict", import("zod").ZodTypeAny, {
+                    token: string;
+                    new_password: string;
+                }, {
+                    token: string;
+                    new_password: string;
+                }>;
+                path: "/api/admin/auth/activate";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                    }, {
+                        message: string;
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    429: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
             login: {
                 strictStatusCodes: true;
                 summary: "Admin login";
@@ -617,17 +695,17 @@ export declare const apiContract: {
                     current_password: import("zod").ZodString;
                     new_password: import("zod").ZodString;
                 }, "strict", import("zod").ZodTypeAny, {
-                    current_password: string;
                     new_password: string;
+                    current_password: string;
                 }, {
-                    current_password: string;
                     new_password: string;
+                    current_password: string;
                 }>, {
-                    current_password: string;
                     new_password: string;
+                    current_password: string;
                 }, {
-                    current_password: string;
                     new_password: string;
+                    current_password: string;
                 }>;
                 path: "/api/admin/auth/password";
                 responses: {
@@ -2048,6 +2126,7 @@ export declare const apiContract: {
                             name: import("zod").ZodString;
                             email: import("zod").ZodString;
                             totp_enabled: import("zod").ZodBoolean;
+                            invitation_pending: import("zod").ZodBoolean;
                             is_active: import("zod").ZodBoolean;
                             last_login_at: import("zod").ZodNullable<import("zod").ZodString>;
                             created_at: import("zod").ZodString;
@@ -2059,6 +2138,7 @@ export declare const apiContract: {
                             name: string;
                             totp_enabled: boolean;
                             last_login_at: string | null;
+                            invitation_pending: boolean;
                         }, {
                             id: string;
                             email: string;
@@ -2067,6 +2147,7 @@ export declare const apiContract: {
                             name: string;
                             totp_enabled: boolean;
                             last_login_at: string | null;
+                            invitation_pending: boolean;
                         }>, "many">;
                     }, "strip", import("zod").ZodTypeAny, {
                         message: string;
@@ -2078,6 +2159,7 @@ export declare const apiContract: {
                             name: string;
                             totp_enabled: boolean;
                             last_login_at: string | null;
+                            invitation_pending: boolean;
                         }[];
                     }, {
                         message: string;
@@ -2089,6 +2171,7 @@ export declare const apiContract: {
                             name: string;
                             totp_enabled: boolean;
                             last_login_at: string | null;
+                            invitation_pending: boolean;
                         }[];
                     }>;
                     401: import("zod").ZodObject<{
@@ -2122,7 +2205,7 @@ export declare const apiContract: {
             invite: {
                 strictStatusCodes: true;
                 summary: "Invite an admin";
-                description: "Creates an administrator with a temporary password and emails login instructions.";
+                description: "Creates an administrator and emails a single-use activation link to choose a password.";
                 method: "POST";
                 body: import("zod").ZodObject<{
                     name: import("zod").ZodString;
@@ -2143,6 +2226,7 @@ export declare const apiContract: {
                             name: import("zod").ZodString;
                             email: import("zod").ZodString;
                             totp_enabled: import("zod").ZodBoolean;
+                            invitation_pending: import("zod").ZodBoolean;
                             is_active: import("zod").ZodBoolean;
                             last_login_at: import("zod").ZodNullable<import("zod").ZodString>;
                             created_at: import("zod").ZodString;
@@ -2154,6 +2238,7 @@ export declare const apiContract: {
                             name: string;
                             totp_enabled: boolean;
                             last_login_at: string | null;
+                            invitation_pending: boolean;
                         }, {
                             id: string;
                             email: string;
@@ -2162,6 +2247,7 @@ export declare const apiContract: {
                             name: string;
                             totp_enabled: boolean;
                             last_login_at: string | null;
+                            invitation_pending: boolean;
                         }>;
                     }, "strip", import("zod").ZodTypeAny, {
                         message: string;
@@ -2173,6 +2259,7 @@ export declare const apiContract: {
                             name: string;
                             totp_enabled: boolean;
                             last_login_at: string | null;
+                            invitation_pending: boolean;
                         };
                     }, {
                         message: string;
@@ -2184,6 +2271,7 @@ export declare const apiContract: {
                             name: string;
                             totp_enabled: boolean;
                             last_login_at: string | null;
+                            invitation_pending: boolean;
                         };
                     }>;
                     400: import("zod").ZodObject<{
@@ -22288,6 +22376,13 @@ export declare const apiContract: {
         EmailIngestion: {
             gmailOAuthStart: {
                 strictStatusCodes: true;
+                query: import("zod").ZodObject<{
+                    code_challenge: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    code_challenge: string;
+                }, {
+                    code_challenge: string;
+                }>;
                 summary: "Start Gmail OAuth";
                 method: "GET";
                 path: "/api/email-ingestion/gmail/oauth/start";
@@ -22399,6 +22494,13 @@ export declare const apiContract: {
             };
             outlookOAuthStart: {
                 strictStatusCodes: true;
+                query: import("zod").ZodObject<{
+                    code_challenge: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    code_challenge: string;
+                }, {
+                    code_challenge: string;
+                }>;
                 summary: "Start Outlook OAuth";
                 method: "GET";
                 path: "/api/email-ingestion/outlook/oauth/start";
@@ -22440,6 +22542,99 @@ export declare const apiContract: {
                         statusCode?: number | undefined;
                     }>;
                     403: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    500: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                };
+            };
+            oauthComplete: {
+                strictStatusCodes: true;
+                summary: "Complete a client-bound OAuth callback";
+                method: "POST";
+                body: import("zod").ZodObject<{
+                    ticket: import("zod").ZodString;
+                    code_verifier: import("zod").ZodString;
+                }, "strip", import("zod").ZodTypeAny, {
+                    ticket: string;
+                    code_verifier: string;
+                }, {
+                    ticket: string;
+                    code_verifier: string;
+                }>;
+                path: "/api/email-ingestion/oauth/complete";
+                responses: {
+                    200: import("zod").ZodObject<{
+                        success: import("zod").ZodLiteral<true>;
+                        provider: import("zod").ZodNativeEnum<typeof import("./enums").EmailProvider>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        success: true;
+                        provider: import("./enums").EmailProvider;
+                    }, {
+                        success: true;
+                        provider: import("./enums").EmailProvider;
+                    }>;
+                    400: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    401: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    403: import("zod").ZodObject<{
+                        message: import("zod").ZodString;
+                        error: import("zod").ZodOptional<import("zod").ZodString>;
+                        statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
+                    }, "strip", import("zod").ZodTypeAny, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }, {
+                        message: string;
+                        error?: string | undefined;
+                        statusCode?: number | undefined;
+                    }>;
+                    409: import("zod").ZodObject<{
                         message: import("zod").ZodString;
                         error: import("zod").ZodOptional<import("zod").ZodString>;
                         statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;

@@ -7,6 +7,17 @@ export const OAuthStartResponseSchema = z.object({
     authorizationUrl: z.string().url(),
     state: z.string(),
 });
+export const OAuthStartQuerySchema = z.object({
+    code_challenge: z.string().regex(/^[A-Za-z0-9_-]{43}$/),
+});
+export const OAuthCompleteBodySchema = z.object({
+    ticket: z.string().regex(/^[A-Za-z0-9_-]{43}$/),
+    code_verifier: z.string().min(43).max(128).regex(/^[A-Za-z0-9._~-]+$/),
+});
+export const OAuthCompleteResponseSchema = z.object({
+    success: z.literal(true),
+    provider: EmailProviderSchema,
+});
 export const EmailConnectionListItemSchema = z.object({
     uuid: z.string().uuid(),
     provider: EmailProviderSchema,

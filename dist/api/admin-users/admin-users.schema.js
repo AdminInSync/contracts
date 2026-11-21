@@ -6,6 +6,7 @@ export const AdminUserEntrySchema = z.object({
     name: z.string(),
     email: z.string().email(),
     totp_enabled: z.boolean(),
+    invitation_pending: z.boolean(),
     is_active: z.boolean(),
     last_login_at: z.string().datetime().nullable(),
     created_at: z.string().datetime(),

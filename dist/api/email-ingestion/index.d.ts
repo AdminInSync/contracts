@@ -1,6 +1,13 @@
 import { z } from 'zod';
 export declare const EmailIngestionContracts: {
     gmailOAuthStart: {
+        query: z.ZodObject<{
+            code_challenge: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            code_challenge: string;
+        }, {
+            code_challenge: string;
+        }>;
         summary: "Start Gmail OAuth";
         method: "GET";
         path: "/email-ingestion/gmail/oauth/start";
@@ -112,6 +119,13 @@ export declare const EmailIngestionContracts: {
         strictStatusCodes: true;
     };
     outlookOAuthStart: {
+        query: z.ZodObject<{
+            code_challenge: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            code_challenge: string;
+        }, {
+            code_challenge: string;
+        }>;
         summary: "Start Outlook OAuth";
         method: "GET";
         path: "/email-ingestion/outlook/oauth/start";
@@ -153,6 +167,99 @@ export declare const EmailIngestionContracts: {
                 statusCode?: number | undefined;
             }>;
             403: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            500: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+        };
+        strictStatusCodes: true;
+    };
+    oauthComplete: {
+        summary: "Complete a client-bound OAuth callback";
+        method: "POST";
+        body: z.ZodObject<{
+            ticket: z.ZodString;
+            code_verifier: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            ticket: string;
+            code_verifier: string;
+        }, {
+            ticket: string;
+            code_verifier: string;
+        }>;
+        path: "/email-ingestion/oauth/complete";
+        responses: {
+            200: z.ZodObject<{
+                success: z.ZodLiteral<true>;
+                provider: z.ZodNativeEnum<typeof import("../..").EmailProvider>;
+            }, "strip", z.ZodTypeAny, {
+                success: true;
+                provider: import("../..").EmailProvider;
+            }, {
+                success: true;
+                provider: import("../..").EmailProvider;
+            }>;
+            400: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            401: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            403: z.ZodObject<{
+                message: z.ZodString;
+                error: z.ZodOptional<z.ZodString>;
+                statusCode: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }, {
+                message: string;
+                error?: string | undefined;
+                statusCode?: number | undefined;
+            }>;
+            409: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
