@@ -1,5 +1,6 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
+import '../openapi-extensions';
 const c = initContract();
 // Schemas for credit utilization data types
 const CreditMetricsSchema = z.object({

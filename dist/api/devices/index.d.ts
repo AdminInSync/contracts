@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import '../../openapi-extensions';
 export declare const DevicesContracts: {
     createDevice: {
         summary: "Register a new device";
@@ -9,17 +10,7 @@ export declare const DevicesContracts: {
             device_unique_id: z.ZodString;
             notes: z.ZodString;
             notification_token: z.ZodOptional<z.ZodString>;
-        }, "strip", z.ZodTypeAny, {
-            user_uid: string;
-            device_unique_id: string;
-            notes: string;
-            notification_token?: string | undefined;
-        }, {
-            user_uid: string;
-            device_unique_id: string;
-            notes: string;
-            notification_token?: string | undefined;
-        }>;
+        }, z.core.$strip>;
         path: "/devices/";
         responses: {
             201: z.ZodObject<{
@@ -31,82 +22,32 @@ export declare const DevicesContracts: {
                 notification_token: z.ZodNullable<z.ZodString>;
                 created_at: z.ZodString;
                 updated_at: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                id: number;
-                uuid: string;
-                user_uid: string;
-                created_at: string;
-                device_unique_id: string;
-                notes: string;
-                notification_token: string | null;
-                updated_at: string;
-            }, {
-                id: number;
-                uuid: string;
-                user_uid: string;
-                created_at: string;
-                device_unique_id: string;
-                notes: string;
-                notification_token: string | null;
-                updated_at: string;
-            }>;
+            }, z.core.$strip>;
             400: z.ZodObject<{
                 error: z.ZodString;
                 message: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error: string;
-            }, {
-                message: string;
-                error: string;
-            }>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             409: z.ZodObject<{
                 error: z.ZodString;
                 message: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error: string;
-            }, {
-                message: string;
-                error: string;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
         strictStatusCodes: true;
     };
     getDevices: {
         query: z.ZodObject<{
             device_unique_id: z.ZodOptional<z.ZodString>;
-        }, "strip", z.ZodTypeAny, {
-            device_unique_id?: string | undefined;
-        }, {
-            device_unique_id?: string | undefined;
-        }>;
+        }, z.core.$strip>;
         summary: "Get user devices";
         description: "Returns all devices for the authenticated user with optional device ID filter";
         method: "GET";
@@ -121,64 +62,22 @@ export declare const DevicesContracts: {
                 notification_token: z.ZodNullable<z.ZodString>;
                 created_at: z.ZodString;
                 updated_at: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                id: number;
-                uuid: string;
-                user_uid: string;
-                created_at: string;
-                device_unique_id: string;
-                notes: string;
-                notification_token: string | null;
-                updated_at: string;
-            }, {
-                id: number;
-                uuid: string;
-                user_uid: string;
-                created_at: string;
-                device_unique_id: string;
-                notes: string;
-                notification_token: string | null;
-                updated_at: string;
-            }>, "many">;
+            }, z.core.$strip>>;
             400: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
         strictStatusCodes: true;
     };
@@ -198,34 +97,12 @@ export declare const DevicesContracts: {
             isAutoSyncEnabled: z.ZodOptional<z.ZodBoolean>;
             isCloudBackupEnabled: z.ZodOptional<z.ZodBoolean>;
             canExportData: z.ZodOptional<z.ZodBoolean>;
-            preferredTheme: z.ZodOptional<z.ZodEnum<["SYSTEM", "LIGHT", "DARK"]>>;
-        }, "strip", z.ZodTypeAny, {
-            device_unique_id: string;
-            arePushNotificationsEnabled?: boolean | undefined;
-            areTransactionAlertsEnabled?: boolean | undefined;
-            areNotificationSoundsEnabled?: boolean | undefined;
-            isVibrationEnabled?: boolean | undefined;
-            isBiometricAuthEnabled?: boolean | undefined;
-            autoLockAfterMinutes?: number | undefined;
-            isPrivacySettingsEnabled?: boolean | undefined;
-            isAutoSyncEnabled?: boolean | undefined;
-            isCloudBackupEnabled?: boolean | undefined;
-            canExportData?: boolean | undefined;
-            preferredTheme?: "SYSTEM" | "LIGHT" | "DARK" | undefined;
-        }, {
-            device_unique_id: string;
-            arePushNotificationsEnabled?: boolean | undefined;
-            areTransactionAlertsEnabled?: boolean | undefined;
-            areNotificationSoundsEnabled?: boolean | undefined;
-            isVibrationEnabled?: boolean | undefined;
-            isBiometricAuthEnabled?: boolean | undefined;
-            autoLockAfterMinutes?: number | undefined;
-            isPrivacySettingsEnabled?: boolean | undefined;
-            isAutoSyncEnabled?: boolean | undefined;
-            isCloudBackupEnabled?: boolean | undefined;
-            canExportData?: boolean | undefined;
-            preferredTheme?: "SYSTEM" | "LIGHT" | "DARK" | undefined;
-        }>;
+            preferredTheme: z.ZodOptional<z.ZodEnum<{
+                SYSTEM: "SYSTEM";
+                LIGHT: "LIGHT";
+                DARK: "DARK";
+            }>>;
+        }, z.core.$strip>;
         path: "/devices/preferences";
         responses: {
             201: z.ZodObject<{
@@ -243,113 +120,43 @@ export declare const DevicesContracts: {
                 isAutoSyncEnabled: z.ZodBoolean;
                 isCloudBackupEnabled: z.ZodBoolean;
                 canExportData: z.ZodBoolean;
-                preferredTheme: z.ZodEnum<["SYSTEM", "LIGHT", "DARK"]>;
+                preferredTheme: z.ZodEnum<{
+                    SYSTEM: "SYSTEM";
+                    LIGHT: "LIGHT";
+                    DARK: "DARK";
+                }>;
                 created_at: z.ZodString;
                 updated_at: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                id: number;
-                uuid: string;
-                user_uid: string;
-                created_at: string;
-                device_unique_id: string;
-                updated_at: string;
-                arePushNotificationsEnabled: boolean;
-                areTransactionAlertsEnabled: boolean;
-                areNotificationSoundsEnabled: boolean;
-                isVibrationEnabled: boolean;
-                isBiometricAuthEnabled: boolean;
-                autoLockAfterMinutes: number;
-                isPrivacySettingsEnabled: boolean;
-                isAutoSyncEnabled: boolean;
-                isCloudBackupEnabled: boolean;
-                canExportData: boolean;
-                preferredTheme: "SYSTEM" | "LIGHT" | "DARK";
-            }, {
-                id: number;
-                uuid: string;
-                user_uid: string;
-                created_at: string;
-                device_unique_id: string;
-                updated_at: string;
-                arePushNotificationsEnabled: boolean;
-                areTransactionAlertsEnabled: boolean;
-                areNotificationSoundsEnabled: boolean;
-                isVibrationEnabled: boolean;
-                isBiometricAuthEnabled: boolean;
-                autoLockAfterMinutes: number;
-                isPrivacySettingsEnabled: boolean;
-                isAutoSyncEnabled: boolean;
-                isCloudBackupEnabled: boolean;
-                canExportData: boolean;
-                preferredTheme: "SYSTEM" | "LIGHT" | "DARK";
-            }>;
+            }, z.core.$strip>;
             400: z.ZodObject<{
                 error: z.ZodString;
                 message: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error: string;
-            }, {
-                message: string;
-                error: string;
-            }>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             404: z.ZodObject<{
                 error: z.ZodString;
                 message: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error: string;
-            }, {
-                message: string;
-                error: string;
-            }>;
+            }, z.core.$strip>;
             409: z.ZodObject<{
                 error: z.ZodString;
                 message: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error: string;
-            }, {
-                message: string;
-                error: string;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
         strictStatusCodes: true;
     };
     getDevicePreferences: {
         query: z.ZodObject<{
             device_id: z.ZodOptional<z.ZodString>;
-        }, "strip", z.ZodTypeAny, {
-            device_id?: string | undefined;
-        }, {
-            device_id?: string | undefined;
-        }>;
+        }, z.core.$strip>;
         summary: "Get device preferences";
         description: "Returns all device preferences for the authenticated user with optional device ID filter";
         method: "GET";
@@ -370,106 +177,40 @@ export declare const DevicesContracts: {
                 isAutoSyncEnabled: z.ZodBoolean;
                 isCloudBackupEnabled: z.ZodBoolean;
                 canExportData: z.ZodBoolean;
-                preferredTheme: z.ZodEnum<["SYSTEM", "LIGHT", "DARK"]>;
+                preferredTheme: z.ZodEnum<{
+                    SYSTEM: "SYSTEM";
+                    LIGHT: "LIGHT";
+                    DARK: "DARK";
+                }>;
                 created_at: z.ZodString;
                 updated_at: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                id: number;
-                uuid: string;
-                user_uid: string;
-                created_at: string;
-                device_unique_id: string;
-                updated_at: string;
-                arePushNotificationsEnabled: boolean;
-                areTransactionAlertsEnabled: boolean;
-                areNotificationSoundsEnabled: boolean;
-                isVibrationEnabled: boolean;
-                isBiometricAuthEnabled: boolean;
-                autoLockAfterMinutes: number;
-                isPrivacySettingsEnabled: boolean;
-                isAutoSyncEnabled: boolean;
-                isCloudBackupEnabled: boolean;
-                canExportData: boolean;
-                preferredTheme: "SYSTEM" | "LIGHT" | "DARK";
-            }, {
-                id: number;
-                uuid: string;
-                user_uid: string;
-                created_at: string;
-                device_unique_id: string;
-                updated_at: string;
-                arePushNotificationsEnabled: boolean;
-                areTransactionAlertsEnabled: boolean;
-                areNotificationSoundsEnabled: boolean;
-                isVibrationEnabled: boolean;
-                isBiometricAuthEnabled: boolean;
-                autoLockAfterMinutes: number;
-                isPrivacySettingsEnabled: boolean;
-                isAutoSyncEnabled: boolean;
-                isCloudBackupEnabled: boolean;
-                canExportData: boolean;
-                preferredTheme: "SYSTEM" | "LIGHT" | "DARK";
-            }>, "many">;
+            }, z.core.$strip>>;
             400: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             404: z.ZodObject<{
                 error: z.ZodString;
                 message: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error: string;
-            }, {
-                message: string;
-                error: string;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
         strictStatusCodes: true;
     };
     updateDevicePreferences: {
         pathParams: z.ZodObject<{
             id: z.ZodString;
-        }, "strip", z.ZodTypeAny, {
-            id: string;
-        }, {
-            id: string;
-        }>;
+        }, z.core.$strip>;
         summary: "Update device preferences";
         description: "Updates preferences for a specific device";
         method: "PUT";
@@ -484,32 +225,12 @@ export declare const DevicesContracts: {
             isAutoSyncEnabled: z.ZodOptional<z.ZodBoolean>;
             isCloudBackupEnabled: z.ZodOptional<z.ZodBoolean>;
             canExportData: z.ZodOptional<z.ZodBoolean>;
-            preferredTheme: z.ZodOptional<z.ZodEnum<["SYSTEM", "LIGHT", "DARK"]>>;
-        }, "strip", z.ZodTypeAny, {
-            arePushNotificationsEnabled?: boolean | undefined;
-            areTransactionAlertsEnabled?: boolean | undefined;
-            areNotificationSoundsEnabled?: boolean | undefined;
-            isVibrationEnabled?: boolean | undefined;
-            isBiometricAuthEnabled?: boolean | undefined;
-            autoLockAfterMinutes?: number | undefined;
-            isPrivacySettingsEnabled?: boolean | undefined;
-            isAutoSyncEnabled?: boolean | undefined;
-            isCloudBackupEnabled?: boolean | undefined;
-            canExportData?: boolean | undefined;
-            preferredTheme?: "SYSTEM" | "LIGHT" | "DARK" | undefined;
-        }, {
-            arePushNotificationsEnabled?: boolean | undefined;
-            areTransactionAlertsEnabled?: boolean | undefined;
-            areNotificationSoundsEnabled?: boolean | undefined;
-            isVibrationEnabled?: boolean | undefined;
-            isBiometricAuthEnabled?: boolean | undefined;
-            autoLockAfterMinutes?: number | undefined;
-            isPrivacySettingsEnabled?: boolean | undefined;
-            isAutoSyncEnabled?: boolean | undefined;
-            isCloudBackupEnabled?: boolean | undefined;
-            canExportData?: boolean | undefined;
-            preferredTheme?: "SYSTEM" | "LIGHT" | "DARK" | undefined;
-        }>;
+            preferredTheme: z.ZodOptional<z.ZodEnum<{
+                SYSTEM: "SYSTEM";
+                LIGHT: "LIGHT";
+                DARK: "DARK";
+            }>>;
+        }, z.core.$strip>;
         path: "/devices/preferences/:id";
         responses: {
             200: z.ZodObject<{
@@ -527,92 +248,32 @@ export declare const DevicesContracts: {
                 isAutoSyncEnabled: z.ZodBoolean;
                 isCloudBackupEnabled: z.ZodBoolean;
                 canExportData: z.ZodBoolean;
-                preferredTheme: z.ZodEnum<["SYSTEM", "LIGHT", "DARK"]>;
+                preferredTheme: z.ZodEnum<{
+                    SYSTEM: "SYSTEM";
+                    LIGHT: "LIGHT";
+                    DARK: "DARK";
+                }>;
                 created_at: z.ZodString;
                 updated_at: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                id: number;
-                uuid: string;
-                user_uid: string;
-                created_at: string;
-                device_unique_id: string;
-                updated_at: string;
-                arePushNotificationsEnabled: boolean;
-                areTransactionAlertsEnabled: boolean;
-                areNotificationSoundsEnabled: boolean;
-                isVibrationEnabled: boolean;
-                isBiometricAuthEnabled: boolean;
-                autoLockAfterMinutes: number;
-                isPrivacySettingsEnabled: boolean;
-                isAutoSyncEnabled: boolean;
-                isCloudBackupEnabled: boolean;
-                canExportData: boolean;
-                preferredTheme: "SYSTEM" | "LIGHT" | "DARK";
-            }, {
-                id: number;
-                uuid: string;
-                user_uid: string;
-                created_at: string;
-                device_unique_id: string;
-                updated_at: string;
-                arePushNotificationsEnabled: boolean;
-                areTransactionAlertsEnabled: boolean;
-                areNotificationSoundsEnabled: boolean;
-                isVibrationEnabled: boolean;
-                isBiometricAuthEnabled: boolean;
-                autoLockAfterMinutes: number;
-                isPrivacySettingsEnabled: boolean;
-                isAutoSyncEnabled: boolean;
-                isCloudBackupEnabled: boolean;
-                canExportData: boolean;
-                preferredTheme: "SYSTEM" | "LIGHT" | "DARK";
-            }>;
+            }, z.core.$strip>;
             400: z.ZodObject<{
                 error: z.ZodString;
                 message: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error: string;
-            }, {
-                message: string;
-                error: string;
-            }>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             404: z.ZodObject<{
                 error: z.ZodString;
                 message: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error: string;
-            }, {
-                message: string;
-                error: string;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
         strictStatusCodes: true;
     };
@@ -623,13 +284,7 @@ export declare const DevicesContracts: {
         body: z.ZodObject<{
             device_unique_id: z.ZodString;
             notification_token: z.ZodString;
-        }, "strip", z.ZodTypeAny, {
-            device_unique_id: string;
-            notification_token: string;
-        }, {
-            device_unique_id: string;
-            notification_token: string;
-        }>;
+        }, z.core.$strip>;
         path: "/devices/notification-token";
         responses: {
             200: z.ZodObject<{
@@ -638,79 +293,27 @@ export declare const DevicesContracts: {
                     device_id: z.ZodNumber;
                     device_unique_id: z.ZodString;
                     notification_token_updated: z.ZodBoolean;
-                }, "strip", z.ZodTypeAny, {
-                    device_unique_id: string;
-                    device_id: number;
-                    notification_token_updated: boolean;
-                }, {
-                    device_unique_id: string;
-                    device_id: number;
-                    notification_token_updated: boolean;
-                }>;
+                }, z.core.$strip>;
                 message: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    device_unique_id: string;
-                    device_id: number;
-                    notification_token_updated: boolean;
-                };
-                success: true;
-            }, {
-                message: string;
-                data: {
-                    device_unique_id: string;
-                    device_id: number;
-                    notification_token_updated: boolean;
-                };
-                success: true;
-            }>;
+            }, z.core.$strip>;
             400: z.ZodObject<{
                 error: z.ZodString;
                 message: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error: string;
-            }, {
-                message: string;
-                error: string;
-            }>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             404: z.ZodObject<{
                 error: z.ZodString;
                 message: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error: string;
-            }, {
-                message: string;
-                error: string;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
         strictStatusCodes: true;
     };

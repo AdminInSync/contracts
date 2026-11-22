@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { extendZodWithOpenApi } from '@anatine/zod-openapi';
+import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 extendZodWithOpenApi(z);
 export const ActivationPhaseSchema = z.enum([
     'account_created',

@@ -7,7 +7,7 @@ export const TransactionsContracts = c.router({
     updateEmailExpenseCategory: {
         method: 'PATCH',
         path: '/transactions/email/:uuid/category',
-        pathParams: z.object({ uuid: z.string().uuid() }),
+        pathParams: z.object({ uuid: z.string().guid() }),
         body: z.object({ category: ExpenseCategorySchema }).strict(),
         responses: {
             200: z.object({ category: ExpenseCategorySchema }),
@@ -63,7 +63,7 @@ export const TransactionsContracts = c.router({
     updateManualTransaction: {
         method: 'PATCH',
         path: '/transactions/manual/:uuid',
-        pathParams: z.object({ uuid: z.string().uuid() }),
+        pathParams: z.object({ uuid: z.string().guid() }),
         body: UpdateManualTransactionSchema,
         responses: {
             200: ManualTransactionResponseSchema,
@@ -80,7 +80,7 @@ export const TransactionsContracts = c.router({
     deleteManualTransaction: {
         method: 'DELETE',
         path: '/transactions/manual/:uuid',
-        pathParams: z.object({ uuid: z.string().uuid() }),
+        pathParams: z.object({ uuid: z.string().guid() }),
         responses: {
             200: ManualTransactionDeletedResponseSchema,
             401: ErrorResSchema,

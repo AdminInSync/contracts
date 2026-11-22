@@ -13,7 +13,11 @@ export declare const SharedSavingsContracts: {
                     purpose: z.ZodString;
                     target_amount: z.ZodNumber;
                     current_amount: z.ZodNumber;
-                    currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
+                    currency: z.ZodEnum<{
+                        DOP: "DOP";
+                        USD: "USD";
+                        EUR: "EUR";
+                    }>;
                     target_date: z.ZodString;
                     invite_code: z.ZodString;
                     is_owner: z.ZodBoolean;
@@ -21,109 +25,19 @@ export declare const SharedSavingsContracts: {
                         rank: z.ZodNumber;
                         display_name: z.ZodString;
                         contributed_amount: z.ZodNumber;
-                    }, "strip", z.ZodTypeAny, {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }, {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }>, "many">;
-                }, "strip", z.ZodTypeAny, {
-                    uuid: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    currency: "DOP" | "USD" | "EUR";
-                    target_date: string;
-                    purpose: string;
-                    invite_code: string;
-                    is_owner: boolean;
-                    leaderboard: {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }[];
-                }, {
-                    uuid: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    currency: "DOP" | "USD" | "EUR";
-                    target_date: string;
-                    purpose: string;
-                    invite_code: string;
-                    is_owner: boolean;
-                    leaderboard: {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }[];
-                }>, "many">;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    uuid: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    currency: "DOP" | "USD" | "EUR";
-                    target_date: string;
-                    purpose: string;
-                    invite_code: string;
-                    is_owner: boolean;
-                    leaderboard: {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }[];
-                }[];
-            }, {
-                message: string;
-                data: {
-                    uuid: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    currency: "DOP" | "USD" | "EUR";
-                    target_date: string;
-                    purpose: string;
-                    invite_code: string;
-                    is_owner: boolean;
-                    leaderboard: {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }[];
-                }[];
-            }>;
+                    }, z.core.$strip>>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
     create: {
@@ -133,24 +47,14 @@ export declare const SharedSavingsContracts: {
             name: z.ZodString;
             purpose: z.ZodString;
             target_amount: z.ZodNumber;
-            currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
+            currency: z.ZodEnum<{
+                DOP: "DOP";
+                USD: "USD";
+                EUR: "EUR";
+            }>;
             target_date: z.ZodString;
             display_name: z.ZodString;
-        }, "strict", z.ZodTypeAny, {
-            display_name: string;
-            name: string;
-            target_amount: number;
-            currency: "DOP" | "USD" | "EUR";
-            target_date: string;
-            purpose: string;
-        }, {
-            display_name: string;
-            name: string;
-            target_amount: number;
-            currency: "DOP" | "USD" | "EUR";
-            target_date: string;
-            purpose: string;
-        }>;
+        }, z.core.$strict>;
         path: "/shared-savings";
         responses: {
             201: z.ZodObject<{
@@ -161,7 +65,11 @@ export declare const SharedSavingsContracts: {
                     purpose: z.ZodString;
                     target_amount: z.ZodNumber;
                     current_amount: z.ZodNumber;
-                    currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
+                    currency: z.ZodEnum<{
+                        DOP: "DOP";
+                        USD: "USD";
+                        EUR: "EUR";
+                    }>;
                     target_date: z.ZodString;
                     invite_code: z.ZodString;
                     is_owner: z.ZodBoolean;
@@ -169,122 +77,24 @@ export declare const SharedSavingsContracts: {
                         rank: z.ZodNumber;
                         display_name: z.ZodString;
                         contributed_amount: z.ZodNumber;
-                    }, "strip", z.ZodTypeAny, {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }, {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }>, "many">;
-                }, "strip", z.ZodTypeAny, {
-                    uuid: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    currency: "DOP" | "USD" | "EUR";
-                    target_date: string;
-                    purpose: string;
-                    invite_code: string;
-                    is_owner: boolean;
-                    leaderboard: {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }[];
-                }, {
-                    uuid: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    currency: "DOP" | "USD" | "EUR";
-                    target_date: string;
-                    purpose: string;
-                    invite_code: string;
-                    is_owner: boolean;
-                    leaderboard: {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }[];
-                }>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    uuid: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    currency: "DOP" | "USD" | "EUR";
-                    target_date: string;
-                    purpose: string;
-                    invite_code: string;
-                    is_owner: boolean;
-                    leaderboard: {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }[];
-                };
-            }, {
-                message: string;
-                data: {
-                    uuid: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    currency: "DOP" | "USD" | "EUR";
-                    target_date: string;
-                    purpose: string;
-                    invite_code: string;
-                    is_owner: boolean;
-                    leaderboard: {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }[];
-                };
-            }>;
+                    }, z.core.$strip>>;
+                }, z.core.$strip>;
+            }, z.core.$strip>;
             400: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
     join: {
@@ -293,13 +103,7 @@ export declare const SharedSavingsContracts: {
         body: z.ZodObject<{
             invite_code: z.ZodString;
             display_name: z.ZodString;
-        }, "strict", z.ZodTypeAny, {
-            display_name: string;
-            invite_code: string;
-        }, {
-            display_name: string;
-            invite_code: string;
-        }>;
+        }, z.core.$strict>;
         path: "/shared-savings/join";
         responses: {
             200: z.ZodObject<{
@@ -310,7 +114,11 @@ export declare const SharedSavingsContracts: {
                     purpose: z.ZodString;
                     target_amount: z.ZodNumber;
                     current_amount: z.ZodNumber;
-                    currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
+                    currency: z.ZodEnum<{
+                        DOP: "DOP";
+                        USD: "USD";
+                        EUR: "EUR";
+                    }>;
                     target_date: z.ZodString;
                     invite_code: z.ZodString;
                     is_owner: z.ZodBoolean;
@@ -318,141 +126,35 @@ export declare const SharedSavingsContracts: {
                         rank: z.ZodNumber;
                         display_name: z.ZodString;
                         contributed_amount: z.ZodNumber;
-                    }, "strip", z.ZodTypeAny, {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }, {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }>, "many">;
-                }, "strip", z.ZodTypeAny, {
-                    uuid: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    currency: "DOP" | "USD" | "EUR";
-                    target_date: string;
-                    purpose: string;
-                    invite_code: string;
-                    is_owner: boolean;
-                    leaderboard: {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }[];
-                }, {
-                    uuid: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    currency: "DOP" | "USD" | "EUR";
-                    target_date: string;
-                    purpose: string;
-                    invite_code: string;
-                    is_owner: boolean;
-                    leaderboard: {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }[];
-                }>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    uuid: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    currency: "DOP" | "USD" | "EUR";
-                    target_date: string;
-                    purpose: string;
-                    invite_code: string;
-                    is_owner: boolean;
-                    leaderboard: {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }[];
-                };
-            }, {
-                message: string;
-                data: {
-                    uuid: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    currency: "DOP" | "USD" | "EUR";
-                    target_date: string;
-                    purpose: string;
-                    invite_code: string;
-                    is_owner: boolean;
-                    leaderboard: {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }[];
-                };
-            }>;
+                    }, z.core.$strip>>;
+                }, z.core.$strip>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             404: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
     contribute: {
         pathParams: z.ZodObject<{
             uuid: z.ZodString;
-        }, "strip", z.ZodTypeAny, {
-            uuid: string;
-        }, {
-            uuid: string;
-        }>;
+        }, z.core.$strip>;
         summary: "Add a contribution to a shared savings goal";
         method: "POST";
         body: z.ZodObject<{
             amount: z.ZodNumber;
-        }, "strict", z.ZodTypeAny, {
-            amount: number;
-        }, {
-            amount: number;
-        }>;
+        }, z.core.$strict>;
         path: "/shared-savings/:uuid/contributions";
         responses: {
             200: z.ZodObject<{
@@ -463,7 +165,11 @@ export declare const SharedSavingsContracts: {
                     purpose: z.ZodString;
                     target_amount: z.ZodNumber;
                     current_amount: z.ZodNumber;
-                    currency: z.ZodEnum<["DOP", "USD", "EUR"]>;
+                    currency: z.ZodEnum<{
+                        DOP: "DOP";
+                        USD: "USD";
+                        EUR: "EUR";
+                    }>;
                     target_date: z.ZodString;
                     invite_code: z.ZodString;
                     is_owner: z.ZodBoolean;
@@ -471,135 +177,29 @@ export declare const SharedSavingsContracts: {
                         rank: z.ZodNumber;
                         display_name: z.ZodString;
                         contributed_amount: z.ZodNumber;
-                    }, "strip", z.ZodTypeAny, {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }, {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }>, "many">;
-                }, "strip", z.ZodTypeAny, {
-                    uuid: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    currency: "DOP" | "USD" | "EUR";
-                    target_date: string;
-                    purpose: string;
-                    invite_code: string;
-                    is_owner: boolean;
-                    leaderboard: {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }[];
-                }, {
-                    uuid: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    currency: "DOP" | "USD" | "EUR";
-                    target_date: string;
-                    purpose: string;
-                    invite_code: string;
-                    is_owner: boolean;
-                    leaderboard: {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }[];
-                }>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    uuid: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    currency: "DOP" | "USD" | "EUR";
-                    target_date: string;
-                    purpose: string;
-                    invite_code: string;
-                    is_owner: boolean;
-                    leaderboard: {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }[];
-                };
-            }, {
-                message: string;
-                data: {
-                    uuid: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    currency: "DOP" | "USD" | "EUR";
-                    target_date: string;
-                    purpose: string;
-                    invite_code: string;
-                    is_owner: boolean;
-                    leaderboard: {
-                        display_name: string;
-                        rank: number;
-                        contributed_amount: number;
-                    }[];
-                };
-            }>;
+                    }, z.core.$strip>>;
+                }, z.core.$strip>;
+            }, z.core.$strip>;
             400: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             404: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
 };

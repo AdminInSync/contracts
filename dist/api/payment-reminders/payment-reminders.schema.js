@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import '../../openapi-extensions';
 // Enums
 export const ReminderTypeSchema = z.enum(['credit_card', 'loan', 'bill', 'subscription', 'custom']);
 export const ReminderStatusSchema = z.enum(['pending', 'sent', 'acknowledged', 'completed', 'overdue']);
@@ -7,7 +8,7 @@ export const PriorityLevelSchema = z.enum(['low', 'medium', 'high', 'urgent']);
 export const PaymentReminderSchema = z.object({
     id: z.number(),
     series_id: z.number(),
-    uuid: z.string().uuid(),
+    uuid: z.string().guid(),
     user_uid: z.string(),
     user_connection_id: z.number().nullable(),
     title: z.string(),
@@ -21,7 +22,7 @@ export const PaymentReminderSchema = z.object({
     priority: PriorityLevelSchema.nullable(),
     is_recurring: z.boolean(),
     recurrence_pattern: z.string().nullable(),
-    notification_settings: z.any().nullable(),
+    notification_settings: z.any().nullable().optional(),
     notes: z.string().nullable(),
     created_at: z.string().datetime(),
     updated_at: z.string().datetime(),
@@ -111,7 +112,7 @@ export const PaymentRemindersListResponseSchema = z.object({
 });
 export const ReminderNotificationPhaseSchema = z.enum(['early', 'due', 'overdue']);
 export const SentReminderNotificationSchema = z.object({
-    uuid: z.string().uuid(),
+    uuid: z.string().guid(),
     title: z.string(),
     phase: ReminderNotificationPhaseSchema,
     due_date: z.string().date(),

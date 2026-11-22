@@ -7,195 +7,100 @@ export declare const RegistrationContracts: {
             first_name: import("zod").ZodString;
             last_name: import("zod").ZodString;
             email: import("zod").ZodOptional<import("zod").ZodUnknown>;
-        }, "strict", import("zod").ZodTypeAny, {
-            first_name: string;
-            last_name: string;
-            email?: unknown;
-        }, {
-            first_name: string;
-            last_name: string;
-            email?: unknown;
-        }>;
+        }, import("zod/v4/core").$strict>;
         path: "/registration";
         responses: {
             200: import("zod").ZodObject<{
-                status: import("zod").ZodEnum<["in_progress", "completed", "abandoned"]>;
-                current_step: import("zod").ZodEnum<["document", "pin", "done"]>;
+                status: import("zod").ZodEnum<{
+                    completed: "completed";
+                    in_progress: "in_progress";
+                    abandoned: "abandoned";
+                }>;
+                current_step: import("zod").ZodEnum<{
+                    document: "document";
+                    pin: "pin";
+                    done: "done";
+                }>;
                 email: import("zod").ZodNullable<import("zod").ZodString>;
                 first_name: import("zod").ZodNullable<import("zod").ZodString>;
                 last_name: import("zod").ZodNullable<import("zod").ZodString>;
                 last_step_at: import("zod").ZodNullable<import("zod").ZodString>;
                 completed_at: import("zod").ZodNullable<import("zod").ZodString>;
-            }, "strip", import("zod").ZodTypeAny, {
-                status: "completed" | "in_progress" | "abandoned";
-                email: string | null;
-                first_name: string | null;
-                last_name: string | null;
-                current_step: "document" | "pin" | "done";
-                last_step_at: string | null;
-                completed_at: string | null;
-            }, {
-                status: "completed" | "in_progress" | "abandoned";
-                email: string | null;
-                first_name: string | null;
-                last_name: string | null;
-                current_step: "document" | "pin" | "done";
-                last_step_at: string | null;
-                completed_at: string | null;
-            }>;
+            }, import("zod/v4/core").$strip>;
             400: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             401: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             500: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
         };
         strictStatusCodes: true;
     };
     submitStep: {
         summary: "Complete one registration step";
         method: "PATCH";
-        body: import("zod").ZodDiscriminatedUnion<"step", [import("zod").ZodObject<{
+        body: import("zod").ZodDiscriminatedUnion<[import("zod").ZodObject<{
             step: import("zod").ZodLiteral<"document">;
-            info_type: import("zod").ZodEnum<[import("../..").DocumentType.NATIONAL_ID, import("../..").DocumentType.PASSPORT]>;
+            info_type: import("zod").ZodEnum<{
+                passport: import("../..").DocumentType.PASSPORT;
+                national_id: import("../..").DocumentType.NATIONAL_ID;
+            }>;
             document_number: import("zod").ZodOptional<import("zod").ZodString>;
             document_url: import("zod").ZodOptional<import("zod").ZodString>;
-        }, "strict", import("zod").ZodTypeAny, {
-            info_type: import("../..").DocumentType.PASSPORT | import("../..").DocumentType.NATIONAL_ID;
-            step: "document";
-            document_number?: string | undefined;
-            document_url?: string | undefined;
-        }, {
-            info_type: import("../..").DocumentType.PASSPORT | import("../..").DocumentType.NATIONAL_ID;
-            step: "document";
-            document_number?: string | undefined;
-            document_url?: string | undefined;
-        }>, import("zod").ZodObject<{
+        }, import("zod/v4/core").$strict>, import("zod").ZodObject<{
             step: import("zod").ZodLiteral<"pin">;
-        }, "strict", import("zod").ZodTypeAny, {
-            step: "pin";
-        }, {
-            step: "pin";
-        }>]>;
+        }, import("zod/v4/core").$strict>], "step">;
         path: "/registration/step";
         responses: {
             200: import("zod").ZodObject<{
-                status: import("zod").ZodEnum<["in_progress", "completed", "abandoned"]>;
-                current_step: import("zod").ZodEnum<["document", "pin", "done"]>;
+                status: import("zod").ZodEnum<{
+                    completed: "completed";
+                    in_progress: "in_progress";
+                    abandoned: "abandoned";
+                }>;
+                current_step: import("zod").ZodEnum<{
+                    document: "document";
+                    pin: "pin";
+                    done: "done";
+                }>;
                 email: import("zod").ZodNullable<import("zod").ZodString>;
                 first_name: import("zod").ZodNullable<import("zod").ZodString>;
                 last_name: import("zod").ZodNullable<import("zod").ZodString>;
                 last_step_at: import("zod").ZodNullable<import("zod").ZodString>;
                 completed_at: import("zod").ZodNullable<import("zod").ZodString>;
-            }, "strip", import("zod").ZodTypeAny, {
-                status: "completed" | "in_progress" | "abandoned";
-                email: string | null;
-                first_name: string | null;
-                last_name: string | null;
-                current_step: "document" | "pin" | "done";
-                last_step_at: string | null;
-                completed_at: string | null;
-            }, {
-                status: "completed" | "in_progress" | "abandoned";
-                email: string | null;
-                first_name: string | null;
-                last_name: string | null;
-                current_step: "document" | "pin" | "done";
-                last_step_at: string | null;
-                completed_at: string | null;
-            }>;
+            }, import("zod/v4/core").$strip>;
             400: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             401: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             404: import("zod").ZodObject<{
                 code: import("zod").ZodString;
                 message: import("zod").ZodString;
-            }, "strip", import("zod").ZodTypeAny, {
-                code: string;
-                message: string;
-            }, {
-                code: string;
-                message: string;
-            }>;
+            }, import("zod/v4/core").$strip>;
             409: import("zod").ZodObject<{
                 code: import("zod").ZodString;
                 message: import("zod").ZodString;
-            }, "strip", import("zod").ZodTypeAny, {
-                code: string;
-                message: string;
-            }, {
-                code: string;
-                message: string;
-            }>;
+            }, import("zod/v4/core").$strip>;
             500: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
         };
         strictStatusCodes: true;
     };
@@ -205,66 +110,36 @@ export declare const RegistrationContracts: {
         path: "/registration";
         responses: {
             200: import("zod").ZodObject<{
-                status: import("zod").ZodEnum<["in_progress", "completed", "abandoned"]>;
-                current_step: import("zod").ZodEnum<["document", "pin", "done"]>;
+                status: import("zod").ZodEnum<{
+                    completed: "completed";
+                    in_progress: "in_progress";
+                    abandoned: "abandoned";
+                }>;
+                current_step: import("zod").ZodEnum<{
+                    document: "document";
+                    pin: "pin";
+                    done: "done";
+                }>;
                 email: import("zod").ZodNullable<import("zod").ZodString>;
                 first_name: import("zod").ZodNullable<import("zod").ZodString>;
                 last_name: import("zod").ZodNullable<import("zod").ZodString>;
                 last_step_at: import("zod").ZodNullable<import("zod").ZodString>;
                 completed_at: import("zod").ZodNullable<import("zod").ZodString>;
-            }, "strip", import("zod").ZodTypeAny, {
-                status: "completed" | "in_progress" | "abandoned";
-                email: string | null;
-                first_name: string | null;
-                last_name: string | null;
-                current_step: "document" | "pin" | "done";
-                last_step_at: string | null;
-                completed_at: string | null;
-            }, {
-                status: "completed" | "in_progress" | "abandoned";
-                email: string | null;
-                first_name: string | null;
-                last_name: string | null;
-                current_step: "document" | "pin" | "done";
-                last_step_at: string | null;
-                completed_at: string | null;
-            }>;
+            }, import("zod/v4/core").$strip>;
             401: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             404: import("zod").ZodObject<{
                 code: import("zod").ZodString;
                 message: import("zod").ZodString;
-            }, "strip", import("zod").ZodTypeAny, {
-                code: string;
-                message: string;
-            }, {
-                code: string;
-                message: string;
-            }>;
+            }, import("zod/v4/core").$strip>;
             500: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
         };
         strictStatusCodes: true;
     };

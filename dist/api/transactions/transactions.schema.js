@@ -9,16 +9,16 @@ const CurrencySchema = z.enum(['DOP', 'USD', 'EUR']);
 export const ManualPaymentMethodSchema = z.enum(['cash', 'card', 'apple_pay', 'google_pay', 'other']);
 const DateSchema = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Use YYYY-MM-DD');
 export const CreateManualTransactionSchema = z.object({
-    request_id: z.string().uuid().optional(),
+    request_id: z.string().guid().optional(),
     amount: z.number().positive().max(9999999999999.99),
     currency: CurrencySchema,
     transaction_date: DateSchema,
     transaction_type: ManualTransactionTypeSchema.default('debit'),
     category: ManualTransactionCategorySchema,
     payment_method: ManualPaymentMethodSchema.optional(),
-    product_uuid: z.string().uuid().nullable().optional(),
-    budget_uuid: z.string().uuid().nullable().optional(),
-    group_uuid: z.string().uuid().nullable().optional(),
+    product_uuid: z.string().guid().nullable().optional(),
+    budget_uuid: z.string().guid().nullable().optional(),
+    group_uuid: z.string().guid().nullable().optional(),
     goal_income_allocation: z.object({
         goal_id: z.union([z.number(), z.string().regex(/^[1-9]\d*$/).transform(Number)]).pipe(z.number().int().positive().safe()),
         amount: z.number().positive().max(999999999999.99),
@@ -39,7 +39,7 @@ export const UpdateManualTransactionSchema = z.object({
     transaction_type: ManualTransactionTypeSchema.optional(),
     category: ManualTransactionCategorySchema.optional(),
     payment_method: ManualPaymentMethodSchema.optional(),
-    product_uuid: z.string().uuid().nullable().optional(),
+    product_uuid: z.string().guid().nullable().optional(),
 }).strict().refine((value) => Object.keys(value).length > 0, {
     message: 'Provide at least one field to update',
 }).refine((value) => {
@@ -52,11 +52,11 @@ export const UpdateManualTransactionSchema = z.object({
             : IncomeCategorySchema.safeParse(value.category).success;
 }, { message: 'Category does not match transaction type', path: ['category'] });
 export const ManualTransactionsQuerySchema = z.object({
-    limit: z.string().transform(Number).pipe(z.number().int().min(1).max(100)).default('20'),
-    offset: z.string().transform(Number).pipe(z.number().int().min(0)).default('0'),
+    limit: z.string().transform(Number).pipe(z.number().int().min(1).max(100)).prefault('20'),
+    offset: z.string().transform(Number).pipe(z.number().int().min(0)).prefault('0'),
 });
 export const ManualTransactionItemSchema = z.object({
-    uuid: z.string().uuid(),
+    uuid: z.string().guid(),
     amount: z.number(),
     currency: CurrencySchema,
     transaction_date: z.string(),
@@ -65,10 +65,10 @@ export const ManualTransactionItemSchema = z.object({
     description: z.enum(['Gasto manual', 'Ingreso manual', 'Pago manual']),
     is_manual: z.literal(true),
     payment_method: ManualPaymentMethodSchema,
-    product_uuid: z.string().uuid().nullable(),
-    budget_uuid: z.string().uuid().nullable().optional(),
-    excluded_budget_uuids: z.array(z.string().uuid()).optional(),
-    group_uuid: z.string().uuid().nullable().optional(),
+    product_uuid: z.string().guid().nullable(),
+    budget_uuid: z.string().guid().nullable().optional(),
+    excluded_budget_uuids: z.array(z.string().guid()).optional(),
+    group_uuid: z.string().guid().nullable().optional(),
     destination_pending: z.string().nullable().optional(),
     budget_pending: z.string().nullable().optional(),
     group_pending: z.string().nullable().optional(),

@@ -4,7 +4,7 @@ export const InstitutionTypeSchema = z.enum(['bank', 'credit_union', 'investment
 // Base schemas
 export const FinancialInstitutionSchema = z.object({
     id: z.number(),
-    uuid: z.string().uuid(),
+    uuid: z.string().guid(),
     name: z.string(),
     institution_type: InstitutionTypeSchema,
     logo_url: z.string().nullable(),
@@ -41,8 +41,8 @@ export const GetInstitutionsQuerySchema = z.object({
     country: z.string().optional(),
     region: z.string().optional(),
     search: z.string().optional(),
-    limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
-    offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
+    limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).prefault('20'),
+    offset: z.string().transform(Number).pipe(z.number().min(0)).prefault('0'),
 });
 // Response schemas
 export const InstitutionResponseSchema = z.object({

@@ -1,5 +1,6 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
+import '../../openapi-extensions';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
 import { CreateDeviceRequestSchema, DeviceResponseSchema, DeviceErrorResponseSchema, GetDevicesResponseSchema, GetDevicesQuerySchema, CreateDevicePreferencesRequestSchema, DevicePreferencesResponseSchema, UpdateDevicePreferencesRequestSchema, GetDevicePreferencesResponseSchema, GetDevicePreferencesQuerySchema, UpdateNotificationTokenRequestSchema, UpdateNotificationTokenResponseSchema } from './devices.schema';
 const c = initContract();

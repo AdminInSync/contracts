@@ -1,18 +1,51 @@
 import { z } from 'zod';
-export declare const ProductTypeSchema: z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
-export declare const CreditScoreRequirementSchema: z.ZodEnum<["excellent", "good", "fair", "poor"]>;
-export declare const ConnectedProductTypeSchema: z.ZodEnum<["accounts", "cards", "loans", "financial-certificate"]>;
+export declare const ProductTypeSchema: z.ZodEnum<{
+    insurance: "insurance";
+    credit_card: "credit_card";
+    debit_card: "debit_card";
+    loan: "loan";
+    savings_account: "savings_account";
+    checking_account: "checking_account";
+    investment: "investment";
+    mortgage: "mortgage";
+}>;
+export declare const CreditScoreRequirementSchema: z.ZodEnum<{
+    excellent: "excellent";
+    good: "good";
+    fair: "fair";
+    poor: "poor";
+}>;
+export declare const ConnectedProductTypeSchema: z.ZodEnum<{
+    accounts: "accounts";
+    cards: "cards";
+    loans: "loans";
+    "financial-certificate": "financial-certificate";
+}>;
 export declare const FinancialProductSchema: z.ZodObject<{
     id: z.ZodNumber;
     uuid: z.ZodString;
     name: z.ZodString;
-    product_type: z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+    product_type: z.ZodEnum<{
+        insurance: "insurance";
+        credit_card: "credit_card";
+        debit_card: "debit_card";
+        loan: "loan";
+        savings_account: "savings_account";
+        checking_account: "checking_account";
+        investment: "investment";
+        mortgage: "mortgage";
+    }>;
     institution_id: z.ZodNumber;
     institution_name: z.ZodString;
     interest_rate: z.ZodNullable<z.ZodNumber>;
     annual_fee: z.ZodNullable<z.ZodNumber>;
     minimum_balance: z.ZodNullable<z.ZodNumber>;
-    credit_score_requirement: z.ZodNullable<z.ZodEnum<["excellent", "good", "fair", "poor"]>>;
+    credit_score_requirement: z.ZodNullable<z.ZodEnum<{
+        excellent: "excellent";
+        good: "good";
+        fair: "fair";
+        poor: "poor";
+    }>>;
     benefits: z.ZodNullable<z.ZodString>;
     features: z.ZodNullable<z.ZodString>;
     terms_conditions: z.ZodNullable<z.ZodString>;
@@ -29,82 +62,30 @@ export declare const FinancialProductSchema: z.ZodObject<{
         name: z.ZodString;
         institution_type: z.ZodString;
         logo_url: z.ZodNullable<z.ZodString>;
-    }, "strip", z.ZodTypeAny, {
-        id: number;
-        name: string;
-        institution_type: string;
-        logo_url: string | null;
-    }, {
-        id: number;
-        name: string;
-        institution_type: string;
-        logo_url: string | null;
-    }>>;
-}, "strip", z.ZodTypeAny, {
-    id: number;
-    is_active: boolean;
-    uuid: string;
-    created_at: string;
-    updated_at: string;
-    name: string;
-    currency: string | null;
-    deleted_at: string | null;
-    product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
-    institution_id: number;
-    institution_name: string;
-    interest_rate: number | null;
-    annual_fee: number | null;
-    minimum_balance: number | null;
-    credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
-    benefits: string | null;
-    features: string | null;
-    terms_conditions: string | null;
-    is_spotlight: boolean;
-    valid_from: string | null;
-    valid_until: string | null;
-    institution?: {
-        id: number;
-        name: string;
-        institution_type: string;
-        logo_url: string | null;
-    } | undefined;
-}, {
-    id: number;
-    is_active: boolean;
-    uuid: string;
-    created_at: string;
-    updated_at: string;
-    name: string;
-    currency: string | null;
-    deleted_at: string | null;
-    product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
-    institution_id: number;
-    institution_name: string;
-    interest_rate: number | null;
-    annual_fee: number | null;
-    minimum_balance: number | null;
-    credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
-    benefits: string | null;
-    features: string | null;
-    terms_conditions: string | null;
-    is_spotlight: boolean;
-    valid_from: string | null;
-    valid_until: string | null;
-    institution?: {
-        id: number;
-        name: string;
-        institution_type: string;
-        logo_url: string | null;
-    } | undefined;
-}>;
+    }, z.core.$strip>>;
+}, z.core.$strip>;
 export declare const CreateProductSchema: z.ZodObject<{
     name: z.ZodString;
-    product_type: z.ZodOptional<z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
+    product_type: z.ZodOptional<z.ZodEnum<{
+        insurance: "insurance";
+        credit_card: "credit_card";
+        debit_card: "debit_card";
+        loan: "loan";
+        savings_account: "savings_account";
+        checking_account: "checking_account";
+        investment: "investment";
+        mortgage: "mortgage";
+    }>>;
     institution_id: z.ZodNumber;
     interest_rate: z.ZodOptional<z.ZodNumber>;
     annual_fee: z.ZodOptional<z.ZodNumber>;
     minimum_balance: z.ZodOptional<z.ZodNumber>;
-    credit_score_requirement: z.ZodOptional<z.ZodEnum<["excellent", "good", "fair", "poor"]>>;
+    credit_score_requirement: z.ZodOptional<z.ZodEnum<{
+        excellent: "excellent";
+        good: "good";
+        fair: "fair";
+        poor: "poor";
+    }>>;
     benefits: z.ZodOptional<z.ZodString>;
     features: z.ZodOptional<z.ZodString>;
     terms_conditions: z.ZodOptional<z.ZodString>;
@@ -113,47 +94,29 @@ export declare const CreateProductSchema: z.ZodObject<{
     currency: z.ZodOptional<z.ZodString>;
     valid_from: z.ZodOptional<z.ZodString>;
     valid_until: z.ZodOptional<z.ZodString>;
-}, "strip", z.ZodTypeAny, {
-    name: string;
-    institution_id: number;
-    is_active?: boolean | undefined;
-    currency?: string | undefined;
-    product_type?: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
-    interest_rate?: number | undefined;
-    annual_fee?: number | undefined;
-    minimum_balance?: number | undefined;
-    credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
-    benefits?: string | undefined;
-    features?: string | undefined;
-    terms_conditions?: string | undefined;
-    is_spotlight?: boolean | undefined;
-    valid_from?: string | undefined;
-    valid_until?: string | undefined;
-}, {
-    name: string;
-    institution_id: number;
-    is_active?: boolean | undefined;
-    currency?: string | undefined;
-    product_type?: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
-    interest_rate?: number | undefined;
-    annual_fee?: number | undefined;
-    minimum_balance?: number | undefined;
-    credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
-    benefits?: string | undefined;
-    features?: string | undefined;
-    terms_conditions?: string | undefined;
-    is_spotlight?: boolean | undefined;
-    valid_from?: string | undefined;
-    valid_until?: string | undefined;
-}>;
+}, z.core.$strip>;
 export declare const UpdateProductSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
-    product_type: z.ZodOptional<z.ZodOptional<z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>>;
+    product_type: z.ZodOptional<z.ZodOptional<z.ZodEnum<{
+        insurance: "insurance";
+        credit_card: "credit_card";
+        debit_card: "debit_card";
+        loan: "loan";
+        savings_account: "savings_account";
+        checking_account: "checking_account";
+        investment: "investment";
+        mortgage: "mortgage";
+    }>>>;
     institution_id: z.ZodOptional<z.ZodNumber>;
     interest_rate: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
     annual_fee: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
     minimum_balance: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
-    credit_score_requirement: z.ZodOptional<z.ZodOptional<z.ZodEnum<["excellent", "good", "fair", "poor"]>>>;
+    credit_score_requirement: z.ZodOptional<z.ZodOptional<z.ZodEnum<{
+        excellent: "excellent";
+        good: "good";
+        fair: "fair";
+        poor: "poor";
+    }>>>;
     benefits: z.ZodOptional<z.ZodOptional<z.ZodString>>;
     features: z.ZodOptional<z.ZodOptional<z.ZodString>>;
     terms_conditions: z.ZodOptional<z.ZodOptional<z.ZodString>>;
@@ -162,77 +125,57 @@ export declare const UpdateProductSchema: z.ZodObject<{
     currency: z.ZodOptional<z.ZodOptional<z.ZodString>>;
     valid_from: z.ZodOptional<z.ZodOptional<z.ZodString>>;
     valid_until: z.ZodOptional<z.ZodOptional<z.ZodString>>;
-}, "strip", z.ZodTypeAny, {
-    is_active?: boolean | undefined;
-    name?: string | undefined;
-    currency?: string | undefined;
-    product_type?: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
-    institution_id?: number | undefined;
-    interest_rate?: number | undefined;
-    annual_fee?: number | undefined;
-    minimum_balance?: number | undefined;
-    credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
-    benefits?: string | undefined;
-    features?: string | undefined;
-    terms_conditions?: string | undefined;
-    is_spotlight?: boolean | undefined;
-    valid_from?: string | undefined;
-    valid_until?: string | undefined;
-}, {
-    is_active?: boolean | undefined;
-    name?: string | undefined;
-    currency?: string | undefined;
-    product_type?: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
-    institution_id?: number | undefined;
-    interest_rate?: number | undefined;
-    annual_fee?: number | undefined;
-    minimum_balance?: number | undefined;
-    credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
-    benefits?: string | undefined;
-    features?: string | undefined;
-    terms_conditions?: string | undefined;
-    is_spotlight?: boolean | undefined;
-    valid_from?: string | undefined;
-    valid_until?: string | undefined;
-}>;
+}, z.core.$strip>;
 export declare const GetProductsQuerySchema: z.ZodObject<{
-    product_type: z.ZodOptional<z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
-    institution_id: z.ZodOptional<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
-    credit_score_requirement: z.ZodOptional<z.ZodEnum<["excellent", "good", "fair", "poor"]>>;
-    is_spotlight: z.ZodOptional<z.ZodPipeline<z.ZodEffects<z.ZodString, boolean, string>, z.ZodBoolean>>;
+    product_type: z.ZodOptional<z.ZodEnum<{
+        insurance: "insurance";
+        credit_card: "credit_card";
+        debit_card: "debit_card";
+        loan: "loan";
+        savings_account: "savings_account";
+        checking_account: "checking_account";
+        investment: "investment";
+        mortgage: "mortgage";
+    }>>;
+    institution_id: z.ZodOptional<z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<number, string>>, z.ZodNumber>>;
+    credit_score_requirement: z.ZodOptional<z.ZodEnum<{
+        excellent: "excellent";
+        good: "good";
+        fair: "fair";
+        poor: "poor";
+    }>>;
+    is_spotlight: z.ZodOptional<z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<boolean, string>>, z.ZodBoolean>>;
     search: z.ZodOptional<z.ZodString>;
-    limit: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
-    offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
-}, "strip", z.ZodTypeAny, {
-    limit: number;
-    offset: number;
-    search?: string | undefined;
-    product_type?: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
-    institution_id?: number | undefined;
-    credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
-    is_spotlight?: boolean | undefined;
-}, {
-    limit?: string | undefined;
-    search?: string | undefined;
-    offset?: string | undefined;
-    product_type?: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | undefined;
-    institution_id?: string | undefined;
-    credit_score_requirement?: "excellent" | "good" | "fair" | "poor" | undefined;
-    is_spotlight?: string | undefined;
-}>;
+    limit: z.ZodPrefault<z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<number, string>>, z.ZodNumber>>;
+    offset: z.ZodPrefault<z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<number, string>>, z.ZodNumber>>;
+}, z.core.$strip>;
 export declare const ProductResponseSchema: z.ZodObject<{
     message: z.ZodString;
     data: z.ZodObject<{
         id: z.ZodNumber;
         uuid: z.ZodString;
         name: z.ZodString;
-        product_type: z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+        product_type: z.ZodEnum<{
+            insurance: "insurance";
+            credit_card: "credit_card";
+            debit_card: "debit_card";
+            loan: "loan";
+            savings_account: "savings_account";
+            checking_account: "checking_account";
+            investment: "investment";
+            mortgage: "mortgage";
+        }>;
         institution_id: z.ZodNumber;
         institution_name: z.ZodString;
         interest_rate: z.ZodNullable<z.ZodNumber>;
         annual_fee: z.ZodNullable<z.ZodNumber>;
         minimum_balance: z.ZodNullable<z.ZodNumber>;
-        credit_score_requirement: z.ZodNullable<z.ZodEnum<["excellent", "good", "fair", "poor"]>>;
+        credit_score_requirement: z.ZodNullable<z.ZodEnum<{
+            excellent: "excellent";
+            good: "good";
+            fair: "fair";
+            poor: "poor";
+        }>>;
         benefits: z.ZodNullable<z.ZodString>;
         features: z.ZodNullable<z.ZodString>;
         terms_conditions: z.ZodNullable<z.ZodString>;
@@ -249,150 +192,36 @@ export declare const ProductResponseSchema: z.ZodObject<{
             name: z.ZodString;
             institution_type: z.ZodString;
             logo_url: z.ZodNullable<z.ZodString>;
-        }, "strip", z.ZodTypeAny, {
-            id: number;
-            name: string;
-            institution_type: string;
-            logo_url: string | null;
-        }, {
-            id: number;
-            name: string;
-            institution_type: string;
-            logo_url: string | null;
-        }>>;
-    }, "strip", z.ZodTypeAny, {
-        id: number;
-        is_active: boolean;
-        uuid: string;
-        created_at: string;
-        updated_at: string;
-        name: string;
-        currency: string | null;
-        deleted_at: string | null;
-        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
-        institution_id: number;
-        institution_name: string;
-        interest_rate: number | null;
-        annual_fee: number | null;
-        minimum_balance: number | null;
-        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
-        benefits: string | null;
-        features: string | null;
-        terms_conditions: string | null;
-        is_spotlight: boolean;
-        valid_from: string | null;
-        valid_until: string | null;
-        institution?: {
-            id: number;
-            name: string;
-            institution_type: string;
-            logo_url: string | null;
-        } | undefined;
-    }, {
-        id: number;
-        is_active: boolean;
-        uuid: string;
-        created_at: string;
-        updated_at: string;
-        name: string;
-        currency: string | null;
-        deleted_at: string | null;
-        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
-        institution_id: number;
-        institution_name: string;
-        interest_rate: number | null;
-        annual_fee: number | null;
-        minimum_balance: number | null;
-        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
-        benefits: string | null;
-        features: string | null;
-        terms_conditions: string | null;
-        is_spotlight: boolean;
-        valid_from: string | null;
-        valid_until: string | null;
-        institution?: {
-            id: number;
-            name: string;
-            institution_type: string;
-            logo_url: string | null;
-        } | undefined;
-    }>;
-}, "strip", z.ZodTypeAny, {
-    message: string;
-    data: {
-        id: number;
-        is_active: boolean;
-        uuid: string;
-        created_at: string;
-        updated_at: string;
-        name: string;
-        currency: string | null;
-        deleted_at: string | null;
-        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
-        institution_id: number;
-        institution_name: string;
-        interest_rate: number | null;
-        annual_fee: number | null;
-        minimum_balance: number | null;
-        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
-        benefits: string | null;
-        features: string | null;
-        terms_conditions: string | null;
-        is_spotlight: boolean;
-        valid_from: string | null;
-        valid_until: string | null;
-        institution?: {
-            id: number;
-            name: string;
-            institution_type: string;
-            logo_url: string | null;
-        } | undefined;
-    };
-}, {
-    message: string;
-    data: {
-        id: number;
-        is_active: boolean;
-        uuid: string;
-        created_at: string;
-        updated_at: string;
-        name: string;
-        currency: string | null;
-        deleted_at: string | null;
-        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
-        institution_id: number;
-        institution_name: string;
-        interest_rate: number | null;
-        annual_fee: number | null;
-        minimum_balance: number | null;
-        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
-        benefits: string | null;
-        features: string | null;
-        terms_conditions: string | null;
-        is_spotlight: boolean;
-        valid_from: string | null;
-        valid_until: string | null;
-        institution?: {
-            id: number;
-            name: string;
-            institution_type: string;
-            logo_url: string | null;
-        } | undefined;
-    };
-}>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>;
+}, z.core.$strip>;
 export declare const ProductsListResponseSchema: z.ZodObject<{
     message: z.ZodString;
     data: z.ZodArray<z.ZodObject<{
         id: z.ZodNumber;
         uuid: z.ZodString;
         name: z.ZodString;
-        product_type: z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>;
+        product_type: z.ZodEnum<{
+            insurance: "insurance";
+            credit_card: "credit_card";
+            debit_card: "debit_card";
+            loan: "loan";
+            savings_account: "savings_account";
+            checking_account: "checking_account";
+            investment: "investment";
+            mortgage: "mortgage";
+        }>;
         institution_id: z.ZodNumber;
         institution_name: z.ZodString;
         interest_rate: z.ZodNullable<z.ZodNumber>;
         annual_fee: z.ZodNullable<z.ZodNumber>;
         minimum_balance: z.ZodNullable<z.ZodNumber>;
-        credit_score_requirement: z.ZodNullable<z.ZodEnum<["excellent", "good", "fair", "poor"]>>;
+        credit_score_requirement: z.ZodNullable<z.ZodEnum<{
+            excellent: "excellent";
+            good: "good";
+            fair: "fair";
+            poor: "poor";
+        }>>;
         benefits: z.ZodNullable<z.ZodString>;
         features: z.ZodNullable<z.ZodString>;
         terms_conditions: z.ZodNullable<z.ZodString>;
@@ -409,173 +238,19 @@ export declare const ProductsListResponseSchema: z.ZodObject<{
             name: z.ZodString;
             institution_type: z.ZodString;
             logo_url: z.ZodNullable<z.ZodString>;
-        }, "strip", z.ZodTypeAny, {
-            id: number;
-            name: string;
-            institution_type: string;
-            logo_url: string | null;
-        }, {
-            id: number;
-            name: string;
-            institution_type: string;
-            logo_url: string | null;
-        }>>;
-    }, "strip", z.ZodTypeAny, {
-        id: number;
-        is_active: boolean;
-        uuid: string;
-        created_at: string;
-        updated_at: string;
-        name: string;
-        currency: string | null;
-        deleted_at: string | null;
-        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
-        institution_id: number;
-        institution_name: string;
-        interest_rate: number | null;
-        annual_fee: number | null;
-        minimum_balance: number | null;
-        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
-        benefits: string | null;
-        features: string | null;
-        terms_conditions: string | null;
-        is_spotlight: boolean;
-        valid_from: string | null;
-        valid_until: string | null;
-        institution?: {
-            id: number;
-            name: string;
-            institution_type: string;
-            logo_url: string | null;
-        } | undefined;
-    }, {
-        id: number;
-        is_active: boolean;
-        uuid: string;
-        created_at: string;
-        updated_at: string;
-        name: string;
-        currency: string | null;
-        deleted_at: string | null;
-        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
-        institution_id: number;
-        institution_name: string;
-        interest_rate: number | null;
-        annual_fee: number | null;
-        minimum_balance: number | null;
-        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
-        benefits: string | null;
-        features: string | null;
-        terms_conditions: string | null;
-        is_spotlight: boolean;
-        valid_from: string | null;
-        valid_until: string | null;
-        institution?: {
-            id: number;
-            name: string;
-            institution_type: string;
-            logo_url: string | null;
-        } | undefined;
-    }>, "many">;
+        }, z.core.$strip>>;
+    }, z.core.$strip>>;
     pagination: z.ZodOptional<z.ZodObject<{
         total: z.ZodNumber;
         limit: z.ZodNumber;
         offset: z.ZodNumber;
-    }, "strip", z.ZodTypeAny, {
-        limit: number;
-        total: number;
-        offset: number;
-    }, {
-        limit: number;
-        total: number;
-        offset: number;
-    }>>;
-}, "strip", z.ZodTypeAny, {
-    message: string;
-    data: {
-        id: number;
-        is_active: boolean;
-        uuid: string;
-        created_at: string;
-        updated_at: string;
-        name: string;
-        currency: string | null;
-        deleted_at: string | null;
-        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
-        institution_id: number;
-        institution_name: string;
-        interest_rate: number | null;
-        annual_fee: number | null;
-        minimum_balance: number | null;
-        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
-        benefits: string | null;
-        features: string | null;
-        terms_conditions: string | null;
-        is_spotlight: boolean;
-        valid_from: string | null;
-        valid_until: string | null;
-        institution?: {
-            id: number;
-            name: string;
-            institution_type: string;
-            logo_url: string | null;
-        } | undefined;
-    }[];
-    pagination?: {
-        limit: number;
-        total: number;
-        offset: number;
-    } | undefined;
-}, {
-    message: string;
-    data: {
-        id: number;
-        is_active: boolean;
-        uuid: string;
-        created_at: string;
-        updated_at: string;
-        name: string;
-        currency: string | null;
-        deleted_at: string | null;
-        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
-        institution_id: number;
-        institution_name: string;
-        interest_rate: number | null;
-        annual_fee: number | null;
-        minimum_balance: number | null;
-        credit_score_requirement: "excellent" | "good" | "fair" | "poor" | null;
-        benefits: string | null;
-        features: string | null;
-        terms_conditions: string | null;
-        is_spotlight: boolean;
-        valid_from: string | null;
-        valid_until: string | null;
-        institution?: {
-            id: number;
-            name: string;
-            institution_type: string;
-            logo_url: string | null;
-        } | undefined;
-    }[];
-    pagination?: {
-        limit: number;
-        total: number;
-        offset: number;
-    } | undefined;
-}>;
+    }, z.core.$strip>>;
+}, z.core.$strip>;
 export declare const ConnectedProductBalanceSchema: z.ZodObject<{
     current: z.ZodNumber;
     available: z.ZodNumber;
     limit: z.ZodNullable<z.ZodNumber>;
-}, "strip", z.ZodTypeAny, {
-    limit: number | null;
-    current: number;
-    available: number;
-}, {
-    limit: number | null;
-    current: number;
-    available: number;
-}>;
+}, z.core.$strip>;
 export declare const ConnectedProductMetadataSchema: z.ZodObject<{
     utilization: z.ZodNullable<z.ZodNumber>;
     next_payment: z.ZodNullable<z.ZodString>;
@@ -589,84 +264,50 @@ export declare const ConnectedProductMetadataSchema: z.ZodObject<{
     interest_payment: z.ZodNullable<z.ZodString>;
     initial_value: z.ZodNullable<z.ZodNumber>;
     accumulated_gain: z.ZodNullable<z.ZodNumber>;
-}, "strip", z.ZodTypeAny, {
-    utilization: number | null;
-    next_payment: string | null;
-    minimum_payment: number | null;
-    monthly_payment: number | null;
-    remaining_payments: number | null;
-    progress: number | null;
-    annual_rate: string | null;
-    investment_contract_months: number | null;
-    risk_level: string | null;
-    interest_payment: string | null;
-    initial_value: number | null;
-    accumulated_gain: number | null;
-}, {
-    utilization: number | null;
-    next_payment: string | null;
-    minimum_payment: number | null;
-    monthly_payment: number | null;
-    remaining_payments: number | null;
-    progress: number | null;
-    annual_rate: string | null;
-    investment_contract_months: number | null;
-    risk_level: string | null;
-    interest_payment: string | null;
-    initial_value: number | null;
-    accumulated_gain: number | null;
+}, z.core.$strip>;
+export declare const ProductKindSchema: z.ZodEnum<{
+    debit: "debit";
+    credit: "credit";
 }>;
-export declare const ProductKindSchema: z.ZodEnum<["debit", "credit"]>;
-export declare const CardBrandSchema: z.ZodEnum<["visa", "mastercard", "amex"]>;
+export declare const CardBrandSchema: z.ZodEnum<{
+    visa: "visa";
+    mastercard: "mastercard";
+    amex: "amex";
+}>;
 export declare const ExpenseDestinationSchema: z.ZodObject<{
     budget_uuid: z.ZodNullable<z.ZodString>;
     group_uuid: z.ZodNullable<z.ZodString>;
-}, "strip", z.ZodTypeAny, {
-    budget_uuid: string | null;
-    group_uuid: string | null;
-}, {
-    budget_uuid: string | null;
-    group_uuid: string | null;
-}>;
+}, z.core.$strip>;
 export declare const ConnectedProductSchema: z.ZodObject<{
     id: z.ZodString;
     type: z.ZodString;
     name: z.ZodString;
     institution: z.ZodString;
     institution_logo: z.ZodNullable<z.ZodString>;
-    product_kind: z.ZodEnum<["debit", "credit"]>;
+    product_kind: z.ZodEnum<{
+        debit: "debit";
+        credit: "credit";
+    }>;
     product_label: z.ZodString;
     lastFour: z.ZodString;
     expense_destination: z.ZodObject<{
         budget_uuid: z.ZodNullable<z.ZodString>;
         group_uuid: z.ZodNullable<z.ZodString>;
-    }, "strip", z.ZodTypeAny, {
-        budget_uuid: string | null;
-        group_uuid: string | null;
-    }, {
-        budget_uuid: string | null;
-        group_uuid: string | null;
-    }>;
+    }, z.core.$strip>;
     is_manual: z.ZodBoolean;
-    card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
+    card_brand: z.ZodNullable<z.ZodEnum<{
+        visa: "visa";
+        mastercard: "mastercard";
+        amex: "amex";
+    }>>;
     linked_account_id: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     balance: z.ZodObject<{
         current: z.ZodNumber;
         available: z.ZodNumber;
         limit: z.ZodNullable<z.ZodNumber>;
-    }, "strip", z.ZodTypeAny, {
-        limit: number | null;
-        current: number;
-        available: number;
-    }, {
-        limit: number | null;
-        current: number;
-        available: number;
-    }>;
-    /** Latest account balance reported or explicitly recorded; null means unknown. */
+    }, z.core.$strip>;
     bank_balance: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
     bank_balance_currency: z.ZodOptional<z.ZodNullable<z.ZodString>>;
-    /** Debit total in the requested date range and product currency. */
     period_spend: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
     period_spend_currency: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     metadata: z.ZodObject<{
@@ -682,118 +323,10 @@ export declare const ConnectedProductSchema: z.ZodObject<{
         interest_payment: z.ZodNullable<z.ZodString>;
         initial_value: z.ZodNullable<z.ZodNumber>;
         accumulated_gain: z.ZodNullable<z.ZodNumber>;
-    }, "strip", z.ZodTypeAny, {
-        utilization: number | null;
-        next_payment: string | null;
-        minimum_payment: number | null;
-        monthly_payment: number | null;
-        remaining_payments: number | null;
-        progress: number | null;
-        annual_rate: string | null;
-        investment_contract_months: number | null;
-        risk_level: string | null;
-        interest_payment: string | null;
-        initial_value: number | null;
-        accumulated_gain: number | null;
-    }, {
-        utilization: number | null;
-        next_payment: string | null;
-        minimum_payment: number | null;
-        monthly_payment: number | null;
-        remaining_payments: number | null;
-        progress: number | null;
-        annual_rate: string | null;
-        investment_contract_months: number | null;
-        risk_level: string | null;
-        interest_payment: string | null;
-        initial_value: number | null;
-        accumulated_gain: number | null;
-    }>;
+    }, z.core.$strip>;
     percentage_change: z.ZodString;
     currency: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    type: string;
-    id: string;
-    metadata: {
-        utilization: number | null;
-        next_payment: string | null;
-        minimum_payment: number | null;
-        monthly_payment: number | null;
-        remaining_payments: number | null;
-        progress: number | null;
-        annual_rate: string | null;
-        investment_contract_months: number | null;
-        risk_level: string | null;
-        interest_payment: string | null;
-        initial_value: number | null;
-        accumulated_gain: number | null;
-    };
-    name: string;
-    currency: string;
-    institution: string;
-    institution_logo: string | null;
-    product_kind: "debit" | "credit";
-    product_label: string;
-    lastFour: string;
-    expense_destination: {
-        budget_uuid: string | null;
-        group_uuid: string | null;
-    };
-    is_manual: boolean;
-    card_brand: "visa" | "mastercard" | "amex" | null;
-    balance: {
-        limit: number | null;
-        current: number;
-        available: number;
-    };
-    percentage_change: string;
-    linked_account_id?: string | null | undefined;
-    bank_balance?: number | null | undefined;
-    bank_balance_currency?: string | null | undefined;
-    period_spend?: number | null | undefined;
-    period_spend_currency?: string | null | undefined;
-}, {
-    type: string;
-    id: string;
-    metadata: {
-        utilization: number | null;
-        next_payment: string | null;
-        minimum_payment: number | null;
-        monthly_payment: number | null;
-        remaining_payments: number | null;
-        progress: number | null;
-        annual_rate: string | null;
-        investment_contract_months: number | null;
-        risk_level: string | null;
-        interest_payment: string | null;
-        initial_value: number | null;
-        accumulated_gain: number | null;
-    };
-    name: string;
-    currency: string;
-    institution: string;
-    institution_logo: string | null;
-    product_kind: "debit" | "credit";
-    product_label: string;
-    lastFour: string;
-    expense_destination: {
-        budget_uuid: string | null;
-        group_uuid: string | null;
-    };
-    is_manual: boolean;
-    card_brand: "visa" | "mastercard" | "amex" | null;
-    balance: {
-        limit: number | null;
-        current: number;
-        available: number;
-    };
-    percentage_change: string;
-    linked_account_id?: string | null | undefined;
-    bank_balance?: number | null | undefined;
-    bank_balance_currency?: string | null | undefined;
-    period_spend?: number | null | undefined;
-    period_spend_currency?: string | null | undefined;
-}>;
+}, z.core.$strip>;
 export declare const ConnectedProductsSummarySchema: z.ZodObject<{
     pending_balance: z.ZodOptional<z.ZodNumber>;
     initial_debt: z.ZodOptional<z.ZodNumber>;
@@ -801,21 +334,7 @@ export declare const ConnectedProductsSummarySchema: z.ZodObject<{
     total_balance: z.ZodOptional<z.ZodNumber>;
     monthly_change: z.ZodOptional<z.ZodNumber>;
     active_count: z.ZodNumber;
-}, "strip", z.ZodTypeAny, {
-    active_count: number;
-    monthly_payment?: number | undefined;
-    pending_balance?: number | undefined;
-    initial_debt?: number | undefined;
-    total_balance?: number | undefined;
-    monthly_change?: number | undefined;
-}, {
-    active_count: number;
-    monthly_payment?: number | undefined;
-    pending_balance?: number | undefined;
-    initial_debt?: number | undefined;
-    total_balance?: number | undefined;
-    monthly_change?: number | undefined;
-}>;
+}, z.core.$strip>;
 export declare const ConnectedProductsDataSchema: z.ZodObject<{
     summary: z.ZodOptional<z.ZodObject<{
         pending_balance: z.ZodOptional<z.ZodNumber>;
@@ -824,60 +343,37 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
         total_balance: z.ZodOptional<z.ZodNumber>;
         monthly_change: z.ZodOptional<z.ZodNumber>;
         active_count: z.ZodNumber;
-    }, "strip", z.ZodTypeAny, {
-        active_count: number;
-        monthly_payment?: number | undefined;
-        pending_balance?: number | undefined;
-        initial_debt?: number | undefined;
-        total_balance?: number | undefined;
-        monthly_change?: number | undefined;
-    }, {
-        active_count: number;
-        monthly_payment?: number | undefined;
-        pending_balance?: number | undefined;
-        initial_debt?: number | undefined;
-        total_balance?: number | undefined;
-        monthly_change?: number | undefined;
-    }>>;
+    }, z.core.$strip>>;
     products: z.ZodArray<z.ZodObject<{
         id: z.ZodString;
         type: z.ZodString;
         name: z.ZodString;
         institution: z.ZodString;
         institution_logo: z.ZodNullable<z.ZodString>;
-        product_kind: z.ZodEnum<["debit", "credit"]>;
+        product_kind: z.ZodEnum<{
+            debit: "debit";
+            credit: "credit";
+        }>;
         product_label: z.ZodString;
         lastFour: z.ZodString;
         expense_destination: z.ZodObject<{
             budget_uuid: z.ZodNullable<z.ZodString>;
             group_uuid: z.ZodNullable<z.ZodString>;
-        }, "strip", z.ZodTypeAny, {
-            budget_uuid: string | null;
-            group_uuid: string | null;
-        }, {
-            budget_uuid: string | null;
-            group_uuid: string | null;
-        }>;
+        }, z.core.$strip>;
         is_manual: z.ZodBoolean;
-        card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
+        card_brand: z.ZodNullable<z.ZodEnum<{
+            visa: "visa";
+            mastercard: "mastercard";
+            amex: "amex";
+        }>>;
         linked_account_id: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         balance: z.ZodObject<{
             current: z.ZodNumber;
             available: z.ZodNumber;
             limit: z.ZodNullable<z.ZodNumber>;
-        }, "strip", z.ZodTypeAny, {
-            limit: number | null;
-            current: number;
-            available: number;
-        }, {
-            limit: number | null;
-            current: number;
-            available: number;
-        }>;
-        /** Latest account balance reported or explicitly recorded; null means unknown. */
+        }, z.core.$strip>;
         bank_balance: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
         bank_balance_currency: z.ZodOptional<z.ZodNullable<z.ZodString>>;
-        /** Debit total in the requested date range and product currency. */
         period_spend: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
         period_spend_currency: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         metadata: z.ZodObject<{
@@ -893,221 +389,11 @@ export declare const ConnectedProductsDataSchema: z.ZodObject<{
             interest_payment: z.ZodNullable<z.ZodString>;
             initial_value: z.ZodNullable<z.ZodNumber>;
             accumulated_gain: z.ZodNullable<z.ZodNumber>;
-        }, "strip", z.ZodTypeAny, {
-            utilization: number | null;
-            next_payment: string | null;
-            minimum_payment: number | null;
-            monthly_payment: number | null;
-            remaining_payments: number | null;
-            progress: number | null;
-            annual_rate: string | null;
-            investment_contract_months: number | null;
-            risk_level: string | null;
-            interest_payment: string | null;
-            initial_value: number | null;
-            accumulated_gain: number | null;
-        }, {
-            utilization: number | null;
-            next_payment: string | null;
-            minimum_payment: number | null;
-            monthly_payment: number | null;
-            remaining_payments: number | null;
-            progress: number | null;
-            annual_rate: string | null;
-            investment_contract_months: number | null;
-            risk_level: string | null;
-            interest_payment: string | null;
-            initial_value: number | null;
-            accumulated_gain: number | null;
-        }>;
+        }, z.core.$strip>;
         percentage_change: z.ZodString;
         currency: z.ZodString;
-    }, "strip", z.ZodTypeAny, {
-        type: string;
-        id: string;
-        metadata: {
-            utilization: number | null;
-            next_payment: string | null;
-            minimum_payment: number | null;
-            monthly_payment: number | null;
-            remaining_payments: number | null;
-            progress: number | null;
-            annual_rate: string | null;
-            investment_contract_months: number | null;
-            risk_level: string | null;
-            interest_payment: string | null;
-            initial_value: number | null;
-            accumulated_gain: number | null;
-        };
-        name: string;
-        currency: string;
-        institution: string;
-        institution_logo: string | null;
-        product_kind: "debit" | "credit";
-        product_label: string;
-        lastFour: string;
-        expense_destination: {
-            budget_uuid: string | null;
-            group_uuid: string | null;
-        };
-        is_manual: boolean;
-        card_brand: "visa" | "mastercard" | "amex" | null;
-        balance: {
-            limit: number | null;
-            current: number;
-            available: number;
-        };
-        percentage_change: string;
-        linked_account_id?: string | null | undefined;
-        bank_balance?: number | null | undefined;
-        bank_balance_currency?: string | null | undefined;
-        period_spend?: number | null | undefined;
-        period_spend_currency?: string | null | undefined;
-    }, {
-        type: string;
-        id: string;
-        metadata: {
-            utilization: number | null;
-            next_payment: string | null;
-            minimum_payment: number | null;
-            monthly_payment: number | null;
-            remaining_payments: number | null;
-            progress: number | null;
-            annual_rate: string | null;
-            investment_contract_months: number | null;
-            risk_level: string | null;
-            interest_payment: string | null;
-            initial_value: number | null;
-            accumulated_gain: number | null;
-        };
-        name: string;
-        currency: string;
-        institution: string;
-        institution_logo: string | null;
-        product_kind: "debit" | "credit";
-        product_label: string;
-        lastFour: string;
-        expense_destination: {
-            budget_uuid: string | null;
-            group_uuid: string | null;
-        };
-        is_manual: boolean;
-        card_brand: "visa" | "mastercard" | "amex" | null;
-        balance: {
-            limit: number | null;
-            current: number;
-            available: number;
-        };
-        percentage_change: string;
-        linked_account_id?: string | null | undefined;
-        bank_balance?: number | null | undefined;
-        bank_balance_currency?: string | null | undefined;
-        period_spend?: number | null | undefined;
-        period_spend_currency?: string | null | undefined;
-    }>, "many">;
-}, "strip", z.ZodTypeAny, {
-    products: {
-        type: string;
-        id: string;
-        metadata: {
-            utilization: number | null;
-            next_payment: string | null;
-            minimum_payment: number | null;
-            monthly_payment: number | null;
-            remaining_payments: number | null;
-            progress: number | null;
-            annual_rate: string | null;
-            investment_contract_months: number | null;
-            risk_level: string | null;
-            interest_payment: string | null;
-            initial_value: number | null;
-            accumulated_gain: number | null;
-        };
-        name: string;
-        currency: string;
-        institution: string;
-        institution_logo: string | null;
-        product_kind: "debit" | "credit";
-        product_label: string;
-        lastFour: string;
-        expense_destination: {
-            budget_uuid: string | null;
-            group_uuid: string | null;
-        };
-        is_manual: boolean;
-        card_brand: "visa" | "mastercard" | "amex" | null;
-        balance: {
-            limit: number | null;
-            current: number;
-            available: number;
-        };
-        percentage_change: string;
-        linked_account_id?: string | null | undefined;
-        bank_balance?: number | null | undefined;
-        bank_balance_currency?: string | null | undefined;
-        period_spend?: number | null | undefined;
-        period_spend_currency?: string | null | undefined;
-    }[];
-    summary?: {
-        active_count: number;
-        monthly_payment?: number | undefined;
-        pending_balance?: number | undefined;
-        initial_debt?: number | undefined;
-        total_balance?: number | undefined;
-        monthly_change?: number | undefined;
-    } | undefined;
-}, {
-    products: {
-        type: string;
-        id: string;
-        metadata: {
-            utilization: number | null;
-            next_payment: string | null;
-            minimum_payment: number | null;
-            monthly_payment: number | null;
-            remaining_payments: number | null;
-            progress: number | null;
-            annual_rate: string | null;
-            investment_contract_months: number | null;
-            risk_level: string | null;
-            interest_payment: string | null;
-            initial_value: number | null;
-            accumulated_gain: number | null;
-        };
-        name: string;
-        currency: string;
-        institution: string;
-        institution_logo: string | null;
-        product_kind: "debit" | "credit";
-        product_label: string;
-        lastFour: string;
-        expense_destination: {
-            budget_uuid: string | null;
-            group_uuid: string | null;
-        };
-        is_manual: boolean;
-        card_brand: "visa" | "mastercard" | "amex" | null;
-        balance: {
-            limit: number | null;
-            current: number;
-            available: number;
-        };
-        percentage_change: string;
-        linked_account_id?: string | null | undefined;
-        bank_balance?: number | null | undefined;
-        bank_balance_currency?: string | null | undefined;
-        period_spend?: number | null | undefined;
-        period_spend_currency?: string | null | undefined;
-    }[];
-    summary?: {
-        active_count: number;
-        monthly_payment?: number | undefined;
-        pending_balance?: number | undefined;
-        initial_debt?: number | undefined;
-        total_balance?: number | undefined;
-        monthly_change?: number | undefined;
-    } | undefined;
-}>;
+    }, z.core.$strip>>;
+}, z.core.$strip>;
 export declare const ConnectedProductsResponseSchema: z.ZodObject<{
     message: z.ZodString;
     data: z.ZodObject<{
@@ -1118,60 +404,37 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
             total_balance: z.ZodOptional<z.ZodNumber>;
             monthly_change: z.ZodOptional<z.ZodNumber>;
             active_count: z.ZodNumber;
-        }, "strip", z.ZodTypeAny, {
-            active_count: number;
-            monthly_payment?: number | undefined;
-            pending_balance?: number | undefined;
-            initial_debt?: number | undefined;
-            total_balance?: number | undefined;
-            monthly_change?: number | undefined;
-        }, {
-            active_count: number;
-            monthly_payment?: number | undefined;
-            pending_balance?: number | undefined;
-            initial_debt?: number | undefined;
-            total_balance?: number | undefined;
-            monthly_change?: number | undefined;
-        }>>;
+        }, z.core.$strip>>;
         products: z.ZodArray<z.ZodObject<{
             id: z.ZodString;
             type: z.ZodString;
             name: z.ZodString;
             institution: z.ZodString;
             institution_logo: z.ZodNullable<z.ZodString>;
-            product_kind: z.ZodEnum<["debit", "credit"]>;
+            product_kind: z.ZodEnum<{
+                debit: "debit";
+                credit: "credit";
+            }>;
             product_label: z.ZodString;
             lastFour: z.ZodString;
             expense_destination: z.ZodObject<{
                 budget_uuid: z.ZodNullable<z.ZodString>;
                 group_uuid: z.ZodNullable<z.ZodString>;
-            }, "strip", z.ZodTypeAny, {
-                budget_uuid: string | null;
-                group_uuid: string | null;
-            }, {
-                budget_uuid: string | null;
-                group_uuid: string | null;
-            }>;
+            }, z.core.$strip>;
             is_manual: z.ZodBoolean;
-            card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
+            card_brand: z.ZodNullable<z.ZodEnum<{
+                visa: "visa";
+                mastercard: "mastercard";
+                amex: "amex";
+            }>>;
             linked_account_id: z.ZodOptional<z.ZodNullable<z.ZodString>>;
             balance: z.ZodObject<{
                 current: z.ZodNumber;
                 available: z.ZodNumber;
                 limit: z.ZodNullable<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                limit: number | null;
-                current: number;
-                available: number;
-            }, {
-                limit: number | null;
-                current: number;
-                available: number;
-            }>;
-            /** Latest account balance reported or explicitly recorded; null means unknown. */
+            }, z.core.$strip>;
             bank_balance: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
             bank_balance_currency: z.ZodOptional<z.ZodNullable<z.ZodString>>;
-            /** Debit total in the requested date range and product currency. */
             period_spend: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
             period_spend_currency: z.ZodOptional<z.ZodNullable<z.ZodString>>;
             metadata: z.ZodObject<{
@@ -1187,330 +450,12 @@ export declare const ConnectedProductsResponseSchema: z.ZodObject<{
                 interest_payment: z.ZodNullable<z.ZodString>;
                 initial_value: z.ZodNullable<z.ZodNumber>;
                 accumulated_gain: z.ZodNullable<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                utilization: number | null;
-                next_payment: string | null;
-                minimum_payment: number | null;
-                monthly_payment: number | null;
-                remaining_payments: number | null;
-                progress: number | null;
-                annual_rate: string | null;
-                investment_contract_months: number | null;
-                risk_level: string | null;
-                interest_payment: string | null;
-                initial_value: number | null;
-                accumulated_gain: number | null;
-            }, {
-                utilization: number | null;
-                next_payment: string | null;
-                minimum_payment: number | null;
-                monthly_payment: number | null;
-                remaining_payments: number | null;
-                progress: number | null;
-                annual_rate: string | null;
-                investment_contract_months: number | null;
-                risk_level: string | null;
-                interest_payment: string | null;
-                initial_value: number | null;
-                accumulated_gain: number | null;
-            }>;
+            }, z.core.$strip>;
             percentage_change: z.ZodString;
             currency: z.ZodString;
-        }, "strip", z.ZodTypeAny, {
-            type: string;
-            id: string;
-            metadata: {
-                utilization: number | null;
-                next_payment: string | null;
-                minimum_payment: number | null;
-                monthly_payment: number | null;
-                remaining_payments: number | null;
-                progress: number | null;
-                annual_rate: string | null;
-                investment_contract_months: number | null;
-                risk_level: string | null;
-                interest_payment: string | null;
-                initial_value: number | null;
-                accumulated_gain: number | null;
-            };
-            name: string;
-            currency: string;
-            institution: string;
-            institution_logo: string | null;
-            product_kind: "debit" | "credit";
-            product_label: string;
-            lastFour: string;
-            expense_destination: {
-                budget_uuid: string | null;
-                group_uuid: string | null;
-            };
-            is_manual: boolean;
-            card_brand: "visa" | "mastercard" | "amex" | null;
-            balance: {
-                limit: number | null;
-                current: number;
-                available: number;
-            };
-            percentage_change: string;
-            linked_account_id?: string | null | undefined;
-            bank_balance?: number | null | undefined;
-            bank_balance_currency?: string | null | undefined;
-            period_spend?: number | null | undefined;
-            period_spend_currency?: string | null | undefined;
-        }, {
-            type: string;
-            id: string;
-            metadata: {
-                utilization: number | null;
-                next_payment: string | null;
-                minimum_payment: number | null;
-                monthly_payment: number | null;
-                remaining_payments: number | null;
-                progress: number | null;
-                annual_rate: string | null;
-                investment_contract_months: number | null;
-                risk_level: string | null;
-                interest_payment: string | null;
-                initial_value: number | null;
-                accumulated_gain: number | null;
-            };
-            name: string;
-            currency: string;
-            institution: string;
-            institution_logo: string | null;
-            product_kind: "debit" | "credit";
-            product_label: string;
-            lastFour: string;
-            expense_destination: {
-                budget_uuid: string | null;
-                group_uuid: string | null;
-            };
-            is_manual: boolean;
-            card_brand: "visa" | "mastercard" | "amex" | null;
-            balance: {
-                limit: number | null;
-                current: number;
-                available: number;
-            };
-            percentage_change: string;
-            linked_account_id?: string | null | undefined;
-            bank_balance?: number | null | undefined;
-            bank_balance_currency?: string | null | undefined;
-            period_spend?: number | null | undefined;
-            period_spend_currency?: string | null | undefined;
-        }>, "many">;
-    }, "strip", z.ZodTypeAny, {
-        products: {
-            type: string;
-            id: string;
-            metadata: {
-                utilization: number | null;
-                next_payment: string | null;
-                minimum_payment: number | null;
-                monthly_payment: number | null;
-                remaining_payments: number | null;
-                progress: number | null;
-                annual_rate: string | null;
-                investment_contract_months: number | null;
-                risk_level: string | null;
-                interest_payment: string | null;
-                initial_value: number | null;
-                accumulated_gain: number | null;
-            };
-            name: string;
-            currency: string;
-            institution: string;
-            institution_logo: string | null;
-            product_kind: "debit" | "credit";
-            product_label: string;
-            lastFour: string;
-            expense_destination: {
-                budget_uuid: string | null;
-                group_uuid: string | null;
-            };
-            is_manual: boolean;
-            card_brand: "visa" | "mastercard" | "amex" | null;
-            balance: {
-                limit: number | null;
-                current: number;
-                available: number;
-            };
-            percentage_change: string;
-            linked_account_id?: string | null | undefined;
-            bank_balance?: number | null | undefined;
-            bank_balance_currency?: string | null | undefined;
-            period_spend?: number | null | undefined;
-            period_spend_currency?: string | null | undefined;
-        }[];
-        summary?: {
-            active_count: number;
-            monthly_payment?: number | undefined;
-            pending_balance?: number | undefined;
-            initial_debt?: number | undefined;
-            total_balance?: number | undefined;
-            monthly_change?: number | undefined;
-        } | undefined;
-    }, {
-        products: {
-            type: string;
-            id: string;
-            metadata: {
-                utilization: number | null;
-                next_payment: string | null;
-                minimum_payment: number | null;
-                monthly_payment: number | null;
-                remaining_payments: number | null;
-                progress: number | null;
-                annual_rate: string | null;
-                investment_contract_months: number | null;
-                risk_level: string | null;
-                interest_payment: string | null;
-                initial_value: number | null;
-                accumulated_gain: number | null;
-            };
-            name: string;
-            currency: string;
-            institution: string;
-            institution_logo: string | null;
-            product_kind: "debit" | "credit";
-            product_label: string;
-            lastFour: string;
-            expense_destination: {
-                budget_uuid: string | null;
-                group_uuid: string | null;
-            };
-            is_manual: boolean;
-            card_brand: "visa" | "mastercard" | "amex" | null;
-            balance: {
-                limit: number | null;
-                current: number;
-                available: number;
-            };
-            percentage_change: string;
-            linked_account_id?: string | null | undefined;
-            bank_balance?: number | null | undefined;
-            bank_balance_currency?: string | null | undefined;
-            period_spend?: number | null | undefined;
-            period_spend_currency?: string | null | undefined;
-        }[];
-        summary?: {
-            active_count: number;
-            monthly_payment?: number | undefined;
-            pending_balance?: number | undefined;
-            initial_debt?: number | undefined;
-            total_balance?: number | undefined;
-            monthly_change?: number | undefined;
-        } | undefined;
-    }>;
-}, "strip", z.ZodTypeAny, {
-    message: string;
-    data: {
-        products: {
-            type: string;
-            id: string;
-            metadata: {
-                utilization: number | null;
-                next_payment: string | null;
-                minimum_payment: number | null;
-                monthly_payment: number | null;
-                remaining_payments: number | null;
-                progress: number | null;
-                annual_rate: string | null;
-                investment_contract_months: number | null;
-                risk_level: string | null;
-                interest_payment: string | null;
-                initial_value: number | null;
-                accumulated_gain: number | null;
-            };
-            name: string;
-            currency: string;
-            institution: string;
-            institution_logo: string | null;
-            product_kind: "debit" | "credit";
-            product_label: string;
-            lastFour: string;
-            expense_destination: {
-                budget_uuid: string | null;
-                group_uuid: string | null;
-            };
-            is_manual: boolean;
-            card_brand: "visa" | "mastercard" | "amex" | null;
-            balance: {
-                limit: number | null;
-                current: number;
-                available: number;
-            };
-            percentage_change: string;
-            linked_account_id?: string | null | undefined;
-            bank_balance?: number | null | undefined;
-            bank_balance_currency?: string | null | undefined;
-            period_spend?: number | null | undefined;
-            period_spend_currency?: string | null | undefined;
-        }[];
-        summary?: {
-            active_count: number;
-            monthly_payment?: number | undefined;
-            pending_balance?: number | undefined;
-            initial_debt?: number | undefined;
-            total_balance?: number | undefined;
-            monthly_change?: number | undefined;
-        } | undefined;
-    };
-}, {
-    message: string;
-    data: {
-        products: {
-            type: string;
-            id: string;
-            metadata: {
-                utilization: number | null;
-                next_payment: string | null;
-                minimum_payment: number | null;
-                monthly_payment: number | null;
-                remaining_payments: number | null;
-                progress: number | null;
-                annual_rate: string | null;
-                investment_contract_months: number | null;
-                risk_level: string | null;
-                interest_payment: string | null;
-                initial_value: number | null;
-                accumulated_gain: number | null;
-            };
-            name: string;
-            currency: string;
-            institution: string;
-            institution_logo: string | null;
-            product_kind: "debit" | "credit";
-            product_label: string;
-            lastFour: string;
-            expense_destination: {
-                budget_uuid: string | null;
-                group_uuid: string | null;
-            };
-            is_manual: boolean;
-            card_brand: "visa" | "mastercard" | "amex" | null;
-            balance: {
-                limit: number | null;
-                current: number;
-                available: number;
-            };
-            percentage_change: string;
-            linked_account_id?: string | null | undefined;
-            bank_balance?: number | null | undefined;
-            bank_balance_currency?: string | null | undefined;
-            period_spend?: number | null | undefined;
-            period_spend_currency?: string | null | undefined;
-        }[];
-        summary?: {
-            active_count: number;
-            monthly_payment?: number | undefined;
-            pending_balance?: number | undefined;
-            initial_debt?: number | undefined;
-            total_balance?: number | undefined;
-            monthly_change?: number | undefined;
-        } | undefined;
-    };
-}>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>;
+}, z.core.$strip>;
 export declare const ProductTransactionItemSchema: z.ZodObject<{
     uuid: z.ZodString;
     product_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
@@ -1519,7 +464,11 @@ export declare const ProductTransactionItemSchema: z.ZodObject<{
     transaction_date: z.ZodString;
     transaction_occurred_at: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     description: z.ZodNullable<z.ZodString>;
-    transaction_type: z.ZodEnum<["debit", "credit", "payment"]>;
+    transaction_type: z.ZodEnum<{
+        debit: "debit";
+        credit: "credit";
+        payment: "payment";
+    }>;
     category: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     can_edit_category: z.ZodOptional<z.ZodBoolean>;
     can_assign_to_budget: z.ZodOptional<z.ZodBoolean>;
@@ -1527,167 +476,59 @@ export declare const ProductTransactionItemSchema: z.ZodObject<{
     is_manual: z.ZodOptional<z.ZodBoolean>;
     institution_name: z.ZodNullable<z.ZodString>;
     institution_logo: z.ZodNullable<z.ZodString>;
-    product_type: z.ZodNullable<z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
-    product_kind: z.ZodNullable<z.ZodEnum<["debit", "credit"]>>;
+    product_type: z.ZodNullable<z.ZodEnum<{
+        insurance: "insurance";
+        credit_card: "credit_card";
+        debit_card: "debit_card";
+        loan: "loan";
+        savings_account: "savings_account";
+        checking_account: "checking_account";
+        investment: "investment";
+        mortgage: "mortgage";
+    }>>;
+    product_kind: z.ZodNullable<z.ZodEnum<{
+        debit: "debit";
+        credit: "credit";
+    }>>;
     product_label: z.ZodNullable<z.ZodString>;
-    card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
+    card_brand: z.ZodNullable<z.ZodEnum<{
+        visa: "visa";
+        mastercard: "mastercard";
+        amex: "amex";
+    }>>;
     linked_account_label: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     budget_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     group_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
-    excluded_budget_uuids: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+    excluded_budget_uuids: z.ZodOptional<z.ZodArray<z.ZodString>>;
     destination_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     budget_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     group_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
-}, "strip", z.ZodTypeAny, {
-    description: string | null;
-    uuid: string;
-    currency: string;
-    product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
-    institution_name: string | null;
-    institution_logo: string | null;
-    product_kind: "debit" | "credit" | null;
-    product_label: string | null;
-    card_brand: "visa" | "mastercard" | "amex" | null;
-    amount: number;
-    transaction_date: string;
-    transaction_type: "debit" | "credit" | "payment";
-    budget_uuid?: string | null | undefined;
-    group_uuid?: string | null | undefined;
-    is_manual?: boolean | undefined;
-    product_uuid?: string | null | undefined;
-    transaction_occurred_at?: string | null | undefined;
-    category?: string | null | undefined;
-    can_edit_category?: boolean | undefined;
-    can_assign_to_budget?: boolean | undefined;
-    is_imported?: boolean | undefined;
-    linked_account_label?: string | null | undefined;
-    excluded_budget_uuids?: string[] | undefined;
-    destination_pending?: string | null | undefined;
-    budget_pending?: string | null | undefined;
-    group_pending?: string | null | undefined;
-}, {
-    description: string | null;
-    uuid: string;
-    currency: string;
-    product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
-    institution_name: string | null;
-    institution_logo: string | null;
-    product_kind: "debit" | "credit" | null;
-    product_label: string | null;
-    card_brand: "visa" | "mastercard" | "amex" | null;
-    amount: number;
-    transaction_date: string;
-    transaction_type: "debit" | "credit" | "payment";
-    budget_uuid?: string | null | undefined;
-    group_uuid?: string | null | undefined;
-    is_manual?: boolean | undefined;
-    product_uuid?: string | null | undefined;
-    transaction_occurred_at?: string | null | undefined;
-    category?: string | null | undefined;
-    can_edit_category?: boolean | undefined;
-    can_assign_to_budget?: boolean | undefined;
-    is_imported?: boolean | undefined;
-    linked_account_label?: string | null | undefined;
-    excluded_budget_uuids?: string[] | undefined;
-    destination_pending?: string | null | undefined;
-    budget_pending?: string | null | undefined;
-    group_pending?: string | null | undefined;
-}>;
+}, z.core.$strip>;
 export declare const SetExpenseDestinationSchema: z.ZodObject<{
     budget_uuid: z.ZodNullable<z.ZodString>;
     group_uuid: z.ZodNullable<z.ZodString>;
-}, "strict", z.ZodTypeAny, {
-    budget_uuid: string | null;
-    group_uuid: string | null;
-}, {
-    budget_uuid: string | null;
-    group_uuid: string | null;
-}>;
-export declare const SetTransactionExpenseDestinationSchema: z.ZodEffects<z.ZodObject<{
+}, z.core.$strict>;
+export declare const SetTransactionExpenseDestinationSchema: z.ZodObject<{
     budget_uuid: z.ZodNullable<z.ZodString>;
     group_uuid: z.ZodNullable<z.ZodString>;
-} & {
-    /** Budget to add to or remove from the transaction's category-based exclusions. */
     excluded_budget_uuid: z.ZodOptional<z.ZodString>;
-    /** Defaults to true when excluded_budget_uuid is provided. */
     budget_excluded: z.ZodOptional<z.ZodBoolean>;
-}, "strict", z.ZodTypeAny, {
-    budget_uuid: string | null;
-    group_uuid: string | null;
-    excluded_budget_uuid?: string | undefined;
-    budget_excluded?: boolean | undefined;
-}, {
-    budget_uuid: string | null;
-    group_uuid: string | null;
-    excluded_budget_uuid?: string | undefined;
-    budget_excluded?: boolean | undefined;
-}>, {
-    budget_uuid: string | null;
-    group_uuid: string | null;
-    excluded_budget_uuid?: string | undefined;
-    budget_excluded?: boolean | undefined;
-}, {
-    budget_uuid: string | null;
-    group_uuid: string | null;
-    excluded_budget_uuid?: string | undefined;
-    budget_excluded?: boolean | undefined;
-}>;
+}, z.core.$strict>;
 export declare const ExpenseDestinationResponseSchema: z.ZodObject<{
     message: z.ZodString;
     data: z.ZodObject<{
         budget_uuid: z.ZodNullable<z.ZodString>;
         group_uuid: z.ZodNullable<z.ZodString>;
-    }, "strip", z.ZodTypeAny, {
-        budget_uuid: string | null;
-        group_uuid: string | null;
-    }, {
-        budget_uuid: string | null;
-        group_uuid: string | null;
-    }>;
-}, "strip", z.ZodTypeAny, {
-    message: string;
-    data: {
-        budget_uuid: string | null;
-        group_uuid: string | null;
-    };
-}, {
-    message: string;
-    data: {
-        budget_uuid: string | null;
-        group_uuid: string | null;
-    };
-}>;
+    }, z.core.$strip>;
+}, z.core.$strip>;
 export declare const TransactionExpenseDestinationResponseSchema: z.ZodObject<{
     message: z.ZodString;
     data: z.ZodObject<{
         budget_uuid: z.ZodNullable<z.ZodString>;
         group_uuid: z.ZodNullable<z.ZodString>;
-    } & {
-        excluded_budget_uuids: z.ZodArray<z.ZodString, "many">;
-    }, "strip", z.ZodTypeAny, {
-        budget_uuid: string | null;
-        group_uuid: string | null;
-        excluded_budget_uuids: string[];
-    }, {
-        budget_uuid: string | null;
-        group_uuid: string | null;
-        excluded_budget_uuids: string[];
-    }>;
-}, "strip", z.ZodTypeAny, {
-    message: string;
-    data: {
-        budget_uuid: string | null;
-        group_uuid: string | null;
-        excluded_budget_uuids: string[];
-    };
-}, {
-    message: string;
-    data: {
-        budget_uuid: string | null;
-        group_uuid: string | null;
-        excluded_budget_uuids: string[];
-    };
-}>;
+        excluded_budget_uuids: z.ZodArray<z.ZodString>;
+    }, z.core.$strip>;
+}, z.core.$strip>;
 export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
     message: z.ZodString;
     data: z.ZodArray<z.ZodObject<{
@@ -1698,7 +539,11 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         transaction_date: z.ZodString;
         transaction_occurred_at: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         description: z.ZodNullable<z.ZodString>;
-        transaction_type: z.ZodEnum<["debit", "credit", "payment"]>;
+        transaction_type: z.ZodEnum<{
+            debit: "debit";
+            credit: "credit";
+            payment: "payment";
+        }>;
         category: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         can_edit_category: z.ZodOptional<z.ZodBoolean>;
         can_assign_to_budget: z.ZodOptional<z.ZodBoolean>;
@@ -1706,171 +551,41 @@ export declare const ProductTransactionsListResponseSchema: z.ZodObject<{
         is_manual: z.ZodOptional<z.ZodBoolean>;
         institution_name: z.ZodNullable<z.ZodString>;
         institution_logo: z.ZodNullable<z.ZodString>;
-        product_type: z.ZodNullable<z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>>;
-        product_kind: z.ZodNullable<z.ZodEnum<["debit", "credit"]>>;
+        product_type: z.ZodNullable<z.ZodEnum<{
+            insurance: "insurance";
+            credit_card: "credit_card";
+            debit_card: "debit_card";
+            loan: "loan";
+            savings_account: "savings_account";
+            checking_account: "checking_account";
+            investment: "investment";
+            mortgage: "mortgage";
+        }>>;
+        product_kind: z.ZodNullable<z.ZodEnum<{
+            debit: "debit";
+            credit: "credit";
+        }>>;
         product_label: z.ZodNullable<z.ZodString>;
-        card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
+        card_brand: z.ZodNullable<z.ZodEnum<{
+            visa: "visa";
+            mastercard: "mastercard";
+            amex: "amex";
+        }>>;
         linked_account_label: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         budget_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         group_uuid: z.ZodOptional<z.ZodNullable<z.ZodString>>;
-        excluded_budget_uuids: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+        excluded_budget_uuids: z.ZodOptional<z.ZodArray<z.ZodString>>;
         destination_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         budget_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         group_pending: z.ZodOptional<z.ZodNullable<z.ZodString>>;
-    }, "strip", z.ZodTypeAny, {
-        description: string | null;
-        uuid: string;
-        currency: string;
-        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
-        institution_name: string | null;
-        institution_logo: string | null;
-        product_kind: "debit" | "credit" | null;
-        product_label: string | null;
-        card_brand: "visa" | "mastercard" | "amex" | null;
-        amount: number;
-        transaction_date: string;
-        transaction_type: "debit" | "credit" | "payment";
-        budget_uuid?: string | null | undefined;
-        group_uuid?: string | null | undefined;
-        is_manual?: boolean | undefined;
-        product_uuid?: string | null | undefined;
-        transaction_occurred_at?: string | null | undefined;
-        category?: string | null | undefined;
-        can_edit_category?: boolean | undefined;
-        can_assign_to_budget?: boolean | undefined;
-        is_imported?: boolean | undefined;
-        linked_account_label?: string | null | undefined;
-        excluded_budget_uuids?: string[] | undefined;
-        destination_pending?: string | null | undefined;
-        budget_pending?: string | null | undefined;
-        group_pending?: string | null | undefined;
-    }, {
-        description: string | null;
-        uuid: string;
-        currency: string;
-        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
-        institution_name: string | null;
-        institution_logo: string | null;
-        product_kind: "debit" | "credit" | null;
-        product_label: string | null;
-        card_brand: "visa" | "mastercard" | "amex" | null;
-        amount: number;
-        transaction_date: string;
-        transaction_type: "debit" | "credit" | "payment";
-        budget_uuid?: string | null | undefined;
-        group_uuid?: string | null | undefined;
-        is_manual?: boolean | undefined;
-        product_uuid?: string | null | undefined;
-        transaction_occurred_at?: string | null | undefined;
-        category?: string | null | undefined;
-        can_edit_category?: boolean | undefined;
-        can_assign_to_budget?: boolean | undefined;
-        is_imported?: boolean | undefined;
-        linked_account_label?: string | null | undefined;
-        excluded_budget_uuids?: string[] | undefined;
-        destination_pending?: string | null | undefined;
-        budget_pending?: string | null | undefined;
-        group_pending?: string | null | undefined;
-    }>, "many">;
+    }, z.core.$strip>>;
     pagination: z.ZodObject<{
         total: z.ZodNumber;
         limit: z.ZodNumber;
         offset: z.ZodNumber;
-    }, "strip", z.ZodTypeAny, {
-        limit: number;
-        total: number;
-        offset: number;
-    }, {
-        limit: number;
-        total: number;
-        offset: number;
-    }>;
+    }, z.core.$strip>;
     summary: z.ZodObject<{
         income: z.ZodNumber;
         expenses: z.ZodNumber;
-    }, "strip", z.ZodTypeAny, {
-        income: number;
-        expenses: number;
-    }, {
-        income: number;
-        expenses: number;
-    }>;
-}, "strip", z.ZodTypeAny, {
-    message: string;
-    data: {
-        description: string | null;
-        uuid: string;
-        currency: string;
-        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
-        institution_name: string | null;
-        institution_logo: string | null;
-        product_kind: "debit" | "credit" | null;
-        product_label: string | null;
-        card_brand: "visa" | "mastercard" | "amex" | null;
-        amount: number;
-        transaction_date: string;
-        transaction_type: "debit" | "credit" | "payment";
-        budget_uuid?: string | null | undefined;
-        group_uuid?: string | null | undefined;
-        is_manual?: boolean | undefined;
-        product_uuid?: string | null | undefined;
-        transaction_occurred_at?: string | null | undefined;
-        category?: string | null | undefined;
-        can_edit_category?: boolean | undefined;
-        can_assign_to_budget?: boolean | undefined;
-        is_imported?: boolean | undefined;
-        linked_account_label?: string | null | undefined;
-        excluded_budget_uuids?: string[] | undefined;
-        destination_pending?: string | null | undefined;
-        budget_pending?: string | null | undefined;
-        group_pending?: string | null | undefined;
-    }[];
-    pagination: {
-        limit: number;
-        total: number;
-        offset: number;
-    };
-    summary: {
-        income: number;
-        expenses: number;
-    };
-}, {
-    message: string;
-    data: {
-        description: string | null;
-        uuid: string;
-        currency: string;
-        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage" | null;
-        institution_name: string | null;
-        institution_logo: string | null;
-        product_kind: "debit" | "credit" | null;
-        product_label: string | null;
-        card_brand: "visa" | "mastercard" | "amex" | null;
-        amount: number;
-        transaction_date: string;
-        transaction_type: "debit" | "credit" | "payment";
-        budget_uuid?: string | null | undefined;
-        group_uuid?: string | null | undefined;
-        is_manual?: boolean | undefined;
-        product_uuid?: string | null | undefined;
-        transaction_occurred_at?: string | null | undefined;
-        category?: string | null | undefined;
-        can_edit_category?: boolean | undefined;
-        can_assign_to_budget?: boolean | undefined;
-        is_imported?: boolean | undefined;
-        linked_account_label?: string | null | undefined;
-        excluded_budget_uuids?: string[] | undefined;
-        destination_pending?: string | null | undefined;
-        budget_pending?: string | null | undefined;
-        group_pending?: string | null | undefined;
-    }[];
-    pagination: {
-        limit: number;
-        total: number;
-        offset: number;
-    };
-    summary: {
-        income: number;
-        expenses: number;
-    };
-}>;
+    }, z.core.$strip>;
+}, z.core.$strip>;

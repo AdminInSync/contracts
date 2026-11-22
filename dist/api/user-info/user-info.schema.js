@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { extendZodWithOpenApi } from '@anatine/zod-openapi';
+import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 import { DocumentType, DocumentStatus } from '../../enums';
 extendZodWithOpenApi(z);
 // User Info Request Schema
 export const CreateUserInfoRequestSchema = z.object({
-    info_type: z.nativeEnum(DocumentType, {
+    info_type: z.nativeEnum(DocumentType).openapi({
         description: 'Type of document being uploaded'
     }),
     document_number: z.string().min(1).max(500).optional().openapi({
@@ -22,7 +22,7 @@ export const UserInfoResponseSchema = z.object({
     id: z.number().openapi({
         description: 'Internal database ID'
     }),
-    uuid: z.string().uuid().openapi({
+    uuid: z.string().guid().openapi({
         description: 'Public UUID for the user info record'
     }),
     user_uid: z.string().openapi({

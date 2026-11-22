@@ -16,76 +16,18 @@ export declare const AdminUsersContracts: {
                     is_active: import("zod").ZodBoolean;
                     last_login_at: import("zod").ZodNullable<import("zod").ZodString>;
                     created_at: import("zod").ZodString;
-                }, "strip", import("zod").ZodTypeAny, {
-                    id: string;
-                    email: string;
-                    is_active: boolean;
-                    created_at: string;
-                    name: string;
-                    totp_enabled: boolean;
-                    last_login_at: string | null;
-                    invitation_pending: boolean;
-                }, {
-                    id: string;
-                    email: string;
-                    is_active: boolean;
-                    created_at: string;
-                    name: string;
-                    totp_enabled: boolean;
-                    last_login_at: string | null;
-                    invitation_pending: boolean;
-                }>, "many">;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                data: {
-                    id: string;
-                    email: string;
-                    is_active: boolean;
-                    created_at: string;
-                    name: string;
-                    totp_enabled: boolean;
-                    last_login_at: string | null;
-                    invitation_pending: boolean;
-                }[];
-            }, {
-                message: string;
-                data: {
-                    id: string;
-                    email: string;
-                    is_active: boolean;
-                    created_at: string;
-                    name: string;
-                    totp_enabled: boolean;
-                    last_login_at: string | null;
-                    invitation_pending: boolean;
-                }[];
-            }>;
+                }, import("zod/v4/core").$strip>>;
+            }, import("zod/v4/core").$strip>;
             401: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             500: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
         };
         strictStatusCodes: true;
     };
@@ -96,13 +38,7 @@ export declare const AdminUsersContracts: {
         body: import("zod").ZodObject<{
             name: import("zod").ZodString;
             email: import("zod").ZodString;
-        }, "strip", import("zod").ZodTypeAny, {
-            email: string;
-            name: string;
-        }, {
-            email: string;
-            name: string;
-        }>;
+        }, import("zod/v4/core").$strip>;
         path: "/admin/users/invite";
         responses: {
             201: import("zod").ZodObject<{
@@ -116,115 +52,33 @@ export declare const AdminUsersContracts: {
                     is_active: import("zod").ZodBoolean;
                     last_login_at: import("zod").ZodNullable<import("zod").ZodString>;
                     created_at: import("zod").ZodString;
-                }, "strip", import("zod").ZodTypeAny, {
-                    id: string;
-                    email: string;
-                    is_active: boolean;
-                    created_at: string;
-                    name: string;
-                    totp_enabled: boolean;
-                    last_login_at: string | null;
-                    invitation_pending: boolean;
-                }, {
-                    id: string;
-                    email: string;
-                    is_active: boolean;
-                    created_at: string;
-                    name: string;
-                    totp_enabled: boolean;
-                    last_login_at: string | null;
-                    invitation_pending: boolean;
-                }>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                data: {
-                    id: string;
-                    email: string;
-                    is_active: boolean;
-                    created_at: string;
-                    name: string;
-                    totp_enabled: boolean;
-                    last_login_at: string | null;
-                    invitation_pending: boolean;
-                };
-            }, {
-                message: string;
-                data: {
-                    id: string;
-                    email: string;
-                    is_active: boolean;
-                    created_at: string;
-                    name: string;
-                    totp_enabled: boolean;
-                    last_login_at: string | null;
-                    invitation_pending: boolean;
-                };
-            }>;
+                }, import("zod/v4/core").$strip>;
+            }, import("zod/v4/core").$strip>;
             400: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             401: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             409: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             503: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             500: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
         };
         strictStatusCodes: true;
     };

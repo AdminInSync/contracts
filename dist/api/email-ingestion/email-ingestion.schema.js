@@ -19,7 +19,7 @@ export const OAuthCompleteResponseSchema = z.object({
     provider: EmailProviderSchema,
 });
 export const EmailConnectionListItemSchema = z.object({
-    uuid: z.string().uuid(),
+    uuid: z.string().guid(),
     provider: EmailProviderSchema,
     status: EmailConnectionStatusSchema,
     provider_account_id: z.string().nullable(),
@@ -35,7 +35,7 @@ export const DisconnectEmailConnectionResponseSchema = z.object({
 });
 export const SyncEmailConnectionResponseSchema = z.object({
     enqueued: z.literal(true),
-    job_uuid: z.string().uuid(),
+    job_uuid: z.string().guid(),
 });
 export const EmailConnectionSyncStateSchema = z.enum(['idle', 'syncing', 'failed']);
 export const EmailSyncSummarySchema = z.object({
@@ -50,11 +50,11 @@ export const EmailSyncSummarySchema = z.object({
     pending_review: z.number().int().nonnegative(),
 });
 export const EmailSyncStatusConnectionSchema = z.object({
-    uuid: z.string().uuid(),
+    uuid: z.string().guid(),
     provider: EmailProviderSchema,
     sync_state: EmailConnectionSyncStateSchema,
     last_successful_sync_at: z.string().datetime().nullable(),
-    active_job_uuid: z.string().uuid().nullable(),
+    active_job_uuid: z.string().guid().nullable(),
     error_message: z.string().nullable(),
     last_summary: EmailSyncSummarySchema.nullable(),
 });
@@ -70,7 +70,7 @@ export const EmailSyncStatusResponseSchema = z.object({
 export const ProductKindSchema = z.enum(['debit', 'credit']);
 export const CardBrandSchema = z.enum(['visa', 'mastercard', 'amex']);
 export const FinancialEmailEventResponseSchema = z.object({
-    uuid: z.string().uuid(),
+    uuid: z.string().guid(),
     status: FinancialEmailEventStatusSchema,
     institution_name: z.string().nullable(),
     institution_logo: z.string().nullable(),
@@ -85,7 +85,7 @@ export const FinancialEmailEventResponseSchema = z.object({
     transaction_direction: z.enum(['credit', 'debit']).nullable(),
     category: z.string().nullable(),
     confidence: z.coerce.number().nullable(),
-    source_metadata: z.record(z.unknown()).nullable(),
+    source_metadata: z.record(z.string(), z.unknown()).nullable(),
     created_at: z.string().datetime(),
 });
 export const ListFinancialEmailEventsResponseSchema = z.object({
@@ -95,14 +95,14 @@ export const ListFinancialEmailEventsResponseSchema = z.object({
     offset: z.number(),
 });
 export const ApproveFinancialEmailEventBodySchema = z.object({
-    user_product_uuid: z.string().uuid(),
+    user_product_uuid: z.string().guid(),
     amount: z.number().optional(),
     description: z.string().max(500).optional(),
     transaction_date: z.string().optional(),
 });
 export const ApproveFinancialEmailEventResponseSchema = z.object({
-    transaction_uuid: z.string().uuid(),
-    event_uuid: z.string().uuid(),
+    transaction_uuid: z.string().guid(),
+    event_uuid: z.string().guid(),
 });
 export const RejectFinancialEmailEventBodySchema = z.object({
     reason: z.string().max(500).optional(),
@@ -176,7 +176,7 @@ export const LinkAccountsResponseSchema = z.object({
     imported_events: z.number(),
     backfill_failed_events: z.number().int().nonnegative(),
     backfill_pending: z.boolean(),
-    product_uuids: z.array(z.string().uuid()),
+    product_uuids: z.array(z.string().guid()),
     failed_accounts: z.array(z.object({
         institution_id: z.number().int().positive(),
         product_type: LinkProductTypeSchema,
@@ -184,10 +184,10 @@ export const LinkAccountsResponseSchema = z.object({
     })),
 });
 export const UnlinkAccountsBodySchema = z.object({
-    product_uuids: z.array(z.string().uuid()).min(1).max(50),
+    product_uuids: z.array(z.string().guid()).min(1).max(50),
 });
 export const UnlinkAccountsResponseSchema = z.object({
     requested: z.number().int().nonnegative(),
     unlinked: z.number().int().nonnegative(),
-    failed_uuids: z.array(z.string().uuid()),
+    failed_uuids: z.array(z.string().guid()),
 });

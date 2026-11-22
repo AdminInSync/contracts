@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { extendZodWithOpenApi } from '@anatine/zod-openapi';
+import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 extendZodWithOpenApi(z);
 export const ActivateAdminInvitationBodySchema = z.object({
     token: z.string().min(32).max(256),
@@ -14,7 +14,7 @@ export const LoginBodySchema = z.object({
     totp_code: z.string().min(1).max(64).optional(),
 });
 export const AdminResponseSchema = z.object({
-    id: z.string().uuid(),
+    id: z.string().guid(),
     name: z.string(),
     email: z.string().email(),
     role: z.enum(['superadmin']),

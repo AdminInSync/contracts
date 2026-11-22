@@ -1,101 +1,54 @@
 import { z } from 'zod';
-export declare const ReminderGoalTypeSchema: z.ZodEnum<["personal", "shared"]>;
-export declare const ReminderFrequencySchema: z.ZodEnum<["weekly", "biweekly", "monthly"]>;
-/** Personal goals are addressed by numeric id, shared goals by uuid (as in /shared-savings/:uuid). */
-export declare const SavingGoalReminderParamsSchema: z.ZodEffects<z.ZodObject<{
-    goal_type: z.ZodEnum<["personal", "shared"]>;
-    goal_id: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    goal_id: string;
-    goal_type: "personal" | "shared";
-}, {
-    goal_id: string;
-    goal_type: "personal" | "shared";
-}>, {
-    goal_id: string;
-    goal_type: "personal" | "shared";
-}, {
-    goal_id: string;
-    goal_type: "personal" | "shared";
+export declare const ReminderGoalTypeSchema: z.ZodEnum<{
+    personal: "personal";
+    shared: "shared";
 }>;
-export declare const PutSavingGoalReminderRequestSchema: z.ZodUnion<[z.ZodDiscriminatedUnion<"frequency", [z.ZodObject<{
+export declare const ReminderFrequencySchema: z.ZodEnum<{
+    monthly: "monthly";
+    weekly: "weekly";
+    biweekly: "biweekly";
+}>;
+/** Personal goals are addressed by numeric id, shared goals by uuid (as in /shared-savings/:uuid). */
+export declare const SavingGoalReminderParamsSchema: z.ZodObject<{
+    goal_type: z.ZodEnum<{
+        personal: "personal";
+        shared: "shared";
+    }>;
+    goal_id: z.ZodString;
+}, z.core.$strip>;
+export declare const PutSavingGoalReminderRequestSchema: z.ZodUnion<readonly [z.ZodDiscriminatedUnion<[z.ZodObject<{
     enabled: z.ZodBoolean;
     frequency: z.ZodLiteral<"weekly">;
     weekday: z.ZodNumber;
-}, "strict", z.ZodTypeAny, {
-    enabled: boolean;
-    frequency: "weekly";
-    weekday: number;
-}, {
-    enabled: boolean;
-    frequency: "weekly";
-    weekday: number;
-}>, z.ZodObject<{
+}, z.core.$strict>, z.ZodObject<{
     enabled: z.ZodBoolean;
     frequency: z.ZodLiteral<"monthly">;
     month_days: z.ZodTuple<[z.ZodNumber], null>;
-}, "strict", z.ZodTypeAny, {
-    enabled: boolean;
-    frequency: "monthly";
-    month_days: [number];
-}, {
-    enabled: boolean;
-    frequency: "monthly";
-    month_days: [number];
-}>, z.ZodObject<{
+}, z.core.$strict>, z.ZodObject<{
     enabled: z.ZodBoolean;
     frequency: z.ZodLiteral<"biweekly">;
-    month_days: z.ZodEffects<z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>, [number, number], [number, number]>;
-}, "strict", z.ZodTypeAny, {
-    enabled: boolean;
-    frequency: "biweekly";
-    month_days: [number, number];
-}, {
-    enabled: boolean;
-    frequency: "biweekly";
-    month_days: [number, number];
-}>]>, z.ZodObject<{
+    month_days: z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>;
+}, z.core.$strict>], "frequency">, z.ZodObject<{
     enabled: z.ZodLiteral<false>;
-}, "strict", z.ZodTypeAny, {
-    enabled: false;
-}, {
-    enabled: false;
-}>]>;
+}, z.core.$strict>]>;
 export declare const SavingGoalReminderResponseSchema: z.ZodObject<{
-    goal_type: z.ZodEnum<["personal", "shared"]>;
+    goal_type: z.ZodEnum<{
+        personal: "personal";
+        shared: "shared";
+    }>;
     goal_id: z.ZodString;
     enabled: z.ZodBoolean;
-    frequency: z.ZodNullable<z.ZodEnum<["weekly", "biweekly", "monthly"]>>;
+    frequency: z.ZodNullable<z.ZodEnum<{
+        monthly: "monthly";
+        weekly: "weekly";
+        biweekly: "biweekly";
+    }>>;
     weekday: z.ZodNullable<z.ZodNumber>;
-    month_days: z.ZodNullable<z.ZodArray<z.ZodNumber, "many">>;
+    month_days: z.ZodNullable<z.ZodArray<z.ZodNumber>>;
     next_fire_at: z.ZodNullable<z.ZodString>;
     goal_inactive: z.ZodBoolean;
-}, "strip", z.ZodTypeAny, {
-    goal_id: string;
-    goal_type: "personal" | "shared";
-    enabled: boolean;
-    frequency: "monthly" | "weekly" | "biweekly" | null;
-    weekday: number | null;
-    month_days: number[] | null;
-    next_fire_at: string | null;
-    goal_inactive: boolean;
-}, {
-    goal_id: string;
-    goal_type: "personal" | "shared";
-    enabled: boolean;
-    frequency: "monthly" | "weekly" | "biweekly" | null;
-    weekday: number | null;
-    month_days: number[] | null;
-    next_fire_at: string | null;
-    goal_inactive: boolean;
-}>;
+}, z.core.$strip>;
 export declare const SavingGoalReminderErrorSchema: z.ZodObject<{
     code: z.ZodString;
     message: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    code: string;
-    message: string;
-}, {
-    code: string;
-    message: string;
-}>;
+}, z.core.$strip>;

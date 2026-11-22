@@ -93,8 +93,8 @@ export const BudgetsContracts = c.router({
             500: ErrorResSchema,
         },
         query: z.object({
-            limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
-            offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
+            limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).prefault('20'),
+            offset: z.string().transform(Number).pipe(z.number().min(0)).prefault('0'),
         }),
         summary: 'Get active budgets',
         description: 'Returns all active budgets for the authenticated user',
@@ -113,8 +113,8 @@ export const BudgetsContracts = c.router({
             period: z.enum(['monthly', 'quarterly', 'yearly']),
         }),
         query: z.object({
-            limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
-            offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
+            limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).prefault('20'),
+            offset: z.string().transform(Number).pipe(z.number().min(0)).prefault('0'),
         }),
         summary: 'Get budgets by period',
         description: 'Returns budgets filtered by period for the authenticated user',

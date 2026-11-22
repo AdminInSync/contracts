@@ -6,32 +6,20 @@ export declare const InstitutionsContracts: {
         method: "POST";
         body: z.ZodObject<{
             name: z.ZodString;
-            institution_type: z.ZodOptional<z.ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>>;
+            institution_type: z.ZodOptional<z.ZodEnum<{
+                bank: "bank";
+                credit_union: "credit_union";
+                investment_firm: "investment_firm";
+                insurance: "insurance";
+                fintech: "fintech";
+            }>>;
             logo_url: z.ZodOptional<z.ZodString>;
             website: z.ZodOptional<z.ZodString>;
             country: z.ZodOptional<z.ZodString>;
             region: z.ZodOptional<z.ZodString>;
             is_active: z.ZodOptional<z.ZodBoolean>;
             description: z.ZodOptional<z.ZodString>;
-        }, "strip", z.ZodTypeAny, {
-            name: string;
-            is_active?: boolean | undefined;
-            description?: string | undefined;
-            institution_type?: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech" | undefined;
-            logo_url?: string | undefined;
-            website?: string | undefined;
-            country?: string | undefined;
-            region?: string | undefined;
-        }, {
-            name: string;
-            is_active?: boolean | undefined;
-            description?: string | undefined;
-            institution_type?: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech" | undefined;
-            logo_url?: string | undefined;
-            website?: string | undefined;
-            country?: string | undefined;
-            region?: string | undefined;
-        }>;
+        }, z.core.$strip>;
         path: "/institutions";
         responses: {
             201: z.ZodObject<{
@@ -40,7 +28,13 @@ export declare const InstitutionsContracts: {
                     id: z.ZodNumber;
                     uuid: z.ZodString;
                     name: z.ZodString;
-                    institution_type: z.ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>;
+                    institution_type: z.ZodEnum<{
+                        bank: "bank";
+                        credit_union: "credit_union";
+                        investment_firm: "investment_firm";
+                        insurance: "insurance";
+                        fintech: "fintech";
+                    }>;
                     logo_url: z.ZodNullable<z.ZodString>;
                     website: z.ZodNullable<z.ZodString>;
                     country: z.ZodNullable<z.ZodString>;
@@ -55,182 +49,46 @@ export declare const InstitutionsContracts: {
                         name: z.ZodString;
                         product_type: z.ZodString;
                         is_active: z.ZodBoolean;
-                    }, "strip", z.ZodTypeAny, {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }, {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }>, "many">>;
-                }, "strip", z.ZodTypeAny, {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }, {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                };
-            }, {
-                message: string;
-                data: {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                };
-            }>;
+                    }, z.core.$strip>>>;
+                }, z.core.$strip>;
+            }, z.core.$strip>;
             400: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             409: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
     getInstitutions: {
         query: z.ZodObject<{
-            institution_type: z.ZodOptional<z.ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>>;
+            institution_type: z.ZodOptional<z.ZodEnum<{
+                bank: "bank";
+                credit_union: "credit_union";
+                investment_firm: "investment_firm";
+                insurance: "insurance";
+                fintech: "fintech";
+            }>>;
             country: z.ZodOptional<z.ZodString>;
             region: z.ZodOptional<z.ZodString>;
             search: z.ZodOptional<z.ZodString>;
-            limit: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
-            offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
-        }, "strip", z.ZodTypeAny, {
-            limit: number;
-            offset: number;
-            search?: string | undefined;
-            institution_type?: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech" | undefined;
-            country?: string | undefined;
-            region?: string | undefined;
-        }, {
-            limit?: string | undefined;
-            search?: string | undefined;
-            offset?: string | undefined;
-            institution_type?: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech" | undefined;
-            country?: string | undefined;
-            region?: string | undefined;
-        }>;
+            limit: z.ZodPrefault<z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<number, string>>, z.ZodNumber>>;
+            offset: z.ZodPrefault<z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<number, string>>, z.ZodNumber>>;
+        }, z.core.$strip>;
         summary: "Get all financial institutions";
         description: "Returns all active financial institutions with optional filtering";
         method: "GET";
@@ -242,7 +100,13 @@ export declare const InstitutionsContracts: {
                     id: z.ZodNumber;
                     uuid: z.ZodString;
                     name: z.ZodString;
-                    institution_type: z.ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>;
+                    institution_type: z.ZodEnum<{
+                        bank: "bank";
+                        credit_union: "credit_union";
+                        investment_firm: "investment_firm";
+                        insurance: "insurance";
+                        fintech: "fintech";
+                    }>;
                     logo_url: z.ZodNullable<z.ZodString>;
                     website: z.ZodNullable<z.ZodString>;
                     country: z.ZodNullable<z.ZodString>;
@@ -257,151 +121,25 @@ export declare const InstitutionsContracts: {
                         name: z.ZodString;
                         product_type: z.ZodString;
                         is_active: z.ZodBoolean;
-                    }, "strip", z.ZodTypeAny, {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }, {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }>, "many">>;
-                }, "strip", z.ZodTypeAny, {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }, {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }>, "many">;
+                    }, z.core.$strip>>>;
+                }, z.core.$strip>>;
                 pagination: z.ZodOptional<z.ZodObject<{
                     total: z.ZodNumber;
                     limit: z.ZodNumber;
                     offset: z.ZodNumber;
-                }, "strip", z.ZodTypeAny, {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                }, {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                }>>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }[];
-                pagination?: {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                } | undefined;
-            }, {
-                message: string;
-                data: {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }[];
-                pagination?: {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                } | undefined;
-            }>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
     getInstitution: {
         pathParams: z.ZodObject<{
-            id: z.ZodEffects<z.ZodString, number, string>;
-        }, "strip", z.ZodTypeAny, {
-            id: number;
-        }, {
-            id: string;
-        }>;
+            id: z.ZodPipe<z.ZodString, z.ZodTransform<number, string>>;
+        }, z.core.$strip>;
         summary: "Get a specific financial institution";
         description: "Returns a specific financial institution by ID";
         method: "GET";
@@ -413,7 +151,13 @@ export declare const InstitutionsContracts: {
                     id: z.ZodNumber;
                     uuid: z.ZodString;
                     name: z.ZodString;
-                    institution_type: z.ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>;
+                    institution_type: z.ZodEnum<{
+                        bank: "bank";
+                        credit_union: "credit_union";
+                        investment_firm: "investment_firm";
+                        insurance: "insurance";
+                        fintech: "fintech";
+                    }>;
                     logo_url: z.ZodNullable<z.ZodString>;
                     website: z.ZodNullable<z.ZodString>;
                     country: z.ZodNullable<z.ZodString>;
@@ -428,172 +172,44 @@ export declare const InstitutionsContracts: {
                         name: z.ZodString;
                         product_type: z.ZodString;
                         is_active: z.ZodBoolean;
-                    }, "strip", z.ZodTypeAny, {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }, {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }>, "many">>;
-                }, "strip", z.ZodTypeAny, {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }, {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                };
-            }, {
-                message: string;
-                data: {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                };
-            }>;
+                    }, z.core.$strip>>>;
+                }, z.core.$strip>;
+            }, z.core.$strip>;
             404: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
     updateInstitution: {
         pathParams: z.ZodObject<{
-            id: z.ZodEffects<z.ZodString, number, string>;
-        }, "strip", z.ZodTypeAny, {
-            id: number;
-        }, {
-            id: string;
-        }>;
+            id: z.ZodPipe<z.ZodString, z.ZodTransform<number, string>>;
+        }, z.core.$strip>;
         summary: "Update a financial institution";
         description: "Updates an existing financial institution (admin only)";
         method: "PUT";
         body: z.ZodObject<{
             name: z.ZodOptional<z.ZodString>;
-            institution_type: z.ZodOptional<z.ZodOptional<z.ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>>>;
+            institution_type: z.ZodOptional<z.ZodOptional<z.ZodEnum<{
+                bank: "bank";
+                credit_union: "credit_union";
+                investment_firm: "investment_firm";
+                insurance: "insurance";
+                fintech: "fintech";
+            }>>>;
             logo_url: z.ZodOptional<z.ZodOptional<z.ZodString>>;
             website: z.ZodOptional<z.ZodOptional<z.ZodString>>;
             country: z.ZodOptional<z.ZodOptional<z.ZodString>>;
             region: z.ZodOptional<z.ZodOptional<z.ZodString>>;
             is_active: z.ZodOptional<z.ZodOptional<z.ZodBoolean>>;
             description: z.ZodOptional<z.ZodOptional<z.ZodString>>;
-        }, "strip", z.ZodTypeAny, {
-            is_active?: boolean | undefined;
-            description?: string | undefined;
-            name?: string | undefined;
-            institution_type?: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech" | undefined;
-            logo_url?: string | undefined;
-            website?: string | undefined;
-            country?: string | undefined;
-            region?: string | undefined;
-        }, {
-            is_active?: boolean | undefined;
-            description?: string | undefined;
-            name?: string | undefined;
-            institution_type?: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech" | undefined;
-            logo_url?: string | undefined;
-            website?: string | undefined;
-            country?: string | undefined;
-            region?: string | undefined;
-        }>;
+        }, z.core.$strip>;
         path: "/institutions/:id";
         responses: {
             200: z.ZodObject<{
@@ -602,7 +218,13 @@ export declare const InstitutionsContracts: {
                     id: z.ZodNumber;
                     uuid: z.ZodString;
                     name: z.ZodString;
-                    institution_type: z.ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>;
+                    institution_type: z.ZodEnum<{
+                        bank: "bank";
+                        credit_union: "credit_union";
+                        investment_firm: "investment_firm";
+                        insurance: "insurance";
+                        fintech: "fintech";
+                    }>;
                     logo_url: z.ZodNullable<z.ZodString>;
                     website: z.ZodNullable<z.ZodString>;
                     country: z.ZodNullable<z.ZodString>;
@@ -617,180 +239,40 @@ export declare const InstitutionsContracts: {
                         name: z.ZodString;
                         product_type: z.ZodString;
                         is_active: z.ZodBoolean;
-                    }, "strip", z.ZodTypeAny, {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }, {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }>, "many">>;
-                }, "strip", z.ZodTypeAny, {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }, {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                };
-            }, {
-                message: string;
-                data: {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                };
-            }>;
+                    }, z.core.$strip>>>;
+                }, z.core.$strip>;
+            }, z.core.$strip>;
             400: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             404: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             409: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
     deleteInstitution: {
         pathParams: z.ZodObject<{
-            id: z.ZodEffects<z.ZodString, number, string>;
-        }, "strip", z.ZodTypeAny, {
-            id: number;
-        }, {
-            id: string;
-        }>;
+            id: z.ZodPipe<z.ZodString, z.ZodTransform<number, string>>;
+        }, z.core.$strip>;
         summary: "Delete a financial institution";
         description: "Soft-deletes a financial institution (admin only)";
         method: "DELETE";
@@ -798,66 +280,30 @@ export declare const InstitutionsContracts: {
         responses: {
             200: z.ZodObject<{
                 message: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-            }, {
-                message: string;
-            }>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             404: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
     searchInstitutions: {
         query: z.ZodObject<{
             q: z.ZodString;
-            limit: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
-            offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
-        }, "strip", z.ZodTypeAny, {
-            limit: number;
-            offset: number;
-            q: string;
-        }, {
-            q: string;
-            limit?: string | undefined;
-            offset?: string | undefined;
-        }>;
+            limit: z.ZodPrefault<z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<number, string>>, z.ZodNumber>>;
+            offset: z.ZodPrefault<z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<number, string>>, z.ZodNumber>>;
+        }, z.core.$strip>;
         summary: "Search financial institutions";
         description: "Searches financial institutions by name";
         method: "GET";
@@ -869,7 +315,13 @@ export declare const InstitutionsContracts: {
                     id: z.ZodNumber;
                     uuid: z.ZodString;
                     name: z.ZodString;
-                    institution_type: z.ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>;
+                    institution_type: z.ZodEnum<{
+                        bank: "bank";
+                        credit_union: "credit_union";
+                        investment_firm: "investment_firm";
+                        insurance: "insurance";
+                        fintech: "fintech";
+                    }>;
                     logo_url: z.ZodNullable<z.ZodString>;
                     website: z.ZodNullable<z.ZodString>;
                     country: z.ZodNullable<z.ZodString>;
@@ -884,161 +336,35 @@ export declare const InstitutionsContracts: {
                         name: z.ZodString;
                         product_type: z.ZodString;
                         is_active: z.ZodBoolean;
-                    }, "strip", z.ZodTypeAny, {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }, {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }>, "many">>;
-                }, "strip", z.ZodTypeAny, {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }, {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }>, "many">;
+                    }, z.core.$strip>>>;
+                }, z.core.$strip>>;
                 pagination: z.ZodOptional<z.ZodObject<{
                     total: z.ZodNumber;
                     limit: z.ZodNumber;
                     offset: z.ZodNumber;
-                }, "strip", z.ZodTypeAny, {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                }, {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                }>>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }[];
-                pagination?: {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                } | undefined;
-            }, {
-                message: string;
-                data: {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }[];
-                pagination?: {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                } | undefined;
-            }>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
     getInstitutionsByType: {
         pathParams: z.ZodObject<{
-            type: z.ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>;
-        }, "strip", z.ZodTypeAny, {
-            type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-        }, {
-            type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-        }>;
+            type: z.ZodEnum<{
+                bank: "bank";
+                credit_union: "credit_union";
+                investment_firm: "investment_firm";
+                insurance: "insurance";
+                fintech: "fintech";
+            }>;
+        }, z.core.$strip>;
         query: z.ZodObject<{
-            limit: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
-            offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
-        }, "strip", z.ZodTypeAny, {
-            limit: number;
-            offset: number;
-        }, {
-            limit?: string | undefined;
-            offset?: string | undefined;
-        }>;
+            limit: z.ZodPrefault<z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<number, string>>, z.ZodNumber>>;
+            offset: z.ZodPrefault<z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<number, string>>, z.ZodNumber>>;
+        }, z.core.$strip>;
         summary: "Get institutions by type";
         description: "Returns financial institutions filtered by type";
         method: "GET";
@@ -1050,7 +376,13 @@ export declare const InstitutionsContracts: {
                     id: z.ZodNumber;
                     uuid: z.ZodString;
                     name: z.ZodString;
-                    institution_type: z.ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>;
+                    institution_type: z.ZodEnum<{
+                        bank: "bank";
+                        credit_union: "credit_union";
+                        investment_firm: "investment_firm";
+                        insurance: "insurance";
+                        fintech: "fintech";
+                    }>;
                     logo_url: z.ZodNullable<z.ZodString>;
                     website: z.ZodNullable<z.ZodString>;
                     country: z.ZodNullable<z.ZodString>;
@@ -1065,167 +397,31 @@ export declare const InstitutionsContracts: {
                         name: z.ZodString;
                         product_type: z.ZodString;
                         is_active: z.ZodBoolean;
-                    }, "strip", z.ZodTypeAny, {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }, {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }>, "many">>;
-                }, "strip", z.ZodTypeAny, {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }, {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }>, "many">;
+                    }, z.core.$strip>>>;
+                }, z.core.$strip>>;
                 pagination: z.ZodOptional<z.ZodObject<{
                     total: z.ZodNumber;
                     limit: z.ZodNumber;
                     offset: z.ZodNumber;
-                }, "strip", z.ZodTypeAny, {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                }, {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                }>>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }[];
-                pagination?: {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                } | undefined;
-            }, {
-                message: string;
-                data: {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }[];
-                pagination?: {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                } | undefined;
-            }>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>;
             400: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
     getInstitutionsWithProducts: {
         query: z.ZodObject<{
-            limit: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
-            offset: z.ZodDefault<z.ZodPipeline<z.ZodEffects<z.ZodString, number, string>, z.ZodNumber>>;
-        }, "strip", z.ZodTypeAny, {
-            limit: number;
-            offset: number;
-        }, {
-            limit?: string | undefined;
-            offset?: string | undefined;
-        }>;
+            limit: z.ZodPrefault<z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<number, string>>, z.ZodNumber>>;
+            offset: z.ZodPrefault<z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<number, string>>, z.ZodNumber>>;
+        }, z.core.$strip>;
         summary: "Get institutions with products";
         description: "Returns financial institutions that have active products";
         method: "GET";
@@ -1237,7 +433,13 @@ export declare const InstitutionsContracts: {
                     id: z.ZodNumber;
                     uuid: z.ZodString;
                     name: z.ZodString;
-                    institution_type: z.ZodEnum<["bank", "credit_union", "investment_firm", "insurance", "fintech"]>;
+                    institution_type: z.ZodEnum<{
+                        bank: "bank";
+                        credit_union: "credit_union";
+                        investment_firm: "investment_firm";
+                        insurance: "insurance";
+                        fintech: "fintech";
+                    }>;
                     logo_url: z.ZodNullable<z.ZodString>;
                     website: z.ZodNullable<z.ZodString>;
                     country: z.ZodNullable<z.ZodString>;
@@ -1252,141 +454,19 @@ export declare const InstitutionsContracts: {
                         name: z.ZodString;
                         product_type: z.ZodString;
                         is_active: z.ZodBoolean;
-                    }, "strip", z.ZodTypeAny, {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }, {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }>, "many">>;
-                }, "strip", z.ZodTypeAny, {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }, {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }>, "many">;
+                    }, z.core.$strip>>>;
+                }, z.core.$strip>>;
                 pagination: z.ZodOptional<z.ZodObject<{
                     total: z.ZodNumber;
                     limit: z.ZodNumber;
                     offset: z.ZodNumber;
-                }, "strip", z.ZodTypeAny, {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                }, {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                }>>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }[];
-                pagination?: {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                } | undefined;
-            }, {
-                message: string;
-                data: {
-                    id: number;
-                    is_active: boolean;
-                    description: string | null;
-                    uuid: string;
-                    created_at: string;
-                    updated_at: string;
-                    name: string;
-                    deleted_at: string | null;
-                    institution_type: "bank" | "credit_union" | "investment_firm" | "insurance" | "fintech";
-                    logo_url: string | null;
-                    website: string | null;
-                    country: string | null;
-                    region: string | null;
-                    products?: {
-                        id: number;
-                        is_active: boolean;
-                        name: string;
-                        product_type: string;
-                    }[] | undefined;
-                }[];
-                pagination?: {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                } | undefined;
-            }>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
 };

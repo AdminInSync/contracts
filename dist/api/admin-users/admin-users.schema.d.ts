@@ -8,25 +8,7 @@ export declare const AdminUserEntrySchema: z.ZodObject<{
     is_active: z.ZodBoolean;
     last_login_at: z.ZodNullable<z.ZodString>;
     created_at: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    id: string;
-    email: string;
-    is_active: boolean;
-    created_at: string;
-    name: string;
-    totp_enabled: boolean;
-    last_login_at: string | null;
-    invitation_pending: boolean;
-}, {
-    id: string;
-    email: string;
-    is_active: boolean;
-    created_at: string;
-    name: string;
-    totp_enabled: boolean;
-    last_login_at: string | null;
-    invitation_pending: boolean;
-}>;
+}, z.core.$strip>;
 export declare const AdminUserListResponseSchema: z.ZodObject<{
     message: z.ZodString;
     data: z.ZodArray<z.ZodObject<{
@@ -38,60 +20,12 @@ export declare const AdminUserListResponseSchema: z.ZodObject<{
         is_active: z.ZodBoolean;
         last_login_at: z.ZodNullable<z.ZodString>;
         created_at: z.ZodString;
-    }, "strip", z.ZodTypeAny, {
-        id: string;
-        email: string;
-        is_active: boolean;
-        created_at: string;
-        name: string;
-        totp_enabled: boolean;
-        last_login_at: string | null;
-        invitation_pending: boolean;
-    }, {
-        id: string;
-        email: string;
-        is_active: boolean;
-        created_at: string;
-        name: string;
-        totp_enabled: boolean;
-        last_login_at: string | null;
-        invitation_pending: boolean;
-    }>, "many">;
-}, "strip", z.ZodTypeAny, {
-    message: string;
-    data: {
-        id: string;
-        email: string;
-        is_active: boolean;
-        created_at: string;
-        name: string;
-        totp_enabled: boolean;
-        last_login_at: string | null;
-        invitation_pending: boolean;
-    }[];
-}, {
-    message: string;
-    data: {
-        id: string;
-        email: string;
-        is_active: boolean;
-        created_at: string;
-        name: string;
-        totp_enabled: boolean;
-        last_login_at: string | null;
-        invitation_pending: boolean;
-    }[];
-}>;
+    }, z.core.$strip>>;
+}, z.core.$strip>;
 export declare const InviteAdminBodySchema: z.ZodObject<{
     name: z.ZodString;
     email: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    email: string;
-    name: string;
-}, {
-    email: string;
-    name: string;
-}>;
+}, z.core.$strip>;
 export declare const InviteAdminResponseSchema: z.ZodObject<{
     message: z.ZodString;
     data: z.ZodObject<{
@@ -103,49 +37,7 @@ export declare const InviteAdminResponseSchema: z.ZodObject<{
         is_active: z.ZodBoolean;
         last_login_at: z.ZodNullable<z.ZodString>;
         created_at: z.ZodString;
-    }, "strip", z.ZodTypeAny, {
-        id: string;
-        email: string;
-        is_active: boolean;
-        created_at: string;
-        name: string;
-        totp_enabled: boolean;
-        last_login_at: string | null;
-        invitation_pending: boolean;
-    }, {
-        id: string;
-        email: string;
-        is_active: boolean;
-        created_at: string;
-        name: string;
-        totp_enabled: boolean;
-        last_login_at: string | null;
-        invitation_pending: boolean;
-    }>;
-}, "strip", z.ZodTypeAny, {
-    message: string;
-    data: {
-        id: string;
-        email: string;
-        is_active: boolean;
-        created_at: string;
-        name: string;
-        totp_enabled: boolean;
-        last_login_at: string | null;
-        invitation_pending: boolean;
-    };
-}, {
-    message: string;
-    data: {
-        id: string;
-        email: string;
-        is_active: boolean;
-        created_at: string;
-        name: string;
-        totp_enabled: boolean;
-        last_login_at: string | null;
-        invitation_pending: boolean;
-    };
-}>;
+    }, z.core.$strip>;
+}, z.core.$strip>;
 export type AdminUserEntry = z.infer<typeof AdminUserEntrySchema>;
 export type InviteAdminBody = z.infer<typeof InviteAdminBodySchema>;

@@ -5,7 +5,7 @@ export const CreateAppFeedbackSchema = z.object({
 export const AppFeedbackResponseSchema = z.object({
     message: z.string(),
     data: z.object({
-        uuid: z.string().uuid(),
+        uuid: z.string().guid(),
         created_at: z.string().datetime(),
     }),
 });

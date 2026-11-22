@@ -93,8 +93,8 @@ export const InstitutionsContracts = c.router({
         },
         query: z.object({
             q: z.string().min(1),
-            limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
-            offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
+            limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).prefault('20'),
+            offset: z.string().transform(Number).pipe(z.number().min(0)).prefault('0'),
         }),
         summary: 'Search financial institutions',
         description: 'Searches financial institutions by name',
@@ -112,8 +112,8 @@ export const InstitutionsContracts = c.router({
             type: z.enum(['bank', 'credit_union', 'investment_firm', 'insurance', 'fintech']),
         }),
         query: z.object({
-            limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
-            offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
+            limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).prefault('20'),
+            offset: z.string().transform(Number).pipe(z.number().min(0)).prefault('0'),
         }),
         summary: 'Get institutions by type',
         description: 'Returns financial institutions filtered by type',
@@ -127,8 +127,8 @@ export const InstitutionsContracts = c.router({
             500: ErrorResSchema,
         },
         query: z.object({
-            limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
-            offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
+            limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).prefault('20'),
+            offset: z.string().transform(Number).pipe(z.number().min(0)).prefault('0'),
         }),
         summary: 'Get institutions with products',
         description: 'Returns financial institutions that have active products',

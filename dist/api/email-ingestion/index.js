@@ -88,7 +88,7 @@ export const EmailIngestionContracts = c.router({
     disconnectConnection: {
         method: 'DELETE',
         path: '/connections/:connectionUuid',
-        pathParams: z.object({ connectionUuid: z.string().uuid() }),
+        pathParams: z.object({ connectionUuid: z.string().guid() }),
         responses: {
             200: DisconnectEmailConnectionResponseSchema,
             401: ErrorResSchema,
@@ -101,7 +101,7 @@ export const EmailIngestionContracts = c.router({
     syncConnection: {
         method: 'POST',
         path: '/connections/:connectionUuid/sync',
-        pathParams: z.object({ connectionUuid: z.string().uuid() }),
+        pathParams: z.object({ connectionUuid: z.string().guid() }),
         body: z.object({
             institution_key: z.string().min(1).optional(),
         }),
@@ -184,7 +184,7 @@ export const EmailIngestionContracts = c.router({
     approveEvent: {
         method: 'POST',
         path: '/events/:eventUuid/approve',
-        pathParams: z.object({ eventUuid: z.string().uuid() }),
+        pathParams: z.object({ eventUuid: z.string().guid() }),
         body: ApproveFinancialEmailEventBodySchema,
         responses: {
             200: ApproveFinancialEmailEventResponseSchema,
@@ -199,7 +199,7 @@ export const EmailIngestionContracts = c.router({
     rejectEvent: {
         method: 'POST',
         path: '/events/:eventUuid/reject',
-        pathParams: z.object({ eventUuid: z.string().uuid() }),
+        pathParams: z.object({ eventUuid: z.string().guid() }),
         body: RejectFinancialEmailEventBodySchema,
         responses: {
             200: RejectFinancialEmailEventResponseSchema,

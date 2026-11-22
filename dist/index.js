@@ -1,3 +1,4 @@
+import './openapi-extensions';
 import { initContract } from '@ts-rest/core';
 import { ApiContracts } from './api';
 import { DocsContracts } from './docs';

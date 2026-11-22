@@ -46,7 +46,7 @@ export const CountedExpenseTypeSchema = z.enum(['manual', 'voice']);
 // Base schemas
 export const BudgetSchema = z.object({
     id: z.number(),
-    uuid: z.string().uuid(),
+    uuid: z.string().guid(),
     user_uid: z.string(),
     name: z.string(),
     budget_period: BudgetPeriodSchema,
@@ -58,7 +58,7 @@ export const BudgetSchema = z.object({
     currency: z.string(),
     is_active: z.boolean(),
     notes: z.string().nullable(),
-    settings: z.any().nullable(),
+    settings: z.any().nullable().optional(),
     category: z.enum(BUDGET_CATEGORIES).nullable(),
     categories: z.array(z.enum(BUDGET_CATEGORIES)),
     needs_category: z.boolean(),
@@ -114,8 +114,8 @@ export const UpdateBudgetUsedAmountSchema = z.object({
 export const GetBudgetsQuerySchema = z.object({
     budget_period: BudgetPeriodSchema.optional(),
     is_active: z.string().transform(val => val === 'true').pipe(z.boolean()).optional(),
-    limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
-    offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
+    limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).prefault('20'),
+    offset: z.string().transform(Number).pipe(z.number().min(0)).prefault('0'),
 });
 // Response schemas
 export const BudgetResponseSchema = z.object({

@@ -1,11 +1,7 @@
 import { z } from 'zod';
 export declare const TrackingModeResponseSchema: z.ZodObject<{
     emailSync: z.ZodBoolean;
-}, "strip", z.ZodTypeAny, {
-    emailSync: boolean;
-}, {
-    emailSync: boolean;
-}>;
+}, z.core.$strip>;
 export declare const FeatureFlagsContracts: {
     getTrackingMode: {
         summary: "Get the authenticated account tracking mode";
@@ -15,37 +11,17 @@ export declare const FeatureFlagsContracts: {
         responses: {
             200: z.ZodObject<{
                 emailSync: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                emailSync: boolean;
-            }, {
-                emailSync: boolean;
-            }>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
 };

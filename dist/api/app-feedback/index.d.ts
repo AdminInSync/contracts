@@ -5,11 +5,7 @@ export declare const AppFeedbackContracts: {
         method: "POST";
         body: import("zod").ZodObject<{
             message: import("zod").ZodString;
-        }, "strict", import("zod").ZodTypeAny, {
-            message: string;
-        }, {
-            message: string;
-        }>;
+        }, import("zod/v4/core").$strict>;
         path: "/app-feedback";
         responses: {
             201: import("zod").ZodObject<{
@@ -17,65 +13,23 @@ export declare const AppFeedbackContracts: {
                 data: import("zod").ZodObject<{
                     uuid: import("zod").ZodString;
                     created_at: import("zod").ZodString;
-                }, "strip", import("zod").ZodTypeAny, {
-                    uuid: string;
-                    created_at: string;
-                }, {
-                    uuid: string;
-                    created_at: string;
-                }>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                data: {
-                    uuid: string;
-                    created_at: string;
-                };
-            }, {
-                message: string;
-                data: {
-                    uuid: string;
-                    created_at: string;
-                };
-            }>;
+                }, import("zod/v4/core").$strip>;
+            }, import("zod/v4/core").$strip>;
             400: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             401: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             500: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
         };
     };
 };

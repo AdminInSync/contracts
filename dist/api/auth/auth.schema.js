@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { extendZodWithOpenApi } from '@anatine/zod-openapi';
+import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 extendZodWithOpenApi(z);
 // Removed login and register schemas - using Firebase client-side authentication
 export const ProviderDataSchema = z.object({
@@ -35,7 +35,7 @@ export const UserResponseSchema = z.object({
     provider_data: z.array(ProviderDataSchema),
     provider_id: z.string(),
     // Custom claims
-    custom_claims: z.record(z.any()),
+    custom_claims: z.record(z.string(), z.any()),
     // Additional Firebase fields
     tenant_id: z.string().nullable(),
     multi_factor: MultiFactorSchema,

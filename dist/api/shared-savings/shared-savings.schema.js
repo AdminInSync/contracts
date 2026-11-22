@@ -2,14 +2,14 @@ import { z } from 'zod';
 const CurrencySchema = z.enum(['DOP', 'USD', 'EUR']);
 const DateSchema = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Use YYYY-MM-DD');
 export const SharedSavingsGoalSchema = z.object({
-    uuid: z.string().uuid(),
+    uuid: z.string().guid(),
     name: z.string(),
     purpose: z.string(),
     target_amount: z.number(),
     current_amount: z.number(),
     currency: CurrencySchema,
     target_date: DateSchema,
-    invite_code: z.string().uuid(),
+    invite_code: z.string().guid(),
     is_owner: z.boolean(),
     leaderboard: z.array(z.object({
         rank: z.number().int().positive(),
@@ -26,7 +26,7 @@ export const CreateSharedSavingsGoalSchema = z.object({
     display_name: z.string().trim().min(1).max(80),
 }).strict();
 export const JoinSharedSavingsGoalSchema = z.object({
-    invite_code: z.string().uuid(),
+    invite_code: z.string().guid(),
     display_name: z.string().trim().min(1).max(80),
 }).strict();
 export const SharedSavingsContributionSchema = z.object({

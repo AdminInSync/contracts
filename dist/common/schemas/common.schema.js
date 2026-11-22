@@ -26,7 +26,7 @@ export const ErrorResSchema = z.object({
     statusCode: z.number().optional(),
 });
 export const ParamSchema = z.object({
-    id: z.string().uuid(),
+    id: z.string().guid(),
 });
 export const PaginationSchema = z.object({
     page: z.number().min(1).default(1),
