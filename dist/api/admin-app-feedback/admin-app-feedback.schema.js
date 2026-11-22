@@ -1,9 +1,9 @@
 import { z } from 'zod';
-import { extendZodWithOpenApi } from '@anatine/zod-openapi';
+import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 extendZodWithOpenApi(z);
 export const AppFeedbackStatusSchema = z.enum(['new', 'reviewed', 'resolved']);
 export const AdminAppFeedbackEntrySchema = z.object({
-    id: z.string().uuid(),
+    id: z.string().guid(),
     message: z.string(),
     status: AppFeedbackStatusSchema,
     user_uid: z.string(),
@@ -19,7 +19,7 @@ export const GetAppFeedbackQuerySchema = z.object({
     status: z.union([AppFeedbackStatusSchema, z.literal('all')]).optional(),
 });
 export const UpdateAppFeedbackStatusParamsSchema = z.object({
-    id: z.string().uuid(),
+    id: z.string().guid(),
 });
 export const UpdateAppFeedbackStatusBodySchema = z.object({
     status: AppFeedbackStatusSchema,

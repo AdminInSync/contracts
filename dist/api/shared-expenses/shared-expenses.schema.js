@@ -9,7 +9,7 @@ export const SharedExpenseGroupMemberSchema = z.object({
     is_owner: z.boolean(),
 });
 export const SharedExpenseGroupSchema = z.object({
-    uuid: z.string().uuid(),
+    uuid: z.string().guid(),
     name: z.string(),
     currency: SharedExpenseCurrencySchema,
     invite_code: z.string().regex(/^[0-9]{5}$/).nullable(),
@@ -30,7 +30,7 @@ export const SharedExpenseGroupDetailSchema = z.object({
     summary: SharedExpenseSummarySchema,
 });
 export const SharedExpenseTransactionItemSchema = z.object({
-    uuid: z.string().uuid(),
+    uuid: z.string().guid(),
     amount: z.number(),
     currency: SharedExpenseCurrencySchema,
     transaction_date: DateSchema,
@@ -77,8 +77,8 @@ export const UpdateSharedExpenseTransactionSchema = z.object({
         : IncomeCategorySchema.safeParse(value.category).success;
 }, { message: 'Category does not match transaction type', path: ['category'] });
 export const SharedExpenseTransactionsQuerySchema = z.object({
-    limit: z.string().transform(Number).pipe(z.number().int().min(1).max(100)).default('20'),
-    offset: z.string().transform(Number).pipe(z.number().int().min(0)).default('0'),
+    limit: z.string().transform(Number).pipe(z.number().int().min(1).max(100)).prefault('20'),
+    offset: z.string().transform(Number).pipe(z.number().int().min(0)).prefault('0'),
     from: DateSchema.optional(),
     to: DateSchema.optional(),
 }).refine((query) => !query.from || !query.to || query.from <= query.to, {

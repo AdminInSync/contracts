@@ -1,9 +1,9 @@
 import { z } from 'zod';
-import { extendZodWithOpenApi } from '@anatine/zod-openapi';
+import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 import { QueryBooleanSchema } from '../../common/schemas/common.schema';
 extendZodWithOpenApi(z);
 export const WaitlistEntrySchema = z.object({
-    id: z.string().uuid(),
+    id: z.string().guid(),
     first_name: z.string(),
     last_name: z.string(),
     email: z.string().email(),

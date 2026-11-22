@@ -8,17 +8,7 @@ export declare const NewsletterContracts: {
             last_name: import("zod").ZodString;
             email: import("zod").ZodString;
             source: import("zod").ZodOptional<import("zod").ZodString>;
-        }, "strip", import("zod").ZodTypeAny, {
-            email: string;
-            first_name: string;
-            last_name: string;
-            source?: string | undefined;
-        }, {
-            email: string;
-            first_name: string;
-            last_name: string;
-            source?: string | undefined;
-        }>;
+        }, import("zod/v4/core").$strip>;
         path: "/newsletter/subscribe";
         responses: {
             201: import("zod").ZodObject<{
@@ -29,53 +19,19 @@ export declare const NewsletterContracts: {
                 email: import("zod").ZodString;
                 source: import("zod").ZodNullable<import("zod").ZodString>;
                 created_at: import("zod").ZodString;
-            }, "strip", import("zod").ZodTypeAny, {
-                id: number;
-                email: string;
-                uuid: string;
-                created_at: string;
-                first_name: string;
-                last_name: string;
-                source: string | null;
-            }, {
-                id: number;
-                email: string;
-                uuid: string;
-                created_at: string;
-                first_name: string;
-                last_name: string;
-                source: string | null;
-            }>;
+            }, import("zod/v4/core").$strip>;
             400: import("zod").ZodObject<{
                 error: import("zod").ZodString;
                 message: import("zod").ZodString;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error: string;
-            }, {
-                message: string;
-                error: string;
-            }>;
+            }, import("zod/v4/core").$strip>;
             409: import("zod").ZodObject<{
                 error: import("zod").ZodString;
                 message: import("zod").ZodString;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error: string;
-            }, {
-                message: string;
-                error: string;
-            }>;
+            }, import("zod/v4/core").$strip>;
             500: import("zod").ZodObject<{
                 error: import("zod").ZodString;
                 message: import("zod").ZodString;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error: string;
-            }, {
-                message: string;
-                error: string;
-            }>;
+            }, import("zod/v4/core").$strip>;
         };
         strictStatusCodes: true;
     };

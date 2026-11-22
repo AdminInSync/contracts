@@ -10,26 +10,8 @@ export declare const DocsContracts: {
                 body: import("zod").ZodObject<{
                     status: import("zod").ZodString;
                     timestamp: import("zod").ZodString;
-                }, "strip", import("zod").ZodTypeAny, {
-                    status: string;
-                    timestamp: string;
-                }, {
-                    status: string;
-                    timestamp: string;
-                }>;
-            }, "strip", import("zod").ZodTypeAny, {
-                contentType: "application/json";
-                body: {
-                    status: string;
-                    timestamp: string;
-                };
-            }, {
-                contentType: "application/json";
-                body: {
-                    status: string;
-                    timestamp: string;
-                };
-            }>;
+                }, import("zod/v4/core").$strip>;
+            }, import("zod/v4/core").$strip>;
         };
         strictStatusCodes: true;
     };
@@ -42,13 +24,7 @@ export declare const DocsContracts: {
             200: import("zod").ZodObject<{
                 contentType: import("zod").ZodLiteral<"application/json">;
                 body: import("zod").ZodAny;
-            }, "strip", import("zod").ZodTypeAny, {
-                contentType: "application/json";
-                body?: any;
-            }, {
-                contentType: "application/json";
-                body?: any;
-            }>;
+            }, import("zod/v4/core").$strip>;
         };
         strictStatusCodes: true;
     };
@@ -61,13 +37,7 @@ export declare const DocsContracts: {
             200: import("zod").ZodObject<{
                 contentType: import("zod").ZodLiteral<"text/yaml">;
                 body: import("zod").ZodString;
-            }, "strip", import("zod").ZodTypeAny, {
-                contentType: "text/yaml";
-                body: string;
-            }, {
-                contentType: "text/yaml";
-                body: string;
-            }>;
+            }, import("zod/v4/core").$strip>;
         };
         strictStatusCodes: true;
     };
@@ -80,13 +50,7 @@ export declare const DocsContracts: {
             200: import("zod").ZodObject<{
                 contentType: import("zod").ZodLiteral<"application/json">;
                 body: import("zod").ZodAny;
-            }, "strip", import("zod").ZodTypeAny, {
-                contentType: "application/json";
-                body?: any;
-            }, {
-                contentType: "application/json";
-                body?: any;
-            }>;
+            }, import("zod/v4/core").$strip>;
         };
         strictStatusCodes: true;
     };

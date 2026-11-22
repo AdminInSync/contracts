@@ -12,38 +12,22 @@ export declare const SavingGoalsContracts: {
             monthly_contribution: z.ZodOptional<z.ZodNumber>;
             currency: z.ZodString;
             target_date: z.ZodString;
-            status: z.ZodOptional<z.ZodEnum<["active", "completed", "paused", "cancelled"]>>;
-            priority: z.ZodOptional<z.ZodEnum<["low", "medium", "high", "urgent"]>>;
+            status: z.ZodOptional<z.ZodEnum<{
+                active: "active";
+                completed: "completed";
+                paused: "paused";
+                cancelled: "cancelled";
+            }>>;
+            priority: z.ZodOptional<z.ZodEnum<{
+                low: "low";
+                medium: "medium";
+                high: "high";
+                urgent: "urgent";
+            }>>;
             color: z.ZodOptional<z.ZodString>;
             notes: z.ZodOptional<z.ZodString>;
             is_public: z.ZodOptional<z.ZodBoolean>;
-        }, "strip", z.ZodTypeAny, {
-            name: string;
-            target_amount: number;
-            currency: string;
-            target_date: string;
-            status?: "active" | "completed" | "paused" | "cancelled" | undefined;
-            description?: string | undefined;
-            notes?: string | undefined;
-            current_amount?: number | undefined;
-            monthly_contribution?: number | undefined;
-            priority?: "low" | "medium" | "high" | "urgent" | undefined;
-            color?: string | undefined;
-            is_public?: boolean | undefined;
-        }, {
-            name: string;
-            target_amount: number;
-            currency: string;
-            target_date: string;
-            status?: "active" | "completed" | "paused" | "cancelled" | undefined;
-            description?: string | undefined;
-            notes?: string | undefined;
-            current_amount?: number | undefined;
-            monthly_contribution?: number | undefined;
-            priority?: "low" | "medium" | "high" | "urgent" | undefined;
-            color?: string | undefined;
-            is_public?: boolean | undefined;
-        }>;
+        }, z.core.$strip>;
         path: "/saving-goals";
         responses: {
             201: z.ZodObject<{
@@ -59,159 +43,61 @@ export declare const SavingGoalsContracts: {
                     monthly_contribution: z.ZodNumber;
                     currency: z.ZodString;
                     target_date: z.ZodString;
-                    status: z.ZodEnum<["active", "completed", "paused", "cancelled"]>;
-                    priority: z.ZodNullable<z.ZodEnum<["low", "medium", "high", "urgent"]>>;
+                    status: z.ZodEnum<{
+                        active: "active";
+                        completed: "completed";
+                        paused: "paused";
+                        cancelled: "cancelled";
+                    }>;
+                    priority: z.ZodNullable<z.ZodEnum<{
+                        low: "low";
+                        medium: "medium";
+                        high: "high";
+                        urgent: "urgent";
+                    }>>;
                     color: z.ZodNullable<z.ZodString>;
                     notes: z.ZodNullable<z.ZodString>;
                     is_public: z.ZodBoolean;
                     created_at: z.ZodString;
                     updated_at: z.ZodString;
                     deleted_at: z.ZodNullable<z.ZodString>;
-                }, "strip", z.ZodTypeAny, {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                }, {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                }>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                };
-            }, {
-                message: string;
-                data: {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                };
-            }>;
+                }, z.core.$strip>;
+            }, z.core.$strip>;
             400: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
     getSavingGoals: {
         query: z.ZodObject<{
-            status: z.ZodOptional<z.ZodEnum<["active", "completed", "paused", "cancelled"]>>;
-            priority: z.ZodOptional<z.ZodEnum<["low", "medium", "high", "urgent"]>>;
-            is_public: z.ZodOptional<z.ZodBoolean>;
-            limit: z.ZodDefault<z.ZodNumber>;
-            offset: z.ZodDefault<z.ZodNumber>;
-        }, "strip", z.ZodTypeAny, {
-            limit: number;
-            offset: number;
-            status?: "active" | "completed" | "paused" | "cancelled" | undefined;
-            priority?: "low" | "medium" | "high" | "urgent" | undefined;
-            is_public?: boolean | undefined;
-        }, {
-            status?: "active" | "completed" | "paused" | "cancelled" | undefined;
-            limit?: number | undefined;
-            priority?: "low" | "medium" | "high" | "urgent" | undefined;
-            is_public?: boolean | undefined;
-            offset?: number | undefined;
-        }>;
+            status: z.ZodOptional<z.ZodEnum<{
+                active: "active";
+                completed: "completed";
+                paused: "paused";
+                cancelled: "cancelled";
+            }>>;
+            priority: z.ZodOptional<z.ZodEnum<{
+                low: "low";
+                medium: "medium";
+                high: "high";
+                urgent: "urgent";
+            }>>;
+            is_public: z.ZodOptional<z.ZodCoercedBoolean<unknown>>;
+            limit: z.ZodDefault<z.ZodCoercedNumber<unknown>>;
+            offset: z.ZodDefault<z.ZodCoercedNumber<unknown>>;
+        }, z.core.$strip>;
         summary: "Get all saving goals";
         description: "Returns all saving goals for the authenticated user with optional filtering";
         method: "GET";
@@ -230,157 +116,47 @@ export declare const SavingGoalsContracts: {
                     monthly_contribution: z.ZodNumber;
                     currency: z.ZodString;
                     target_date: z.ZodString;
-                    status: z.ZodEnum<["active", "completed", "paused", "cancelled"]>;
-                    priority: z.ZodNullable<z.ZodEnum<["low", "medium", "high", "urgent"]>>;
+                    status: z.ZodEnum<{
+                        active: "active";
+                        completed: "completed";
+                        paused: "paused";
+                        cancelled: "cancelled";
+                    }>;
+                    priority: z.ZodNullable<z.ZodEnum<{
+                        low: "low";
+                        medium: "medium";
+                        high: "high";
+                        urgent: "urgent";
+                    }>>;
                     color: z.ZodNullable<z.ZodString>;
                     notes: z.ZodNullable<z.ZodString>;
                     is_public: z.ZodBoolean;
                     created_at: z.ZodString;
                     updated_at: z.ZodString;
                     deleted_at: z.ZodNullable<z.ZodString>;
-                }, "strip", z.ZodTypeAny, {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                }, {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                }>, "many">;
+                }, z.core.$strip>>;
                 pagination: z.ZodOptional<z.ZodObject<{
                     total: z.ZodNumber;
                     limit: z.ZodNumber;
                     offset: z.ZodNumber;
-                }, "strip", z.ZodTypeAny, {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                }, {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                }>>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                }[];
-                pagination?: {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                } | undefined;
-            }, {
-                message: string;
-                data: {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                }[];
-                pagination?: {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                } | undefined;
-            }>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
     getSavingGoal: {
         pathParams: z.ZodObject<{
-            id: z.ZodNumber;
-        }, "strip", z.ZodTypeAny, {
-            id: number;
-        }, {
-            id: number;
-        }>;
+            id: z.ZodCoercedNumber<unknown>;
+        }, z.core.$strip>;
         summary: "Get a specific saving goal";
         description: "Returns a specific saving goal by ID";
         method: "GET";
@@ -399,147 +175,47 @@ export declare const SavingGoalsContracts: {
                     monthly_contribution: z.ZodNumber;
                     currency: z.ZodString;
                     target_date: z.ZodString;
-                    status: z.ZodEnum<["active", "completed", "paused", "cancelled"]>;
-                    priority: z.ZodNullable<z.ZodEnum<["low", "medium", "high", "urgent"]>>;
+                    status: z.ZodEnum<{
+                        active: "active";
+                        completed: "completed";
+                        paused: "paused";
+                        cancelled: "cancelled";
+                    }>;
+                    priority: z.ZodNullable<z.ZodEnum<{
+                        low: "low";
+                        medium: "medium";
+                        high: "high";
+                        urgent: "urgent";
+                    }>>;
                     color: z.ZodNullable<z.ZodString>;
                     notes: z.ZodNullable<z.ZodString>;
                     is_public: z.ZodBoolean;
                     created_at: z.ZodString;
                     updated_at: z.ZodString;
                     deleted_at: z.ZodNullable<z.ZodString>;
-                }, "strip", z.ZodTypeAny, {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                }, {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                }>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                };
-            }, {
-                message: string;
-                data: {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                };
-            }>;
+                }, z.core.$strip>;
+            }, z.core.$strip>;
             404: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
     updateSavingGoal: {
         pathParams: z.ZodObject<{
-            id: z.ZodNumber;
-        }, "strip", z.ZodTypeAny, {
-            id: number;
-        }, {
-            id: number;
-        }>;
+            id: z.ZodCoercedNumber<unknown>;
+        }, z.core.$strip>;
         summary: "Update a saving goal";
         description: "Updates an existing saving goal";
         method: "PUT";
@@ -551,38 +227,22 @@ export declare const SavingGoalsContracts: {
             monthly_contribution: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
             currency: z.ZodOptional<z.ZodString>;
             target_date: z.ZodOptional<z.ZodString>;
-            status: z.ZodOptional<z.ZodOptional<z.ZodEnum<["active", "completed", "paused", "cancelled"]>>>;
-            priority: z.ZodOptional<z.ZodOptional<z.ZodEnum<["low", "medium", "high", "urgent"]>>>;
+            status: z.ZodOptional<z.ZodOptional<z.ZodEnum<{
+                active: "active";
+                completed: "completed";
+                paused: "paused";
+                cancelled: "cancelled";
+            }>>>;
+            priority: z.ZodOptional<z.ZodOptional<z.ZodEnum<{
+                low: "low";
+                medium: "medium";
+                high: "high";
+                urgent: "urgent";
+            }>>>;
             color: z.ZodOptional<z.ZodOptional<z.ZodString>>;
             notes: z.ZodOptional<z.ZodOptional<z.ZodString>>;
             is_public: z.ZodOptional<z.ZodOptional<z.ZodBoolean>>;
-        }, "strip", z.ZodTypeAny, {
-            status?: "active" | "completed" | "paused" | "cancelled" | undefined;
-            description?: string | undefined;
-            notes?: string | undefined;
-            name?: string | undefined;
-            target_amount?: number | undefined;
-            current_amount?: number | undefined;
-            monthly_contribution?: number | undefined;
-            currency?: string | undefined;
-            target_date?: string | undefined;
-            priority?: "low" | "medium" | "high" | "urgent" | undefined;
-            color?: string | undefined;
-            is_public?: boolean | undefined;
-        }, {
-            status?: "active" | "completed" | "paused" | "cancelled" | undefined;
-            description?: string | undefined;
-            notes?: string | undefined;
-            name?: string | undefined;
-            target_amount?: number | undefined;
-            current_amount?: number | undefined;
-            monthly_contribution?: number | undefined;
-            currency?: string | undefined;
-            target_date?: string | undefined;
-            priority?: "low" | "medium" | "high" | "urgent" | undefined;
-            color?: string | undefined;
-            is_public?: boolean | undefined;
-        }>;
+        }, z.core.$strip>;
         path: "/update-saving-goals-by-id/:id/";
         responses: {
             200: z.ZodObject<{
@@ -598,170 +258,58 @@ export declare const SavingGoalsContracts: {
                     monthly_contribution: z.ZodNumber;
                     currency: z.ZodString;
                     target_date: z.ZodString;
-                    status: z.ZodEnum<["active", "completed", "paused", "cancelled"]>;
-                    priority: z.ZodNullable<z.ZodEnum<["low", "medium", "high", "urgent"]>>;
+                    status: z.ZodEnum<{
+                        active: "active";
+                        completed: "completed";
+                        paused: "paused";
+                        cancelled: "cancelled";
+                    }>;
+                    priority: z.ZodNullable<z.ZodEnum<{
+                        low: "low";
+                        medium: "medium";
+                        high: "high";
+                        urgent: "urgent";
+                    }>>;
                     color: z.ZodNullable<z.ZodString>;
                     notes: z.ZodNullable<z.ZodString>;
                     is_public: z.ZodBoolean;
                     created_at: z.ZodString;
                     updated_at: z.ZodString;
                     deleted_at: z.ZodNullable<z.ZodString>;
-                }, "strip", z.ZodTypeAny, {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                }, {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                }>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                };
-            }, {
-                message: string;
-                data: {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                };
-            }>;
+                }, z.core.$strip>;
+            }, z.core.$strip>;
             400: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             404: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
     updateProgress: {
         pathParams: z.ZodObject<{
-            id: z.ZodNumber;
-        }, "strip", z.ZodTypeAny, {
-            id: number;
-        }, {
-            id: number;
-        }>;
+            id: z.ZodCoercedNumber<unknown>;
+        }, z.core.$strip>;
         summary: "Update saving goal progress";
         description: "Updates the current amount of a saving goal";
         method: "PATCH";
         body: z.ZodObject<{
             current_amount: z.ZodNumber;
-        }, "strip", z.ZodTypeAny, {
-            current_amount: number;
-        }, {
-            current_amount: number;
-        }>;
+        }, z.core.$strip>;
         path: "/update-saving-goals-by-id/:id/progress/";
         responses: {
             200: z.ZodObject<{
@@ -777,160 +325,52 @@ export declare const SavingGoalsContracts: {
                     monthly_contribution: z.ZodNumber;
                     currency: z.ZodString;
                     target_date: z.ZodString;
-                    status: z.ZodEnum<["active", "completed", "paused", "cancelled"]>;
-                    priority: z.ZodNullable<z.ZodEnum<["low", "medium", "high", "urgent"]>>;
+                    status: z.ZodEnum<{
+                        active: "active";
+                        completed: "completed";
+                        paused: "paused";
+                        cancelled: "cancelled";
+                    }>;
+                    priority: z.ZodNullable<z.ZodEnum<{
+                        low: "low";
+                        medium: "medium";
+                        high: "high";
+                        urgent: "urgent";
+                    }>>;
                     color: z.ZodNullable<z.ZodString>;
                     notes: z.ZodNullable<z.ZodString>;
                     is_public: z.ZodBoolean;
                     created_at: z.ZodString;
                     updated_at: z.ZodString;
                     deleted_at: z.ZodNullable<z.ZodString>;
-                }, "strip", z.ZodTypeAny, {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                }, {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                }>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                };
-            }, {
-                message: string;
-                data: {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                };
-            }>;
+                }, z.core.$strip>;
+            }, z.core.$strip>;
             400: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             404: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
     deleteSavingGoal: {
         pathParams: z.ZodObject<{
-            id: z.ZodNumber;
-        }, "strip", z.ZodTypeAny, {
-            id: number;
-        }, {
-            id: number;
-        }>;
+            id: z.ZodCoercedNumber<unknown>;
+        }, z.core.$strip>;
         summary: "Delete a saving goal";
         description: "Soft-deletes a saving goal";
         method: "DELETE";
@@ -938,63 +378,29 @@ export declare const SavingGoalsContracts: {
         responses: {
             200: z.ZodObject<{
                 message: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-            }, {
-                message: string;
-            }>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             404: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
     getPublicSavingGoals: {
         query: z.ZodObject<{
-            limit: z.ZodDefault<z.ZodNumber>;
-            offset: z.ZodDefault<z.ZodNumber>;
-        }, "strip", z.ZodTypeAny, {
-            limit: number;
-            offset: number;
-        }, {
-            limit?: number | undefined;
-            offset?: number | undefined;
-        }>;
+            limit: z.ZodDefault<z.ZodCoercedNumber<unknown>>;
+            offset: z.ZodDefault<z.ZodCoercedNumber<unknown>>;
+        }, z.core.$strip>;
         summary: "Get public saving goals";
         description: "Returns public saving goals from all users";
         method: "GET";
@@ -1013,144 +419,42 @@ export declare const SavingGoalsContracts: {
                     monthly_contribution: z.ZodNumber;
                     currency: z.ZodString;
                     target_date: z.ZodString;
-                    status: z.ZodEnum<["active", "completed", "paused", "cancelled"]>;
-                    priority: z.ZodNullable<z.ZodEnum<["low", "medium", "high", "urgent"]>>;
+                    status: z.ZodEnum<{
+                        active: "active";
+                        completed: "completed";
+                        paused: "paused";
+                        cancelled: "cancelled";
+                    }>;
+                    priority: z.ZodNullable<z.ZodEnum<{
+                        low: "low";
+                        medium: "medium";
+                        high: "high";
+                        urgent: "urgent";
+                    }>>;
                     color: z.ZodNullable<z.ZodString>;
                     notes: z.ZodNullable<z.ZodString>;
                     is_public: z.ZodBoolean;
                     created_at: z.ZodString;
                     updated_at: z.ZodString;
                     deleted_at: z.ZodNullable<z.ZodString>;
-                }, "strip", z.ZodTypeAny, {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                }, {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                }>, "many">;
+                }, z.core.$strip>>;
                 pagination: z.ZodOptional<z.ZodObject<{
                     total: z.ZodNumber;
                     limit: z.ZodNumber;
                     offset: z.ZodNumber;
-                }, "strip", z.ZodTypeAny, {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                }, {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                }>>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                }[];
-                pagination?: {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                } | undefined;
-            }, {
-                message: string;
-                data: {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                }[];
-                pagination?: {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                } | undefined;
-            }>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
     getGoalsDueSoon: {
         query: z.ZodObject<{
-            days: z.ZodDefault<z.ZodNumber>;
-        }, "strip", z.ZodTypeAny, {
-            days: number;
-        }, {
-            days?: number | undefined;
-        }>;
+            days: z.ZodDefault<z.ZodCoercedNumber<unknown>>;
+        }, z.core.$strip>;
         summary: "Get upcoming saving goals";
         description: "Returns saving goals due within the specified number of days";
         method: "GET";
@@ -1169,147 +473,41 @@ export declare const SavingGoalsContracts: {
                     monthly_contribution: z.ZodNumber;
                     currency: z.ZodString;
                     target_date: z.ZodString;
-                    status: z.ZodEnum<["active", "completed", "paused", "cancelled"]>;
-                    priority: z.ZodNullable<z.ZodEnum<["low", "medium", "high", "urgent"]>>;
+                    status: z.ZodEnum<{
+                        active: "active";
+                        completed: "completed";
+                        paused: "paused";
+                        cancelled: "cancelled";
+                    }>;
+                    priority: z.ZodNullable<z.ZodEnum<{
+                        low: "low";
+                        medium: "medium";
+                        high: "high";
+                        urgent: "urgent";
+                    }>>;
                     color: z.ZodNullable<z.ZodString>;
                     notes: z.ZodNullable<z.ZodString>;
                     is_public: z.ZodBoolean;
                     created_at: z.ZodString;
                     updated_at: z.ZodString;
                     deleted_at: z.ZodNullable<z.ZodString>;
-                }, "strip", z.ZodTypeAny, {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                }, {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                }>, "many">;
+                }, z.core.$strip>>;
                 pagination: z.ZodOptional<z.ZodObject<{
                     total: z.ZodNumber;
                     limit: z.ZodNumber;
                     offset: z.ZodNumber;
-                }, "strip", z.ZodTypeAny, {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                }, {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                }>>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                data: {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                }[];
-                pagination?: {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                } | undefined;
-            }, {
-                message: string;
-                data: {
-                    status: "active" | "completed" | "paused" | "cancelled";
-                    id: number;
-                    description: string | null;
-                    uuid: string;
-                    user_uid: string;
-                    created_at: string;
-                    notes: string | null;
-                    updated_at: string;
-                    name: string;
-                    target_amount: number;
-                    current_amount: number;
-                    monthly_contribution: number;
-                    currency: string;
-                    target_date: string;
-                    priority: "low" | "medium" | "high" | "urgent" | null;
-                    color: string | null;
-                    is_public: boolean;
-                    deleted_at: string | null;
-                }[];
-                pagination?: {
-                    limit: number;
-                    total: number;
-                    offset: number;
-                } | undefined;
-            }>;
+                }, z.core.$strip>>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
             500: z.ZodObject<{
                 message: z.ZodString;
                 error: z.ZodOptional<z.ZodString>;
                 statusCode: z.ZodOptional<z.ZodNumber>;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, z.core.$strip>;
         };
     };
 };

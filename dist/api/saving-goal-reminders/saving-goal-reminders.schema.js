@@ -8,7 +8,7 @@ export const SavingGoalReminderParamsSchema = z.object({
 }).superRefine((params, ctx) => {
     const valid = params.goal_type === 'personal'
         ? /^[1-9]\d{0,17}$/.test(params.goal_id)
-        : z.string().uuid().safeParse(params.goal_id).success;
+        : z.string().guid().safeParse(params.goal_id).success;
     if (!valid) {
         ctx.addIssue({
             code: z.ZodIssueCode.custom,

@@ -4,17 +4,7 @@ export declare const CreateNewsletterRequestSchema: z.ZodObject<{
     last_name: z.ZodString;
     email: z.ZodString;
     source: z.ZodOptional<z.ZodString>;
-}, "strip", z.ZodTypeAny, {
-    email: string;
-    first_name: string;
-    last_name: string;
-    source?: string | undefined;
-}, {
-    email: string;
-    first_name: string;
-    last_name: string;
-    source?: string | undefined;
-}>;
+}, z.core.$strip>;
 export declare const NewsletterResponseSchema: z.ZodObject<{
     id: z.ZodNumber;
     uuid: z.ZodString;
@@ -23,30 +13,8 @@ export declare const NewsletterResponseSchema: z.ZodObject<{
     email: z.ZodString;
     source: z.ZodNullable<z.ZodString>;
     created_at: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    id: number;
-    email: string;
-    uuid: string;
-    created_at: string;
-    first_name: string;
-    last_name: string;
-    source: string | null;
-}, {
-    id: number;
-    email: string;
-    uuid: string;
-    created_at: string;
-    first_name: string;
-    last_name: string;
-    source: string | null;
-}>;
+}, z.core.$strip>;
 export declare const NewsletterErrorResponseSchema: z.ZodObject<{
     error: z.ZodString;
     message: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    message: string;
-    error: string;
-}, {
-    message: string;
-    error: string;
-}>;
+}, z.core.$strip>;

@@ -6,7 +6,7 @@ export const ConnectedProductTypeSchema = z.enum(['accounts', 'cards', 'loans', 
 // Base schemas
 export const FinancialProductSchema = z.object({
     id: z.number(),
-    uuid: z.string().uuid(),
+    uuid: z.string().guid(),
     name: z.string(),
     product_type: ProductTypeSchema,
     institution_id: z.number(),
@@ -59,8 +59,8 @@ export const GetProductsQuerySchema = z.object({
     credit_score_requirement: CreditScoreRequirementSchema.optional(),
     is_spotlight: z.string().transform(val => val === 'true').pipe(z.boolean()).optional(),
     search: z.string().optional(),
-    limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).default('20'),
-    offset: z.string().transform(Number).pipe(z.number().min(0)).default('0'),
+    limit: z.string().transform(Number).pipe(z.number().min(1).max(100)).prefault('20'),
+    offset: z.string().transform(Number).pipe(z.number().min(0)).prefault('0'),
 });
 // Response schemas
 export const ProductResponseSchema = z.object({
@@ -99,8 +99,8 @@ export const ConnectedProductMetadataSchema = z.object({
 export const ProductKindSchema = z.enum(['debit', 'credit']);
 export const CardBrandSchema = z.enum(['visa', 'mastercard', 'amex']);
 export const ExpenseDestinationSchema = z.object({
-    budget_uuid: z.string().uuid().nullable(),
-    group_uuid: z.string().uuid().nullable(),
+    budget_uuid: z.string().guid().nullable(),
+    group_uuid: z.string().guid().nullable(),
 });
 export const ConnectedProductSchema = z.object({
     id: z.string(),
@@ -114,7 +114,7 @@ export const ConnectedProductSchema = z.object({
     expense_destination: ExpenseDestinationSchema,
     is_manual: z.boolean(),
     card_brand: CardBrandSchema.nullable(),
-    linked_account_id: z.string().uuid().nullable().optional(),
+    linked_account_id: z.string().guid().nullable().optional(),
     balance: ConnectedProductBalanceSchema,
     /** Latest account balance reported or explicitly recorded; null means unknown. */
     bank_balance: z.number().nullable().optional().describe('Latest known bank balance; null means no balance has been reported or recorded.'),
@@ -143,8 +143,8 @@ export const ConnectedProductsResponseSchema = z.object({
     data: ConnectedProductsDataSchema,
 });
 export const ProductTransactionItemSchema = z.object({
-    uuid: z.string().uuid(),
-    product_uuid: z.string().uuid().nullable().optional(),
+    uuid: z.string().guid(),
+    product_uuid: z.string().guid().nullable().optional(),
     amount: z.number(),
     currency: z.string(),
     transaction_date: z.string(),
@@ -163,9 +163,9 @@ export const ProductTransactionItemSchema = z.object({
     product_label: z.string().nullable(),
     card_brand: CardBrandSchema.nullable(),
     linked_account_label: z.string().nullable().optional(),
-    budget_uuid: z.string().uuid().nullable().optional(),
-    group_uuid: z.string().uuid().nullable().optional(),
-    excluded_budget_uuids: z.array(z.string().uuid()).optional(),
+    budget_uuid: z.string().guid().nullable().optional(),
+    group_uuid: z.string().guid().nullable().optional(),
+    excluded_budget_uuids: z.array(z.string().guid()).optional(),
     destination_pending: z.string().nullable().optional(),
     budget_pending: z.string().nullable().optional(),
     group_pending: z.string().nullable().optional(),
@@ -173,7 +173,7 @@ export const ProductTransactionItemSchema = z.object({
 export const SetExpenseDestinationSchema = ExpenseDestinationSchema.strict();
 export const SetTransactionExpenseDestinationSchema = ExpenseDestinationSchema.extend({
     /** Budget to add to or remove from the transaction's category-based exclusions. */
-    excluded_budget_uuid: z.string().uuid().optional(),
+    excluded_budget_uuid: z.string().guid().optional(),
     /** Defaults to true when excluded_budget_uuid is provided. */
     budget_excluded: z.boolean().optional(),
 }).strict().refine((value) => value.budget_excluded === undefined || value.excluded_budget_uuid !== undefined, {
@@ -183,7 +183,7 @@ export const SetTransactionExpenseDestinationSchema = ExpenseDestinationSchema.e
 export const ExpenseDestinationResponseSchema = z.object({ message: z.string(), data: ExpenseDestinationSchema });
 export const TransactionExpenseDestinationResponseSchema = z.object({
     message: z.string(),
-    data: ExpenseDestinationSchema.extend({ excluded_budget_uuids: z.array(z.string().uuid()) }),
+    data: ExpenseDestinationSchema.extend({ excluded_budget_uuids: z.array(z.string().guid()) }),
 });
 export const ProductTransactionsListResponseSchema = z.object({
     message: z.string(),

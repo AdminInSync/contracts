@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import '../../openapi-extensions';
 import { DocumentType } from '../../enums';
 export const RegistrationStatusSchema = z.enum(['in_progress', 'completed', 'abandoned']);
 export const RegistrationStepSchema = z.enum(['document', 'pin', 'done']);
@@ -20,7 +21,7 @@ export const PinStepSchema = z.object({
 export const RegistrationStepRequestSchema = z.discriminatedUnion('step', [
     DocumentStepSchema,
     PinStepSchema,
-]);
+]).openapi({ discriminator: { propertyName: 'step' } });
 export const RegistrationResponseSchema = z.object({
     status: RegistrationStatusSchema,
     current_step: RegistrationStepSchema,

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { extendZodWithOpenApi } from '@anatine/zod-openapi';
+import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 import { DocumentStatus, DocumentType } from '../../enums';
 import { QueryBooleanSchema } from '../../common/schemas/common.schema';
 import { ActivationPhaseSchema } from '../admin-dashboard/admin-dashboard.schema';
@@ -23,7 +23,7 @@ export const ClientListItemSchema = z.object({
     product_count: z.number().int(),
 });
 export const ClientDeviceSchema = z.object({
-    id: z.string().uuid(),
+    id: z.string().guid(),
     device_unique_id: z.string(),
     notes: z.string(),
     created_at: z.string().datetime(),
@@ -40,7 +40,7 @@ export const ClientPreferencesSchema = z.object({
     preferred_theme: z.enum(['SYSTEM', 'LIGHT', 'DARK']),
 });
 export const ClientProductSchema = z.object({
-    id: z.string().uuid(),
+    id: z.string().guid(),
     name: z.string(),
     institution_name: z.string().nullable(),
     product_type: z.string(),

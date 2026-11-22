@@ -19,7 +19,7 @@ export const SharedSavingsContracts = c.router({
         summary: 'Join a shared savings goal with an invite code',
     },
     contribute: {
-        method: 'POST', path: '/shared-savings/:uuid/contributions', pathParams: z.object({ uuid: z.string().uuid() }),
+        method: 'POST', path: '/shared-savings/:uuid/contributions', pathParams: z.object({ uuid: z.string().guid() }),
         body: SharedSavingsContributionSchema,
         responses: { 200: SharedSavingsGoalResponseSchema, 400: ErrorResSchema, 401: ErrorResSchema, 404: ErrorResSchema, 500: ErrorResSchema },
         summary: 'Add a contribution to a shared savings goal',

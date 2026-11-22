@@ -1,12 +1,8 @@
 export declare const AdminBetaTestersContracts: {
     list: {
         query: import("zod").ZodObject<{
-            has_app_account: import("zod").ZodEffects<import("zod").ZodOptional<import("zod").ZodBoolean>, boolean | undefined, unknown>;
-        }, "strip", import("zod").ZodTypeAny, {
-            has_app_account?: boolean | undefined;
-        }, {
-            has_app_account?: unknown;
-        }>;
+            has_app_account: import("zod").ZodPreprocess<import("zod").ZodOptional<import("zod").ZodBoolean>, unknown>;
+        }, import("zod/v4/core").$strip>;
         summary: "List beta testers";
         description: "Returns beta waitlist entries for the admin panel, with whether each email already has an app account.";
         method: "GET";
@@ -18,86 +14,38 @@ export declare const AdminBetaTestersContracts: {
                     id: import("zod").ZodString;
                     full_name: import("zod").ZodString;
                     bank_email: import("zod").ZodString;
-                    operating_system: import("zod").ZodEnum<["android", "ios", "both"]>;
-                    interests: import("zod").ZodArray<import("zod").ZodEnum<["expense_categories", "automatic_expense_tracking", "budgets_and_alerts", "savings_goals", "debts_loans_and_credit_cards", "payment_reminders", "financial_reports_and_charts", "multiple_accounts_and_banks", "other"]>, "many">;
+                    operating_system: import("zod").ZodEnum<{
+                        android: "android";
+                        ios: "ios";
+                        both: "both";
+                    }>;
+                    interests: import("zod").ZodArray<import("zod").ZodEnum<{
+                        other: "other";
+                        expense_categories: "expense_categories";
+                        automatic_expense_tracking: "automatic_expense_tracking";
+                        budgets_and_alerts: "budgets_and_alerts";
+                        savings_goals: "savings_goals";
+                        debts_loans_and_credit_cards: "debts_loans_and_credit_cards";
+                        payment_reminders: "payment_reminders";
+                        financial_reports_and_charts: "financial_reports_and_charts";
+                        multiple_accounts_and_banks: "multiple_accounts_and_banks";
+                    }>>;
                     other_interest: import("zod").ZodNullable<import("zod").ZodString>;
                     has_app_account: import("zod").ZodBoolean;
                     created_at: import("zod").ZodString;
                     download_email_sent_at: import("zod").ZodNullable<import("zod").ZodString>;
-                }, "strip", import("zod").ZodTypeAny, {
-                    id: string;
-                    created_at: string;
-                    full_name: string;
-                    bank_email: string;
-                    operating_system: "android" | "ios" | "both";
-                    interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
-                    other_interest: string | null;
-                    has_app_account: boolean;
-                    download_email_sent_at: string | null;
-                }, {
-                    id: string;
-                    created_at: string;
-                    full_name: string;
-                    bank_email: string;
-                    operating_system: "android" | "ios" | "both";
-                    interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
-                    other_interest: string | null;
-                    has_app_account: boolean;
-                    download_email_sent_at: string | null;
-                }>, "many">;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                data: {
-                    id: string;
-                    created_at: string;
-                    full_name: string;
-                    bank_email: string;
-                    operating_system: "android" | "ios" | "both";
-                    interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
-                    other_interest: string | null;
-                    has_app_account: boolean;
-                    download_email_sent_at: string | null;
-                }[];
-            }, {
-                message: string;
-                data: {
-                    id: string;
-                    created_at: string;
-                    full_name: string;
-                    bank_email: string;
-                    operating_system: "android" | "ios" | "both";
-                    interests: ("other" | "expense_categories" | "automatic_expense_tracking" | "budgets_and_alerts" | "savings_goals" | "debts_loans_and_credit_cards" | "payment_reminders" | "financial_reports_and_charts" | "multiple_accounts_and_banks")[];
-                    other_interest: string | null;
-                    has_app_account: boolean;
-                    download_email_sent_at: string | null;
-                }[];
-            }>;
+                }, import("zod/v4/core").$strip>>;
+            }, import("zod/v4/core").$strip>;
             401: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             500: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
         };
         strictStatusCodes: true;
     };
@@ -105,22 +53,13 @@ export declare const AdminBetaTestersContracts: {
         summary: "Send download emails";
         description: "Sends the InSync download email to all beta testers or to a selected set of UUIDs.";
         method: "POST";
-        body: import("zod").ZodEffects<import("zod").ZodObject<{
-            scope: import("zod").ZodEnum<["all", "selected"]>;
-            uuids: import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodString, "many">>;
-        }, "strip", import("zod").ZodTypeAny, {
-            scope: "all" | "selected";
-            uuids?: string[] | undefined;
-        }, {
-            scope: "all" | "selected";
-            uuids?: string[] | undefined;
-        }>, {
-            scope: "all" | "selected";
-            uuids?: string[] | undefined;
-        }, {
-            scope: "all" | "selected";
-            uuids?: string[] | undefined;
-        }>;
+        body: import("zod").ZodObject<{
+            scope: import("zod").ZodEnum<{
+                all: "all";
+                selected: "selected";
+            }>;
+            uuids: import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodString>>;
+        }, import("zod/v4/core").$strip>;
         path: "/admin/beta-testers/send-download-email";
         responses: {
             200: import("zod").ZodObject<{
@@ -132,105 +71,29 @@ export declare const AdminBetaTestersContracts: {
                     failures: import("zod").ZodArray<import("zod").ZodObject<{
                         id: import("zod").ZodString;
                         message: import("zod").ZodString;
-                    }, "strip", import("zod").ZodTypeAny, {
-                        message: string;
-                        id: string;
-                    }, {
-                        message: string;
-                        id: string;
-                    }>, "many">;
-                }, "strip", import("zod").ZodTypeAny, {
-                    sent: number;
-                    failed: number;
-                    requested: number;
-                    failures: {
-                        message: string;
-                        id: string;
-                    }[];
-                }, {
-                    sent: number;
-                    failed: number;
-                    requested: number;
-                    failures: {
-                        message: string;
-                        id: string;
-                    }[];
-                }>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                data: {
-                    sent: number;
-                    failed: number;
-                    requested: number;
-                    failures: {
-                        message: string;
-                        id: string;
-                    }[];
-                };
-            }, {
-                message: string;
-                data: {
-                    sent: number;
-                    failed: number;
-                    requested: number;
-                    failures: {
-                        message: string;
-                        id: string;
-                    }[];
-                };
-            }>;
+                    }, import("zod/v4/core").$strip>>;
+                }, import("zod/v4/core").$strip>;
+            }, import("zod/v4/core").$strip>;
             400: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             401: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             503: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             500: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
         };
         strictStatusCodes: true;
     };

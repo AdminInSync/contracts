@@ -5,7 +5,7 @@ export const PriorityLevelSchema = z.enum(['low', 'medium', 'high', 'urgent']);
 // Base schemas
 export const SavingGoalSchema = z.object({
     id: z.number(),
-    uuid: z.string().uuid(),
+    uuid: z.string().guid(),
     user_uid: z.string(),
     name: z.string(),
     description: z.string().nullable(),

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { extendZodWithOpenApi } from '@anatine/zod-openapi';
+import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 import { QueryBooleanSchema } from '../../common/schemas/common.schema';
 import { BetaTesterInterestSchema, BetaTesterOperatingSystemSchema } from '../beta-testers/beta-testers.schema';
 extendZodWithOpenApi(z);
@@ -7,7 +7,7 @@ export const GetBetaTestersQuerySchema = z.object({
     has_app_account: QueryBooleanSchema,
 });
 export const AdminBetaTesterEntrySchema = z.object({
-    id: z.string().uuid(),
+    id: z.string().guid(),
     full_name: z.string(),
     bank_email: z.string().email(),
     operating_system: BetaTesterOperatingSystemSchema,
@@ -23,7 +23,7 @@ export const BetaTesterListResponseSchema = z.object({
 });
 export const SendDownloadEmailBodySchema = z.object({
     scope: z.enum(['all', 'selected']),
-    uuids: z.array(z.string().uuid()).optional(),
+    uuids: z.array(z.string().guid()).optional(),
 }).superRefine((data, context) => {
     if (data.scope === 'selected' && (!data.uuids || data.uuids.length < 1)) {
         context.addIssue({
@@ -34,7 +34,7 @@ export const SendDownloadEmailBodySchema = z.object({
     }
 });
 export const SendDownloadEmailFailureSchema = z.object({
-    id: z.string().uuid(),
+    id: z.string().guid(),
     message: z.string(),
 });
 export const SendDownloadEmailResponseSchema = z.object({

@@ -26,21 +26,7 @@ export declare const AuthContracts: {
                             displayName: import("zod").ZodNullable<import("zod").ZodString>;
                             photoURL: import("zod").ZodNullable<import("zod").ZodString>;
                             phoneNumber: import("zod").ZodNullable<import("zod").ZodString>;
-                        }, "strip", import("zod").ZodTypeAny, {
-                            providerId: string;
-                            uid: string;
-                            email: string | null;
-                            displayName: string | null;
-                            photoURL: string | null;
-                            phoneNumber: string | null;
-                        }, {
-                            providerId: string;
-                            uid: string;
-                            email: string | null;
-                            displayName: string | null;
-                            photoURL: string | null;
-                            phoneNumber: string | null;
-                        }>, "many">;
+                        }, import("zod/v4/core").$strip>>;
                         provider_id: import("zod").ZodString;
                         custom_claims: import("zod").ZodRecord<import("zod").ZodString, import("zod").ZodAny>;
                         tenant_id: import("zod").ZodNullable<import("zod").ZodString>;
@@ -50,268 +36,26 @@ export declare const AuthContracts: {
                                 display_name: import("zod").ZodNullable<import("zod").ZodString>;
                                 enrollment_time: import("zod").ZodString;
                                 factor_id: import("zod").ZodString;
-                            }, "strip", import("zod").ZodTypeAny, {
-                                uid: string;
-                                display_name: string | null;
-                                enrollment_time: string;
-                                factor_id: string;
-                            }, {
-                                uid: string;
-                                display_name: string | null;
-                                enrollment_time: string;
-                                factor_id: string;
-                            }>, "many">;
-                        }, "strip", import("zod").ZodTypeAny, {
-                            enrolled_factors: {
-                                uid: string;
-                                display_name: string | null;
-                                enrollment_time: string;
-                                factor_id: string;
-                            }[];
-                        }, {
-                            enrolled_factors: {
-                                uid: string;
-                                display_name: string | null;
-                                enrollment_time: string;
-                                factor_id: string;
-                            }[];
-                        }>;
-                    }, "strip", import("zod").ZodTypeAny, {
-                        email: string;
-                        display_name: string | null;
-                        firebase_uid: string;
-                        photo_url: string | null;
-                        email_verified: boolean;
-                        is_active: boolean;
-                        phone_number: string | null;
-                        creation_time: string | null;
-                        last_sign_in_time: string | null;
-                        last_refresh_time: string | null;
-                        provider_data: {
-                            providerId: string;
-                            uid: string;
-                            email: string | null;
-                            displayName: string | null;
-                            photoURL: string | null;
-                            phoneNumber: string | null;
-                        }[];
-                        provider_id: string;
-                        custom_claims: Record<string, any>;
-                        tenant_id: string | null;
-                        multi_factor: {
-                            enrolled_factors: {
-                                uid: string;
-                                display_name: string | null;
-                                enrollment_time: string;
-                                factor_id: string;
-                            }[];
-                        };
-                    }, {
-                        email: string;
-                        display_name: string | null;
-                        firebase_uid: string;
-                        photo_url: string | null;
-                        email_verified: boolean;
-                        is_active: boolean;
-                        phone_number: string | null;
-                        creation_time: string | null;
-                        last_sign_in_time: string | null;
-                        last_refresh_time: string | null;
-                        provider_data: {
-                            providerId: string;
-                            uid: string;
-                            email: string | null;
-                            displayName: string | null;
-                            photoURL: string | null;
-                            phoneNumber: string | null;
-                        }[];
-                        provider_id: string;
-                        custom_claims: Record<string, any>;
-                        tenant_id: string | null;
-                        multi_factor: {
-                            enrolled_factors: {
-                                uid: string;
-                                display_name: string | null;
-                                enrollment_time: string;
-                                factor_id: string;
-                            }[];
-                        };
-                    }>;
-                }, "strip", import("zod").ZodTypeAny, {
-                    user: {
-                        email: string;
-                        display_name: string | null;
-                        firebase_uid: string;
-                        photo_url: string | null;
-                        email_verified: boolean;
-                        is_active: boolean;
-                        phone_number: string | null;
-                        creation_time: string | null;
-                        last_sign_in_time: string | null;
-                        last_refresh_time: string | null;
-                        provider_data: {
-                            providerId: string;
-                            uid: string;
-                            email: string | null;
-                            displayName: string | null;
-                            photoURL: string | null;
-                            phoneNumber: string | null;
-                        }[];
-                        provider_id: string;
-                        custom_claims: Record<string, any>;
-                        tenant_id: string | null;
-                        multi_factor: {
-                            enrolled_factors: {
-                                uid: string;
-                                display_name: string | null;
-                                enrollment_time: string;
-                                factor_id: string;
-                            }[];
-                        };
-                    };
-                }, {
-                    user: {
-                        email: string;
-                        display_name: string | null;
-                        firebase_uid: string;
-                        photo_url: string | null;
-                        email_verified: boolean;
-                        is_active: boolean;
-                        phone_number: string | null;
-                        creation_time: string | null;
-                        last_sign_in_time: string | null;
-                        last_refresh_time: string | null;
-                        provider_data: {
-                            providerId: string;
-                            uid: string;
-                            email: string | null;
-                            displayName: string | null;
-                            photoURL: string | null;
-                            phoneNumber: string | null;
-                        }[];
-                        provider_id: string;
-                        custom_claims: Record<string, any>;
-                        tenant_id: string | null;
-                        multi_factor: {
-                            enrolled_factors: {
-                                uid: string;
-                                display_name: string | null;
-                                enrollment_time: string;
-                                factor_id: string;
-                            }[];
-                        };
-                    };
-                }>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                data: {
-                    user: {
-                        email: string;
-                        display_name: string | null;
-                        firebase_uid: string;
-                        photo_url: string | null;
-                        email_verified: boolean;
-                        is_active: boolean;
-                        phone_number: string | null;
-                        creation_time: string | null;
-                        last_sign_in_time: string | null;
-                        last_refresh_time: string | null;
-                        provider_data: {
-                            providerId: string;
-                            uid: string;
-                            email: string | null;
-                            displayName: string | null;
-                            photoURL: string | null;
-                            phoneNumber: string | null;
-                        }[];
-                        provider_id: string;
-                        custom_claims: Record<string, any>;
-                        tenant_id: string | null;
-                        multi_factor: {
-                            enrolled_factors: {
-                                uid: string;
-                                display_name: string | null;
-                                enrollment_time: string;
-                                factor_id: string;
-                            }[];
-                        };
-                    };
-                };
-            }, {
-                message: string;
-                data: {
-                    user: {
-                        email: string;
-                        display_name: string | null;
-                        firebase_uid: string;
-                        photo_url: string | null;
-                        email_verified: boolean;
-                        is_active: boolean;
-                        phone_number: string | null;
-                        creation_time: string | null;
-                        last_sign_in_time: string | null;
-                        last_refresh_time: string | null;
-                        provider_data: {
-                            providerId: string;
-                            uid: string;
-                            email: string | null;
-                            displayName: string | null;
-                            photoURL: string | null;
-                            phoneNumber: string | null;
-                        }[];
-                        provider_id: string;
-                        custom_claims: Record<string, any>;
-                        tenant_id: string | null;
-                        multi_factor: {
-                            enrolled_factors: {
-                                uid: string;
-                                display_name: string | null;
-                                enrollment_time: string;
-                                factor_id: string;
-                            }[];
-                        };
-                    };
-                };
-            }>;
+                            }, import("zod/v4/core").$strip>>;
+                        }, import("zod/v4/core").$strip>;
+                    }, import("zod/v4/core").$strip>;
+                }, import("zod/v4/core").$strip>;
+            }, import("zod/v4/core").$strip>;
             400: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             401: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             500: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
         };
         strictStatusCodes: true;
     };

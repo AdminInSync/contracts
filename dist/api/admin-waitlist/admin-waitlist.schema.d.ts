@@ -7,23 +7,7 @@ export declare const WaitlistEntrySchema: z.ZodObject<{
     source: z.ZodNullable<z.ZodString>;
     is_beta_tester: z.ZodBoolean;
     created_at: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    id: string;
-    email: string;
-    created_at: string;
-    first_name: string;
-    last_name: string;
-    source: string | null;
-    is_beta_tester: boolean;
-}, {
-    id: string;
-    email: string;
-    created_at: string;
-    first_name: string;
-    last_name: string;
-    source: string | null;
-    is_beta_tester: boolean;
-}>;
+}, z.core.$strip>;
 export declare const WaitlistListResponseSchema: z.ZodObject<{
     message: z.ZodString;
     data: z.ZodArray<z.ZodObject<{
@@ -34,56 +18,12 @@ export declare const WaitlistListResponseSchema: z.ZodObject<{
         source: z.ZodNullable<z.ZodString>;
         is_beta_tester: z.ZodBoolean;
         created_at: z.ZodString;
-    }, "strip", z.ZodTypeAny, {
-        id: string;
-        email: string;
-        created_at: string;
-        first_name: string;
-        last_name: string;
-        source: string | null;
-        is_beta_tester: boolean;
-    }, {
-        id: string;
-        email: string;
-        created_at: string;
-        first_name: string;
-        last_name: string;
-        source: string | null;
-        is_beta_tester: boolean;
-    }>, "many">;
-}, "strip", z.ZodTypeAny, {
-    message: string;
-    data: {
-        id: string;
-        email: string;
-        created_at: string;
-        first_name: string;
-        last_name: string;
-        source: string | null;
-        is_beta_tester: boolean;
-    }[];
-}, {
-    message: string;
-    data: {
-        id: string;
-        email: string;
-        created_at: string;
-        first_name: string;
-        last_name: string;
-        source: string | null;
-        is_beta_tester: boolean;
-    }[];
-}>;
+    }, z.core.$strip>>;
+}, z.core.$strip>;
 export declare const WaitlistSourceCountSchema: z.ZodObject<{
     source: z.ZodNullable<z.ZodString>;
     count: z.ZodNumber;
-}, "strip", z.ZodTypeAny, {
-    source: string | null;
-    count: number;
-}, {
-    source: string | null;
-    count: number;
-}>;
+}, z.core.$strip>;
 export declare const WaitlistStatsResponseSchema: z.ZodObject<{
     message: z.ZodString;
     data: z.ZodObject<{
@@ -92,57 +32,11 @@ export declare const WaitlistStatsResponseSchema: z.ZodObject<{
         by_source: z.ZodArray<z.ZodObject<{
             source: z.ZodNullable<z.ZodString>;
             count: z.ZodNumber;
-        }, "strip", z.ZodTypeAny, {
-            source: string | null;
-            count: number;
-        }, {
-            source: string | null;
-            count: number;
-        }>, "many">;
-    }, "strip", z.ZodTypeAny, {
-        total: number;
-        this_month: number;
-        by_source: {
-            source: string | null;
-            count: number;
-        }[];
-    }, {
-        total: number;
-        this_month: number;
-        by_source: {
-            source: string | null;
-            count: number;
-        }[];
-    }>;
-}, "strip", z.ZodTypeAny, {
-    message: string;
-    data: {
-        total: number;
-        this_month: number;
-        by_source: {
-            source: string | null;
-            count: number;
-        }[];
-    };
-}, {
-    message: string;
-    data: {
-        total: number;
-        this_month: number;
-        by_source: {
-            source: string | null;
-            count: number;
-        }[];
-    };
-}>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>;
+}, z.core.$strip>;
 export declare const GetWaitlistQuerySchema: z.ZodObject<{
     source: z.ZodOptional<z.ZodString>;
-    is_beta_tester: z.ZodEffects<z.ZodOptional<z.ZodBoolean>, boolean | undefined, unknown>;
-}, "strip", z.ZodTypeAny, {
-    source?: string | undefined;
-    is_beta_tester?: boolean | undefined;
-}, {
-    source?: string | undefined;
-    is_beta_tester?: unknown;
-}>;
+    is_beta_tester: z.ZodPreprocess<z.ZodOptional<z.ZodBoolean>, unknown>;
+}, z.core.$strip>;
 export type WaitlistEntry = z.infer<typeof WaitlistEntrySchema>;

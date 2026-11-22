@@ -27,7 +27,7 @@ export const AdminUsersContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'Invite an admin',
-        description: 'Creates an administrator with a temporary password and emails login instructions.',
+        description: 'Creates an administrator and emails a single-use activation link to choose a password.',
     },
 }, {
     strictStatusCodes: true,

@@ -9,25 +9,13 @@ export declare const WebhookContracts: {
         responses: {
             200: z.ZodObject<{
                 success: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                success: boolean;
-            }, {
-                success: boolean;
-            }>;
+            }, z.core.$strip>;
             400: z.ZodObject<{
                 error: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                error: string;
-            }, {
-                error: string;
-            }>;
+            }, z.core.$strip>;
             401: z.ZodObject<{
                 error: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                error: string;
-            }, {
-                error: string;
-            }>;
+            }, z.core.$strip>;
         };
         strictStatusCodes: true;
     };

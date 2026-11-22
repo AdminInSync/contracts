@@ -23,7 +23,7 @@ export const OpenApiSecuritySchemeSchema = z.object({
     description: z.string().optional()
 });
 export const OpenApiComponentsSchema = z.object({
-    securitySchemes: z.record(OpenApiSecuritySchemeSchema).optional()
+    securitySchemes: z.record(z.string(), OpenApiSecuritySchemeSchema).optional()
 });
 export const OpenApiTagSchema = z.object({
     name: z.string(),

@@ -7,7 +7,7 @@ const MonthlySummarySchema = z.object({
 });
 export const BudgetItemSchema = z.object({
     id: z.number(),
-    uuid: z.string().uuid(),
+    uuid: z.string().guid(),
     name: z.string(),
     budget_period: z.enum(['monthly', 'quarterly', 'yearly']),
     start_date: z.date(),
@@ -18,7 +18,7 @@ export const BudgetItemSchema = z.object({
     currency: z.string(),
     is_active: z.boolean(),
     notes: z.string().nullable(),
-    settings: z.any().nullable(),
+    settings: z.any().nullable().optional(),
     // Live usage, same as /budgets responses.
     spent: z.number().nullable(),
     remaining: z.number().nullable(),

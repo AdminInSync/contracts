@@ -2,14 +2,8 @@ export declare const AdminWaitlistContracts: {
     list: {
         query: import("zod").ZodObject<{
             source: import("zod").ZodOptional<import("zod").ZodString>;
-            is_beta_tester: import("zod").ZodEffects<import("zod").ZodOptional<import("zod").ZodBoolean>, boolean | undefined, unknown>;
-        }, "strip", import("zod").ZodTypeAny, {
-            source?: string | undefined;
-            is_beta_tester?: boolean | undefined;
-        }, {
-            source?: string | undefined;
-            is_beta_tester?: unknown;
-        }>;
+            is_beta_tester: import("zod").ZodPreprocess<import("zod").ZodOptional<import("zod").ZodBoolean>, unknown>;
+        }, import("zod/v4/core").$strip>;
         summary: "List waitlist entries";
         description: "Returns newsletter subscriptions for the admin waitlist view.";
         method: "GET";
@@ -25,72 +19,18 @@ export declare const AdminWaitlistContracts: {
                     source: import("zod").ZodNullable<import("zod").ZodString>;
                     is_beta_tester: import("zod").ZodBoolean;
                     created_at: import("zod").ZodString;
-                }, "strip", import("zod").ZodTypeAny, {
-                    id: string;
-                    email: string;
-                    created_at: string;
-                    first_name: string;
-                    last_name: string;
-                    source: string | null;
-                    is_beta_tester: boolean;
-                }, {
-                    id: string;
-                    email: string;
-                    created_at: string;
-                    first_name: string;
-                    last_name: string;
-                    source: string | null;
-                    is_beta_tester: boolean;
-                }>, "many">;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                data: {
-                    id: string;
-                    email: string;
-                    created_at: string;
-                    first_name: string;
-                    last_name: string;
-                    source: string | null;
-                    is_beta_tester: boolean;
-                }[];
-            }, {
-                message: string;
-                data: {
-                    id: string;
-                    email: string;
-                    created_at: string;
-                    first_name: string;
-                    last_name: string;
-                    source: string | null;
-                    is_beta_tester: boolean;
-                }[];
-            }>;
+                }, import("zod/v4/core").$strip>>;
+            }, import("zod/v4/core").$strip>;
             401: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             500: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
         };
         strictStatusCodes: true;
     };
@@ -108,75 +48,19 @@ export declare const AdminWaitlistContracts: {
                     by_source: import("zod").ZodArray<import("zod").ZodObject<{
                         source: import("zod").ZodNullable<import("zod").ZodString>;
                         count: import("zod").ZodNumber;
-                    }, "strip", import("zod").ZodTypeAny, {
-                        source: string | null;
-                        count: number;
-                    }, {
-                        source: string | null;
-                        count: number;
-                    }>, "many">;
-                }, "strip", import("zod").ZodTypeAny, {
-                    total: number;
-                    this_month: number;
-                    by_source: {
-                        source: string | null;
-                        count: number;
-                    }[];
-                }, {
-                    total: number;
-                    this_month: number;
-                    by_source: {
-                        source: string | null;
-                        count: number;
-                    }[];
-                }>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                data: {
-                    total: number;
-                    this_month: number;
-                    by_source: {
-                        source: string | null;
-                        count: number;
-                    }[];
-                };
-            }, {
-                message: string;
-                data: {
-                    total: number;
-                    this_month: number;
-                    by_source: {
-                        source: string | null;
-                        count: number;
-                    }[];
-                };
-            }>;
+                    }, import("zod/v4/core").$strip>>;
+                }, import("zod/v4/core").$strip>;
+            }, import("zod/v4/core").$strip>;
             401: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             500: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
         };
         strictStatusCodes: true;
     };

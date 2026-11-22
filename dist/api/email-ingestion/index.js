@@ -1,12 +1,13 @@
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
 import { ErrorResSchema } from '../../common/schemas/common.schema';
-import { OAuthStartResponseSchema, ListEmailConnectionsResponseSchema, DisconnectEmailConnectionResponseSchema, SyncEmailConnectionResponseSchema, ListFinancialEmailEventsResponseSchema, FinancialEmailEventStatusSchema, EmailSyncStatusResponseSchema, ListDiscoveredAccountsResponseSchema, LinkAccountsBodySchema, LinkAccountsResponseSchema, UnlinkAccountsBodySchema, UnlinkAccountsResponseSchema, ApproveFinancialEmailEventBodySchema, ApproveFinancialEmailEventResponseSchema, RejectFinancialEmailEventBodySchema, RejectFinancialEmailEventResponseSchema, } from './email-ingestion.schema';
+import { OAuthStartResponseSchema, OAuthStartQuerySchema, OAuthCompleteBodySchema, OAuthCompleteResponseSchema, ListEmailConnectionsResponseSchema, DisconnectEmailConnectionResponseSchema, SyncEmailConnectionResponseSchema, ListFinancialEmailEventsResponseSchema, FinancialEmailEventStatusSchema, EmailSyncStatusResponseSchema, ListDiscoveredAccountsResponseSchema, LinkAccountsBodySchema, LinkAccountsResponseSchema, UnlinkAccountsBodySchema, UnlinkAccountsResponseSchema, ApproveFinancialEmailEventBodySchema, ApproveFinancialEmailEventResponseSchema, RejectFinancialEmailEventBodySchema, RejectFinancialEmailEventResponseSchema, } from './email-ingestion.schema';
 const c = initContract();
 export const EmailIngestionContracts = c.router({
     gmailOAuthStart: {
         method: 'GET',
         path: '/gmail/oauth/start',
+        query: OAuthStartQuerySchema,
         responses: {
             200: OAuthStartResponseSchema,
             400: ErrorResSchema,
@@ -33,6 +34,7 @@ export const EmailIngestionContracts = c.router({
     outlookOAuthStart: {
         method: 'GET',
         path: '/outlook/oauth/start',
+        query: OAuthStartQuerySchema,
         responses: {
             200: OAuthStartResponseSchema,
             400: ErrorResSchema,
@@ -41,6 +43,20 @@ export const EmailIngestionContracts = c.router({
             500: ErrorResSchema,
         },
         summary: 'Start Outlook OAuth',
+    },
+    oauthComplete: {
+        method: 'POST',
+        path: '/oauth/complete',
+        body: OAuthCompleteBodySchema,
+        responses: {
+            200: OAuthCompleteResponseSchema,
+            400: ErrorResSchema,
+            401: ErrorResSchema,
+            403: ErrorResSchema,
+            409: ErrorResSchema,
+            500: ErrorResSchema,
+        },
+        summary: 'Complete a client-bound OAuth callback',
     },
     outlookOAuthCallback: {
         method: 'GET',
@@ -72,7 +88,7 @@ export const EmailIngestionContracts = c.router({
     disconnectConnection: {
         method: 'DELETE',
         path: '/connections/:connectionUuid',
-        pathParams: z.object({ connectionUuid: z.string().uuid() }),
+        pathParams: z.object({ connectionUuid: z.string().guid() }),
         responses: {
             200: DisconnectEmailConnectionResponseSchema,
             401: ErrorResSchema,
@@ -85,7 +101,7 @@ export const EmailIngestionContracts = c.router({
     syncConnection: {
         method: 'POST',
         path: '/connections/:connectionUuid/sync',
-        pathParams: z.object({ connectionUuid: z.string().uuid() }),
+        pathParams: z.object({ connectionUuid: z.string().guid() }),
         body: z.object({
             institution_key: z.string().min(1).optional(),
         }),
@@ -168,7 +184,7 @@ export const EmailIngestionContracts = c.router({
     approveEvent: {
         method: 'POST',
         path: '/events/:eventUuid/approve',
-        pathParams: z.object({ eventUuid: z.string().uuid() }),
+        pathParams: z.object({ eventUuid: z.string().guid() }),
         body: ApproveFinancialEmailEventBodySchema,
         responses: {
             200: ApproveFinancialEmailEventResponseSchema,
@@ -183,7 +199,7 @@ export const EmailIngestionContracts = c.router({
     rejectEvent: {
         method: 'POST',
         path: '/events/:eventUuid/reject',
-        pathParams: z.object({ eventUuid: z.string().uuid() }),
+        pathParams: z.object({ eventUuid: z.string().guid() }),
         body: RejectFinancialEmailEventBodySchema,
         responses: {
             200: RejectFinancialEmailEventResponseSchema,

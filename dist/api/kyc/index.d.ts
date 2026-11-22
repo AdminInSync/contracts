@@ -5,11 +5,7 @@ export declare const KycContracts: {
         method: "POST";
         body: import("zod").ZodObject<{
             ttlInSecs: import("zod").ZodDefault<import("zod").ZodOptional<import("zod").ZodNumber>>;
-        }, "strip", import("zod").ZodTypeAny, {
-            ttlInSecs: number;
-        }, {
-            ttlInSecs?: number | undefined;
-        }>;
+        }, import("zod/v4/core").$strip>;
         path: "/kyc/token";
         responses: {
             200: import("zod").ZodObject<{
@@ -19,86 +15,28 @@ export declare const KycContracts: {
                     userId: import("zod").ZodString;
                     levelName: import("zod").ZodString;
                     expiresIn: import("zod").ZodNumber;
-                }, "strip", import("zod").ZodTypeAny, {
-                    token: string;
-                    userId: string;
-                    levelName: string;
-                    expiresIn: number;
-                }, {
-                    token: string;
-                    userId: string;
-                    levelName: string;
-                    expiresIn: number;
-                }>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                data: {
-                    token: string;
-                    userId: string;
-                    levelName: string;
-                    expiresIn: number;
-                };
-            }, {
-                message: string;
-                data: {
-                    token: string;
-                    userId: string;
-                    levelName: string;
-                    expiresIn: number;
-                };
-            }>;
+                }, import("zod/v4/core").$strip>;
+            }, import("zod/v4/core").$strip>;
             400: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             401: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             500: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             502: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
         };
         strictStatusCodes: true;
     };
@@ -112,76 +50,32 @@ export declare const KycContracts: {
                 message: import("zod").ZodString;
                 data: import("zod").ZodObject<{
                     uid: import("zod").ZodString;
-                    status: import("zod").ZodEnum<["none", "pending", "on_hold", "approved", "rejected"]>;
+                    status: import("zod").ZodEnum<{
+                        none: "none";
+                        pending: "pending";
+                        on_hold: "on_hold";
+                        approved: "approved";
+                        rejected: "rejected";
+                    }>;
                     reviewedAt: import("zod").ZodNullable<import("zod").ZodString>;
                     applicantId: import("zod").ZodNullable<import("zod").ZodString>;
-                }, "strip", import("zod").ZodTypeAny, {
-                    status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-                    uid: string;
-                    reviewedAt: string | null;
-                    applicantId: string | null;
-                }, {
-                    status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-                    uid: string;
-                    reviewedAt: string | null;
-                    applicantId: string | null;
-                }>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                data: {
-                    status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-                    uid: string;
-                    reviewedAt: string | null;
-                    applicantId: string | null;
-                };
-            }, {
-                message: string;
-                data: {
-                    status: "none" | "pending" | "on_hold" | "approved" | "rejected";
-                    uid: string;
-                    reviewedAt: string | null;
-                    applicantId: string | null;
-                };
-            }>;
+                }, import("zod/v4/core").$strip>;
+            }, import("zod/v4/core").$strip>;
             400: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             401: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             500: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
         };
         strictStatusCodes: true;
     };

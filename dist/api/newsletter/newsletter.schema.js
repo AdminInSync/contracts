@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { extendZodWithOpenApi } from '@anatine/zod-openapi';
+import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 extendZodWithOpenApi(z);
 // Newsletter Subscription Request Schema
 export const CreateNewsletterRequestSchema = z.object({
@@ -24,7 +24,7 @@ export const NewsletterResponseSchema = z.object({
     id: z.number().openapi({
         description: 'Internal database ID'
     }),
-    uuid: z.string().uuid().openapi({
+    uuid: z.string().guid().openapi({
         description: 'Public UUID for the newsletter subscription'
     }),
     first_name: z.string().openapi({

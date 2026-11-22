@@ -1,12 +1,12 @@
 export declare const AdminAppFeedbackContracts: {
     list: {
         query: import("zod").ZodObject<{
-            status: import("zod").ZodOptional<import("zod").ZodUnion<[import("zod").ZodEnum<["new", "reviewed", "resolved"]>, import("zod").ZodLiteral<"all">]>>;
-        }, "strip", import("zod").ZodTypeAny, {
-            status?: "all" | "new" | "reviewed" | "resolved" | undefined;
-        }, {
-            status?: "all" | "new" | "reviewed" | "resolved" | undefined;
-        }>;
+            status: import("zod").ZodOptional<import("zod").ZodUnion<readonly [import("zod").ZodEnum<{
+                new: "new";
+                reviewed: "reviewed";
+                resolved: "resolved";
+            }>, import("zod").ZodLiteral<"all">]>>;
+        }, import("zod/v4/core").$strip>;
         summary: "List app feedback";
         description: "Returns user-submitted app feedback for the admin panel.";
         method: "GET";
@@ -17,98 +17,44 @@ export declare const AdminAppFeedbackContracts: {
                 data: import("zod").ZodArray<import("zod").ZodObject<{
                     id: import("zod").ZodString;
                     message: import("zod").ZodString;
-                    status: import("zod").ZodEnum<["new", "reviewed", "resolved"]>;
+                    status: import("zod").ZodEnum<{
+                        new: "new";
+                        reviewed: "reviewed";
+                        resolved: "resolved";
+                    }>;
                     user_uid: import("zod").ZodString;
                     user_name: import("zod").ZodString;
                     user_email: import("zod").ZodNullable<import("zod").ZodString>;
                     created_at: import("zod").ZodString;
-                }, "strip", import("zod").ZodTypeAny, {
-                    message: string;
-                    status: "new" | "reviewed" | "resolved";
-                    id: string;
-                    user_uid: string;
-                    created_at: string;
-                    user_name: string;
-                    user_email: string | null;
-                }, {
-                    message: string;
-                    status: "new" | "reviewed" | "resolved";
-                    id: string;
-                    user_uid: string;
-                    created_at: string;
-                    user_name: string;
-                    user_email: string | null;
-                }>, "many">;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                data: {
-                    message: string;
-                    status: "new" | "reviewed" | "resolved";
-                    id: string;
-                    user_uid: string;
-                    created_at: string;
-                    user_name: string;
-                    user_email: string | null;
-                }[];
-            }, {
-                message: string;
-                data: {
-                    message: string;
-                    status: "new" | "reviewed" | "resolved";
-                    id: string;
-                    user_uid: string;
-                    created_at: string;
-                    user_name: string;
-                    user_email: string | null;
-                }[];
-            }>;
+                }, import("zod/v4/core").$strip>>;
+            }, import("zod/v4/core").$strip>;
             401: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             500: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
         };
         strictStatusCodes: true;
     };
     updateStatus: {
         pathParams: import("zod").ZodObject<{
             id: import("zod").ZodString;
-        }, "strip", import("zod").ZodTypeAny, {
-            id: string;
-        }, {
-            id: string;
-        }>;
+        }, import("zod/v4/core").$strip>;
         summary: "Update feedback status";
         description: "Sets an app feedback entry to new, reviewed, or resolved.";
         method: "PATCH";
         body: import("zod").ZodObject<{
-            status: import("zod").ZodEnum<["new", "reviewed", "resolved"]>;
-        }, "strip", import("zod").ZodTypeAny, {
-            status: "new" | "reviewed" | "resolved";
-        }, {
-            status: "new" | "reviewed" | "resolved";
-        }>;
+            status: import("zod").ZodEnum<{
+                new: "new";
+                reviewed: "reviewed";
+                resolved: "resolved";
+            }>;
+        }, import("zod/v4/core").$strip>;
         path: "/admin/app-feedback/:id/status";
         responses: {
             200: import("zod").ZodObject<{
@@ -116,90 +62,32 @@ export declare const AdminAppFeedbackContracts: {
                 data: import("zod").ZodObject<{
                     id: import("zod").ZodString;
                     message: import("zod").ZodString;
-                    status: import("zod").ZodEnum<["new", "reviewed", "resolved"]>;
+                    status: import("zod").ZodEnum<{
+                        new: "new";
+                        reviewed: "reviewed";
+                        resolved: "resolved";
+                    }>;
                     user_uid: import("zod").ZodString;
                     user_name: import("zod").ZodString;
                     user_email: import("zod").ZodNullable<import("zod").ZodString>;
                     created_at: import("zod").ZodString;
-                }, "strip", import("zod").ZodTypeAny, {
-                    message: string;
-                    status: "new" | "reviewed" | "resolved";
-                    id: string;
-                    user_uid: string;
-                    created_at: string;
-                    user_name: string;
-                    user_email: string | null;
-                }, {
-                    message: string;
-                    status: "new" | "reviewed" | "resolved";
-                    id: string;
-                    user_uid: string;
-                    created_at: string;
-                    user_name: string;
-                    user_email: string | null;
-                }>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                data: {
-                    message: string;
-                    status: "new" | "reviewed" | "resolved";
-                    id: string;
-                    user_uid: string;
-                    created_at: string;
-                    user_name: string;
-                    user_email: string | null;
-                };
-            }, {
-                message: string;
-                data: {
-                    message: string;
-                    status: "new" | "reviewed" | "resolved";
-                    id: string;
-                    user_uid: string;
-                    created_at: string;
-                    user_name: string;
-                    user_email: string | null;
-                };
-            }>;
+                }, import("zod/v4/core").$strip>;
+            }, import("zod/v4/core").$strip>;
             401: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             404: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
             500: import("zod").ZodObject<{
                 message: import("zod").ZodString;
                 error: import("zod").ZodOptional<import("zod").ZodString>;
                 statusCode: import("zod").ZodOptional<import("zod").ZodNumber>;
-            }, "strip", import("zod").ZodTypeAny, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }, {
-                message: string;
-                error?: string | undefined;
-                statusCode?: number | undefined;
-            }>;
+            }, import("zod/v4/core").$strip>;
         };
         strictStatusCodes: true;
     };

@@ -1,108 +1,55 @@
 import { z } from 'zod';
 import { EmailConnectionStatus, EmailProvider, FinancialEmailEventStatus } from '../../enums';
-export declare const EmailProviderSchema: z.ZodNativeEnum<typeof EmailProvider>;
-export declare const EmailConnectionStatusSchema: z.ZodNativeEnum<typeof EmailConnectionStatus>;
-export declare const FinancialEmailEventStatusSchema: z.ZodNativeEnum<typeof FinancialEmailEventStatus>;
+export declare const EmailProviderSchema: z.ZodEnum<typeof EmailProvider>;
+export declare const EmailConnectionStatusSchema: z.ZodEnum<typeof EmailConnectionStatus>;
+export declare const FinancialEmailEventStatusSchema: z.ZodEnum<typeof FinancialEmailEventStatus>;
 export declare const OAuthStartResponseSchema: z.ZodObject<{
     authorizationUrl: z.ZodString;
     state: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    authorizationUrl: string;
-    state: string;
-}, {
-    authorizationUrl: string;
-    state: string;
-}>;
+}, z.core.$strip>;
+export declare const OAuthStartQuerySchema: z.ZodObject<{
+    code_challenge: z.ZodString;
+}, z.core.$strip>;
+export declare const OAuthCompleteBodySchema: z.ZodObject<{
+    ticket: z.ZodString;
+    code_verifier: z.ZodString;
+}, z.core.$strip>;
+export declare const OAuthCompleteResponseSchema: z.ZodObject<{
+    success: z.ZodLiteral<true>;
+    provider: z.ZodEnum<typeof EmailProvider>;
+}, z.core.$strip>;
 export declare const EmailConnectionListItemSchema: z.ZodObject<{
     uuid: z.ZodString;
-    provider: z.ZodNativeEnum<typeof EmailProvider>;
-    status: z.ZodNativeEnum<typeof EmailConnectionStatus>;
+    provider: z.ZodEnum<typeof EmailProvider>;
+    status: z.ZodEnum<typeof EmailConnectionStatus>;
     provider_account_id: z.ZodNullable<z.ZodString>;
     last_successful_sync_at: z.ZodNullable<z.ZodString>;
     last_error_message: z.ZodNullable<z.ZodString>;
     created_at: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    status: EmailConnectionStatus;
-    uuid: string;
-    created_at: string;
-    provider: EmailProvider;
-    provider_account_id: string | null;
-    last_successful_sync_at: string | null;
-    last_error_message: string | null;
-}, {
-    status: EmailConnectionStatus;
-    uuid: string;
-    created_at: string;
-    provider: EmailProvider;
-    provider_account_id: string | null;
-    last_successful_sync_at: string | null;
-    last_error_message: string | null;
-}>;
+}, z.core.$strip>;
 export declare const ListEmailConnectionsResponseSchema: z.ZodObject<{
     connections: z.ZodArray<z.ZodObject<{
         uuid: z.ZodString;
-        provider: z.ZodNativeEnum<typeof EmailProvider>;
-        status: z.ZodNativeEnum<typeof EmailConnectionStatus>;
+        provider: z.ZodEnum<typeof EmailProvider>;
+        status: z.ZodEnum<typeof EmailConnectionStatus>;
         provider_account_id: z.ZodNullable<z.ZodString>;
         last_successful_sync_at: z.ZodNullable<z.ZodString>;
         last_error_message: z.ZodNullable<z.ZodString>;
         created_at: z.ZodString;
-    }, "strip", z.ZodTypeAny, {
-        status: EmailConnectionStatus;
-        uuid: string;
-        created_at: string;
-        provider: EmailProvider;
-        provider_account_id: string | null;
-        last_successful_sync_at: string | null;
-        last_error_message: string | null;
-    }, {
-        status: EmailConnectionStatus;
-        uuid: string;
-        created_at: string;
-        provider: EmailProvider;
-        provider_account_id: string | null;
-        last_successful_sync_at: string | null;
-        last_error_message: string | null;
-    }>, "many">;
-}, "strip", z.ZodTypeAny, {
-    connections: {
-        status: EmailConnectionStatus;
-        uuid: string;
-        created_at: string;
-        provider: EmailProvider;
-        provider_account_id: string | null;
-        last_successful_sync_at: string | null;
-        last_error_message: string | null;
-    }[];
-}, {
-    connections: {
-        status: EmailConnectionStatus;
-        uuid: string;
-        created_at: string;
-        provider: EmailProvider;
-        provider_account_id: string | null;
-        last_successful_sync_at: string | null;
-        last_error_message: string | null;
-    }[];
-}>;
+    }, z.core.$strip>>;
+}, z.core.$strip>;
 export declare const DisconnectEmailConnectionResponseSchema: z.ZodObject<{
     success: z.ZodLiteral<true>;
-}, "strip", z.ZodTypeAny, {
-    success: true;
-}, {
-    success: true;
-}>;
+}, z.core.$strip>;
 export declare const SyncEmailConnectionResponseSchema: z.ZodObject<{
     enqueued: z.ZodLiteral<true>;
     job_uuid: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    enqueued: true;
-    job_uuid: string;
-}, {
-    enqueued: true;
-    job_uuid: string;
+}, z.core.$strip>;
+export declare const EmailConnectionSyncStateSchema: z.ZodEnum<{
+    failed: "failed";
+    idle: "idle";
+    syncing: "syncing";
 }>;
-export declare const EmailConnectionSyncStateSchema: z.ZodEnum<["idle", "syncing", "failed"]>;
 export declare const EmailSyncSummarySchema: z.ZodObject<{
     messages_seen: z.ZodNumber;
     messages_routed: z.ZodNumber;
@@ -113,31 +60,15 @@ export declare const EmailSyncSummarySchema: z.ZodObject<{
     duplicate_tx: z.ZodNumber;
     already_imported: z.ZodNumber;
     pending_review: z.ZodNumber;
-}, "strip", z.ZodTypeAny, {
-    discovered: number;
-    pending_review: number;
-    imported: number;
-    discarded: number;
-    messages_seen: number;
-    messages_routed: number;
-    duration_ms: number;
-    duplicate_tx: number;
-    already_imported: number;
-}, {
-    discovered: number;
-    pending_review: number;
-    imported: number;
-    discarded: number;
-    messages_seen: number;
-    messages_routed: number;
-    duration_ms: number;
-    duplicate_tx: number;
-    already_imported: number;
-}>;
+}, z.core.$strip>;
 export declare const EmailSyncStatusConnectionSchema: z.ZodObject<{
     uuid: z.ZodString;
-    provider: z.ZodNativeEnum<typeof EmailProvider>;
-    sync_state: z.ZodEnum<["idle", "syncing", "failed"]>;
+    provider: z.ZodEnum<typeof EmailProvider>;
+    sync_state: z.ZodEnum<{
+        failed: "failed";
+        idle: "idle";
+        syncing: "syncing";
+    }>;
     last_successful_sync_at: z.ZodNullable<z.ZodString>;
     active_job_uuid: z.ZodNullable<z.ZodString>;
     error_message: z.ZodNullable<z.ZodString>;
@@ -151,81 +82,23 @@ export declare const EmailSyncStatusConnectionSchema: z.ZodObject<{
         duplicate_tx: z.ZodNumber;
         already_imported: z.ZodNumber;
         pending_review: z.ZodNumber;
-    }, "strip", z.ZodTypeAny, {
-        discovered: number;
-        pending_review: number;
-        imported: number;
-        discarded: number;
-        messages_seen: number;
-        messages_routed: number;
-        duration_ms: number;
-        duplicate_tx: number;
-        already_imported: number;
-    }, {
-        discovered: number;
-        pending_review: number;
-        imported: number;
-        discarded: number;
-        messages_seen: number;
-        messages_routed: number;
-        duration_ms: number;
-        duplicate_tx: number;
-        already_imported: number;
-    }>>;
-}, "strip", z.ZodTypeAny, {
-    uuid: string;
-    provider: EmailProvider;
-    last_successful_sync_at: string | null;
-    sync_state: "failed" | "idle" | "syncing";
-    active_job_uuid: string | null;
-    error_message: string | null;
-    last_summary: {
-        discovered: number;
-        pending_review: number;
-        imported: number;
-        discarded: number;
-        messages_seen: number;
-        messages_routed: number;
-        duration_ms: number;
-        duplicate_tx: number;
-        already_imported: number;
-    } | null;
-}, {
-    uuid: string;
-    provider: EmailProvider;
-    last_successful_sync_at: string | null;
-    sync_state: "failed" | "idle" | "syncing";
-    active_job_uuid: string | null;
-    error_message: string | null;
-    last_summary: {
-        discovered: number;
-        pending_review: number;
-        imported: number;
-        discarded: number;
-        messages_seen: number;
-        messages_routed: number;
-        duration_ms: number;
-        duplicate_tx: number;
-        already_imported: number;
-    } | null;
-}>;
+    }, z.core.$strip>>;
+}, z.core.$strip>;
 export declare const EmailSyncStatusResponseSchema: z.ZodObject<{
     is_syncing: z.ZodBoolean;
     imported_total: z.ZodNumber;
     supported_institutions: z.ZodArray<z.ZodObject<{
         key: z.ZodString;
         name: z.ZodString;
-    }, "strip", z.ZodTypeAny, {
-        name: string;
-        key: string;
-    }, {
-        name: string;
-        key: string;
-    }>, "many">;
+    }, z.core.$strip>>;
     connections: z.ZodArray<z.ZodObject<{
         uuid: z.ZodString;
-        provider: z.ZodNativeEnum<typeof EmailProvider>;
-        sync_state: z.ZodEnum<["idle", "syncing", "failed"]>;
+        provider: z.ZodEnum<typeof EmailProvider>;
+        sync_state: z.ZodEnum<{
+            failed: "failed";
+            idle: "idle";
+            syncing: "syncing";
+        }>;
         last_successful_sync_at: z.ZodNullable<z.ZodString>;
         active_job_uuid: z.ZodNullable<z.ZodString>;
         error_message: z.ZodNullable<z.ZodString>;
@@ -239,331 +112,105 @@ export declare const EmailSyncStatusResponseSchema: z.ZodObject<{
             duplicate_tx: z.ZodNumber;
             already_imported: z.ZodNumber;
             pending_review: z.ZodNumber;
-        }, "strip", z.ZodTypeAny, {
-            discovered: number;
-            pending_review: number;
-            imported: number;
-            discarded: number;
-            messages_seen: number;
-            messages_routed: number;
-            duration_ms: number;
-            duplicate_tx: number;
-            already_imported: number;
-        }, {
-            discovered: number;
-            pending_review: number;
-            imported: number;
-            discarded: number;
-            messages_seen: number;
-            messages_routed: number;
-            duration_ms: number;
-            duplicate_tx: number;
-            already_imported: number;
-        }>>;
-    }, "strip", z.ZodTypeAny, {
-        uuid: string;
-        provider: EmailProvider;
-        last_successful_sync_at: string | null;
-        sync_state: "failed" | "idle" | "syncing";
-        active_job_uuid: string | null;
-        error_message: string | null;
-        last_summary: {
-            discovered: number;
-            pending_review: number;
-            imported: number;
-            discarded: number;
-            messages_seen: number;
-            messages_routed: number;
-            duration_ms: number;
-            duplicate_tx: number;
-            already_imported: number;
-        } | null;
-    }, {
-        uuid: string;
-        provider: EmailProvider;
-        last_successful_sync_at: string | null;
-        sync_state: "failed" | "idle" | "syncing";
-        active_job_uuid: string | null;
-        error_message: string | null;
-        last_summary: {
-            discovered: number;
-            pending_review: number;
-            imported: number;
-            discarded: number;
-            messages_seen: number;
-            messages_routed: number;
-            duration_ms: number;
-            duplicate_tx: number;
-            already_imported: number;
-        } | null;
-    }>, "many">;
-}, "strip", z.ZodTypeAny, {
-    connections: {
-        uuid: string;
-        provider: EmailProvider;
-        last_successful_sync_at: string | null;
-        sync_state: "failed" | "idle" | "syncing";
-        active_job_uuid: string | null;
-        error_message: string | null;
-        last_summary: {
-            discovered: number;
-            pending_review: number;
-            imported: number;
-            discarded: number;
-            messages_seen: number;
-            messages_routed: number;
-            duration_ms: number;
-            duplicate_tx: number;
-            already_imported: number;
-        } | null;
-    }[];
-    is_syncing: boolean;
-    imported_total: number;
-    supported_institutions: {
-        name: string;
-        key: string;
-    }[];
-}, {
-    connections: {
-        uuid: string;
-        provider: EmailProvider;
-        last_successful_sync_at: string | null;
-        sync_state: "failed" | "idle" | "syncing";
-        active_job_uuid: string | null;
-        error_message: string | null;
-        last_summary: {
-            discovered: number;
-            pending_review: number;
-            imported: number;
-            discarded: number;
-            messages_seen: number;
-            messages_routed: number;
-            duration_ms: number;
-            duplicate_tx: number;
-            already_imported: number;
-        } | null;
-    }[];
-    is_syncing: boolean;
-    imported_total: number;
-    supported_institutions: {
-        name: string;
-        key: string;
-    }[];
+        }, z.core.$strip>>;
+    }, z.core.$strip>>;
+}, z.core.$strip>;
+export declare const ProductKindSchema: z.ZodEnum<{
+    debit: "debit";
+    credit: "credit";
 }>;
-export declare const ProductKindSchema: z.ZodEnum<["debit", "credit"]>;
-export declare const CardBrandSchema: z.ZodEnum<["visa", "mastercard", "amex"]>;
+export declare const CardBrandSchema: z.ZodEnum<{
+    visa: "visa";
+    mastercard: "mastercard";
+    amex: "amex";
+}>;
 export declare const FinancialEmailEventResponseSchema: z.ZodObject<{
     uuid: z.ZodString;
-    status: z.ZodNativeEnum<typeof FinancialEmailEventStatus>;
+    status: z.ZodEnum<typeof FinancialEmailEventStatus>;
     institution_name: z.ZodNullable<z.ZodString>;
     institution_logo: z.ZodNullable<z.ZodString>;
-    product_kind: z.ZodNullable<z.ZodEnum<["debit", "credit"]>>;
+    product_kind: z.ZodNullable<z.ZodEnum<{
+        debit: "debit";
+        credit: "credit";
+    }>>;
     product_type: z.ZodNullable<z.ZodString>;
     product_label: z.ZodNullable<z.ZodString>;
     transaction_description: z.ZodNullable<z.ZodString>;
-    amount: z.ZodNullable<z.ZodNumber>;
+    amount: z.ZodNullable<z.ZodCoercedNumber<unknown>>;
     currency: z.ZodNullable<z.ZodString>;
     transaction_date: z.ZodNullable<z.ZodString>;
     transaction_occurred_at: z.ZodOptional<z.ZodNullable<z.ZodString>>;
-    transaction_direction: z.ZodNullable<z.ZodEnum<["credit", "debit"]>>;
+    transaction_direction: z.ZodNullable<z.ZodEnum<{
+        debit: "debit";
+        credit: "credit";
+    }>>;
     category: z.ZodNullable<z.ZodString>;
-    confidence: z.ZodNullable<z.ZodNumber>;
+    confidence: z.ZodNullable<z.ZodCoercedNumber<unknown>>;
     source_metadata: z.ZodNullable<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
     created_at: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    status: FinancialEmailEventStatus;
-    uuid: string;
-    created_at: string;
-    currency: string | null;
-    product_type: string | null;
-    institution_name: string | null;
-    institution_logo: string | null;
-    product_kind: "debit" | "credit" | null;
-    product_label: string | null;
-    amount: number | null;
-    transaction_date: string | null;
-    category: string | null;
-    transaction_description: string | null;
-    transaction_direction: "debit" | "credit" | null;
-    confidence: number | null;
-    source_metadata: Record<string, unknown> | null;
-    transaction_occurred_at?: string | null | undefined;
-}, {
-    status: FinancialEmailEventStatus;
-    uuid: string;
-    created_at: string;
-    currency: string | null;
-    product_type: string | null;
-    institution_name: string | null;
-    institution_logo: string | null;
-    product_kind: "debit" | "credit" | null;
-    product_label: string | null;
-    amount: number | null;
-    transaction_date: string | null;
-    category: string | null;
-    transaction_description: string | null;
-    transaction_direction: "debit" | "credit" | null;
-    confidence: number | null;
-    source_metadata: Record<string, unknown> | null;
-    transaction_occurred_at?: string | null | undefined;
-}>;
+}, z.core.$strip>;
 export declare const ListFinancialEmailEventsResponseSchema: z.ZodObject<{
     events: z.ZodArray<z.ZodObject<{
         uuid: z.ZodString;
-        status: z.ZodNativeEnum<typeof FinancialEmailEventStatus>;
+        status: z.ZodEnum<typeof FinancialEmailEventStatus>;
         institution_name: z.ZodNullable<z.ZodString>;
         institution_logo: z.ZodNullable<z.ZodString>;
-        product_kind: z.ZodNullable<z.ZodEnum<["debit", "credit"]>>;
+        product_kind: z.ZodNullable<z.ZodEnum<{
+            debit: "debit";
+            credit: "credit";
+        }>>;
         product_type: z.ZodNullable<z.ZodString>;
         product_label: z.ZodNullable<z.ZodString>;
         transaction_description: z.ZodNullable<z.ZodString>;
-        amount: z.ZodNullable<z.ZodNumber>;
+        amount: z.ZodNullable<z.ZodCoercedNumber<unknown>>;
         currency: z.ZodNullable<z.ZodString>;
         transaction_date: z.ZodNullable<z.ZodString>;
         transaction_occurred_at: z.ZodOptional<z.ZodNullable<z.ZodString>>;
-        transaction_direction: z.ZodNullable<z.ZodEnum<["credit", "debit"]>>;
+        transaction_direction: z.ZodNullable<z.ZodEnum<{
+            debit: "debit";
+            credit: "credit";
+        }>>;
         category: z.ZodNullable<z.ZodString>;
-        confidence: z.ZodNullable<z.ZodNumber>;
+        confidence: z.ZodNullable<z.ZodCoercedNumber<unknown>>;
         source_metadata: z.ZodNullable<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
         created_at: z.ZodString;
-    }, "strip", z.ZodTypeAny, {
-        status: FinancialEmailEventStatus;
-        uuid: string;
-        created_at: string;
-        currency: string | null;
-        product_type: string | null;
-        institution_name: string | null;
-        institution_logo: string | null;
-        product_kind: "debit" | "credit" | null;
-        product_label: string | null;
-        amount: number | null;
-        transaction_date: string | null;
-        category: string | null;
-        transaction_description: string | null;
-        transaction_direction: "debit" | "credit" | null;
-        confidence: number | null;
-        source_metadata: Record<string, unknown> | null;
-        transaction_occurred_at?: string | null | undefined;
-    }, {
-        status: FinancialEmailEventStatus;
-        uuid: string;
-        created_at: string;
-        currency: string | null;
-        product_type: string | null;
-        institution_name: string | null;
-        institution_logo: string | null;
-        product_kind: "debit" | "credit" | null;
-        product_label: string | null;
-        amount: number | null;
-        transaction_date: string | null;
-        category: string | null;
-        transaction_description: string | null;
-        transaction_direction: "debit" | "credit" | null;
-        confidence: number | null;
-        source_metadata: Record<string, unknown> | null;
-        transaction_occurred_at?: string | null | undefined;
-    }>, "many">;
+    }, z.core.$strip>>;
     total: z.ZodNumber;
     limit: z.ZodNumber;
     offset: z.ZodNumber;
-}, "strip", z.ZodTypeAny, {
-    limit: number;
-    total: number;
-    offset: number;
-    events: {
-        status: FinancialEmailEventStatus;
-        uuid: string;
-        created_at: string;
-        currency: string | null;
-        product_type: string | null;
-        institution_name: string | null;
-        institution_logo: string | null;
-        product_kind: "debit" | "credit" | null;
-        product_label: string | null;
-        amount: number | null;
-        transaction_date: string | null;
-        category: string | null;
-        transaction_description: string | null;
-        transaction_direction: "debit" | "credit" | null;
-        confidence: number | null;
-        source_metadata: Record<string, unknown> | null;
-        transaction_occurred_at?: string | null | undefined;
-    }[];
-}, {
-    limit: number;
-    total: number;
-    offset: number;
-    events: {
-        status: FinancialEmailEventStatus;
-        uuid: string;
-        created_at: string;
-        currency: string | null;
-        product_type: string | null;
-        institution_name: string | null;
-        institution_logo: string | null;
-        product_kind: "debit" | "credit" | null;
-        product_label: string | null;
-        amount: number | null;
-        transaction_date: string | null;
-        category: string | null;
-        transaction_description: string | null;
-        transaction_direction: "debit" | "credit" | null;
-        confidence: number | null;
-        source_metadata: Record<string, unknown> | null;
-        transaction_occurred_at?: string | null | undefined;
-    }[];
-}>;
+}, z.core.$strip>;
 export declare const ApproveFinancialEmailEventBodySchema: z.ZodObject<{
     user_product_uuid: z.ZodString;
     amount: z.ZodOptional<z.ZodNumber>;
     description: z.ZodOptional<z.ZodString>;
     transaction_date: z.ZodOptional<z.ZodString>;
-}, "strip", z.ZodTypeAny, {
-    user_product_uuid: string;
-    description?: string | undefined;
-    amount?: number | undefined;
-    transaction_date?: string | undefined;
-}, {
-    user_product_uuid: string;
-    description?: string | undefined;
-    amount?: number | undefined;
-    transaction_date?: string | undefined;
-}>;
+}, z.core.$strip>;
 export declare const ApproveFinancialEmailEventResponseSchema: z.ZodObject<{
     transaction_uuid: z.ZodString;
     event_uuid: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    transaction_uuid: string;
-    event_uuid: string;
-}, {
-    transaction_uuid: string;
-    event_uuid: string;
-}>;
+}, z.core.$strip>;
 export declare const RejectFinancialEmailEventBodySchema: z.ZodObject<{
     reason: z.ZodOptional<z.ZodString>;
-}, "strip", z.ZodTypeAny, {
-    reason?: string | undefined;
-}, {
-    reason?: string | undefined;
-}>;
+}, z.core.$strip>;
 export declare const RejectFinancialEmailEventResponseSchema: z.ZodObject<{
     success: z.ZodLiteral<true>;
-}, "strip", z.ZodTypeAny, {
-    success: true;
-}, {
-    success: true;
-}>;
+}, z.core.$strip>;
 export declare const ConvertFinancialEmailEventResponseSchema: z.ZodObject<{
     transaction_uuid: z.ZodString;
     event_uuid: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    transaction_uuid: string;
-    event_uuid: string;
-}, {
-    transaction_uuid: string;
-    event_uuid: string;
+}, z.core.$strip>;
+export declare const ProductLineSchema: z.ZodEnum<{
+    gold: "gold";
+    classic: "classic";
+    platinum: "platinum";
+    premia: "premia";
+    infinite: "infinite";
+    signature: "signature";
+    negocios: "negocios";
+    corporate: "corporate";
+    black: "black";
+    gnial: "gnial";
 }>;
-export declare const ProductLineSchema: z.ZodEnum<["gold", "classic", "platinum", "premia", "infinite", "signature", "negocios", "corporate", "black", "gnial"]>;
 export declare const DiscoveredAccountSchema: z.ZodObject<{
     institution_id: z.ZodNullable<z.ZodNumber>;
     institution_name: z.ZodNullable<z.ZodString>;
@@ -571,33 +218,26 @@ export declare const DiscoveredAccountSchema: z.ZodObject<{
     product_type: z.ZodString;
     product_label: z.ZodString;
     account_last4: z.ZodString;
-    card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
-    product_line: z.ZodNullable<z.ZodEnum<["gold", "classic", "platinum", "premia", "infinite", "signature", "negocios", "corporate", "black", "gnial"]>>;
+    card_brand: z.ZodNullable<z.ZodEnum<{
+        visa: "visa";
+        mastercard: "mastercard";
+        amex: "amex";
+    }>>;
+    product_line: z.ZodNullable<z.ZodEnum<{
+        gold: "gold";
+        classic: "classic";
+        platinum: "platinum";
+        premia: "premia";
+        infinite: "infinite";
+        signature: "signature";
+        negocios: "negocios";
+        corporate: "corporate";
+        black: "black";
+        gnial: "gnial";
+    }>>;
     event_count: z.ZodNumber;
     latest_at: z.ZodNullable<z.ZodString>;
-}, "strip", z.ZodTypeAny, {
-    product_type: string;
-    institution_id: number | null;
-    institution_name: string | null;
-    institution_logo: string | null;
-    product_label: string;
-    card_brand: "visa" | "mastercard" | "amex" | null;
-    account_last4: string;
-    product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null;
-    event_count: number;
-    latest_at: string | null;
-}, {
-    product_type: string;
-    institution_id: number | null;
-    institution_name: string | null;
-    institution_logo: string | null;
-    product_label: string;
-    card_brand: "visa" | "mastercard" | "amex" | null;
-    account_last4: string;
-    product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null;
-    event_count: number;
-    latest_at: string | null;
-}>;
+}, z.core.$strip>;
 export declare const ListDiscoveredAccountsResponseSchema: z.ZodObject<{
     accounts: z.ZodArray<z.ZodObject<{
         institution_id: z.ZodNullable<z.ZodNumber>;
@@ -606,240 +246,141 @@ export declare const ListDiscoveredAccountsResponseSchema: z.ZodObject<{
         product_type: z.ZodString;
         product_label: z.ZodString;
         account_last4: z.ZodString;
-        card_brand: z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>;
-        product_line: z.ZodNullable<z.ZodEnum<["gold", "classic", "platinum", "premia", "infinite", "signature", "negocios", "corporate", "black", "gnial"]>>;
+        card_brand: z.ZodNullable<z.ZodEnum<{
+            visa: "visa";
+            mastercard: "mastercard";
+            amex: "amex";
+        }>>;
+        product_line: z.ZodNullable<z.ZodEnum<{
+            gold: "gold";
+            classic: "classic";
+            platinum: "platinum";
+            premia: "premia";
+            infinite: "infinite";
+            signature: "signature";
+            negocios: "negocios";
+            corporate: "corporate";
+            black: "black";
+            gnial: "gnial";
+        }>>;
         event_count: z.ZodNumber;
         latest_at: z.ZodNullable<z.ZodString>;
-    }, "strip", z.ZodTypeAny, {
-        product_type: string;
-        institution_id: number | null;
-        institution_name: string | null;
-        institution_logo: string | null;
-        product_label: string;
-        card_brand: "visa" | "mastercard" | "amex" | null;
-        account_last4: string;
-        product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null;
-        event_count: number;
-        latest_at: string | null;
-    }, {
-        product_type: string;
-        institution_id: number | null;
-        institution_name: string | null;
-        institution_logo: string | null;
-        product_label: string;
-        card_brand: "visa" | "mastercard" | "amex" | null;
-        account_last4: string;
-        product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null;
-        event_count: number;
-        latest_at: string | null;
-    }>, "many">;
-}, "strip", z.ZodTypeAny, {
-    accounts: {
-        product_type: string;
-        institution_id: number | null;
-        institution_name: string | null;
-        institution_logo: string | null;
-        product_label: string;
-        card_brand: "visa" | "mastercard" | "amex" | null;
-        account_last4: string;
-        product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null;
-        event_count: number;
-        latest_at: string | null;
-    }[];
-}, {
-    accounts: {
-        product_type: string;
-        institution_id: number | null;
-        institution_name: string | null;
-        institution_logo: string | null;
-        product_label: string;
-        card_brand: "visa" | "mastercard" | "amex" | null;
-        account_last4: string;
-        product_line: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null;
-        event_count: number;
-        latest_at: string | null;
-    }[];
-}>;
+    }, z.core.$strip>>;
+}, z.core.$strip>;
 export declare const LinkedAccountRefSchema: z.ZodObject<{
-    product_type: z.ZodEnum<["savings_account", "checking_account"]>;
-    account_last4: z.ZodPipeline<z.ZodEffects<z.ZodString, string, string>, z.ZodString>;
-}, "strip", z.ZodTypeAny, {
-    product_type: "savings_account" | "checking_account";
-    account_last4: string;
-}, {
-    product_type: "savings_account" | "checking_account";
-    account_last4: string;
-}>;
+    product_type: z.ZodEnum<{
+        savings_account: "savings_account";
+        checking_account: "checking_account";
+    }>;
+    account_last4: z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<string, string>>, z.ZodString>;
+}, z.core.$strip>;
 export declare const LinkAccountItemSchema: z.ZodObject<{
-    institution_id: z.ZodNumber;
+    institution_id: z.ZodCoercedNumber<unknown>;
     institution_name: z.ZodString;
-    product_type: z.ZodEffects<z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
-    account_last4: z.ZodPipeline<z.ZodEffects<z.ZodString, string, string>, z.ZodString>;
-    card_brand: z.ZodOptional<z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>>;
-    product_line: z.ZodOptional<z.ZodNullable<z.ZodEnum<["gold", "classic", "platinum", "premia", "infinite", "signature", "negocios", "corporate", "black", "gnial"]>>>;
-    linked_account: z.ZodOptional<z.ZodNullable<z.ZodObject<{
-        product_type: z.ZodEnum<["savings_account", "checking_account"]>;
-        account_last4: z.ZodPipeline<z.ZodEffects<z.ZodString, string, string>, z.ZodString>;
-    }, "strip", z.ZodTypeAny, {
-        product_type: "savings_account" | "checking_account";
-        account_last4: string;
-    }, {
-        product_type: "savings_account" | "checking_account";
-        account_last4: string;
+    product_type: z.ZodPreprocess<z.ZodEnum<{
+        insurance: "insurance";
+        credit_card: "credit_card";
+        debit_card: "debit_card";
+        loan: "loan";
+        savings_account: "savings_account";
+        checking_account: "checking_account";
+        investment: "investment";
+        mortgage: "mortgage";
+    }>, unknown>;
+    account_last4: z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<string, string>>, z.ZodString>;
+    card_brand: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
+        visa: "visa";
+        mastercard: "mastercard";
+        amex: "amex";
     }>>>;
-}, "strip", z.ZodTypeAny, {
-    product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
-    institution_id: number;
-    institution_name: string;
-    account_last4: string;
-    card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
-    product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null | undefined;
-    linked_account?: {
-        product_type: "savings_account" | "checking_account";
-        account_last4: string;
-    } | null | undefined;
-}, {
-    institution_id: number;
-    institution_name: string;
-    account_last4: string;
-    product_type?: unknown;
-    card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
-    product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null | undefined;
-    linked_account?: {
-        product_type: "savings_account" | "checking_account";
-        account_last4: string;
-    } | null | undefined;
-}>;
+    product_line: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
+        gold: "gold";
+        classic: "classic";
+        platinum: "platinum";
+        premia: "premia";
+        infinite: "infinite";
+        signature: "signature";
+        negocios: "negocios";
+        corporate: "corporate";
+        black: "black";
+        gnial: "gnial";
+    }>>>;
+    linked_account: z.ZodOptional<z.ZodNullable<z.ZodObject<{
+        product_type: z.ZodEnum<{
+            savings_account: "savings_account";
+            checking_account: "checking_account";
+        }>;
+        account_last4: z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<string, string>>, z.ZodString>;
+    }, z.core.$strip>>>;
+}, z.core.$strip>;
 export declare const LinkAccountsBodySchema: z.ZodObject<{
     accounts: z.ZodArray<z.ZodObject<{
-        institution_id: z.ZodNumber;
+        institution_id: z.ZodCoercedNumber<unknown>;
         institution_name: z.ZodString;
-        product_type: z.ZodEffects<z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
-        account_last4: z.ZodPipeline<z.ZodEffects<z.ZodString, string, string>, z.ZodString>;
-        card_brand: z.ZodOptional<z.ZodNullable<z.ZodEnum<["visa", "mastercard", "amex"]>>>;
-        product_line: z.ZodOptional<z.ZodNullable<z.ZodEnum<["gold", "classic", "platinum", "premia", "infinite", "signature", "negocios", "corporate", "black", "gnial"]>>>;
-        linked_account: z.ZodOptional<z.ZodNullable<z.ZodObject<{
-            product_type: z.ZodEnum<["savings_account", "checking_account"]>;
-            account_last4: z.ZodPipeline<z.ZodEffects<z.ZodString, string, string>, z.ZodString>;
-        }, "strip", z.ZodTypeAny, {
-            product_type: "savings_account" | "checking_account";
-            account_last4: string;
-        }, {
-            product_type: "savings_account" | "checking_account";
-            account_last4: string;
+        product_type: z.ZodPreprocess<z.ZodEnum<{
+            insurance: "insurance";
+            credit_card: "credit_card";
+            debit_card: "debit_card";
+            loan: "loan";
+            savings_account: "savings_account";
+            checking_account: "checking_account";
+            investment: "investment";
+            mortgage: "mortgage";
+        }>, unknown>;
+        account_last4: z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<string, string>>, z.ZodString>;
+        card_brand: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
+            visa: "visa";
+            mastercard: "mastercard";
+            amex: "amex";
         }>>>;
-    }, "strip", z.ZodTypeAny, {
-        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
-        institution_id: number;
-        institution_name: string;
-        account_last4: string;
-        card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
-        product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null | undefined;
-        linked_account?: {
-            product_type: "savings_account" | "checking_account";
-            account_last4: string;
-        } | null | undefined;
-    }, {
-        institution_id: number;
-        institution_name: string;
-        account_last4: string;
-        product_type?: unknown;
-        card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
-        product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null | undefined;
-        linked_account?: {
-            product_type: "savings_account" | "checking_account";
-            account_last4: string;
-        } | null | undefined;
-    }>, "many">;
-}, "strip", z.ZodTypeAny, {
-    accounts: {
-        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
-        institution_id: number;
-        institution_name: string;
-        account_last4: string;
-        card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
-        product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null | undefined;
-        linked_account?: {
-            product_type: "savings_account" | "checking_account";
-            account_last4: string;
-        } | null | undefined;
-    }[];
-}, {
-    accounts: {
-        institution_id: number;
-        institution_name: string;
-        account_last4: string;
-        product_type?: unknown;
-        card_brand?: "visa" | "mastercard" | "amex" | null | undefined;
-        product_line?: "gold" | "classic" | "platinum" | "premia" | "infinite" | "signature" | "negocios" | "corporate" | "black" | "gnial" | null | undefined;
-        linked_account?: {
-            product_type: "savings_account" | "checking_account";
-            account_last4: string;
-        } | null | undefined;
-    }[];
-}>;
+        product_line: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
+            gold: "gold";
+            classic: "classic";
+            platinum: "platinum";
+            premia: "premia";
+            infinite: "infinite";
+            signature: "signature";
+            negocios: "negocios";
+            corporate: "corporate";
+            black: "black";
+            gnial: "gnial";
+        }>>>;
+        linked_account: z.ZodOptional<z.ZodNullable<z.ZodObject<{
+            product_type: z.ZodEnum<{
+                savings_account: "savings_account";
+                checking_account: "checking_account";
+            }>;
+            account_last4: z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<string, string>>, z.ZodString>;
+        }, z.core.$strip>>>;
+    }, z.core.$strip>>;
+}, z.core.$strip>;
 export declare const LinkAccountsResponseSchema: z.ZodObject<{
     requested: z.ZodNumber;
     linked: z.ZodNumber;
     imported_events: z.ZodNumber;
     backfill_failed_events: z.ZodNumber;
     backfill_pending: z.ZodBoolean;
-    product_uuids: z.ZodArray<z.ZodString, "many">;
+    product_uuids: z.ZodArray<z.ZodString>;
     failed_accounts: z.ZodArray<z.ZodObject<{
         institution_id: z.ZodNumber;
-        product_type: z.ZodEffects<z.ZodEnum<["credit_card", "debit_card", "loan", "savings_account", "checking_account", "investment", "insurance", "mortgage"]>, "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage", unknown>;
+        product_type: z.ZodPreprocess<z.ZodEnum<{
+            insurance: "insurance";
+            credit_card: "credit_card";
+            debit_card: "debit_card";
+            loan: "loan";
+            savings_account: "savings_account";
+            checking_account: "checking_account";
+            investment: "investment";
+            mortgage: "mortgage";
+        }>, unknown>;
         account_last4: z.ZodString;
-    }, "strip", z.ZodTypeAny, {
-        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
-        institution_id: number;
-        account_last4: string;
-    }, {
-        institution_id: number;
-        account_last4: string;
-        product_type?: unknown;
-    }>, "many">;
-}, "strip", z.ZodTypeAny, {
-    requested: number;
-    linked: number;
-    imported_events: number;
-    backfill_failed_events: number;
-    backfill_pending: boolean;
-    product_uuids: string[];
-    failed_accounts: {
-        product_type: "insurance" | "credit_card" | "debit_card" | "loan" | "savings_account" | "checking_account" | "investment" | "mortgage";
-        institution_id: number;
-        account_last4: string;
-    }[];
-}, {
-    requested: number;
-    linked: number;
-    imported_events: number;
-    backfill_failed_events: number;
-    backfill_pending: boolean;
-    product_uuids: string[];
-    failed_accounts: {
-        institution_id: number;
-        account_last4: string;
-        product_type?: unknown;
-    }[];
-}>;
+    }, z.core.$strip>>;
+}, z.core.$strip>;
 export declare const UnlinkAccountsBodySchema: z.ZodObject<{
-    product_uuids: z.ZodArray<z.ZodString, "many">;
-}, "strip", z.ZodTypeAny, {
-    product_uuids: string[];
-}, {
-    product_uuids: string[];
-}>;
+    product_uuids: z.ZodArray<z.ZodString>;
+}, z.core.$strip>;
 export declare const UnlinkAccountsResponseSchema: z.ZodObject<{
     requested: z.ZodNumber;
     unlinked: z.ZodNumber;
-    failed_uuids: z.ZodArray<z.ZodString, "many">;
-}, "strip", z.ZodTypeAny, {
-    requested: number;
-    unlinked: number;
-    failed_uuids: string[];
-}, {
-    requested: number;
-    unlinked: number;
-    failed_uuids: string[];
-}>;
+    failed_uuids: z.ZodArray<z.ZodString>;
+}, z.core.$strip>;

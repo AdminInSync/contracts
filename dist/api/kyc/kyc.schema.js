@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { extendZodWithOpenApi } from '@anatine/zod-openapi';
+import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 extendZodWithOpenApi(z);
 export const KycStatusSchema = z.enum(["none", "pending", "on_hold", "approved", "rejected"]);
 export const KycTokenRequestSchema = z.object({

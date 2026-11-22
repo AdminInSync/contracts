@@ -4,17 +4,7 @@ export declare const CreateDeviceRequestSchema: z.ZodObject<{
     device_unique_id: z.ZodString;
     notes: z.ZodString;
     notification_token: z.ZodOptional<z.ZodString>;
-}, "strip", z.ZodTypeAny, {
-    user_uid: string;
-    device_unique_id: string;
-    notes: string;
-    notification_token?: string | undefined;
-}, {
-    user_uid: string;
-    device_unique_id: string;
-    notes: string;
-    notification_token?: string | undefined;
-}>;
+}, z.core.$strip>;
 export declare const DeviceResponseSchema: z.ZodObject<{
     id: z.ZodNumber;
     uuid: z.ZodString;
@@ -24,25 +14,7 @@ export declare const DeviceResponseSchema: z.ZodObject<{
     notification_token: z.ZodNullable<z.ZodString>;
     created_at: z.ZodString;
     updated_at: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    id: number;
-    uuid: string;
-    user_uid: string;
-    created_at: string;
-    device_unique_id: string;
-    notes: string;
-    notification_token: string | null;
-    updated_at: string;
-}, {
-    id: number;
-    uuid: string;
-    user_uid: string;
-    created_at: string;
-    device_unique_id: string;
-    notes: string;
-    notification_token: string | null;
-    updated_at: string;
-}>;
+}, z.core.$strip>;
 export declare const CreateDevicePreferencesRequestSchema: z.ZodObject<{
     device_unique_id: z.ZodString;
     arePushNotificationsEnabled: z.ZodOptional<z.ZodBoolean>;
@@ -55,34 +27,12 @@ export declare const CreateDevicePreferencesRequestSchema: z.ZodObject<{
     isAutoSyncEnabled: z.ZodOptional<z.ZodBoolean>;
     isCloudBackupEnabled: z.ZodOptional<z.ZodBoolean>;
     canExportData: z.ZodOptional<z.ZodBoolean>;
-    preferredTheme: z.ZodOptional<z.ZodEnum<["SYSTEM", "LIGHT", "DARK"]>>;
-}, "strip", z.ZodTypeAny, {
-    device_unique_id: string;
-    arePushNotificationsEnabled?: boolean | undefined;
-    areTransactionAlertsEnabled?: boolean | undefined;
-    areNotificationSoundsEnabled?: boolean | undefined;
-    isVibrationEnabled?: boolean | undefined;
-    isBiometricAuthEnabled?: boolean | undefined;
-    autoLockAfterMinutes?: number | undefined;
-    isPrivacySettingsEnabled?: boolean | undefined;
-    isAutoSyncEnabled?: boolean | undefined;
-    isCloudBackupEnabled?: boolean | undefined;
-    canExportData?: boolean | undefined;
-    preferredTheme?: "SYSTEM" | "LIGHT" | "DARK" | undefined;
-}, {
-    device_unique_id: string;
-    arePushNotificationsEnabled?: boolean | undefined;
-    areTransactionAlertsEnabled?: boolean | undefined;
-    areNotificationSoundsEnabled?: boolean | undefined;
-    isVibrationEnabled?: boolean | undefined;
-    isBiometricAuthEnabled?: boolean | undefined;
-    autoLockAfterMinutes?: number | undefined;
-    isPrivacySettingsEnabled?: boolean | undefined;
-    isAutoSyncEnabled?: boolean | undefined;
-    isCloudBackupEnabled?: boolean | undefined;
-    canExportData?: boolean | undefined;
-    preferredTheme?: "SYSTEM" | "LIGHT" | "DARK" | undefined;
-}>;
+    preferredTheme: z.ZodOptional<z.ZodEnum<{
+        SYSTEM: "SYSTEM";
+        LIGHT: "LIGHT";
+        DARK: "DARK";
+    }>>;
+}, z.core.$strip>;
 export declare const DevicePreferencesResponseSchema: z.ZodObject<{
     id: z.ZodNumber;
     uuid: z.ZodString;
@@ -98,46 +48,14 @@ export declare const DevicePreferencesResponseSchema: z.ZodObject<{
     isAutoSyncEnabled: z.ZodBoolean;
     isCloudBackupEnabled: z.ZodBoolean;
     canExportData: z.ZodBoolean;
-    preferredTheme: z.ZodEnum<["SYSTEM", "LIGHT", "DARK"]>;
+    preferredTheme: z.ZodEnum<{
+        SYSTEM: "SYSTEM";
+        LIGHT: "LIGHT";
+        DARK: "DARK";
+    }>;
     created_at: z.ZodString;
     updated_at: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    id: number;
-    uuid: string;
-    user_uid: string;
-    created_at: string;
-    device_unique_id: string;
-    updated_at: string;
-    arePushNotificationsEnabled: boolean;
-    areTransactionAlertsEnabled: boolean;
-    areNotificationSoundsEnabled: boolean;
-    isVibrationEnabled: boolean;
-    isBiometricAuthEnabled: boolean;
-    autoLockAfterMinutes: number;
-    isPrivacySettingsEnabled: boolean;
-    isAutoSyncEnabled: boolean;
-    isCloudBackupEnabled: boolean;
-    canExportData: boolean;
-    preferredTheme: "SYSTEM" | "LIGHT" | "DARK";
-}, {
-    id: number;
-    uuid: string;
-    user_uid: string;
-    created_at: string;
-    device_unique_id: string;
-    updated_at: string;
-    arePushNotificationsEnabled: boolean;
-    areTransactionAlertsEnabled: boolean;
-    areNotificationSoundsEnabled: boolean;
-    isVibrationEnabled: boolean;
-    isBiometricAuthEnabled: boolean;
-    autoLockAfterMinutes: number;
-    isPrivacySettingsEnabled: boolean;
-    isAutoSyncEnabled: boolean;
-    isCloudBackupEnabled: boolean;
-    canExportData: boolean;
-    preferredTheme: "SYSTEM" | "LIGHT" | "DARK";
-}>;
+}, z.core.$strip>;
 export declare const UpdateDevicePreferencesRequestSchema: z.ZodObject<{
     arePushNotificationsEnabled: z.ZodOptional<z.ZodBoolean>;
     areTransactionAlertsEnabled: z.ZodOptional<z.ZodBoolean>;
@@ -149,49 +67,19 @@ export declare const UpdateDevicePreferencesRequestSchema: z.ZodObject<{
     isAutoSyncEnabled: z.ZodOptional<z.ZodBoolean>;
     isCloudBackupEnabled: z.ZodOptional<z.ZodBoolean>;
     canExportData: z.ZodOptional<z.ZodBoolean>;
-    preferredTheme: z.ZodOptional<z.ZodEnum<["SYSTEM", "LIGHT", "DARK"]>>;
-}, "strip", z.ZodTypeAny, {
-    arePushNotificationsEnabled?: boolean | undefined;
-    areTransactionAlertsEnabled?: boolean | undefined;
-    areNotificationSoundsEnabled?: boolean | undefined;
-    isVibrationEnabled?: boolean | undefined;
-    isBiometricAuthEnabled?: boolean | undefined;
-    autoLockAfterMinutes?: number | undefined;
-    isPrivacySettingsEnabled?: boolean | undefined;
-    isAutoSyncEnabled?: boolean | undefined;
-    isCloudBackupEnabled?: boolean | undefined;
-    canExportData?: boolean | undefined;
-    preferredTheme?: "SYSTEM" | "LIGHT" | "DARK" | undefined;
-}, {
-    arePushNotificationsEnabled?: boolean | undefined;
-    areTransactionAlertsEnabled?: boolean | undefined;
-    areNotificationSoundsEnabled?: boolean | undefined;
-    isVibrationEnabled?: boolean | undefined;
-    isBiometricAuthEnabled?: boolean | undefined;
-    autoLockAfterMinutes?: number | undefined;
-    isPrivacySettingsEnabled?: boolean | undefined;
-    isAutoSyncEnabled?: boolean | undefined;
-    isCloudBackupEnabled?: boolean | undefined;
-    canExportData?: boolean | undefined;
-    preferredTheme?: "SYSTEM" | "LIGHT" | "DARK" | undefined;
-}>;
+    preferredTheme: z.ZodOptional<z.ZodEnum<{
+        SYSTEM: "SYSTEM";
+        LIGHT: "LIGHT";
+        DARK: "DARK";
+    }>>;
+}, z.core.$strip>;
 export declare const DeviceErrorResponseSchema: z.ZodObject<{
     error: z.ZodString;
     message: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    message: string;
-    error: string;
-}, {
-    message: string;
-    error: string;
-}>;
+}, z.core.$strip>;
 export declare const GetDevicesQuerySchema: z.ZodObject<{
     device_unique_id: z.ZodOptional<z.ZodString>;
-}, "strip", z.ZodTypeAny, {
-    device_unique_id?: string | undefined;
-}, {
-    device_unique_id?: string | undefined;
-}>;
+}, z.core.$strip>;
 export declare const GetDevicesResponseSchema: z.ZodArray<z.ZodObject<{
     id: z.ZodNumber;
     uuid: z.ZodString;
@@ -201,32 +89,10 @@ export declare const GetDevicesResponseSchema: z.ZodArray<z.ZodObject<{
     notification_token: z.ZodNullable<z.ZodString>;
     created_at: z.ZodString;
     updated_at: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    id: number;
-    uuid: string;
-    user_uid: string;
-    created_at: string;
-    device_unique_id: string;
-    notes: string;
-    notification_token: string | null;
-    updated_at: string;
-}, {
-    id: number;
-    uuid: string;
-    user_uid: string;
-    created_at: string;
-    device_unique_id: string;
-    notes: string;
-    notification_token: string | null;
-    updated_at: string;
-}>, "many">;
+}, z.core.$strip>>;
 export declare const GetDevicePreferencesQuerySchema: z.ZodObject<{
     device_id: z.ZodOptional<z.ZodString>;
-}, "strip", z.ZodTypeAny, {
-    device_id?: string | undefined;
-}, {
-    device_id?: string | undefined;
-}>;
+}, z.core.$strip>;
 export declare const GetDevicePreferencesResponseSchema: z.ZodArray<z.ZodObject<{
     id: z.ZodNumber;
     uuid: z.ZodString;
@@ -242,86 +108,24 @@ export declare const GetDevicePreferencesResponseSchema: z.ZodArray<z.ZodObject<
     isAutoSyncEnabled: z.ZodBoolean;
     isCloudBackupEnabled: z.ZodBoolean;
     canExportData: z.ZodBoolean;
-    preferredTheme: z.ZodEnum<["SYSTEM", "LIGHT", "DARK"]>;
+    preferredTheme: z.ZodEnum<{
+        SYSTEM: "SYSTEM";
+        LIGHT: "LIGHT";
+        DARK: "DARK";
+    }>;
     created_at: z.ZodString;
     updated_at: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    id: number;
-    uuid: string;
-    user_uid: string;
-    created_at: string;
-    device_unique_id: string;
-    updated_at: string;
-    arePushNotificationsEnabled: boolean;
-    areTransactionAlertsEnabled: boolean;
-    areNotificationSoundsEnabled: boolean;
-    isVibrationEnabled: boolean;
-    isBiometricAuthEnabled: boolean;
-    autoLockAfterMinutes: number;
-    isPrivacySettingsEnabled: boolean;
-    isAutoSyncEnabled: boolean;
-    isCloudBackupEnabled: boolean;
-    canExportData: boolean;
-    preferredTheme: "SYSTEM" | "LIGHT" | "DARK";
-}, {
-    id: number;
-    uuid: string;
-    user_uid: string;
-    created_at: string;
-    device_unique_id: string;
-    updated_at: string;
-    arePushNotificationsEnabled: boolean;
-    areTransactionAlertsEnabled: boolean;
-    areNotificationSoundsEnabled: boolean;
-    isVibrationEnabled: boolean;
-    isBiometricAuthEnabled: boolean;
-    autoLockAfterMinutes: number;
-    isPrivacySettingsEnabled: boolean;
-    isAutoSyncEnabled: boolean;
-    isCloudBackupEnabled: boolean;
-    canExportData: boolean;
-    preferredTheme: "SYSTEM" | "LIGHT" | "DARK";
-}>, "many">;
+}, z.core.$strip>>;
 export declare const UpdateNotificationTokenRequestSchema: z.ZodObject<{
     device_unique_id: z.ZodString;
     notification_token: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    device_unique_id: string;
-    notification_token: string;
-}, {
-    device_unique_id: string;
-    notification_token: string;
-}>;
+}, z.core.$strip>;
 export declare const UpdateNotificationTokenResponseSchema: z.ZodObject<{
     success: z.ZodLiteral<true>;
     data: z.ZodObject<{
         device_id: z.ZodNumber;
         device_unique_id: z.ZodString;
         notification_token_updated: z.ZodBoolean;
-    }, "strip", z.ZodTypeAny, {
-        device_unique_id: string;
-        device_id: number;
-        notification_token_updated: boolean;
-    }, {
-        device_unique_id: string;
-        device_id: number;
-        notification_token_updated: boolean;
-    }>;
+    }, z.core.$strip>;
     message: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    message: string;
-    data: {
-        device_unique_id: string;
-        device_id: number;
-        notification_token_updated: boolean;
-    };
-    success: true;
-}, {
-    message: string;
-    data: {
-        device_unique_id: string;
-        device_id: number;
-        notification_token_updated: boolean;
-    };
-    success: true;
-}>;
+}, z.core.$strip>;
